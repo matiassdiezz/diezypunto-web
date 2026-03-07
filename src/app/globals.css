@@ -71,14 +71,6 @@ html {
   animation: orb-drift-2 30s ease-in-out infinite;
 }
 
-.hero-orb-3 {
-  width: min(350px, 50vw);
-  height: min(350px, 50vw);
-  background: rgba(56, 189, 248, 0.03);
-  top: 40%;
-  left: 50%;
-  animation: orb-drift-3 20s ease-in-out infinite;
-}
 
 @keyframes orb-drift-1 {
   0%, 100% { transform: translate(0, 0) scale(1); }
@@ -93,10 +85,6 @@ html {
   66% { transform: translate(30px, 30px) scale(0.92); }
 }
 
-@keyframes orb-drift-3 {
-  0%, 100% { transform: translate(-50%, 0) scale(1); }
-  50% { transform: translate(calc(-50% + 20px), -30px) scale(1.1); }
-}
 
 /* Animated search input border — rotating celeste conic gradient */
 .search-glow-wrapper {
@@ -140,10 +128,52 @@ html {
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
+/* ═══════════════════════════════════════════
+   Logo marquee — infinite horizontal scroll
+   ═══════════════════════════════════════════ */
+
+.logo-marquee {
+  animation: marquee-scroll 40s linear infinite;
+}
+
+.logo-marquee-reverse {
+  animation: marquee-scroll-reverse 40s linear infinite;
+}
+
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-scroll-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* Fade edges */
+.logo-marquee-mask {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
 /* Accessibility — reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .hero-orb,
-  .search-glow-wrapper::before {
+  .search-glow-wrapper::before,
+  .logo-marquee,
+  .logo-marquee-reverse {
     animation: none !important;
   }
 }

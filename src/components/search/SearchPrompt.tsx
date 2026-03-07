@@ -168,12 +168,7 @@ export default function SearchPrompt() {
           </div>
         </div>
 
-        {/* Hint */}
-        {!hasResults && !isLoading && (
-          <p className="mt-3 text-center text-xs text-gray-400">
-            Escribi en lenguaje natural — como si le hablaras a una persona
-          </p>
-        )}
+        {/* Hint — hidden when used inside SearchSection which provides its own subtitle */}
       </form>
 
       {/* Example chips — only before first search */}

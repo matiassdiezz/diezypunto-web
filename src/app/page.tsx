@@ -1,4 +1,5 @@
 import Hero from "@/components/hero/Hero";
+import SearchSection from "@/components/home/SearchSection";
 import LogoBar from "@/components/home/LogoBar";
 import CategoryShowcase from "@/components/hero/CategoryShowcase";
 import ValueProps from "@/components/home/ValueProps";
@@ -14,6 +15,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <SearchSection />
       <LogoBar />
       <CategoryShowcase />
       <ValueProps />
