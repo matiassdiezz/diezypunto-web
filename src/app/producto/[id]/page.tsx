@@ -2,27 +2,54 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import { getProduct } from "@/lib/api";
+import { getProduct, listProducts } from "@/lib/api";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
-import { ShoppingBag, Leaf, ArrowLeft } from "lucide-react";
+import { useToastStore } from "@/components/shared/Toast";
+import { ShoppingBag, Leaf, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import ScrollReveal from "@/components/shared/ScrollReveal";
+import Breadcrumbs from "@/components/catalog/Breadcrumbs";
+import ProductCard from "@/components/catalog/ProductCard";
 
 export default function ProductoPage() {
   const params = useParams();
   const id = params.id as string;
   const [product, setProduct] = useState<ProductResult | null>(null);
+  const [related, setRelated] = useState<ProductResult[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
   const addItem = useQuoteStore((s) => s.addItem);
+  const toast = useToastStore((s) => s.toast);
 
   useEffect(() => {
+    setSelectedImage(0);
     getProduct(id)
-      .then(setProduct)
+      .then((p) => {
+        setProduct(p);
+        // Fetch related products from same category
+        listProducts({ category: p.category, limit: 5 })
+          .then((res) =>
+            setRelated(
+              res.products
+                .filter((r) => r.product_id !== p.product_id)
+                .slice(0, 4),
+            ),
+          )
+          .catch(console.error);
+      })
       .catch(console.error)
       .finally(() => setLoading(false));
   }, [id]);
+
+  function handleAdd() {
+    if (!product) return;
+    addItem(product);
+    toast("Agregado al presupuesto", {
+      label: "Ver presupuesto →",
+      href: "/presupuesto",
+    });
+  }
 
   if (loading) {
     return (
@@ -40,16 +67,26 @@ export default function ProductoPage() {
     );
   }
 
+  const whatsappMessage = encodeURIComponent(
+    `Hola! Me interesa el producto: ${product.title}. ¿Podrian darme mas info?`,
+  );
+  const whatsappUrl = `https://wa.me/5491168530845?text=${whatsappMessage}`;
+
+  const breadcrumbs = [
+    { label: "Inicio", href: "/" },
+    { label: "Catalogo", href: "/catalogo" },
+    {
+      label: product.category,
+      href: `/catalogo/${encodeURIComponent(product.category)}`,
+    },
+    { label: product.title },
+  ];
+
   return (
     <div className="mx-auto max-w-6xl px-6 pb-20 pt-28">
-      <Link
-        href="/catalogo"
-        className="mb-6 inline-flex items-center gap-1 text-sm text-muted hover:text-foreground"
-      >
-        <ArrowLeft className="h-4 w-4" /> Volver al catalogo
-      </Link>
+      <Breadcrumbs items={breadcrumbs} />
 
-      <div className="grid gap-10 lg:grid-cols-2">
+      <div className="mt-6 grid gap-10 lg:grid-cols-2">
         {/* Gallery */}
         <ScrollReveal direction="left">
           <div className="space-y-4">
@@ -93,7 +130,12 @@ export default function ProductoPage() {
         {/* Info */}
         <ScrollReveal direction="right">
           <div>
-            <p className="text-sm text-muted">{product.category}</p>
+            <Link
+              href={`/catalogo/${encodeURIComponent(product.category)}`}
+              className="text-sm text-muted hover:text-accent"
+            >
+              {product.category}
+            </Link>
             <h1 className="mt-1 text-2xl font-bold lg:text-3xl">
               {product.title}
             </h1>
@@ -148,12 +190,22 @@ export default function ProductoPage() {
               )}
 
               <button
-                onClick={() => addItem(product)}
+                onClick={handleAdd}
                 className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover"
               >
                 <ShoppingBag className="h-5 w-5" />
                 Agregar al presupuesto
               </button>
+
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 font-medium text-foreground transition-colors hover:bg-surface"
+              >
+                <MessageCircle className="h-5 w-5" />
+                Consultar por WhatsApp
+              </a>
             </div>
 
             {/* Specs */}
@@ -195,6 +247,20 @@ export default function ProductoPage() {
           </div>
         </ScrollReveal>
       </div>
+
+      {/* Related products */}
+      {related.length > 0 && (
+        <section className="mt-16">
+          <ScrollReveal>
+            <h2 className="text-xl font-bold">Productos relacionados</h2>
+          </ScrollReveal>
+          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {related.map((p) => (
+              <ProductCard key={p.product_id} product={p} />
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

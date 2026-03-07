@@ -5,6 +5,7 @@ import Navbar from "@/components/shared/Navbar";
 import Footer from "@/components/shared/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import QuoteCart from "@/components/quote/QuoteCart";
+import Toast from "@/components/shared/Toast";
 
 export default function ClientLayout({ children }: { children: ReactNode }) {
   return (
@@ -14,6 +15,7 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       <Footer />
       <WhatsAppButton />
       <QuoteCart />
+      <Toast />
     </>
   );
 }

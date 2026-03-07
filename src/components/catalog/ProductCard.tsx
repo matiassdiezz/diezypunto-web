@@ -1,9 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
-import { ShoppingBag, Leaf } from "lucide-react";
+import { ShoppingBag, Leaf, Check } from "lucide-react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
+import { useToastStore } from "@/components/shared/Toast";
 
 interface ProductCardProps {
   product: ProductResult;
@@ -15,9 +17,21 @@ export default function ProductCard({
   showScore = false,
 }: ProductCardProps) {
   const addItem = useQuoteStore((s) => s.addItem);
+  const toast = useToastStore((s) => s.toast);
+  const [added, setAdded] = useState(false);
 
   const imageUrl = product.image_urls[0];
   const hasPersonalization = product.personalization_methods.length > 0;
+
+  function handleAdd() {
+    addItem(product);
+    toast("Agregado al presupuesto", {
+      label: "Ver presupuesto →",
+      href: "/presupuesto",
+    });
+    setAdded(true);
+    setTimeout(() => setAdded(false), 1200);
+  }
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all hover:shadow-lg">
@@ -100,11 +114,19 @@ export default function ProductCard({
           </div>
 
           <button
-            onClick={() => addItem(product)}
-            className="rounded-xl bg-[#59C6F2] p-2 text-white transition-all hover:bg-[#3BB5E8] hover:shadow-[0_0_15px_rgba(89,198,242,0.3)]"
+            onClick={handleAdd}
+            className={`rounded-xl p-2 text-white transition-all ${
+              added
+                ? "bg-success"
+                : "bg-[#59C6F2] hover:bg-[#3BB5E8] hover:shadow-[0_0_15px_rgba(89,198,242,0.3)]"
+            }`}
             title="Agregar al presupuesto"
           >
-            <ShoppingBag className="h-4 w-4" />
+            {added ? (
+              <Check className="h-4 w-4" />
+            ) : (
+              <ShoppingBag className="h-4 w-4" />
+            )}
           </button>
         </div>
       </div>
