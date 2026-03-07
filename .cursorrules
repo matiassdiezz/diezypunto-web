@@ -1,0 +1,130 @@
+# diezypunto-web — Cursor Rules
+
+## What is this
+Landing page + catalog + AI search + quote builder for Diezypunto (merchandising corporativo B2B).
+Standalone web app — the bot (kairos-merch-core) is a separate repo.
+
+## Stack
+- Next.js 16 (App Router), React 19, TypeScript (strict)
+- Tailwind CSS v4 (inline, no CSS modules)
+- Framer Motion (all animations)
+- Zustand (state management, 2 stores)
+- lucide-react (icons)
+- Anthropic SDK (server-side AI search)
+- Deploy: Vercel (auto-deploy from GitHub)
+
+## Project structure
+```
+src/
+  app/
+    layout.tsx              — Server component. Metadata, Geist font
+    client-layout.tsx       — "use client". Wraps Navbar, Footer, WhatsAppButton, QuoteCart
+    page.tsx                — Home page (hero + search + sections)
+    globals.css             — Tailwind theme + CSS custom properties
+    catalogo/page.tsx       — Catalog with category filters
+    catalogo/[category]/    — Category page
+    producto/[id]/page.tsx  — Product detail
+    presupuesto/page.tsx    — Quote builder page
+    api/
+      search/route.ts       — POST. AI search with Claude extraction + rate limiting
+      search/refine/route.ts — POST. Refine search within session
+      products/route.ts     — GET. Filter/paginate products
+      products/[id]/route.ts — GET. Single product
+      categories/route.ts   — GET. Category list
+  components/
+    search/    — SearchPrompt, SearchResults, SearchRefinement
+    catalog/   — ProductCard, ProductGrid, CategoryFilter
+    quote/     — QuoteCart, QuoteBuilder
+    home/      — Hero sections, FAQ, Testimonials
+    shared/    — Navbar, Footer, WhatsAppButton
+  lib/
+    api.ts         — fetchJSON<T> client wrapper
+    types.ts       — ProductResult, SearchResponse, etc.
+    stores/
+      quote-store.ts   — Zustand + persist (localStorage)
+      search-store.ts  — Zustand (ephemeral, session-based)
+    engine/
+      llm.ts       — Claude extraction (server-side only)
+      products.ts  — Product data + filtering
+      ranking.ts   — Search ranking logic
+      rate-limit.ts — IP-based rate limiting (in-memory)
+    data/          — Static product data
+```
+
+## Key patterns
+
+### Components
+- **Server components** by default (layout.tsx). Add `"use client"` only when needed (state, events, hooks, Framer Motion)
+- Keep components small and focused (20-110 lines typical)
+- Access Zustand via selectors: `useQuoteStore((s) => s.addItem)`
+
+### Styling
+- Tailwind v4 inline classes only — no CSS modules, no component libraries (no Shadcn, no MUI)
+- Custom CSS vars in globals.css: `--accent: #59C6F2`, `--eco: #10b981`
+- Font: Geist (via next/font/google)
+- Responsive: use Tailwind breakpoints (`sm:`, `md:`, `lg:`)
+
+### Animations
+- Framer Motion for everything — no CSS animations
+```tsx
+<motion.div
+  initial={{ opacity: 0, y: 8 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.3 }}
+>
+```
+- Use `AnimatePresence` for enter/exit transitions
+
+### Data fetching
+- Client-side in `useEffect` or Zustand async methods
+- `fetchJSON<T>(url, init)` wrapper in lib/api.ts
+- API routes are thin wrappers — business logic in `src/lib/engine/`
+
+### State management (Zustand)
+1. **quote-store** — cart, persisted to localStorage. Methods: addItem, removeItem, updateQty, clearCart, totalItems
+2. **search-store** — search session, ephemeral. Methods: search(query), refine(query), clear()
+
+### API routes
+- All in `src/app/api/*/route.ts` (App Router convention)
+- Return `NextResponse.json(data)`
+- Rate limiting on search endpoints (10 req/min per IP, in-memory Map)
+- Search uses Claude for intent extraction (server-side, API key in env)
+
+## Code style
+- TypeScript strict mode
+- Interfaces for all API responses and component props
+- `type` over `interface` for simple shapes, `interface` for extendable contracts
+- Named exports for components, default export for pages
+- Icons: always from lucide-react
+
+## Brand / Design
+- Dark theme with premium feel (glass effects, glow borders)
+- Accent: teal (#59C6F2)
+- Eco badge: green (#10b981)
+- Rounded corners: `rounded-xl` default
+- Subtle shadows and transitions on hover
+
+## What NOT to do
+- Don't add component libraries (Shadcn, MUI, etc.) — custom Tailwind only
+- Don't use CSS modules or styled-components
+- Don't use getServerSideProps/getStaticProps — App Router only
+- Don't put Claude API key in client code — server-side only (API routes)
+- Don't use CSS animations — use Framer Motion
+- Don't fetch in render — use useEffect or Zustand methods
+
+## Environment variables
+```
+ANTHROPIC_API_KEY=sk-...  # Server-side only, for AI search
+```
+
+## Running
+```bash
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # Production build
+npm run lint       # ESLint
+```
+
+## Related repos
+- **kairos-merch-core**: `/Users/matiasdiez/Documents/GitHub/kairos-merch-core` — bot engine (Python)
+- **kairos-merch-tenants**: `/Users/matiasdiez/Documents/GitHub/kairos-merch-tenants` — tenant config
