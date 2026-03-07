@@ -46,21 +46,21 @@ function MarqueeRow({
   return (
     <div className="logo-marquee-mask relative overflow-hidden">
       <div
-        className={`flex w-max items-center gap-12 ${
+        className={`flex w-max items-center gap-14 ${
           reverse ? "logo-marquee-reverse" : "logo-marquee"
         }`}
       >
         {items.map((logo, i) => (
           <div
             key={`${logo.alt}-${i}`}
-            className="flex h-12 w-28 shrink-0 items-center justify-center"
+            className="flex h-16 w-36 shrink-0 items-center justify-center"
           >
             <Image
               src={logo.src}
               alt={logo.alt}
-              width={112}
-              height={48}
-              className="max-h-10 w-auto object-contain opacity-40 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+              width={144}
+              height={64}
+              className="max-h-14 w-auto object-contain opacity-40 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
             />
           </div>
         ))}

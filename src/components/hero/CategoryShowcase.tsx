@@ -7,14 +7,22 @@ import type { CategoryInfo } from "@/lib/types";
 import ScrollReveal from "../shared/ScrollReveal";
 
 const CATEGORY_ICONS: Record<string, string> = {
-  drinkware: "🥤",
-  bolsos: "👜",
-  escritura: "✏️",
-  tecnologia: "💻",
-  textil: "👕",
-  hogar: "🏠",
-  outdoor: "⛺",
-  oficina: "🏢",
+  "Botellas y Termos": "🥤",
+  "Mochilas y Bolsos": "🎒",
+  "Escritura": "✏️",
+  "Tecnología": "💻",
+  "Tecnologia": "💻",
+  "Indumentaria": "👕",
+  "Textil": "👕",
+  "Aire Libre": "⛺",
+  "Oficina": "🏢",
+  "Kits": "🎁",
+  "Sustentables": "🌱",
+  "Ecologico": "🌱",
+  "Premium": "⭐",
+  "Mates": "🧉",
+  "Tazas": "☕",
+  "Hogar": "🏠",
 };
 
 export default function CategoryShowcase() {
@@ -39,20 +47,15 @@ export default function CategoryShowcase() {
         </p>
       </ScrollReveal>
 
-      <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+      <div className="mt-10 flex flex-wrap justify-center gap-3">
         {categories.map((cat, i) => (
           <ScrollReveal key={cat.name} delay={i * 0.05}>
             <Link
               href={`/catalogo/${encodeURIComponent(cat.name)}`}
-              className="flex flex-col items-center gap-2 rounded-2xl border border-border bg-white p-6 transition-shadow hover:shadow-md"
+              className="flex items-center gap-2 rounded-full bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-accent-light hover:text-accent"
             >
-              <span className="text-3xl">
-                {CATEGORY_ICONS[cat.name.toLowerCase()] || "📦"}
-              </span>
-              <span className="text-sm font-medium">{cat.name}</span>
-              <span className="text-xs text-muted">
-                {cat.count} productos
-              </span>
+              <span>{CATEGORY_ICONS[cat.name] || "📦"}</span>
+              {cat.name}
             </Link>
           </ScrollReveal>
         ))}
