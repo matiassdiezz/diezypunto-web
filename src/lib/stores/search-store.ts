@@ -6,7 +6,6 @@ interface SearchState {
   sessionId: string | null;
   query: string;
   results: ProductResult[];
-  needs: Record<string, unknown>;
   summary: string;
   isLoading: boolean;
   error: string | null;
@@ -19,7 +18,6 @@ export const useSearchStore = create<SearchState>((set, get) => ({
   sessionId: null,
   query: "",
   results: [],
-  needs: {},
   summary: "",
   isLoading: false,
   error: null,
@@ -31,7 +29,6 @@ export const useSearchStore = create<SearchState>((set, get) => ({
       set({
         sessionId: res.session_id,
         results: res.products,
-        needs: res.extracted_needs,
         summary: res.summary,
         isLoading: false,
       });
@@ -52,7 +49,6 @@ export const useSearchStore = create<SearchState>((set, get) => ({
       const res = await refineSearch(sid, query);
       set({
         results: res.products,
-        needs: res.extracted_needs,
         summary: res.summary,
         isLoading: false,
       });
@@ -69,7 +65,6 @@ export const useSearchStore = create<SearchState>((set, get) => ({
       sessionId: null,
       query: "",
       results: [],
-      needs: {},
       summary: "",
       isLoading: false,
       error: null,

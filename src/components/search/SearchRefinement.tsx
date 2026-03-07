@@ -36,13 +36,13 @@ export default function SearchRefinement() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder="Pedile que ajuste los resultados..."
-            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-[#1a1a2e] transition-all placeholder:text-gray-400 focus:border-[#59C6F2] focus:outline-none"
+            className="w-full rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-foreground transition-all placeholder:text-gray-400 focus:border-accent focus:outline-none"
           />
         </div>
         <button
           type="submit"
           disabled={isLoading || !input.trim()}
-          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#59C6F2] text-white transition-all hover:bg-[#3BB5E8] hover:shadow-[0_0_20px_rgba(89,198,242,0.4)] disabled:opacity-20"
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-white transition-all hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(89,198,242,0.4)] disabled:opacity-20"
         >
           <ArrowUp className="h-4 w-4" />
         </button>
@@ -54,7 +54,7 @@ export default function SearchRefinement() {
             key={s}
             onClick={() => handleSuggestion(s)}
             disabled={isLoading}
-            className="rounded-full border border-dashed border-gray-300 px-3 py-1 text-xs text-gray-500 transition-all hover:border-[#59C6F2]/40 hover:text-[#3BB5E8] disabled:opacity-50"
+            className="rounded-full border border-dashed border-gray-300 px-3 py-1 text-xs text-gray-500 transition-all hover:border-accent/40 hover:text-accent-hover disabled:opacity-50"
           >
             {s}
           </button>

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef, FormEvent, useCallback } from "react";
+import { useState, useEffect, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, Sparkles } from "lucide-react";
 import { useSearchStore } from "@/lib/stores/search-store";
+import LoadingDots from "../shared/LoadingDots";
 import SearchResults from "./SearchResults";
 import SearchRefinement from "./SearchRefinement";
 
@@ -27,14 +28,18 @@ function RotatingPlaceholder() {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    let fadeTimeout: ReturnType<typeof setTimeout>;
     const interval = setInterval(() => {
       setVisible(false);
-      setTimeout(() => {
-        setIndex((i) => (i + 1) % EXAMPLES.length);
+      fadeTimeout = setTimeout(() => {
+        setIndex((i) => (i + 1) % 4);
         setVisible(true);
       }, 300);
     }, 3500);
-    return () => clearInterval(interval);
+    return () => {
+      clearInterval(interval);
+      clearTimeout(fadeTimeout);
+    };
   }, []);
 
   return (
@@ -73,20 +78,7 @@ function LoadingState() {
       animate={{ opacity: 1, y: 0 }}
       className="mt-8 flex items-center justify-center gap-3"
     >
-      <div className="flex gap-1">
-        {[0, 1, 2].map((i) => (
-          <motion.span
-            key={i}
-            className="block h-1.5 w-1.5 rounded-full bg-[#59C6F2]"
-            animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
-            transition={{
-              duration: 0.7,
-              repeat: Infinity,
-              delay: i * 0.15,
-            }}
-          />
-        ))}
-      </div>
+      <LoadingDots />
       <AnimatePresence mode="wait">
         <motion.span
           key={msgIndex}
@@ -132,8 +124,10 @@ export default function SearchPrompt() {
   useEffect(() => {
     const ta = textareaRef.current;
     if (!ta) return;
-    ta.style.height = "auto";
-    ta.style.height = Math.min(ta.scrollHeight, 160) + "px";
+    requestAnimationFrame(() => {
+      ta.style.height = "auto";
+      ta.style.height = Math.min(ta.scrollHeight, 160) + "px";
+    });
   }, [input]);
 
   const hasResults = !isLoading && results.length > 0;
@@ -165,7 +159,7 @@ export default function SearchPrompt() {
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
               rows={3}
-              className="w-full resize-none bg-transparent px-5 py-5 pr-14 text-base text-[#1a1a2e] outline-none placeholder:text-gray-300 sm:text-lg"
+              className="w-full resize-none bg-transparent px-5 py-5 pr-14 text-base text-foreground outline-none placeholder:text-gray-300 sm:text-lg"
               style={{ minHeight: "100px" }}
             />
 
@@ -173,7 +167,7 @@ export default function SearchPrompt() {
             <motion.button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#59C6F2] text-white transition-all hover:bg-[#3BB5E8] hover:shadow-[0_0_20px_rgba(89,198,242,0.4)] disabled:opacity-20"
+              className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-white transition-all hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(89,198,242,0.4)] disabled:opacity-20"
               animate={{
                 scale: focused && input.trim() ? 1.1 : 1,
               }}
@@ -223,8 +217,8 @@ export default function SearchPrompt() {
           {/* AI summary */}
           {summary && (
             <div className="mt-8 flex items-start gap-2.5">
-              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#EBF7FE]">
-                <Sparkles className="h-3.5 w-3.5 text-[#59C6F2]" />
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-light">
+                <Sparkles className="h-3.5 w-3.5 text-accent" />
               </span>
               <p className="text-sm leading-relaxed text-gray-600">
                 {summary}
