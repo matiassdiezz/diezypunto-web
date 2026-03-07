@@ -201,9 +201,9 @@ export default function SearchPrompt() {
               <button
                 key={ex}
                 onClick={() => handleExample(ex)}
-                className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs text-gray-500 transition-all hover:border-accent hover:bg-accent-light hover:text-accent hover:shadow-sm"
+                className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-xs leading-relaxed text-gray-500 text-left transition-all hover:border-accent hover:bg-accent-light hover:text-accent hover:shadow-sm"
               >
-                {ex.length > 45 ? ex.slice(0, 45) + "..." : ex}
+                {ex}
               </button>
             ))}
           </div>
