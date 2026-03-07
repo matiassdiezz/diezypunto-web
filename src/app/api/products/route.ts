@@ -20,8 +20,9 @@ export async function GET(req: NextRequest) {
     return NextResponse.json(result);
   } catch (err) {
     console.error("Zecat products error:", err);
+    const message = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
-      { error: "Error fetching products" },
+      { error: "Error fetching products", detail: message },
       { status: 502 },
     );
   }

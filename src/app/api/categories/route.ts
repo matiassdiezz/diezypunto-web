@@ -7,8 +7,9 @@ export async function GET() {
     return NextResponse.json(categories);
   } catch (err) {
     console.error("Zecat categories error:", err);
+    const message = err instanceof Error ? err.message : String(err);
     return NextResponse.json(
-      { error: "Error fetching categories" },
+      { error: "Error fetching categories", detail: message },
       { status: 502 },
     );
   }
