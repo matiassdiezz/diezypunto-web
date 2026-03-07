@@ -9,7 +9,7 @@ import { useQuoteStore } from "@/lib/stores/quote-store";
 const links = [
   { href: "/", label: "Inicio" },
   { href: "/catalogo", label: "Catalogo" },
-  { href: "/presupuesto", label: "Presupuesto" },
+  { href: "/carrito", label: "Carrito" },
 ];
 
 export default function Navbar() {
@@ -51,11 +51,11 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/presupuesto"
+            href="/carrito"
             className="relative flex items-center gap-1.5 rounded-full bg-[#59C6F2] px-4 py-2 text-sm font-medium text-white transition-all hover:bg-[#3BB5E8]"
           >
             <ShoppingBag className="h-4 w-4" />
-            Presupuesto
+            Carrito
             {totalItems > 0 && (
               <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#3BB5E8] text-xs text-white">
                 {totalItems}

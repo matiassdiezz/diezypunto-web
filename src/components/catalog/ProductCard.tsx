@@ -25,9 +25,9 @@ export default function ProductCard({
 
   function handleAdd() {
     addItem(product);
-    toast("Agregado al presupuesto", {
-      label: "Ver presupuesto →",
-      href: "/presupuesto",
+    toast("Agregado al carrito", {
+      label: "Ver carrito →",
+      href: "/carrito",
     });
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
@@ -120,7 +120,7 @@ export default function ProductCard({
                 ? "bg-success"
                 : "bg-[#59C6F2] hover:bg-[#3BB5E8] hover:shadow-[0_0_15px_rgba(89,198,242,0.3)]"
             }`}
-            title="Agregar al presupuesto"
+            title="Agregar al carrito"
           >
             {added ? (
               <Check className="h-4 w-4" />

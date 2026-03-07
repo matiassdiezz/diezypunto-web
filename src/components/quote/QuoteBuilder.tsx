@@ -1,20 +1,31 @@
 "use client";
 
-import { Minus, Plus, Trash2, Download, MessageCircle } from "lucide-react";
+import { useState } from "react";
+import {
+  Minus,
+  Plus,
+  Trash2,
+  MessageCircle,
+  CreditCard,
+  Loader2,
+} from "lucide-react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 
 const WHATSAPP_NUMBER = "5491168385566";
 
 export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();
+  const [mpLoading, setMpLoading] = useState(false);
 
   const total = items.reduce((sum, i) => {
     if (i.product.price) return sum + i.product.price * i.quantity;
     return sum;
   }, 0);
 
+  const hasItemsWithoutPrice = items.some((i) => i.product.price == null);
+
   const buildWhatsAppMessage = () => {
-    let msg = "Hola! Quiero solicitar presupuesto por:\n\n";
+    let msg = "Hola! Quiero consultar por estos productos:\n\n";
     items.forEach((item, i) => {
       msg += `${i + 1}. ${item.product.title} x${item.quantity}`;
       if (item.product.price)
@@ -25,12 +36,43 @@ export default function QuoteBuilder() {
     return msg;
   };
 
+  const handleMercadoPago = async () => {
+    const payableItems = items.filter((i) => i.product.price != null);
+    if (payableItems.length === 0) return;
+
+    setMpLoading(true);
+    try {
+      const res = await fetch("/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: payableItems.map((i) => ({
+            id: i.product.product_id,
+            title: i.product.title,
+            quantity: i.quantity,
+            unit_price: i.product.price,
+          })),
+        }),
+      });
+      const data = await res.json();
+      if (data.init_point) {
+        window.location.href = data.init_point;
+      } else {
+        alert(data.error || "Error al crear el pago");
+      }
+    } catch {
+      alert("Error de conexion. Intenta de nuevo.");
+    } finally {
+      setMpLoading(false);
+    }
+  };
+
   if (items.length === 0) {
     return (
       <div className="py-20 text-center">
-        <p className="text-lg text-muted">Tu presupuesto esta vacio</p>
+        <p className="text-lg text-muted">Tu carrito esta vacio</p>
         <p className="mt-1 text-sm text-muted">
-          Busca productos y agregalos para armar tu presupuesto.
+          Busca productos y agregalos al carrito.
         </p>
       </div>
     );
@@ -132,30 +174,56 @@ export default function QuoteBuilder() {
       </div>
 
       {/* Footer */}
-      <div className="mt-6 flex flex-col items-end gap-4 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <button
           onClick={clearCart}
           className="text-sm text-muted underline hover:text-foreground"
         >
-          Vaciar presupuesto
+          Vaciar carrito
         </button>
 
-        <div className="flex flex-col items-end gap-3 sm:flex-row sm:items-center">
+        <div className="flex flex-col items-end gap-3">
           {total > 0 && (
             <p className="text-xl font-bold">
-              Total estimado: ${total.toLocaleString("es-AR")}
+              Total: ${total.toLocaleString("es-AR")}
             </p>
           )}
 
-          <a
-            href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage())}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 font-medium text-white transition-transform hover:scale-105"
-          >
-            <MessageCircle className="h-5 w-5" />
-            Enviar por WhatsApp
-          </a>
+          <div className="flex flex-col gap-2 sm:flex-row">
+            {/* Mercado Pago */}
+            {total > 0 && !hasItemsWithoutPrice && (
+              <button
+                onClick={handleMercadoPago}
+                disabled={mpLoading}
+                className="flex items-center justify-center gap-2 rounded-xl bg-[#009ee3] px-6 py-3 font-medium text-white transition-all hover:bg-[#007eb5] disabled:opacity-60"
+              >
+                {mpLoading ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : (
+                  <CreditCard className="h-5 w-5" />
+                )}
+                {mpLoading ? "Redirigiendo..." : "Pagar con Mercado Pago"}
+              </button>
+            )}
+
+            {/* WhatsApp */}
+            <a
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage())}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 font-medium text-white transition-transform hover:scale-105"
+            >
+              <MessageCircle className="h-5 w-5" />
+              Consultar por WhatsApp
+            </a>
+          </div>
+
+          {hasItemsWithoutPrice && (
+            <p className="text-xs text-muted">
+              Algunos productos no tienen precio. Consulta por WhatsApp para un
+              presupuesto completo.
+            </p>
+          )}
         </div>
       </div>
     </div>

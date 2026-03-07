@@ -45,9 +45,9 @@ export default function ProductoPage() {
   function handleAdd() {
     if (!product) return;
     addItem(product);
-    toast("Agregado al presupuesto", {
-      label: "Ver presupuesto →",
-      href: "/presupuesto",
+    toast("Agregado al carrito", {
+      label: "Ver carrito →",
+      href: "/carrito",
     });
   }
 
@@ -194,7 +194,7 @@ export default function ProductoPage() {
                 className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover"
               >
                 <ShoppingBag className="h-5 w-5" />
-                Agregar al presupuesto
+                Agregar al carrito
               </button>
 
               <a

@@ -47,10 +47,10 @@ export default function Footer() {
                 Catalogo
               </Link>
               <Link
-                href="/presupuesto"
+                href="/carrito"
                 className="text-sm text-muted hover:text-foreground"
               >
-                Presupuesto
+                Carrito
               </Link>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function Footer() {
               Confianza
             </h4>
             <p className="mt-3 text-sm text-muted">
-              Transferencia bancaria, efectivo, y medios de pago a convenir.
+              Mercado Pago, transferencia bancaria, efectivo, y mas.
             </p>
             <p className="mt-2 text-sm text-muted">
               Facturacion A y B disponible.

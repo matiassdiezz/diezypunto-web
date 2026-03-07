@@ -27,8 +27,8 @@ const FAQS = [
     a: "Si, podemos enviar muestras fisicas o virtuales (mockups digitales con tu logo) antes de confirmar el pedido.",
   },
   {
-    q: "Como funciona el presupuesto?",
-    a: "Agrega productos al presupuesto desde el catalogo, indica las cantidades y envialo por WhatsApp. Te respondemos en menos de 24 horas con precios finales.",
+    q: "Como funciona la compra?",
+    a: "Agrega productos al carrito desde el catalogo, indica las cantidades y paga con Mercado Pago o consulta por WhatsApp. Te respondemos en menos de 24 horas.",
   },
 ];
 
