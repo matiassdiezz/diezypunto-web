@@ -43,10 +43,10 @@ function RotatingPlaceholder() {
         <motion.span
           key={index}
           initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 0.3, y: 0 }}
+          animate={{ opacity: 0.4, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.3 }}
-          className="pointer-events-none absolute left-5 top-5 right-14 text-base leading-relaxed text-gray-400 sm:text-lg"
+          className="pointer-events-none absolute left-5 top-4 right-14 text-base leading-relaxed text-gray-400 sm:text-lg"
         >
           {EXAMPLES[index]}
         </motion.span>
@@ -164,9 +164,9 @@ export default function SearchPrompt() {
               onKeyDown={handleKeyDown}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
-              rows={2}
-              className="w-full resize-none bg-transparent px-5 py-5 pr-14 text-base text-[#1a1a2e] outline-none placeholder:text-gray-300 sm:text-lg"
-              style={{ minHeight: "80px" }}
+              rows={1}
+              className="w-full resize-none bg-transparent px-5 py-4 pr-14 text-base text-[#1a1a2e] outline-none placeholder:text-gray-300 sm:text-lg"
+              style={{ minHeight: "56px" }}
             />
 
             {/* Submit button */}
@@ -191,11 +191,8 @@ export default function SearchPrompt() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="mt-8"
+          className="mt-4"
         >
-          <p className="mb-3 text-center text-[10px] font-medium uppercase tracking-[0.25em] text-gray-400">
-            Proba con algo como
-          </p>
           <div className="flex flex-wrap justify-center gap-2">
             {EXAMPLES.slice(0, 4).map((ex) => (
               <button
