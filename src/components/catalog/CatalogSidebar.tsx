@@ -197,7 +197,7 @@ export default function CatalogSidebar({
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="fixed inset-y-0 left-0 z-50 flex w-[300px] flex-col bg-white p-6 shadow-xl lg:hidden"
+              className="fixed inset-y-0 left-0 z-50 flex w-[85vw] max-w-[300px] flex-col bg-white p-5 shadow-xl sm:p-6 lg:hidden"
             >
               <div className="mb-6 flex items-center justify-between">
                 <h2 className="text-lg font-semibold">Filtros</h2>

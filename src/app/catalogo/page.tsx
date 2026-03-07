@@ -31,24 +31,24 @@ function CatalogContent() {
   ];
 
   return (
-    <div className="mx-auto max-w-7xl px-6 pb-20 pt-28">
+    <div className="mx-auto max-w-7xl px-4 pb-20 pt-24 sm:px-6 sm:pt-28">
       <Breadcrumbs items={breadcrumbs} />
 
       <ScrollReveal>
-        <h1 className="mt-4 text-3xl font-bold">Catalogo</h1>
-        <p className="mt-2 text-muted">
+        <h1 className="mt-4 text-2xl font-bold sm:text-3xl">Catalogo</h1>
+        <p className="mt-1 text-sm text-muted sm:mt-2 sm:text-base">
           Explora todos nuestros productos de merchandising corporativo.
         </p>
       </ScrollReveal>
 
-      <div className="mt-6">
+      <div className="mt-4 sm:mt-6">
         <CatalogSearch
           value={filters.search}
           onChange={(v) => setFilter("search", v)}
         />
       </div>
 
-      <div className="mt-8 flex gap-10">
+      <div className="mt-6 lg:mt-8 lg:flex lg:gap-10">
         <CatalogSidebar
           filters={filters}
           setFilter={setFilter}
@@ -66,7 +66,7 @@ function CatalogContent() {
             onOpenFilters={() => setSidebarOpen(true)}
           />
 
-          <div className="mt-6">
+          <div className="mt-4 sm:mt-6">
             {loading && products.length === 0 ? (
               <p className="py-20 text-center text-muted">
                 Cargando productos...

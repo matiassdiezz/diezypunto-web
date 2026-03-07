@@ -34,7 +34,7 @@ export default function ProductCard({
   }
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-white transition-all hover:shadow-lg">
+    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-border bg-white transition-all hover:shadow-lg sm:rounded-2xl">
       {/* Image */}
       <Link
         href={`/producto/${product.product_id}`}
@@ -44,46 +44,46 @@ export default function ProductCard({
           <img
             src={imageUrl}
             alt={product.title}
-            className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+            className="h-full w-full object-contain p-3 transition-transform duration-300 group-hover:scale-105 sm:p-4"
           />
         ) : (
           <div className="flex h-full items-center justify-center text-muted/30">
-            <ShoppingBag className="h-12 w-12" />
+            <ShoppingBag className="h-8 w-8 sm:h-12 sm:w-12" />
           </div>
         )}
 
         {/* Badges */}
-        <div className="absolute left-3 top-3 flex flex-col gap-1.5">
+        <div className="absolute left-2 top-2 flex flex-col gap-1 sm:left-3 sm:top-3 sm:gap-1.5">
           {product.eco_friendly && (
-            <span className="flex items-center gap-1 rounded-full bg-eco/10 px-2 py-0.5 text-xs font-medium text-eco">
+            <span className="flex items-center gap-1 rounded-full bg-eco/10 px-1.5 py-0.5 text-[10px] font-medium text-eco sm:px-2 sm:text-xs">
               <Leaf className="h-3 w-3" /> Eco
             </span>
           )}
           {product.premium_tier && (
-            <span className="rounded-full bg-accent-light px-2 py-0.5 text-xs font-medium text-accent">
+            <span className="rounded-full bg-accent-light px-1.5 py-0.5 text-[10px] font-medium text-accent sm:px-2 sm:text-xs">
               Premium
             </span>
           )}
         </div>
 
         {showScore && product.score > 0 && (
-          <span className="absolute right-3 top-3 rounded-full bg-[#59C6F2] px-2.5 py-0.5 text-xs font-medium text-white">
+          <span className="absolute right-2 top-2 rounded-full bg-[#59C6F2] px-2 py-0.5 text-[10px] font-medium text-white sm:right-3 sm:top-3 sm:px-2.5 sm:text-xs">
             {Math.round(product.score * 100)}%
           </span>
         )}
       </Link>
 
       {/* Info */}
-      <div className="flex flex-1 flex-col p-4">
+      <div className="flex flex-1 flex-col p-3 sm:p-4">
         <Link href={`/producto/${product.product_id}`}>
-          <p className="text-xs text-muted">{product.category}</p>
-          <h3 className="mt-0.5 line-clamp-2 text-sm font-semibold leading-snug text-foreground">
+          <p className="text-[10px] text-muted sm:text-xs">{product.category}</p>
+          <h3 className="mt-0.5 line-clamp-2 text-xs font-semibold leading-snug text-foreground sm:text-sm">
             {product.title}
           </h3>
         </Link>
 
         {hasPersonalization && (
-          <div className="mt-2 flex flex-wrap gap-1">
+          <div className="mt-1.5 hidden flex-wrap gap-1 sm:flex">
             {product.personalization_methods.slice(0, 3).map((m) => (
               <span
                 key={m}
@@ -96,26 +96,26 @@ export default function ProductCard({
         )}
 
         {showScore && product.reason && (
-          <p className="mt-2 text-xs text-success">{product.reason}</p>
+          <p className="mt-2 hidden text-xs text-success sm:block">{product.reason}</p>
         )}
 
-        <div className="mt-auto flex items-end justify-between pt-3">
+        <div className="mt-auto flex items-end justify-between pt-2 sm:pt-3">
           <div>
             {product.price != null ? (
-              <p className="text-lg font-bold text-foreground">
+              <p className="text-sm font-bold text-foreground sm:text-lg">
                 ${product.price.toLocaleString("es-AR")}
               </p>
             ) : (
-              <p className="text-sm text-muted">Consultar precio</p>
+              <p className="text-xs text-muted sm:text-sm">Consultar</p>
             )}
             {product.min_qty > 1 && (
-              <p className="text-xs text-muted">Min. {product.min_qty} u.</p>
+              <p className="hidden text-xs text-muted sm:block">Min. {product.min_qty} u.</p>
             )}
           </div>
 
           <button
             onClick={handleAdd}
-            className={`rounded-xl p-2 text-white transition-all ${
+            className={`shrink-0 rounded-lg p-1.5 text-white transition-all sm:rounded-xl sm:p-2 ${
               added
                 ? "bg-success"
                 : "bg-[#59C6F2] hover:bg-[#3BB5E8] hover:shadow-[0_0_15px_rgba(89,198,242,0.3)]"
@@ -123,9 +123,9 @@ export default function ProductCard({
             title="Agregar al carrito"
           >
             {added ? (
-              <Check className="h-4 w-4" />
+              <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             ) : (
-              <ShoppingBag className="h-4 w-4" />
+              <ShoppingBag className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
             )}
           </button>
         </div>

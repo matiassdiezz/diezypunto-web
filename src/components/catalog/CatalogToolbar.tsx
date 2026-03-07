@@ -56,28 +56,51 @@ export default function CatalogToolbar({
   });
 
   return (
-    <div className="flex flex-wrap items-center gap-3">
-      {/* Mobile filter toggle */}
-      <button
-        onClick={onOpenFilters}
-        className="flex items-center gap-2 rounded-xl border border-border bg-white px-4 py-2 text-sm transition-colors hover:bg-surface lg:hidden"
-      >
-        <SlidersHorizontal className="h-4 w-4" />
-        Filtros
-        {activeFilterCount > 0 && (
-          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs text-white">
-            {activeFilterCount}
-          </span>
-        )}
-      </button>
+    <div className="space-y-3">
+      {/* Top row: filter toggle + count + sort */}
+      <div className="flex items-center gap-3">
+        {/* Mobile filter toggle */}
+        <button
+          onClick={onOpenFilters}
+          className="flex items-center gap-2 rounded-xl border border-border bg-white px-3 py-2 text-sm transition-colors hover:bg-surface lg:hidden"
+        >
+          <SlidersHorizontal className="h-4 w-4" />
+          Filtros
+          {activeFilterCount > 0 && (
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs text-white">
+              {activeFilterCount}
+            </span>
+          )}
+        </button>
 
-      {/* Results count */}
-      <p className="text-sm text-muted">
-        {total} producto{total !== 1 ? "s" : ""}
-        {filters.category ? ` en ${filters.category}` : ""}
-      </p>
+        {/* Results count */}
+        <p className="text-sm text-muted">
+          {total} producto{total !== 1 ? "s" : ""}
+          {filters.category ? ` en ${filters.category}` : ""}
+        </p>
 
-      {/* Active filter pills */}
+        {/* Sort — push right */}
+        <div className="ml-auto">
+          <select
+            value={filters.sort ?? "relevancia"}
+            onChange={(e) =>
+              setFilter(
+                "sort",
+                e.target.value === "relevancia" ? undefined : e.target.value,
+              )
+            }
+            className="rounded-lg border border-border bg-white px-2 py-2 text-sm outline-none focus:border-accent sm:px-3"
+          >
+            {SORT_OPTIONS.map((opt) => (
+              <option key={opt.value} value={opt.value}>
+                {opt.label}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      {/* Active filter pills — second row */}
       {activeFilters.length > 0 && (
         <div className="flex flex-wrap gap-2">
           {activeFilters.map((key) => (
@@ -100,26 +123,6 @@ export default function CatalogToolbar({
           )}
         </div>
       )}
-
-      {/* Sort — push right */}
-      <div className="ml-auto">
-        <select
-          value={filters.sort ?? "relevancia"}
-          onChange={(e) =>
-            setFilter(
-              "sort",
-              e.target.value === "relevancia" ? undefined : e.target.value,
-            )
-          }
-          className="rounded-lg border border-border bg-white px-3 py-2 text-sm outline-none focus:border-accent"
-        >
-          {SORT_OPTIONS.map((opt) => (
-            <option key={opt.value} value={opt.value}>
-              {opt.label}
-            </option>
-          ))}
-        </select>
-      </div>
     </div>
   );
 }
