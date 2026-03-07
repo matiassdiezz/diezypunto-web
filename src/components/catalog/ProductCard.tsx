@@ -19,7 +19,7 @@ export default function ProductCard({
   const addItem = useQuoteStore((s) => s.addItem);
   const toast = useToastStore((s) => s.toast);
   const [added, setAdded] = useState(false);
-  const [qty, setQty] = useState(product.min_qty > 1 ? product.min_qty : 1);
+  const [qty, setQty] = useState(1);
 
   const imageUrl = product.image_urls[0];
   const hasPersonalization = product.personalization_methods.length > 0;
@@ -121,7 +121,7 @@ export default function ProductCard({
           <div className="mt-2 flex items-center gap-1.5">
             <input
               type="number"
-              min={product.min_qty > 1 ? product.min_qty : 1}
+              min={1}
               value={qty}
               onChange={(e) => {
                 const v = parseInt(e.target.value);

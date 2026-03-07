@@ -29,7 +29,6 @@ export default function ProductoPage() {
     getProduct(id)
       .then((p) => {
         setProduct(p);
-        if (p.min_qty > 1) setQty(p.min_qty);
         // Fetch related products from same category
         listProducts({ category: p.category, limit: 5 })
           .then((res) =>
@@ -86,33 +85,33 @@ export default function ProductoPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-6 pb-20 pt-28">
+    <div className="mx-auto max-w-6xl px-4 pb-20 pt-24 sm:px-6 sm:pt-28">
       <Breadcrumbs items={breadcrumbs} />
 
-      <div className="mt-6 grid gap-10 lg:grid-cols-2">
+      <div className="mt-4 grid gap-6 sm:mt-6 sm:gap-10 lg:grid-cols-2">
         {/* Gallery */}
         <ScrollReveal direction="left">
-          <div className="space-y-4">
-            <div className="aspect-square overflow-hidden rounded-2xl border border-border bg-surface">
+          <div className="space-y-3 sm:space-y-4">
+            <div className="aspect-square overflow-hidden rounded-xl border border-border bg-surface sm:rounded-2xl">
               {product.image_urls[selectedImage] ? (
                 <img
                   src={product.image_urls[selectedImage]}
                   alt={product.title}
-                  className="h-full w-full object-contain p-6"
+                  className="h-full w-full object-contain p-4 sm:p-6"
                 />
               ) : (
                 <div className="flex h-full items-center justify-center text-muted/30">
-                  <ShoppingBag className="h-20 w-20" />
+                  <ShoppingBag className="h-16 w-16 sm:h-20 sm:w-20" />
                 </div>
               )}
             </div>
             {product.image_urls.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto">
+              <div className="flex gap-2 overflow-x-auto pb-1">
                 {product.image_urls.map((url, i) => (
                   <button
                     key={i}
                     onClick={() => setSelectedImage(i)}
-                    className={`h-16 w-16 shrink-0 overflow-hidden rounded-lg border bg-surface ${
+                    className={`h-14 w-14 shrink-0 overflow-hidden rounded-lg border bg-surface sm:h-16 sm:w-16 ${
                       i === selectedImage
                         ? "border-accent"
                         : "border-border"
@@ -135,43 +134,43 @@ export default function ProductoPage() {
           <div>
             <Link
               href={`/catalogo/${encodeURIComponent(product.category)}`}
-              className="text-sm text-muted hover:text-accent"
+              className="text-xs text-muted hover:text-accent sm:text-sm"
             >
               {product.category}
             </Link>
-            <h1 className="mt-1 text-2xl font-bold lg:text-3xl">
+            <h1 className="mt-1 text-xl font-bold sm:text-2xl lg:text-3xl">
               {product.title}
             </h1>
 
             {product.description && (
-              <p className="mt-4 leading-relaxed text-muted">
+              <p className="mt-3 text-sm leading-relaxed text-muted sm:mt-4 sm:text-base">
                 {product.description}
               </p>
             )}
 
-            <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-4 flex flex-wrap gap-2 sm:mt-6">
               {product.eco_friendly && (
-                <span className="flex items-center gap-1 rounded-full bg-eco/10 px-3 py-1 text-sm font-medium text-eco">
-                  <Leaf className="h-4 w-4" /> Eco-friendly
+                <span className="flex items-center gap-1 rounded-full bg-eco/10 px-2.5 py-1 text-xs font-medium text-eco sm:px-3 sm:text-sm">
+                  <Leaf className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Eco-friendly
                 </span>
               )}
               {product.premium_tier && (
-                <span className="rounded-full bg-accent/10 px-3 py-1 text-sm font-medium text-accent">
+                <span className="rounded-full bg-accent/10 px-2.5 py-1 text-xs font-medium text-accent sm:px-3 sm:text-sm">
                   Premium
                 </span>
               )}
             </div>
 
             {/* Price */}
-            <div className="mt-6 rounded-2xl border border-border bg-card p-6">
+            <div className="mt-4 rounded-xl border border-border bg-card p-4 sm:mt-6 sm:rounded-2xl sm:p-6">
               {product.price != null ? (
                 <div>
-                  <p className="text-3xl font-bold">
+                  <p className="text-2xl font-bold sm:text-3xl">
                     ${product.price.toLocaleString("es-AR")}
                   </p>
                   {product.price_max != null &&
                     product.price_max !== product.price && (
-                      <p className="mt-1 text-sm text-muted">
+                      <p className="mt-1 text-xs text-muted sm:text-sm">
                         hasta $
                         {product.price_max.toLocaleString("es-AR")}{" "}
                         segun cantidad
@@ -179,31 +178,31 @@ export default function ProductoPage() {
                     )}
                 </div>
               ) : (
-                <p className="text-lg text-muted">Consultar precio</p>
+                <p className="text-base text-muted sm:text-lg">Consultar precio</p>
               )}
               {product.min_qty > 1 && (
-                <p className="mt-2 text-sm text-muted">
+                <p className="mt-2 text-xs text-muted sm:text-sm">
                   Cantidad minima: {product.min_qty} unidades
                 </p>
               )}
               {product.lead_time_days != null && (
-                <p className="mt-1 text-sm text-muted">
+                <p className="mt-1 text-xs text-muted sm:text-sm">
                   Tiempo de entrega: ~{product.lead_time_days} dias
                 </p>
               )}
 
-              {/* Quantity stepper */}
-              <div className="mt-4 flex items-center gap-3">
+              {/* Quantity stepper + Add */}
+              <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
                 <div className="flex items-center rounded-xl border border-border">
                   <button
-                    onClick={() => setQty(Math.max(product.min_qty > 1 ? product.min_qty : 1, qty - 1))}
+                    onClick={() => setQty(Math.max(1, qty - 1))}
                     className="rounded-l-xl px-3 py-2.5 text-muted hover:bg-surface"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
                   <input
                     type="number"
-                    min={product.min_qty > 1 ? product.min_qty : 1}
+                    min={1}
                     value={qty}
                     onChange={(e) => {
                       const v = parseInt(e.target.value);
@@ -220,7 +219,7 @@ export default function ProductoPage() {
                 </div>
                 <button
                   onClick={handleAdd}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-accent py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover sm:text-base"
                 >
                   <ShoppingBag className="h-5 w-5" />
                   Agregar al carrito
@@ -231,7 +230,7 @@ export default function ProductoPage() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 font-medium text-foreground transition-colors hover:bg-surface"
+                className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface sm:mt-3 sm:text-base"
               >
                 <MessageCircle className="h-5 w-5" />
                 Consultar por WhatsApp
@@ -239,7 +238,7 @@ export default function ProductoPage() {
             </div>
 
             {/* Specs */}
-            <div className="mt-6 space-y-3">
+            <div className="mt-4 space-y-3 sm:mt-6">
               {product.materials.length > 0 && (
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted">
@@ -280,11 +279,11 @@ export default function ProductoPage() {
 
       {/* Related products */}
       {related.length > 0 && (
-        <section className="mt-16">
+        <section className="mt-12 sm:mt-16">
           <ScrollReveal>
-            <h2 className="text-xl font-bold">Productos relacionados</h2>
+            <h2 className="text-lg font-bold sm:text-xl">Productos relacionados</h2>
           </ScrollReveal>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-4 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-6 lg:grid-cols-4">
             {related.map((p) => (
               <ProductCard key={p.product_id} product={p} />
             ))}
