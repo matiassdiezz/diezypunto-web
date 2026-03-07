@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { extractNeeds } from "@/lib/engine/llm";
-import { searchProductsText } from "@/lib/engine/products";
+import { listZecatProducts } from "@/lib/engine/zecat";
 import { rankProducts } from "@/lib/engine/ranking";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
 
@@ -35,9 +35,9 @@ export async function POST(req: NextRequest) {
     ...(needs.preferred_materials || []),
   ].join(" ");
 
-  const candidates = searchTerms
-    ? searchProductsText(searchTerms)
-    : searchProductsText(query);
+  const searchQuery = searchTerms || query;
+  const zecatRes = await listZecatProducts({ search: searchQuery, limit: 50 });
+  const candidates = zecatRes.products;
 
   const ranked = rankProducts(candidates, needs, 15);
 
