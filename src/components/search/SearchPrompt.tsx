@@ -43,10 +43,10 @@ function RotatingPlaceholder() {
         <motion.span
           key={index}
           initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 0.45, y: 0 }}
+          animate={{ opacity: 0.3, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.3 }}
-          className="pointer-events-none absolute left-5 top-5 text-base text-muted sm:text-lg"
+          className="pointer-events-none absolute left-5 top-5 text-base text-zinc-500 sm:text-lg"
         >
           {EXAMPLES[index]}
         </motion.span>
@@ -77,7 +77,7 @@ function LoadingState() {
         {[0, 1, 2].map((i) => (
           <motion.span
             key={i}
-            className="block h-1.5 w-1.5 rounded-full bg-accent"
+            className="block h-1.5 w-1.5 rounded-full bg-blue-400"
             animate={{ opacity: [0.3, 1, 0.3], scale: [0.8, 1.2, 0.8] }}
             transition={{
               duration: 0.7,
@@ -94,7 +94,7 @@ function LoadingState() {
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -8 }}
           transition={{ duration: 0.2 }}
-          className="text-sm text-muted"
+          className="text-sm text-zinc-400"
         >
           {LOADING_MESSAGES[msgIndex]}
         </motion.span>
@@ -140,37 +140,38 @@ export default function SearchPrompt() {
 
   return (
     <div className="w-full">
-      {/* Prompt input */}
+      {/* Search input with animated glow border */}
       <form onSubmit={handleSubmit} className="relative">
-        <div className="relative overflow-hidden rounded-2xl border border-border bg-white shadow-sm transition-all focus-within:border-accent focus-within:shadow-md">
-          {/* Rotating placeholder (only when input is empty) */}
-          {!input && !hasResults && <RotatingPlaceholder />}
+        <div className="search-glow-wrapper">
+          <div className="relative z-10 rounded-2xl bg-[#0a0a1a]/80 backdrop-blur-xl">
+            {/* Rotating placeholder (only when input is empty and no results) */}
+            {!input && !hasResults && <RotatingPlaceholder />}
 
-          <textarea
-            ref={textareaRef}
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
-            rows={1}
-            className="w-full resize-none bg-transparent px-5 py-5 pr-14 text-base text-foreground outline-none sm:text-lg"
-            style={{ minHeight: "60px" }}
-          />
+            <textarea
+              ref={textareaRef}
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={handleKeyDown}
+              rows={1}
+              className="w-full resize-none bg-transparent px-5 py-5 pr-14 text-base text-white outline-none placeholder:text-zinc-600 sm:text-lg"
+              style={{ minHeight: "60px" }}
+            />
 
-          {/* Submit button */}
-          <button
-            type="submit"
-            disabled={isLoading || !input.trim()}
-            className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-white transition-all hover:bg-accent-hover disabled:opacity-30"
-          >
-            <ArrowUp className="h-5 w-5" />
-          </button>
+            {/* Submit button */}
+            <button
+              type="submit"
+              disabled={isLoading || !input.trim()}
+              className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-r from-blue-500 to-cyan-500 text-white transition-all hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] disabled:opacity-20"
+            >
+              <ArrowUp className="h-5 w-5" />
+            </button>
+          </div>
         </div>
 
-        {/* Hint below input */}
+        {/* Hint */}
         {!hasResults && !isLoading && (
-          <p className="mt-2.5 text-center text-xs text-muted/60">
-            Podes escribir en lenguaje natural — como si le hablaras a una
-            persona
+          <p className="mt-3 text-center text-xs text-zinc-600">
+            Escribi en lenguaje natural — como si le hablaras a una persona
           </p>
         )}
       </form>
@@ -180,10 +181,10 @@ export default function SearchPrompt() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-          className="mt-6"
+          transition={{ delay: 0.6, duration: 0.5 }}
+          className="mt-8"
         >
-          <p className="mb-3 text-center text-xs font-medium uppercase tracking-wider text-muted/70">
+          <p className="mb-3 text-center text-[10px] font-medium uppercase tracking-[0.25em] text-zinc-600">
             Proba con algo como
           </p>
           <div className="flex flex-wrap justify-center gap-2">
@@ -191,7 +192,7 @@ export default function SearchPrompt() {
               <button
                 key={ex}
                 onClick={() => handleExample(ex)}
-                className="rounded-full border border-border bg-white px-3.5 py-1.5 text-xs text-muted transition-all hover:border-accent hover:text-accent"
+                className="rounded-full border border-white/[0.06] bg-white/[0.03] px-3.5 py-1.5 text-xs text-zinc-400 backdrop-blur-sm transition-all hover:border-blue-500/30 hover:bg-blue-500/10 hover:text-blue-300"
               >
                 {ex.length > 45 ? ex.slice(0, 45) + "..." : ex}
               </button>
@@ -213,10 +214,10 @@ export default function SearchPrompt() {
           {/* AI summary */}
           {summary && (
             <div className="mt-8 flex items-start gap-2.5">
-              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent/10">
-                <Sparkles className="h-3.5 w-3.5 text-accent" />
+              <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-500/10">
+                <Sparkles className="h-3.5 w-3.5 text-blue-400" />
               </span>
-              <p className="text-sm leading-relaxed text-foreground/80">
+              <p className="text-sm leading-relaxed text-zinc-300">
                 {summary}
               </p>
             </div>
@@ -234,10 +235,10 @@ export default function SearchPrompt() {
           animate={{ opacity: 1 }}
           className="mt-8 text-center"
         >
-          <p className="text-muted">
+          <p className="text-zinc-400">
             No encontramos productos para esa busqueda.
           </p>
-          <p className="mt-1 text-sm text-muted/60">
+          <p className="mt-1 text-sm text-zinc-600">
             Proba describiendolo de otra forma o con menos detalles.
           </p>
         </motion.div>

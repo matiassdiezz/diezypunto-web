@@ -10,7 +10,7 @@ export default function SearchResults({
   products: ProductResult[];
 }) {
   return (
-    <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {products.map((product, i) => (
         <motion.div
           key={product.product_id}
@@ -18,7 +18,7 @@ export default function SearchResults({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, delay: i * 0.06 }}
         >
-          <ProductCard product={product} showScore />
+          <ProductCard product={product} showScore dark />
         </motion.div>
       ))}
     </div>
