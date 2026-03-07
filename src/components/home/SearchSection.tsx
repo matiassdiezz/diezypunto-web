@@ -1,13 +1,18 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import SearchPrompt from "../search/SearchPrompt";
 import ScrollReveal from "../shared/ScrollReveal";
 
 export default function SearchSection() {
   return (
-    <section id="ai-search" className="bg-card py-16 scroll-mt-20">
+    <section
+      id="ai-search"
+      className="relative bg-gradient-to-b from-card to-white py-16 scroll-mt-20"
+    >
+      {/* Decorative top accent line */}
+      <div className="absolute inset-x-0 top-0 mx-auto h-px max-w-lg bg-gradient-to-r from-transparent via-accent/30 to-transparent" />
+
       <div className="mx-auto max-w-2xl px-6">
         <ScrollReveal>
           <div className="flex items-center justify-center gap-2 text-sm font-medium text-accent">

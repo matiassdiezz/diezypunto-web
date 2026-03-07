@@ -168,6 +168,27 @@ html {
   );
 }
 
+/* ═══════════════════════════════════════════
+   Gradient text utility
+   ═══════════════════════════════════════════ */
+
+.text-gradient-accent {
+  background: linear-gradient(135deg, #38BDF8, #059CF7, #59C6F2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Third hero orb — center glow */
+.hero-orb-3 {
+  width: min(500px, 70vw);
+  height: min(500px, 70vw);
+  background: rgba(89, 198, 242, 0.04);
+  top: 20%;
+  left: 30%;
+  animation: orb-drift-1 22s ease-in-out infinite reverse;
+}
+
 /* Accessibility — reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .hero-orb,
