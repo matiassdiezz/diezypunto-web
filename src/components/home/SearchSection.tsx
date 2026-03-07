@@ -8,7 +8,7 @@ export default function SearchSection() {
   return (
     <section
       id="ai-search"
-      className="scroll-mt-20 bg-gradient-to-b from-[#e8f4fd] via-[#eef7fc] to-white py-16"
+      className="scroll-mt-20 bg-gradient-to-b from-[#f1f5f9] via-[#f5f7fa] to-white py-16"
     >
       <div className="mx-auto max-w-2xl px-6">
         <ScrollReveal>
