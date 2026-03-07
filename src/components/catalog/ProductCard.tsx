@@ -19,13 +19,14 @@ export default function ProductCard({
   const addItem = useQuoteStore((s) => s.addItem);
   const toast = useToastStore((s) => s.toast);
   const [added, setAdded] = useState(false);
+  const [qty, setQty] = useState(product.min_qty > 1 ? product.min_qty : 1);
 
   const imageUrl = product.image_urls[0];
   const hasPersonalization = product.personalization_methods.length > 0;
 
   function handleAdd() {
-    addItem(product);
-    toast("Agregado al carrito", {
+    addItem(product, qty);
+    toast(`${qty}u agregadas al carrito`, {
       label: "Ver carrito →",
       href: "/carrito",
     });
@@ -99,35 +100,51 @@ export default function ProductCard({
           <p className="mt-2 hidden text-xs text-success sm:block">{product.reason}</p>
         )}
 
-        <div className="mt-auto flex items-end justify-between pt-2 sm:pt-3">
-          <div>
-            {product.price != null ? (
-              <p className="text-sm font-bold text-foreground sm:text-lg">
-                ${product.price.toLocaleString("es-AR")}
-              </p>
-            ) : (
-              <p className="text-xs text-muted sm:text-sm">Consultar</p>
-            )}
-            {product.min_qty > 1 && (
-              <p className="hidden text-xs text-muted sm:block">Min. {product.min_qty} u.</p>
-            )}
+        <div className="mt-auto pt-2 sm:pt-3">
+          {/* Price */}
+          <div className="flex items-end justify-between">
+            <div>
+              {product.price != null ? (
+                <p className="text-sm font-bold text-foreground sm:text-lg">
+                  ${product.price.toLocaleString("es-AR")}
+                </p>
+              ) : (
+                <p className="text-xs text-muted sm:text-sm">Consultar</p>
+              )}
+              {product.min_qty > 1 && (
+                <p className="text-[10px] text-muted sm:text-xs">Min. {product.min_qty} u.</p>
+              )}
+            </div>
           </div>
 
-          <button
-            onClick={handleAdd}
-            className={`shrink-0 rounded-lg p-1.5 text-white transition-all sm:rounded-xl sm:p-2 ${
-              added
-                ? "bg-success"
-                : "bg-[#59C6F2] hover:bg-[#3BB5E8] hover:shadow-[0_0_15px_rgba(89,198,242,0.3)]"
-            }`}
-            title="Agregar al carrito"
-          >
-            {added ? (
-              <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-            ) : (
-              <ShoppingBag className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-            )}
-          </button>
+          {/* Quantity + Add */}
+          <div className="mt-2 flex items-center gap-1.5">
+            <input
+              type="number"
+              min={product.min_qty > 1 ? product.min_qty : 1}
+              value={qty}
+              onChange={(e) => {
+                const v = parseInt(e.target.value);
+                if (!isNaN(v) && v > 0) setQty(v);
+              }}
+              className="w-full min-w-0 rounded-lg border border-border bg-white px-2 py-1.5 text-center text-xs tabular-nums outline-none focus:border-accent sm:text-sm"
+            />
+            <button
+              onClick={handleAdd}
+              className={`shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium text-white transition-all sm:rounded-xl sm:px-4 sm:text-sm ${
+                added
+                  ? "bg-success"
+                  : "bg-[#59C6F2] hover:bg-[#3BB5E8] hover:shadow-[0_0_15px_rgba(89,198,242,0.3)]"
+              }`}
+              title="Agregar al carrito"
+            >
+              {added ? (
+                <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              ) : (
+                <ShoppingBag className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              )}
+            </button>
+          </div>
         </div>
       </div>
     </div>

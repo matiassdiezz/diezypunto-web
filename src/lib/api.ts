@@ -47,6 +47,7 @@ export async function listProducts(params?: {
   max_price?: number;
   eco_friendly?: boolean;
   personalization?: string;
+  sort?: string;
   limit?: number;
   offset?: number;
 }): Promise<ProductListResponse> {

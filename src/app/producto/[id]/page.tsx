@@ -6,7 +6,7 @@ import { getProduct, listProducts } from "@/lib/api";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useToastStore } from "@/components/shared/Toast";
-import { ShoppingBag, Leaf, MessageCircle } from "lucide-react";
+import { ShoppingBag, Leaf, MessageCircle, Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import Breadcrumbs from "@/components/catalog/Breadcrumbs";
@@ -19,14 +19,17 @@ export default function ProductoPage() {
   const [related, setRelated] = useState<ProductResult[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [qty, setQty] = useState(1);
   const addItem = useQuoteStore((s) => s.addItem);
   const toast = useToastStore((s) => s.toast);
 
   useEffect(() => {
     setSelectedImage(0);
+    setQty(1);
     getProduct(id)
       .then((p) => {
         setProduct(p);
+        if (p.min_qty > 1) setQty(p.min_qty);
         // Fetch related products from same category
         listProducts({ category: p.category, limit: 5 })
           .then((res) =>
@@ -44,8 +47,8 @@ export default function ProductoPage() {
 
   function handleAdd() {
     if (!product) return;
-    addItem(product);
-    toast("Agregado al carrito", {
+    addItem(product, qty);
+    toast(`${qty}u agregadas al carrito`, {
       label: "Ver carrito →",
       href: "/carrito",
     });
@@ -189,13 +192,40 @@ export default function ProductoPage() {
                 </p>
               )}
 
-              <button
-                onClick={handleAdd}
-                className="mt-4 flex w-full items-center justify-center gap-2 rounded-xl bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover"
-              >
-                <ShoppingBag className="h-5 w-5" />
-                Agregar al carrito
-              </button>
+              {/* Quantity stepper */}
+              <div className="mt-4 flex items-center gap-3">
+                <div className="flex items-center rounded-xl border border-border">
+                  <button
+                    onClick={() => setQty(Math.max(product.min_qty > 1 ? product.min_qty : 1, qty - 1))}
+                    className="rounded-l-xl px-3 py-2.5 text-muted hover:bg-surface"
+                  >
+                    <Minus className="h-4 w-4" />
+                  </button>
+                  <input
+                    type="number"
+                    min={product.min_qty > 1 ? product.min_qty : 1}
+                    value={qty}
+                    onChange={(e) => {
+                      const v = parseInt(e.target.value);
+                      if (!isNaN(v) && v > 0) setQty(v);
+                    }}
+                    className="w-16 border-x border-border bg-white py-2.5 text-center text-sm font-medium tabular-nums outline-none"
+                  />
+                  <button
+                    onClick={() => setQty(qty + 1)}
+                    className="rounded-r-xl px-3 py-2.5 text-muted hover:bg-surface"
+                  >
+                    <Plus className="h-4 w-4" />
+                  </button>
+                </div>
+                <button
+                  onClick={handleAdd}
+                  className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-accent py-3 font-medium text-white transition-colors hover:bg-accent-hover"
+                >
+                  <ShoppingBag className="h-5 w-5" />
+                  Agregar al carrito
+                </button>
+              </div>
 
               <a
                 href={whatsappUrl}

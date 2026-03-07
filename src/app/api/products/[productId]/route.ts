@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { getZecatProduct } from "@/lib/engine/zecat";
 import { getProductById } from "@/lib/engine/products";
 
 export async function GET(
@@ -6,7 +7,10 @@ export async function GET(
   { params }: { params: Promise<{ productId: string }> },
 ) {
   const { productId } = await params;
-  const product = getProductById(productId);
+
+  // Try Zecat first, fall back to local CSV (for AI search results)
+  const product =
+    (await getZecatProduct(productId)) ?? getProductById(productId);
 
   if (!product) {
     return NextResponse.json({ error: "Product not found" }, { status: 404 });

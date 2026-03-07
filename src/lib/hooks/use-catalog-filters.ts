@@ -43,24 +43,6 @@ function parseFilters(params: URLSearchParams): CatalogFilters {
   };
 }
 
-function sortProducts(
-  products: ProductResult[],
-  sort: SortOption | undefined,
-): ProductResult[] {
-  if (!sort || sort === "relevancia") return products;
-  const sorted = [...products];
-  switch (sort) {
-    case "price_asc":
-      return sorted.sort((a, b) => (a.price ?? Infinity) - (b.price ?? Infinity));
-    case "price_desc":
-      return sorted.sort((a, b) => (b.price ?? 0) - (a.price ?? 0));
-    case "name_asc":
-      return sorted.sort((a, b) => a.title.localeCompare(b.title));
-    default:
-      return sorted;
-  }
-}
-
 export function useCatalogFilters(initialCategory?: string) {
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -92,11 +74,12 @@ export function useCatalogFilters(initialCategory?: string) {
     if (filters.max_price != null) apiParams.max_price = filters.max_price;
     if (filters.eco_friendly) apiParams.eco_friendly = true;
     if (filters.personalization) apiParams.personalization = filters.personalization;
+    if (filters.sort && filters.sort !== "relevancia") apiParams.sort = filters.sort;
 
     listProducts(apiParams as Parameters<typeof listProducts>[0])
       .then((res) => {
         if (id !== fetchId.current) return;
-        setProducts(sortProducts(res.products, filters.sort));
+        setProducts(res.products);
         setTotal(res.total);
         setHasMore(res.has_more);
       })
@@ -140,12 +123,13 @@ export function useCatalogFilters(initialCategory?: string) {
     if (filters.max_price != null) apiParams.max_price = filters.max_price;
     if (filters.eco_friendly) apiParams.eco_friendly = true;
     if (filters.personalization) apiParams.personalization = filters.personalization;
+    if (filters.sort && filters.sort !== "relevancia") apiParams.sort = filters.sort;
 
     setLoading(true);
     listProducts(apiParams as Parameters<typeof listProducts>[0])
       .then((res) => {
         if (id !== fetchId.current) return;
-        setProducts((prev) => sortProducts([...prev, ...res.products], filters.sort));
+        setProducts((prev) => [...prev, ...res.products]);
         setTotal(res.total);
         setHasMore(res.has_more);
         // Update page in URL without scroll

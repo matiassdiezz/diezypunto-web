@@ -1,50 +1,28 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getProducts, searchProductsText } from "@/lib/engine/products";
+import { listZecatProducts } from "@/lib/engine/zecat";
 
 export async function GET(req: NextRequest) {
   const sp = req.nextUrl.searchParams;
-  const category = sp.get("category");
-  const search = sp.get("search");
-  const minPrice = sp.get("min_price");
-  const maxPrice = sp.get("max_price");
-  const ecoFriendly = sp.get("eco_friendly");
-  const personalization = sp.get("personalization");
-  const limit = parseInt(sp.get("limit") || "50");
-  const offset = parseInt(sp.get("offset") || "0");
 
-  let products = search
-    ? searchProductsText(search, 100)
-    : getProducts();
+  try {
+    const result = await listZecatProducts({
+      category: sp.get("category") || undefined,
+      search: sp.get("search") || undefined,
+      min_price: sp.has("min_price") ? parseFloat(sp.get("min_price")!) : undefined,
+      max_price: sp.has("max_price") ? parseFloat(sp.get("max_price")!) : undefined,
+      eco_friendly: sp.get("eco_friendly") === "true" || undefined,
+      personalization: sp.get("personalization") || undefined,
+      sort: sp.get("sort") || undefined,
+      limit: parseInt(sp.get("limit") || "24"),
+      offset: parseInt(sp.get("offset") || "0"),
+    });
 
-  if (category) {
-    const catLower = category.toLowerCase();
-    products = products.filter((p) => p.category.toLowerCase() === catLower);
-  }
-  if (minPrice) {
-    const min = parseFloat(minPrice);
-    products = products.filter((p) => p.price != null && p.price >= min);
-  }
-  if (maxPrice) {
-    const max = parseFloat(maxPrice);
-    products = products.filter((p) => p.price != null && p.price <= max);
-  }
-  if (ecoFriendly === "true") {
-    products = products.filter((p) => p.eco_friendly);
-  }
-  if (personalization) {
-    products = products.filter((p) =>
-      p.personalization_methods.includes(personalization),
+    return NextResponse.json(result);
+  } catch (err) {
+    console.error("Zecat products error:", err);
+    return NextResponse.json(
+      { error: "Error fetching products" },
+      { status: 502 },
     );
   }
-
-  const total = products.length;
-  const page = products.slice(offset, offset + limit);
-
-  return NextResponse.json({
-    products: page,
-    total,
-    limit,
-    offset,
-    has_more: offset + limit < total,
-  });
 }

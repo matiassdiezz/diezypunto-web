@@ -78,7 +78,9 @@ export default function CatalogSidebar({
               }`}
             >
               <span>{cat.name}</span>
-              <span className="text-xs text-muted">{cat.count}</span>
+              {cat.count > 0 && (
+                <span className="text-xs text-muted">{cat.count}</span>
+              )}
             </button>
           ))}
         </div>
