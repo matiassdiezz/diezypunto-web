@@ -97,7 +97,7 @@ export default function Hero() {
           className="hidden flex-1 md:block"
         >
           <Image
-            src="/hero-products.png"
+            src="/hero-products.jpg"
             alt="Productos de merchandising corporativo: mochila, remera, taza, botella termica, bolsa y cuaderno"
             width={600}
             height={600}
