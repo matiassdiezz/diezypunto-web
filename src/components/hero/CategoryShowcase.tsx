@@ -1,41 +1,37 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import Link from "next/link";
-import { listCategories } from "@/lib/api";
-import type { CategoryInfo } from "@/lib/types";
+import {
+  PenLine,
+  GlassWater,
+  Backpack,
+  Laptop,
+  Building2,
+  TreePine,
+  Leaf,
+  Key,
+  Umbrella,
+  Shirt,
+  Heart,
+  type LucideIcon,
+} from "lucide-react";
 import ScrollReveal from "../shared/ScrollReveal";
 
-const CATEGORY_ICONS: Record<string, string> = {
-  "Botellas y Termos": "🥤",
-  "Mochilas y Bolsos": "🎒",
-  "Escritura": "✏️",
-  "Tecnología": "💻",
-  "Tecnologia": "💻",
-  "Indumentaria": "👕",
-  "Textil": "👕",
-  "Aire Libre": "⛺",
-  "Oficina": "🏢",
-  "Kits": "🎁",
-  "Sustentables": "🌱",
-  "Ecologico": "🌱",
-  "Premium": "⭐",
-  "Mates": "🧉",
-  "Tazas": "☕",
-  "Hogar": "🏠",
-};
+const CATEGORIES: { name: string; icon: LucideIcon }[] = [
+  { name: "Escritura", icon: PenLine },
+  { name: "Drinkware", icon: GlassWater },
+  { name: "Mochilas & Bolsos", icon: Backpack },
+  { name: "Tecnología", icon: Laptop },
+  { name: "Oficina y Negocios", icon: Building2 },
+  { name: "Hogar & Tiempo Libre", icon: TreePine },
+  { name: "Eco", icon: Leaf },
+  { name: "Llaveros", icon: Key },
+  { name: "Paraguas", icon: Umbrella },
+  { name: "Indumentaria y Ropa de Trabajo", icon: Shirt },
+  { name: "Bienestar", icon: Heart },
+];
 
 export default function CategoryShowcase() {
-  const [categories, setCategories] = useState<CategoryInfo[]>([]);
-
-  useEffect(() => {
-    listCategories()
-      .then((res) => setCategories(res.categories.slice(0, 8)))
-      .catch(() => {});
-  }, []);
-
-  if (categories.length === 0) return null;
-
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
       <ScrollReveal>
@@ -48,13 +44,13 @@ export default function CategoryShowcase() {
       </ScrollReveal>
 
       <div className="mt-10 flex flex-wrap justify-center gap-3">
-        {categories.map((cat, i) => (
+        {CATEGORIES.map((cat, i) => (
           <ScrollReveal key={cat.name} delay={i * 0.05}>
             <Link
               href={`/catalogo/${encodeURIComponent(cat.name)}`}
               className="flex items-center gap-2 rounded-full bg-surface px-5 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-accent-light hover:text-accent"
             >
-              <span>{CATEGORY_ICONS[cat.name] || "📦"}</span>
+              <cat.icon className="h-4 w-4" />
               {cat.name}
             </Link>
           </ScrollReveal>
