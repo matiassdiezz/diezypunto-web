@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Package, Paintbrush, Truck, Award } from "lucide-react";
 import ScrollReveal from "../shared/ScrollReveal";
 
@@ -33,17 +32,13 @@ export default function ValueProps() {
       <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
         {PROPS.map((prop, i) => (
           <ScrollReveal key={prop.title} delay={i * 0.08}>
-            <motion.div
-              whileHover={{ y: -6 }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-              className="flex flex-col items-center text-center"
-            >
-              <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-light shadow-sm">
-                <prop.icon className="h-8 w-8 text-accent" />
+            <div className="flex flex-col items-center text-center">
+              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-light">
+                <prop.icon className="h-7 w-7 text-accent" />
               </div>
               <h3 className="mt-4 text-base font-bold">{prop.title}</h3>
               <p className="mt-1 text-sm text-muted">{prop.description}</p>
-            </motion.div>
+            </div>
           </ScrollReveal>
         ))}
       </div>
