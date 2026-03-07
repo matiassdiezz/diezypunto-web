@@ -2,13 +2,18 @@ import { NextRequest, NextResponse } from "next/server";
 import { extractNeeds } from "@/lib/engine/llm";
 import { searchProductsText } from "@/lib/engine/products";
 import { rankProducts } from "@/lib/engine/ranking";
-
-// Re-use the session store from the search route by importing inline
-// (serverless functions share memory within the same invocation)
-// For a proper implementation we'd use a shared store, but for MVP
-// we just re-extract + merge from the new query alone.
+import { checkRateLimit } from "@/lib/engine/rate-limit";
 
 export async function POST(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const rl = checkRateLimit(ip);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Demasiadas busquedas. Espera un momento." },
+      { status: 429 },
+    );
+  }
+
   const { session_id, query } = await req.json();
   if (!query || typeof query !== "string") {
     return NextResponse.json({ error: "query is required" }, { status: 400 });

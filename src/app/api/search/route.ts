@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { extractNeeds } from "@/lib/engine/llm";
 import { searchProductsText } from "@/lib/engine/products";
 import { rankProducts, type ExtractedNeeds } from "@/lib/engine/ranking";
+import { checkRateLimit } from "@/lib/engine/rate-limit";
 import { randomUUID } from "crypto";
 
 // In-memory session store (survives across requests in the same serverless instance)
@@ -19,6 +20,16 @@ function cleanup() {
 }
 
 export async function POST(req: NextRequest) {
+  // Rate limit by IP
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const rl = checkRateLimit(ip);
+  if (!rl.ok) {
+    return NextResponse.json(
+      { error: "Demasiadas busquedas. Espera un momento." },
+      { status: 429 },
+    );
+  }
+
   cleanup();
 
   const { query, session_id } = await req.json();
