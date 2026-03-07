@@ -4,13 +4,34 @@ import { Sparkles } from "lucide-react";
 import SearchPrompt from "../search/SearchPrompt";
 import ScrollReveal from "../shared/ScrollReveal";
 
+// Offset dot-grid — looks like a neural network / constellation
+function buildAsciiGrid(): string {
+  const rows: string[] = [];
+  for (let i = 0; i < 18; i++) {
+    const offset = i % 2 === 0 ? "" : "      ";
+    rows.push(offset + "·           ".repeat(10));
+  }
+  return rows.join("\n");
+}
+const ASCII_BG = buildAsciiGrid();
+
 export default function SearchSection() {
   return (
     <section
       id="ai-search"
-      className="scroll-mt-20 bg-gradient-to-b from-[#f1f5f9] via-[#f5f7fa] to-white py-16"
+      className="relative scroll-mt-20 overflow-hidden bg-gradient-to-b from-[#f1f5f9] via-[#f5f7fa] to-white py-16"
     >
-      <div className="mx-auto max-w-2xl px-6">
+      {/* ASCII background texture */}
+      <div
+        className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
+        aria-hidden="true"
+      >
+        <pre className="whitespace-pre font-mono text-[11px] leading-[2.2] text-foreground/[0.035]">
+          {ASCII_BG}
+        </pre>
+      </div>
+
+      <div className="relative z-10 mx-auto max-w-2xl px-6">
         <ScrollReveal>
           <div className="flex items-center justify-center gap-2 text-sm font-medium text-accent">
             <Sparkles className="h-4 w-4" />
