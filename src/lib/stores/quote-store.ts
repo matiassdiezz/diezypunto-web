@@ -4,6 +4,7 @@ import type { QuoteItem, ProductResult } from "../types";
 
 interface QuoteState {
   items: QuoteItem[];
+  lastAdded: { product: ProductResult; quantity: number } | null;
   addItem: (product: ProductResult, quantity?: number) => void;
   removeItem: (productId: string) => void;
   updateQty: (productId: string, quantity: number) => void;
@@ -15,6 +16,7 @@ export const useQuoteStore = create<QuoteState>()(
   persist(
     (set, get) => ({
       items: [],
+      lastAdded: null,
 
       addItem: (product, quantity = 1) => {
         const items = get().items;
@@ -28,9 +30,10 @@ export const useQuoteStore = create<QuoteState>()(
                 ? { ...i, quantity: i.quantity + quantity }
                 : i,
             ),
+            lastAdded: { product, quantity },
           });
         } else {
-          set({ items: [...items, { product, quantity }] });
+          set({ items: [...items, { product, quantity }], lastAdded: { product, quantity } });
         }
       },
 

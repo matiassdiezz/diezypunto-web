@@ -3,25 +3,33 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { getProduct, listProducts } from "@/lib/api";
+import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
-import { useToastStore } from "@/components/shared/Toast";
+import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
 import { ShoppingBag, Leaf, MessageCircle, Minus, Plus } from "lucide-react";
 import Link from "next/link";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import Breadcrumbs from "@/components/catalog/Breadcrumbs";
 import ProductCard from "@/components/catalog/ProductCard";
+import QuantityNudge from "@/components/catalog/QuantityNudge";
+import PersonalizationCard from "@/components/catalog/PersonalizationCard";
+import SocialProofBadge from "@/components/catalog/SocialProofBadge";
+import AlternativeBadge from "@/components/catalog/AlternativeBadge";
+import KitSuggestion from "@/components/catalog/KitSuggestion";
+import TierComparison from "@/components/catalog/TierComparison";
 
 export default function ProductoPage() {
   const params = useParams();
   const id = params.id as string;
   const [product, setProduct] = useState<ProductResult | null>(null);
   const [related, setRelated] = useState<ProductResult[]>([]);
+  const [kitProducts, setKitProducts] = useState<ProductResult[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
   const [qty, setQty] = useState(1);
   const addItem = useQuoteStore((s) => s.addItem);
-  const toast = useToastStore((s) => s.toast);
+  const openDrawer = useDrawerStore((s) => s.open);
 
   useEffect(() => {
     setSelectedImage(0);
@@ -30,15 +38,26 @@ export default function ProductoPage() {
       .then((p) => {
         setProduct(p);
         // Fetch related products from same category
-        listProducts({ category: p.category, limit: 5 })
+        listProducts({ category: p.category, limit: 8 })
           .then((res) =>
             setRelated(
-              res.products
-                .filter((r) => r.product_id !== p.product_id)
-                .slice(0, 4),
+              res.products.filter((r) => r.product_id !== p.product_id),
             ),
           )
           .catch(console.error);
+        // Fetch complementary products for "Arma tu kit"
+        const complementary = getComplementaryCategories(p.category);
+        if (complementary.length > 0) {
+          Promise.all(
+            complementary.slice(0, 3).map((cat) =>
+              listProducts({ category: cat, limit: 1 })
+                .then((r) => r.products[0])
+                .catch(() => null),
+            ),
+          ).then((results) =>
+            setKitProducts(results.filter(Boolean) as ProductResult[]),
+          );
+        }
       })
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -47,10 +66,7 @@ export default function ProductoPage() {
   function handleAdd() {
     if (!product) return;
     addItem(product, qty);
-    toast(`${qty}u agregadas al carrito`, {
-      label: "Ver carrito →",
-      href: "/carrito",
-    });
+    openDrawer(product, qty);
   }
 
   if (loading) {
@@ -70,7 +86,9 @@ export default function ProductoPage() {
   }
 
   const whatsappMessage = encodeURIComponent(
-    `Hola! Me interesa el producto: ${product.title}. ¿Podrian darme mas info?`,
+    product.price == null
+      ? `Hola! Necesito precio para: ${product.title}, ${qty} unidades.`
+      : `Hola! Me interesa el producto: ${product.title}, ${qty} unidades. ¿Podrian darme mas info?`,
   );
   const whatsappUrl = `https://wa.me/5491168530845?text=${whatsappMessage}`;
 
@@ -142,13 +160,8 @@ export default function ProductoPage() {
               {product.title}
             </h1>
 
-            {product.description && (
-              <p className="mt-3 text-sm leading-relaxed text-muted sm:mt-4 sm:text-base">
-                {product.description}
-              </p>
-            )}
-
-            <div className="mt-4 flex flex-wrap gap-2 sm:mt-6">
+            {/* Social Proof + Eco/Premium badges */}
+            <div className="mt-2 flex flex-wrap gap-2">
               {product.eco_friendly && (
                 <span className="flex items-center gap-1 rounded-full bg-eco/10 px-2.5 py-1 text-xs font-medium text-eco sm:px-3 sm:text-sm">
                   <Leaf className="h-3.5 w-3.5 sm:h-4 sm:w-4" /> Eco-friendly
@@ -159,7 +172,17 @@ export default function ProductoPage() {
                   Premium
                 </span>
               )}
+              <SocialProofBadge product={product} size="md" />
             </div>
+
+            {product.description && (
+              <p className="mt-3 text-sm leading-relaxed text-muted sm:mt-4 sm:text-base">
+                {product.description}
+              </p>
+            )}
+
+            {/* Alternative badge (eco/premium) */}
+            <AlternativeBadge product={product} />
 
             {/* Price */}
             <div className="mt-4 rounded-xl border border-border bg-card p-4 sm:mt-6 sm:rounded-2xl sm:p-6">
@@ -226,6 +249,9 @@ export default function ProductoPage() {
                 </button>
               </div>
 
+              {/* Quantity Nudge */}
+              <QuantityNudge qty={qty} product={product} />
+
               <a
                 href={whatsappUrl}
                 target="_blank"
@@ -255,27 +281,25 @@ export default function ProductoPage() {
                   <p className="mt-1 text-sm">{product.colors.join(", ")}</p>
                 </div>
               )}
-              {product.personalization_methods.length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-                    Metodos de personalizacion
-                  </p>
-                  <div className="mt-1 flex flex-wrap gap-2">
-                    {product.personalization_methods.map((m) => (
-                      <span
-                        key={m}
-                        className="rounded-lg bg-surface px-2.5 py-1 text-xs"
-                      >
-                        {m}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
+              {/* Personalization Card — replaces plain pills */}
+              <PersonalizationCard
+                methods={product.personalization_methods}
+                productTitle={product.title}
+              />
             </div>
           </div>
         </ScrollReveal>
       </div>
+
+      {/* Kit Suggestion — cross-sell from complementary categories */}
+      {kitProducts.length > 0 && (
+        <KitSuggestion products={kitProducts} currentProductId={product.product_id} />
+      )}
+
+      {/* Tier Comparison — Good/Better/Best from same category */}
+      {related.length >= 2 && (
+        <TierComparison products={related} currentProduct={product} />
+      )}
 
       {/* Related products */}
       {related.length > 0 && (
@@ -284,7 +308,7 @@ export default function ProductoPage() {
             <h2 className="text-lg font-bold sm:text-xl">Productos relacionados</h2>
           </ScrollReveal>
           <div className="mt-4 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-6 lg:grid-cols-4">
-            {related.map((p) => (
+            {related.slice(0, 4).map((p) => (
               <ProductCard key={p.product_id} product={p} />
             ))}
           </div>

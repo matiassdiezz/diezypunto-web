@@ -5,7 +5,8 @@ import Link from "next/link";
 import { ShoppingBag, Leaf, Check } from "lucide-react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
-import { useToastStore } from "@/components/shared/Toast";
+import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
+import SocialProofBadge from "@/components/catalog/SocialProofBadge";
 
 interface ProductCardProps {
   product: ProductResult;
@@ -17,7 +18,7 @@ export default function ProductCard({
   showScore = false,
 }: ProductCardProps) {
   const addItem = useQuoteStore((s) => s.addItem);
-  const toast = useToastStore((s) => s.toast);
+  const openDrawer = useDrawerStore((s) => s.open);
   const [added, setAdded] = useState(false);
   const [qty, setQty] = useState(1);
 
@@ -26,10 +27,7 @@ export default function ProductCard({
 
   function handleAdd() {
     addItem(product, qty);
-    toast(`${qty}u agregadas al carrito`, {
-      label: "Ver carrito →",
-      href: "/carrito",
-    });
+    openDrawer(product, qty);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }
@@ -65,6 +63,7 @@ export default function ProductCard({
               Premium
             </span>
           )}
+          <SocialProofBadge product={product} />
         </div>
 
         {showScore && product.score > 0 && (

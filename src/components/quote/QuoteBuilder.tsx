@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Minus,
   Plus,
@@ -10,12 +10,18 @@ import {
   Loader2,
 } from "lucide-react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
+import { listProducts } from "@/lib/api";
+import { getComplementaryCategories } from "@/lib/engine/affinity";
+import type { ProductResult } from "@/lib/types";
+import CartMilestone from "@/components/quote/CartMilestone";
+import ProductCard from "@/components/catalog/ProductCard";
 
 const WHATSAPP_NUMBER = "5491168385566";
 
 export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();
   const [mpLoading, setMpLoading] = useState(false);
+  const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
 
   const total = items.reduce((sum, i) => {
     if (i.product.price) return sum + i.product.price * i.quantity;
@@ -24,8 +30,35 @@ export default function QuoteBuilder() {
 
   const hasItemsWithoutPrice = items.some((i) => i.product.price == null);
 
+  // Fetch cross-sell products based on cart categories
+  useEffect(() => {
+    if (items.length === 0) {
+      setCrossSell([]);
+      return;
+    }
+    const cartCategories = new Set(items.map((i) => i.product.category));
+    const complementary = new Set<string>();
+    cartCategories.forEach((cat) => {
+      getComplementaryCategories(cat).forEach((c) => {
+        if (!cartCategories.has(c)) complementary.add(c);
+      });
+    });
+    const cats = Array.from(complementary).slice(0, 3);
+    if (cats.length === 0) {
+      setCrossSell([]);
+      return;
+    }
+    Promise.all(
+      cats.map((cat) =>
+        listProducts({ category: cat, limit: 2 })
+          .then((r) => r.products)
+          .catch(() => []),
+      ),
+    ).then((results) => setCrossSell(results.flat().slice(0, 6)));
+  }, [items.length]);
+
   const buildWhatsAppMessage = () => {
-    let msg = "Hola! Quiero consultar por estos productos:\n\n";
+    let msg = `Hola! Tengo ${items.length} productos por $${total.toLocaleString("es-AR")}. Necesito cotizacion:\n\n`;
     items.forEach((item, i) => {
       msg += `${i + 1}. ${item.product.title} x${item.quantity}`;
       if (item.product.price)
@@ -80,6 +113,9 @@ export default function QuoteBuilder() {
 
   return (
     <div>
+      {/* Cart Milestone */}
+      <CartMilestone total={total} />
+
       {/* Table */}
       <div className="overflow-x-auto rounded-2xl border border-border">
         <table className="w-full text-left text-sm">
@@ -226,6 +262,20 @@ export default function QuoteBuilder() {
           )}
         </div>
       </div>
+
+      {/* Cart Cross-Sell */}
+      {crossSell.length > 0 && (
+        <section className="mt-10">
+          <h2 className="text-lg font-bold">Completa tu pedido</h2>
+          <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
+            {crossSell.map((p) => (
+              <div key={p.product_id} className="w-48 shrink-0 sm:w-56">
+                <ProductCard product={p} />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

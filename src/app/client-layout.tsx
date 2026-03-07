@@ -6,6 +6,7 @@ import Footer from "@/components/shared/Footer";
 import WhatsAppButton from "@/components/shared/WhatsAppButton";
 import QuoteCart from "@/components/quote/QuoteCart";
 import Toast from "@/components/shared/Toast";
+import AddToCartDrawer from "@/components/shared/AddToCartDrawer";
 
 export default function ClientLayout({ children }: { children: ReactNode }) {
   return (
@@ -16,6 +17,7 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       <WhatsAppButton />
       <QuoteCart />
       <Toast />
+      <AddToCartDrawer />
     </>
   );
 }
