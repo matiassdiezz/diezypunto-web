@@ -164,9 +164,9 @@ export default function SearchPrompt() {
               onKeyDown={handleKeyDown}
               onFocus={() => setFocused(true)}
               onBlur={() => setFocused(false)}
-              rows={2}
+              rows={3}
               className="w-full resize-none bg-transparent px-5 py-5 pr-14 text-base text-[#1a1a2e] outline-none placeholder:text-gray-300 sm:text-lg"
-              style={{ minHeight: "80px" }}
+              style={{ minHeight: "100px" }}
             />
 
             {/* Submit button */}
@@ -196,12 +196,12 @@ export default function SearchPrompt() {
           <p className="mb-3 text-center text-[10px] font-medium uppercase tracking-[0.25em] text-gray-400">
             Proba con algo como
           </p>
-          <div className="flex flex-wrap justify-center gap-2">
+          <div className="grid grid-cols-2 gap-2">
             {EXAMPLES.slice(0, 4).map((ex) => (
               <button
                 key={ex}
                 onClick={() => handleExample(ex)}
-                className="rounded-full border border-gray-200 bg-gray-50 px-3.5 py-1.5 text-xs text-gray-500 transition-all hover:border-[#59C6F2]/40 hover:bg-[#EBF7FE] hover:text-[#3BB5E8]"
+                className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-xs text-gray-500 transition-all hover:border-accent hover:bg-accent-light hover:text-accent hover:shadow-sm"
               >
                 {ex.length > 45 ? ex.slice(0, 45) + "..." : ex}
               </button>
