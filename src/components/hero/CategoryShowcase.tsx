@@ -34,6 +34,9 @@ export default function CategoryShowcase() {
         <h2 className="text-center text-2xl font-bold">
           Explora por categoria
         </h2>
+        <p className="mt-2 text-center text-muted">
+          Mas de 1,400 productos organizados para que encuentres lo que buscas
+        </p>
       </ScrollReveal>
 
       <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">

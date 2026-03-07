@@ -34,9 +34,7 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className={`text-xl font-bold tracking-tight transition-colors duration-300 ${
-            scrolled ? "text-accent" : "text-white"
-          }`}
+          className="text-xl font-bold tracking-tight text-[#1a1a2e] transition-colors duration-300"
         >
           diezypunto
         </Link>
@@ -47,27 +45,19 @@ export default function Navbar() {
             <Link
               key={l.href}
               href={l.href}
-              className={`text-sm transition-colors duration-300 ${
-                scrolled
-                  ? "text-muted hover:text-foreground"
-                  : "text-zinc-400 hover:text-white"
-              }`}
+              className="text-sm text-muted transition-colors hover:text-foreground"
             >
               {l.label}
             </Link>
           ))}
           <Link
             href="/presupuesto"
-            className={`relative flex items-center gap-1.5 rounded-full px-4 py-2 text-sm font-medium transition-all duration-300 ${
-              scrolled
-                ? "bg-accent text-white hover:bg-accent-hover"
-                : "bg-white/[0.08] text-white backdrop-blur-sm hover:bg-white/[0.15]"
-            }`}
+            className="relative flex items-center gap-1.5 rounded-full bg-[#59C6F2] px-4 py-2 text-sm font-medium text-white transition-all hover:bg-[#3BB5E8]"
           >
             <ShoppingBag className="h-4 w-4" />
             Presupuesto
             {totalItems > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-blue-500 text-xs text-white">
+              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#3BB5E8] text-xs text-white">
                 {totalItems}
               </span>
             )}
@@ -81,13 +71,9 @@ export default function Navbar() {
           aria-label="Menu"
         >
           {mobileOpen ? (
-            <X
-              className={`h-6 w-6 transition-colors ${scrolled ? "text-foreground" : "text-white"}`}
-            />
+            <X className="h-6 w-6 text-foreground" />
           ) : (
-            <Menu
-              className={`h-6 w-6 transition-colors ${scrolled ? "text-foreground" : "text-white"}`}
-            />
+            <Menu className="h-6 w-6 text-foreground" />
           )}
         </button>
       </div>
@@ -99,22 +85,14 @@ export default function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className={`overflow-hidden md:hidden ${
-              scrolled
-                ? "border-b border-border bg-white"
-                : "border-b border-white/[0.08] bg-[#0a0a1a]/95 backdrop-blur-xl"
-            }`}
+            className="overflow-hidden border-b border-border bg-white md:hidden"
           >
             <div className="flex flex-col gap-4 px-6 py-4">
               {links.map((l) => (
                 <Link
                   key={l.href}
                   href={l.href}
-                  className={`text-sm ${
-                    scrolled
-                      ? "text-muted hover:text-foreground"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
+                  className="text-sm text-muted hover:text-foreground"
                   onClick={() => setMobileOpen(false)}
                 >
                   {l.label}

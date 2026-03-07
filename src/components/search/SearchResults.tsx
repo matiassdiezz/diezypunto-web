@@ -18,7 +18,7 @@ export default function SearchResults({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.35, delay: i * 0.06 }}
         >
-          <ProductCard product={product} showScore dark />
+          <ProductCard product={product} showScore />
         </motion.div>
       ))}
     </div>
