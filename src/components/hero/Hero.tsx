@@ -5,6 +5,11 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Package, Sparkles, Truck } from "lucide-react";
 
+function scrollToSearch() {
+  const el = document.getElementById("ai-search");
+  if (el) el.scrollIntoView({ behavior: "smooth" });
+}
+
 const VALUE_POINTS = [
   { icon: Package, text: "+1,400 productos" },
   { icon: Sparkles, text: "Busqueda con AI" },
@@ -80,12 +85,13 @@ export default function Hero() {
             >
               Explorar catalogo
             </Link>
-            <Link
-              href="/carrito"
-              className="inline-flex items-center justify-center rounded-xl border-2 border-border px-6 py-3 font-semibold text-foreground transition-colors hover:border-accent/40 hover:text-accent"
+            <button
+              onClick={scrollToSearch}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-border px-6 py-3 font-semibold text-foreground transition-colors hover:border-accent/40 hover:text-accent"
             >
-              Ver carrito
-            </Link>
+              <Sparkles className="h-4 w-4" />
+              Buscar con AI
+            </button>
           </motion.div>
         </div>
 

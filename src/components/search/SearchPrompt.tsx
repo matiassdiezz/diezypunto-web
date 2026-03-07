@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, FormEvent } from "react";
+import { useState, useEffect, useRef, FormEvent, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowUp, Sparkles } from "lucide-react";
 import { useSearchStore } from "@/lib/stores/search-store";
@@ -46,7 +46,7 @@ function RotatingPlaceholder() {
           animate={{ opacity: 0.3, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.3 }}
-          className="pointer-events-none absolute left-5 top-5 text-base text-gray-400 sm:text-lg"
+          className="pointer-events-none absolute left-5 top-5 right-14 text-base leading-relaxed text-gray-400 sm:text-lg"
         >
           {EXAMPLES[index]}
         </motion.span>
@@ -105,6 +105,7 @@ function LoadingState() {
 
 export default function SearchPrompt() {
   const [input, setInput] = useState("");
+  const [focused, setFocused] = useState(false);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const { search, results, isLoading, summary, query } = useSearchStore();
 
@@ -142,7 +143,16 @@ export default function SearchPrompt() {
     <div className="w-full">
       {/* Search input with animated glow border */}
       <form onSubmit={handleSubmit} className="relative">
-        <div className="search-glow-wrapper">
+        <motion.div
+          className="search-glow-wrapper"
+          animate={{
+            scale: focused ? 1.02 : 1,
+            boxShadow: focused
+              ? "0 8px 40px rgba(89,198,242,0.2)"
+              : "0 4px 24px rgba(89,198,242,0.08)",
+          }}
+          transition={{ type: "spring", stiffness: 300, damping: 25 }}
+        >
           <div className="relative z-10 rounded-2xl bg-white">
             {/* Rotating placeholder (only when input is empty and no results) */}
             {!input && !hasResults && <RotatingPlaceholder />}
@@ -152,23 +162,27 @@ export default function SearchPrompt() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
-              rows={1}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
+              rows={2}
               className="w-full resize-none bg-transparent px-5 py-5 pr-14 text-base text-[#1a1a2e] outline-none placeholder:text-gray-300 sm:text-lg"
-              style={{ minHeight: "60px" }}
+              style={{ minHeight: "80px" }}
             />
 
             {/* Submit button */}
-            <button
+            <motion.button
               type="submit"
               disabled={isLoading || !input.trim()}
               className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#59C6F2] text-white transition-all hover:bg-[#3BB5E8] hover:shadow-[0_0_20px_rgba(89,198,242,0.4)] disabled:opacity-20"
+              animate={{
+                scale: focused && input.trim() ? 1.1 : 1,
+              }}
+              transition={{ type: "spring", stiffness: 400, damping: 20 }}
             >
               <ArrowUp className="h-5 w-5" />
-            </button>
+            </motion.button>
           </div>
-        </div>
-
-        {/* Hint — hidden when used inside SearchSection which provides its own subtitle */}
+        </motion.div>
       </form>
 
       {/* Example chips — only before first search */}

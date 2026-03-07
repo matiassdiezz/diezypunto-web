@@ -7,7 +7,7 @@ import ScrollReveal from "../shared/ScrollReveal";
 
 export default function SearchSection() {
   return (
-    <section className="bg-card py-16">
+    <section id="ai-search" className="bg-card py-16 scroll-mt-20">
       <div className="mx-auto max-w-2xl px-6">
         <ScrollReveal>
           <div className="flex items-center justify-center gap-2 text-sm font-medium text-accent">
