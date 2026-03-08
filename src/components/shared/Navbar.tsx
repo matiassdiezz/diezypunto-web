@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ShoppingBag } from "lucide-react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
@@ -34,9 +35,18 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          className="text-xl font-bold tracking-tight text-[#1a1a2e] transition-colors duration-300"
+          className="flex items-center gap-2 transition-opacity duration-300 hover:opacity-80"
         >
-          diezypunto
+          <Image
+            src="/logo-icon.png"
+            alt="diezypunto"
+            width={32}
+            height={32}
+            className="h-8 w-8"
+          />
+          <span className="text-xl font-bold tracking-tight text-foreground">
+            diezypunto
+          </span>
         </Link>
 
         {/* Desktop links */}

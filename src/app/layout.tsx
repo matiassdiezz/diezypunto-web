@@ -17,6 +17,16 @@ export const metadata: Metadata = {
   title: "diezypunto | Merchandising Corporativo",
   description:
     "Merchandising corporativo con +1,400 productos. Busca con tus palabras y encontra lo que necesitas en segundos.",
+  icons: {
+    icon: "/logo-icon.png",
+    apple: "/logo-icon.png",
+  },
+  openGraph: {
+    title: "diezypunto | Merchandising Corporativo",
+    description:
+      "Merchandising corporativo con +1,400 productos. Busca con tus palabras y encontra lo que necesitas en segundos.",
+    images: ["/logo-diezypunto.webp"],
+  },
 };
 
 export default function RootLayout({
