@@ -20,15 +20,15 @@ import ScrollReveal from "../shared/ScrollReveal";
 const CATEGORIES: { name: string; icon: LucideIcon }[] = [
   { name: "Escritura", icon: PenLine },
   { name: "Drinkware", icon: GlassWater },
-  { name: "Mochilas & Bolsos", icon: Backpack },
+  { name: "Bolsos y Mochilas", icon: Backpack },
   { name: "Tecnología", icon: Laptop },
-  { name: "Oficina y Negocios", icon: Building2 },
-  { name: "Hogar & Tiempo Libre", icon: TreePine },
-  { name: "Eco", icon: Leaf },
+  { name: "Escritorio", icon: Building2 },
+  { name: "Hogar y Tiempo Libre", icon: TreePine },
+  { name: "Sustentables", icon: Leaf },
   { name: "Llaveros", icon: Key },
   { name: "Paraguas", icon: Umbrella },
-  { name: "Indumentaria y Ropa de Trabajo", icon: Shirt },
-  { name: "Bienestar", icon: Heart },
+  { name: "Apparel", icon: Shirt },
+  { name: "Mates, termos y materas", icon: Heart },
 ];
 
 export default function CategoryShowcase() {

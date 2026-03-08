@@ -50,17 +50,58 @@ export async function POST(req: NextRequest) {
     sessionId = randomUUID();
   }
 
-  // Search + rank
+  // Map internal category codes to Zecat family names
+  const CATEGORY_TO_FAMILY: Record<string, string> = {
+    drinkware: "Drinkware",
+    bags: "Bolsos y Mochilas",
+    apparel: "Apparel",
+    tech: "Tecnología",
+    writing: "Escritura",
+    outdoor: "Hogar y Tiempo Libre",
+    office: "Escritorio",
+    eco: "Sustentables",
+    kits: "", // no direct family match
+    premium: "",
+  };
+
+  // Use style_keywords + constraints + materials as search text (NOT category codes)
   const searchTerms = [
-    ...(mergedNeeds.desired_categories || []),
     ...(mergedNeeds.style_keywords || []),
     ...(mergedNeeds.must_have_constraints || []),
     ...(mergedNeeds.preferred_materials || []),
   ].join(" ");
 
   const searchQuery = searchTerms || query;
-  const zecatRes = await listZecatProducts({ search: searchQuery, limit: 50 });
-  const candidates = zecatRes.products;
+
+  // Resolve category filter from extracted needs
+  const cats = mergedNeeds.desired_categories || [];
+  const zecatFamily = cats.length > 0 ? CATEGORY_TO_FAMILY[cats[0]] : undefined;
+
+  const zecatRes = await listZecatProducts({
+    search: searchQuery,
+    category: zecatFamily || undefined,
+    limit: 50,
+  });
+  let candidates = zecatRes.products;
+
+  // If category-filtered search returned few results, retry without category filter
+  if (candidates.length < 5 && zecatFamily) {
+    const fallbackRes = await listZecatProducts({ search: searchQuery, limit: 50 });
+    // Merge: category results first, then fallback (deduplicated)
+    const seen = new Set(candidates.map((p) => p.product_id));
+    for (const p of fallbackRes.products) {
+      if (!seen.has(p.product_id)) {
+        candidates.push(p);
+        seen.add(p.product_id);
+      }
+    }
+  }
+
+  // If still no results, search with the original user query as-is
+  if (candidates.length === 0) {
+    const rawRes = await listZecatProducts({ search: query, limit: 50 });
+    candidates = rawRes.products;
+  }
 
   const ranked = rankProducts(candidates, mergedNeeds, 15);
 

@@ -168,7 +168,7 @@ export async function listZecatProducts(params?: {
   if (params?.category) {
     const families = await getFamilies();
     const family = families.find(
-      (f) => f.description.toLowerCase() === params.category!.toLowerCase(),
+      (f) => f.description.trim().toLowerCase() === params.category!.trim().toLowerCase(),
     );
     if (family) qs.set("families[]", family.id);
   }
