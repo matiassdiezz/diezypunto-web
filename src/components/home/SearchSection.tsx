@@ -31,20 +31,22 @@ export default function SearchSection() {
         </pre>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-2xl px-6">
+      <div className="relative z-10 mx-auto max-w-5xl px-6">
         <ScrollReveal>
-          <div className="flex items-center justify-center gap-2 text-sm font-medium text-accent">
-            <Sparkles className="h-4 w-4" />
-            Busqueda inteligente
+          <div className="mx-auto max-w-2xl">
+            <div className="flex items-center justify-center gap-2 text-sm font-medium text-accent">
+              <Sparkles className="h-4 w-4" />
+              Busqueda inteligente
+            </div>
+            <h2 className="mt-3 text-center text-3xl font-bold sm:text-4xl">
+              Pedi con <span className="text-accent">AI</span>
+            </h2>
+            <p className="mt-3 text-center text-muted">
+              Escribi lo que necesitas como si le hablaras a una persona
+              <br className="hidden sm:block" />
+              y te mostramos las mejores opciones al instante
+            </p>
           </div>
-          <h2 className="mt-3 text-center text-3xl font-bold sm:text-4xl">
-            Pedi con <span className="text-accent">AI</span>
-          </h2>
-          <p className="mt-3 text-center text-muted">
-            Escribi lo que necesitas como si le hablaras a una persona
-            <br className="hidden sm:block" />
-            y te mostramos las mejores opciones al instante
-          </p>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>

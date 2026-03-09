@@ -1,5 +1,5 @@
 {
-  "synced_at": "2026-03-09T00:12:36.945Z",
+  "synced_at": "2026-03-09T01:07:55.739Z",
   "total": 528,
   "products": [
     {
@@ -273,7 +273,7 @@
       "external_id": "04036000006",
       "title": "Gorro Trucker c/broche",
       "description": "Gorro de 5 paneles en Polyester. Parte trasera con tela red de color. Ajuste con broche plástico. \nTahg. \n\nConsulta la guía de aplicación de Patch Bordado con tu ejecutivo o en el siguiente link https://bit.ly/ARG-One-Sheet-Patch-Bordado.",
-      "category": "Mundial 2026",
+      "category": "Gorros",
       "materials": [],
       "colors": [
         "Blanco",
@@ -439,7 +439,7 @@
       "external_id": "04037000005",
       "title": "Gorro Roger c/broche",
       "description": "Gorro de Microfibra (Peach Skin). Visera con ribete combinada. 6 paneles. Cierre con hebilla metálica. \nTahg.",
-      "category": "Logo 24hs",
+      "category": "Gorros",
       "materials": [],
       "colors": [
         "Beige / Kaki"
@@ -531,7 +531,7 @@
       "external_id": "04037000007",
       "title": "Gorro TAHG 168 c/broche",
       "description": "Gorro de Gabardina de 6 paneles. Material 100% algodón.Broche de metal. \nTahg.",
-      "category": "Mundial 2026",
+      "category": "Gorros",
       "materials": [],
       "colors": [
         "Blanco",
@@ -607,7 +607,7 @@
       "external_id": "04037000009",
       "title": "Gorro TAHG 144 c/velcro",
       "description": "Gorro de gabardina de 6 paneles, con vicera tipo sandwich en colores combinados, y cierre con velcro. Material: 100% algodón. \nTahg.",
-      "category": "Logo 24hs",
+      "category": "Gorros",
       "materials": [],
       "colors": [
         "Negro",
@@ -887,7 +887,7 @@
       "external_id": "05049000008",
       "title": "Jarro Express Cup",
       "description": "Vaso reutilizable con banda de silicona personalizable. Fabricado en PP. Producto aprobado por el I.N.A.L. para el contacto con alimentos.\nMedidas con tapa: 12 cm x 8,5 cm. \nAltura sin tapa: 9,5 cm. \nCapacidad: 350 ml. Producto libre de BPA.\n\nEs apto para lavavajillas. No es apto para microondas.\n\nRe Use Me.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Plástico"
       ],
@@ -1037,7 +1037,7 @@
       "external_id": "05054000012",
       "title": "Termo AVANZA 0,5 Lt.",
       "description": "Realizado en acero inoxidable 304. Esmalte especial protector. Su diseño y materiales logran un termo liviano, de gran resistencia y conservación. Producto aprobado por el I.N.A.L. para el contacto con alimentos. \nMedidas: 23,5 x 6,8 cm. Capacidad: 500 ml. \nProducto libre de BPA. \nTahg",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -1108,7 +1108,7 @@
       "external_id": "05061000009",
       "title": "Silla QUICK",
       "description": "Realizada en Polyester 600x300D. Tratamiento de protección UV.\nPaño removible con velcro en la parte posterior. Incluye funda de transporte. \nMedidas: 70 x 49 x 49 cm. \nTahg",
-      "category": "Mundial 2026",
+      "category": "General",
       "materials": [],
       "colors": [
         "Gris Oscuro",
@@ -1138,7 +1138,7 @@
       "external_id": "05061000012",
       "title": "Silla FUSION",
       "description": "Realizada en Polyester 600x300D Peach Skin PVC Coating. Tratamiento de protección UV. Incluye bolso cooler en la base. Paño removible con velcro en la parte posterior. Incluye funda de transporte. \nMedidas: 30 cm x 40 cm x 66 cm. \nTahg.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Azul",
@@ -1309,7 +1309,7 @@
       "external_id": "05420003525",
       "title": "Mochila Omega backpack",
       "description": "Mochila de Polyester Anti Robo con puerto USB. Compartimiento principal con gran capacidad Porta Tablet y Laptop. Bolsillo anti robo. Sujetador de carry on. \nMedidas: 44 x 32 x 15 cm. Capacidad: 21 Lts. Laptop: 15¨. TAHG",
-      "category": "Back to School",
+      "category": "Escritorio",
       "materials": [],
       "colors": [
         "Negro/Gris"
@@ -1460,7 +1460,7 @@
       "external_id": "10094000015",
       "title": "Mochila Duomo TECH",
       "description": "Realizada en shield polycanvas. Cuenta con conector USB en el lateral y espaldar de foam ajustable. Tira para carry on e Interior antishock. Bolsillo principal de apertura 180°. Cierres metálicos. \nMedidas: 35 x 25 x 10 cm. Capacidad: 17 Lts. Notebook: 15,6\". \nTahg",
-      "category": "70%OFF Bolsos y Mochilas",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -1527,7 +1527,7 @@
       "external_id": "10094000024",
       "title": "Mochila Cima - S",
       "description": "Realizada en Polyester 600D. Cuenta con compartimiento principal portanotebook con doble cierre. Posee bolsillo frontal con cierre y compartimiento lateral mesh. Espaldar y correas acolchados.\n\nMedidas: 40 x 30 x 10 cm. Notebook: 14\". Capacidad: 12 Litros. \n\nTahg.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Azul",
@@ -1567,7 +1567,7 @@
       "external_id": "10094000025",
       "title": "Mochila DIGMA",
       "description": "Mochila realizada en Polyester. Compartimiento principal y bolsillo frontal con cierre. \n\nMedidas: 40,5 x 28 x 11 cm. Capacidad: 12.5 Lts. \n\nTahg.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Gris Claro",
@@ -1606,7 +1606,7 @@
       "external_id": "10094000250",
       "title": "Mochila Duomo",
       "description": "Mochila confeccionada en Polycanvas. Correas acolchadas ajustables, doble cremallera. Compartimiento principal acolchado para alojar notebook. Espaldar acolchado.  Capacidad 17 Lts. Notebook: 15,6`. Tahg 24.",
-      "category": "Back to School",
+      "category": "Escritorio",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -1635,7 +1635,7 @@
       "external_id": "10097000005",
       "title": "Set Pouch MARGOT",
       "description": "Set de 8 brochas para rostro y ojos + amplio estuche contenedor para traslado. El estuche esta desarrollado en PVC. \n\nMedidas: 24 x 18 cm. \n\nTahg.",
-      "category": "70%OFF Hogar y Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "materials": [],
       "colors": [
         "Negro"
@@ -1730,7 +1730,7 @@
       "external_id": "10098000006",
       "title": "Cooler Frozen",
       "description": "Realizado en Polyester. Interior térmico en peva de 5mm. Correa ajustable. Manijas reforzadas. Bolsillo superior y frontal. \n\nCapacidad: 25 Lts. \n\nTahg.",
-      "category": "70%OFF Bolsos y Mochilas",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro",
@@ -1758,7 +1758,7 @@
       "external_id": "10098000007",
       "title": "Cooler MINI",
       "description": "Realizado en Friselina (NON WOVEN). Interior en aluminio y PE Foam 2mm. Tiras para sujetar. Compartimiento principal superior. \n\nMedidas: 20 x 14 x 15,5 cm. Capacidad 4,5 Lts. \n\nTahg.",
-      "category": "Logo 24hs",
+      "category": "Coolers y luncheras",
       "materials": [],
       "colors": [
         "Rojo",
@@ -1882,7 +1882,7 @@
       "external_id": "11104000002",
       "title": "Paraguas TAHG 134 Automático",
       "description": "Paraguas street de 8 gajos con mango curvo de madera y estructura metálica negra. Con sistema de apertura automática. Tela de interior silver combinada con exterior en colores. \n\nMaterial: Pongee con interior silver. Medidas: 80 cm x diámetro 105 cm. \n\nTahg.",
-      "category": "2026 Reingresos",
+      "category": "Paraguas",
       "materials": [],
       "colors": [
         "Azul",
@@ -2050,7 +2050,7 @@
       "external_id": "17094000009",
       "title": "Mochila Stadt",
       "description": "Mochila diseñada en 1680D Polyester combinada con Mini Ripstop con detalle en gamuza. Posee un compartimento principal integrado para notebook debidamente acolchado para mayor seguridad. El bolsillo frontal incluye un organizador para pequeños objetos. En la parte superior, contiene un bolsillo de fieltro resistente a rayaduras. Posee 2 bolsillos laterales con cremallera. Correas para hombro acolchonadas. \n\nMedidas: 47 x 30 x 20 cm. \nCapacidad: 29 Lts. Notebook: 15,6`. \n\nWagner.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro"
@@ -2109,7 +2109,7 @@
       "external_id": "17094000024",
       "title": "Mochila HAUS",
       "description": "Mochila realizada en Polyester waterproof. Su base y laterales están realizados en Polyester mallado anti fricción. Cuenta con compartimiento principal para notebook y tablet, y correa para sujetar al carry on. En sus bolsillos, uno frontal oculto y otro en espaldar de seguridad, posee interior de red para artículos pequeños. Sujetador de carry on. Cuenta con apertura para espaldar vertical alternativa de 100°, para acceso directo a la notebook. \n\nMedidas: 29,5 x 14,5 x 45 cm. \nCapacidad: 19 Lts. Laptop: 15¨. \n\nWagner",
-      "category": "Back to School",
+      "category": "Escritorio",
       "materials": [],
       "colors": [
         "Negro"
@@ -2144,7 +2144,7 @@
       "external_id": "17094000025",
       "title": "Mochila FELD",
       "description": "Mochila realizada en Polyester y polycanvas,con interior forrado Light para facilitar la búsqueda de objetos. Cuenta con un compartimiento principal para notebook y bolsillo frontal vertical. Bolsillo interior de red para pequeños artículos.\n\n Medidas: 48 x 33 x 22 cm. \nCapacidad: 22 Lts. Laptop: 15¨. \n\nWagner.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Gris Oscuro"
@@ -2288,7 +2288,7 @@
       "external_id": "17104000000",
       "title": "Paraguas DUMM",
       "description": "Confeccionado en Pongee 190T de alta resistencia, impermeabilidad. Marco de 8 varillas de apertura y cierre manual. Mango de goma de diseño anatómico. Medidas: Longitud 85 cm diámetro 115 cm. Wagner",
-      "category": "2026 Agro",
+      "category": "Paraguas",
       "materials": [],
       "colors": [
         "Gris Claro",
@@ -2452,7 +2452,7 @@
       "external_id": "19014000004",
       "title": "Campera Pampero",
       "description": "Confeccionada en Micropolar de alta calidad, la tela posee un tratamiento ANTIPILLING en ambas caras, externa e interna que mantiene por más tiempo el aspecto original de la prenda, evitando la formación de imperfecciones.100% Polyester 220 gr/m2. Cuenta con cuatro Bolsillos con cierre, dos laterales inferiores, uno lateral derecho superior y uno en la manga izquierda. Cada cierre posee un tirador con el logo de la marca y en el extremo superior del cierre, posee una solapa cobertora. Por su aspecto y diseño esta prenda resulta versátil tanto para su uso outdoor como su uso urbano.  La campera posee cuello alzado que proporciona protección y comodidad. Detalles en las terminaciones del exterior e interior. \n\nColores: Negro y Gris con Negro. \n\nRecomendaciones de uso para cuidar tu abrigo: Lavar a máquina a 30°. No lavar en seco. No Blanquear. No planchar. No secar en máquina. \n\nPampero.",
-      "category": "Próximos Arribos",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "XX Large",
@@ -2488,7 +2488,7 @@
       "external_id": "19037000000",
       "title": "Gorro Santa Fe Mesh Combinado",
       "description": "Gorro de 6 paneles de algodón símil gamuza y mesh. Cierre hebilla metálica y tira de símil gamuza. Sticker metalizado en visera. \n\nPampero.",
-      "category": "Back to School",
+      "category": "Escritorio",
       "materials": [],
       "colors": [
         "Blanco",
@@ -2535,7 +2535,7 @@
       "external_id": "19049000001",
       "title": "Jarro CHALTEN",
       "description": "Jarro térmico realizado en acero inoxidable, con tapa cristal clear y base antideslizante. \nCapacidad: 400 ml. \n\nNo es apto para lavavajillas. No es apto para microondas\n\nPampero.\n\nProducto libre de BPA y aprobado por el I.N.A.L. para el contacto con alimentos.",
-      "category": "2026 Reingresos",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -2624,7 +2624,7 @@
       "external_id": "19061000000",
       "title": "Silla Plegable Pampero",
       "description": "Silla plegable con Estructura reforzada con terminación epoxi rugosa. Paneles con interior de foam garantizando comodidad. Apoyabrazos acolchados. Bases adaptables a la superficie. Panel desmontable en el respaldo para logueo. \n\nMedidas: Ancho: 59cm, Profundidad: 55cm, Altura respaldo: 89cm. \n\nPampero",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Negro"
@@ -2782,7 +2782,7 @@
       "external_id": "20049000003",
       "title": "Jarro DEUCE",
       "description": "Jarro térmico Deuce de Slazenger realizado en acero inoxidable en su exterior, y polipropileno de color negro en su interior,  con tapa cristal clear. Producto aprobado por el I.N.A.L. para el contacto con alimentos. \n\nMedidas:  inferior 7,06 cm x diámetro superior 9,2 cm x 15,19 cm. Capacidad: 400 ml. Producto libre de BPA. \n\nSlazenger. \n\nIncluye Gift Box confeccionada en cartulina Kraft.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -2932,7 +2932,7 @@
       "external_id": "20097000003",
       "title": "Botinero Net",
       "description": "Realizado en Snow. Compartimiento principal con cierre. Bolsillo frontal y lateral con cierre.",
-      "category": "Mundial 2026",
+      "category": "General",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -3029,7 +3029,7 @@
       "external_id": "20103000000",
       "title": "Paraguas OPEN",
       "description": "Realizado en Pongee 190T con 8 gajos. Estructura realizada en fibra de vidrio con apertura automática. Sistema Windproof con resorte para evitar que fuertes vientos lo dañen. Incluye funda. \n\nMedidas: Largo 81 cm x diámetro 102 cm. \n\nSlazenger.",
-      "category": "2026 Reingresos",
+      "category": "Paraguas",
       "materials": [],
       "colors": [
         "Negro"
@@ -3091,7 +3091,7 @@
       "external_id": "21098000000",
       "title": "Cooler California TAHG",
       "description": "Realizado en Polyester 600 x 300D en su exterior y Aluminio con 3mm PE FOAM en su interior. Compartimento principal Superior y bolsillo Lateral. Medidas: 36 x 26 x 16 cm. Capacidad: 10 Lts. Tahg.",
-      "category": "70%OFF Bolsos y Mochilas",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Azul"
@@ -3180,7 +3180,7 @@
       "external_id": "22099000000",
       "title": "Cuaderno ECO1 Espiralado A6 C/boligrafo",
       "description": "Cuaderno con 72 hojas lisas de 80 gramos anillado con elástico y porta bolígrafo. Tapa dura elaborada en cartón reciclado. Incluye bolígrafo con pulsador. Medida: 10,5 x 15 cms. Re use me",
-      "category": "2026 Agro",
+      "category": "Cuadernos",
       "materials": [],
       "colors": [
         "Marron Claro"
@@ -3292,7 +3292,7 @@
       "external_id": "99020700500",
       "title": "Cartuchera Desplegable Pop Case",
       "description": "Cartuchera con 4 compartimentos interiores, de los cuales 3 tienen cierre de Nylon 230 D. Medidas plegada: 22,0 x 13,5 cm. Medidas desplegada: 22,0 x 31,0 cm. Zecat",
-      "category": "70%OFF Back to School",
+      "category": "Escritorio",
       "materials": [],
       "colors": [
         "Rombo"
@@ -3446,7 +3446,7 @@
       "external_id": "99030540300",
       "title": "Campera Windbreaker Cardon",
       "description": "Fabricada en Taslan con milky coating, es una tela con recubrimiento impermeable y protección UV. El tejido interior es una malla de polyester que permite la ventilación en la prenda. La campera esta confeccionada en un corte clásico. La misma cuenta con tres bolsillos con cierre, dos laterales inferiores y uno lateral derecho superior. \n\nCuenta con un bolsillo de seguridad en el interior de la prenda. En el extremo superior del cierre, posee una solapa cobertora. Puños con regulación por velcro. Regulación interna en ruedo, por cordón elástico y tanca. Capucha con 2 puntos de ajuste. \n\nRecomendaciones de uso para cuidar tu abrigo: Lavar a máquina a 30°. No lavar en seco. No Blanquear. No planchar. No secar en máquina.\n\nCardon.",
-      "category": "Apparel - Abrigo",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Polyester"
@@ -3552,7 +3552,7 @@
       "external_id": "47103000000",
       "title": "Paraguas FLÖZ",
       "description": "Paraguas de doble capa de nylon de alta resistencia al viento, impermeabilidad y calidad. Posee un robusto marco de 8 varillas de apertura y cierre manual, realizado con fibra de vidrio super ligero y diseñado para soportar lluvias y vientos fuertes. Mango de plástico cubierto con una goma con reborde para un agarre cómodo y no deslizante en condiciones de humedad. El paraguas de doble capa permite que el viento atraviese la tela para evitar que se pueda romper. Ideal para golfistas. \n\nMedidas: Largo 97 cm x diámetro 150 cm. \nWagner.",
-      "category": "2026 Agro",
+      "category": "Paraguas",
       "materials": [],
       "colors": [
         "Blanco",
@@ -3597,7 +3597,7 @@
       "external_id": "05306000150",
       "title": "Gorro Flow",
       "description": "Gorro de 6 paneles 100% Polyester con cierre con velcro. Colores: Azul, Gris, Blanco. Zecat.",
-      "category": "Logo 24hs",
+      "category": "Gorros",
       "materials": [],
       "colors": [
         "Polyester"
@@ -3683,7 +3683,7 @@
       "external_id": "99030769640",
       "title": "Cooler Dakota",
       "description": "Cooler de Polyester 420D con compartimiento principal superior y bolsillo frontal. Posee interior en Aluminio y PE foam. Medidas: 37 x 24 x 13 cm. Capacidad: 11,5 Litros. \nTahg",
-      "category": "2026 Reingresos",
+      "category": "Coolers y luncheras",
       "materials": [],
       "colors": [
         "Rojo/Negro",
@@ -3797,7 +3797,7 @@
       "external_id": "05014000001",
       "title": "Toallon CLOUD",
       "description": "Toallón de microfibra de secado rápido  y máxima absorción. Puntas redondeadas y elástico combinado  para optimizar su guardado. Medida: 130 x 80 Cm. Tahg.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Rojo"
@@ -3836,7 +3836,7 @@
       "external_id": "17049000004",
       "title": "Jarro Daten",
       "description": "Jarro térmico de doble pared fabricado en acero inoxidable. \nCuenta con terminación exterior en color negro mate. Posee  grip de silicona antideslizamiento y cierre hermético y boca para tomar con traba a presión y silicona para evitar derrames. Producto aprobado por el I.N.A.L. para el contacto con alimentos. \nCapacidad: 500 ml. Producto libre de BPA y aprobado por el I.N.A.L. para el contacto con alimentos. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nWagner.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -3869,7 +3869,7 @@
       "external_id": "22049000000",
       "title": "Jarro ECO",
       "description": "Jarro de 70% PP y 30% Fibra de Trigo realizado en Wheat Straw, pasta de tallo de trigo, un material sustentable que reduce el consumo de plásticos vírgenes. Incluye grip de silicona. Producto apto para el uso en microondas y lavavajillas. Producto aprobado por el I.N.A.L. para el contacto con alimentos. Medidas con tapa: 8,5 x 12 cm. Altura sin tapa: 9,7 cm. Capacidad: 355. Producto libre de BPA. \n\nDebido a que la pasta de trigo es un material 100% natural, puede haber ligeras variaciones en el color del producto de un lote a otro.\n\nEs apto para lavavajillas. No es apto para microondas.\n\nReUseMe.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -3895,7 +3895,7 @@
       "external_id": "99007010040",
       "title": "Jarro Bogota",
       "description": "Jarro térmico realizado en acero inoxidable en su exterior, y polipropileno de color negro en su interior,  con tapa transparente cristal clear con cierre y base antideslizante. \nCapacidad: 350 ml.\nProducto libre de BPA y aprobado por el I.N.A.L. para el contacto con alimentos. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nTahg.",
-      "category": "Mundial 2026",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -4191,7 +4191,7 @@
       "external_id": "99030769750",
       "title": "\tAuriculares Concerto",
       "description": "Auriculares inalámbricos con estuche de carga y micrófono incorporado. Posee tecnología bluetooth 5.0, la capacidad del auricular es de 55mAh y su capacidad de carga es de 300mAh. Cuenta con cobertura bluetooth en una distancia de 10 metros y su duración en funcionamiento es de 3 horas seguidas. \n\nMantiene la carga sin uso por 120 horas y el tiempo de carga es de 50 minutos. Funciones touch: un toque para pausar/reproducir música, dos toques para redial.\n\n Medidas: 8 x 3,5 cm. \n\nKingtech.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Negro"
@@ -4259,7 +4259,7 @@
       "external_id": "31048000000",
       "title": "Frontier Multitool",
       "description": "Multi Herramienta de acero inoxidable y aluminio con 13 funciones. Incluye funda negra. Medidas Multitool: 2.2 x 4.5 x 10.5 cm. Medidas Packaging: 4.3 x 14.3 x 15.5 cm. Suns Tools.",
-      "category": "2026 Reingresos",
+      "category": "General",
       "materials": [],
       "colors": [
         "Negro"
@@ -4287,7 +4287,7 @@
       "external_id": "31048000001",
       "title": "Rescue Multitool",
       "description": "Martillo multifuncional con elementos de acero inoxidable y aluminio de 6 funciones. Incluye estuche negro. Medidas:19,3 x 20,5 x 3,8 cm. Suns Tools.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Negro"
@@ -4316,7 +4316,7 @@
       "external_id": "05047000010",
       "title": "Botella ISLAND 750 ml",
       "description": "Sport Bottle de aluminio con tapa rosca. Producto aprobado por el I.N.A.L. para el contacto con alimentos. Medidas: 25 cm x diámetro 7,3 cm. Capacidad: 750 ml. Producto libre de BPA. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nTahg.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Aluminio"
       ],
@@ -4358,7 +4358,7 @@
       "external_id": "04036000008",
       "title": "Gorro FUN",
       "description": "Gorro de 5 paneles en Polyester. Parte trasera con tela red. Diámetro 56 cm. Ajuste con broche plástico. \n\nTahg.",
-      "category": "2026 Agro",
+      "category": "Gorros",
       "materials": [],
       "colors": [
         "Azúl Marino",
@@ -4449,7 +4449,7 @@
       "external_id": "20094000003",
       "title": "Mochila SHARP",
       "description": "Mochila realizada en Poliester 300D, con respaldo y correas acolchadas. Cuenta con dos bolsillos principales, el primero de ellos con un espacio para alojar la notebook. Medidas 45 x 30 x 8 cm. Capacidad: 10L. Portanotebook 14\".  Slazenger.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Azul",
@@ -4489,7 +4489,7 @@
       "external_id": "10094000031",
       "title": "Mochila JUMP",
       "description": "Mochila de Polyester. Cierre y correas de cordón. Ojales metálicos. Capacidad: 3,8 Lts. Medidas: 34,5 x 44,5 cm. Tahg.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Azul",
@@ -4577,7 +4577,7 @@
       "external_id": "19055000004",
       "title": "Mate ORIGEN c/Bombilla",
       "description": "Mate realizado en acero inoxidable bicapa 304 (18/8). Cuenta con doble pared aislante que mantiene la temperatura durante toda la cebada, manteniendo 30 minutos el agua caliente y 3 horas el agua fría. No traspasa sabores ni aromas a tu yerba. \nIncluye bombilla de acero inoxidable. Capacidad: 256 ml.\nProducto libre de BPA, aprobado por el INAL. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nPampero.",
-      "category": "Mundial 2026",
+      "category": "Mates, termos y materas",
       "materials": [
         "Acero"
       ],
@@ -4632,7 +4632,7 @@
       "external_id": "29108000000",
       "title": "Trolley GUEST",
       "description": "Trolley realizado en material ABS rígido. Manija regulable en altura, interior forrado, contiene tiras de compresión internas en uno de los módulos y en el otro división interna con cierre. Sistema de ruedas giratorias 360° reforzadas. Cierre con lock. Chapa frontal metálica para aplicar logo. Medidas:  22 x 31 x 51 cm. Foto iliustrativa, no incluye los productos que están en su interior. Fast Travel.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Negro"
@@ -4733,7 +4733,7 @@
       "external_id": "10097000000",
       "title": "\tSet de Belleza BLACK",
       "description": "Set de belleza, incluye tijera, cortauñas, pinza de depilar y lima, todos en acero inoxidable color negro. El estuche de está confeccionado en cuero PU negro. Medidas:10 x 7 x1.5cm. Tahg",
-      "category": "70%OFF Hogar y Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "materials": [],
       "colors": [
         "Negro"
@@ -4873,7 +4873,7 @@
       "external_id": "05049000010",
       "title": "Jarro ROAD",
       "description": "Jarro térmico realizado con aluminio e interior de polipropileno negro. Boquilla regulable. Doble pared plástica. Packaging: Caja Impresa.  Producto aprobado por el I.N.A.L. para el contacto con alimentos. Medidas: 22 cm x diámetro 7,5 cm. Capacidad: 450 ml. Producto libre de BPA. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nTahg",
-      "category": "2026 Reingresos",
+      "category": "Drinkware",
       "materials": [
         "Aluminio"
       ],
@@ -4911,7 +4911,7 @@
       "external_id": "05054000016",
       "title": "Termo IVY 1000ml",
       "description": "Termo de doble pared de acero inoxidable 304, recubierto con esmalte especial que protege de ralladuras y golpes. Mantiene el agua caliente por 12 horas.\nCuenta con manija plegable para facilitar el transporte y tapa con superficie plana estable para usar como taza o vaso. Tiene pico POP UP con push.\nCapacidad: 1 Litro. Producto libre de BPA. \nPampa Spirit.",
-      "category": "Mundial 2026",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -4982,7 +4982,7 @@
       "external_id": "05047000011",
       "title": "Botella RING",
       "description": "Sport Bottle reutilizable de aluminio con tapa rosca de PP, y anillo circular de agarre. Producto libre de BPA. Producto aprobado por el I.N.A.L. para el contacto con alimentos. Medidas: 23 cm x 6,6 cm. Capacidad: 660 ml. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nTahg.",
-      "category": "Mundial 2026",
+      "category": "Drinkware",
       "materials": [
         "Aluminio"
       ],
@@ -5017,7 +5017,7 @@
       "external_id": "05047000012",
       "title": "Botella PENGUIN",
       "description": "Sport Bottle reutilizable de aluminio con tapa rosca de PP y silicona. Cuenta con una tapa con agarre para facilitar su transporte. Producto libre de BPA. Producto aprobado por el I.N.A.L. para el contacto con alimentos. Medidas: 27 cm x 6,6 cm. Capacidad: 650 ml. Tahg.",
-      "category": "Mundial 2026",
+      "category": "Drinkware",
       "materials": [
         "Aluminio"
       ],
@@ -5067,7 +5067,7 @@
       "external_id": "05047000013",
       "title": "Botella CIRCUIT",
       "description": "Sport Bottle reutilizable de aluminio con tapa rosca de PP y silicona. Cuenta con una tapa con agarre para facilitar su transporte. Producto libre de BPA. Producto aprobado por el I.N.A.L. para el contacto con alimentos. Medidas: 24,5 cm x diámetro 7,2 cm. Capacidad: 750 ml. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nTahg.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Aluminio"
       ],
@@ -5105,7 +5105,7 @@
       "external_id": "21094000003",
       "title": "Mochila Lisa",
       "description": "Mochila confeccionada en Polyester, con bolsillo frontal con cierre y 2 bolsillos laterales elásticos . Medidas: 42 cm alto | 27cm ancho | 12cm profundidad. Capacidad 13.5 Lts. Tahg.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Amarillo",
@@ -5192,7 +5192,7 @@
       "external_id": "05049000012",
       "title": "Jarro Bayo",
       "description": "Jarro térmico realizado en acero inoxidable en su exterior, y polipropileno de color negro en su interior, con tapa transparente cristal clear con cierre. \nCapacidad: 360 ml.\nProducto libre de BPA y aprobado por el I.N.A.L. para el contacto con alimentos.\n\nNo es apto para lavavajillas. No es apto para microondas.\n\nPampero.  \n\nEl producto viene presentado en una Gift Box confeccionada en cartulina Kraft ¡personalizala con un mensaje especial!",
-      "category": "2026 Reingresos",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -5256,7 +5256,7 @@
       "external_id": "05047000014",
       "title": "Botella Wai",
       "description": "Botella reutilizable de vidrio, con tapa de bamboo y funda de silicona. Cuenta con un agarre en su tapa para su transporte. Producto libre de BPA. Producto aprobado por el I.N.A.L. para el contacto con alimentos. Medidas: 22,6 cm x 6,8 cm (Altura x Diámetro). Capacidad: 550ml. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nReUseMe",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -5286,7 +5286,7 @@
       "external_id": "05049000014",
       "title": "Jarro Puelo",
       "description": "Jarro térmico realizado en acero inoxidable en su exterior, y polipropileno de color negro en su interior. Su tapa es transparente cristal clear. ¡Este jarro térmico es la elección perfecta para mantener tu bebida caliente o fría! Capacidad: 590 ml.\nEl producto viene presentado en una GiftBox confeccionada en cartulina Kraft ¡personalizala con un mensaje especial!\nProducto libre de BPA. Producto aprobado por el I.N.A.L. para el contacto con alimentos. \nPampero.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -5631,7 +5631,7 @@
       "external_id": "10094000264",
       "title": "Mochila Fach",
       "description": "Mochila realizada en Poliester, con respaldo y correas acolchadas. Cuenta con dos compartimientos principales con cierre, uno de ellos completamente acolchado para notebook. Tiene un bolsillo secundario en el frente. Además, cuenta con un bolsillo con cierre oculto en el respaldo para proteger objetos valiosos. Dimensiones: 30 x 15 x 43 cm. Capacidad: 19 Lts. Notebook: 15,6\". Wagner.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -5695,7 +5695,7 @@
       "external_id": "10094000266",
       "title": "Mochila Himmel",
       "description": "Mochila realizada en Poliester, con respaldo y correas acolchadas. Cuenta con dos compartimientos principales con cierre, uno de ellos completamente acolchado para notebook. Bolsillo secundario en el frente y dos bolsillos laterales para pequeños objetos. Dimensiones: 43 x 29 x 9.5 cm. Capacidad: 11 Lts. Notebook: 15,6\". \nWagner.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Gris Oscuro"
@@ -5841,7 +5841,7 @@
       "external_id": "05047000015",
       "title": "Botella Toms",
       "description": "Sport Bottle reutilizable de acero inoxidable AISI 304, con tapa rosca de bambú y gancho de agarre. \nCapacidad: 700 ml. \nProducto aprobado por el I.N.A.L. para el contacto con alimentos. Producto libre de BPA.  \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nReUseMe.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -5968,7 +5968,7 @@
       "external_id": "20014000005",
       "title": "Chaleco Polar Kick",
       "description": "Fabricado en polar de alta calidad, con tratamiento antipilling que mantiene por más tiempo el aspecto original de la prenda, evitando la formación de imperfecciones. Cuenta con dos bolsillos laterales y cuello alzado que proporciona protección y comodidad. Recomendaciones de uso para cuidar tu abrigo: Lavar a máquina a 30°. No lavar en seco. No Blanquear. No planchar. No secar en máquina. Slazenger.",
-      "category": "Apparel - Abrigo",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Small",
@@ -6002,7 +6002,7 @@
       "external_id": "20014000006",
       "title": "Campera Polar Volley",
       "description": "Fabricada en polar de alta calidad, con tratamiento antipilling que mantiene por más tiempo el aspecto original de la prenda, evitando la formación de imperfecciones. Cuenta con dos bolsillos laterales y cuello alzado que proporciona protección y comodidad. Recomendaciones de uso para cuidar tu abrigo: Lavar a máquina a 30°. No lavar en seco. No Blanquear. No planchar. No secar en máquina. Slazenger.",
-      "category": "70%OFF Apparel",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Small",
@@ -6095,7 +6095,7 @@
       "external_id": "05047000016",
       "title": "Botella Cake",
       "description": "Botella reutilizable de PET con tapa de Polipropileno.\nCuenta con un agarre en la tapa para su transporte. \n\nNo es apta para bebidas calientes, lavavajillas ni microondas. \n\nCapacidad: 600ml.\n\nReUseMe",
-      "category": "2026 Reingresos",
+      "category": "Drinkware",
       "materials": [
         "Plástico"
       ],
@@ -6140,7 +6140,7 @@
       "external_id": "05047000017",
       "title": "Botella Fizzy",
       "description": "Botella transparente reutilizable de PET con tapa de Polipropileno.\nCuenta con un agarre en la tapa para su transporte. \nNo es apta para bebidas calientes.\nCapacidad: 600ml. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nReUseMe.",
-      "category": "Próximos Arribos",
+      "category": "Drinkware",
       "materials": [
         "Plástico"
       ],
@@ -6202,7 +6202,7 @@
       "external_id": "05047000018",
       "title": "Botella Flake",
       "description": "Botella reutilizable de PET con tapa de Polipropileno.\nCuenta con un agarre en la tapa para su transporte.  \n\nNo es apta para bebidas calientes, lavavajillas ni microondas.\n\nCapacidad: 600ml. \n\nReUseMe.",
-      "category": "2026 Reingresos",
+      "category": "Drinkware",
       "materials": [
         "Plástico"
       ],
@@ -6447,7 +6447,7 @@
       "external_id": "19017000017",
       "title": "Buzo Goya",
       "description": "Buzo de manga larga de frisa, con cuello alto con cierre y puño en ribb. Sus costuras están realizadas en el mismo tono de tela de base. Esta prenda está confeccionada en 70% algodón - 30% poliester. Disponible en color negro y en color azul. \n\nRecomendaciones de uso para cuidar tu abrigo: Lavar a máquina a 30°. No lavar en seco. No Blanquear. No planchar. No secar en máquina. La prenda Puede encoger 5%. \n\nPampero.",
-      "category": "Apparel - Abrigo",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Medium",
@@ -6480,7 +6480,7 @@
       "external_id": "09084000015",
       "title": "Llavero Cinta Métrica",
       "description": "Cinta métrica retráctil con llavero fabricada en ABS y hierro. Cuenta con mecanismo retráctil de 1 metro, anillo metálico para llaves y cuerpo ergonómico. Es ideal para llevar siempre a mano en tareas de medición rápidas, reparaciones en el hogar, actividades de bricolaje o uso profesional diario.\n\nCapacidad en metros: 1 metro\n\nTAHG.",
-      "category": "2026 Agro",
+      "category": "Llaveros",
       "materials": [],
       "colors": [
         "Blanco"
@@ -6620,7 +6620,7 @@
       "external_id": "22050000000",
       "title": "Set Cutlery Bamboo",
       "description": "Set de Cubiertos reutilizables de Bamboo con funda personalizable de tela.Incluye cuchillo, tenedor y cuchara. Medidas: 22 x 7 cm. \nReUseMe.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Marron Claro"
@@ -6806,7 +6806,7 @@
       "external_id": "22006000000",
       "title": "Contenedor Health",
       "description": "Contenedor de alimentos realizado en PP y Wheat Straw, pasta de tallo de trigo, un material sustentable que reduce el consumo de plásticos vírgenes. Incluye tenedor y panel divisor interno móvil, para colocar diferentes alimentos. Tapa con traba y espacio para apoyar tenedor. No apto para microondas. \n\nDebido a que la pasta de trigo es un material 100% natural, puede haber ligeras variaciones en el color del producto de un lote a otro. \n\nReUseMe",
-      "category": "Back to School",
+      "category": "Escritorio",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -6900,7 +6900,7 @@
       "external_id": "19014000018",
       "title": "Remera Toay",
       "description": "Remera de cuello redondo con cinta tapa costura. Confeccionada en 100% algodón 24/1 peinado.\n\n Recomendaciones de uso para cuidar tu prenda: Lavar a máquina a 30°. No Blanquear. No secar en máquina. Planchar suavemente, evitando el área estampada. \n\nPampero",
-      "category": "70%OFF Apparel",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "4 X Large",
@@ -6928,7 +6928,7 @@
       "external_id": "20014000007",
       "title": "Remera Game",
       "description": "Remera manga corta con cuello redondo collareta cosido, confeccionada en 100 % algodón 24/1 cardado. \n\nRecomendaciones de uso para cuidar tu prenda: Lavar a máquina a 30°. No Blanquear. No secar en máquina. Planchar suavemente, evitando el área estampada. Slazenger",
-      "category": "70%OFF Apparel",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "4 X Large",
@@ -6972,7 +6972,7 @@
       "external_id": "22014000070",
       "title": "Remera Summer",
       "description": "Remera de manga corta unisex en corte slim fit, con cuello redondo en ribb de algodón. Esta prenda está confeccionada 100% en algodón 24/1 peinado, un recurso ecológico renovable y sostenible. \n\nElla mide 1.68m, pesa 60 kilos y está usando talle M. Él mide 1.88m y está usando talle L.​ \n\nRecomendaciones de uso para cuidar tu prenda: Lavar a máquina a 30°. No Blanquear. No secar en máquina. Planchar suavemente, evitando el área estampada. \n\nReUseMe",
-      "category": "70%OFF Apparel",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Large"
@@ -7086,7 +7086,7 @@
       "external_id": "22014000077",
       "title": "Chomba Planet",
       "description": "Chomba de manga corta en corte slim fit, con botones transparentes y terminación de mangas en dobladillo con collareta. Esta prenda está confeccionada 100% en algodón 24/1 peinado, un recurso ecológico renovable y sostenible. \n\nRecomendaciones de uso para cuidar tu prenda: Lavar a máquina a 30°. No Blanquear. No secar en máquina. Planchar suavemente, evitando el área estampada. \n\nReUseMe.",
-      "category": "Apparel - Chombas",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "X Small",
@@ -7157,7 +7157,7 @@
       "external_id": "22049000001",
       "title": "Jarro Branch",
       "description": "Jarro térmico realizado en doble pared de acero inoxidable, con detalles en bamboo, polipropileno y ABS. Tapa cristal clear con sello de silicona y traba antiderrame. \nCapacidad: 600ml.\nEl producto viene presentado en una Gif Box confeccionada en cartulina Kraft. \nProducto aprobado por el INAL para el contacto con alimentos.\n\nNo es apto para lavavajillas. No es apto para microondas.\n\nReUseMe.",
-      "category": "70%OFF Back to School",
+      "category": "Escritorio",
       "materials": [
         "Acero"
       ],
@@ -7193,7 +7193,7 @@
       "external_id": "05052000012",
       "title": "Coctail set Barman",
       "description": "Set de Cocteleria, realizado en acero inoxidable. Medidas: 21,5 x 5,8 x 8,3 cm. Tahg.",
-      "category": "70%OFF Hogar y Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "materials": [],
       "colors": [
         "Gris Plata"
@@ -7247,7 +7247,7 @@
       "external_id": "15011000010",
       "title": "Set Stationery Visibility",
       "description": "Cartuchera plástica transparente con cierre. Incluye: Bolígrafo (Tinta Azul), lápiz, regla y sacapuntas. \nColores: negro, rojo y azul.  \nTahg.",
-      "category": "Back to School",
+      "category": "Escritorio",
       "materials": [],
       "colors": [
         "Rojo"
@@ -7276,7 +7276,7 @@
       "external_id": "10097000028",
       "title": "Bolsa Tero 35x30",
       "description": "Bolsa de Rpet Mesh, confeccionada a partir de botellas recicladas. Capacidad: 17 Lts. Medidas: 35 x 15,5 x 30 cm. ReUseMe.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Blanco"
@@ -7300,7 +7300,7 @@
       "external_id": "10098000008",
       "title": "Cooler Refresh",
       "description": "Formato tipo mochila. Realizado en RPET/Polyester , confeccionado a partir de botellas recicladas. Interior térmico. Medidas: 25 x 19,5 x 34 cm. Capacidad: 16 Lts. ReUseMe.",
-      "category": "Logo 24hs",
+      "category": "Coolers y luncheras",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -7391,7 +7391,7 @@
       "external_id": "32014000007",
       "title": "Chomba Abeto",
       "description": "Chomba de manga corta con tiras de mangas y cuello tejido. Terminaciones con cortes laterales, confeccionada en Micropique 24/1 Peinado, 50% algodón, 50% poliéster. Recomendaciones de uso para cuidar tu prenda: Lavar a máquina a 30°. No Blanquear. No secar en máquina. Planchar suavemente, evitando el área estampada. Cardon",
-      "category": "Apparel - Chombas",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "XX Large",
@@ -7423,7 +7423,7 @@
       "external_id": "15011000011",
       "title": "Set stationery Aptitude",
       "description": "Cartuchera de tela con cierre. Incluye: Bolígrafo (Tinta Azul), Lápiz grafito, regla, goma y sacapuntas. Medidas: 20 x 8.5 x 2 cm. Tahg.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Rojo",
@@ -7514,7 +7514,7 @@
       "external_id": "22098000004",
       "title": "Cooler Tone",
       "description": "Cooler confeccionado en polyester sustentable RPET, fabricado en base a botellas recicladas. Interior térmico. Capacidad 6L. Medidas: 21,5 x 13 x 23 cm. ReUseMe.",
-      "category": "70%OFF Bolsos y Mochilas",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro"
@@ -7692,7 +7692,7 @@
       "external_id": "21094000009",
       "title": "Mochila Venus",
       "description": "Mochila portanotebook confeccionada en polyester RPET, confeccionado a partir de botellas recicladas. Capacidad: 19 Lts. Medidas: 29.5 x 14 x 48 cm. Notebook: 15,6\". ReUseMe.",
-      "category": "70%OFF Bolsos y Mochilas",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro"
@@ -7723,7 +7723,7 @@
       "external_id": "22098000005",
       "title": "Cooler Eris",
       "description": "Cooler confeccionado en poliuretano, poliéster con revestimiento de PVC, espuma de polietileno 3mm utilizada como aislante y PEVA Lining, un revestimiento de polietileno vinil acetato, conocido por ser impermeable y usado en recubrimientos. \nCuenta con interior térmico. \nCapacidad: 7 Lts.  \nReUseMe.",
-      "category": "Logo 24hs",
+      "category": "Coolers y luncheras",
       "materials": [],
       "colors": [
         "Negro"
@@ -7752,7 +7752,7 @@
       "external_id": "22098000006",
       "title": "Cooler Tote Mars",
       "description": "Cooler confeccionado en polyester RPET sustentable, fabricado en base a botellas recicladas. Interior térmico. Capacidad: 16 Lts. Medidas:46 x 29 x 15 cm. ReUseMe.",
-      "category": "Logo 24hs",
+      "category": "Coolers y luncheras",
       "materials": [],
       "colors": [
         "Negro"
@@ -7785,7 +7785,7 @@
       "external_id": "22098000007",
       "title": "Cooler Clifton",
       "description": "Cooler tipo morral, confeccionado en tela Nylon 600D. Tiene interior térmico forrado en aluminio. \nCuenta con un compartimiento principal, 3 bolsillos con cierre. \nCapacidad: 7 Lts. \nTahg.",
-      "category": "Logo 24hs",
+      "category": "Coolers y luncheras",
       "materials": [],
       "colors": [
         "Azul",
@@ -7820,7 +7820,7 @@
       "external_id": "99030760601",
       "title": "Caja SMALL",
       "description": "Caja personalizable, confeccionada en cartulina kraft. Tiene los cantos reforzados mediante doble pared para proteger los productos que quieras incluir. La caja se entrega armada. No incluye viruta. Dimensiones: 29cm x12cm x10cm.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Kaki"
@@ -7880,7 +7880,7 @@
       "external_id": "99030760603",
       "title": "Caja LARGE",
       "description": "Caja personalizable, confeccionada en cartulina kraft. Tiene los cantos reforzados mediante doble pared para proteger los productos que quieras incluir. La caja se entrega armada. No incluye viruta. Dimensiones: 42cm x19cm x11cm.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Kaki"
@@ -7906,7 +7906,7 @@
       "external_id": "33014000011",
       "title": "Hoodie Snake",
       "description": "Hoodie de frisa 50% algodón y 50% poliéster de 280g, tipo canguro unisex con capucha.\n  \nCERTIFICACIÓN: PETA-Approved Vegan \nRECOMENDACIONES DE USO: Lavar a máquina a 30°. No lavar en seco. No blanquear. No planchar. No secar en máquina.\n\nSol´s.",
-      "category": "2026 Reingresos",
+      "category": "General",
       "materials": [],
       "colors": [
         "Azul",
@@ -7992,7 +7992,7 @@
       "external_id": "99030777009",
       "title": "Mochila SEIN",
       "description": "Mochila realizada en Poliester, con respaldo y correas acolchadas. Tiene dos bolsillos principales, un espacio completamente acolchado para notebook, 2 bolsillos laterales y  bolsillos internos. Dimensiones: 44 x 31 x 13 cm. Capacidad: 17Lts. Notebook: 15,6\". Wagner.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Gris Oscuro"
@@ -8277,7 +8277,7 @@
       "external_id": "99030777024",
       "title": "Botella Atuel",
       "description": "Botella reutilizable de doble pared de acero inoxidable, esmaltado en su exterior con Powder Coating. Es ideal para mantener la temperatura de la bebida: mantiene 4 horas la bebida caliente y 8 horas la bebida fría. Su tapa está confeccionada en PP, acero inoxidable y silicona para evitar derrames de líquido. Capacidad: 500 ml.\nEl producto viene presentado en una Gift Box confeccionada en cartulina Kraft. \nProducto aprobado por el I.N.A.L. para el contacto con alimentos. Producto libre de BPA.\n\nNo es apto para lavavajillas. No es apto para microondas.\n\nPampero.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -8366,7 +8366,7 @@
       "external_id": "99030777028",
       "title": "Botella OLYMPIA",
       "description": "Botella deportiva reutilizable de 650 ml fabricada en acero inoxidable. Su doble pared aislante mantiene las bebidas frías por hasta 24 horas y calientes por hasta 12 horas, permitiéndote disfrutar tus bebidas favoritas en cualquier momento y lugar. Cuenta con tapa con pico a rosa, confeccionada en PP, y silicona para evitar derrames de líquido. \n\nProducto libre de BPA y aprobado por el I.N.A.L. para el contacto con alimentos. Ideal para tus actividades deportivas y al aire libre. Con impacto positivo en el medio ambiente, esta botella reutilizable te ayuda a reducir el consumo de plástico de un solo uso. \n\nDimensiones: 26 cm x 7,8 cm (Altura x Diámetro). \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nSlazenger.",
-      "category": "2026 Reingresos",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -8413,7 +8413,7 @@
       "external_id": "99030777029",
       "title": "Set de Asado Chicago",
       "description": "Set de asado con estuche de polyester y nylon color gris. Contiene: 2 juegos de cuchillo y tenedor, 1 pinza, 1 cuchillo asador y 1 espátula. Todas las piezas cuentan con mango de madera. Producto aprobado por el INAL para el contacto con alimentos. Tahg.",
-      "category": "2026 Agro",
+      "category": "General",
       "materials": [],
       "colors": [
         "Plás/Metal"
@@ -8549,7 +8549,7 @@
       "external_id": "99030777035",
       "title": "Botella FLUMEN",
       "description": "Botella de 500ml fabricada en doble pared de acero inoxidable con tapa a rosca de bamboo. Ideal para el día a día o actividades deportivas. Mantiene las bebidas frías por 8 horas y calientes durante 4 horas. Con impacto positivo en el medio ambiente, esta botella reutilizable te ayuda a reducir el consumo de plástico de un solo uso. Producto libre de BPA, aprobado por el I.N.A.L. para el contacto con alimentos.\n\nNo es apto para lavavajillas. No es apto para microondas.\n\nReUseMe.",
-      "category": "2026 Reingresos",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -8653,7 +8653,7 @@
       "external_id": "99030769641",
       "title": "Cuaderno BUSH",
       "description": "Cuaderno anillado con tapa confeccionado con papel Kraft y 100 hojas lisas de 170 gr. Cuenta con un cierre elástico. Medidas : 14,8 x 21,2 cm.  Se presenta protegido en bolsa. ReUseMe.",
-      "category": "Logo 24hs",
+      "category": "Cuadernos",
       "materials": [],
       "colors": [
         "Verde",
@@ -8804,7 +8804,7 @@
       "external_id": "99030769648",
       "title": "Cuaderno GROUND",
       "description": "Cuaderno de tapa confeccionado con material RPET, hecho con botellas de plástico reciclado. Cuenta con una cinta marcadora y un cierre elástico. 96 hojas lisas de 70g de bordes redondeados. \nMedidas: 17,6 x 25cm. \nReUseMe.",
-      "category": "Logo 24hs",
+      "category": "Cuadernos",
       "materials": [],
       "colors": [
         "Azul",
@@ -8835,7 +8835,7 @@
       "external_id": "99030769651",
       "title": "Termo IVY 1200ml",
       "description": "Termo de acero inoxidable 304, recubierto con esmalte especial que protege de ralladuras y golpes. Cuenta con manija plegable para facilitar el transporte y tapa con superficie plana estable para usar como taza o vaso  Medidas: 32 altura x diámetro 9 cm. Mantiene el agua caliente por 12 horas. Cuenta con pico POP UP con push. Capacidad: 1,2 Litro. Producto libre de BPA. Pampa Spirit.",
-      "category": "2026 Reingresos",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -9068,7 +9068,7 @@
       "external_id": "99030769669",
       "title": "Bag TERO 43X35",
       "description": "Bolsa de Rpet Mesh, confeccionada a partir de botellas recicladas. Capacidad: 24 Lts. Medidas: 43 x 15 x 35 cm. ReUseMe.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Blanco"
@@ -9131,7 +9131,7 @@
       "external_id": "99030777041",
       "title": "Silla Maipu",
       "description": "Silla Reposera plegable confeccionada en Polycanvas. El respaldo cuenta con un marco de madera, protegido con Cetol, que permite regular la inclinación, y con un bolsillo con cierre removible, pegado en velcro. También posee una correa regulable para transportarla fácilmente y elásticos en los extremos para cerrarla. \n\nDimensiones desplegada: 137 x 44 cm. Dimensiones cerrada: 56 x 9 cm. Dimensiones bolsillo: 38 x 30 cm. \n\nCardon.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Gris Oscuro"
@@ -9365,7 +9365,7 @@
       "external_id": "99030777052",
       "title": "Neceser Mosconi",
       "description": "Neceser confeccionado en Polyester, con cinta de agarre para facilitar su transporte, cierres en tono y cabezal negro. Cuenta con un compartimiento y un bolsillo frontal con cierre. Interior forrado en gris pantone. Ideal para viajes o para mantener los cosméticos y objetos personales organizados y a mano en casa. Dimensiones: 14 x 25 x 11 cm (Alto x Longitud x Ancho). Capacidad: 3L. Cardon.",
-      "category": "Logo 24hs",
+      "category": "Viajes",
       "materials": [],
       "colors": [
         "Negro"
@@ -9403,7 +9403,7 @@
       "external_id": "99030777053",
       "title": "Bolso Plegable Parodi",
       "description": "Bolso tote confeccionado en Nylon Jacquard con cierre en tono y cabezal negro. Compartimiento principal de gran apertura con cierre. Cuenta con un bolsillo trasero sin cierre. Incluye un neceser, confeccionado también en jacquard nylon, con cierres en tono. Correas para hombros confeccionadas en Polyester y Goma. Ideal para viajes y madres. Dimensiones: 36 x 58 x 22 cm (Alto x Longitud x Ancho). Capacidad: 5L. Cardon.",
-      "category": "Bolsas y Tote Bags",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro"
@@ -9525,7 +9525,7 @@
       "external_id": "99030777065",
       "title": "Gorro WELLS",
       "description": "Gorra impermeable de 6 paneles realizado 100% en polyester. Agujeros cortados con láser perforador, asegurando una ventilación óptima. Ideal para protegerte del sol durante tus actividades deportivas. \nSlazenger.",
-      "category": "Mundial 2026",
+      "category": "Gorros",
       "materials": [],
       "colors": [
         "Azúl Marino",
@@ -9824,7 +9824,7 @@
       "external_id": "99030777113",
       "title": "Toalla de Golf",
       "description": "Toalla deportiva de microfibra, con un gancho sujetador para transportarla y colgarla con facilidad.\n\nMedidas del producto desplegado: 37 x 11 x 0,5 cm.\nMedidas del producto plegado: 15 x 11 x 0,5 cm.\n\nTahg",
-      "category": "Mundial 2026",
+      "category": "Verano",
       "materials": [],
       "colors": [
         "Blanco"
@@ -10077,7 +10077,7 @@
       "external_id": "99030777127",
       "title": "Delantal Jute",
       "description": "El delantal de ReUseMe está confeccionado en tela de Jute laminada con TNT, tela no tejida. Cuenta con dos tiras regulables para atar en la cintura y un bolsillo frontal. ReUseMe",
-      "category": "70%OFF Hogar y Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "materials": [],
       "colors": [
         "Crema"
@@ -10521,7 +10521,7 @@
       "external_id": "99030777148",
       "title": "Silla PALMAR",
       "description": "Silla reposera plegable confeccionada en Polycanvas, con una estructura de caños de aluminio que garantiza durabilidad y ligereza. Su respaldo cuenta con un marco que le da la inclinación perfecta para relajarte, e incluso puede ser retirado para acostar completamente la silla. Además, Incluye bolsa para guardarla y transportarla con facilidad. Es ideal para disfrutar de un día de playa, un picnic o simplemente relajarte en tu jardín. Recomendada para un uso de hasta 100kilos. \nPampero.",
-      "category": "70%OFF Hogar y Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -10784,7 +10784,7 @@
       "external_id": "99030777159",
       "title": "Cooler Pivot",
       "description": "Cooler confeccionado en tela tejida tipo snow canvas, con interior de PE Foam y forro de PEVA. Tiene una capacidad de 6L. Ideal para mantener alimentos y bebidas frescos en actividades al aire libre, viajes o picnics. \nMedidas: 22,5 x 18 x 16 cm. \nTahg.",
-      "category": "2026 Reingresos",
+      "category": "Coolers y luncheras",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -11237,7 +11237,7 @@
       "external_id": "99030777178",
       "title": "Cuaderno Onyx",
       "description": "Cuaderno A5 de 80 hojas lisas de 70gr con tapa dura de cuero reconstituido  (70% cuero reciclado + 30% latex). Cuenta con cierre elástico y marcador de páginas color negro. Encuadernación cosida. \n\nThe Daily Book",
-      "category": "2026 Agro",
+      "category": "Cuadernos",
       "materials": [],
       "colors": [
         "Negro",
@@ -11274,7 +11274,7 @@
       "external_id": "99030777180",
       "title": "Cuaderno Enigma",
       "description": "Cuaderno de 80 hojas lisas de 70 gr con tapa dura de cartón reciclado recubierto de PU. Cuenta con marcador de páginas color negro y, su tapa posee elástico porta lapicera. Encuadernación cosida. \nMedidas: 23 x 14,5 cm (Altura x Ancho). \nThe Daily Book.",
-      "category": "2026 Reingresos",
+      "category": "Cuadernos",
       "materials": [],
       "colors": [
         "Negro"
@@ -11325,7 +11325,7 @@
       "external_id": "99030777182",
       "title": "Cuaderno Genesis",
       "description": "Cuaderno anillado de 80 hojas lisas de 70gr. Tapa dura confeccionada en RPET, material hecho con botellas de plástico recicladas. Su tapa delantera puede doblarse, creando un soporte para teléfono. Cuenta con cierre elástico y porta lapicera. \nColores disponibles: gris, rojo y azul. \nMedidas: 21 x 15 cm (Altura x Ancho). \nThe Daily Book.",
-      "category": "2026 Reingresos",
+      "category": "Cuadernos",
       "materials": [],
       "colors": [
         "Azul"
@@ -11461,7 +11461,7 @@
       "external_id": "99030777186",
       "title": "Bolso Sacken Large",
       "description": "Bolso grande confeccionado en nylon, ideal para tus actividades deportivas o viajes. Cuenta con un compartimiento principal amplio, y un bolsillo frontal con cierre para objetos mas pequeños que necesites a mano. Posee manijas y correa regulable, para llevarlo de la forma que te resulte más cómoda. Capacidad: 50L. \nWagner.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro",
@@ -11507,7 +11507,7 @@
       "external_id": "99030777187",
       "title": "Bolso Crossover koffer",
       "description": "Bandolera morral confeccionada en nylon. Cuenta con un compartimiento principal con cierre, lo que la convierte en un accesorio completo para evitar caídas o pérdidas de tus elementos más importantes. Tiene un bolsillo externo y uno interno con cierre que te permitirá guardar aquellos objetos más pequeños o imprescindibles evitando que se mezclen con los demás. Posee correa regulable. Capacidad: 3L. Wagner.",
-      "category": "Logo 24hs",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro"
@@ -11579,7 +11579,7 @@
       "external_id": "99030777189",
       "title": "Tote Catedral",
       "description": "El Tote Catedral está confeccionado en materiales super resistentes: Tarpaulin, PEVA y PE, lo que le otorga durabilidad y resistencia al uso diario. Con sus medidas de 50,8 (alto) x 12,7 (profundidad) x 55,8 (ancho) cm, ofrece un amplio espacio para llevar todo lo que necesitas. Además, no tiene cierres: se enrosca y se engancha para asegurarte de no perder nada. \nEl Tote Catedral es muy cómodo y práctico: usalo como eco bag para las compras, como cartera para la oficina o llévala a la playa. ¡Ideal para cualquier ocasión! \nPampero",
-      "category": "Bolsas y Tote Bags",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -11820,7 +11820,7 @@
       "external_id": "99020769649",
       "title": "Cuaderno Rock",
       "description": "Cuaderno ecológico de tapa dura fabricado en RPET reciclado. Cuenta con 96 hojas lisas color marfil de papel de piedra, de escritura suave, más duradero y resistente que el papel tradicional. Cuenta con banda elástica de 6 mm en la tapa, porta bolígrafo elástico de 1,5 cm y cinta señaladora. Es ideal para tomar notas en la oficina, la universidad o reuniones corporativas con un estilo profesional y sustentable.\n\nPara la fabricación de sus hojas no se han talado árboles, ya que están elaboradas a partir de polietileno y polvo de piedra, reduciendo el impacto ambiental.\n\nReUseMe.",
-      "category": "Logo 24hs",
+      "category": "Cuadernos",
       "materials": [],
       "colors": [
         "Negro",
@@ -11851,7 +11851,7 @@
       "external_id": "99030777059",
       "title": "Silla Pastor",
       "description": "Silla baja plegable confeccionada en Polyester 600x300D/PVC, acolchado de espuma. En el apoyabrazo, cuenta con soporte de mesh para sostener bebida. Incluye funda de transporte. Material de la estructura: Acero 16*0.8/1.0mm. Medidas: 61 x 53 x 53 cm (Altura x Longitud x Ancho). Ideal para llevarla a la playa o para un día de camping. Pampero.",
-      "category": "Logo 24hs",
+      "category": "General",
       "materials": [],
       "colors": [
         "Gris Claro"
@@ -12036,7 +12036,7 @@
       "external_id": "99030777057",
       "title": "Botella Hydra Go 1000 ml",
       "description": "Botella isotérmica de 1000 ml, con doble pared de acero inoxidable 18/8, pintura en polvo y base de silicona antideslizante, mantiene tus bebidas frías durante 12 horas y calientes durante 8 horas. \nCuenta con 2 tapas negras a rosca, para que utilices la que te resulte más cómoda: con pico y anillo para facilitar el agarre y con manija para transportarla. Incluye 2 sorbetes y cepillo limpiador. \n\nViene en 12 colores diferentes. Ideal para tus actividades deportivas y al aire libre. Su capacidad de 1000 ml te asegura tener suficiente líquido para hidratarte durante todo el día. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nHydra Go.",
-      "category": "Logo 24hs",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -12170,7 +12170,7 @@
       "external_id": "99030777058",
       "title": "Botella Hydra Go 1200 ml",
       "description": "Botella isotérmica de 1200 ml, con doble pared de acero inoxidable 18/8, pintura en polvo y base de silicona antideslizante, mantiene tus bebidas frías durante 12 horas y calientes durante 8 horas.  \nCuenta con 2 tapas negras a rosca, para que utilices la que te resulte más cómoda: con pico y anillo para facilitar el agarre, y con manija para transportarla. Incluye 2 sorbetes y cepillo limpiador. \n\nViene en 12 colores diferentes. Ideal para tus actividades deportivas y al aire libre. Su capacidad de 1200 ml te asegura tener suficiente líquido para hidratarte durante todo el día.\n\nNo es apto para lavavajillas. No es apto para microondas.\n\nHydra Go.",
-      "category": "Mundial 2026",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -12972,7 +12972,7 @@
       "external_id": "99030777060",
       "title": "Botella ION",
       "description": "Botella de 500 ml confeccionada en aluminio, con tapa a rosca fabricada en PP. Ideal para el día a día o para tus actividades deportivas. Con impacto positivo en el medio ambiente, esta botella reutilizable te ayuda a reducir el consumo de plástico de un solo uso. El producto viene presentado en una bolsa de PLA 100% compostable. Producto libre de BPA. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nTahg.",
-      "category": "2026 Reingresos",
+      "category": "Drinkware",
       "materials": [
         "Aluminio"
       ],
@@ -13122,7 +13122,7 @@
       "external_id": "99030777270",
       "title": "Termo PRACTICO",
       "description": "Termo fabricado en doble pared de acero inoxidable 304, un material de alta calidad que asegura durabilidad y resistencia en cualquier ocasión. \nSu diseño incluye una tapa a rosca, un tapón con pico cebador y una manija ergonómica de 9,5 cm que permite transportarlo cómodamente, convirtiéndolo en el compañero ideal para el día a día o actividades al aire libre. \nIdeal para mantener tus bebidas calientes o frías por hasta 12 horas. \nCapacidad: 1L.  \nPampa Spirit.",
-      "category": "Próximos Arribos",
+      "category": "Drinkware",
       "materials": [],
       "colors": [
         "Blanco",
@@ -13167,7 +13167,7 @@
       "external_id": "99030777271",
       "title": "Campera Softshell Race Mujer",
       "description": "Campera de softshell 280g  96% poliéster 4% elastáno  con tela exterior impermeable e interior de polar. Cuenta con 2 bolsillos laterales con cremallera. CERTIFICACIÓN: PETA-Approved Vegan RECOMENDACIONES DE USO: Lavar a máquina a 40°. No lavar en seco. No blanquear. No planchar. No secar en máquina. Consultar términos y condiciones del servicio. Sol´s.",
-      "category": "2026 Reingresos",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Small",
@@ -13211,7 +13211,7 @@
       "external_id": "99030777272",
       "title": "Campera Softshell Race Hombre",
       "description": "Campera de softshell 280g  96% poliéster 4% elastáno  con tela exterior impermeable e interior de polar. Cuenta con 2 bolsillos laterales con cierre. \nCERTIFICACIÓN: PETA-Approved Vegan. \nRECOMENDACIONES DE USO: Lavar a máquina a 40°. No lavar en seco. No blanquear. No planchar. No secar en máquina. Consultar términos y condiciones del servicio. \nSol´s.",
-      "category": "2026 Reingresos",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "X Large",
@@ -13252,7 +13252,7 @@
       "external_id": "99030777273",
       "title": "Campera Stone",
       "description": "Campera de frisa 50% algodón y 50% poliéster de 260g con cierre y capucha unisex.  CERTIFICACIÓN: PETA-Approved Vegan \nRECOMENDACIONES DE USO: Lavar a máquina a 30°. No lavar en seco. No blanquear. No planchar. No secar en máquina. \nSol´s.",
-      "category": "2026 Reingresos",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Small",
@@ -13295,7 +13295,7 @@
       "external_id": "99030777274",
       "title": "Remera Regent Mujer",
       "description": "Remera de manga corta de corte entallado, confeccionada en Jersey  de 150g, 100%  algodón semi-peinado, con costuras laterales y cuello con tapacosturas. \n\nCERTIFICACIÓN: PETA-Approved Vegan. \n\nRECOMENDACIONES DE USO: Lavar a máquina a 30°, no blanquear, no secar en máquina, planchar suavemente evitando el área estampada. Sol´s.",
-      "category": "2026 Reingresos",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "X Large",
@@ -13426,7 +13426,7 @@
       "external_id": "99030777277",
       "title": "Remera Regent Hombre/Unisex",
       "description": "Remera de manga corta de corte regular, confeccionada en Jersey  de 150g, 100%  algodón semi-peinado, diseñada en formato tubular (sin costuras a los costados) y cuello con tapacosturas.\nCERTIFICACIÓN: PETA-Approved Vegan.\nRECOMENDACIONES DE USO: Lavar a máquina a 30°, no blanquear, no secar en máquina, planchar suavemente evitando el área estampada. Sol´s.",
-      "category": "2026 Reingresos",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "X Large",
@@ -13753,7 +13753,7 @@
       "external_id": "99030777306",
       "title": "Boligrafo Boy",
       "description": "Bolígrafo liviano fabricado en ABS resistente. Hecho de material duradero y biodegradable, cuenta con tinta azul, diseño ergonómico y variedad de colores como naranja, violeta, gris, entre otros. Es ideal para el uso diario en oficinas, instituciones educativas o como artículo promocional por su funcionalidad y estilo moderno.\n\nTAHG",
-      "category": "Mundial 2026",
+      "category": "Escritura",
       "materials": [],
       "colors": [
         "Azul",
@@ -14472,7 +14472,7 @@
       "external_id": "99030777345",
       "title": "Bolso NEWPORT",
       "description": "Bolso amplio de algodón reciclado. Cuenta con compartimento espacioso, asas resistentes y diseño de base ancha. Es ideal para escapadas de fin de semana, ir al gimnasio o como bolso versátil para el día a día. \nRe use me.",
-      "category": "Mundial 2026",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro",
@@ -14849,7 +14849,7 @@
       "external_id": "99030777356",
       "title": "Campera Montana Mujer",
       "description": "Campera con corte de mujer, confeccionada 100% en poliéster, con material resistente al viento y repelente al agua, que ofrece comodidad y protección en todo momento. \n\nCuenta con cierre completo, protector de cuello y capucha ajustable. El dobladillo elástico garantiza un ajuste cómodo y ceñido. \n\nSu estructura con relleno térmico garantiza protección para actividades laborales al aire libre a bajas temperaturas o entornos ambientales exigentes.\n\nPampero.",
-      "category": "Apparel - Abrigo",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Medium",
@@ -15188,7 +15188,7 @@
       "external_id": "99030777370",
       "title": "Neceser Kendall",
       "description": "Neceser practico con cierre, confeccionado en microfibra. Es ideal para guardar cosméticos, accesorios o artículos personales. Incluye costura decorativa en la parte superior. Mide 22 x 5 x 16 cm. \nTahg.",
-      "category": "2026 Novedades",
+      "category": "Viajes",
       "materials": [],
       "colors": [
         "Negro"
@@ -15432,7 +15432,7 @@
       "external_id": "99030777381",
       "title": "Bolso Worker",
       "description": "Bolso utilitario confeccionado en satén color negro. Hecho con materiales resistentes y biodegradables, cuenta con amplio compartimento principal, costuras reforzadas y diseño funcional. Es ideal para transportar herramientas, ropa o equipos en entornos laborales, deportivos o de viaje.\n\nCapacidad en litros: Aproximadamente 37 litros\n\nTAHG",
-      "category": "Mundial 2026",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro",
@@ -15995,7 +15995,7 @@
       "external_id": "99030777400",
       "title": "Camisa Boston Hombre/Unisex",
       "description": "Camisa de manga larga de corte recto. Confeccionada en Oxford (70% algodón y 30% poliéster), ideal para uso profesional. \nCuenta con cuello reforzado, puños ajustables, bolsillo en el pecho izquierdo y dos cómodos pliegues en la espalda para mayor libertad de movimiento. Botones a tono. CERTIFICACIÓN: PETA-Approved Vegan\n\nRECOMENDACIONES DE USO: Lavar a máquina a 40°, no blanquear, no secar en máquina, planchar a temperatura media.\n\nSol´s.",
-      "category": "Back to School",
+      "category": "Escritorio",
       "materials": [],
       "colors": [
         "Small",
@@ -16141,7 +16141,7 @@
       "external_id": "99030777402",
       "title": "Bolsa M1 30x30x10",
       "description": "Bolsa reutilizable plana sin fuelle lateral, con base oval. Fabricada en friselina de 80g/m2. Cuenta con manijas tipo correa y es ideal para entregar productos pequeños o medianos en eventos, ferias o locales. \nDimensiones: Alto: 30cm,  Ancho: 30 cm, Base: 10cm.\nTahg.",
-      "category": "2026 Reingresos",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Gris",
@@ -16186,7 +16186,7 @@
       "external_id": "99030777403",
       "title": "Bolsa M2 39x20x10",
       "description": "Bolsa reutilizable plana sin fuelle lateral, con base oval. Fabricada en friselina de 80g/m2. Cuenta con manija calada tipo riñon y es ideal para transportar botellas de vino o de cualquier tipo.\nDimensiones: Alto: 39cm,  Ancho: 20 cm, Base: 10cm.\nTahg.   \nNo incluye la botella de vino.",
-      "category": "Bolsas y Tote Bags",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Beige / Kaki",
@@ -16223,7 +16223,7 @@
       "external_id": "99030777404",
       "title": "Bolsa M3 40x35x10",
       "description": "Bolsa reutilizable plana sin fuelle lateral, con base plana. Fabricada en friselina de 80g/m2. Cuenta con manijas tipo correa y es ideal para transportar libros, artículos/accesorios de tecnología, libretas A4, compras de supermercado, etc.\nDimensiones: Alto: 40cm,  Ancho: 35cm, Base: 10cm\nTahg.",
-      "category": "2026 Reingresos",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Verde",
@@ -16266,7 +16266,7 @@
       "external_id": "99030777405",
       "title": "Bolsa M4 40x45x10",
       "description": "Bolsa reutilizable plana sin fuelle lateral, con base plana. Fabricada en friselina de 80g/m2. Cuenta con manijas tipo correa. Ideal para llevar ropa, bolsos, compras del supermercado, libros, caja de zapatos, blanquería.\nDimensiones: Alto: 40cm, Ancho: 45cm, Base: 10cm\nTahg.",
-      "category": "2026 Reingresos",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Blanco",
@@ -16319,7 +16319,7 @@
       "external_id": "99030777406",
       "title": "Bolsa M5 50x50x10",
       "description": "Bolsa reutilizable plana sin fuelle lateral, con base oval. Fabricada en friselina de 80g/m2. Cuenta con manija tipo correa y es ideal para transportar productos de mayor tamaño como carpetas, catálogos, cajas livianas o kits promocionales completos. \nAlto: 50cm.  Ancho: 50cm. Base: 10cm.\nTahg.",
-      "category": "Próximos Arribos",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Azúl Marino",
@@ -16377,7 +16377,7 @@
       "external_id": "99030777407",
       "title": "Bolsa M6 25x23x10",
       "description": "Bolsa reutilizable con fuelle lateral y base. Fabricada en friselina de 100 g/m2. Cuenta con manija tipo correa. Ideal para accesorios de tecnología o sets pequeños de regalo. Su diseño con base firme permite portar productos delicados o organizados. \nDimensiones: Alto: 25cm, Ancho: 23cm, Fuelle Base: 10cm, Fuelle Lateral: 10cm\nTahg.",
-      "category": "2026 Reingresos",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Blanco",
@@ -16433,7 +16433,7 @@
       "external_id": "99030777408",
       "title": "Bolsa M7 39x31x12",
       "description": "Bolsa reutilizable con fuelle lateral y base. Fabricada en friselina de 100 g/m2. Cuenta con manija tipo correa. Ideal para compras de supermercado o productos de farmacia. Cómoda para el uso diario y objetos variados. \nDimensiones: Alto: 39cm, Ancho: 31cm, Fuelle base: 12cm, Fuelle lateral: 12cm\nTahg.",
-      "category": "2026 Reingresos",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Blanco",
@@ -16480,7 +16480,7 @@
       "external_id": "99030777409",
       "title": "Bolsa M8 36x40x18",
       "description": "Bolsa reutilizable con fuelle lateral y base. Fabricada en friselina de 100 g/m2. Cuenta con manija tipo correa. Ideal para bolsos, mochilas o kits promocionales completos. Su tamaño y estructura permiten transportar productos más grandes y pesados.\nDimensiones: Alto: 36cm,  Ancho: 40cm, Fuelle Base: 18cm, Fuelle Lateral: 18cm.\nTahg.",
-      "category": "Bolsas y Tote Bags",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Verde",
@@ -16533,7 +16533,7 @@
       "external_id": "99030777420",
       "title": "Mochila Picnic Tacoma",
       "description": "Mochila funcional y moderna para llevar alimentos y bebidas. Fabricada con polycanvas y revestimiento interior térmico de PEVA. Cuenta con compartimento principal amplio para alimentos, compartimento secundario para utensilios o accesorios y correas acolchadas ajustables. Incluye un completo set de picnic con platos, vasos, cubiertos y sacacorcho, todo en el mismo tono. Ideal para picnics, salidas al aire libre, días de campo o viajes, manteniendo todo organizado y fresco. \n\nTahg.",
-      "category": "2026 Novedades",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Gris"
@@ -16566,7 +16566,7 @@
       "external_id": "99030777421",
       "title": "Cooler Tote Dual",
       "description": "Bolso térmico tipo tote con doble compartimiento. Confeccionado con poliéster RPEAT 300D y 150D, malla RPEAT, espuma PE de 3 mm y revestimiento interior de PEVA 13C. Cuenta con compartimento superior con malla, base térmica aislante y asas largas reforzadas. Es ideal para mantener alimentos y bebidas frescas durante salidas al parque, la playa o picnics.\nRe use Me",
-      "category": "2026 Novedades",
+      "category": "Coolers y luncheras",
       "materials": [],
       "colors": [
         "Negro",
@@ -16636,7 +16636,7 @@
       "external_id": "99030777425",
       "title": "Set bbq Delantal Grill",
       "description": "Set parrillero con delantal, espátula, tenedor, pinza y guante. El delantal de policanvas cuenta con compartimientos para guardar los utensilios fabricados en acero inoxidable 420, madera y poliéster. Incluye espátula de 36 cm, tenedor de 35 cm, pinza de 36 cm y un guante resistente al calor. Ideal para hacer asados cómodamente, con todo ordenado y fácil de llevar para las parrilladas y juntas al aire libre. \nPampa Spirit.",
-      "category": "2026 Novedades",
+      "category": "Cocina",
       "materials": [],
       "colors": [
         "Gris"
@@ -16693,7 +16693,7 @@
       "external_id": "99030777427",
       "title": "Set Palma",
       "description": "Set de asado con cuchillo, tenedor y pinza. Fabricado en madera de hevea y acero inoxidable 420. Contiene cuchillo, tenedor trinchador , pinza para asado y bolsa de guardado de nylon. Es ideal para manipular cortes de carne con precisión y comodidad durante la parrilla o asados al aire libre.   Tahg.",
-      "category": "Mundial 2026",
+      "category": "General",
       "materials": [],
       "colors": [
         "Natural"
@@ -16778,7 +16778,7 @@
       "external_id": "99030777432",
       "title": "Set de Asado Peña",
       "description": "Set de asado con tabla y utensilios. Hecho de madera de acacia y acero inoxidable 420. Cuenta con tabla rectangular con canaleta para jugos, cuchillo y tenedor de acero con mangos de madera, y soporte metálico para mantenerlos en su lugar. Es ideal para cortar y servir carnes con comodidad y estilo, perfecto para reuniones y parrilladas.   Pampa Spirit",
-      "category": "2026 Novedades",
+      "category": "General",
       "materials": [],
       "colors": [
         "Natural"
@@ -17155,7 +17155,7 @@
       "external_id": "99030778209",
       "title": "Jarro Venti",
       "description": "Taza esmaltada de acero inoxidable 304 con acabado en hierro y esmalte, fabricada con materiales duraderos y resistentes. Cuenta con diseño clásico y asa ergonómica que asegura un agarre cómodo. Es ideal para disfrutar de café, té o infusiones tanto en casa como en la oficina o actividades al aire libre.\n\nCapacidad: 700ml\nDimensiones: 130 mm x 91 mm x 127 mm.\n\nPampa Spirit.",
-      "category": "2026 Agro",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -17297,7 +17297,7 @@
       "external_id": "99030778221",
       "title": "Boligrafo Vento Silver",
       "description": "Bolígrafo con cuerpo curvo plástico en acabado plateado. Cuenta con grip de goma de color, clip y botón metálico, mecanismo retráctil y tinta negra. \nProducto libre de BPA. \nTahg",
-      "category": "Mundial 2026",
+      "category": "Escritura",
       "materials": [],
       "colors": [
         "Gris Plata"
@@ -17389,7 +17389,7 @@
       "external_id": "99030778225",
       "title": "CAMPERA STREAM MEN",
       "description": "Campera ligera para hombre confeccionada en tafetán 280T. El exterior y forro están fabricados 100% en poliéster reciclado, con relleno tipo plumón 100% poliéster. Cuenta con abertura y bolsillos laterales con cierre de nylon, cursor de metal con tirador de fantasía negro, capucha con borde elástico y puños elásticos. Es ideal para uso urbano, actividades al aire libre en climas frescos, y como abrigo liviano en invierno. \n\nCERTIFICACIÓN: PETA-Approved Vegan y OEKO-TEX Standard 100.\nRECOMENDACIONES DE USO: Lavar a máquina a 40°. No lavar en seco. No blanquear. No planchar. No secar en máquina. \n\nDado que el bordado se realiza directamente sobre la prenda, su cara interna exhibirá parte de la estructura del diseño.\n\nSol´s",
-      "category": "2026 Reingresos",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Small",
@@ -17424,7 +17424,7 @@
       "external_id": "99030778226",
       "title": "CAMPERA STREAM WOMEN",
       "description": "Campera ligera para mujer confeccionada en tafetán 280T.  El exterior y forro están fabricados 100% en poliéster reciclado, con relleno tipo plumón 100% poliéster. Cuenta con abertura y bolsillos laterales con cierre de nylon, cursor de metal con tirador de fantasía negro, capucha con borde elástico y puños elásticos. Es ideal para uso urbano, caminatas al aire libre en climas frescos, y como abrigo liviano en invierno. \n\nCERTIFICACIÓN: PETA-Approved Vegan y OEKO-TEX Standard 100.\nRECOMENDACIONES DE USO: Lavar a máquina a 40°. No lavar en seco. No blanquear. No planchar. No secar en máquina.  \n\nDado que el bordado se realiza directamente sobre la prenda, su cara interna exhibirá parte de la estructura del diseño.\n\nSol´s",
-      "category": "2026 Reingresos",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "XX Large",
@@ -17532,7 +17532,7 @@
       "external_id": "99030778229",
       "title": "Remera Lincoln",
       "description": "Remera clásica con cuello redondo. Fabricada en algodón semi-peinado Ringspun de alta calidad. Cuenta con tapacostura reforzada en el cuello, acabado de canalé con elastano, manga corta y confección tubular. Es ideal para uso diario, promociones, uniformes o personalizar con estampados. Cada unidad viene en una bolsa individual transparente, identificada con un sticker que indica el talle.\n \nCERTIFICACIÓN: PETA-Approved Vegan.\nRECOMENDACIONES DE USO: Lavar a máquina a 40 °C, no usar blanqueador y planchar a temperatura baja.  \n\nPampero",
-      "category": "Mundial 2026",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "Medium",
@@ -17576,7 +17576,7 @@
       "external_id": "99030778237",
       "title": "Llavero Bolt",
       "description": "Llavero con tira de PU negra y cuerpo metálico robusto fabricado en aleación de zinc con anillo de hierro, pensado para ofrecer durabilidad y sofisticación. Cuenta con una estructura firme y anillo metálico que permite una sujeción segura de las llaves, aportando funcionalidad con diseño profesional. Es ideal para el uso cotidiano, regalos empresariales o eventos promocionales.\n\nTAHG",
-      "category": "2026 Novedades",
+      "category": "Llaveros",
       "materials": [],
       "colors": [
         "Negro"
@@ -17602,7 +17602,7 @@
       "external_id": "99030778238",
       "title": "Llavero Iron",
       "description": "Llavero con diseño funcional y moderno fabricado en aleación de zinc con detalles en PU y anillo de hierro. Cuenta con gancho metálico integrado y anillo resistente para una sujeción segura, siendo práctico y versátil para el uso diario o como regalo corporativo. Es ideal para quienes buscan un accesorio elegante, duradero y útil en el día a día.\n\nTahg",
-      "category": "2026 Novedades",
+      "category": "Llaveros",
       "materials": [],
       "colors": [
         "Negro"
@@ -17656,7 +17656,7 @@
       "external_id": "99030778240",
       "title": "Llavero Destapador Edge",
       "description": "Llavero destapador compacto fabricado en aleación de zinc con detalles en PU y anillo de hierro. Cuenta con un destapador integrado en la parte inferior y una estructura de metal de 4 mm de espesor, lo que garantiza resistencia y durabilidad. Es ideal para quienes buscan una herramienta útil y elegante para llevar a reuniones, eventos o como obsequio promocional.\n\nTahg",
-      "category": "2026 Novedades",
+      "category": "Llaveros",
       "materials": [],
       "colors": [
         "Negro"
@@ -17684,7 +17684,7 @@
       "external_id": "99030778241",
       "title": "Llavero Nux",
       "description": "Llavero liviano fabricado en aleación de aluminio con detalles en PU y anillo de hierro. Cuenta con cuerpo metálico rectangular, cinta reforzada y anilla resistente para una sujeción segura. Es ideal para quienes buscan un llavero práctico, elegante y duradero para llevar sus llaves de forma organizada.\n\nTahg.",
-      "category": "2026 Novedades",
+      "category": "Llaveros",
       "materials": [],
       "colors": [
         "Negro"
@@ -17737,7 +17737,7 @@
       "external_id": "99030778243",
       "title": "Llavero Infinito",
       "description": "Llavero con diseño en forma de lazo, elaborado en cuerda resistente con terminaciones metálicas en satinado plateado. Hecho para brindar durabilidad y estética, cuenta con anillo de metal para sujeción segura y estilo minimalista. Es ideal para regalos promocionales o uso personal y para acompañar las llaves con un toque distintivo, práctico y moderno.\n\nTahg",
-      "category": "2026 Novedades",
+      "category": "Llaveros",
       "materials": [],
       "colors": [
         "Negro"
@@ -17763,7 +17763,7 @@
       "external_id": "99030778244",
       "title": "Tag Cork",
       "description": "Etiqueta de equipaje fabricada en corcho natural con gancho de hierro. Hecha con corcho de 4 mm de grosor, ofrece un diseño ligero, resistente y de textura natural. Cuenta con correa ajustable y gancho metálico que aseguran un anclaje firme a maletas y bolsos. Es ideal para viajeros que buscan un accesorio funcional y sostenible para identificar fácilmente su equipaje.\n\nTahg",
-      "category": "2026 Novedades",
+      "category": "General",
       "materials": [],
       "colors": [
         "Natural"
@@ -17844,7 +17844,7 @@
       "external_id": "99030778247",
       "title": "Tumbler Hydra Go",
       "description": "Tumbler térmico con sorbete incluido fabricado en acero inoxidable. Cuenta con tapa plástica, sorbete reutilizable, cepillo limpiador y doble pared aislante que conserva la temperatura por horas. Es ideal para mantener bebidas frías hasta por 8 horas o calientes hasta por 6 horas, perfecto para el gimnasio, oficina, auto o actividades al aire libre.\n\nCapacidad: 887 ml\n\nHydra Go",
-      "category": "2026 Novedades",
+      "category": "General",
       "materials": [
         "Acero"
       ],
@@ -17888,7 +17888,7 @@
       "external_id": "99030778248",
       "title": "Handler Hydra Go",
       "description": "Botella térmica con manija integrada fabricada en acero inoxidable. Hecha con cuerpo interior de acero inoxidable 304, exterior y base de acero inoxidable 201 y tapa de polipropileno, AS y silicona. Cuenta con doble pared aislante, tapa a rosca con cierre hermético y manija ergonómica incorporada para fácil transporte. Es ideal para mantener tus bebidas frías o calientes durante el día, perfecta para la oficina, actividades al aire libre o viajes.\n\nCapacidad: 600 ml / 20 oz\n\nHydra Go",
-      "category": "2026 Novedades",
+      "category": "General",
       "materials": [],
       "colors": [
         "Blanco",
@@ -17932,7 +17932,7 @@
       "external_id": "99030778250",
       "title": "Mate Algarrobo",
       "description": "Mate confeccionado en madera de algarrobo, una opción natural y resistente. Su acabado en tono marrón claro resalta las vetas propias del material. Es ideal para el hogar, la oficina o como regalo institucional. Incluye una bombilla de acero inoxidable con resorte.\n\nAl estar fabricado con materiales naturales, el producto puede presentar variaciones en color y tamaño.\n\nMaterial: Madera de algarrobo.\nMedidas: 6,5 cm (diámetro) x 9 cm (alto)\nColor: Marrón claro (natural)\n\nProceso de Curado:\n1. Colocá en el interior una fina capa de manteca o unas gotas de aceite y distribuí bien.\n2. Llenalo con yerba ya utilizada, humedeciéndola suavemente si está muy seca. Repetí este proceso durante dos noches consecutivas.\n3. El procedimiento dura alrededor de tres días y permite que los poros de la madera se nutran, se sellen y se adapten al uso.\n\nImportante:\nNo agregues agua directamente al mate sin yerba.\nEvitá usar agua hirviendo en las primeras cebadas.\n\nPampa Spirit",
-      "category": "2026 Reingresos",
+      "category": "Mates, termos y materas",
       "materials": [],
       "colors": [
         "Marrón"
@@ -17965,7 +17965,7 @@
       "external_id": "99030778251",
       "title": "Mochila Space Max",
       "description": "Mochila de viaje expandible. Fabricada en poliéster 1800D en el frente y 2520D en la parte trasera y base, cuenta con múltiples compartimentos con cierre, sistema de extensión para mayor capacidad, bolsillo frontal de acceso rápido, correas acolchadas ajustables y manija lateral. Es ideal para viajes de negocios, escapadas de fin de semana o uso diario gracias a su diseño versátil y gran capacidad de almacenamiento.\n\nCapacidad: 30 a 40 litros (extendible)\n\nWagner",
-      "category": "2026 Novedades",
+      "category": "Bolsos y Mochilas",
       "materials": [],
       "colors": [
         "Negro"
@@ -18041,7 +18041,7 @@
       "external_id": "99030778253",
       "title": "Mate Alazan ( calabaza + cinturon de cuero)",
       "description": "Mate de calabaza natural seleccionada y pulida, montada sobre un cinturón regulable de cuero vaqueta vacuno. Su base de cuero brinda firmeza, y su capacidad lo hace ideal para disfrutar largas rondas de mate en cualquier entorno. Incluye bombilla de acero inoxidable con resorte y una bolsa de algodón de 20 x 20cm. \n\nAl estar fabricado con materiales naturales, el producto puede presentar variaciones en color y tamaño, y el cinturón puede contener diferencias en el espesor, color, marcas naturales y dureza.\n\nEspecificaciones\n- Capacidad de yerba: entre 30 y 50gr\n- Boca: 9.5cm\n- Altura total: 10cm\n\nProceso de curado:\n1. Llená el mate con yerba nueva hasta el borde del metal o el final de la calabaza.\n2. Humedecé la yerba con agua tibia, asegurándote de que quede bien húmeda.\n3. Dejá reposar durante 24hs.\n4. Retirá la yerba con una cuchara.\n5. Repetí los pasos anteriores 4 veces más.\n6. Una vez finalizado, dejá secar completamente en un lugar ventilado o con sol.\n\nPampa Spirit.",
-      "category": "2026 Reingresos",
+      "category": "Mates, termos y materas",
       "materials": [],
       "colors": [
         "Natural"
@@ -18216,7 +18216,7 @@
       "external_id": "99030778266",
       "title": "Cable 4 en 1 Universal",
       "description": "Cable universal de carga 4 en 1 fabricado en PET reciclado. Hecho de materiales sostenibles como RPET con terminaciones en titanio metálico, cuenta con conectores USB-A, USB-C, Lightning y USB-C en ambos extremos, además de correa de nailon para facilitar su organización. Es ideal para cargar una amplia variedad de dispositivos como smartphones, tablets y otros equipos electrónicos, garantizando eficiencia energética y alta velocidad gracias a su capacidad de carga de hasta 60 W y transferencia de datos de hasta 480 Mbps.\n\nChili Concept",
-      "category": "2026 Novedades",
+      "category": "Tecnología",
       "materials": [],
       "colors": [
         "Negro"
@@ -18278,7 +18278,7 @@
       "external_id": "99030778268",
       "title": "Boligrafo 4 Colores",
       "description": "Bolígrafo retráctil de 4 colores fabricado en aluminio reciclado. Hecho con cuerpo de aluminio reciclado, cuenta con un barril ancho para mayor comodidad al escribir, clip plástico resistente y recargas de tinta alemana en negro, azul, rojo y verde que garantizan una escritura fluida y duradera. Es ideal para estudiantes, profesionales y oficinas que buscan un instrumento de escritura práctico, elegante y sostenible.\n\nChili Concept",
-      "category": "2026 Novedades",
+      "category": "Escritura",
       "materials": [],
       "colors": [
         "Negro"
@@ -18309,7 +18309,7 @@
       "external_id": "99030778269",
       "title": "Botella Calypso",
       "description": "Botella térmica con diseño ergonómico. Hecha de acero inoxidable 304 reciclado con doble pared al vacío que garantiza durabilidad y conservación térmica. Cuenta con una práctica asa giratoria que facilita su transporte y uso diario. Mantiene las bebidas calientes hasta 12 horas y frías hasta 24 horas. Es ideal para quienes llevan un estilo de vida activo, estudiantes, viajeros o profesionales que buscan una opción ecológica y elegante para mantenerse hidratados durante todo el día.\n\nCapacidad: 0,5 litros / 17 oz.\n\nChili Concept",
-      "category": "2026 Novedades",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -18343,7 +18343,7 @@
       "external_id": "99030778270",
       "title": "Maletin Ocean",
       "description": "Maletín para ordenador fabricado con OceanGuard™, un tejido resistente elaborado a partir de plástico oceánico reciclado con certificación OceanCycle. Cuenta con funda acolchada para laptop de hasta 16\", bolsillo interior y frontal ambos con cierre, correa para maletas con ruedas y correa para el hombro extraíble incluida.  Es ideal para desplazamientos diarios, trabajo remoto o transporte diario, ya que es ligero, duradero y resistente al agua, creado para ayudar a proteger nuestros océanos.\n\nCapacidad: 14 litros\n\nChili Concept",
-      "category": "2026 Novedades",
+      "category": "General",
       "materials": [],
       "colors": [
         "Negro"
@@ -18381,7 +18381,7 @@
       "external_id": "99030778271",
       "title": "Organizador Tech",
       "description": "Organizador de plástico reciclado oceánico. Fabricado con OceanGuard™, un tejido resistente, repelente al agua, elaborado con plástico oceánico reciclado certificado por OceanCycle. Cuenta con dos bolsillos internos de malla con cierre, asa superior y diseño plano que permite guardarlo fácilmente. Es ideal para organizar tecnología, accesorios de celular u objetos esenciales del día a día en viajes, traslados o uso diario.\n\nCapacidad: 2 litros.\n\nChili Concept",
-      "category": "2026 Novedades",
+      "category": "Escritorio",
       "materials": [],
       "colors": [
         "Negro"
@@ -18415,7 +18415,7 @@
       "external_id": "99030778307",
       "title": "Caja Plegable",
       "description": "Caja plegable de cartón laminado mate en color negro, fabricada con materiales resistentes y diseño estructural reforzado. Cuenta con cierre magnético, esquinas con cinta adhesiva doble faz transparente para poder armarla y diseño plano que permite fácil almacenamiento y armado. Es ideal para presentaciones de productos, embalaje premium o uso como contenedor organizador en oficinas o eventos.\n\nTahg",
-      "category": "2026 Novedades",
+      "category": "General",
       "materials": [],
       "colors": [
         "Negro"
@@ -18452,7 +18452,7 @@
       "external_id": "99030778308",
       "title": "Cuaderno Midnight",
       "description": "Cuaderno A5 fabricado en PU color gris oscuro. Cuenta con diseño lineado en la tapa frontal, cinta señaladora negra, 100 hojas rayadas de papel ivory y espacio para personalización. Es ideal para anotaciones diarias, uso corporativo, estudios o como regalo institucional elegante y funcional.\n\nThe Daily Book",
-      "category": "2026 Novedades",
+      "category": "Cuadernos",
       "materials": [],
       "colors": [
         "Gris Oscuro"
@@ -18476,7 +18476,7 @@
       "external_id": "99030778309",
       "title": "Set Midnight",
       "description": "Set de cuaderno y bolígrafo fabricado con materiales de alta calidad, presentado en una caja negra laminada mate. El cuaderno está compuesto por hojas rayadas A5, cinta señaladora negra y tapa con diseño frontal lineado, mientras que el bolígrafo es metálico en color negro. Es ideal para uso profesional, reuniones de negocios, conferencias o como regalo institucional.\n\nThe Daily Book",
-      "category": "2026 Novedades",
+      "category": "General",
       "materials": [],
       "colors": [
         "Negro"
@@ -18644,7 +18644,7 @@
       "external_id": "99030778325",
       "title": "Mate San Andres",
       "description": "Mate de doble pared íntegramente de acero inoxidable. Ideal para tener a mano en el día a día debido a su practicidad. Pequeño, portátil y fácil de mantener. Incluye bombilla de acero inoxidable con resorte y y una bolsa de algodón de 20 x 20cm.\n\nPampa Spirit.",
-      "category": "2026 Reingresos",
+      "category": "Mates, termos y materas",
       "materials": [],
       "colors": [
         "Negro",
@@ -18716,7 +18716,7 @@
       "external_id": "99030778340",
       "title": "Termo Aconcagua",
       "description": "Termo de acero inoxidable con tapa multifunción, fabricado en acero interior 304 y exterior 201. Cuenta con tapa que puede utilizarse como mate, pico cebador, sistema de cierre seguro y asa lateral para un agarre cómodo. Es ideal para mantener bebidas calientes o frías durante largas jornadas de trabajo, actividades al aire libre o viajes, gracias a su capacidad térmica y diseño resistente.\n\nCapacidad: 1200 ml\n\nPampero",
-      "category": "Mundial 2026",
+      "category": "Drinkware",
       "materials": [
         "Acero"
       ],
@@ -18819,7 +18819,7 @@
       "external_id": "99030778627",
       "title": "Boligrafo Metronome",
       "description": "Bolígrafo de acción giratoria fabricado en plástico ABS con clip metálico y anillo medio. Cuenta con un diseño elegante y funcional que incluye mecanismo retráctil. Es ideal para oficinas, reuniones, uso escolar o como artículo promocional corporativo.\n\nDimensiones: 13.8 × 1.3 cm\n\nTAHG",
-      "category": "2026 Novedades",
+      "category": "Escritura",
       "materials": [],
       "colors": [
         "Negro",
@@ -18852,7 +18852,7 @@
       "external_id": "99030778628",
       "title": "Boligrafo Electra",
       "description": "Bolígrafo plástico con mecanismo a presión fabricado en ABS. Cuenta con clip y anillo metálicos, tinta negra alemana y diseño liviano. Es ideal para oficinas, eventos corporativos, campañas promocionales y uso diario gracias a su practicidad y estilo profesional.\n\nTahg",
-      "category": "2026 Agro",
+      "category": "Escritura",
       "materials": [],
       "colors": [
         "Amarillo",
@@ -19027,7 +19027,7 @@
       "external_id": "99030778631",
       "title": "Llavero Pop",
       "description": "Llavero destapador fabricado en resistente plástico ABS. Cuenta con argolla metálica y diseño compacto disponible en varios colores vibrantes. Es ideal para eventos promocionales, uso diario o como accesorio funcional en llaveros personales.\n\nDimensiones: 6.5 × 2.2 cm\n\nTAHG",
-      "category": "2026 Novedades",
+      "category": "Llaveros",
       "materials": [],
       "colors": [
         "Amarillo",
@@ -19066,7 +19066,7 @@
       "external_id": "99030778632",
       "title": "Chomba Cutralco",
       "description": "Chomba unisex de piqué 210 g/m² confeccionada en 100 % algodón peinado ringspun. Cuenta con cuello y puños acanalados con elastano, cartera reforzada con dos botones perlados al tono, cinta tapa costura en el cuello, aberturas laterales reforzadas, botón de repuesto cosido en la costura interna y etiquetas tejidas satinadas. Es ideal para uso corporativo, actividades promocionales, uniformes o vestimenta casual gracias a su diseño clásico y calce cómodo.\n\nRecomendaciones de uso: Lavar a máquina a 40 °C. No usar blanqueador. No secar en máquina. Planchar a temperatura baja. No lavar en seco.\n\nPampero",
-      "category": "2026 Agro",
+      "category": "Apparel",
       "materials": [],
       "colors": [
         "X Large",
@@ -19187,7 +19187,7 @@
       "external_id": "99030778669",
       "title": "Matera Estribo",
       "description": "Matera rígida con doble manija fabricada 100% en poliuretano. Cuenta con doble correa resistente, costuras reforzadas y compartimento interior amplio. Es ideal para transportar tu equipo de mate de forma organizada y con estilo, perfecta para salidas al aire libre, picnics, la oficina o el día a día.\n\nCapacidad: 5.5 litros.\nDimensiones: 25 x 15 x 14 cm.\n\nPampero.",
-      "category": "Mundial 2026",
+      "category": "Mates, termos y materas",
       "materials": [],
       "colors": [
         "Marrón",
@@ -19294,7 +19294,7 @@
       "external_id": "99030778784",
       "title": "Vaso Party",
       "description": "Vaso reutilizable ideal para celebraciones. Hecho de polipropileno resistente, cuenta con una estructura liviana, colores vibrantes y diseño ergonómico. Es ideal para eventos al aire libre, fiestas, reuniones familiares y uso diario gracias a su practicidad y durabilidad.\n\nCapacidad: 500 cc\n\nDimensiones: Altura 13,5 cm, diámetro de boca 8,5 cm, diámetro de base 6,5 cm\n\nReUseMe",
-      "category": "Mundial 2026",
+      "category": "Drinkware",
       "materials": [
         "Plástico"
       ],

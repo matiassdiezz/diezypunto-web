@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { searchWithAI } from "@/lib/engine/llm";
-import { searchLocalCatalog } from "@/lib/engine/local-catalog";
+import { searchLocalCatalog, getDiversifiedSample } from "@/lib/engine/local-catalog";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
 
 export async function POST(req: NextRequest) {
@@ -25,8 +25,15 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Text search + single Claude call
-  const candidates = searchLocalCatalog(query, { maxResults: 50 });
+  // Text search + fallback + single Claude call
+  let candidates = searchLocalCatalog(query, { maxResults: 50 });
+  if (candidates.length < 3) {
+    const sample = getDiversifiedSample(3, 50);
+    const seen = new Set(candidates.map((p) => p.product_id));
+    for (const p of sample) {
+      if (!seen.has(p.product_id)) candidates.push(p);
+    }
+  }
   const { products, needs, summary } = await searchWithAI(query, candidates);
 
   return NextResponse.json({

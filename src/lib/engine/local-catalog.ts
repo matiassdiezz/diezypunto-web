@@ -236,6 +236,32 @@ export function searchLocalCatalog(
   return scored.slice(0, max).map((s) => toProductResult(s.indexed.product, s.score));
 }
 
+/** Diversified sample across categories — fallback when text search returns too few results */
+export function getDiversifiedSample(
+  maxPerCategory = 3,
+  totalMax = 50
+): ProductResult[] {
+  const catalog = loadCatalog();
+  const byCategory = new Map<string, CatalogProduct[]>();
+  for (const p of catalog.products) {
+    const arr = byCategory.get(p.category) || [];
+    arr.push(p);
+    byCategory.set(p.category, arr);
+  }
+
+  const sampled: CatalogProduct[] = [];
+  for (const [, products] of byCategory) {
+    // Shuffle deterministically by product_id for variety
+    const shuffled = [...products].sort(() => Math.random() - 0.5);
+    sampled.push(...shuffled.slice(0, maxPerCategory));
+  }
+
+  // Shuffle the combined result for variety
+  sampled.sort(() => Math.random() - 0.5);
+
+  return sampled.slice(0, totalMax).map((p) => toProductResult(p, 0));
+}
+
 /** Get all products (for catalog browsing, not AI search) */
 export function getAllProducts(options?: {
   category?: string;

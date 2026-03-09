@@ -151,6 +151,68 @@ function transformProduct(z: ZecatProduct): CatalogProduct {
   };
 }
 
+// --- Category normalization ---
+
+const CATEGORY_MAP: Record<string, string> = {
+  "70%OFF Bolsos y Mochilas": "Bolsos y Mochilas",
+  "70%OFF Hogar y Tiempo Libre": "Hogar y Tiempo Libre",
+  "70%OFF Apparel": "Apparel",
+  "70%OFF Back to School": "Escritorio",
+  "Back to School": "Escritorio",
+  "Bolsas y Tote Bags": "Bolsos y Mochilas",
+  "Apparel - Abrigo": "Apparel",
+  "Apparel - Chombas": "Apparel",
+};
+
+const TEMPORAL_CATEGORIES = new Set([
+  "2026 Reingresos",
+  "2026 Novedades",
+  "2026 Agro",
+  "Mundial 2026",
+  "Logo 24hs",
+  "Próximos Arribos",
+]);
+
+const TITLE_CATEGORY_HINTS: Array<[RegExp, string]> = [
+  [/\b(botella|termo|termica|vaso|taza|mug|jarro)\b/i, "Drinkware"],
+  [/\b(mate|matera|matero)\b/i, "Mates, termos y materas"],
+  [/\b(mochila|bolso|morral|riñonera|totebag|tote bag|bolsa)\b/i, "Bolsos y Mochilas"],
+  [/\b(remera|chomba|campera|buzo|camiseta|chaleco|polar|abrigo)\b/i, "Apparel"],
+  [/\b(gorra|gorro|cap|visera|sombrero)\b/i, "Gorros"],
+  [/\b(cuaderno|anotador|libreta|notebook)\b/i, "Cuadernos"],
+  [/\b(lapicera|boligrafo|roller|marcador|resaltador|pen)\b/i, "Escritura"],
+  [/\b(pendrive|usb|cargador|powerbank|parlante|auricular|cable|adaptador)\b/i, "Tecnología"],
+  [/\b(paraguas|sombrilla)\b/i, "Paraguas"],
+  [/\b(llavero)\b/i, "Llaveros"],
+  [/\b(cooler|lunchera|conservadora)\b/i, "Coolers y luncheras"],
+  [/\b(reposera|silla playa|toalla|ojotas|pelota)\b/i, "Verano"],
+  [/\b(valija|neceser|portadocumento|funda passport)\b/i, "Viajes"],
+  [/\b(organizador|portaretrato|porta lápices|escritorio)\b/i, "Escritorio"],
+  [/\b(delantal|tabla|cuchillo|sacacorcho|cocina)\b/i, "Cocina"],
+  [/\b(sustentable|ecológico|reciclado|bambú|bambu)\b/i, "Sustentables"],
+];
+
+function normalizeCategory(product: CatalogProduct): CatalogProduct {
+  const cat = product.category;
+
+  // Direct mapping
+  if (CATEGORY_MAP[cat]) {
+    return { ...product, category: CATEGORY_MAP[cat] };
+  }
+
+  // Temporal categories — infer from title
+  if (TEMPORAL_CATEGORIES.has(cat)) {
+    for (const [pattern, target] of TITLE_CATEGORY_HINTS) {
+      if (pattern.test(product.title)) {
+        return { ...product, category: target };
+      }
+    }
+    return { ...product, category: "General" };
+  }
+
+  return product;
+}
+
 async function fetchPage(
   page: number,
   token: string
@@ -197,8 +259,8 @@ async function main() {
 
   console.log(`\nFetched ${allRaw.length} raw products`);
 
-  // Transform
-  const catalog = allRaw.map(transformProduct);
+  // Transform + normalize categories
+  const catalog = allRaw.map(transformProduct).map(normalizeCategory);
 
   // Deduplicate by product_id
   const seen = new Set<string>();

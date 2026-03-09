@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { searchWithAI } from "@/lib/engine/llm";
-import { searchLocalCatalog } from "@/lib/engine/local-catalog";
+import { searchLocalCatalog, getDiversifiedSample } from "@/lib/engine/local-catalog";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
 import { randomUUID } from "crypto";
 import type { ExtractedNeeds } from "@/lib/engine/ranking";
@@ -8,10 +8,18 @@ import type { ExtractedNeeds } from "@/lib/engine/ranking";
 // In-memory session store (survives across requests in the same serverless instance)
 const sessions = new Map<string, { needs: ExtractedNeeds; ts: number }>();
 
+// In-memory search cache — avoids repeated Claude calls for identical queries
+const searchCache = new Map<string, { data: object; ts: number }>();
+const CACHE_TTL = 5 * 60 * 1000; // 5 min
+
 function cleanup() {
   const cutoff = Date.now() - 30 * 60 * 1000;
   for (const [id, s] of sessions) {
     if (s.ts < cutoff) sessions.delete(id);
+  }
+  const cacheCutoff = Date.now() - CACHE_TTL;
+  for (const [key, entry] of searchCache) {
+    if (entry.ts < cacheCutoff) searchCache.delete(key);
   }
 }
 
@@ -33,10 +41,27 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "query is required" }, { status: 400 });
   }
 
-  // Step 1: Text search on local catalog (instant, ~0ms)
-  const candidates = searchLocalCatalog(query, { maxResults: 50 });
+  // Check cache first
+  const cacheKey = query.toLowerCase().trim().replace(/\s+/g, " ");
+  const cached = searchCache.get(cacheKey);
+  if (cached && Date.now() - cached.ts < CACHE_TTL) {
+    const sessionId = session_id || randomUUID();
+    return NextResponse.json({ ...cached.data, session_id: sessionId });
+  }
 
-  // Step 2: Single Claude call — extract needs + rerank + summary (~3s)
+  // Step 1: Text search on local catalog (instant, ~0ms)
+  let candidates = searchLocalCatalog(query, { maxResults: 50 });
+
+  // Fallback: if too few text matches, pad with diversified sample
+  if (candidates.length < 3) {
+    const sample = getDiversifiedSample(3, 50);
+    const seen = new Set(candidates.map((p) => p.product_id));
+    for (const p of sample) {
+      if (!seen.has(p.product_id)) candidates.push(p);
+    }
+  }
+
+  // Step 2: Single Claude call — extract needs + rerank + summary
   const { products, needs, summary } = await searchWithAI(query, candidates);
 
   // Session management
@@ -50,14 +75,18 @@ export async function POST(req: NextRequest) {
     sessions.set(sessionId, { needs, ts: Date.now() });
   }
 
-  return NextResponse.json({
-    session_id: sessionId,
+  const responsePayload = {
     products,
     extracted_needs: needs,
     summary,
     total_matches: products.length,
     has_more: false,
-  });
+  };
+
+  // Cache the result (without session_id — that's added per-request)
+  searchCache.set(cacheKey, { data: responsePayload, ts: Date.now() });
+
+  return NextResponse.json({ ...responsePayload, session_id: sessionId });
 }
 
 function mergeNeeds(
