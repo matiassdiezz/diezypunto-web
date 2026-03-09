@@ -20,7 +20,8 @@ export default function ProductCard({
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const [added, setAdded] = useState(false);
-  const [qty, setQty] = useState(1);
+  const minQty = product.min_qty > 1 ? product.min_qty : 1;
+  const [qty, setQty] = useState(minQty);
 
   const imageUrl = product.image_urls[0];
   const hasPersonalization = product.personalization_methods.length > 0;
@@ -125,7 +126,7 @@ export default function ProductCard({
               value={qty}
               onChange={(e) => {
                 const v = parseInt(e.target.value);
-                if (!isNaN(v) && v > 0) setQty(v);
+                if (!isNaN(v) && v >= minQty) setQty(v);
               }}
               className="w-full min-w-0 rounded-lg border border-border bg-white px-2 py-1.5 text-center text-xs tabular-nums outline-none focus:border-accent sm:text-sm"
             />
