@@ -100,6 +100,7 @@ export default function AddToCartDrawer() {
               {product.price != null && (
                 <p className="text-sm font-bold">
                   ${(product.price * quantity).toLocaleString("es-AR")}
+                  <span className="ml-0.5 text-xs font-normal text-muted">+ IVA</span>
                 </p>
               )}
             </div>
@@ -147,7 +148,7 @@ function SuggestionRow({ product }: { product: ProductResult }) {
   const [added, setAdded] = useState(false);
 
   function handleAdd() {
-    addItem(product, 1);
+    addItem(product, product.min_qty > 1 ? product.min_qty : 1);
     setAdded(true);
     // Re-trigger drawer with new product info without re-fetching suggestions
     setTimeout(() => setAdded(false), 1200);
@@ -167,7 +168,7 @@ function SuggestionRow({ product }: { product: ProductResult }) {
       <div className="min-w-0 flex-1">
         <p className="truncate text-xs font-medium">{product.title}</p>
         {product.price != null && (
-          <p className="text-xs text-accent">${product.price.toLocaleString("es-AR")}</p>
+          <p className="text-xs text-accent">${product.price.toLocaleString("es-AR")} <span className="text-muted">+ IVA</span></p>
         )}
       </div>
       <button

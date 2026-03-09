@@ -183,15 +183,20 @@ export default function QuoteBuilder() {
                         <Plus className="h-3 w-3" />
                       </button>
                     </div>
+                    {item.product.min_qty > 1 && (
+                      <p className="mt-1 text-center text-[10px] text-muted">
+                        Min. {item.product.min_qty} u.
+                      </p>
+                    )}
                   </td>
                   <td className="px-6 py-4 text-right">
                     {item.product.price != null
-                      ? `$${item.product.price.toLocaleString("es-AR")}`
+                      ? <><span>${item.product.price.toLocaleString("es-AR")}</span><span className="ml-0.5 text-xs text-muted">+ IVA</span></>
                       : "Consultar"}
                   </td>
                   <td className="px-6 py-4 text-right font-medium">
                     {subtotal != null
-                      ? `$${subtotal.toLocaleString("es-AR")}`
+                      ? <><span>${subtotal.toLocaleString("es-AR")}</span><span className="ml-0.5 text-xs font-normal text-muted">+ IVA</span></>
                       : "-"}
                   </td>
                   <td className="px-6 py-4">
@@ -222,6 +227,7 @@ export default function QuoteBuilder() {
           {total > 0 && (
             <p className="text-xl font-bold">
               Total: ${total.toLocaleString("es-AR")}
+              <span className="ml-1 text-sm font-normal text-muted">+ IVA</span>
             </p>
           )}
 
