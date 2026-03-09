@@ -33,8 +33,16 @@ export default function PersonalizationCard({ methods, productTitle }: Personali
 
   return (
     <div className="space-y-3">
+      <div className="rounded-lg border border-accent/20 bg-accent-light px-3 py-2.5">
+        <p className="text-sm font-medium text-accent">
+          Tu logo incluido en el precio
+        </p>
+        <p className="mt-0.5 text-xs text-accent/70">
+          Todos los productos se cotizan con personalizacion. Tiempo estimado: 1 semana.
+        </p>
+      </div>
       <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-        Metodos de personalizacion
+        Metodos disponibles
       </p>
       <div className="space-y-2">
         {methods.map((method) => {
