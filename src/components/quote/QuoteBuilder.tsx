@@ -133,6 +133,8 @@ export default function QuoteBuilder() {
               const subtotal = item.product.price
                 ? item.product.price * item.quantity
                 : null;
+              const min = item.product.min_qty > 1 ? item.product.min_qty : 1;
+              const atMin = item.quantity <= min;
               return (
                 <tr
                   key={item.product.product_id}
@@ -158,13 +160,10 @@ export default function QuoteBuilder() {
                   <td className="px-6 py-4">
                     <div className="flex items-center justify-center gap-2">
                       <button
-                        onClick={() =>
-                          updateQty(
-                            item.product.product_id,
-                            item.quantity - 1,
-                          )
-                        }
-                        className="rounded-lg border border-border p-1 hover:bg-surface"
+                        onClick={() => {
+                          if (!atMin) updateQty(item.product.product_id, item.quantity - 1);
+                        }}
+                        className={`rounded-lg border border-border p-1 ${atMin ? "cursor-not-allowed opacity-30" : "hover:bg-surface"}`}
                       >
                         <Minus className="h-3 w-3" />
                       </button>
@@ -183,9 +182,9 @@ export default function QuoteBuilder() {
                         <Plus className="h-3 w-3" />
                       </button>
                     </div>
-                    {item.product.min_qty > 1 && (
-                      <p className="mt-1 text-center text-[10px] text-muted">
-                        Min. {item.product.min_qty} u.
+                    {atMin && min > 1 && (
+                      <p className="mt-1 text-center text-[10px] text-red-500">
+                        Minimo {min} u.
                       </p>
                     )}
                   </td>
