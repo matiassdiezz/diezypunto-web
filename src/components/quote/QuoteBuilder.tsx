@@ -22,6 +22,7 @@ export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();
   const [mpLoading, setMpLoading] = useState(false);
   const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
+  const [minQtyWarn, setMinQtyWarn] = useState<string | null>(null);
 
   const total = items.reduce((sum, i) => {
     if (i.product.price) return sum + i.product.price * i.quantity;
@@ -161,9 +162,14 @@ export default function QuoteBuilder() {
                     <div className="flex items-center justify-center gap-2">
                       <button
                         onClick={() => {
-                          if (!atMin) updateQty(item.product.product_id, item.quantity - 1);
+                          if (atMin) {
+                            setMinQtyWarn(item.product.product_id);
+                            setTimeout(() => setMinQtyWarn((v) => v === item.product.product_id ? null : v), 2000);
+                          } else {
+                            updateQty(item.product.product_id, item.quantity - 1);
+                          }
                         }}
-                        className={`rounded-lg border border-border p-1 ${atMin ? "cursor-not-allowed opacity-30" : "hover:bg-surface"}`}
+                        className="rounded-lg border border-border p-1 hover:bg-surface"
                       >
                         <Minus className="h-3 w-3" />
                       </button>
@@ -182,7 +188,7 @@ export default function QuoteBuilder() {
                         <Plus className="h-3 w-3" />
                       </button>
                     </div>
-                    {atMin && min > 1 && (
+                    {minQtyWarn === item.product.product_id && (
                       <p className="mt-1 text-center text-[10px] text-red-500">
                         Minimo {min} u.
                       </p>
