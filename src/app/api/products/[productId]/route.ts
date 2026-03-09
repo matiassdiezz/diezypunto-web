@@ -1,20 +1,24 @@
 import { NextResponse } from "next/server";
+import { getLocalProduct } from "@/lib/engine/local-catalog";
 import { getZecatProduct } from "@/lib/engine/zecat";
-import { getProductById } from "@/lib/engine/products";
 
 export async function GET(
   _req: Request,
-  { params }: { params: Promise<{ productId: string }> },
+  { params }: { params: Promise<{ productId: string }> }
 ) {
   const { productId } = await params;
 
-  // Try Zecat first, fall back to local CSV (for AI search results)
-  const product =
-    (await getZecatProduct(productId)) ?? getProductById(productId);
-
-  if (!product) {
-    return NextResponse.json({ error: "Product not found" }, { status: 404 });
+  // Try local catalog first (instant)
+  const product = getLocalProduct(productId);
+  if (product) {
+    return NextResponse.json(product);
   }
 
-  return NextResponse.json(product);
+  // Fallback to Zecat for products not in local cache
+  const zecatProduct = await getZecatProduct(productId);
+  if (zecatProduct) {
+    return NextResponse.json(zecatProduct);
+  }
+
+  return NextResponse.json({ error: "Product not found" }, { status: 404 });
 }

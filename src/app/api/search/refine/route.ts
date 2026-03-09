@@ -1,16 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
-import { extractNeeds } from "@/lib/engine/llm";
-import { listZecatProducts } from "@/lib/engine/zecat";
-import { rankProducts } from "@/lib/engine/ranking";
+import { searchWithAI } from "@/lib/engine/llm";
+import { searchLocalCatalog } from "@/lib/engine/local-catalog";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
 
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+  const ip =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
   const rl = checkRateLimit(ip);
   if (!rl.ok) {
     return NextResponse.json(
       { error: "Demasiadas busquedas. Espera un momento." },
-      { status: 429 },
+      { status: 429 }
     );
   }
 
@@ -21,37 +21,20 @@ export async function POST(req: NextRequest) {
   if (!session_id) {
     return NextResponse.json(
       { error: "session_id is required" },
-      { status: 400 },
+      { status: 400 }
     );
   }
 
-  // Extract needs from the refinement query
-  const needs = await extractNeeds(query);
-
-  const searchTerms = [
-    ...(needs.desired_categories || []),
-    ...(needs.style_keywords || []),
-    ...(needs.must_have_constraints || []),
-    ...(needs.preferred_materials || []),
-  ].join(" ");
-
-  const searchQuery = searchTerms || query;
-  const zecatRes = await listZecatProducts({ search: searchQuery, limit: 50 });
-  const candidates = zecatRes.products;
-
-  const ranked = rankProducts(candidates, needs, 15);
-
-  let summary = "";
-  if (ranked.length > 0) {
-    summary = `Encontre ${ranked.length} productos con los nuevos criterios.`;
-  }
+  // Text search + single Claude call
+  const candidates = searchLocalCatalog(query, { maxResults: 50 });
+  const { products, needs, summary } = await searchWithAI(query, candidates);
 
   return NextResponse.json({
     session_id,
-    products: ranked,
+    products,
     extracted_needs: needs,
     summary,
-    total_matches: ranked.length,
+    total_matches: products.length,
     has_more: false,
   });
 }
