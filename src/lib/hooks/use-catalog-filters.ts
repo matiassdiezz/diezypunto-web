@@ -98,14 +98,25 @@ export function useCatalogFilters(initialCategory?: string) {
       }
       // Reset page when changing filters
       if (key !== "page") params.delete("page");
-      router.push(`${pathname}?${params.toString()}`, { scroll: false });
+
+      // If changing category while on /catalogo/[category] route,
+      // navigate to /catalogo so the route param doesn't override the query
+      let targetPath = pathname;
+      if (key === "category" && initialCategory) {
+        targetPath = "/catalogo";
+      }
+
+      const qs = params.toString();
+      router.push(qs ? `${targetPath}?${qs}` : targetPath, { scroll: false });
     },
-    [searchParams, router, pathname],
+    [searchParams, router, pathname, initialCategory],
   );
 
   const clearFilters = useCallback(() => {
-    router.push(pathname, { scroll: false });
-  }, [router, pathname]);
+    // If on /catalogo/[category], go back to /catalogo base
+    const targetPath = initialCategory ? "/catalogo" : pathname;
+    router.push(targetPath, { scroll: false });
+  }, [router, pathname, initialCategory]);
 
   const loadMore = useCallback(() => {
     const nextPage = page + 1;

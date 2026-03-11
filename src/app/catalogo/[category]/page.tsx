@@ -3,8 +3,10 @@
 import { Suspense, useState } from "react";
 import { useParams } from "next/navigation";
 import { useCatalogFilters } from "@/lib/hooks/use-catalog-filters";
+import { useSearchStore } from "@/lib/stores/search-store";
 import ProductGrid from "@/components/catalog/ProductGrid";
-import CatalogSearch from "@/components/catalog/CatalogSearch";
+import CatalogAISearch from "@/components/catalog/CatalogAISearch";
+import CatalogAIResults from "@/components/catalog/CatalogAIResults";
 import CatalogSidebar from "@/components/catalog/CatalogSidebar";
 import CatalogToolbar from "@/components/catalog/CatalogToolbar";
 import Breadcrumbs from "@/components/catalog/Breadcrumbs";
@@ -26,6 +28,8 @@ function CategoryContent() {
     activeFilterCount,
   } = useCatalogFilters(category);
 
+  const { query: aiQuery, isLoading: aiLoading, results: aiResults } = useSearchStore();
+  const aiActive = !!(aiQuery || aiLoading || aiResults.length > 0);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const breadcrumbs = [
@@ -46,47 +50,54 @@ function CategoryContent() {
       </ScrollReveal>
 
       <div className="mt-4 sm:mt-6">
-        <CatalogSearch
+        <CatalogAISearch
           value={filters.search}
           onChange={(v) => setFilter("search", v)}
+          categoryContext={category}
         />
       </div>
 
-      <div className="mt-6 lg:mt-8 lg:flex lg:gap-10">
-        <CatalogSidebar
-          filters={filters}
-          setFilter={setFilter}
-          open={sidebarOpen}
-          onClose={() => setSidebarOpen(false)}
-        />
-
-        <div className="min-w-0 flex-1">
-          <CatalogToolbar
-            total={total}
+      {aiActive ? (
+        <div className="mt-6">
+          <CatalogAIResults />
+        </div>
+      ) : (
+        <div className="mt-6 lg:mt-8 lg:flex lg:gap-10">
+          <CatalogSidebar
             filters={filters}
             setFilter={setFilter}
-            clearFilters={clearFilters}
-            activeFilterCount={activeFilterCount}
-            onOpenFilters={() => setSidebarOpen(true)}
+            open={sidebarOpen}
+            onClose={() => setSidebarOpen(false)}
           />
 
-          <div className="mt-4 sm:mt-6">
-            {loading && products.length === 0 ? (
-              <p className="py-20 text-center text-muted">
-                Cargando productos...
-              </p>
-            ) : (
-              <ProductGrid
-                products={products}
-                hasMore={hasMore}
-                loading={loading}
-                onLoadMore={loadMore}
-                onClearFilters={clearFilters}
-              />
-            )}
+          <div className="min-w-0 flex-1">
+            <CatalogToolbar
+              total={total}
+              filters={filters}
+              setFilter={setFilter}
+              clearFilters={clearFilters}
+              activeFilterCount={activeFilterCount}
+              onOpenFilters={() => setSidebarOpen(true)}
+            />
+
+            <div className="mt-4 sm:mt-6">
+              {loading && products.length === 0 ? (
+                <p className="py-20 text-center text-muted">
+                  Cargando productos...
+                </p>
+              ) : (
+                <ProductGrid
+                  products={products}
+                  hasMore={hasMore}
+                  loading={loading}
+                  onLoadMore={loadMore}
+                  onClearFilters={clearFilters}
+                />
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
