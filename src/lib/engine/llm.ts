@@ -1,8 +1,7 @@
 /* LLM — single-call AI search: extract needs + rerank + generate summary */
 
 import Anthropic from "@anthropic-ai/sdk";
-import type { ExtractedNeeds } from "./ranking";
-import type { ProductResult } from "../types";
+import type { ExtractedNeeds, ProductResult } from "../types";
 
 const SEARCH_PROMPT = `Sos un experto en merchandising corporativo B2B argentino.
 

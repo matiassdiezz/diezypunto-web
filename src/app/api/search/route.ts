@@ -3,7 +3,7 @@ import { searchWithAI } from "@/lib/engine/llm";
 import { searchLocalCatalog, getDiversifiedSample } from "@/lib/engine/local-catalog";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
 import { randomUUID } from "crypto";
-import type { ExtractedNeeds } from "@/lib/engine/ranking";
+import type { ExtractedNeeds } from "@/lib/types";
 
 // In-memory session store (survives across requests in the same serverless instance)
 const sessions = new Map<string, { needs: ExtractedNeeds; ts: number }>();
@@ -41,7 +41,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "query is required" }, { status: 400 });
   }
 
-  // Check cache first
+  // Check cache — keyed on normalized query only (does not include filters/session context).
+  // This is fine for now since AI search doesn't receive filter params, but if filters
+  // are ever passed to searchWithAI, the cache key must include them.
   const cacheKey = query.toLowerCase().trim().replace(/\s+/g, " ");
   const cached = searchCache.get(cacheKey);
   if (cached && Date.now() - cached.ts < CACHE_TTL) {

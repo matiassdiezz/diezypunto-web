@@ -1,5 +1,22 @@
 /* Types mirroring kairos-merch-core schemas */
 
+export interface ExtractedNeeds {
+  event_type?: string;
+  audience?: string;
+  quantity?: number | null;
+  budget_min?: number | null;
+  budget_max?: number | null;
+  budget_range?: [number, number] | null;
+  desired_categories?: string[];
+  style_keywords?: string[];
+  urgency?: "low" | "normal" | "high" | "urgent";
+  must_have_constraints?: string[];
+  preferred_materials?: string[];
+  personalization_needed?: boolean | null;
+  brand_profile?: string;
+  unknown_required_fields?: string[];
+}
+
 export interface ProductResult {
   product_id: string;
   external_id: string;
