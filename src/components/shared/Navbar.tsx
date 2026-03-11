@@ -38,15 +38,12 @@ export default function Navbar() {
           className="flex items-center gap-2 transition-opacity duration-300 hover:opacity-80"
         >
           <Image
-            src="/logo-icon.png"
+            src="/logo-diezypunto.webp"
             alt="diezypunto"
-            width={32}
-            height={32}
-            className="h-8 w-8"
+            width={160}
+            height={48}
+            className="h-10 w-auto"
           />
-          <span className="text-xl font-bold tracking-tight text-foreground">
-            diezypunto
-          </span>
         </Link>
 
         {/* Desktop links */}
