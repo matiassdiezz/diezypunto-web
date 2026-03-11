@@ -9,14 +9,13 @@ import {
   CreditCard,
   Loader2,
 } from "lucide-react";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { listProducts } from "@/lib/api";
 import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult } from "@/lib/types";
 import CartMilestone from "@/components/quote/CartMilestone";
 import ProductCard from "@/components/catalog/ProductCard";
-
-const WHATSAPP_NUMBER = "5491168385566";
 
 export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();

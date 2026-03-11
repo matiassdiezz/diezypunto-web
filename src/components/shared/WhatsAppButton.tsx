@@ -1,10 +1,9 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { usePathname } from "next/navigation";
-
-const WHATSAPP_NUMBER = "5491168385566"; // Martin's number
 
 export default function WhatsAppButton() {
   const items = useQuoteStore((s) => s.items);

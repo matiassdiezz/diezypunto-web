@@ -1,20 +1,29 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 interface PersonalizationCardProps {
   methods: string[];
   productTitle: string;
 }
 
-const WHATSAPP_NUMBER = "5491168385566";
-
 const METHOD_INFO: Record<string, { tier: string; description: string }> = {
-  Serigrafia: { tier: "Economico", description: "Ideal para pedidos grandes" },
-  Sublimacion: { tier: "Standard", description: "Full color, ideal para disenos complejos" },
-  Bordado: { tier: "Premium", description: "Duradero, premium para textiles" },
-  "Grabado Laser": { tier: "Premium+", description: "Permanente, el acabado mas premium" },
-  "Grabado laser": { tier: "Premium+", description: "Permanente, el acabado mas premium" },
+  "Serigrafía": { tier: "Economico", description: "Ideal para pedidos grandes, tintas solidas" },
+  "Tampografía": { tier: "Economico", description: "Ideal para superficies curvas y objetos pequeños" },
+  "Tampo Metal": { tier: "Economico", description: "Tampografia sobre superficies metalicas" },
+  "Transfer monocolor": { tier: "Standard", description: "Transferencia termica de un color" },
+  "Transfer full color": { tier: "Standard", description: "Full color, ideal para disenos complejos y fotos" },
+  "Sublimación": { tier: "Standard", description: "Full color permanente sobre superficies claras" },
+  "Hot Stamping": { tier: "Standard", description: "Acabado metalizado, ideal para logos elegantes" },
+  "Bordado": { tier: "Premium", description: "Duradero, premium para textiles" },
+  "Bordado 3D": { tier: "Premium", description: "Bordado con relieve, maxima presencia" },
+  "Patch Bordado": { tier: "Premium", description: "Parche bordado aplicable, versatil" },
+  "Laser": { tier: "Premium+", description: "Grabado permanente, acabado premium" },
+  "Laser CO2": { tier: "Premium+", description: "Grabado laser para materiales organicos" },
+  "Speed Laser": { tier: "Premium+", description: "Grabado laser de alta velocidad" },
+  "UV": { tier: "Premium+", description: "Impresion directa full color sobre cualquier superficie" },
+  "UV Rotativa": { tier: "Premium+", description: "Impresion UV sobre objetos cilindricos" },
 };
 
 const TIER_COLORS: Record<string, string> = {

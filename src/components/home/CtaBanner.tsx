@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { MessageCircle } from "lucide-react";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 import ScrollReveal from "../shared/ScrollReveal";
 
 export default function CtaBanner() {
@@ -17,7 +18,7 @@ export default function CtaBanner() {
           </p>
           <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
             <a
-              href="https://wa.me/5491168385566?text=Hola%2C%20quiero%20consultar%20por%20merchandising"
+              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hola, quiero consultar por merchandising")}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-accent transition-shadow hover:shadow-lg"

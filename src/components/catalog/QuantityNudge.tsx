@@ -1,14 +1,13 @@
 "use client";
 
 import { MessageCircle } from "lucide-react";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 import type { ProductResult } from "@/lib/types";
 
 interface QuantityNudgeProps {
   qty: number;
   product: ProductResult;
 }
-
-const WHATSAPP_NUMBER = "5491168385566";
 
 export default function QuantityNudge({ qty, product }: QuantityNudgeProps) {
   if (qty >= 50) {

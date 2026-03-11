@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -7,16 +8,13 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-6 py-12">
         <div className="grid gap-8 sm:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2">
-              <Image
-                src="/logo-icon.png"
-                alt="diezypunto"
-                width={28}
-                height={28}
-                className="h-7 w-7"
-              />
-              <h3 className="text-lg font-bold text-accent">diezypunto</h3>
-            </div>
+            <Image
+              src="/logo-diezypunto.webp"
+              alt="diezypunto"
+              width={140}
+              height={42}
+              className="h-9 w-auto"
+            />
             <p className="mt-2 text-sm text-muted">
               Merchandising corporativo con +1,400 productos. Calidad y
               personalizacion para tu marca.
@@ -70,7 +68,7 @@ export default function Footer() {
             </h4>
             <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
               <a
-                href="https://wa.me/5491168385566"
+                href={`https://wa.me/${WHATSAPP_NUMBER}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground"

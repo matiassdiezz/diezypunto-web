@@ -9,6 +9,7 @@ import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
 import { ShoppingBag, Leaf, MessageCircle, Minus, Plus } from "lucide-react";
 import Link from "next/link";
+import { WHATSAPP_NUMBER } from "@/lib/constants";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import Breadcrumbs from "@/components/catalog/Breadcrumbs";
 import ProductCard from "@/components/catalog/ProductCard";
@@ -90,7 +91,7 @@ export default function ProductoPage() {
       ? `Hola! Necesito precio para: ${product.title}, ${qty} unidades.`
       : `Hola! Me interesa el producto: ${product.title}, ${qty} unidades. ¿Podrian darme mas info?`,
   );
-  const whatsappUrl = `https://wa.me/5491168530845?text=${whatsappMessage}`;
+  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
 
   const breadcrumbs = [
     { label: "Inicio", href: "/" },
