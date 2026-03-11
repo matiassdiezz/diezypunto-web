@@ -104,7 +104,7 @@ export default function ProductoPage() {
   ];
 
   return (
-    <div className="mx-auto max-w-6xl px-4 pb-20 pt-24 sm:px-6 sm:pt-28">
+    <div className="px-4 pb-20 pt-24 sm:px-6 lg:px-16 sm:pt-28">
       <Breadcrumbs items={breadcrumbs} />
 
       <div className="mt-4 grid gap-6 sm:mt-6 sm:gap-10 lg:grid-cols-2">

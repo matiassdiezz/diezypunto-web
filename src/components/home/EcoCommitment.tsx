@@ -7,7 +7,7 @@ import ScrollReveal from "../shared/ScrollReveal";
 export default function EcoCommitment() {
   return (
     <section className="bg-card py-20">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="px-6 lg:px-16">
         <ScrollReveal>
           <div className="flex flex-col items-center gap-8 md:flex-row md:items-start md:gap-12">
             {/* Icon */}

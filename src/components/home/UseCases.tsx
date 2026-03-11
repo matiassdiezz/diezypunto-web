@@ -33,7 +33,7 @@ const CASES = [
 
 export default function UseCases() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
+    <section className="px-6 lg:px-16 py-20">
       <ScrollReveal>
         <h2 className="text-center text-2xl font-bold">Para cada ocasion</h2>
         <p className="mt-2 text-center text-muted">

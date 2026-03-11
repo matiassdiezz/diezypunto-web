@@ -12,7 +12,7 @@ const STEPS = [
 export default function HowItWorks() {
   return (
     <section className="bg-card py-20">
-      <div className="mx-auto max-w-6xl px-6">
+      <div className="px-6 lg:px-16">
         <ScrollReveal>
           <h2 className="text-center text-2xl font-bold">Como funciona</h2>
           <p className="mt-2 text-center text-muted">

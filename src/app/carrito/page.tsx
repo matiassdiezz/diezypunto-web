@@ -5,7 +5,7 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 
 export default function CarritoPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 pb-20 pt-28">
+    <div className="px-6 lg:px-16 pb-20 pt-28">
       <ScrollReveal>
         <h1 className="text-3xl font-bold">Carrito</h1>
         <p className="mt-2 text-muted">

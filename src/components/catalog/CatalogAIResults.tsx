@@ -74,7 +74,7 @@ export default function CatalogAIResults() {
       transition={{ duration: 0.4 }}
     >
       {/* AI summary + metadata */}
-      <div className="mx-auto max-w-2xl">
+      <div>
         {summary && (
           <div className="flex items-start gap-2.5">
             <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-light">
@@ -91,7 +91,7 @@ export default function CatalogAIResults() {
 
       <SearchResults products={results} />
 
-      <div className="mx-auto max-w-2xl">
+      <div>
         <SearchRefinement />
 
         <div className="mt-4 flex justify-center">

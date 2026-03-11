@@ -25,7 +25,7 @@ export default function Hero() {
         <div className="hero-orb hero-orb-2" />
       </div>
 
-      <div className="relative z-10 mx-auto flex max-w-6xl flex-col items-center gap-12 px-6 pb-12 pt-32 md:flex-row md:items-center md:gap-8 md:pb-20 md:pt-36 lg:gap-16">
+      <div className="relative z-10 flex flex-col items-center gap-12 px-6 lg:px-16 pb-12 pt-32 md:flex-row md:items-center md:gap-8 md:pb-20 md:pt-36 lg:gap-16">
         {/* Left — Copy */}
         <div className="flex-1 text-center md:text-left">
           {/* Badge */}

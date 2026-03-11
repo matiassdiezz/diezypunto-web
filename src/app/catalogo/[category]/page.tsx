@@ -39,7 +39,7 @@ function CategoryContent() {
   ];
 
   return (
-    <div className="mx-auto max-w-7xl px-4 pb-20 pt-24 sm:px-6 sm:pt-28">
+    <div className="px-4 pb-20 pt-24 sm:px-6 lg:px-16 sm:pt-28">
       <Breadcrumbs items={breadcrumbs} />
 
       <ScrollReveal>
@@ -106,7 +106,7 @@ export default function CategoryPage() {
   return (
     <Suspense
       fallback={
-        <div className="mx-auto max-w-7xl px-6 pb-20 pt-28">
+        <div className="px-6 lg:px-16 pb-20 pt-28">
           <p className="py-20 text-center text-muted">Cargando productos...</p>
         </div>
       }

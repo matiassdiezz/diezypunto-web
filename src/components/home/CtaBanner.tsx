@@ -7,7 +7,7 @@ import ScrollReveal from "../shared/ScrollReveal";
 
 export default function CtaBanner() {
   return (
-    <section className="py-20 px-6">
+    <section className="py-20 px-6 lg:px-16">
       <ScrollReveal>
         <div className="mx-auto max-w-4xl rounded-3xl bg-gradient-to-br from-accent to-[#3BB5E8] px-8 py-16 text-center text-white">
           <h2 className="text-2xl font-bold md:text-3xl">

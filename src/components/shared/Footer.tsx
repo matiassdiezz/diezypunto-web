@@ -5,7 +5,7 @@ import { WHATSAPP_NUMBER } from "@/lib/constants";
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-card">
-      <div className="mx-auto max-w-6xl px-6 py-12">
+      <div className="px-6 lg:px-16 py-12">
         <div className="grid gap-8 sm:grid-cols-4">
           <div>
             <Image

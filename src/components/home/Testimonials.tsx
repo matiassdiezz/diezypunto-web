@@ -35,7 +35,7 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
+    <section className="px-6 lg:px-16 py-20">
       {/* Stats */}
       <ScrollReveal>
         <div className="flex flex-wrap items-center justify-center gap-12">

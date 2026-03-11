@@ -31,7 +31,7 @@ export default function SearchSection() {
         </pre>
       </div>
 
-      <div className="relative z-10 mx-auto max-w-5xl px-6">
+      <div className="relative z-10 px-6 lg:px-16">
         <ScrollReveal>
           <div className="mx-auto max-w-2xl">
             <div className="flex items-center justify-center gap-2 text-sm font-medium text-accent">
