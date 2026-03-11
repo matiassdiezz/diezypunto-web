@@ -17,6 +17,9 @@ import {
 } from "lucide-react";
 import ScrollReveal from "../shared/ScrollReveal";
 
+// Curated subset of catalog categories — intentionally excludes low-volume or
+// niche categories (Cocina, Coolers, Cuadernos, General, Gorros, Packaging, Uniformes, Verano, Viajes).
+// Names must match catalog.json categories exactly (including accents).
 const CATEGORIES: { name: string; icon: LucideIcon }[] = [
   { name: "Escritura", icon: PenLine },
   { name: "Drinkware", icon: GlassWater },

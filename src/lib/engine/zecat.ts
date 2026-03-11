@@ -1,4 +1,6 @@
-/* Zecat API client — fetches products from Zecat and transforms to our types */
+/* Zecat API client — fetches products from Zecat and transforms to our types.
+   Currently used only as fallback for individual product lookup (getZecatProduct)
+   when a product isn't found in catalog.json. Main catalog browsing uses local-catalog.ts. */
 
 import type { ProductResult, CategoriesResponse, ProductListResponse } from "../types";
 
