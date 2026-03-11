@@ -132,17 +132,6 @@ export default function CatalogSidebar({
             />
             Eco-friendly
           </label>
-          <label className="flex cursor-pointer items-center gap-2 text-sm">
-            <input
-              type="checkbox"
-              checked={!!filters.premium}
-              onChange={(e) =>
-                setFilter("premium", e.target.checked || undefined)
-              }
-              className="h-4 w-4 rounded border-border accent-accent"
-            />
-            Premium
-          </label>
         </div>
       </div>
 

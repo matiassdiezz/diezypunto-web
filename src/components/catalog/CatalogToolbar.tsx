@@ -31,8 +31,6 @@ function filterLabel(key: string, value: unknown): string {
       return `Hasta $${value}`;
     case "eco_friendly":
       return "Eco-friendly";
-    case "premium":
-      return "Premium";
     case "personalization":
       return String(value);
     default:
@@ -49,7 +47,7 @@ export default function CatalogToolbar({
   onOpenFilters,
 }: CatalogToolbarProps) {
   const activeFilters = (
-    ["category", "search", "min_price", "max_price", "eco_friendly", "premium", "personalization"] as const
+    ["category", "search", "min_price", "max_price", "eco_friendly", "personalization"] as const
   ).filter((k) => {
     const v = filters[k as keyof CatalogFilters];
     return v !== undefined && v !== false;

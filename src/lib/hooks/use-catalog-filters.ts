@@ -19,7 +19,6 @@ export interface CatalogFilters {
   min_price?: number;
   max_price?: number;
   eco_friendly?: boolean;
-  premium?: boolean;
   personalization?: string;
   sort?: SortOption;
   page?: number;
@@ -36,7 +35,6 @@ function parseFilters(params: URLSearchParams): CatalogFilters {
       ? Number(params.get("max_price"))
       : undefined,
     eco_friendly: params.get("eco_friendly") === "true" || undefined,
-    premium: params.get("premium") === "true" || undefined,
     personalization: params.get("personalization") ?? undefined,
     sort: (params.get("sort") as SortOption) ?? undefined,
     page: params.has("page") ? Number(params.get("page")) : undefined,
@@ -150,7 +148,6 @@ export function useCatalogFilters(initialCategory?: string) {
     filters.min_price,
     filters.max_price,
     filters.eco_friendly,
-    filters.premium,
     filters.personalization,
   ].filter(Boolean).length;
 

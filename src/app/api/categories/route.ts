@@ -5,9 +5,9 @@ export async function GET() {
   try {
     const info = getCatalogInfo();
     return NextResponse.json({
-      categories: info.categories.map((name) => ({
-        name,
-        count: 0,
+      categories: info.categories.map((cat) => ({
+        name: cat.name,
+        count: cat.count,
         subcategories: [],
       })),
       total_products: info.total,

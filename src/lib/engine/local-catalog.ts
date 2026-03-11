@@ -347,10 +347,16 @@ export function getLocalProduct(productId: string): ProductResult | null {
   return product ? toProductResult(product, 0) : null;
 }
 
-/** Get catalog metadata */
-export function getCatalogInfo(): { synced_at: string; total: number; categories: string[] } {
+/** Get catalog metadata with per-category product counts */
+export function getCatalogInfo(): { synced_at: string; total: number; categories: { name: string; count: number }[] } {
   const catalog = loadCatalog();
-  const categories = [...new Set(catalog.products.map((p) => p.category))].sort();
+  const counts = new Map<string, number>();
+  for (const p of catalog.products) {
+    counts.set(p.category, (counts.get(p.category) || 0) + 1);
+  }
+  const categories = [...counts.entries()]
+    .map(([name, count]) => ({ name, count }))
+    .sort((a, b) => a.name.localeCompare(b.name));
   return { synced_at: catalog.synced_at, total: catalog.total, categories };
 }
 
