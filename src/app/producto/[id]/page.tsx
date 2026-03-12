@@ -7,9 +7,9 @@ import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
-import { ShoppingBag, Leaf, MessageCircle, Minus, Plus } from "lucide-react";
+import { ShoppingBag, Leaf, Send, Minus, Plus } from "lucide-react";
 import Link from "next/link";
-import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { openTelegramWithContext } from "@/lib/telegram";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import Breadcrumbs from "@/components/catalog/Breadcrumbs";
 import ProductCard from "@/components/catalog/ProductCard";
@@ -86,12 +86,17 @@ export default function ProductoPage() {
     );
   }
 
-  const whatsappMessage = encodeURIComponent(
-    product.price == null
-      ? `Hola! Necesito precio para: ${product.title}, ${qty} unidades.`
-      : `Hola! Me interesa el producto: ${product.title}, ${qty} unidades. ¿Podrian darme mas info?`,
-  );
-  const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+  const handleTelegram = () => {
+    openTelegramWithContext({
+      type: "product",
+      product_id: product.product_id,
+      title: product.title,
+      qty,
+      message: product.price == null
+        ? `Necesito precio para: ${product.title}, ${qty} unidades.`
+        : `Me interesa el producto: ${product.title}, ${qty} unidades.`,
+    });
+  };
 
   const breadcrumbs = [
     { label: "Inicio", href: "/" },
@@ -280,15 +285,13 @@ export default function ProductoPage() {
               {/* Quantity Nudge */}
               <QuantityNudge qty={qty} product={product} />
 
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={handleTelegram}
                 className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface sm:mt-3 sm:text-base"
               >
-                <MessageCircle className="h-5 w-5" />
-                Consultar por WhatsApp
-              </a>
+                <Send className="h-5 w-5" />
+                Consultar por Telegram
+              </button>
             </div>
 
             {/* Specs */}

@@ -5,7 +5,7 @@ import ScrollReveal from "../shared/ScrollReveal";
 const STEPS = [
   { number: "1", title: "Busca", description: "Describi lo que necesitas o explora el catalogo" },
   { number: "2", title: "Elegi", description: "Compara opciones y armalas en tu carrito" },
-  { number: "3", title: "Compra", description: "Paga con Mercado Pago o consulta por WhatsApp" },
+  { number: "3", title: "Compra", description: "Paga con Mercado Pago o consulta por Telegram" },
   { number: "4", title: "Recibi", description: "Coordinamos produccion y entrega" },
 ];
 

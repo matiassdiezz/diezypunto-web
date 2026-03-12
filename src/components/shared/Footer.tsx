@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { telegramUrl } from "@/lib/telegram";
 
 export default function Footer() {
   return (
@@ -68,12 +68,12 @@ export default function Footer() {
             </h4>
             <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
               <a
-                href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                href={telegramUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground"
               >
-                WhatsApp
+                Telegram
               </a>
               <a
                 href="mailto:info@diezypunto.com.ar"

@@ -71,3 +71,47 @@ export interface QuoteItem {
   product: ProductResult;
   quantity: number;
 }
+
+/* AI Top Picks */
+export interface AIPickItem {
+  id: string;
+  reason: string;
+}
+
+export interface AIPicksResponse {
+  picks: AIPickItem[];
+  collection_title: string;
+}
+
+/* AI Cart Review */
+export interface CartInsight {
+  type: "gap" | "optimization" | "warning" | "tip";
+  icon: string;
+  message: string;
+  action?: string;
+}
+
+export interface CartReviewResponse {
+  summary: string;
+  score: number;
+  insights: CartInsight[];
+}
+
+/* AI Quote Advisor */
+export interface AdvisorContext {
+  event_type: string;
+  audience_size: string;
+  budget_range: string;
+  extra: string;
+}
+
+export interface AdvisorResult {
+  id: string;
+  reason: string;
+}
+
+export interface AdvisorResponse {
+  selected: AdvisorResult[];
+  summary: string;
+  follow_up_questions: string[];
+}

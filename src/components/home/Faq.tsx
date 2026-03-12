@@ -8,7 +8,7 @@ import ScrollReveal from "../shared/ScrollReveal";
 const FAQS = [
   {
     q: "Cual es la cantidad minima de pedido?",
-    a: "Depende del producto y el metodo de personalizacion. En general, los minimos arrancan desde 25 unidades. Consulta el detalle en cada producto o escribinos por WhatsApp.",
+    a: "Depende del producto y el metodo de personalizacion. En general, los minimos arrancan desde 25 unidades. Consulta el detalle en cada producto o escribinos por Telegram.",
   },
   {
     q: "Cuanto demora la entrega?",
@@ -28,7 +28,7 @@ const FAQS = [
   },
   {
     q: "Como funciona la compra?",
-    a: "Agrega productos al carrito desde el catalogo, indica las cantidades y paga con Mercado Pago o consulta por WhatsApp. Te respondemos en menos de 24 horas.",
+    a: "Agrega productos al carrito desde el catalogo, indica las cantidades y paga con Mercado Pago o consulta por Telegram. Te respondemos en menos de 24 horas.",
   },
 ];
 

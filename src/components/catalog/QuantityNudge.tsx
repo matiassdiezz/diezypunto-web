@@ -1,7 +1,7 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
-import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { Send } from "lucide-react";
+import { openTelegramWithContext } from "@/lib/telegram";
 import type { ProductResult } from "@/lib/types";
 
 interface QuantityNudgeProps {
@@ -11,21 +11,25 @@ interface QuantityNudgeProps {
 
 export default function QuantityNudge({ qty, product }: QuantityNudgeProps) {
   if (qty >= 50) {
-    const msg = encodeURIComponent(
-      `Hola! Me interesa el producto: ${product.title}, ${qty} unidades. Quiero consultar por precio especial.`,
-    );
+    const handleTelegram = () => {
+      openTelegramWithContext({
+        type: "product",
+        product_id: product.product_id,
+        title: product.title,
+        qty,
+        message: `Me interesa el producto: ${product.title}, ${qty} unidades. Quiero consultar por precio especial.`,
+      });
+    };
     return (
       <div className="mt-2 rounded-lg bg-accent-light px-3 py-2 text-xs text-accent sm:text-sm">
         <span>Pedi 100+ y te hacemos precio especial</span>
-        <a
-          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={handleTelegram}
           className="ml-2 inline-flex items-center gap-1 font-medium underline"
         >
-          <MessageCircle className="h-3.5 w-3.5" />
+          <Send className="h-3.5 w-3.5" />
           Consultar
-        </a>
+        </button>
       </div>
     );
   }

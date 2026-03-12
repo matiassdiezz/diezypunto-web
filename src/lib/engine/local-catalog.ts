@@ -360,6 +360,49 @@ export function getCatalogInfo(): { synced_at: string; total: number; categories
   return { synced_at: catalog.synced_at, total: catalog.total, categories };
 }
 
+/** Diverse sample of ~n products across categories — for AI top picks input */
+export function getCatalogSample(n = 60): ProductResult[] {
+  const catalog = loadCatalog();
+  const byCategory = new Map<string, CatalogProduct[]>();
+  for (const p of catalog.products) {
+    const arr = byCategory.get(p.category) || [];
+    arr.push(p);
+    byCategory.set(p.category, arr);
+  }
+
+  const categories = [...byCategory.keys()];
+  const perCategory = Math.max(2, Math.ceil(n / categories.length));
+  const sampled: CatalogProduct[] = [];
+
+  for (const cat of categories) {
+    const products = byCategory.get(cat)!;
+    // Deterministic shuffle based on product_id for consistency within the hour
+    const hour = Math.floor(Date.now() / (60 * 60 * 1000));
+    const sorted = [...products].sort((a, b) => {
+      const ha = hashCode(a.product_id + hour);
+      const hb = hashCode(b.product_id + hour);
+      return ha - hb;
+    });
+    sampled.push(...sorted.slice(0, perCategory));
+  }
+
+  // Re-shuffle and trim to target
+  sampled.sort((a, b) => {
+    const hour = Math.floor(Date.now() / (60 * 60 * 1000));
+    return hashCode(a.product_id + hour) - hashCode(b.product_id + hour);
+  });
+
+  return sampled.slice(0, n).map((p) => toProductResult(p, 0));
+}
+
+function hashCode(str: string): number {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0;
+  }
+  return hash;
+}
+
 function toProductResult(p: CatalogProduct, score: number): ProductResult {
   return {
     product_id: p.product_id,

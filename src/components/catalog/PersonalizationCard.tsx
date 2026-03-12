@@ -1,7 +1,7 @@
 "use client";
 
-import { MessageCircle } from "lucide-react";
-import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { Send } from "lucide-react";
+import { openTelegramWithContext } from "@/lib/telegram";
 
 interface PersonalizationCardProps {
   methods: string[];
@@ -36,9 +36,15 @@ const TIER_COLORS: Record<string, string> = {
 export default function PersonalizationCard({ methods, productTitle }: PersonalizationCardProps) {
   if (methods.length === 0) return null;
 
-  const whatsappMsg = encodeURIComponent(
-    `Hola! Quiero personalizar: ${productTitle}. Me interesa saber las opciones de personalizacion.`,
-  );
+  const handleTelegram = () => {
+    openTelegramWithContext({
+      type: "product",
+      product_id: "",
+      title: productTitle,
+      qty: 1,
+      message: `Quiero personalizar: ${productTitle}. Me interesa saber las opciones de personalizacion.`,
+    });
+  };
 
   return (
     <div className="space-y-3">
@@ -78,15 +84,13 @@ export default function PersonalizationCard({ methods, productTitle }: Personali
           );
         })}
       </div>
-      <a
-        href={`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMsg}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="flex items-center justify-center gap-2 rounded-xl border border-border bg-white py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-surface"
+      <button
+        onClick={handleTelegram}
+        className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-surface"
       >
-        <MessageCircle className="h-4 w-4" />
-        Habla con Martin para personalizar
-      </a>
+        <Send className="h-4 w-4" />
+        Habla con nosotros para personalizar
+      </button>
     </div>
   );
 }

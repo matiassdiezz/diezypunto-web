@@ -4,6 +4,7 @@ import LogoBar from "@/components/home/LogoBar";
 import CategoryShowcase from "@/components/hero/CategoryShowcase";
 import ValueProps from "@/components/home/ValueProps";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
+import AITopPicks from "@/components/home/AITopPicks";
 import UseCases from "@/components/home/UseCases";
 import HowItWorks from "@/components/home/HowItWorks";
 import Testimonials from "@/components/home/Testimonials";
@@ -20,6 +21,7 @@ export default function Home() {
       <CategoryShowcase />
       <ValueProps />
       <FeaturedProducts />
+      <AITopPicks />
       <UseCases />
       <HowItWorks />
       <Testimonials />

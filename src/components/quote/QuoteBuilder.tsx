@@ -5,16 +5,19 @@ import {
   Minus,
   Plus,
   Trash2,
-  MessageCircle,
+  Send,
   CreditCard,
   Loader2,
+  Wand2,
 } from "lucide-react";
-import { WHATSAPP_NUMBER } from "@/lib/constants";
+import { useAdvisorStore } from "@/lib/stores/advisor-store";
+import { openTelegramWithContext } from "@/lib/telegram";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { listProducts } from "@/lib/api";
 import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult } from "@/lib/types";
 import CartMilestone from "@/components/quote/CartMilestone";
+import CartReview from "@/components/quote/CartReview";
 import ProductCard from "@/components/catalog/ProductCard";
 
 export default function QuoteBuilder() {
@@ -57,16 +60,16 @@ export default function QuoteBuilder() {
     ).then((results) => setCrossSell(results.flat().slice(0, 6)));
   }, [items.length]);
 
-  const buildWhatsAppMessage = () => {
-    let msg = `Hola! Tengo ${items.length} productos por $${total.toLocaleString("es-AR")}. Necesito cotizacion:\n\n`;
-    items.forEach((item, i) => {
-      msg += `${i + 1}. ${item.product.title} x${item.quantity}`;
-      if (item.product.price)
-        msg += ` ($${(item.product.price * item.quantity).toLocaleString("es-AR")})`;
-      msg += "\n";
+  const handleTelegram = () => {
+    openTelegramWithContext({
+      type: "cart",
+      items: items.map((i) => ({
+        product_id: i.product.product_id,
+        title: i.product.title,
+        qty: i.quantity,
+        price: i.product.price,
+      })),
     });
-    if (total > 0) msg += `\nTotal estimado: $${total.toLocaleString("es-AR")}`;
-    return msg;
   };
 
   const handleMercadoPago = async () => {
@@ -100,6 +103,8 @@ export default function QuoteBuilder() {
     }
   };
 
+  const openAdvisor = useAdvisorStore((s) => s.open);
+
   if (items.length === 0) {
     return (
       <div className="py-20 text-center">
@@ -107,6 +112,13 @@ export default function QuoteBuilder() {
         <p className="mt-1 text-sm text-muted">
           Busca productos y agregalos al carrito.
         </p>
+        <button
+          onClick={openAdvisor}
+          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/20"
+        >
+          <Wand2 className="h-4 w-4" />
+          Arma tu pedido con AI
+        </button>
       </div>
     );
   }
@@ -115,6 +127,9 @@ export default function QuoteBuilder() {
     <div>
       {/* Cart Milestone */}
       <CartMilestone total={total} />
+
+      {/* AI Cart Review */}
+      <CartReview />
 
       {/* Table */}
       <div className="overflow-x-auto rounded-2xl border border-border">
@@ -252,21 +267,19 @@ export default function QuoteBuilder() {
               </button>
             )}
 
-            {/* WhatsApp */}
-            <a
-              href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildWhatsAppMessage())}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl bg-[#25D366] px-6 py-3 font-medium text-white transition-transform hover:scale-105"
+            {/* Telegram */}
+            <button
+              onClick={handleTelegram}
+              className="flex items-center justify-center gap-2 rounded-xl bg-[#0088cc] px-6 py-3 font-medium text-white transition-transform hover:scale-105"
             >
-              <MessageCircle className="h-5 w-5" />
-              Consultar por WhatsApp
-            </a>
+              <Send className="h-5 w-5" />
+              Consultar por Telegram
+            </button>
           </div>
 
           {hasItemsWithoutPrice && (
             <p className="text-xs text-muted">
-              Algunos productos no tienen precio. Consulta por WhatsApp para un
+              Algunos productos no tienen precio. Consulta por Telegram para un
               presupuesto completo.
             </p>
           )}

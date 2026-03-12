@@ -1,1 +1,1 @@
-export const WHATSAPP_NUMBER = "5491168385566";
+/* App constants */

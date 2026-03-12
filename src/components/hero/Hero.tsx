@@ -3,7 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Package, Sparkles, Truck } from "lucide-react";
+import { Package, Sparkles, Truck, Wand2 } from "lucide-react";
+import { useAdvisorStore } from "@/lib/stores/advisor-store";
 
 function scrollToSearch() {
   const el = document.getElementById("ai-search");
@@ -17,6 +18,8 @@ const VALUE_POINTS = [
 ];
 
 export default function Hero() {
+  const openAdvisor = useAdvisorStore((s) => s.open);
+
   return (
     <section className="relative overflow-hidden bg-white">
       {/* Background orbs — kept subtle */}
@@ -86,11 +89,11 @@ export default function Hero() {
               Explorar catalogo
             </Link>
             <button
-              onClick={scrollToSearch}
+              onClick={openAdvisor}
               className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-border px-6 py-3 font-semibold text-foreground transition-colors hover:border-accent/40 hover:text-accent"
             >
-              <Sparkles className="h-4 w-4" />
-              Buscar con AI
+              <Wand2 className="h-4 w-4" />
+              Arma tu pedido con AI
             </button>
           </motion.div>
         </div>
