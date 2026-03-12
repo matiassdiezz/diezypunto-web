@@ -1,7 +1,66 @@
 "use client";
 
+import { useEffect, useState, useRef, Suspense } from "react";
+import { useSearchParams, useRouter } from "next/navigation";
+import { Loader2 } from "lucide-react";
 import QuoteBuilder from "@/components/quote/QuoteBuilder";
 import ScrollReveal from "@/components/shared/ScrollReveal";
+import { useQuoteStore } from "@/lib/stores/quote-store";
+import { getProduct } from "@/lib/api";
+
+function CartLoader() {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const addItem = useQuoteStore((s) => s.addItem);
+  const [loading, setLoading] = useState(false);
+  const loaded = useRef(false);
+
+  useEffect(() => {
+    const code = searchParams.get("code");
+    if (!code || loaded.current) return;
+    loaded.current = true;
+
+    setLoading(true);
+    fetch(`/api/telegram-cart/${code}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then(async (payload) => {
+        if (!payload?.items) return;
+        const settled = await Promise.allSettled(
+          payload.items.map((item: { product_id: string; qty: number }) =>
+            getProduct(item.product_id).then((product) => ({
+              product,
+              qty: item.qty,
+            })),
+          ),
+        );
+        for (const result of settled) {
+          if (result.status === "fulfilled") {
+            addItem(result.value.product, result.value.qty);
+          }
+        }
+      })
+      .catch(() => {})
+      .finally(() => {
+        router.replace("/carrito");
+        setLoading(false);
+      });
+  }, [searchParams, router, addItem]);
+
+  if (loading) {
+    return (
+      <div className="mt-8 flex items-center justify-center gap-2 py-20 text-muted">
+        <Loader2 className="h-5 w-5 animate-spin" />
+        <span>Cargando carrito...</span>
+      </div>
+    );
+  }
+
+  return (
+    <div className="mt-8">
+      <QuoteBuilder />
+    </div>
+  );
+}
 
 export default function CarritoPage() {
   return (
@@ -14,9 +73,9 @@ export default function CarritoPage() {
         </p>
       </ScrollReveal>
 
-      <div className="mt-8">
-        <QuoteBuilder />
-      </div>
+      <Suspense>
+        <CartLoader />
+      </Suspense>
     </div>
   );
 }
