@@ -108,6 +108,8 @@ export interface AdvisorContext {
 export interface AdvisorResult {
   id: string;
   reason: string;
+  qty: number;
+  upsell: boolean;
 }
 
 export interface AdvisorResponse {

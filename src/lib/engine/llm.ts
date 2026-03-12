@@ -350,17 +350,25 @@ export async function reviewCart(
 
 const ADVISOR_PROMPT = `Sos un consultor experto en merchandising corporativo B2B argentino.
 
-Tu tarea: seleccionar los mejores productos para el brief del cliente.
+Tu tarea: seleccionar los mejores productos para el brief del cliente. Vas a armar un COMBO por persona.
 
 Criterios:
 1. Fit con el tipo de evento y audiencia
-2. Rango de presupuesto (si lo indico)
+2. Rango de presupuesto POR PERSONA (si lo indico)
 3. Variedad de categorias
 4. Personalizacion disponible
 5. Cantidades minimas vs lo que necesitan
 
+IMPORTANTE sobre presupuesto y cantidades:
+- El presupuesto indicado es POR PERSONA — es lo que vale el COMBO completo por persona
+- La suma de precios unitarios de los productos "core" debe estar DENTRO del rango indicado
+- Opcionalmente, seleccionar 1-2 productos "upsell" que mejoren el combo (marcados con upsell: true)
+- qty = cantidad de personas (todos reciben el mismo combo)
+- Respetar min_qty: si el min_qty del producto > cantidad de personas, NO seleccionar ese producto
+- Ejemplo: presupuesto $5,000-$10,000/persona → core: cuaderno $4,000 + lapicera $600 + llavero $2,000 = $6,600 ✓ | upsell: botella $3,500 → $10,100 total
+
 IMPORTANTE:
-- Seleccionar entre 4 y 8 productos
+- Seleccionar entre 4 y 8 productos (core + upsell)
 - Cada reason debe ser corta, orientada al beneficio para su caso especifico
 - El summary describe el pedido ideal en 1-2 oraciones
 - follow_up_questions: 1-2 preguntas para refinar (o [] si el brief fue completo)
@@ -369,16 +377,74 @@ IMPORTANTE:
 Responde SOLO con un JSON:
 {
   "selected": [
-    { "id": "product_id", "reason": "Razon corta" }
+    { "id": "product_id", "qty": 50, "reason": "Razon corta", "upsell": false }
   ],
   "summary": "Resumen del pedido ideal",
   "follow_up_questions": ["Pregunta para refinar"]
 }`;
 
+/** Parse budget_range string to { min, max, midpoint } or null for "Flexible" */
+function parseBudgetRange(
+  range: string
+): { min: number | null; max: number | null; midpoint: number | null } | null {
+  if (!range || range === "Flexible") return null;
+  const cleaned = range.replace(/\./g, "").replace(/,/g, "");
+  // "< $2,000" or "< $2.000"
+  const ltMatch = cleaned.match(/^<\s*\$?\s*(\d+)/);
+  if (ltMatch) {
+    const max = parseInt(ltMatch[1]);
+    return { min: null, max, midpoint: max };
+  }
+  // "$2,000 - $5,000"
+  const rangeMatch = cleaned.match(/\$?\s*(\d+)\s*-\s*\$?\s*(\d+)/);
+  if (rangeMatch) {
+    const min = parseInt(rangeMatch[1]);
+    const max = parseInt(rangeMatch[2]);
+    return { min, max, midpoint: Math.round((min + max) / 2) };
+  }
+  // "+ $10,000" or "> $10,000"
+  const gtMatch = cleaned.match(/[+>]\s*\$?\s*(\d+)/);
+  if (gtMatch) {
+    const min = parseInt(gtMatch[1]);
+    return { min, max: null, midpoint: min };
+  }
+  return null;
+}
+
+/** Parse audience_size string to a number or null */
+function parseAudienceSize(size: string): number | null {
+  if (!size || size === "No se") return null;
+  const cleaned = size.replace(/\./g, "").replace(/,/g, "");
+  // "+500"
+  const gtMatch = cleaned.match(/^\+\s*(\d+)/);
+  if (gtMatch) return parseInt(gtMatch[1]);
+  // "10-50", "50-200", "200-500"
+  const rangeMatch = cleaned.match(/(\d+)\s*-\s*(\d+)/);
+  if (rangeMatch) {
+    return Math.round((parseInt(rangeMatch[1]) + parseInt(rangeMatch[2])) / 2);
+  }
+  // Plain number
+  const numMatch = cleaned.match(/(\d+)/);
+  if (numMatch) return parseInt(numMatch[1]);
+  return null;
+}
+
 export async function advisorSearch(
   context: AdvisorContext,
   candidates: ProductResult[]
 ): Promise<AdvisorResponse> {
+  // Parse budget and audience for explicit constraints
+  const budget = parseBudgetRange(context.budget_range);
+  const audienceNum = parseAudienceSize(context.audience_size);
+  const budgetMax = budget?.max ?? budget?.midpoint ?? null;
+
+  // Filter candidates that cost more than the per-person budget
+  if (budgetMax != null) {
+    candidates = candidates.filter(
+      (p) => p.price == null || p.price <= budgetMax
+    );
+  }
+
   const productLines = candidates.map((p) => {
     const parts = [`ID:${p.product_id}`, p.title, p.category];
     if (p.materials.length > 0) parts.push(`Mat:${p.materials.join(",")}`);
@@ -390,11 +456,29 @@ export async function advisorSearch(
     return parts.join(" | ");
   });
 
+  // Build budget constraint lines
+  const budgetLines: string[] = [
+    `- Presupuesto por persona: ${context.budget_range || "Flexible"}`,
+  ];
+  if (budget && audienceNum) {
+    const totalEstimate = budget.midpoint! * audienceNum;
+    budgetLines.push(
+      `- → Presupuesto TOTAL estimado: $${totalEstimate.toLocaleString("es-AR")} (= ~$${budget.midpoint!.toLocaleString("es-AR")}/persona × ${audienceNum})`
+    );
+    budgetLines.push(
+      `- → Cada producto recomendado debe costar MENOS de $${(budgetMax ?? budget.midpoint!).toLocaleString("es-AR")} (presupuesto por persona)`
+    );
+  } else if (budget) {
+    budgetLines.push(
+      `- → Cada producto recomendado debe costar MENOS de $${(budgetMax ?? budget.midpoint!).toLocaleString("es-AR")} (presupuesto por persona)`
+    );
+  }
+
   const brief = [
     `Brief del cliente:`,
     `- Tipo de evento: ${context.event_type || "No especificado"}`,
     `- Cantidad de personas: ${context.audience_size || "No especificado"}`,
-    `- Presupuesto por persona: ${context.budget_range || "Flexible"}`,
+    ...budgetLines,
     context.extra ? `- Detalles adicionales: ${context.extra}` : "",
     "",
     `Productos candidatos (${candidates.length}):`,
@@ -419,7 +503,12 @@ export async function advisorSearch(
 
     const parsed = JSON.parse(jsonMatch[0]);
     return {
-      selected: (parsed.selected || []).slice(0, 8),
+      selected: (parsed.selected || []).slice(0, 8).map((s: Record<string, unknown>) => ({
+        id: s.id as string,
+        reason: (s.reason || "") as string,
+        qty: typeof s.qty === "number" && s.qty > 0 ? s.qty : 1,
+        upsell: s.upsell === true,
+      })),
       summary: parsed.summary || "",
       follow_up_questions: (parsed.follow_up_questions || []).slice(0, 2),
     };
