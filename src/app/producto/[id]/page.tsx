@@ -108,8 +108,37 @@ export default function ProductoPage() {
     { label: product.title },
   ];
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.title,
+    description: product.description || `${product.title} — merchandising corporativo personalizable.`,
+    image: product.image_urls[0] || undefined,
+    category: product.category,
+    brand: { "@type": "Brand", name: "Diezypunto" },
+    material: product.materials.length > 0 ? product.materials.join(", ") : undefined,
+    color: product.colors.length > 0 ? product.colors.join(", ") : undefined,
+    offers: {
+      "@type": "Offer",
+      priceCurrency: "ARS",
+      availability: "https://schema.org/InStock",
+      seller: { "@type": "Organization", name: "Diezypunto" },
+    },
+    additionalProperty: product.personalization_methods.length > 0
+      ? product.personalization_methods.map((m) => ({
+          "@type": "PropertyValue",
+          name: "Personalización",
+          value: m,
+        }))
+      : undefined,
+  };
+
   return (
     <div className="px-4 pb-20 pt-24 sm:px-6 lg:px-16 sm:pt-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <Breadcrumbs items={breadcrumbs} />
 
       <div className="mt-4 grid gap-6 sm:mt-6 sm:gap-10 lg:grid-cols-2">

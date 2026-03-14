@@ -29,6 +29,39 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      name: "Diezypunto",
+      url: "https://diezypunto-web.vercel.app",
+      logo: "https://diezypunto-web.vercel.app/logo-diezypunto.webp",
+      description:
+        "Proveedor B2B de merchandising y regalos corporativos en Argentina. +528 productos personalizables.",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "sales",
+        availableLanguage: "Spanish",
+      },
+    },
+    {
+      "@type": "WebSite",
+      name: "Diezypunto",
+      url: "https://diezypunto-web.vercel.app",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate:
+            "https://diezypunto-web.vercel.app/catalogo?search={search_term}",
+        },
+        "query-input": "required name=search_term",
+      },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -36,6 +69,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

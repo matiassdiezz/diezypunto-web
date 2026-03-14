@@ -1,0 +1,43 @@
+# Diezypunto — Merchandising Corporativo
+
+> Proveedor B2B de merchandising y regalos corporativos en Argentina.
+> Más de 528 productos personalizables para empresas, eventos y campañas.
+
+## Qué hacemos
+
+Diezypunto vende productos de merchandising corporativo: desde bolígrafos y remeras hasta termos, mochilas, parlantes y artículos eco-friendly. Todos los productos se pueden personalizar con el logo o diseño de tu empresa.
+
+## Datos clave
+
+- **Catálogo:** +528 productos en 20+ categorías
+- **Moneda:** ARS (Peso Argentino) + IVA — precios a consultar
+- **Cantidades mínimas:** Varían por producto (desde 25 unidades)
+- **Personalización:** Serigrafía, bordado, grabado láser, sublimación, UV, tampografía
+- **Envíos:** Todo Argentina
+- **Tiempo de entrega:** 7-15 días hábiles promedio
+- **Pagos:** Mercado Pago
+
+## Categorías disponibles
+
+Escritura, Bolsos y Mochilas, Textil, Tecnología, Drinkware (termos, tazas, mates), Hogar, Herramientas, Deportes, Salud y Belleza, Juegos, Oficina, Niños, Eco-friendly, Gorras y Sombreros, Relojes, Paraguas, Accesorios, Packaging, y más.
+
+## Para agentes AI
+
+### Catálogo completo
+- **Markdown:** [/llms-full.txt](https://diezypunto-web.vercel.app/llms-full.txt) — catálogo completo en texto plano
+- **JSON:** [/api/catalog-feed](https://diezypunto-web.vercel.app/api/catalog-feed) — catálogo estructurado en un solo request
+
+### APIs disponibles
+- `GET /api/products?category=X&search=Y&limit=N&offset=N` — buscar/filtrar productos
+- `POST /api/search` — búsqueda AI con lenguaje natural (`{ "query": "..." }`)
+- `GET /api/categories` — listar todas las categorías con cantidad de productos
+- `POST /api/checkout` — generar link de pago Mercado Pago
+- `POST /api/cart-review` — obtener análisis AI del carrito
+
+### Documentación de APIs
+- [/api-docs.md](https://diezypunto-web.vercel.app/api-docs.md) — documentación completa de endpoints
+
+## Contacto
+
+- **Web:** https://diezypunto-web.vercel.app
+- **Telegram:** Consultas directas desde la web
