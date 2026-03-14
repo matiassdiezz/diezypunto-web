@@ -42,8 +42,7 @@ export default function AdvisorResults() {
   function getQty(product: ProductResult) {
     const sel = selectionMap.get(product.product_id);
     const qty = sel?.qty ?? 1;
-    const min = product.min_qty > 1 ? product.min_qty : 1;
-    return Math.max(qty, min);
+    return Math.max(qty, 1);
   }
 
   function handleAddOne(product: ProductResult) {

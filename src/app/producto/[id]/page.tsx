@@ -37,7 +37,7 @@ export default function ProductoPage() {
     getProduct(id)
       .then((p) => {
         setProduct(p);
-        setQty(p.min_qty > 1 ? p.min_qty : 1);
+        setQty(1);
         // Fetch related products from same category
         listProducts({ category: p.category, limit: 8 })
           .then((res) =>
@@ -223,51 +223,13 @@ export default function ProductoPage() {
             <div className="mt-4 rounded-xl border border-border bg-card p-4 sm:mt-6 sm:rounded-2xl sm:p-6">
               {product.price != null ? (
                 <div>
-                  {product.price_max != null &&
-                    product.price_max !== product.price && product.min_qty > 1 ? (
-                    <>
-                      <table className="w-full text-sm">
-                        <thead>
-                          <tr className="border-b border-border text-xs text-muted">
-                            <th className="pb-2 text-left font-medium">Cantidad</th>
-                            <th className="pb-2 text-right font-medium">Precio unitario</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr className="border-b border-border/50">
-                            <td className="py-2 text-muted">1 – {product.min_qty - 1} u.</td>
-                            <td className="py-2 text-right font-semibold">
-                              ${product.price_max.toLocaleString("es-AR")}
-                              <span className="ml-1 text-xs font-normal text-muted">+ IVA</span>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td className="py-2 text-muted">{product.min_qty}+ u.</td>
-                            <td className="py-2 text-right font-bold text-accent">
-                              ${product.price.toLocaleString("es-AR")}
-                              <span className="ml-1 text-xs font-normal text-muted">+ IVA</span>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <p className="mt-2 text-xs text-muted">
-                        Ahorra {Math.round((1 - product.price / product.price_max) * 100)}% comprando {product.min_qty}+ unidades
-                      </p>
-                    </>
-                  ) : (
-                    <p className="text-2xl font-bold sm:text-3xl">
+                  <p className="text-2xl font-bold sm:text-3xl">
                       ${product.price.toLocaleString("es-AR")}
                       <span className="ml-1.5 text-sm font-normal text-muted">+ IVA</span>
                     </p>
-                  )}
                 </div>
               ) : (
                 <p className="text-base text-muted sm:text-lg">Consultar precio</p>
-              )}
-              {product.min_qty > 1 && (
-                <p className="mt-2 text-xs text-muted sm:text-sm">
-                  Cantidad minima: {product.min_qty} unidades
-                </p>
               )}
               {product.lead_time_days != null && (
                 <p className="mt-1 text-xs text-muted sm:text-sm">
@@ -279,7 +241,7 @@ export default function ProductoPage() {
               <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
                 <div className="flex items-center rounded-xl border border-border">
                   <button
-                    onClick={() => setQty(Math.max(product.min_qty > 1 ? product.min_qty : 1, qty - 1))}
+                    onClick={() => setQty(Math.max(1, qty - 1))}
                     className="rounded-l-xl px-3 py-2.5 text-muted hover:bg-surface"
                   >
                     <Minus className="h-4 w-4" />
@@ -290,8 +252,7 @@ export default function ProductoPage() {
                     value={qty}
                     onChange={(e) => {
                       const v = parseInt(e.target.value);
-                      const min = product.min_qty > 1 ? product.min_qty : 1;
-                      if (!isNaN(v) && v >= min) setQty(v);
+                      if (!isNaN(v) && v >= 1) setQty(v);
                     }}
                     className="w-16 border-x border-border bg-white py-2.5 text-center text-sm font-medium tabular-nums outline-none"
                   />

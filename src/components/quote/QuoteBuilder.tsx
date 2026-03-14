@@ -148,8 +148,7 @@ export default function QuoteBuilder() {
               const subtotal = item.product.price
                 ? item.product.price * item.quantity
                 : null;
-              const min = item.product.min_qty > 1 ? item.product.min_qty : 1;
-              const atMin = item.quantity <= min;
+              const atMin = item.quantity <= 1;
               return (
                 <tr
                   key={item.product.product_id}

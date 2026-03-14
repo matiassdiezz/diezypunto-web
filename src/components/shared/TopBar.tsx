@@ -82,8 +82,8 @@ function MiniProduct({ product }: { product: ProductResult }) {
       </Link>
       <button
         onClick={() => {
-          addItem(product, product.min_qty > 1 ? product.min_qty : 1);
-          openDrawer(product, product.min_qty > 1 ? product.min_qty : 1);
+          addItem(product, 1);
+          openDrawer(product, 1);
         }}
         className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg bg-accent py-1.5 text-[11px] font-medium text-white opacity-0 transition-all hover:bg-accent-hover group-hover/card:opacity-100"
       >
