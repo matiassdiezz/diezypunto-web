@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingBag } from "lucide-react";
+import { Menu, X, ShoppingBag, Search, LayoutGrid } from "lucide-react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
+import { useTopBarStore } from "@/lib/stores/topbar-store";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -16,7 +18,18 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
   const totalItems = useQuoteStore((s) => s.totalItems());
+  const { isOpen: topBarOpen, toggle: toggleTopBar } = useTopBarStore();
+  const router = useRouter();
+
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
+    const q = searchQuery.trim();
+    if (!q) return;
+    setSearchQuery("");
+    router.push(`/catalogo?search=${encodeURIComponent(q)}`);
+  };
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -45,6 +58,33 @@ export default function Navbar() {
             className="h-10 w-auto"
           />
         </Link>
+
+        {/* Desktop search + categories toggle */}
+        <div className="hidden flex-1 items-center gap-2 max-w-md mx-8 md:flex">
+          <form onSubmit={handleSearch} className="flex-1">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Buscar productos..."
+                className="w-full rounded-lg border border-border bg-surface py-2 pl-9 pr-3 text-sm text-foreground outline-none transition-all placeholder:text-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/20"
+              />
+            </div>
+          </form>
+          <button
+            onClick={toggleTopBar}
+            title={topBarOpen ? "Ocultar categorías" : "Ver categorías"}
+            className={`shrink-0 rounded-lg border p-2 transition-all ${
+              topBarOpen
+                ? "border-accent/40 bg-accent-light text-accent"
+                : "border-border bg-surface text-muted hover:border-accent/40 hover:text-accent"
+            }`}
+          >
+            <LayoutGrid className="h-4 w-4" />
+          </button>
+        </div>
 
         {/* Desktop links */}
         <div className="hidden items-center gap-8 md:flex">

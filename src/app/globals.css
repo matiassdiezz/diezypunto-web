@@ -168,6 +168,15 @@ html {
   );
 }
 
+/* Hide scrollbar for horizontal overflow */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Accessibility — reduce motion */
 @media (prefers-reduced-motion: reduce) {
   .hero-orb,
