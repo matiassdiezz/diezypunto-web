@@ -176,7 +176,7 @@ export default function SearchPrompt() {
             }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
           >
-            <div className="relative z-10 rounded-2xl bg-white">
+            <div className="relative z-10 rounded-2xl border border-foreground/30 bg-white">
               {/* Rotating placeholder (only when input is empty and no results) */}
               {!input && !hasResults && <RotatingPlaceholder />}
 

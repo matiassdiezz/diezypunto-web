@@ -1,13 +1,10 @@
 import Hero from "@/components/hero/Hero";
-import SearchSection from "@/components/home/SearchSection";
-import LogoBar from "@/components/home/LogoBar";
-import CategoryShowcase from "@/components/hero/CategoryShowcase";
-import ValueProps from "@/components/home/ValueProps";
-import FeaturedProducts from "@/components/home/FeaturedProducts";
-import AITopPicks from "@/components/home/AITopPicks";
 import HowItWorks from "@/components/home/HowItWorks";
+import FeaturedProducts from "@/components/home/FeaturedProducts";
+import LogoBar from "@/components/home/LogoBar";
 import Testimonials from "@/components/home/Testimonials";
 import EcoFaq from "@/components/home/EcoFaq";
+import CtaFinal from "@/components/home/CtaFinal";
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -72,15 +69,12 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Hero />
-      <SearchSection />
-      <LogoBar />
-      <CategoryShowcase />
-      <ValueProps />
-      <FeaturedProducts />
-      <AITopPicks />
       <HowItWorks />
+      <FeaturedProducts />
+      <LogoBar />
       <Testimonials />
       <EcoFaq />
+      <CtaFinal />
     </>
   );
 }

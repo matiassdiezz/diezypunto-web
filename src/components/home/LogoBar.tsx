@@ -71,7 +71,7 @@ function MarqueeRow({
 
 export default function LogoBar() {
   return (
-    <section className="bg-white py-14">
+    <section className="bg-[#EBF7FE] py-14">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
           <p className="text-center text-sm font-medium uppercase tracking-wider text-muted">

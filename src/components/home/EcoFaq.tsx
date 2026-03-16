@@ -68,7 +68,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 export default function EcoFaq() {
   return (
-    <section className="bg-white py-14">
+    <section className="bg-[#EBF7FE] py-14">
       <div className="px-6 lg:px-16">
         <div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 md:gap-16">
           {/* Eco */}
