@@ -54,7 +54,7 @@ export default function Hero() {
             className="mt-6 text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.05] tracking-tight text-foreground"
           >
             Merchandising corporativo{" "}
-            <span className="text-accent">personalizado</span> para tu empresa
+            <span className="text-accent">personalizado</span>
           </motion.h1>
 
           {/* Value points */}
