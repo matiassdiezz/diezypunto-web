@@ -11,27 +11,23 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-[#EBF7FE] py-20">
+    <section className="bg-[#EBF7FE] py-10">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
-          <h2 className="text-center text-2xl font-bold">Como funciona</h2>
-          <p className="mt-2 text-center text-muted">
-            En 4 simples pasos tenes tu merchandising listo
-          </p>
+          <h2 className="text-center text-lg font-bold">Como funciona</h2>
         </ScrollReveal>
 
-        <div className="relative mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Connecting line — hidden on mobile */}
-          <div className="absolute top-7 left-[calc(12.5%+16px)] right-[calc(12.5%+16px)] hidden h-0.5 bg-accent/20 lg:block" />
+        <div className="relative mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="absolute top-5 left-[calc(12.5%+12px)] right-[calc(12.5%+12px)] hidden h-0.5 bg-accent/20 lg:block" />
 
           {STEPS.map((step, i) => (
-            <ScrollReveal key={step.number} delay={i * 0.1}>
+            <ScrollReveal key={step.number} delay={i * 0.08}>
               <div className="relative flex flex-col items-center text-center">
-                <div className="relative z-10 flex h-14 w-14 items-center justify-center rounded-full bg-accent text-xl font-bold text-white">
+                <div className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full bg-accent text-sm font-bold text-white">
                   {step.number}
                 </div>
-                <h3 className="mt-4 text-base font-bold">{step.title}</h3>
-                <p className="mt-1 text-sm text-muted">{step.description}</p>
+                <h3 className="mt-2 text-sm font-bold">{step.title}</h3>
+                <p className="mt-0.5 text-xs text-muted">{step.description}</p>
               </div>
             </ScrollReveal>
           ))}

@@ -8,19 +8,6 @@ import {
   ShoppingBag,
   X,
   Zap,
-  Grid3X3,
-  PenLine,
-  GlassWater,
-  Backpack,
-  Laptop,
-  Building2,
-  TreePine,
-  Leaf,
-  Key,
-  Umbrella,
-  Shirt,
-  Heart,
-  type LucideIcon,
 } from "lucide-react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
@@ -29,8 +16,6 @@ import { useTopBarStore } from "@/lib/stores/topbar-store";
 import fastDeliveryData from "@/data/fast-delivery.json";
 
 const FAST_DELIVERY_KEY = "Entrega Rápida";
-const ALL_CATEGORIES_KEY = "Explora por categoría";
-
 const CATEGORIES = [
   FAST_DELIVERY_KEY,
   "Bolsos & Mochilas",
@@ -41,21 +26,6 @@ const CATEGORIES = [
   "Indumentaria",
   "Tecnología",
   "Mates & Termos",
-  ALL_CATEGORIES_KEY,
-];
-
-const ALL_CATS: { name: string; slug: string; icon: LucideIcon }[] = [
-  { name: "Escritura", slug: "Escritura", icon: PenLine },
-  { name: "Drinkware", slug: "Drinkware", icon: GlassWater },
-  { name: "Bolsos y Mochilas", slug: "Bolsos y Mochilas", icon: Backpack },
-  { name: "Tecnología", slug: "Tecnología", icon: Laptop },
-  { name: "Escritorio", slug: "Escritorio", icon: Building2 },
-  { name: "Hogar y Tiempo Libre", slug: "Hogar y Tiempo Libre", icon: TreePine },
-  { name: "Sustentables", slug: "Sustentables", icon: Leaf },
-  { name: "Llaveros", slug: "Llaveros", icon: Key },
-  { name: "Paraguas", slug: "Paraguas", icon: Umbrella },
-  { name: "Apparel", slug: "Apparel", icon: Shirt },
-  { name: "Mates, termos y materas", slug: "Mates, termos y materas", icon: Heart },
 ];
 
 const CATEGORY_SLUGS: Record<string, string> = {
@@ -193,40 +163,6 @@ function FastDeliveryDropdown({ onClose }: { onClose: () => void }) {
         <div className="grid grid-cols-3 gap-3 sm:grid-cols-5 lg:grid-cols-9">
           {products.map((p) => (
             <MiniProductFast key={p.id} product={p} />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ----- All Categories dropdown -----
-function AllCategoriesDropdown({ onClose }: { onClose: () => void }) {
-  return (
-    <div className="absolute left-0 right-0 top-full z-40 border-b border-border bg-white shadow-lg">
-      <div className="mx-auto max-w-6xl px-6 py-6">
-        <div className="mb-4 flex items-center justify-between">
-          <h3 className="text-sm font-semibold text-foreground">
-            Todas las categorías
-          </h3>
-          <button
-            onClick={onClose}
-            className="rounded-md p-1 text-muted transition-colors hover:bg-surface hover:text-foreground"
-          >
-            <X className="h-4 w-4" />
-          </button>
-        </div>
-        <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6">
-          {ALL_CATS.map((cat) => (
-            <Link
-              key={cat.name}
-              href={`/catalogo/${encodeURIComponent(cat.slug)}`}
-              onClick={onClose}
-              className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium text-foreground transition-all hover:bg-accent-light hover:text-accent"
-            >
-              <cat.icon className="h-4 w-4 shrink-0" />
-              {cat.name}
-            </Link>
           ))}
         </div>
       </div>
@@ -377,7 +313,6 @@ export default function TopBar() {
   }
 
   const isFastDelivery = active === FAST_DELIVERY_KEY;
-  const isAllCategories = active === ALL_CATEGORIES_KEY;
 
   return (
     <>
@@ -388,7 +323,6 @@ export default function TopBar() {
         <div className="hidden md:flex items-center justify-center gap-1 px-6 lg:px-16 py-2">
           {CATEGORIES.map((cat) => {
             const isFast = cat === FAST_DELIVERY_KEY;
-            const isAll = cat === ALL_CATEGORIES_KEY;
             return (
               <div
                 key={cat}
@@ -408,7 +342,6 @@ export default function TopBar() {
                   }`}
                 >
                   {isFast && <Zap className="h-3.5 w-3.5" />}
-                  {isAll && <Grid3X3 className="h-3.5 w-3.5" />}
                   {cat}
                   <ChevronDown
                     className={`h-3.5 w-3.5 transition-transform duration-200 ${
@@ -438,8 +371,6 @@ export default function TopBar() {
           >
             {isFastDelivery ? (
               <FastDeliveryDropdown onClose={handleClose} />
-            ) : isAllCategories ? (
-              <AllCategoriesDropdown onClose={handleClose} />
             ) : (
               <CategoryDropdown category={active} onClose={handleClose} />
             )}
@@ -450,19 +381,6 @@ export default function TopBar() {
         <div className="flex md:hidden items-center gap-1 overflow-x-auto scrollbar-hide px-4 py-2">
           {CATEGORIES.map((cat) => {
             const isFast = cat === FAST_DELIVERY_KEY;
-            const isAll = cat === ALL_CATEGORIES_KEY;
-            if (isAll) {
-              return (
-                <Link
-                  key={cat}
-                  href="/catalogo"
-                  className="flex shrink-0 items-center gap-1 rounded-full border border-accent/30 bg-accent-light px-3.5 py-1.5 text-xs font-medium text-accent"
-                >
-                  <Grid3X3 className="h-3 w-3" />
-                  {cat}
-                </Link>
-              );
-            }
             return (
               <Link
                 key={cat}
