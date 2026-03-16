@@ -5,11 +5,9 @@ import CategoryShowcase from "@/components/hero/CategoryShowcase";
 import ValueProps from "@/components/home/ValueProps";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import AITopPicks from "@/components/home/AITopPicks";
-import UseCases from "@/components/home/UseCases";
 import HowItWorks from "@/components/home/HowItWorks";
 import Testimonials from "@/components/home/Testimonials";
-import EcoCommitment from "@/components/home/EcoCommitment";
-import Faq from "@/components/home/Faq";
+import EcoFaq from "@/components/home/EcoFaq";
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -80,11 +78,9 @@ export default function Home() {
       <ValueProps />
       <FeaturedProducts />
       <AITopPicks />
-      <UseCases />
       <HowItWorks />
       <Testimonials />
-      <EcoCommitment />
-      <Faq />
+      <EcoFaq />
     </>
   );
 }
