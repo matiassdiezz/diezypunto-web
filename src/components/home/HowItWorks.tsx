@@ -11,7 +11,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="bg-card py-20">
+    <section className="bg-white py-20">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
           <h2 className="text-center text-2xl font-bold">Como funciona</h2>

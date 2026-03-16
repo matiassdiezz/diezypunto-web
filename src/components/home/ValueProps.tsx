@@ -28,7 +28,7 @@ const PROPS = [
 
 export default function ValueProps() {
   return (
-    <section className="px-6 lg:px-16 py-20">
+    <section className="bg-white px-6 lg:px-16 py-20">
       <div className="grid grid-cols-2 gap-8 lg:grid-cols-4">
         {PROPS.map((prop, i) => (
           <ScrollReveal key={prop.title} delay={i * 0.08}>

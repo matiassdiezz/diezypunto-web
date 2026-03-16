@@ -65,7 +65,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
 
 export default function Faq() {
   return (
-    <section className="mx-auto max-w-3xl px-6 lg:px-16 py-20">
+    <section className="bg-white mx-auto max-w-3xl px-6 lg:px-16 py-20">
       <ScrollReveal>
         <h2 className="text-center text-2xl font-bold">
           Preguntas frecuentes

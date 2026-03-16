@@ -42,7 +42,7 @@ export default function AITopPicks() {
   if (picks.length === 0) return null;
 
   return (
-    <section className="py-20">
+    <section className="bg-white py-20">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
           <div className="flex flex-col items-center gap-2">

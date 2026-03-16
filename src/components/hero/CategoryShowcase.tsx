@@ -36,7 +36,7 @@ const CATEGORIES: { name: string; icon: LucideIcon }[] = [
 
 export default function CategoryShowcase() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-20">
+    <section className="bg-[#EBF7FE] py-20"><div className="mx-auto max-w-6xl px-6">
       <ScrollReveal>
         <h2 className="text-center text-2xl font-bold">
           Explora por categoria
@@ -59,6 +59,6 @@ export default function CategoryShowcase() {
           </ScrollReveal>
         ))}
       </div>
-    </section>
+    </div></section>
   );
 }
