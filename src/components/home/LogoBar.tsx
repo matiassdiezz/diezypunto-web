@@ -53,14 +53,14 @@ function MarqueeRow({
         {items.map((logo, i) => (
           <div
             key={`${logo.alt}-${i}`}
-            className="flex h-32 w-72 shrink-0 items-center justify-center"
+            className="flex h-20 w-44 shrink-0 items-center justify-center"
           >
             <Image
               src={logo.src}
               alt={logo.alt}
-              width={288}
-              height={128}
-              className="max-h-28 w-auto object-contain opacity-40 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+              width={176}
+              height={80}
+              className="max-h-16 w-auto object-contain opacity-40 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
             />
           </div>
         ))}
