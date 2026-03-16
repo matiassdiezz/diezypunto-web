@@ -3,9 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Package, Paintbrush, Truck, Award, Wand2, Sparkles, Search, ShoppingBag, CreditCard, PackageCheck } from "lucide-react";
+import { Package, Paintbrush, Truck, Award, Wand2 } from "lucide-react";
 import { useAdvisorStore } from "@/lib/stores/advisor-store";
-import SearchPrompt from "../search/SearchPrompt";
 
 const VALUE_POINTS = [
   { icon: Package, text: "+1,400 productos" },
@@ -125,19 +124,6 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Integrated AI Search */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.45 }}
-          className="mx-auto mt-12 max-w-2xl"
-        >
-          <div className="flex items-center justify-center gap-2 text-sm font-medium text-accent mb-3">
-            <Sparkles className="h-4 w-4" />
-            Busqueda inteligente
-          </div>
-          <SearchPrompt />
-        </motion.div>
       </div>
     </section>
   );

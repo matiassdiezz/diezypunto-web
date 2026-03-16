@@ -47,7 +47,7 @@ export default function FeaturedProducts() {
   if (featured.length === 0 && aiPicks.length === 0) return null;
 
   return (
-    <section className="bg-white py-20">
+    <section className="bg-[#EBF7FE] py-20">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
           <h2 className="text-center text-2xl font-bold">

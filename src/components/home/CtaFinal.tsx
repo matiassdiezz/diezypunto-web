@@ -9,7 +9,7 @@ export default function CtaFinal() {
   const openAdvisor = useAdvisorStore((s) => s.open);
 
   return (
-    <section className="bg-white py-16">
+    <section className="bg-[#EBF7FE] py-16">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
           <div className="mx-auto max-w-2xl text-center">

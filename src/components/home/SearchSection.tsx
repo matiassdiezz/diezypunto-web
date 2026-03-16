@@ -19,7 +19,7 @@ export default function SearchSection() {
   return (
     <section
       id="ai-search"
-      className="relative scroll-mt-20 overflow-hidden bg-[#EBF7FE] py-16"
+      className="relative scroll-mt-20 overflow-hidden bg-white py-16"
     >
       {/* ASCII background texture */}
       <div

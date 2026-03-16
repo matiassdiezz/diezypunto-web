@@ -1,5 +1,6 @@
 import Hero from "@/components/hero/Hero";
 import HowItWorks from "@/components/home/HowItWorks";
+import SearchSection from "@/components/home/SearchSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import LogoBar from "@/components/home/LogoBar";
 import Testimonials from "@/components/home/Testimonials";
@@ -70,6 +71,7 @@ export default function Home() {
       />
       <Hero />
       <HowItWorks />
+      <SearchSection />
       <FeaturedProducts />
       <LogoBar />
       <Testimonials />
