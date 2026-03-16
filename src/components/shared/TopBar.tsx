@@ -317,7 +317,9 @@ export default function TopBar() {
 
   return (
     <>
-      <div className="relative border-b border-border bg-white pt-[72px]">
+      {/* Spacer to compensate for fixed navbar + fixed topbar */}
+      <div className="pt-[116px] md:pt-[112px]" />
+      <div className="fixed top-[72px] left-0 right-0 z-40 border-b border-border bg-white/95 backdrop-blur-md">
         {/* Desktop */}
         <div className="hidden md:flex items-center justify-center gap-1 px-6 lg:px-16 py-2">
           {CATEGORIES.map((cat) => {
