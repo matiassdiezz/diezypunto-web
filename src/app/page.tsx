@@ -9,7 +9,6 @@ import UseCases from "@/components/home/UseCases";
 import HowItWorks from "@/components/home/HowItWorks";
 import Testimonials from "@/components/home/Testimonials";
 import EcoCommitment from "@/components/home/EcoCommitment";
-import CtaBanner from "@/components/home/CtaBanner";
 import Faq from "@/components/home/Faq";
 
 const faqJsonLd = {
@@ -85,7 +84,6 @@ export default function Home() {
       <HowItWorks />
       <Testimonials />
       <EcoCommitment />
-      <CtaBanner />
       <Faq />
     </>
   );
