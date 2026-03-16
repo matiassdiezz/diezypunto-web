@@ -37,7 +37,7 @@ export default function Testimonials() {
   return (
     <section className="bg-[#EBF7FE] px-6 lg:px-16 py-14">
       <ScrollReveal>
-        <h2 className="text-center text-lg font-bold">Resenas</h2>
+        <h2 className="text-center text-lg font-bold">Reseñas</h2>
       </ScrollReveal>
 
       {/* Stats */}
