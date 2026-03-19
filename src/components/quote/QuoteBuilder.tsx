@@ -219,11 +219,6 @@ export default function QuoteBuilder() {
                         <Plus className="h-3 w-3" />
                       </button>
                     </div>
-                    {minQtyWarn === item.product.product_id && (
-                      <p className="mt-1 text-center text-[10px] text-red-500">
-                        Minimo {item.product.min_qty} u.
-                      </p>
-                    )}
                   </td>
                   <td className="px-6 py-4 text-right">
                     {unitPrice != null
