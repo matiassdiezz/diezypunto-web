@@ -168,6 +168,7 @@ const TEMPORAL_CATEGORIES = new Set([
   "2026 Reingresos",
   "2026 Novedades",
   "2026 Agro",
+  "2026 Día del trabajador",
   "Mundial 2026",
   "Logo 24hs",
   "Próximos Arribos",
