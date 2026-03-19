@@ -8,7 +8,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "sync-catalog": "npx tsx scripts/sync-catalog.ts"
+    "sync-catalog": "npx tsx scripts/sync-catalog.ts",
+    "sync-promo": "npx tsx scripts/sync-promoproductos.ts",
+    "sync-all": "npx tsx scripts/sync-all.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.78.0",
