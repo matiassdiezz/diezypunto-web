@@ -144,17 +144,17 @@ export default function ProductoPage() {
 
       <div className="mt-4 grid gap-6 sm:mt-6 sm:gap-10 lg:grid-cols-2">
         {/* Gallery */}
-        <ScrollReveal direction="left">
+        <ScrollReveal direction="up">
           <div className="space-y-3 sm:space-y-4">
-            <div className="aspect-square overflow-hidden rounded-xl border border-border bg-surface sm:rounded-2xl">
+            <div className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-border bg-surface p-4 sm:rounded-2xl sm:p-6">
               {product.image_urls[selectedImage] ? (
                 <img
                   src={product.image_urls[selectedImage]}
                   alt={product.title}
-                  className="h-full w-full object-contain p-4 sm:p-6"
+                  className="h-auto w-auto max-h-full max-w-full object-contain"
                 />
               ) : (
-                <div className="flex h-full items-center justify-center text-muted/30">
+                <div className="flex items-center justify-center text-muted/30">
                   <ShoppingBag className="h-16 w-16 sm:h-20 sm:w-20" />
                 </div>
               )}
@@ -164,8 +164,9 @@ export default function ProductoPage() {
                 {product.image_urls.map((url, i) => (
                   <button
                     key={i}
+                    type="button"
                     onClick={() => setSelectedImage(i)}
-                    className={`h-14 w-14 shrink-0 overflow-hidden rounded-lg border bg-surface sm:h-16 sm:w-16 ${
+                    className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border bg-surface p-1 sm:h-16 sm:w-16 ${
                       i === selectedImage
                         ? "border-accent"
                         : "border-border"
@@ -174,7 +175,7 @@ export default function ProductoPage() {
                     <img
                       src={url}
                       alt=""
-                      className="h-full w-full object-contain p-1"
+                      className="h-auto w-auto max-h-full max-w-full object-contain"
                     />
                   </button>
                 ))}
