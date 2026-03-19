@@ -285,12 +285,14 @@ function InlineProductCard({
       <div className="min-w-0 flex-1">
         <p className="truncate text-xs font-medium">{title}</p>
         <p className="text-[10px] text-muted">{category}</p>
-        {price && price !== "null" && (
+        {price && price !== "null" && price !== "Consultar" && !isNaN(Number(price)) ? (
           <p className="text-xs font-bold text-accent">
             ${Number(price).toLocaleString("es-AR")}{" "}
             <span className="font-normal text-muted">+ IVA</span>
           </p>
-        )}
+        ) : price === "Consultar" ? (
+          <p className="text-xs font-medium text-muted">Consultar precio</p>
+        ) : null}
       </div>
       <button
         onClick={handleAdd}
@@ -309,7 +311,7 @@ type ParsedPart =
 
 function parseProductTags(content: string): ParsedPart[] {
   const parts: ParsedPart[] = [];
-  const regex = /<product\s+([^/]*?)\/>/g;
+  const regex = /<product\s+([\s\S]*?)\/>/g;
   let lastIndex = 0;
   let match;
 
