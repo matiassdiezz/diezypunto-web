@@ -1,13 +1,13 @@
 #!/usr/bin/env npx tsx
 /**
- * Merge Zecat + Promoproductos catalogs into a single catalog.json
+ * Merge Zecat + Promoproductos + X-Trade catalogs into a single catalog.json
  *
  * Usage:
- *   1. Run sync-catalog.ts (Zecat) and sync-promoproductos.ts first
- *   2. Then run this script to merge both into catalog.json
+ *   1. Run sync-catalog.ts (Zecat), sync-promoproductos.ts, and sync-xtrade.ts first
+ *   2. Then run this script to merge all into catalog.json
  *
  * Or run all at once:
- *   ZECAT_API_TOKEN=xxx npx tsx scripts/sync-all.ts
+ *   ZECAT_API_TOKEN=xxx npx tsx scripts/sync-all.ts --sync
  */
 
 import { execSync } from "child_process";
@@ -17,6 +17,7 @@ import { fileURLToPath } from "url";
 const DATA_DIR = fileURLToPath(new URL("../src/data", import.meta.url));
 const ZECAT_PATH = `${DATA_DIR}/catalog.json`;
 const PROMO_PATH = `${DATA_DIR}/promoproductos-catalog.json`;
+const XTRADE_PATH = `${DATA_DIR}/xtrade-catalog.json`;
 const OUTPUT_PATH = `${DATA_DIR}/catalog.json`;
 
 interface CatalogProduct {
@@ -74,19 +75,30 @@ async function main() {
     } catch {
       console.error("Promoproductos sync failed, using existing file if available");
     }
+
+    console.log("\n=== Syncing X-Trade ===\n");
+    try {
+      execSync(`npx tsx ${scriptDir}/sync-xtrade.ts`, {
+        stdio: "inherit",
+        env: process.env,
+      });
+    } catch {
+      console.error("X-Trade sync failed, using existing file if available");
+    }
     console.log("\n=== Merging catalogs ===\n");
   }
 
-  // Load both catalogs
+  // Load all catalogs
   const zecat = loadCatalog(ZECAT_PATH);
   const promo = loadCatalog(PROMO_PATH);
+  const xtrade = loadCatalog(XTRADE_PATH);
 
-  if (!zecat && !promo) {
+  if (!zecat && !promo && !xtrade) {
     console.error("No catalog files found. Run with --sync to fetch first.");
     process.exit(1);
   }
 
-  // Tag Zecat products with source
+  // Tag products with source
   const zecatProducts: CatalogProduct[] = (zecat?.products || []).map((p) => ({
     ...p,
     source: p.source || "zecat",
@@ -97,11 +109,17 @@ async function main() {
     source: p.source || "promoproductos",
   }));
 
+  const xtradeProducts: CatalogProduct[] = (xtrade?.products || []).map((p) => ({
+    ...p,
+    source: p.source || "xtrade",
+  }));
+
   console.log(`Zecat: ${zecatProducts.length} products`);
   console.log(`Promoproductos: ${promoProducts.length} products`);
+  console.log(`X-Trade: ${xtradeProducts.length} products`);
 
-  // Merge — Zecat first (primary), then Promoproductos
-  const all = [...zecatProducts, ...promoProducts];
+  // Merge — Zecat first (primary), then Promoproductos, then X-Trade
+  const all = [...zecatProducts, ...promoProducts, ...xtradeProducts];
 
   // Deduplicate by product_id
   const seen = new Set<string>();
@@ -142,6 +160,11 @@ async function main() {
         count: bySource["promoproductos"] || 0,
         synced_at: promo?.synced_at,
         usd_rate: promo?.usd_rate,
+      },
+      xtrade: {
+        count: bySource["xtrade"] || 0,
+        synced_at: xtrade?.synced_at,
+        usd_rate: xtrade?.usd_rate,
       },
     },
     products: unique,

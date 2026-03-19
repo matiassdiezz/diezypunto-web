@@ -54,11 +54,28 @@ interface CatalogProduct {
   source: string;
 }
 
-function getUsdRate(): number {
-  const rate = process.env.USD_RATE;
-  if (rate) return parseFloat(rate);
-  // Default: reasonable ARS/USD rate — update as needed
-  return 1300;
+async function getUsdRate(): Promise<number> {
+  // Allow manual override via env var
+  const envRate = process.env.USD_RATE;
+  if (envRate) return parseFloat(envRate);
+
+  // Fetch official USD/ARS rate from dolarapi.com (free, no key needed)
+  try {
+    const res = await fetch("https://dolarapi.com/v1/dolares/oficial");
+    if (res.ok) {
+      const data = await res.json();
+      const rate = data.venta; // sell rate
+      if (typeof rate === "number" && rate > 0) {
+        console.log(`Fetched USD oficial venta: $${rate} (${data.fechaActualizacion})`);
+        return rate;
+      }
+    }
+  } catch {
+    // fallback
+  }
+
+  console.warn("Could not fetch USD rate, using fallback $1400");
+  return 1400;
 }
 
 function stripHtml(html: string): string {
@@ -223,7 +240,7 @@ async function fetchAllProducts(): Promise<AlgoliaHit[]> {
 }
 
 async function main() {
-  const usdRate = getUsdRate();
+  const usdRate = await getUsdRate();
   console.log(`Fetching catalog from Promoproductos (Algolia)...`);
   console.log(`USD/ARS rate: ${usdRate}\n`);
 

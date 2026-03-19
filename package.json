@@ -10,6 +10,7 @@
     "lint": "eslint",
     "sync-catalog": "npx tsx scripts/sync-catalog.ts",
     "sync-promo": "npx tsx scripts/sync-promoproductos.ts",
+    "sync-xtrade": "npx tsx scripts/sync-xtrade.ts",
     "sync-all": "npx tsx scripts/sync-all.ts"
   },
   "dependencies": {
