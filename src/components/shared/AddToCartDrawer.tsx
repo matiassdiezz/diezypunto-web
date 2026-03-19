@@ -148,7 +148,7 @@ function SuggestionRow({ product }: { product: ProductResult }) {
   const [added, setAdded] = useState(false);
 
   function handleAdd() {
-    addItem(product, 1);
+    addItem(product, 10);
     setAdded(true);
     // Re-trigger drawer with new product info without re-fetching suggestions
     setTimeout(() => setAdded(false), 1200);

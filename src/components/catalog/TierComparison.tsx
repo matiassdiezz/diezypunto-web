@@ -70,8 +70,8 @@ function TierCard({
   const [added, setAdded] = useState(false);
 
   function handleAdd() {
-    addItem(product, 1);
-    openDrawer(product, 1);
+    addItem(product, 10);
+    openDrawer(product, 10);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }

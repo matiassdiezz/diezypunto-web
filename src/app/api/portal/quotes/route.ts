@@ -28,13 +28,25 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json();
 
+  // Map frontend fields to vault-api schema and strip unit_price (server-side pricing)
+  const mappedBody = {
+    description: body.description || "",
+    notes: body.notes || "",
+    items: (body.items || []).map((i: Record<string, unknown>) => ({
+      product_name: i.title || i.product_name || "",
+      sku: i.product_id || i.sku || "",
+      quantity: i.quantity,
+      category: i.category || "",
+    })),
+  };
+
   const res = await fetch(`${VAULT_API_URL}/api/v1/quotes/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Cookie: `session=${session}`,
     },
-    body: JSON.stringify(body),
+    body: JSON.stringify(mappedBody),
   });
 
   if (!res.ok) {

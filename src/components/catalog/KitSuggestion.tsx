@@ -21,8 +21,8 @@ export default function KitSuggestion({ products, currentProductId }: KitSuggest
   if (suggestions.length === 0) return null;
 
   function handleAddAll() {
-    suggestions.forEach((p) => addItem(p, 1));
-    openDrawer(suggestions[suggestions.length - 1], 1);
+    suggestions.forEach((p) => addItem(p, 10));
+    openDrawer(suggestions[suggestions.length - 1], 10);
     setAllAdded(true);
     setTimeout(() => setAllAdded(false), 1500);
   }
@@ -68,7 +68,7 @@ function KitCard({ product }: { product: ProductResult }) {
 
   function handleAdd() {
     addItem(product, 1);
-    openDrawer(product, 1);
+    openDrawer(product, 10);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }

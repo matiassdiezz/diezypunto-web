@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Save, Check, Loader2 } from "lucide-react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
+import { useToastStore } from "@/components/shared/Toast";
 
 export default function SaveQuoteButton() {
   const [saving, setSaving] = useState(false);
@@ -22,7 +23,6 @@ export default function SaveQuoteButton() {
             product_id: i.product.product_id,
             title: i.product.title,
             quantity: i.quantity,
-            unit_price: i.product.price,
             category: i.product.category,
           })),
           status: "borrador",
@@ -32,9 +32,11 @@ export default function SaveQuoteButton() {
       if (res.ok) {
         setSaved(true);
         setTimeout(() => setSaved(false), 3000);
+      } else {
+        useToastStore.getState().toastError("No se pudo guardar el presupuesto. Intentá de nuevo.");
       }
     } catch {
-      // Silent fail — cart is still in localStorage
+      useToastStore.getState().toastError("Error de conexión. Tus productos siguen en el carrito.");
     } finally {
       setSaving(false);
     }

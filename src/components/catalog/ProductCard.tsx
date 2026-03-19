@@ -20,7 +20,7 @@ export default function ProductCard({
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const [added, setAdded] = useState(false);
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState(10);
 
   const imageUrl = product.image_urls[0];
   const hasPersonalization = product.personalization_methods.length > 0;
@@ -118,11 +118,11 @@ export default function ProductCard({
           <div className="mt-2 flex items-center gap-1.5">
             <input
               type="number"
-              min={1}
+              min={10}
               value={qty}
               onChange={(e) => {
                 const v = parseInt(e.target.value);
-                if (!isNaN(v) && v >= 1) setQty(v);
+                if (!isNaN(v) && v >= 10) setQty(v);
               }}
               className="w-full min-w-0 rounded-lg border border-border bg-white px-2 py-1.5 text-center text-xs tabular-nums outline-none focus:border-accent sm:text-sm"
             />

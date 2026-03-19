@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useAuth } from "@/lib/hooks/use-auth";
+import { useToastStore } from "@/components/shared/Toast";
 
 export function useCartSync() {
   const { client } = useAuth();
@@ -31,17 +32,24 @@ export function useCartSync() {
             product_id: i.product.product_id,
             title: i.product.title,
             quantity: i.quantity,
-            unit_price: i.product.price,
             category: i.product.category,
           })),
-          status: "draft",
+          status: "borrador",
         }),
       })
-        .then(() => {
-          lastSyncRef.current = itemsKey;
+        .then((res) => {
+          if (res.ok) {
+            lastSyncRef.current = itemsKey;
+          } else {
+            useToastStore.getState().toastError(
+              "No se pudo sincronizar. Tus productos siguen guardados localmente.",
+            );
+          }
         })
         .catch(() => {
-          // Silent fail — localStorage is the primary store
+          useToastStore.getState().toastError(
+            "No se pudo sincronizar. Tus productos siguen guardados localmente.",
+          );
         });
     }, 2000);
 

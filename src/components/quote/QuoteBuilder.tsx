@@ -151,7 +151,7 @@ export default function QuoteBuilder() {
               const subtotal = item.product.price
                 ? item.product.price * item.quantity
                 : null;
-              const atMin = item.quantity <= 1;
+              const atMin = item.quantity <= 10;
               return (
                 <tr
                   key={item.product.product_id}
@@ -238,7 +238,11 @@ export default function QuoteBuilder() {
       {/* Footer */}
       <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <button
-          onClick={clearCart}
+          onClick={() => {
+            if (window.confirm("¿Seguro que querés vaciar el carrito?")) {
+              clearCart();
+            }
+          }}
           className="text-sm text-muted underline hover:text-foreground"
         >
           Vaciar carrito
