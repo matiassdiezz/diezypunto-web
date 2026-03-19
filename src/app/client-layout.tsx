@@ -9,6 +9,8 @@ import QuoteCart from "@/components/quote/QuoteCart";
 import Toast from "@/components/shared/Toast";
 import AddToCartDrawer from "@/components/shared/AddToCartDrawer";
 import AdvisorDrawer from "@/components/advisor/AdvisorDrawer";
+import ChatFAB from "@/components/chat/ChatFAB";
+import ChatDrawer from "@/components/chat/ChatDrawer";
 import { AuthProvider } from "@/lib/auth-context";
 import { useCartSync } from "@/lib/hooks/use-cart-sync";
 
@@ -30,6 +32,8 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       <Toast />
       <AddToCartDrawer />
       <AdvisorDrawer />
+      <ChatDrawer />
+      <ChatFAB />
     </AuthProvider>
   );
 }
