@@ -40,6 +40,7 @@ interface CatalogProduct {
   title: string;
   description: string;
   category: string;
+  subcategory: string;
   materials: string[];
   colors: string[];
   personalization_methods: string[];
@@ -139,6 +140,7 @@ function transformProduct(z: ZecatProduct): CatalogProduct {
     title: z.name,
     description: (z.description || "").trim(),
     category: (mainFamily?.description || "Sin categoría").trim(),
+    subcategory: "",
     materials,
     colors,
     personalization_methods: personalizationMethods,
@@ -151,9 +153,42 @@ function transformProduct(z: ZecatProduct): CatalogProduct {
   };
 }
 
-// --- Category normalization ---
+// --- Category normalization: Zecat → D&P categories ---
+// Source: "Diez & Punto - Categorías Página Web - Mar 26.xlsx", hoja CATEGORIAS WEB
 
-const CATEGORY_MAP: Record<string, string> = {
+interface CategoryResult {
+  category: string;
+  subcategory: string;
+}
+
+/** Direct Zecat family → D&P category mapping */
+const FAMILY_TO_DP: Record<string, CategoryResult> = {
+  "Escritura": { category: "Escritura", subcategory: "" }, // resolved by subcategory below
+  "Drinkware": { category: "Drinkware", subcategory: "" },
+  "Bolsos y Mochilas": { category: "Bolsos y Mochilas", subcategory: "" },
+  "Coolers y luncheras": { category: "Hogar & Tiempo Libre", subcategory: "" },
+  "Coolers & Luncheras": { category: "Hogar & Tiempo Libre", subcategory: "" },
+  "Tecnología": { category: "Tecnología", subcategory: "Tecnología: Básicos" },
+  "Tecnologia": { category: "Tecnología", subcategory: "Tecnología: Básicos" },
+  "Sustentables": { category: "Eco", subcategory: "" },
+  "Hogar y Tiempo Libre": { category: "Hogar & Tiempo Libre", subcategory: "" },
+  "Cocina": { category: "Hogar & Tiempo Libre", subcategory: "" },
+  "Escritorio": { category: "Oficina y Negocios", subcategory: "Oficina y Negocios: Varios" },
+  "Cuadernos": { category: "Oficina y Negocios", subcategory: "Oficina y Negocios: Cuadernos" },
+  "Paraguas": { category: "Paraguas", subcategory: "" },
+  "Llaveros": { category: "Llaveros", subcategory: "" },
+  "Gorros": { category: "Gorros", subcategory: "" },
+  "Apparel": { category: "Indumentaria", subcategory: "" },
+  "Uniformes": { category: "Indumentaria", subcategory: "" },
+  "Mates, termos y materas": { category: "Drinkware", subcategory: "Drinkware: Botellas, Jarros y Otros" },
+  "Viajes": { category: "Bolsos y Mochilas", subcategory: "Bolsos y Mochilas: Bolsos, Maletines y Mochilas" },
+  "Verano": { category: "Hogar & Tiempo Libre", subcategory: "" },
+  "Packaging": { category: "Hogar & Tiempo Libre", subcategory: "" },
+  "General": { category: "Hogar & Tiempo Libre", subcategory: "" },
+};
+
+/** Sale/promo categories → remap to base */
+const SALE_REMAP: Record<string, string> = {
   "70%OFF Bolsos y Mochilas": "Bolsos y Mochilas",
   "70%OFF Hogar y Tiempo Libre": "Hogar y Tiempo Libre",
   "70%OFF Apparel": "Apparel",
@@ -174,44 +209,155 @@ const TEMPORAL_CATEGORIES = new Set([
   "Próximos Arribos",
 ]);
 
-const TITLE_CATEGORY_HINTS: Array<[RegExp, string]> = [
-  [/\b(botella|termo|termica|vaso|taza|mug|jarro)\b/i, "Drinkware"],
-  [/\b(mate|matera|matero)\b/i, "Mates, termos y materas"],
-  [/\b(mochila|bolso|morral|riñonera|totebag|tote bag|bolsa)\b/i, "Bolsos y Mochilas"],
-  [/\b(remera|chomba|campera|buzo|camiseta|chaleco|polar|abrigo)\b/i, "Apparel"],
-  [/\b(gorra|gorro|cap|visera|sombrero)\b/i, "Gorros"],
-  [/\b(cuaderno|anotador|libreta|notebook)\b/i, "Cuadernos"],
-  [/\b(lapicera|boligrafo|roller|marcador|resaltador|pen)\b/i, "Escritura"],
-  [/\b(pendrive|usb|cargador|powerbank|parlante|auricular|cable|adaptador)\b/i, "Tecnología"],
-  [/\b(paraguas|sombrilla)\b/i, "Paraguas"],
-  [/\b(llavero)\b/i, "Llaveros"],
-  [/\b(cooler|lunchera|conservadora)\b/i, "Coolers y luncheras"],
-  [/\b(reposera|silla playa|toalla|ojotas|pelota)\b/i, "Verano"],
-  [/\b(valija|neceser|portadocumento|funda passport)\b/i, "Viajes"],
-  [/\b(organizador|portaretrato|porta lápices|escritorio)\b/i, "Escritorio"],
-  [/\b(delantal|tabla|cuchillo|sacacorcho|cocina)\b/i, "Cocina"],
-  [/\b(sustentable|ecológico|reciclado|bambú|bambu)\b/i, "Sustentables"],
+/** Title-based hints for subcategory resolution */
+const SUBCATEGORY_HINTS: Array<[RegExp, CategoryResult]> = [
+  // Escritura subcategories
+  [/\b(roller|ejecutiv|fino|premium|mont|cross|parker|waterman)\b/i, { category: "Escritura", subcategory: "Escritura: Fina" }],
+  [/\b(metal|metálic|acero|aluminio|inox)\b/i, { category: "Escritura", subcategory: "Escritura: Metálica" }],
+  // Drinkware subcategories
+  [/\b(termo|termica|térmic)\b/i, { category: "Drinkware", subcategory: "Drinkware: Termos" }],
+  // Bolsos subcategories — accesorios
+  [/\b(cartuchera|riñonera|neceser|necessaire|billetera|passport|organizer|tablet holder|set.?de.?baño)\b/i, { category: "Bolsos y Mochilas", subcategory: "Bolsos y Mochilas: Accesorios" }],
+  // Tecnología Pro
+  [/\b(parlante|auricular|headphone|earbud|speaker|smartwatch|tablet|notebook)\b/i, { category: "Tecnología", subcategory: "Tecnología: Pro" }],
+  // Indumentaria subcategories
+  [/\b(remera|camiseta|t-shirt)\b/i, { category: "Indumentaria", subcategory: "Indumentaria: Remeras" }],
+  [/\b(chomba|campera|buzo|polar|abrigo|chaleco|jacket)\b/i, { category: "Indumentaria", subcategory: "Indumentaria: Chombas y Abrigo" }],
 ];
 
-function normalizeCategory(product: CatalogProduct): CatalogProduct {
-  const cat = product.category;
+/** Fallback: infer D&P category from product title */
+const TITLE_CATEGORY_HINTS: Array<[RegExp, CategoryResult]> = [
+  [/\b(botella|vaso|taza|mug|jarro)\b/i, { category: "Drinkware", subcategory: "Drinkware: Botellas, Jarros y Otros" }],
+  [/\b(termo|termica|térmic)\b/i, { category: "Drinkware", subcategory: "Drinkware: Termos" }],
+  [/\b(mate|matera|matero)\b/i, { category: "Drinkware", subcategory: "Drinkware: Botellas, Jarros y Otros" }],
+  [/\b(mochila|bolso|morral|totebag|tote.?bag|portfolio|portafolio|trolley|valija)\b/i, { category: "Bolsos y Mochilas", subcategory: "Bolsos y Mochilas: Bolsos, Maletines y Mochilas" }],
+  [/\b(riñonera|cartuchera|neceser|necessaire|billetera)\b/i, { category: "Bolsos y Mochilas", subcategory: "Bolsos y Mochilas: Accesorios" }],
+  [/\b(remera|chomba|campera|buzo|camiseta|chaleco|polar|abrigo)\b/i, { category: "Indumentaria", subcategory: "" }],
+  [/\b(gorra|gorro|cap|visera|sombrero)\b/i, { category: "Gorros", subcategory: "" }],
+  [/\b(cuaderno|anotador|libreta|notebook)\b/i, { category: "Oficina y Negocios", subcategory: "Oficina y Negocios: Cuadernos" }],
+  [/\b(lapicera|boligrafo|roller|marcador|resaltador|pen\b)\b/i, { category: "Escritura", subcategory: "" }],
+  [/\b(pendrive|usb|cargador|powerbank|parlante|auricular|cable|adaptador)\b/i, { category: "Tecnología", subcategory: "Tecnología: Básicos" }],
+  [/\b(paraguas|sombrilla)\b/i, { category: "Paraguas", subcategory: "" }],
+  [/\b(llavero)\b/i, { category: "Llaveros", subcategory: "" }],
+  [/\b(cooler|lunchera|conservadora)\b/i, { category: "Hogar & Tiempo Libre", subcategory: "" }],
+  [/\b(reposera|silla.?playa|toalla|ojotas|pelota)\b/i, { category: "Hogar & Tiempo Libre", subcategory: "" }],
+  [/\b(organizador|portaretrato|porta.?lápices|escritorio)\b/i, { category: "Oficina y Negocios", subcategory: "Oficina y Negocios: Varios" }],
+  [/\b(delantal|tabla|cuchillo|sacacorcho|cocina)\b/i, { category: "Hogar & Tiempo Libre", subcategory: "" }],
+  [/\b(sustentable|ecológico|reciclado|bambú|bambu)\b/i, { category: "Eco", subcategory: "" }],
+];
 
-  // Direct mapping
-  if (CATEGORY_MAP[cat]) {
-    return { ...product, category: CATEGORY_MAP[cat] };
+function resolveSubcategory(product: CatalogProduct): string {
+  const cat = product.category;
+  const title = product.title;
+  const materials = product.materials.join(" ");
+
+  // Escritura: resolve by material/title
+  if (cat === "Escritura") {
+    if (/\b(roller|ejecutiv|fino|premium|mont|cross|parker|waterman)\b/i.test(title + " " + materials)) {
+      return "Escritura: Fina";
+    }
+    if (/\b(metal|metálic|acero|aluminio|inox|silver|chrome|steel)\b/i.test(title + " " + materials)) {
+      return "Escritura: Metálica";
+    }
+    return "Escritura: Plástica y otras";
+  }
+
+  // Drinkware: termos vs rest
+  if (cat === "Drinkware") {
+    if (/\b(termo|termica|térmic)\b/i.test(title)) {
+      return "Drinkware: Termos";
+    }
+    return "Drinkware: Botellas, Jarros y Otros";
+  }
+
+  // Bolsos: accesorios vs bolsos/mochilas
+  if (cat === "Bolsos y Mochilas") {
+    if (/\b(cartuchera|riñonera|neceser|necessaire|billetera|passport|organizer|tablet.?holder|set.?de.?baño)\b/i.test(title)) {
+      return "Bolsos y Mochilas: Accesorios";
+    }
+    return "Bolsos y Mochilas: Bolsos, Maletines y Mochilas";
+  }
+
+  // Tecnología: pro vs básicos
+  if (cat === "Tecnología") {
+    if (/\b(parlante|auricular|headphone|earbud|speaker|smartwatch)\b/i.test(title)) {
+      return "Tecnología: Pro";
+    }
+    return "Tecnología: Básicos";
+  }
+
+  // Indumentaria: remeras vs chombas/abrigo
+  if (cat === "Indumentaria") {
+    if (/\b(remera|camiseta|t-shirt)\b/i.test(title)) {
+      return "Indumentaria: Remeras";
+    }
+    if (/\b(chomba|campera|buzo|polar|abrigo|chaleco|jacket|hoodie|softshell|pantalon|cargo|stream)\b/i.test(title)) {
+      return "Indumentaria: Chombas y Abrigo";
+    }
+    // Default indumentaria to Remeras (simpler items)
+    return "Indumentaria: Remeras";
+  }
+
+  // Oficina
+  if (cat === "Oficina y Negocios") {
+    if (/\b(cuaderno|anotador|libreta)\b/i.test(title)) {
+      return "Oficina y Negocios: Cuadernos";
+    }
+    return "Oficina y Negocios: Varios";
+  }
+
+  return "";
+}
+
+function normalizeCategory(product: CatalogProduct): CatalogProduct {
+  let cat = product.category;
+
+  // Sale/promo → base category
+  if (SALE_REMAP[cat]) {
+    cat = SALE_REMAP[cat];
   }
 
   // Temporal categories — infer from title
   if (TEMPORAL_CATEGORIES.has(cat)) {
     for (const [pattern, target] of TITLE_CATEGORY_HINTS) {
       if (pattern.test(product.title)) {
-        return { ...product, category: target };
+        return { ...product, category: target.category, subcategory: target.subcategory };
       }
     }
-    return { ...product, category: "General" };
+    return { ...product, category: "Hogar & Tiempo Libre", subcategory: "" };
   }
 
-  return product;
+  // Family → D&P category
+  const mapped = FAMILY_TO_DP[cat];
+  if (mapped) {
+    let updated = { ...product, category: mapped.category, subcategory: mapped.subcategory };
+    // Override: title-based reclassification for misplaced products
+    if (/\b(cooler|lunchera|conservadora)\b/i.test(product.title)) {
+      updated = { ...updated, category: "Hogar & Tiempo Libre", subcategory: "" };
+    } else if (/\b(mochila|bolso|morral)\b/i.test(product.title) && updated.category !== "Bolsos y Mochilas") {
+      updated = { ...updated, category: "Bolsos y Mochilas", subcategory: "Bolsos y Mochilas: Bolsos, Maletines y Mochilas" };
+    } else if (/\b(matera|matero)\b/i.test(product.title) && updated.category !== "Drinkware") {
+      updated = { ...updated, category: "Drinkware", subcategory: "Drinkware: Botellas, Jarros y Otros" };
+    }
+    // Resolve subcategory if not already set
+    if (!updated.subcategory) {
+      updated.subcategory = resolveSubcategory(updated);
+    }
+    return updated;
+  }
+
+  // Unknown category — try title hints
+  for (const [pattern, target] of TITLE_CATEGORY_HINTS) {
+    if (pattern.test(product.title)) {
+      const updated = { ...product, category: target.category, subcategory: target.subcategory };
+      if (!updated.subcategory) {
+        updated.subcategory = resolveSubcategory(updated);
+      }
+      return updated;
+    }
+  }
+
+  return { ...product, subcategory: "" };
 }
 
 async function fetchPage(
@@ -260,8 +406,13 @@ async function main() {
 
   console.log(`\nFetched ${allRaw.length} raw products`);
 
-  // Transform + normalize categories
-  const catalog = allRaw.map(transformProduct).map(normalizeCategory);
+  // Transform + normalize categories + resolve remaining subcategories
+  const catalog = allRaw.map(transformProduct).map(normalizeCategory).map((p) => {
+    if (!p.subcategory) {
+      p = { ...p, subcategory: resolveSubcategory(p) };
+    }
+    return p;
+  });
 
   // Deduplicate by product_id
   const seen = new Set<string>();

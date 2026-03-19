@@ -1,12 +1,17 @@
-/** Category affinity map — which categories complement each other */
+/** Category affinity map — which D&P categories complement each other for cross-sell */
 
 const AFFINITY_MAP: Record<string, string[]> = {
-  "Botellas y Termos": ["Mochilas y Bolsos", "Escritura", "Indumentaria"],
-  Indumentaria: ["Mochilas y Bolsos", "Botellas y Termos", "Escritura"],
-  Tecnologia: ["Escritura", "Mochilas y Bolsos"],
-  "Mochilas y Bolsos": ["Botellas y Termos", "Indumentaria", "Tecnologia"],
-  Escritura: ["Botellas y Termos", "Tecnologia", "Mochilas y Bolsos"],
-  // Kits are already bundles — no cross-sell
+  "Drinkware": ["Bolsos y Mochilas", "Escritura", "Indumentaria"],
+  "Escritura": ["Drinkware", "Tecnología", "Oficina y Negocios"],
+  "Bolsos y Mochilas": ["Drinkware", "Indumentaria", "Tecnología"],
+  "Indumentaria": ["Bolsos y Mochilas", "Drinkware", "Gorros"],
+  "Tecnología": ["Escritura", "Bolsos y Mochilas", "Oficina y Negocios"],
+  "Oficina y Negocios": ["Escritura", "Tecnología", "Drinkware"],
+  "Gorros": ["Indumentaria", "Bolsos y Mochilas", "Drinkware"],
+  "Eco": ["Drinkware", "Escritura", "Bolsos y Mochilas"],
+  "Hogar & Tiempo Libre": ["Drinkware", "Indumentaria", "Bolsos y Mochilas"],
+  "Llaveros": ["Escritura", "Drinkware", "Tecnología"],
+  "Paraguas": ["Bolsos y Mochilas", "Indumentaria", "Drinkware"],
 };
 
 export function getComplementaryCategories(category: string): string[] {

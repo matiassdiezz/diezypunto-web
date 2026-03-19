@@ -17,6 +17,14 @@ export interface ExtractedNeeds {
   unknown_required_fields?: string[];
 }
 
+export interface PriceTier {
+  label: string;
+  min: number;
+  max: number | null;
+  unitPrice: number;
+  finalPrice: number;
+}
+
 export interface ProductResult {
   product_id: string;
   external_id: string;
@@ -37,6 +45,12 @@ export interface ProductResult {
   lead_time_days: number | null;
   score: number;
   reason: string;
+  /** Pricing tiers — present when list price is available */
+  price_tiers?: PriceTier[];
+  /** Personalization cost included in finalPrice of each tier */
+  personalization_price?: number;
+  /** Provider list price (pre-markup) */
+  list_price?: number | null;
 }
 
 export interface SearchResponse {

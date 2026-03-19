@@ -17,21 +17,19 @@ import {
 } from "lucide-react";
 import ScrollReveal from "../shared/ScrollReveal";
 
-// Curated subset of catalog categories — intentionally excludes low-volume or
-// niche categories (Cocina, Coolers, Cuadernos, General, Gorros, Packaging, Uniformes, Verano, Viajes).
-// Names must match catalog.json categories exactly (including accents).
+// Names must match catalog.json categories exactly.
 const CATEGORIES: { name: string; icon: LucideIcon }[] = [
   { name: "Escritura", icon: PenLine },
   { name: "Drinkware", icon: GlassWater },
   { name: "Bolsos y Mochilas", icon: Backpack },
   { name: "Tecnología", icon: Laptop },
-  { name: "Escritorio", icon: Building2 },
-  { name: "Hogar y Tiempo Libre", icon: TreePine },
-  { name: "Sustentables", icon: Leaf },
+  { name: "Indumentaria", icon: Shirt },
+  { name: "Oficina y Negocios", icon: Building2 },
+  { name: "Hogar & Tiempo Libre", icon: TreePine },
+  { name: "Eco", icon: Leaf },
+  { name: "Gorros", icon: Heart },
   { name: "Llaveros", icon: Key },
   { name: "Paraguas", icon: Umbrella },
-  { name: "Apparel", icon: Shirt },
-  { name: "Mates, termos y materas", icon: Heart },
 ];
 
 export default function CategoryShowcase() {

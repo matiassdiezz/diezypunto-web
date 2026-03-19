@@ -28,7 +28,7 @@ export default function ProductoPage() {
   const [kitProducts, setKitProducts] = useState<ProductResult[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState<number | "">(1);
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
 
@@ -66,8 +66,9 @@ export default function ProductoPage() {
 
   function handleAdd() {
     if (!product) return;
-    addItem(product, qty);
-    openDrawer(product, qty);
+    const q = qty || 1;
+    addItem(product, q);
+    openDrawer(product, q);
   }
 
   if (loading) {
@@ -91,7 +92,7 @@ export default function ProductoPage() {
       type: "product",
       product_id: product.product_id,
       title: product.title,
-      qty,
+      qty: qty || 1,
       message: product.price == null
         ? `Necesito precio para: ${product.title}, ${qty} unidades.`
         : `Me interesa el producto: ${product.title}, ${qty} unidades.`,
@@ -223,10 +224,58 @@ export default function ProductoPage() {
             <div className="mt-4 rounded-xl border border-border bg-card p-4 sm:mt-6 sm:rounded-2xl sm:p-6">
               {product.price != null ? (
                 <div>
-                  <p className="text-2xl font-bold sm:text-3xl">
+                  {product.price_tiers && product.price_tiers.length > 0 ? (
+                    <div>
+                      <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">
+                        Precio por cantidad
+                      </p>
+                      <div className="grid grid-cols-3 gap-2">
+                        {product.price_tiers.map((tier) => {
+                          const q = qty || 0;
+                          const matchedTier = product.price_tiers!.find(
+                            (t) => q >= t.min && (t.max === null || q <= t.max)
+                          );
+                          // If no tier matched (qty below all minimums), highlight first tier
+                          const isActive = matchedTier
+                            ? tier === matchedTier
+                            : tier === product.price_tiers![0];
+                          return (
+                            <div
+                              key={tier.label}
+                              className={`rounded-xl border p-3 text-center transition-all ${
+                                isActive
+                                  ? "border-accent bg-accent/5 ring-1 ring-accent/30"
+                                  : "border-border"
+                              }`}
+                            >
+                              <p className="text-[10px] font-medium text-muted sm:text-xs">
+                                {tier.label} u.
+                              </p>
+                              <p className={`mt-1 text-base font-bold sm:text-lg ${
+                                isActive ? "text-accent" : "text-foreground"
+                              }`}>
+                                ${tier.finalPrice.toLocaleString("es-AR")}
+                              </p>
+                              <p className="text-[10px] text-muted">+ IVA</p>
+                              {isActive && (
+                                <p className="mt-1 text-[10px] font-medium text-accent">Tu precio</p>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+                      {product.personalization_price != null && product.personalization_price > 0 && (
+                        <p className="mt-2 text-[11px] text-muted">
+                          Incluye personalización (${product.personalization_price.toLocaleString("es-AR")}/u.)
+                        </p>
+                      )}
+                    </div>
+                  ) : (
+                    <p className="text-2xl font-bold sm:text-3xl">
                       ${product.price.toLocaleString("es-AR")}
                       <span className="ml-1.5 text-sm font-normal text-muted">+ IVA</span>
                     </p>
+                  )}
                 </div>
               ) : (
                 <p className="text-base text-muted sm:text-lg">Consultar precio</p>
@@ -241,7 +290,7 @@ export default function ProductoPage() {
               <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
                 <div className="flex items-center rounded-xl border border-border">
                   <button
-                    onClick={() => setQty(Math.max(1, qty - 1))}
+                    onClick={() => setQty(Math.max(1, (qty || 1) - 1))}
                     className="rounded-l-xl px-3 py-2.5 text-muted hover:bg-surface"
                   >
                     <Minus className="h-4 w-4" />
@@ -251,13 +300,16 @@ export default function ProductoPage() {
                     min={1}
                     value={qty}
                     onChange={(e) => {
-                      const v = parseInt(e.target.value);
+                      const raw = e.target.value;
+                      if (raw === "") { setQty(""); return; }
+                      const v = parseInt(raw);
                       if (!isNaN(v) && v >= 1) setQty(v);
                     }}
+                    onBlur={() => { if (qty === "" || qty < 1) setQty(1); }}
                     className="w-16 border-x border-border bg-white py-2.5 text-center text-sm font-medium tabular-nums outline-none"
                   />
                   <button
-                    onClick={() => setQty(qty + 1)}
+                    onClick={() => setQty((qty || 0) + 1)}
                     className="rounded-r-xl px-3 py-2.5 text-muted hover:bg-surface"
                   >
                     <Plus className="h-4 w-4" />

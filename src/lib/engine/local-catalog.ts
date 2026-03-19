@@ -1,6 +1,7 @@
 /* Local catalog — loads products from catalog.json and provides text search */
 
 import type { ProductResult } from "../types";
+import { calculatePricing } from "./pricing";
 
 interface CatalogProduct {
   product_id: string;
@@ -8,6 +9,7 @@ interface CatalogProduct {
   title: string;
   description: string;
   category: string;
+  subcategory?: string;
   materials: string[];
   colors: string[];
   personalization_methods: string[];
@@ -404,14 +406,36 @@ function hashCode(str: string): number {
 }
 
 function toProductResult(p: CatalogProduct, score: number): ProductResult {
+  // Apply D&P pricing: use price_max (list price) as base for markup calculation
+  const listPrice = p.price_max ?? p.price;
+  // Use subcategory for pricing classification when available (more accurate tier)
+  const pricingCategory = p.subcategory || p.category;
+  let priceTiers: ProductResult["price_tiers"];
+  let personalizationPrice: number | undefined;
+  let displayPrice = p.price;
+
+  if (listPrice != null && listPrice > 0) {
+    const pricing = calculatePricing(listPrice, pricingCategory, "zecat");
+    priceTiers = pricing.tiers.map((t) => ({
+      label: t.label,
+      min: t.min,
+      max: t.max,
+      unitPrice: t.unitPrice,
+      finalPrice: t.finalPrice,
+    }));
+    personalizationPrice = pricing.personalizationPrice;
+    // Display price = first tier final price (most common / lowest quantity)
+    displayPrice = pricing.tiers[0].finalPrice;
+  }
+
   return {
     product_id: p.product_id,
     external_id: p.external_id,
     title: p.title,
     description: p.description,
     category: p.category,
-    subcategory: "",
-    price: p.price,
+    subcategory: p.subcategory || "",
+    price: displayPrice,
     price_max: p.price_max,
     currency: p.currency,
     min_qty: p.min_qty,
@@ -424,5 +448,8 @@ function toProductResult(p: CatalogProduct, score: number): ProductResult {
     lead_time_days: null,
     score,
     reason: "",
+    price_tiers: priceTiers,
+    personalization_price: personalizationPrice,
+    list_price: listPrice,
   };
 }

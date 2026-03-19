@@ -3,8 +3,9 @@
 import type { ProductResult } from "../types";
 
 const CATEGORY_LABELS: Record<string, string> = {
-  Kits: "Ideal para bienvenida",
-  "Botellas y Termos": "Clasico corporativo",
+  "Drinkware": "Clasico corporativo",
+  "Escritura": "Infaltable en cualquier kit",
+  "Bolsos y Mochilas": "Top para eventos",
 };
 
 export function getSocialProofLabel(product: ProductResult): string | null {

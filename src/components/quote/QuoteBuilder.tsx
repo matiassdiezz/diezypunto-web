@@ -15,7 +15,7 @@ import { openTelegramWithContext } from "@/lib/telegram";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { listProducts } from "@/lib/api";
 import { getComplementaryCategories } from "@/lib/engine/affinity";
-import type { ProductResult } from "@/lib/types";
+import type { ProductResult, QuoteItem } from "@/lib/types";
 import CartMilestone from "@/components/quote/CartMilestone";
 import CartReview from "@/components/quote/CartReview";
 import ProductCard from "@/components/catalog/ProductCard";
@@ -29,8 +29,20 @@ export default function QuoteBuilder() {
   const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
   const openWithMessage = useChatStore((s) => s.openWithMessage);
 
+  /** Get the unit price for a cart item based on its quantity and price tiers */
+  function getItemUnitPrice(item: { product: ProductResult; quantity: number }): number | null {
+    if (item.product.price_tiers && item.product.price_tiers.length > 0) {
+      const tier = item.product.price_tiers.find(
+        (t) => item.quantity >= t.min && (t.max === null || item.quantity <= t.max)
+      ) ?? item.product.price_tiers[0];
+      return tier.finalPrice;
+    }
+    return item.product.price;
+  }
+
   const total = items.reduce((sum, i) => {
-    if (i.product.price) return sum + i.product.price * i.quantity;
+    const unitPrice = getItemUnitPrice(i);
+    if (unitPrice) return sum + unitPrice * i.quantity;
     return sum;
   }, 0);
 
@@ -89,7 +101,7 @@ export default function QuoteBuilder() {
             id: i.product.product_id,
             title: i.product.title,
             quantity: i.quantity,
-            unit_price: i.product.price,
+            unit_price: getItemUnitPrice(i) ?? i.product.price,
           })),
         }),
       });
@@ -146,8 +158,9 @@ export default function QuoteBuilder() {
           </thead>
           <tbody>
             {items.map((item) => {
-              const subtotal = item.product.price
-                ? item.product.price * item.quantity
+              const unitPrice = getItemUnitPrice(item);
+              const subtotal = unitPrice
+                ? unitPrice * item.quantity
                 : null;
               const atMin = item.quantity <= 1;
               return (
@@ -199,10 +212,15 @@ export default function QuoteBuilder() {
                         <Plus className="h-3 w-3" />
                       </button>
                     </div>
+                    {minQtyWarn === item.product.product_id && (
+                      <p className="mt-1 text-center text-[10px] text-red-500">
+                        Minimo {item.product.min_qty} u.
+                      </p>
+                    )}
                   </td>
                   <td className="px-6 py-4 text-right">
-                    {item.product.price != null
-                      ? <><span>${item.product.price.toLocaleString("es-AR")}</span><span className="ml-0.5 text-xs text-muted">+ IVA</span></>
+                    {unitPrice != null
+                      ? <><span>${unitPrice.toLocaleString("es-AR")}</span><span className="ml-0.5 text-xs text-muted">+ IVA</span></>
                       : "Consultar"}
                   </td>
                   <td className="px-6 py-4 text-right font-medium">

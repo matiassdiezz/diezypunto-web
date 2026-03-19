@@ -18,25 +18,25 @@ import fastDeliveryData from "@/data/fast-delivery.json";
 const FAST_DELIVERY_KEY = "Entrega Rápida";
 const CATEGORIES = [
   FAST_DELIVERY_KEY,
-  "Bolsos & Mochilas",
+  "Escritura",
   "Drinkware",
-  "Sustentables",
-  "Hogar",
-  "Escritorio",
-  "Indumentaria",
+  "Bolsos y Mochilas",
   "Tecnología",
-  "Mates & Termos",
+  "Indumentaria",
+  "Oficina y Negocios",
+  "Eco",
+  "Hogar & Tiempo Libre",
 ];
 
 const CATEGORY_SLUGS: Record<string, string> = {
-  "Bolsos & Mochilas": "Bolsos y Mochilas",
-  Drinkware: "Drinkware",
-  Sustentables: "Sustentables",
-  Hogar: "Hogar y Tiempo Libre",
-  Escritorio: "Escritorio",
-  Indumentaria: "Apparel",
-  Tecnología: "Tecnología",
-  "Mates & Termos": "Mates, termos y materas",
+  "Escritura": "Escritura",
+  "Drinkware": "Drinkware",
+  "Bolsos y Mochilas": "Bolsos y Mochilas",
+  "Tecnología": "Tecnología",
+  "Indumentaria": "Indumentaria",
+  "Oficina y Negocios": "Oficina y Negocios",
+  "Eco": "Eco",
+  "Hogar & Tiempo Libre": "Hogar & Tiempo Libre",
 };
 
 // Cache fetched products per category

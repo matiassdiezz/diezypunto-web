@@ -104,10 +104,18 @@ export default function ProductCard({
           <div className="flex items-end justify-between">
             <div>
               {product.price != null ? (
-                <p className="text-sm font-bold text-foreground sm:text-lg">
-                  ${product.price.toLocaleString("es-AR")}
-                  <span className="ml-0.5 text-[10px] font-normal text-muted sm:text-xs">+ IVA</span>
-                </p>
+                <div>
+                  <p className="text-sm font-bold text-foreground sm:text-lg">
+                    {product.price_tiers && product.price_tiers.length > 1 && (
+                      <span className="text-[10px] font-normal text-muted sm:text-xs">Desde </span>
+                    )}
+                    ${(product.price_tiers
+                      ? product.price_tiers[product.price_tiers.length - 1].finalPrice
+                      : product.price
+                    ).toLocaleString("es-AR")}
+                    <span className="ml-0.5 text-[10px] font-normal text-muted sm:text-xs">+ IVA</span>
+                  </p>
+                </div>
               ) : (
                 <p className="text-xs text-muted sm:text-sm">Consultar</p>
               )}

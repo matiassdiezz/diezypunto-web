@@ -3,6 +3,7 @@
    when a product isn't found in catalog.json. Main catalog browsing uses local-catalog.ts. */
 
 import type { ProductResult, CategoriesResponse, ProductListResponse } from "../types";
+import { calculatePricing } from "./pricing";
 
 const ZECAT_BASE = "https://api.zecat.com/v1";
 
@@ -119,17 +120,36 @@ function transformProduct(z: any): ProductResult {
       f.description?.toLowerCase().includes("sustentable"),
     ) || z.tag?.toLowerCase().includes("sustentable");
 
-  const discountPrice = resolveDiscountPrice(z);
+  const listPrice = z.price || null;
+  const category = mainFamily?.description || "Sin categoría";
+
+  // Apply D&P pricing
+  let priceTiers: ProductResult["price_tiers"];
+  let personalizationPrice: number | undefined;
+  let displayPrice = resolveDiscountPrice(z);
+
+  if (listPrice != null && listPrice > 0) {
+    const pricing = calculatePricing(listPrice, category, "zecat");
+    priceTiers = pricing.tiers.map((t) => ({
+      label: t.label,
+      min: t.min,
+      max: t.max,
+      unitPrice: t.unitPrice,
+      finalPrice: t.finalPrice,
+    }));
+    personalizationPrice = pricing.personalizationPrice;
+    displayPrice = pricing.tiers[0].finalPrice;
+  }
 
   return {
     product_id: z.id,
     external_id: z.external_id,
     title: z.name,
     description: z.description || "",
-    category: mainFamily?.description || "Sin categoría",
+    category,
     subcategory: "",
-    price: discountPrice,
-    price_max: z.price || null,
+    price: displayPrice,
+    price_max: listPrice,
     currency: z.currency || "ARS",
     min_qty: z.minimum_order_quantity || 1,
     materials,
@@ -141,6 +161,9 @@ function transformProduct(z: any): ProductResult {
     lead_time_days: null,
     score: 0,
     reason: "",
+    price_tiers: priceTiers,
+    personalization_price: personalizationPrice,
+    list_price: listPrice,
   };
 }
 
