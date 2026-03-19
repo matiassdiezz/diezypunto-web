@@ -76,7 +76,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} overflow-x-hidden antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ClientLayout>{children}</ClientLayout>
       </body>

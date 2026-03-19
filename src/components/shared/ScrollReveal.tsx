@@ -24,7 +24,9 @@ export default function ScrollReveal({
   delay = 0,
   direction = "up",
 }: ScrollRevealProps) {
-  return (
+  const needsClip = direction === "left" || direction === "right";
+
+  const inner = (
     <motion.div
       initial={{ opacity: 0, ...directionOffset[direction] }}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
@@ -34,9 +36,15 @@ export default function ScrollReveal({
         delay,
         ease: [0.16, 1, 0.3, 1],
       }}
-      className={className}
+      className={needsClip ? "" : className}
     >
       {children}
     </motion.div>
   );
+
+  if (needsClip) {
+    return <div className={`overflow-x-clip ${className}`}>{inner}</div>;
+  }
+
+  return inner;
 }
