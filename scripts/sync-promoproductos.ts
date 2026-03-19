@@ -263,6 +263,9 @@ async function main() {
   for (const [root, variants] of grouped) {
     const primary = variants[0];
 
+    // Skip products with no name
+    if (!primary.name) continue;
+
     // Collect all colors across variants
     const colors = [
       ...new Set(
