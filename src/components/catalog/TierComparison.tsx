@@ -41,7 +41,7 @@ export default function TierComparison({ products, currentProduct }: TierCompari
     <ScrollReveal>
       <section className="mt-8 sm:mt-12">
         <h2 className="text-lg font-bold sm:text-xl">Compara opciones</h2>
-        <div className="mt-4 grid grid-cols-3 gap-2 sm:gap-4">
+        <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4">
           {tiers.map(({ product, label }) => (
             <TierCard
               key={product.product_id}

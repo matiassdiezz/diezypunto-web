@@ -229,7 +229,7 @@ export default function ProductoPage() {
                       <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted">
                         Precio por cantidad
                       </p>
-                      <div className="grid grid-cols-3 gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                         {product.price_tiers.map((tier) => {
                           const q = qty || 0;
                           const matchedTier = product.price_tiers!.find(

@@ -65,10 +65,10 @@ export default function PersonalizationCard({ methods, productTitle }: Personali
           return (
             <div
               key={method}
-              className="flex items-center justify-between rounded-lg border border-border px-3 py-2"
+              className="flex items-center justify-between gap-2 rounded-lg border border-border px-3 py-2"
             >
-              <div>
-                <p className="text-sm font-medium">{method}</p>
+              <div className="min-w-0">
+                <p className="text-sm font-medium truncate">{method}</p>
                 {info && (
                   <p className="text-xs text-muted">{info.description}</p>
                 )}
