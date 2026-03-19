@@ -1,5 +1,5 @@
 import { anthropic } from "@ai-sdk/anthropic";
-import { streamText, tool, stepCountIs } from "ai";
+import { streamText, tool, stepCountIs, convertToModelMessages } from "ai";
 import { z } from "zod";
 import { searchLocalCatalog, getLocalProduct, getAllProducts } from "@/lib/engine/local-catalog";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
@@ -47,11 +47,12 @@ export async function POST(req: Request) {
   }
 
   const { messages } = await req.json();
+  const modelMessages = await convertToModelMessages(messages);
 
   const result = streamText({
     model: anthropic("claude-sonnet-4-6"),
     system: SYSTEM_PROMPT,
-    messages,
+    messages: modelMessages,
     tools: {
       search_catalog: tool({
         description: "Buscar productos en el catálogo de Diezypunto. Usá esto siempre que el cliente pida productos, busque algo, o necesites encontrar items para un combo.",
