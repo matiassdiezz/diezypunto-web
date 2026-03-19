@@ -13,16 +13,18 @@ const statusColors: Record<string, string> = {
   draft: "bg-gray-100 text-gray-600",
   borrador: "bg-gray-100 text-gray-600",
   enviado: "bg-blue-50 text-blue-600",
-  aprobado: "bg-green-50 text-green-600",
+  aceptado: "bg-green-50 text-green-600",
   rechazado: "bg-red-50 text-red-600",
+  vencido: "bg-amber-50 text-amber-700",
 };
 
 const statusLabels: Record<string, string> = {
   draft: "Borrador",
   borrador: "Borrador",
   enviado: "Enviado",
-  aprobado: "Aprobado",
+  aceptado: "Aceptado",
   rechazado: "Rechazado",
+  vencido: "Vencido",
 };
 
 export default function QuoteCard({

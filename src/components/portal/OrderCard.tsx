@@ -8,15 +8,23 @@ interface OrderCardProps {
 }
 
 const statusColors: Record<string, string> = {
-  pendiente: "bg-yellow-50 text-yellow-700",
-  en_proceso: "bg-blue-50 text-blue-600",
+  cotizado: "bg-gray-100 text-gray-600",
+  confirmado: "bg-blue-50 text-blue-600",
+  comprado: "bg-indigo-50 text-indigo-600",
+  recibido: "bg-purple-50 text-purple-600",
+  "en-produccion": "bg-amber-50 text-amber-700",
+  terminado: "bg-emerald-50 text-emerald-600",
   entregado: "bg-green-50 text-green-600",
   cancelado: "bg-red-50 text-red-600",
 };
 
 const statusLabels: Record<string, string> = {
-  pendiente: "Pendiente",
-  en_proceso: "En proceso",
+  cotizado: "Cotizado",
+  confirmado: "Confirmado",
+  comprado: "Comprado",
+  recibido: "Recibido",
+  "en-produccion": "En producción",
+  terminado: "Terminado",
   entregado: "Entregado",
   cancelado: "Cancelado",
 };

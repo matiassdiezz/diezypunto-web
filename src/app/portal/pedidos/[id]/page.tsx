@@ -53,12 +53,26 @@ export default function OrderDetailPage() {
 
   const fm = order.frontmatter;
   const statusColors: Record<string, string> = {
-    pendiente: "bg-yellow-50 text-yellow-700",
-    en_proceso: "bg-blue-50 text-blue-600",
+    cotizado: "bg-gray-100 text-gray-600",
+    confirmado: "bg-blue-50 text-blue-600",
+    comprado: "bg-indigo-50 text-indigo-600",
+    recibido: "bg-purple-50 text-purple-600",
+    "en-produccion": "bg-amber-50 text-amber-700",
+    terminado: "bg-emerald-50 text-emerald-600",
     entregado: "bg-green-50 text-green-600",
     cancelado: "bg-red-50 text-red-600",
   };
-  const status = String(fm.status || "pendiente");
+  const statusLabels: Record<string, string> = {
+    cotizado: "Cotizado",
+    confirmado: "Confirmado",
+    comprado: "Comprado",
+    recibido: "Recibido",
+    "en-produccion": "En producción",
+    terminado: "Terminado",
+    entregado: "Entregado",
+    cancelado: "Cancelado",
+  };
+  const status = String(fm.status || fm.estado || "cotizado");
 
   return (
     <div className="mx-auto max-w-4xl">
@@ -80,7 +94,7 @@ export default function OrderDetailPage() {
           <span
             className={`rounded-full px-3 py-1 text-xs font-medium ${statusColors[status] || "bg-gray-100 text-gray-600"}`}
           >
-            {status.charAt(0).toUpperCase() + status.slice(1)}
+            {statusLabels[status] || status}
           </span>
         </div>
 
