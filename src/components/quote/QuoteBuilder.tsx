@@ -27,6 +27,7 @@ export default function QuoteBuilder() {
   const { client } = useAuth();
   const [mpLoading, setMpLoading] = useState(false);
   const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
+  const [minQtyWarn, setMinQtyWarn] = useState<string | null>(null);
   const openWithMessage = useChatStore((s) => s.openWithMessage);
 
   /** Get the unit price for a cart item based on its quantity and price tiers */
@@ -190,7 +191,13 @@ export default function QuoteBuilder() {
                       <button
                         onClick={() => {
                           if (!atMin) {
-                            updateQty(item.product.product_id, item.quantity - 1);
+                            const newQty = item.quantity - 1;
+                            updateQty(item.product.product_id, newQty);
+                            if (item.product.min_qty && newQty < item.product.min_qty) {
+                              setMinQtyWarn(item.product.product_id);
+                            } else {
+                              setMinQtyWarn(null);
+                            }
                           }
                         }}
                         className="rounded-lg border border-border p-1 hover:bg-surface"
