@@ -20,11 +20,13 @@ function CartSyncProvider() {
 export default function ClientLayout({ children }: { children: ReactNode }) {
   return (
     <AuthProvider>
-      <CartSyncProvider />
-      <Navbar />
-      <TopBar />
-      <main className="min-h-screen">{children}</main>
-      <Footer />
+      <div className="max-w-full overflow-x-clip">
+        <CartSyncProvider />
+        <Navbar />
+        <TopBar />
+        <main className="min-h-screen">{children}</main>
+        <Footer />
+      </div>
       <QuoteCart />
       <Toast />
       <AddToCartDrawer />
