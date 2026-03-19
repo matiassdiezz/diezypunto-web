@@ -5,11 +5,15 @@ import type { QuoteItem, ProductResult } from "../types";
 interface QuoteState {
   items: QuoteItem[];
   lastAdded: { product: ProductResult; quantity: number } | null;
+  lastSyncedAt: number | null;
+  isSyncing: boolean;
   addItem: (product: ProductResult, quantity?: number) => void;
   removeItem: (productId: string) => void;
   updateQty: (productId: string, quantity: number) => void;
   clearCart: () => void;
   totalItems: () => number;
+  setSyncing: (syncing: boolean) => void;
+  setSyncedAt: (timestamp: number) => void;
 }
 
 export const useQuoteStore = create<QuoteState>()(
@@ -17,6 +21,8 @@ export const useQuoteStore = create<QuoteState>()(
     (set, get) => ({
       items: [],
       lastAdded: null,
+      lastSyncedAt: null,
+      isSyncing: false,
 
       addItem: (product, quantity = 1) => {
         const items = get().items;
@@ -51,9 +57,12 @@ export const useQuoteStore = create<QuoteState>()(
         });
       },
 
-      clearCart: () => set({ items: [] }),
+      clearCart: () => set({ items: [], lastSyncedAt: null }),
 
       totalItems: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
+
+      setSyncing: (syncing) => set({ isSyncing: syncing }),
+      setSyncedAt: (timestamp) => set({ lastSyncedAt: timestamp, isSyncing: false }),
     }),
     { name: "diezypunto-quote" },
   ),

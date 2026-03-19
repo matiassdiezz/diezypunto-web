@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getAllProducts } from "@/lib/engine/local-catalog";
+import { getAllProducts } from "@/lib/engine/catalog-provider";
 
 export async function GET(req: NextRequest) {
   const sp = req.nextUrl.searchParams;

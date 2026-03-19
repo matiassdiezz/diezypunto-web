@@ -5,9 +5,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingBag, Search, LayoutGrid } from "lucide-react";
+import { Menu, X, ShoppingBag, Search, LayoutGrid, UserCircle } from "lucide-react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useTopBarStore } from "@/lib/stores/topbar-store";
+import { useAuth } from "@/lib/hooks/use-auth";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -21,6 +22,7 @@ export default function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
   const totalItems = useQuoteStore((s) => s.totalItems());
   const { isOpen: topBarOpen, toggle: toggleTopBar } = useTopBarStore();
+  const { client } = useAuth();
   const router = useRouter();
 
   const handleSearch = (e: FormEvent) => {
@@ -97,6 +99,15 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
+          {client && (
+            <Link
+              href="/portal"
+              className="flex items-center gap-1.5 text-sm text-accent transition-colors hover:text-accent-hover"
+            >
+              <UserCircle className="h-4 w-4" />
+              Mi Portal
+            </Link>
+          )}
           <Link
             href="/carrito"
             className="relative flex items-center gap-1.5 rounded-full bg-[#59C6F2] px-4 py-2 text-sm font-medium text-white transition-all hover:bg-[#3BB5E8]"
@@ -145,6 +156,16 @@ export default function Navbar() {
                   {l.label}
                 </Link>
               ))}
+              {client && (
+                <Link
+                  href="/portal"
+                  className="flex items-center gap-1.5 text-sm text-accent hover:text-accent-hover"
+                  onClick={() => setMobileOpen(false)}
+                >
+                  <UserCircle className="h-4 w-4" />
+                  Mi Portal
+                </Link>
+              )}
             </div>
           </motion.div>
         )}

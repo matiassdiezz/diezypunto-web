@@ -1,0 +1,59 @@
+"use client";
+
+import { useState } from "react";
+import { Save, Check, Loader2 } from "lucide-react";
+import { useQuoteStore } from "@/lib/stores/quote-store";
+
+export default function SaveQuoteButton() {
+  const [saving, setSaving] = useState(false);
+  const [saved, setSaved] = useState(false);
+  const items = useQuoteStore((s) => s.items);
+
+  const handleSave = async () => {
+    if (items.length === 0 || saving) return;
+
+    setSaving(true);
+    try {
+      const res = await fetch("/api/portal/quotes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: items.map((i) => ({
+            product_id: i.product.product_id,
+            title: i.product.title,
+            quantity: i.quantity,
+            unit_price: i.product.price,
+            category: i.product.category,
+          })),
+          status: "borrador",
+        }),
+      });
+
+      if (res.ok) {
+        setSaved(true);
+        setTimeout(() => setSaved(false), 3000);
+      }
+    } catch {
+      // Silent fail — cart is still in localStorage
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <button
+      onClick={handleSave}
+      disabled={saving || items.length === 0}
+      className="flex items-center gap-2 rounded-xl border border-accent/40 bg-accent-light px-5 py-3 text-sm font-medium text-accent transition-all hover:bg-accent/10 disabled:opacity-60"
+    >
+      {saving ? (
+        <Loader2 className="h-4 w-4 animate-spin" />
+      ) : saved ? (
+        <Check className="h-4 w-4" />
+      ) : (
+        <Save className="h-4 w-4" />
+      )}
+      {saving ? "Guardando..." : saved ? "Guardado" : "Guardar Presupuesto"}
+    </button>
+  );
+}

@@ -19,9 +19,12 @@ import type { ProductResult } from "@/lib/types";
 import CartMilestone from "@/components/quote/CartMilestone";
 import CartReview from "@/components/quote/CartReview";
 import ProductCard from "@/components/catalog/ProductCard";
+import SaveQuoteButton from "@/components/portal/SaveQuoteButton";
+import { useAuth } from "@/lib/hooks/use-auth";
 
 export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();
+  const { client } = useAuth();
   const [mpLoading, setMpLoading] = useState(false);
   const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
   const [minQtyWarn, setMinQtyWarn] = useState<string | null>(null);
@@ -203,7 +206,7 @@ export default function QuoteBuilder() {
                     </div>
                     {minQtyWarn === item.product.product_id && (
                       <p className="mt-1 text-center text-[10px] text-red-500">
-                        Minimo {min} u.
+                        Minimo {item.product.min_qty} u.
                       </p>
                     )}
                   </td>
@@ -250,6 +253,9 @@ export default function QuoteBuilder() {
           )}
 
           <div className="flex flex-col gap-2 sm:flex-row">
+            {/* Guardar en vault (solo autenticados) */}
+            {client && <SaveQuoteButton />}
+
             {/* Mercado Pago */}
             {total > 0 && !hasItemsWithoutPrice && (
               <button

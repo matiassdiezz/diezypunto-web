@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getLocalProduct } from "@/lib/engine/local-catalog";
+import { getLocalProduct } from "@/lib/engine/catalog-provider";
 import { getZecatProduct } from "@/lib/engine/zecat";
 
 export async function GET(

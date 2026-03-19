@@ -9,10 +9,18 @@ import QuoteCart from "@/components/quote/QuoteCart";
 import Toast from "@/components/shared/Toast";
 import AddToCartDrawer from "@/components/shared/AddToCartDrawer";
 import AdvisorDrawer from "@/components/advisor/AdvisorDrawer";
+import { AuthProvider } from "@/lib/auth-context";
+import { useCartSync } from "@/lib/hooks/use-cart-sync";
+
+function CartSyncProvider() {
+  useCartSync();
+  return null;
+}
 
 export default function ClientLayout({ children }: { children: ReactNode }) {
   return (
-    <>
+    <AuthProvider>
+      <CartSyncProvider />
       <Navbar />
       <TopBar />
       <main className="min-h-screen">{children}</main>
@@ -22,6 +30,6 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       <Toast />
       <AddToCartDrawer />
       <AdvisorDrawer />
-    </>
+    </AuthProvider>
   );
 }
