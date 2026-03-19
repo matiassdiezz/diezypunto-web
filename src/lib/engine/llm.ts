@@ -81,7 +81,6 @@ export async function searchWithAI(
     if (p.personalization_methods.length > 0)
       parts.push(`Pers:${p.personalization_methods.join(",")}`);
     if (p.price != null) parts.push(`$${p.price}`);
-    if (p.min_qty > 1) parts.push(`Min:${p.min_qty}`);
     if (p.eco_friendly) parts.push("ECO");
     if (p.colors.length > 0)
       parts.push(`Col:${p.colors.slice(0, 5).join(",")}`);
@@ -265,7 +264,7 @@ Tu tarea: analizar el carrito del cliente y dar insights accionables.
 Tipos de insight (usa solo los relevantes, max 4):
 - "gap": falta algo para completar el pedido (ej: "Agrega mochilas para completar el kit")
 - "optimization": optimizacion de cantidad o precio (ej: "Con 50 gorras mas alcanzas precio bulk")
-- "warning": problema concreto (ej: "Cuaderno tiene minimo 100u, pediste 50")
+- "warning": problema concreto (ej: "Producto sin precio, consultar")
 - "tip": sugerencia de valor (ej: "3 productos tienen alternativa eco")
 
 Iconos por tipo: gap="🎯", optimization="💰", warning="⚠️", tip="🌱"
@@ -276,8 +275,6 @@ IMPORTANTE:
 - Max 4 insights, priorizar los mas impactantes
 - Summary en 1 oracion, habla en segunda persona (vos)
 - Si un insight tiene una accion buscable, incluir "action" con el termino de busqueda
-- Warnings de min_qty son prioritarios
-
 Responde SOLO con un JSON:
 {
   "summary": "Resumen en 1 oracion",
@@ -308,7 +305,6 @@ export async function reviewCart(
     ];
     if (item.price != null) parts.push(`$${item.price}`);
     if (item.eco_friendly) parts.push("ECO");
-    if (item.min_qty > 1) parts.push(`Min:${item.min_qty}`);
     if (item.personalization_methods.length > 0)
       parts.push(`Pers:${item.personalization_methods.join(",")}`);
     return parts.join(" | ");
@@ -357,14 +353,13 @@ Criterios:
 2. Rango de presupuesto POR PERSONA (si lo indico)
 3. Variedad de categorias
 4. Personalizacion disponible
-5. Cantidades minimas vs lo que necesitan
+5. Disponibilidad y variedad
 
 IMPORTANTE sobre presupuesto y cantidades:
 - El presupuesto indicado es POR PERSONA — es lo que vale el COMBO completo por persona
 - La suma de precios unitarios de los productos "core" debe estar DENTRO del rango indicado
 - Opcionalmente, seleccionar 1-2 productos "upsell" que mejoren el combo (marcados con upsell: true)
 - qty = cantidad de personas (todos reciben el mismo combo)
-- Respetar min_qty: si el min_qty del producto > cantidad de personas, NO seleccionar ese producto
 - Ejemplo: presupuesto $5,000-$10,000/persona → core: cuaderno $4,000 + lapicera $600 + llavero $2,000 = $6,600 ✓ | upsell: botella $3,500 → $10,100 total
 
 IMPORTANTE:
@@ -449,7 +444,6 @@ export async function advisorSearch(
     const parts = [`ID:${p.product_id}`, p.title, p.category];
     if (p.materials.length > 0) parts.push(`Mat:${p.materials.join(",")}`);
     if (p.price != null) parts.push(`$${p.price}`);
-    if (p.min_qty > 1) parts.push(`Min:${p.min_qty}`);
     if (p.eco_friendly) parts.push("ECO");
     if (p.personalization_methods.length > 0)
       parts.push(`Pers:${p.personalization_methods.join(",")}`);

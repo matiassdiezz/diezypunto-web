@@ -4,7 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Package, Paintbrush, Truck, Award, Wand2 } from "lucide-react";
-import { useAdvisorStore } from "@/lib/stores/advisor-store";
+import { useChatStore } from "@/lib/stores/chat-store";
 
 const VALUE_POINTS = [
   { icon: Package, text: "+1,400 productos" },
@@ -14,7 +14,7 @@ const VALUE_POINTS = [
 ];
 
 export default function Hero() {
-  const openAdvisor = useAdvisorStore((s) => s.open);
+  const openWithMessage = useChatStore((s) => s.openWithMessage);
 
   return (
     <section id="ai-search" className="relative scroll-mt-20 overflow-hidden bg-white">
@@ -97,7 +97,7 @@ export default function Hero() {
                 Explorar catalogo
               </Link>
               <button
-                onClick={openAdvisor}
+                onClick={() => openWithMessage("Quiero armar un pedido personalizado para mi evento")}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-border px-6 py-3 font-semibold text-foreground transition-colors hover:border-accent/40 hover:text-accent"
               >
                 <Wand2 className="h-4 w-4" />

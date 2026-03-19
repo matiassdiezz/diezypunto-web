@@ -28,7 +28,7 @@ export default function ProductoPage() {
   const [kitProducts, setKitProducts] = useState<ProductResult[]>([]);
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
-  const [qty, setQty] = useState(10);
+  const [qty, setQty] = useState(1);
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
 
@@ -37,7 +37,7 @@ export default function ProductoPage() {
     getProduct(id)
       .then((p) => {
         setProduct(p);
-        setQty(10);
+        setQty(1);
         // Fetch related products from same category
         listProducts({ category: p.category, limit: 8 })
           .then((res) =>
@@ -241,18 +241,18 @@ export default function ProductoPage() {
               <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
                 <div className="flex items-center rounded-xl border border-border">
                   <button
-                    onClick={() => setQty(Math.max(10, qty - 1))}
+                    onClick={() => setQty(Math.max(1, qty - 1))}
                     className="rounded-l-xl px-3 py-2.5 text-muted hover:bg-surface"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
                   <input
                     type="number"
-                    min={10}
+                    min={1}
                     value={qty}
                     onChange={(e) => {
                       const v = parseInt(e.target.value);
-                      if (!isNaN(v) && v >= 10) setQty(v);
+                      if (!isNaN(v) && v >= 1) setQty(v);
                     }}
                     className="w-16 border-x border-border bg-white py-2.5 text-center text-sm font-medium tabular-nums outline-none"
                   />

@@ -3,11 +3,11 @@
 import Link from "next/link";
 import { Send, Wand2 } from "lucide-react";
 import { telegramUrl } from "@/lib/telegram";
-import { useAdvisorStore } from "@/lib/stores/advisor-store";
+import { useChatStore } from "@/lib/stores/chat-store";
 import ScrollReveal from "../shared/ScrollReveal";
 
 export default function CtaBanner() {
-  const openAdvisor = useAdvisorStore((s) => s.open);
+  const openWithMessage = useChatStore((s) => s.openWithMessage);
 
   return (
     <section className="bg-[#EBF7FE] py-20 px-6 lg:px-16">
@@ -36,7 +36,7 @@ export default function CtaBanner() {
               Explorar catalogo
             </Link>
             <button
-              onClick={openAdvisor}
+              onClick={() => openWithMessage("Quiero armar un pedido personalizado para mi evento")}
               className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
             >
               <Wand2 className="h-4 w-4" />

@@ -146,7 +146,7 @@ function transformProduct(z: ZecatProduct): CatalogProduct {
     price: resolvePrice(z),
     price_max: z.price || null,
     currency: z.currency || "ARS",
-    min_qty: z.minimum_order_quantity || 1,
+    min_qty: 1,
     image_urls: images.map((img) => img.image_url).filter(Boolean),
   };
 }

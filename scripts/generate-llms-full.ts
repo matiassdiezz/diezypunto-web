@@ -51,7 +51,7 @@ const lines: string[] = [];
 lines.push("# Diezypunto — Catálogo Completo");
 lines.push("");
 lines.push(`> ${catalog.total} productos | Última actualización: ${catalog.synced_at}`);
-lines.push(`> Precios: consultar | Cantidades mínimas varían por producto`);
+lines.push(`> Precios: consultar | Sin mínimos — pedí desde 1 unidad`);
 lines.push("");
 lines.push("---");
 lines.push("");
@@ -89,9 +89,6 @@ for (const cat of categories) {
     // Prices not exposed publicly — markup pending
     details.push(`- **Precio:** Consultar`);
 
-    if (p.min_qty > 1) {
-      details.push(`- **Cantidad mínima:** ${p.min_qty} unidades`);
-    }
     if (p.materials.length > 0) {
       details.push(`- **Materiales:** ${p.materials.join(", ")}`);
     }

@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { Wand2 } from "lucide-react";
-import { useAdvisorStore } from "@/lib/stores/advisor-store";
+import { useChatStore } from "@/lib/stores/chat-store";
 import ScrollReveal from "../shared/ScrollReveal";
 
 export default function CtaFinal() {
-  const openAdvisor = useAdvisorStore((s) => s.open);
+  const openWithMessage = useChatStore((s) => s.openWithMessage);
 
   return (
     <section className="bg-[#EBF7FE] py-16">
@@ -27,7 +27,7 @@ export default function CtaFinal() {
                 Explorar catalogo
               </Link>
               <button
-                onClick={openAdvisor}
+                onClick={() => openWithMessage("Quiero armar un pedido personalizado para mi evento")}
                 className="inline-flex items-center justify-center gap-2 rounded-xl border-2 border-border bg-white px-6 py-3 font-semibold text-foreground transition-colors hover:border-accent/40 hover:text-accent"
               >
                 <Wand2 className="h-4 w-4" />

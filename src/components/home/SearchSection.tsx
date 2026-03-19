@@ -1,8 +1,17 @@
 "use client";
 
-import { Sparkles } from "lucide-react";
-import SearchPrompt from "../search/SearchPrompt";
+import { useState } from "react";
+import { Sparkles, ArrowUp } from "lucide-react";
+import { motion } from "framer-motion";
+import { useChatStore } from "@/lib/stores/chat-store";
 import ScrollReveal from "../shared/ScrollReveal";
+
+const EXAMPLES = [
+  "100 botellas termicas eco para un evento corporativo",
+  "kits de bienvenida premium para nuevos empleados",
+  "mochilas con bordado para el equipo de ventas",
+  "regalos ejecutivos para fin de ano, presupuesto alto",
+];
 
 // Offset dot-grid — looks like a neural network / constellation
 function buildAsciiGrid(): string {
@@ -16,6 +25,22 @@ function buildAsciiGrid(): string {
 const ASCII_BG = buildAsciiGrid();
 
 export default function SearchSection() {
+  const [input, setInput] = useState("");
+  const [focused, setFocused] = useState(false);
+  const openWithMessage = useChatStore((s) => s.openWithMessage);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const q = input.trim();
+    if (!q) return;
+    openWithMessage(q);
+    setInput("");
+  }
+
+  function handleExample(example: string) {
+    openWithMessage(example);
+  }
+
   return (
     <section
       id="ai-search"
@@ -43,15 +68,77 @@ export default function SearchSection() {
             </h2>
             <p className="mt-3 text-center text-muted">
               Escribi lo que necesitas como si le hablaras a una persona
-              <br className="hidden sm:block" />
-              y te mostramos las mejores opciones al instante
+              <br className="hidden sm:block" />y te mostramos las mejores
+              opciones al instante
             </p>
           </div>
         </ScrollReveal>
 
         <ScrollReveal delay={0.1}>
-          <div className="mt-8">
-            <SearchPrompt />
+          <div className="mx-auto mt-8 max-w-2xl">
+            <form onSubmit={handleSubmit} className="relative">
+              <motion.div
+                className="search-glow-wrapper"
+                animate={{
+                  scale: focused ? 1.02 : 1,
+                  boxShadow: focused
+                    ? "0 8px 40px rgba(89,198,242,0.2)"
+                    : "0 4px 24px rgba(89,198,242,0.08)",
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              >
+                <div className="relative z-10 rounded-2xl border border-foreground/30 bg-white">
+                  <textarea
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" && !e.shiftKey) {
+                        e.preventDefault();
+                        handleSubmit(e);
+                      }
+                    }}
+                    onFocus={() => setFocused(true)}
+                    onBlur={() => setFocused(false)}
+                    rows={3}
+                    placeholder="Describe lo que necesitas..."
+                    className="w-full resize-none bg-transparent px-5 py-5 pr-14 text-base text-foreground outline-none placeholder:text-gray-300 sm:text-lg"
+                    style={{ minHeight: "100px" }}
+                  />
+                  <motion.button
+                    type="submit"
+                    disabled={!input.trim()}
+                    className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-white transition-all hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(89,198,242,0.4)] disabled:opacity-20"
+                    animate={{ scale: focused && input.trim() ? 1.1 : 1 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 20 }}
+                  >
+                    <ArrowUp className="h-5 w-5" />
+                  </motion.button>
+                </div>
+              </motion.div>
+            </form>
+
+            {/* Example chips */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.5 }}
+              className="mt-8"
+            >
+              <p className="mb-3 text-center text-[10px] font-medium uppercase tracking-[0.25em] text-gray-400">
+                Proba con algo como
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {EXAMPLES.map((ex) => (
+                  <button
+                    key={ex}
+                    onClick={() => handleExample(ex)}
+                    className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-left text-xs leading-relaxed text-gray-500 transition-all hover:border-accent hover:bg-accent-light hover:text-accent hover:shadow-sm"
+                  >
+                    {ex}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </ScrollReveal>
       </div>

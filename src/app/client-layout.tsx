@@ -4,13 +4,11 @@ import { ReactNode } from "react";
 import Navbar from "@/components/shared/Navbar";
 import TopBar from "@/components/shared/TopBar";
 import Footer from "@/components/shared/Footer";
-import TelegramButton from "@/components/shared/TelegramButton";
 import QuoteCart from "@/components/quote/QuoteCart";
 import Toast from "@/components/shared/Toast";
 import AddToCartDrawer from "@/components/shared/AddToCartDrawer";
-import AdvisorDrawer from "@/components/advisor/AdvisorDrawer";
 import ChatFAB from "@/components/chat/ChatFAB";
-import ChatDrawer from "@/components/chat/ChatDrawer";
+import ChatModal from "@/components/chat/ChatDrawer";
 import { AuthProvider } from "@/lib/auth-context";
 import { useCartSync } from "@/lib/hooks/use-cart-sync";
 
@@ -27,12 +25,10 @@ export default function ClientLayout({ children }: { children: ReactNode }) {
       <TopBar />
       <main className="min-h-screen">{children}</main>
       <Footer />
-      <TelegramButton />
       <QuoteCart />
       <Toast />
       <AddToCartDrawer />
-      <AdvisorDrawer />
-      <ChatDrawer />
+      <ChatModal />
       <ChatFAB />
     </AuthProvider>
   );

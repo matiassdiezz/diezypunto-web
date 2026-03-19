@@ -10,7 +10,7 @@ import {
   Loader2,
   Wand2,
 } from "lucide-react";
-import { useAdvisorStore } from "@/lib/stores/advisor-store";
+import { useChatStore } from "@/lib/stores/chat-store";
 import { openTelegramWithContext } from "@/lib/telegram";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { listProducts } from "@/lib/api";
@@ -27,7 +27,7 @@ export default function QuoteBuilder() {
   const { client } = useAuth();
   const [mpLoading, setMpLoading] = useState(false);
   const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
-  const [minQtyWarn, setMinQtyWarn] = useState<string | null>(null);
+  const openWithMessage = useChatStore((s) => s.openWithMessage);
 
   const total = items.reduce((sum, i) => {
     if (i.product.price) return sum + i.product.price * i.quantity;
@@ -106,8 +106,6 @@ export default function QuoteBuilder() {
     }
   };
 
-  const openAdvisor = useAdvisorStore((s) => s.open);
-
   if (items.length === 0) {
     return (
       <div className="py-20 text-center">
@@ -116,7 +114,7 @@ export default function QuoteBuilder() {
           Busca productos y agregalos al carrito.
         </p>
         <button
-          onClick={openAdvisor}
+          onClick={() => openWithMessage("Quiero armar un pedido personalizado para mi evento")}
           className="mt-6 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/20"
         >
           <Wand2 className="h-4 w-4" />
@@ -151,7 +149,7 @@ export default function QuoteBuilder() {
               const subtotal = item.product.price
                 ? item.product.price * item.quantity
                 : null;
-              const atMin = item.quantity <= 10;
+              const atMin = item.quantity <= 1;
               return (
                 <tr
                   key={item.product.product_id}
@@ -178,10 +176,7 @@ export default function QuoteBuilder() {
                     <div className="flex items-center justify-center gap-2">
                       <button
                         onClick={() => {
-                          if (atMin) {
-                            setMinQtyWarn(item.product.product_id);
-                            setTimeout(() => setMinQtyWarn((v) => v === item.product.product_id ? null : v), 2000);
-                          } else {
+                          if (!atMin) {
                             updateQty(item.product.product_id, item.quantity - 1);
                           }
                         }}
@@ -204,11 +199,6 @@ export default function QuoteBuilder() {
                         <Plus className="h-3 w-3" />
                       </button>
                     </div>
-                    {minQtyWarn === item.product.product_id && (
-                      <p className="mt-1 text-center text-[10px] text-red-500">
-                        Minimo {item.product.min_qty} u.
-                      </p>
-                    )}
                   </td>
                   <td className="px-6 py-4 text-right">
                     {item.product.price != null

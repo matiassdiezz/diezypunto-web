@@ -24,7 +24,7 @@ export const useQuoteStore = create<QuoteState>()(
       lastSyncedAt: null,
       isSyncing: false,
 
-      addItem: (product, quantity = 10) => {
+      addItem: (product, quantity = 1) => {
         const items = get().items;
         const existing = items.find(
           (i) => i.product.product_id === product.product_id,
@@ -49,7 +49,7 @@ export const useQuoteStore = create<QuoteState>()(
         }),
 
       updateQty: (productId, quantity) => {
-        if (quantity < 10) return; // Minimum 10 units
+        if (quantity < 1) return; // Minimum 1 unit
         set({
           items: get().items.map((i) =>
             i.product.product_id === productId ? { ...i, quantity } : i,
