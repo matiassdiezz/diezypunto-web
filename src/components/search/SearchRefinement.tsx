@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, FormEvent } from "react";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp } from "@phosphor-icons/react";
 import { useSearchStore } from "@/lib/stores/search-store";
 
 const REFINE_SUGGESTIONS = [

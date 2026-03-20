@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { CaretDown } from "@phosphor-icons/react";
 import ScrollReveal from "../shared/ScrollReveal";
 
 const FAQS = [
@@ -42,7 +42,7 @@ function FaqItem({ q, a }: { q: string; a: string }) {
         className="flex w-full items-center justify-between py-5 text-left"
       >
         <span className={`font-medium ${open ? "text-accent" : ""}`}>{q}</span>
-        <ChevronDown
+        <CaretDown
           className={`h-5 w-5 shrink-0 text-muted transition-transform ${open ? "rotate-180 text-accent" : ""}`}
         />
       </button>

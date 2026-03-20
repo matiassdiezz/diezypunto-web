@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Sparkles } from "lucide-react";
+import { Sparkle } from "@phosphor-icons/react";
+import { motion } from "framer-motion";
 import { listProducts, getProduct } from "@/lib/api";
 import type { AIPicksResponse, ProductResult } from "@/lib/types";
 import ProductCard from "../catalog/ProductCard";
@@ -59,28 +60,42 @@ export default function FeaturedProducts() {
         </ScrollReveal>
 
         {/* Tabs */}
-        <div className="mt-8 flex justify-center gap-2">
+        <div className="mt-8 flex justify-center gap-6">
           <button
             onClick={() => setTab("destacados")}
-            className={`rounded-full px-5 py-2 text-sm font-medium transition-all ${
+            className={`relative px-1 pb-2 text-sm font-medium transition-colors ${
               tab === "destacados"
-                ? "bg-accent text-white shadow-sm"
-                : "bg-white text-muted hover:text-foreground"
+                ? "text-accent font-semibold"
+                : "text-muted hover:text-foreground"
             }`}
           >
             Destacados
+            {tab === "destacados" && (
+              <motion.div
+                layoutId="tab-indicator"
+                className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-accent"
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
+            )}
           </button>
           {aiPicks.length > 0 && (
             <button
               onClick={() => setTab("ai")}
-              className={`flex items-center gap-1.5 rounded-full px-5 py-2 text-sm font-medium transition-all ${
+              className={`relative flex items-center gap-1.5 px-1 pb-2 text-sm font-medium transition-colors ${
                 tab === "ai"
-                  ? "bg-accent text-white shadow-sm"
-                  : "bg-white text-muted hover:text-foreground"
+                  ? "text-accent font-semibold"
+                  : "text-muted hover:text-foreground"
               }`}
             >
-              <Sparkles className="h-3.5 w-3.5" />
+              <Sparkle className="h-3.5 w-3.5" />
               Picks de IA
+              {tab === "ai" && (
+                <motion.div
+                  layoutId="tab-indicator"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 rounded-full bg-accent"
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                />
+              )}
             </button>
           )}
         </div>

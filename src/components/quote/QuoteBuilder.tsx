@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import {
   Minus,
   Plus,
-  Trash2,
-  Send,
+  Trash,
+  PaperPlaneTilt,
   CreditCard,
-  Loader2,
-} from "lucide-react";
+  SpinnerGap,
+} from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
 import { useChatStore } from "@/lib/stores/chat-store";
@@ -235,7 +235,7 @@ export default function QuoteBuilder() {
                       onClick={() => removeItem(item.product.product_id)}
                       className="text-muted hover:text-red-500"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      <Trash className="h-4 w-4" />
                     </button>
                   </td>
                 </tr>
@@ -246,62 +246,70 @@ export default function QuoteBuilder() {
       </div>
 
       {/* Footer */}
-      <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <button
-          onClick={() => {
-            if (window.confirm("¿Seguro que querés vaciar el carrito?")) {
-              clearCart();
-            }
-          }}
-          className="text-sm text-muted underline hover:text-foreground"
-        >
-          Vaciar carrito
-        </button>
-
-        <div className="flex flex-col items-end gap-3">
-          {total > 0 && (
-            <p className="text-xl font-bold">
-              Total: ${total.toLocaleString("es-AR")}
+      <div className="mt-6 space-y-4">
+        {/* Total */}
+        {total > 0 && (
+          <div className="flex items-center justify-between rounded-xl border border-border bg-card p-4">
+            <p className="text-sm font-medium text-muted">Total estimado</p>
+            <p className="text-2xl font-bold">
+              ${total.toLocaleString("es-AR")}
               <span className="ml-1 text-sm font-normal text-muted">+ IVA</span>
             </p>
-          )}
-
-          <div className="flex flex-col gap-2 sm:flex-row">
-            {/* Guardar en vault (solo autenticados) */}
-            {client && <SaveQuoteButton />}
-
-            {/* Mercado Pago */}
-            {total > 0 && !hasItemsWithoutPrice && (
-              <button
-                onClick={handleMercadoPago}
-                disabled={mpLoading}
-                className="flex items-center justify-center gap-2 rounded-xl bg-[#009ee3] px-6 py-3 font-medium text-white transition-all hover:bg-[#007eb5] disabled:opacity-60"
-              >
-                {mpLoading ? (
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                ) : (
-                  <CreditCard className="h-5 w-5" />
-                )}
-                {mpLoading ? "Redirigiendo..." : "Pagar con Mercado Pago"}
-              </button>
-            )}
-
-            {/* Telegram */}
-            <button
-              onClick={handleTelegram}
-              className="flex items-center justify-center gap-2 rounded-xl bg-[#0088cc] px-6 py-3 font-medium text-white transition-transform hover:scale-105"
-            >
-              <Send className="h-5 w-5" />
-              Consultar por Telegram
-            </button>
           </div>
+        )}
 
-          {hasItemsWithoutPrice && (
-            <p className="text-xs text-muted">
-              Algunos productos no tienen precio. Consulta por Telegram para un
-              presupuesto completo.
-            </p>
+        {/* Primary CTAs */}
+        <div className="flex flex-col gap-2 sm:flex-row">
+          {/* Mercado Pago — primary if all items have price */}
+          {total > 0 && !hasItemsWithoutPrice && (
+            <button
+              onClick={handleMercadoPago}
+              disabled={mpLoading}
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-base font-medium text-white transition-all hover:bg-accent-hover disabled:opacity-60"
+            >
+              {mpLoading ? (
+                <SpinnerGap className="h-5 w-5 animate-spin" />
+              ) : (
+                <CreditCard className="h-5 w-5" />
+              )}
+              {mpLoading ? "Redirigiendo..." : "Pagar con Mercado Pago"}
+            </button>
           )}
+
+          {/* Telegram — primary if items lack price, secondary otherwise */}
+          <button
+            onClick={handleTelegram}
+            className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3.5 text-base font-medium transition-all ${
+              hasItemsWithoutPrice
+                ? "bg-accent text-white hover:bg-accent-hover"
+                : "border border-border bg-white text-foreground hover:bg-surface"
+            }`}
+          >
+            <PaperPlaneTilt className="h-5 w-5" />
+            {hasItemsWithoutPrice ? "Solicitar presupuesto por Telegram" : "Consultar por Telegram"}
+          </button>
+
+          {/* Guardar en vault (solo autenticados) */}
+          {client && <SaveQuoteButton />}
+        </div>
+
+        {hasItemsWithoutPrice && (
+          <p className="text-center text-xs text-muted">
+            Algunos productos requieren cotización. Contactanos por Telegram para un presupuesto completo.
+          </p>
+        )}
+
+        <div className="text-center">
+          <button
+            onClick={() => {
+              if (window.confirm("¿Seguro que querés vaciar el carrito?")) {
+                clearCart();
+              }
+            }}
+            className="text-sm text-muted underline hover:text-foreground"
+          >
+            Vaciar carrito
+          </button>
         </div>
       </div>
 

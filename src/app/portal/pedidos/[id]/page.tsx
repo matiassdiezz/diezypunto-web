@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, SpinnerGap } from "@phosphor-icons/react";
 
 interface OrderDetail {
   filename: string;
@@ -32,7 +32,7 @@ export default function OrderDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-accent" />
+        <SpinnerGap className="h-6 w-6 animate-spin text-accent" />
       </div>
     );
   }

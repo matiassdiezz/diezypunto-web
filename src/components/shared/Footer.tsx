@@ -85,14 +85,14 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-muted">
-              Confianza
+              Informacion
             </h4>
-            <p className="mt-3 text-sm text-muted">
-              Mercado Pago, transferencia bancaria, efectivo, y mas.
-            </p>
-            <p className="mt-2 text-sm text-muted">
-              Facturacion A y B disponible.
-            </p>
+            <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
+              <p>Mercado Pago, transferencia bancaria, efectivo, y mas.</p>
+              <p>Facturacion A y B disponible.</p>
+              <p>Envios a todo el pais. CABA y GBA en 24-72hs.</p>
+              <p>Cambios y devoluciones dentro de los 10 dias.</p>
+            </div>
           </div>
         </div>
         <div className="mt-8 border-t border-border pt-6 text-center text-xs text-muted">

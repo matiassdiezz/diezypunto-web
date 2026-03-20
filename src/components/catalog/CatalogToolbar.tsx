@@ -1,6 +1,6 @@
 "use client";
 
-import { SlidersHorizontal, X } from "lucide-react";
+import { SlidersHorizontal, X } from "@phosphor-icons/react";
 import type { CatalogFilters, SortOption } from "@/lib/hooks/use-catalog-filters";
 
 interface CatalogToolbarProps {

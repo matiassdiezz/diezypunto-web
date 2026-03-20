@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Truck, Gift, Check } from "lucide-react";
+import { Truck, Gift, Check } from "@phosphor-icons/react";
 
 interface CartMilestoneProps {
   total: number;

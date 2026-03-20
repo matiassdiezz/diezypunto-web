@@ -1,11 +1,11 @@
 "use client";
 
-import { Package, Clock, Award } from "lucide-react";
+import { Package, Clock, Trophy } from "@phosphor-icons/react";
 
 const stats = [
   { icon: Package, label: "+1,400 productos", sub: "en catalogo" },
   { icon: Clock, label: "+10 anios", sub: "de experiencia" },
-  { icon: Award, label: "Personalizacion", sub: "a medida" },
+  { icon: Trophy, label: "Personalizacion", sub: "a medida" },
 ];
 
 export default function TrustBar() {

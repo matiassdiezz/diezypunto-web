@@ -3,16 +3,16 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Package, Paintbrush, Truck, Award } from "lucide-react";
+import { Package, PaintBrush, Truck, Trophy } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
 import { useChatStore } from "@/lib/stores/chat-store";
 
 const VALUE_POINTS = [
   { icon: Package, text: "+1,400 productos" },
-  { icon: Paintbrush, text: "Serigrafia, bordado, laser y mas" },
+  { icon: PaintBrush, text: "Serigrafia, bordado, laser y mas" },
   { icon: Truck, text: "Envio a todo el pais" },
-  { icon: Award, text: "+10 anos de experiencia" },
+  { icon: Trophy, text: "+10 anos de experiencia" },
 ];
 
 export default function Hero() {
@@ -37,7 +37,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent-light px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.15em] text-accent">
+              <span className="badge-shimmer inline-flex items-center gap-2 rounded-full border border-accent/20 bg-accent-light px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-[0.15em] text-accent">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-75" />
                   <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-accent" />
@@ -51,17 +51,17 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="mt-6 text-[clamp(2rem,5vw,3.5rem)] font-bold leading-[1.05] tracking-tight text-foreground"
+              className="mt-6 text-[clamp(2rem,5vw,3.5rem)] font-extrabold leading-[1.05] tracking-[-0.02em] text-foreground"
             >
               Merchandising corporativo{" "}
-              <span className="text-accent">personalizado</span>
+              <span className="gradient-text-accent">personalizado</span>
             </motion.h1>
 
             {/* Subtitle */}
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
+              transition={{ duration: 0.5, delay: 0.18 }}
               className="mt-4 text-lg text-muted"
             >
               El catalogo mas completo de Argentina para tu marca
@@ -71,13 +71,13 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mt-6 flex flex-wrap gap-4 sm:gap-5 justify-center md:justify-start"
+              transition={{ duration: 0.5, delay: 0.28 }}
+              className="mt-6 flex flex-wrap gap-3 sm:gap-4 justify-center md:justify-start"
             >
               {VALUE_POINTS.map((vp) => (
                 <div
                   key={vp.text}
-                  className="flex items-center gap-2 text-sm text-muted"
+                  className="flex items-center gap-2 border-l-2 border-accent/20 bg-accent/5 rounded-lg pl-3 pr-3 py-2 text-sm text-muted"
                 >
                   <vp.icon className="h-4 w-4 text-accent" />
                   {vp.text}
@@ -89,12 +89,13 @@ export default function Hero() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
               className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start"
             >
               <Link
                 href="/catalogo"
-                className="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/20"
+                className="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-white shadow-lg shadow-accent/15 transition-all hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/25"
+                style={{ background: "var(--accent-gradient)" }}
               >
                 Explorar catalogo
               </Link>
@@ -113,6 +114,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="hidden flex-1 md:block"
           >
+            <div className="float-gentle">
             <Image
               src="/hero-products.jpg"
               alt="Productos de merchandising corporativo: mochila, remera, taza, botella termica, bolsa y cuaderno"
@@ -121,6 +123,7 @@ export default function Hero() {
               priority
               className="w-full max-w-lg mx-auto"
             />
+            </div>
           </motion.div>
         </div>
 

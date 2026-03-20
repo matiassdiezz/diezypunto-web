@@ -2,30 +2,30 @@
 
 import Link from "next/link";
 import {
-  PenLine,
-  GlassWater,
+  PenNib,
+  Wine,
   Backpack,
   Laptop,
-  Building2,
-  TreePine,
+  Building,
+  Tree,
   Leaf,
   Key,
   Umbrella,
-  Shirt,
+  TShirt,
   Heart,
-  type LucideIcon,
-} from "lucide-react";
+  type Icon as PhosphorIcon,
+} from "@phosphor-icons/react";
 import ScrollReveal from "../shared/ScrollReveal";
 
 // Names must match catalog.json categories exactly.
-const CATEGORIES: { name: string; icon: LucideIcon }[] = [
-  { name: "Escritura", icon: PenLine },
-  { name: "Drinkware", icon: GlassWater },
+const CATEGORIES: { name: string; icon: PhosphorIcon }[] = [
+  { name: "Escritura", icon: PenNib },
+  { name: "Drinkware", icon: Wine },
   { name: "Bolsos y Mochilas", icon: Backpack },
   { name: "Tecnología", icon: Laptop },
-  { name: "Indumentaria", icon: Shirt },
-  { name: "Oficina y Negocios", icon: Building2 },
-  { name: "Hogar & Tiempo Libre", icon: TreePine },
+  { name: "Indumentaria", icon: TShirt },
+  { name: "Oficina y Negocios", icon: Building },
+  { name: "Hogar & Tiempo Libre", icon: Tree },
   { name: "Eco", icon: Leaf },
   { name: "Gorros", icon: Heart },
   { name: "Llaveros", icon: Key },

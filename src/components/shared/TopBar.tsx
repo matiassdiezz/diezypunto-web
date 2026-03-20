@@ -3,12 +3,13 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import Link from "next/link";
 import {
-  ChevronDown,
-  ChevronRight,
-  ShoppingBag,
+  CaretDown,
+  CaretRight,
+  ArrowSquareOut,
+  Tote,
   X,
-  Zap,
-} from "lucide-react";
+  Lightning,
+} from "@phosphor-icons/react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
@@ -63,7 +64,7 @@ function MiniProduct({ product }: { product: ProductResult }) {
             />
           ) : (
             <div className="flex h-full items-center justify-center text-muted/30">
-              <ShoppingBag className="h-8 w-8" />
+              <Tote className="h-8 w-8" />
             </div>
           )}
         </div>
@@ -81,12 +82,12 @@ function MiniProduct({ product }: { product: ProductResult }) {
       </Link>
       <button
         onClick={() => {
-          addItem(product, 10);
-          openDrawer(product, 10);
+          addItem(product, 1);
+          openDrawer(product, 1);
         }}
         className="mt-2 flex w-full items-center justify-center gap-1.5 rounded-lg bg-accent py-1.5 text-[11px] font-medium text-white opacity-0 transition-all hover:bg-accent-hover group-hover/card:opacity-100"
       >
-        <ShoppingBag className="h-3 w-3" />
+        <Tote className="h-3 w-3" />
         Agregar
       </button>
     </div>
@@ -121,7 +122,7 @@ function MiniProductFast({ product }: { product: FastProduct }) {
             />
           ) : (
             <div className="flex h-full items-center justify-center text-muted/30">
-              <ShoppingBag className="h-8 w-8" />
+              <Tote className="h-8 w-8" />
             </div>
           )}
         </div>
@@ -148,7 +149,7 @@ function FastDeliveryDropdown({ onClose }: { onClose: () => void }) {
       <div className="mx-auto max-w-6xl px-6 py-6">
         <div className="mb-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <Zap className="h-4 w-4 text-amber-500" />
+            <Lightning className="h-4 w-4 text-amber-500" />
             <h3 className="text-sm font-semibold text-foreground">
               Entrega Rápida — En stock, entrega en 24hs
             </h3>
@@ -212,7 +213,7 @@ function CategoryDropdown({
               className="flex items-center gap-1 text-xs font-medium text-accent transition-colors hover:text-accent-hover"
             >
               Ver todos
-              <ChevronRight className="h-3.5 w-3.5" />
+              <CaretRight className="h-3.5 w-3.5" />
             </Link>
             <button
               onClick={onClose}
@@ -341,9 +342,9 @@ export default function TopBar() {
                         : "text-foreground hover:text-accent"
                   }`}
                 >
-                  {isFast && <Zap className="h-3.5 w-3.5" />}
+                  {isFast && <Lightning className="h-3.5 w-3.5" />}
                   {cat}
-                  <ChevronDown
+                  <CaretDown
                     className={`h-3.5 w-3.5 transition-transform duration-200 ${
                       active === cat
                         ? isFast
@@ -398,8 +399,9 @@ export default function TopBar() {
                     : "border-border text-foreground active:bg-accent-light active:text-accent active:border-accent/40"
                 }`}
               >
-                {isFast && <Zap className="h-3 w-3" />}
+                {isFast && <Lightning className="h-3 w-3" />}
                 {cat}
+                {isFast && <ArrowSquareOut className="h-2.5 w-2.5 opacity-60" />}
               </Link>
             );
           })}

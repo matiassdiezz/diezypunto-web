@@ -14,19 +14,19 @@ import { DefaultChatTransport } from "ai";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowUp,
-  Loader2,
-  ShoppingBag,
-  Sparkles,
+  SpinnerGap,
+  Tote,
+  Sparkle,
   X,
   Gift,
   Leaf,
   Target,
   Briefcase,
-  ImagePlus,
+  ImageSquare,
   Minus,
   Plus,
-  Mic,
-} from "lucide-react";
+  Microphone,
+} from "@phosphor-icons/react";
 import { useChatStore } from "@/lib/stores/chat-store";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { getLocalProduct } from "@/lib/engine/local-catalog";
@@ -322,7 +322,7 @@ export default function ChatModal() {
             <div className="flex items-center justify-between px-4 pt-4 pb-2">
               <div className="flex items-center gap-2.5">
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-accent to-[#3BB5E8] text-white shadow-md shadow-accent/25">
-                  <Sparkles className="h-4 w-4" />
+                  <Sparkle className="h-4 w-4" />
                 </div>
                 <span className="text-sm font-semibold tracking-tight text-foreground">
                   Asistente Diezypunto
@@ -386,7 +386,7 @@ export default function ChatModal() {
                         <AssistantStreamingPlaceholder />
                       ) : (
                         <div className="flex items-center gap-2 text-xs text-muted">
-                          <Loader2 className="h-3 w-3 animate-spin" />
+                          <SpinnerGap className="h-3 w-3 animate-spin" />
                           Pensando...
                         </div>
                       ))}
@@ -470,7 +470,7 @@ export default function ChatModal() {
                           aria-label="Adjuntar imagen"
                           title="Adjuntar imagen"
                         >
-                          <ImagePlus className="h-5 w-5" />
+                          <ImageSquare className="h-5 w-5" />
                         </button>
                       </div>
 
@@ -497,7 +497,7 @@ export default function ChatModal() {
                               : "Probá con Chrome o Edge"
                           }
                         >
-                          <Mic className={`h-5 w-5 ${isListening ? "animate-pulse" : ""}`} />
+                          <Microphone className={`h-5 w-5 ${isListening ? "animate-pulse" : ""}`} />
                         </button>
                         <button
                           type="submit"
@@ -506,7 +506,7 @@ export default function ChatModal() {
                           aria-label="Enviar"
                         >
                           {isLoading ? (
-                            <Loader2 className="h-4 w-4 animate-spin" />
+                            <SpinnerGap className="h-4 w-4 animate-spin" />
                           ) : (
                             <ArrowUp className="h-4 w-4" />
                           )}
@@ -517,7 +517,7 @@ export default function ChatModal() {
                 </form>
 
                 <div className="mt-2 flex items-center justify-center gap-2">
-                  <Sparkles className="h-3 w-3 text-accent/50" />
+                  <Sparkle className="h-3 w-3 text-accent/50" />
                   <a
                     href={telegramUrl()}
                     target="_blank"
@@ -767,7 +767,7 @@ function InlineProductCard({
           />
         ) : (
           <div className="flex h-full items-center justify-center text-muted/30">
-            <ShoppingBag className="h-5 w-5" />
+            <Tote className="h-5 w-5" />
           </div>
         )}
       </div>
@@ -848,7 +848,7 @@ function InlineProductCard({
           className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-accent px-2.5 py-1.5 text-xs font-medium text-white transition-all hover:bg-accent-hover disabled:opacity-40"
           title="Agregar al carrito"
         >
-          <ShoppingBag className="h-3.5 w-3.5" />
+          <Tote className="h-3.5 w-3.5" />
           Agregar
         </button>
       </div>

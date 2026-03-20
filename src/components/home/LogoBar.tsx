@@ -60,7 +60,7 @@ function MarqueeRow({
               alt={logo.alt}
               width={176}
               height={80}
-              className="max-h-16 w-auto object-contain opacity-40 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+              className="max-h-16 w-auto object-contain opacity-50 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0"
             />
           </div>
         ))}
@@ -71,12 +71,16 @@ function MarqueeRow({
 
 export default function LogoBar() {
   return (
-    <section className="bg-white py-14">
+    <section className="bg-white py-16">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
-          <p className="text-center text-sm font-medium uppercase tracking-wider text-muted">
-            Empresas que confian en nosotros
-          </p>
+          <div className="flex items-center gap-4 justify-center">
+            <div className="h-px w-12 bg-gradient-to-r from-transparent to-border" />
+            <p className="text-center text-sm font-medium uppercase tracking-wider text-muted">
+              Empresas que confian en nosotros
+            </p>
+            <div className="h-px w-12 bg-gradient-to-l from-transparent to-border" />
+          </div>
         </ScrollReveal>
       </div>
 

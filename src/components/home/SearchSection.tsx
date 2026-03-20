@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { Sparkles, ArrowUp } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Sparkle, ArrowUp, ArrowRight } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 import {
   OPEN_CHAT_SUBMIT_BTN_CLASS,
-  OpenChatButton,
   OpenChatSubmitOrb,
 } from "@/components/chat/OpenChatButton";
-import { useChatStore } from "@/lib/stores/chat-store";
 import ScrollReveal from "../shared/ScrollReveal";
 
 const EXAMPLES = [
@@ -32,18 +31,22 @@ const ASCII_BG = buildAsciiGrid();
 export default function SearchSection() {
   const [input, setInput] = useState("");
   const [focused, setFocused] = useState(false);
-  const openWithMessage = useChatStore((s) => s.openWithMessage);
+  const router = useRouter();
+
+  function navigateToSearch(query: string) {
+    router.push(`/catalogo?search=${encodeURIComponent(query)}`);
+  }
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const q = input.trim();
     if (!q) return;
-    openWithMessage(q);
+    navigateToSearch(q);
     setInput("");
   }
 
   function handleExample(example: string) {
-    openWithMessage(example);
+    navigateToSearch(example);
   }
 
   return (
@@ -56,7 +59,7 @@ export default function SearchSection() {
         className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
         aria-hidden="true"
       >
-        <pre className="whitespace-pre font-mono text-[11px] leading-[2.2] text-foreground/[0.035]">
+        <pre className="whitespace-pre font-mono text-[11px] leading-[2.2] text-foreground/[0.05]">
           {ASCII_BG}
         </pre>
       </div>
@@ -65,11 +68,11 @@ export default function SearchSection() {
         <ScrollReveal>
           <div className="mx-auto max-w-2xl">
             <div className="flex items-center justify-center gap-2 text-sm font-medium text-accent">
-              <Sparkles className="h-4 w-4" />
+              <Sparkle className="h-4 w-4" />
               Busqueda inteligente
             </div>
-            <h2 className="mt-3 text-center text-3xl font-bold sm:text-4xl">
-              Pedi con <span className="text-accent">AI</span>
+            <h2 className="mt-3 text-center text-3xl font-bold tracking-tight sm:text-4xl">
+              Pedi con <span className="gradient-text-accent">AI</span>
             </h2>
             <p className="mt-3 text-center text-muted">
               Escribi lo que necesitas como si le hablaras a una persona
@@ -92,7 +95,7 @@ export default function SearchSection() {
                 }}
                 transition={{ type: "spring", stiffness: 300, damping: 25 }}
               >
-                <div className="relative z-10 rounded-2xl border border-foreground/30 bg-white">
+                <div className="relative z-10 rounded-2xl border border-border bg-white">
                   <textarea
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
@@ -135,14 +138,14 @@ export default function SearchSection() {
               </p>
               <div className="grid grid-cols-2 gap-2">
                 {EXAMPLES.map((ex) => (
-                  <OpenChatButton
+                  <button
                     key={ex}
-                    compact
                     onClick={() => handleExample(ex)}
-                    className="!h-auto w-full !items-start !justify-start !text-left font-normal text-xs leading-relaxed text-foreground/80 shadow-sm hover:text-accent md:!px-4 md:!py-3 md:text-sm"
+                    className="group flex items-center gap-2 rounded-2xl border border-border bg-white px-3 py-2.5 text-left text-xs leading-relaxed text-foreground/80 shadow-sm transition-all hover:border-accent/40 hover:bg-accent-light hover:text-accent hover:shadow-md md:px-4 md:py-3 md:text-sm"
                   >
-                    {ex}
-                  </OpenChatButton>
+                    <span className="flex-1">{ex}</span>
+                    <ArrowRight className="h-3.5 w-3.5 shrink-0 opacity-0 transition-all group-hover:opacity-60" />
+                  </button>
                 ))}
               </div>
             </motion.div>

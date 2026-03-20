@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X } from "@phosphor-icons/react";
 import { listCategories } from "@/lib/api";
 import type { CategoryInfo } from "@/lib/types";
 import type { CatalogFilters } from "@/lib/hooks/use-catalog-filters";

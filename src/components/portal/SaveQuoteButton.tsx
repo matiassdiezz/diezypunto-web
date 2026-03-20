@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Save, Check, Loader2 } from "lucide-react";
+import { FloppyDisk, Check, SpinnerGap } from "@phosphor-icons/react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useToastStore } from "@/components/shared/Toast";
 
@@ -49,11 +49,11 @@ export default function SaveQuoteButton() {
       className="flex items-center gap-2 rounded-xl border border-accent/40 bg-accent-light px-5 py-3 text-sm font-medium text-accent transition-all hover:bg-accent/10 disabled:opacity-60"
     >
       {saving ? (
-        <Loader2 className="h-4 w-4 animate-spin" />
+        <SpinnerGap className="h-4 w-4 animate-spin" />
       ) : saved ? (
         <Check className="h-4 w-4" />
       ) : (
-        <Save className="h-4 w-4" />
+        <FloppyDisk className="h-4 w-4" />
       )}
       {saving ? "Guardando..." : saved ? "Guardado" : "Guardar Presupuesto"}
     </button>

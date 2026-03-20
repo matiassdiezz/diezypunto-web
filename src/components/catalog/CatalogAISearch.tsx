@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Search, Sparkles, X } from "lucide-react";
+import { MagnifyingGlass, Sparkle, X } from "@phosphor-icons/react";
 import { useSearchStore } from "@/lib/stores/search-store";
 
 interface CatalogAISearchProps {
@@ -73,46 +73,45 @@ export default function CatalogAISearch({
   const aiActive = !!aiQuery;
 
   return (
-    <div className="relative">
-      <Search className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
-      <input
-        type="text"
-        value={local}
-        onChange={(e) => handleChange(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder={
-          aiActive
-            ? "Búsqueda AI activa — escribí para buscar de nuevo"
-            : "Buscar productos... (Enter para buscar con AI)"
-        }
-        className={`w-full rounded-xl border bg-white py-3 pl-11 pr-24 text-sm outline-none transition-colors ${
-          aiActive
-            ? "border-accent"
-            : "border-border focus:border-accent"
-        }`}
-      />
-      <div className="absolute right-3 top-1/2 flex -translate-y-1/2 items-center gap-1">
-        {hasText && (
-          <button
-            onClick={triggerAI}
-            disabled={isLoading}
-            className={`rounded-lg p-1.5 text-accent transition-all hover:bg-accent-light ${
-              isLoading ? "animate-pulse" : ""
-            }`}
-            title="Buscar con AI"
-          >
-            <Sparkles className="h-4 w-4" />
-          </button>
-        )}
+    <div className="flex items-center gap-2">
+      <div className="relative flex-1">
+        <MagnifyingGlass className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
+        <input
+          type="text"
+          value={local}
+          onChange={(e) => handleChange(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder="Filtrar productos..."
+          className={`w-full rounded-xl border bg-white py-3 pl-11 pr-10 text-sm outline-none transition-colors ${
+            aiActive
+              ? "border-accent"
+              : "border-border focus:border-accent"
+          }`}
+        />
         {(hasText || aiActive) && (
           <button
             onClick={handleClear}
-            className="rounded-full p-1 text-muted hover:text-foreground"
+            className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-muted hover:text-foreground"
           >
             <X className="h-4 w-4" />
           </button>
         )}
       </div>
+      <button
+        onClick={triggerAI}
+        disabled={isLoading || !hasText}
+        className={`flex shrink-0 items-center gap-1.5 rounded-xl border px-3 py-3 text-sm font-medium transition-all ${
+          aiActive
+            ? "border-accent bg-accent text-white"
+            : isLoading
+              ? "border-accent/40 bg-accent-light text-accent animate-pulse"
+              : "border-border bg-white text-muted hover:border-accent/40 hover:text-accent disabled:opacity-40"
+        }`}
+        title="Buscar con AI"
+      >
+        <Sparkle className="h-4 w-4" />
+        <span className="hidden sm:inline">{aiActive ? "AI activa" : "Buscar con AI"}</span>
+      </button>
     </div>
   );
 }

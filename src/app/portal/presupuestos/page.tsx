@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FileText, Loader2 } from "lucide-react";
+import { FileText, SpinnerGap } from "@phosphor-icons/react";
 import QuoteCard from "@/components/portal/QuoteCard";
 
 interface Quote {
@@ -23,7 +23,7 @@ export default function PresupuestosPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-accent" />
+        <SpinnerGap className="h-6 w-6 animate-spin text-accent" />
       </div>
     );
   }

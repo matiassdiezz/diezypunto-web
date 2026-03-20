@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { create } from "zustand";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ShoppingBag, Check } from "lucide-react";
+import { X, Tote, Check } from "@phosphor-icons/react";
 import Link from "next/link";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
@@ -89,7 +89,7 @@ export default function AddToCartDrawer() {
                   <img src={product.image_urls[0]} alt="" className="h-full w-full object-contain p-1" />
                 ) : (
                   <div className="flex h-full items-center justify-center text-muted/30">
-                    <ShoppingBag className="h-5 w-5" />
+                    <Tote className="h-5 w-5" />
                   </div>
                 )}
               </div>
@@ -148,9 +148,8 @@ function SuggestionRow({ product }: { product: ProductResult }) {
   const [added, setAdded] = useState(false);
 
   function handleAdd() {
-    addItem(product, 10);
+    addItem(product, 1);
     setAdded(true);
-    // Re-trigger drawer with new product info without re-fetching suggestions
     setTimeout(() => setAdded(false), 1200);
   }
 
@@ -161,7 +160,7 @@ function SuggestionRow({ product }: { product: ProductResult }) {
           <img src={product.image_urls[0]} alt="" className="h-full w-full object-contain p-0.5" />
         ) : (
           <div className="flex h-full items-center justify-center text-muted/30">
-            <ShoppingBag className="h-4 w-4" />
+            <Tote className="h-4 w-4" />
           </div>
         )}
       </div>

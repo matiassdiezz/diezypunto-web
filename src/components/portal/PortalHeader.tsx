@@ -2,11 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LogOut, LayoutDashboard, FileText, Package } from "lucide-react";
+import { SignOut, SquaresFour, FileText, Package } from "@phosphor-icons/react";
 import { useAuth } from "@/lib/hooks/use-auth";
 
 const mobileNav = [
-  { href: "/portal", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/portal", label: "Dashboard", icon: SquaresFour },
   { href: "/portal/presupuestos", label: "Presupuestos", icon: FileText },
   { href: "/portal/pedidos", label: "Pedidos", icon: Package },
 ];
@@ -33,7 +33,7 @@ export default function PortalHeader() {
           onClick={handleLogout}
           className="flex items-center gap-2 rounded-lg border border-border px-3 py-2 text-sm text-muted transition-colors hover:border-red-300 hover:text-red-500"
         >
-          <LogOut className="h-4 w-4" />
+          <SignOut className="h-4 w-4" />
           <span className="hidden sm:inline">Salir</span>
         </button>
       </div>

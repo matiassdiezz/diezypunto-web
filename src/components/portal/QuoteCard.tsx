@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FileText } from "lucide-react";
+import { FileText } from "@phosphor-icons/react";
 
 interface QuoteCardProps {
   id: string;

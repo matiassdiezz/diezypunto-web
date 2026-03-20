@@ -1,5 +1,7 @@
 "use client";
 
+import { MagnifyingGlass } from "@phosphor-icons/react";
+import Link from "next/link";
 import type { ProductResult } from "@/lib/types";
 import ProductCard from "./ProductCard";
 
@@ -20,19 +22,30 @@ export default function ProductGrid({
 }: ProductGridProps) {
   if (products.length === 0) {
     return (
-      <div className="py-20 text-center text-muted">
-        <p className="text-lg">No se encontraron productos</p>
+      <div className="flex flex-col items-center py-20 text-center text-muted">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-surface">
+          <MagnifyingGlass className="h-7 w-7 text-muted/50" />
+        </div>
+        <p className="mt-4 text-lg font-medium text-foreground">No se encontraron productos</p>
         <p className="mt-1 text-sm">
           Proba con otros filtros o terminos de busqueda.
         </p>
-        {onClearFilters && (
-          <button
-            onClick={onClearFilters}
-            className="mt-4 rounded-xl border border-border bg-white px-6 py-2 text-sm text-foreground transition-colors hover:bg-surface"
+        <div className="mt-4 flex gap-2">
+          {onClearFilters && (
+            <button
+              onClick={onClearFilters}
+              className="rounded-xl border border-border bg-white px-6 py-2 text-sm text-foreground transition-colors hover:bg-surface"
+            >
+              Limpiar filtros
+            </button>
+          )}
+          <Link
+            href="/catalogo"
+            className="rounded-xl border border-border bg-white px-6 py-2 text-sm text-foreground transition-colors hover:bg-surface"
           >
-            Limpiar filtros
-          </button>
-        )}
+            Ver todo el catalogo
+          </Link>
+        </div>
       </div>
     );
   }

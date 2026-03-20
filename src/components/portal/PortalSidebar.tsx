@@ -2,10 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, FileText, Package } from "lucide-react";
+import { SquaresFour, FileText, Package } from "@phosphor-icons/react";
 
 const navItems = [
-  { href: "/portal", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/portal", label: "Dashboard", icon: SquaresFour },
   { href: "/portal/presupuestos", label: "Presupuestos", icon: FileText },
   { href: "/portal/pedidos", label: "Pedidos", icon: Package },
 ];

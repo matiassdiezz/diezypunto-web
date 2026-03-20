@@ -26,7 +26,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     fetch("/api/portal/me")
       .then((res) => {
-        if (!res.ok) return null;
+        if (!res.ok) throw new Error("unauthorized");
         return res.json();
       })
       .then((data) => {
@@ -34,7 +34,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setClient({ id: data.client_id, name: data.name });
         }
       })
-      .catch(() => {})
+      .catch(() => {
+        if (window.location.pathname.startsWith("/portal")) {
+          window.location.href = "/login";
+        }
+      })
       .finally(() => setLoading(false));
   }, []);
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Send } from "lucide-react";
+import { PaperPlaneTilt } from "@phosphor-icons/react";
 import { openTelegramWithContext } from "@/lib/telegram";
 
 interface PersonalizationCardProps {
@@ -88,7 +88,7 @@ export default function PersonalizationCard({ methods, productTitle }: Personali
         onClick={handleTelegram}
         className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-surface"
       >
-        <Send className="h-4 w-4" />
+        <PaperPlaneTilt className="h-4 w-4" />
         Habla con nosotros para personalizar
       </button>
     </div>

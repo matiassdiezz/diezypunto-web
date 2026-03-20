@@ -1,6 +1,6 @@
 "use client";
 
-import { Package, Paintbrush, Truck, Award } from "lucide-react";
+import { Package, PaintBrush, Truck, Trophy } from "@phosphor-icons/react";
 import ScrollReveal from "../shared/ScrollReveal";
 
 const PROPS = [
@@ -10,7 +10,7 @@ const PROPS = [
     description: "El catalogo mas completo de Argentina",
   },
   {
-    icon: Paintbrush,
+    icon: PaintBrush,
     title: "Personalizacion total",
     description: "Serigrafia, bordado, laser, sublimacion y mas",
   },
@@ -20,7 +20,7 @@ const PROPS = [
     description: "Logistica a cualquier punto de Argentina",
   },
   {
-    icon: Award,
+    icon: Trophy,
     title: "+10 anos de experiencia",
     description: "Miles de empresas confian en nosotros",
   },

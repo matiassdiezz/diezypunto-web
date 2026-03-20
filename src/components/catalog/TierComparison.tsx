@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ShoppingBag, Check } from "lucide-react";
+import { Tote, Check } from "@phosphor-icons/react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
@@ -70,8 +70,8 @@ function TierCard({
   const [added, setAdded] = useState(false);
 
   function handleAdd() {
-    addItem(product, 10);
-    openDrawer(product, 10);
+    addItem(product, 1);
+    openDrawer(product, 1);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }
@@ -86,7 +86,7 @@ function TierCard({
     >
       {isCurrent && (
         <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-accent px-2.5 py-0.5 text-[10px] font-medium text-white">
-          Estas viendo
+          Estás viendo
         </span>
       )}
       <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
@@ -97,7 +97,7 @@ function TierCard({
           <img src={product.image_urls[0]} alt="" className="h-full w-full object-contain p-2" />
         ) : (
           <div className="flex h-full items-center justify-center text-muted/30">
-            <ShoppingBag className="h-6 w-6" />
+            <Tote className="h-6 w-6" />
           </div>
         )}
       </div>

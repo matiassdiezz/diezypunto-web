@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef, Suspense } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { SpinnerGap } from "@phosphor-icons/react";
 import QuoteBuilder from "@/components/quote/QuoteBuilder";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { useQuoteStore } from "@/lib/stores/quote-store";
@@ -49,7 +49,7 @@ function CartLoader() {
   if (loading) {
     return (
       <div className="mt-8 flex items-center justify-center gap-2 py-20 text-muted">
-        <Loader2 className="h-5 w-5 animate-spin" />
+        <SpinnerGap className="h-5 w-5 animate-spin" />
         <span>Cargando carrito...</span>
       </div>
     );

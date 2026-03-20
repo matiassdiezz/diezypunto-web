@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Send } from "lucide-react";
+import { PaperPlaneTilt } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { telegramUrl } from "@/lib/telegram";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
@@ -28,7 +28,7 @@ export default function CtaBanner() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-xl bg-white px-6 py-3 font-semibold text-accent transition-shadow hover:shadow-lg"
             >
-              <Send className="h-5 w-5" />
+              <PaperPlaneTilt className="h-5 w-5" />
               Hablar por Telegram
             </a>
             <Link

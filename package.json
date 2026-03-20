@@ -17,6 +17,7 @@
     "@ai-sdk/anthropic": "^3.0.58",
     "@ai-sdk/react": "^3.0.118",
     "@anthropic-ai/sdk": "^0.78.0",
+    "@phosphor-icons/react": "^2.1.10",
     "ai": "^6.0.116",
     "framer-motion": "^12.35.1",
     "lucide-react": "^0.577.0",

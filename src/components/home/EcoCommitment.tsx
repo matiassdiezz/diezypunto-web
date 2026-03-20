@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Leaf, ArrowRight } from "lucide-react";
+import { Leaf, ArrowRight } from "@phosphor-icons/react";
 import ScrollReveal from "../shared/ScrollReveal";
 
 export default function EcoCommitment() {

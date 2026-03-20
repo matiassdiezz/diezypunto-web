@@ -7,7 +7,7 @@ import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
-import { ShoppingBag, Leaf, Send, Minus, Plus } from "lucide-react";
+import { Tote, Leaf, PaperPlaneTilt, Minus, Plus, Check } from "@phosphor-icons/react";
 import Link from "next/link";
 import { openTelegramWithContext } from "@/lib/telegram";
 import ScrollReveal from "@/components/shared/ScrollReveal";
@@ -29,6 +29,7 @@ export default function ProductoPage() {
   const [loading, setLoading] = useState(true);
   const [selectedImage, setSelectedImage] = useState(0);
   const [qty, setQty] = useState<number | "">(1);
+  const [justAdded, setJustAdded] = useState(false);
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
 
@@ -69,20 +70,30 @@ export default function ProductoPage() {
     const q = qty || 1;
     addItem(product, q);
     openDrawer(product, q);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1500);
   }
 
   if (loading) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-muted">Cargando producto...</p>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-2">
+        <div className="h-8 w-8 animate-spin rounded-full border-2 border-accent border-t-transparent" />
+        <p className="text-sm text-muted">Cargando producto...</p>
       </div>
     );
   }
 
   if (!product) {
     return (
-      <div className="flex min-h-screen items-center justify-center">
-        <p className="text-muted">Producto no encontrado</p>
+      <div className="flex min-h-screen flex-col items-center justify-center gap-3">
+        <Tote className="h-12 w-12 text-muted/30" />
+        <p className="text-lg font-medium text-foreground">Producto no encontrado</p>
+        <Link
+          href="/catalogo"
+          className="rounded-xl bg-accent px-6 py-2.5 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+        >
+          Ver catalogo
+        </Link>
       </div>
     );
   }
@@ -155,7 +166,7 @@ export default function ProductoPage() {
                 />
               ) : (
                 <div className="flex items-center justify-center text-muted/30">
-                  <ShoppingBag className="h-16 w-16 sm:h-20 sm:w-20" />
+                  <Tote className="h-16 w-16 sm:h-20 sm:w-20" />
                 </div>
               )}
             </div>
@@ -318,23 +329,39 @@ export default function ProductoPage() {
                 </div>
                 <button
                   onClick={handleAdd}
-                  className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-accent py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover sm:text-base"
+                  className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-medium text-white transition-all sm:text-base ${
+                    justAdded
+                      ? "bg-success"
+                      : "bg-accent hover:bg-accent-hover"
+                  }`}
                 >
-                  <ShoppingBag className="h-5 w-5" />
-                  Agregar al carrito
+                  {justAdded ? (
+                    <>
+                      <Check className="h-5 w-5" />
+                      Agregado
+                    </>
+                  ) : (
+                    <>
+                      <Tote className="h-5 w-5" />
+                      Agregar al carrito
+                    </>
+                  )}
                 </button>
               </div>
 
               {/* Quantity Nudge */}
               <QuantityNudge qty={qty} product={product} />
 
-              <button
-                onClick={handleTelegram}
-                className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface sm:mt-3 sm:text-base"
-              >
-                <Send className="h-5 w-5" />
-                Consultar por Telegram
-              </button>
+              <p className="mt-3 text-center text-xs text-muted">
+                ¿Necesitás ayuda?{" "}
+                <button
+                  onClick={handleTelegram}
+                  className="inline-flex items-center gap-1 text-accent underline underline-offset-2 hover:text-accent-hover"
+                >
+                  <PaperPlaneTilt className="inline h-3 w-3" />
+                  Consultanos por Telegram
+                </button>
+              </p>
             </div>
 
             {/* Specs */}

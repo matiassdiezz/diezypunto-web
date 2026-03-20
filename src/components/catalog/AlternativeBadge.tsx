@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Leaf, Star } from "lucide-react";
+import { Leaf, Star } from "@phosphor-icons/react";
 import type { ProductResult } from "@/lib/types";
 import { listProducts } from "@/lib/api";
 

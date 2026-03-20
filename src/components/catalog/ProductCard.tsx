@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ShoppingBag, Leaf, Check } from "lucide-react";
+import { Tote, Leaf, Check } from "@phosphor-icons/react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
@@ -47,7 +47,7 @@ export default function ProductCard({
           />
         ) : (
           <div className="flex h-full items-center justify-center text-muted/30">
-            <ShoppingBag className="h-8 w-8 sm:h-12 sm:w-12" />
+            <Tote className="h-8 w-8 sm:h-12 sm:w-12" />
           </div>
         )}
 
@@ -146,7 +146,7 @@ export default function ProductCard({
               {added ? (
                 <Check className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               ) : (
-                <ShoppingBag className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+                <Tote className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               )}
             </button>
           </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FileText, Package, Loader2 } from "lucide-react";
+import { FileText, Package, SpinnerGap } from "@phosphor-icons/react";
 import QuoteCard from "@/components/portal/QuoteCard";
 import OrderCard from "@/components/portal/OrderCard";
 import { useAuth } from "@/lib/hooks/use-auth";
@@ -37,7 +37,7 @@ export default function PortalDashboard() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-accent" />
+        <SpinnerGap className="h-6 w-6 animate-spin text-accent" />
       </div>
     );
   }

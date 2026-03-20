@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Package } from "lucide-react";
+import { Package } from "@phosphor-icons/react";
 
 interface OrderCardProps {
   id: string;

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, AlertCircle, RotateCcw } from "lucide-react";
+import { Sparkle, WarningCircle, ArrowCounterClockwise } from "@phosphor-icons/react";
 import { useSearchStore } from "@/lib/stores/search-store";
 import LoadingDots from "@/components/shared/LoadingDots";
 import SearchResults from "@/components/search/SearchResults";
@@ -32,7 +32,7 @@ export default function CatalogAIResults() {
         className="py-20 text-center"
       >
         <div className="flex items-center justify-center gap-2 text-red-500">
-          <AlertCircle className="h-5 w-5" />
+          <WarningCircle className="h-5 w-5" />
           <p className="text-sm">{error}</p>
         </div>
         <button
@@ -60,7 +60,7 @@ export default function CatalogAIResults() {
           onClick={clear}
           className="mt-4 flex mx-auto items-center gap-2 rounded-lg border border-border bg-white px-4 py-2 text-sm text-muted transition-all hover:border-accent/40 hover:text-accent"
         >
-          <RotateCcw className="h-3.5 w-3.5" />
+          <ArrowCounterClockwise className="h-3.5 w-3.5" />
           Volver al catálogo
         </button>
       </motion.div>
@@ -78,7 +78,7 @@ export default function CatalogAIResults() {
         {summary && (
           <div className="flex items-start gap-2.5">
             <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent-light">
-              <Sparkles className="h-3.5 w-3.5 text-accent" />
+              <Sparkle className="h-3.5 w-3.5 text-accent" />
             </span>
             <p className="text-sm leading-relaxed text-muted">{summary}</p>
           </div>
@@ -99,7 +99,7 @@ export default function CatalogAIResults() {
             onClick={clear}
             className="flex items-center gap-2 rounded-lg border border-border bg-white px-4 py-2 text-sm text-muted transition-all hover:border-accent/40 hover:text-accent"
           >
-            <RotateCcw className="h-3.5 w-3.5" />
+            <ArrowCounterClockwise className="h-3.5 w-3.5" />
             Volver al catálogo
           </button>
         </div>

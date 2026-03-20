@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ShoppingBag } from "lucide-react";
+import { Tote } from "@phosphor-icons/react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useHasMounted } from "@/lib/hooks/use-has-mounted";
 import { FLOATING_GLASS_BTN } from "@/components/chat/OpenChatButton";
@@ -18,7 +18,7 @@ export default function QuoteCart() {
       className={`fixed bottom-6 left-6 ${FLOATING_GLASS_BTN}`}
       aria-label={`Ir al carrito (${totalItems} items)`}
     >
-      <ShoppingBag
+      <Tote
         className="h-5 w-5 shrink-0 text-foreground md:h-6 md:w-6"
         strokeWidth={2.25}
       />

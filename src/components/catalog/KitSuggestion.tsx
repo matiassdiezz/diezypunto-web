@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ShoppingBag, Check } from "lucide-react";
+import { Tote, Check } from "@phosphor-icons/react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
@@ -21,8 +21,8 @@ export default function KitSuggestion({ products, currentProductId }: KitSuggest
   if (suggestions.length === 0) return null;
 
   function handleAddAll() {
-    suggestions.forEach((p) => addItem(p, 10));
-    openDrawer(suggestions[suggestions.length - 1], 10);
+    suggestions.forEach((p) => addItem(p, 1));
+    openDrawer(suggestions[suggestions.length - 1], 1);
     setAllAdded(true);
     setTimeout(() => setAllAdded(false), 1500);
   }
@@ -46,7 +46,7 @@ export default function KitSuggestion({ products, currentProductId }: KitSuggest
               </>
             ) : (
               <>
-                <ShoppingBag className="h-4 w-4" /> Agregar los {suggestions.length} al carrito
+                <Tote className="h-4 w-4" /> Agregar los {suggestions.length} al carrito
               </>
             )}
           </button>
@@ -68,7 +68,7 @@ function KitCard({ product }: { product: ProductResult }) {
 
   function handleAdd() {
     addItem(product, 1);
-    openDrawer(product, 10);
+    openDrawer(product, 1);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }
@@ -84,7 +84,7 @@ function KitCard({ product }: { product: ProductResult }) {
           />
         ) : (
           <div className="flex h-full items-center justify-center text-muted/30">
-            <ShoppingBag className="h-6 w-6" />
+            <Tote className="h-6 w-6" />
           </div>
         )}
       </div>
@@ -106,7 +106,7 @@ function KitCard({ product }: { product: ProductResult }) {
         {added ? (
           <Check className="h-4 w-4" />
         ) : (
-          <ShoppingBag className="h-4 w-4" />
+          <Tote className="h-4 w-4" />
         )}
       </button>
     </div>

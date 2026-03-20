@@ -2,7 +2,7 @@
 
 import { useState, useCallback, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, ChevronDown, RefreshCw, Search } from "lucide-react";
+import { Sparkle, CaretDown, ArrowClockwise, MagnifyingGlass } from "@phosphor-icons/react";
 import Link from "next/link";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import type { CartReviewResponse, CartInsight } from "@/lib/types";
@@ -88,7 +88,7 @@ export default function CartReview() {
             </>
           ) : (
             <>
-              <Sparkles className="h-4 w-4" />
+              <Sparkle className="h-4 w-4" />
               Analizar pedido con AI
               <span className="text-accent/60">→</span>
             </>
@@ -103,12 +103,12 @@ export default function CartReview() {
             className="flex w-full items-center justify-between px-5 py-3.5"
           >
             <div className="flex items-center gap-2">
-              <Sparkles className="h-4 w-4 text-accent" />
+              <Sparkle className="h-4 w-4 text-accent" />
               <span className="text-sm font-semibold">Analisis AI</span>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-sm text-amber-500">{stars}</span>
-              <ChevronDown
+              <CaretDown
                 className={`h-4 w-4 text-muted transition-transform ${
                   isOpen ? "rotate-180" : ""
                 }`}
@@ -133,7 +133,7 @@ export default function CartReview() {
                       disabled={isLoading}
                       className="mb-3 flex w-full items-center justify-center gap-2 rounded-lg bg-amber-50 px-3 py-2 text-xs text-amber-700 hover:bg-amber-100"
                     >
-                      <RefreshCw className="h-3 w-3" />
+                      <ArrowClockwise className="h-3 w-3" />
                       Tu carrito cambio — actualizar analisis
                     </button>
                   )}
@@ -183,7 +183,7 @@ function InsightRow({ insight }: { insight: CartInsight }) {
             href={`/catalogo?search=${encodeURIComponent(insight.action)}`}
             className="mt-1 inline-flex items-center gap-1 text-xs font-medium text-accent hover:underline"
           >
-            <Search className="h-3 w-3" />
+            <MagnifyingGlass className="h-3 w-3" />
             Buscar {insight.action}
           </Link>
         )}

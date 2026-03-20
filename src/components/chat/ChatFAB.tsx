@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { X } from "@phosphor-icons/react";
 import { useChatStore } from "@/lib/stores/chat-store";
 import { FLOATING_GLASS_BTN } from "@/components/chat/OpenChatButton";
 

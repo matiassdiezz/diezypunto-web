@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Sparkles } from "lucide-react";
+import { Sparkle } from "@phosphor-icons/react";
 import type { AIPicksResponse, ProductResult } from "@/lib/types";
 import { getProduct } from "@/lib/api";
 import ProductCard from "../catalog/ProductCard";
@@ -47,7 +47,7 @@ export default function AITopPicks() {
         <ScrollReveal>
           <div className="flex flex-col items-center gap-2">
             <div className="flex items-center gap-2 text-accent">
-              <Sparkles className="h-5 w-5" />
+              <Sparkle className="h-5 w-5" />
               <span className="text-xs font-medium uppercase tracking-widest">
                 Powered by Claude
               </span>

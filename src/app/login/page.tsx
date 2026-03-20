@@ -2,7 +2,7 @@
 
 import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Loader2 } from "lucide-react";
+import { SpinnerGap } from "@phosphor-icons/react";
 
 function LoginContent() {
   const searchParams = useSearchParams();
@@ -43,7 +43,7 @@ function LoginContent() {
         <div className="text-center">
           {status === "verifying" && (
             <div className="flex flex-col items-center gap-4">
-              <Loader2 className="h-8 w-8 animate-spin text-accent" />
+              <SpinnerGap className="h-8 w-8 animate-spin text-accent" />
               <p className="text-muted">Verificando acceso...</p>
             </div>
           )}
@@ -54,7 +54,7 @@ function LoginContent() {
               </div>
               <p className="text-lg font-medium text-foreground">{errorMsg}</p>
               <a
-                href="https://wa.me/5491151234567"
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "5491151234567"}`}
                 className="mt-2 text-sm text-accent hover:underline"
               >
                 Contactar por WhatsApp
@@ -78,7 +78,7 @@ function LoginContent() {
         <p className="mt-6 text-sm text-muted">
           ¿No tenes el link?{" "}
           <a
-            href="https://wa.me/5491151234567"
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "5491151234567"}`}
             className="text-accent hover:underline"
           >
             Contacta a Diezypunto
@@ -94,7 +94,7 @@ export default function LoginPage() {
     <Suspense
       fallback={
         <div className="flex min-h-screen items-center justify-center">
-          <Loader2 className="h-8 w-8 animate-spin text-accent" />
+          <SpinnerGap className="h-8 w-8 animate-spin text-accent" />
         </div>
       }
     >

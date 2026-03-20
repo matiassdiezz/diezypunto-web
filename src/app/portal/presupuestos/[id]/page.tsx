@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Loader2 } from "lucide-react";
+import { ArrowLeft, SpinnerGap } from "@phosphor-icons/react";
 
 interface QuoteDetail {
   filename: string;
@@ -32,7 +32,7 @@ export default function QuoteDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-accent" />
+        <SpinnerGap className="h-6 w-6 animate-spin text-accent" />
       </div>
     );
   }
@@ -110,9 +110,17 @@ export default function QuoteDetailPage() {
   );
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 function markdownTableToHtml(md: string): string {
   const lines = md.trim().split("\n").filter((l) => l.includes("|"));
-  if (lines.length < 2) return `<p>${md}</p>`;
+  if (lines.length < 2) return `<p>${escapeHtml(md)}</p>`;
 
   const parseRow = (line: string) =>
     line
@@ -124,12 +132,12 @@ function markdownTableToHtml(md: string): string {
   const dataLines = lines.slice(2); // skip header + separator
 
   let html = "<table><thead><tr>";
-  headers.forEach((h) => (html += `<th>${h}</th>`));
+  headers.forEach((h) => (html += `<th>${escapeHtml(h)}</th>`));
   html += "</tr></thead><tbody>";
   dataLines.forEach((line) => {
     const cells = parseRow(line);
     html += "<tr>";
-    cells.forEach((c) => (html += `<td>${c}</td>`));
+    cells.forEach((c) => (html += `<td>${escapeHtml(c)}</td>`));
     html += "</tr>";
   });
   html += "</tbody></table>";
