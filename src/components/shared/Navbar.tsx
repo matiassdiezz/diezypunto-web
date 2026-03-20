@@ -9,6 +9,7 @@ import { Menu, X, ShoppingBag, Search, LayoutGrid, UserCircle } from "lucide-rea
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useTopBarStore } from "@/lib/stores/topbar-store";
 import { useAuth } from "@/lib/hooks/use-auth";
+import { useHasMounted } from "@/lib/hooks/use-has-mounted";
 
 const links = [
   { href: "/", label: "Inicio" },
@@ -20,6 +21,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const mounted = useHasMounted();
   const totalItems = useQuoteStore((s) => s.totalItems());
   const { isOpen: topBarOpen, toggle: toggleTopBar } = useTopBarStore();
   const { client } = useAuth();
@@ -114,7 +116,7 @@ export default function Navbar() {
           >
             <ShoppingBag className="h-4 w-4" />
             Carrito
-            {totalItems > 0 && (
+            {mounted && totalItems > 0 && (
               <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#3BB5E8] text-xs text-white">
                 {totalItems}
               </span>

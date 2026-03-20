@@ -3,11 +3,13 @@
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
+import { useHasMounted } from "@/lib/hooks/use-has-mounted";
 
 export default function QuoteCart() {
+  const mounted = useHasMounted();
   const totalItems = useQuoteStore((s) => s.totalItems());
 
-  if (totalItems === 0) return null;
+  if (!mounted || totalItems === 0) return null;
 
   return (
     <Link

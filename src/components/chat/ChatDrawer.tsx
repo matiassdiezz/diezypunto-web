@@ -1,11 +1,19 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
+import {
+  useRef,
+  useEffect,
+  useState,
+  useContext,
+  useCallback,
+  useMemo,
+} from "react";
+import Link from "next/link";
 import { useChat, type UIMessage } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Send,
+  ArrowUp,
   Loader2,
   ShoppingBag,
   Sparkles,
@@ -14,11 +22,22 @@ import {
   Leaf,
   Target,
   Briefcase,
+  ImagePlus,
+  Minus,
+  Plus,
+  Mic,
 } from "lucide-react";
 import { useChatStore } from "@/lib/stores/chat-store";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { getLocalProduct } from "@/lib/engine/local-catalog";
+import { getPriceForQuantity } from "@/lib/engine/pricing";
 import { telegramUrl } from "@/lib/telegram";
+import { AuthContext } from "@/lib/auth-context";
+import { compressImageFile } from "@/lib/chat-image";
+import {
+  getSpeechRecognitionCtor,
+  type SpeechRecognitionLike,
+} from "@/lib/speech-recognition";
 
 const SUGGESTIONS = [
   { icon: Target, label: "Armar un combo para mi evento" },
@@ -27,33 +46,88 @@ const SUGGESTIONS = [
   { icon: Briefcase, label: "Kits de bienvenida" },
 ];
 
+const IMG_PLACEHOLDER =
+  "Qué productos del catálogo se parecen a esta foto? Necesito armar un pedido.";
+
+const ROTATING_STATUS = [
+  "Analizando tu pedido...",
+  "Viendo cantidades y mínimos...",
+  "Buscando el mejor fit...",
+  "Revisando precios por volumen...",
+];
+
+function getLastUserSearchHint(messages: UIMessage[]): string {
+  for (let i = messages.length - 1; i >= 0; i--) {
+    const m = messages[i];
+    if (m.role !== "user") continue;
+    const text = m.parts
+      .filter(
+        (p): p is Extract<typeof p, { type: "text" }> => p.type === "text",
+      )
+      .map((p) => p.text)
+      .join(" ")
+      .trim();
+    if (text && text !== IMG_PLACEHOLDER) {
+      return text.slice(0, 140);
+    }
+  }
+  return "";
+}
+
 const transport = new DefaultChatTransport({ api: "/api/chat" });
 
 export default function ChatModal() {
+  const { client } = useContext(AuthContext);
   const { isOpen, consumeInitialMessage } = useChatStore();
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const inputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState("");
+  const [pendingImages, setPendingImages] = useState<
+    { url: string; file: File }[]
+  >([]);
   const initialConsumed = useRef(false);
+  const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
+  const [isListening, setIsListening] = useState(false);
+  const speechSupported = typeof window !== "undefined" && !!getSpeechRecognitionCtor();
 
   const { messages, sendMessage, status } = useChat({ transport });
 
   const isLoading = status === "streaming" || status === "submitted";
+  const hasConversation = messages.length > 0;
+
+  const greetingName = client?.name?.trim();
+  const welcomeTitle = greetingName
+    ? `Hola, ${greetingName.split(/\s+/)[0]}`
+    : "Hola!";
+
+  const catalogSearchHint = useMemo(
+    () => getLastUserSearchHint(messages),
+    [messages],
+  );
+  const catalogHref =
+    catalogSearchHint.length > 0
+      ? `/catalogo?search=${encodeURIComponent(catalogSearchHint)}`
+      : "/catalogo";
 
   // Auto-scroll to bottom
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
-  // Focus input when modal opens
   useEffect(() => {
     if (isOpen) {
       initialConsumed.current = false;
-      setTimeout(() => inputRef.current?.focus(), 300);
+      setTimeout(() => textareaRef.current?.focus(), 300);
     }
   }, [isOpen]);
 
-  // Consume initial message when modal opens
+  useEffect(() => {
+    return () => {
+      recognitionRef.current?.abort();
+    };
+  }, []);
+
   useEffect(() => {
     if (isOpen && !initialConsumed.current) {
       const msg = consumeInitialMessage();
@@ -64,129 +138,343 @@ export default function ChatModal() {
     }
   }, [isOpen, consumeInitialMessage, sendMessage]);
 
-  function handleSend(text: string) {
-    if (!text.trim() || isLoading) return;
-    sendMessage({ text: text.trim() });
+  const stopListening = useCallback(() => {
+    try {
+      recognitionRef.current?.stop();
+    } catch {
+      /* noop */
+    }
+    recognitionRef.current = null;
+    setIsListening(false);
+  }, []);
+
+  const toggleMic = useCallback(() => {
+    const Ctor = getSpeechRecognitionCtor();
+    if (!Ctor) return;
+
+    if (isListening) {
+      stopListening();
+      return;
+    }
+
+    const rec = new Ctor();
+    rec.lang = "es-AR";
+    rec.continuous = false;
+    rec.interimResults = false;
+    rec.maxAlternatives = 1;
+
+    rec.onresult = (e) => {
+      let transcript = "";
+      for (let i = 0; i < e.results.length; i++) {
+        if (e.results[i].isFinal) {
+          transcript += e.results[i][0].transcript;
+        }
+      }
+      if (transcript.trim()) {
+        setInputValue((prev) =>
+          prev.trim() ? `${prev.trim()} ${transcript.trim()}` : transcript.trim(),
+        );
+      }
+    };
+    rec.onerror = () => stopListening();
+    rec.onend = () => {
+      recognitionRef.current = null;
+      setIsListening(false);
+    };
+
+    recognitionRef.current = rec;
+    try {
+      rec.start();
+      setIsListening(true);
+    } catch {
+      stopListening();
+    }
+  }, [isListening, stopListening]);
+
+  async function onPickImages(e: React.ChangeEvent<HTMLInputElement>) {
+    const list = e.target.files;
+    if (!list?.length) return;
+    const added: { url: string; file: File }[] = [];
+    for (let i = 0; i < Math.min(list.length, 4); i++) {
+      const raw = list[i];
+      if (!raw.type.startsWith("image/")) continue;
+      try {
+        const file = await compressImageFile(raw);
+        added.push({ url: URL.createObjectURL(file), file });
+      } catch {
+        added.push({ url: URL.createObjectURL(raw), file: raw });
+      }
+    }
+    setPendingImages((prev) => [...prev, ...added].slice(0, 4));
+    e.target.value = "";
+  }
+
+  function removePendingAt(index: number) {
+    setPendingImages((prev) => {
+      const next = [...prev];
+      const [removed] = next.splice(index, 1);
+      if (removed) URL.revokeObjectURL(removed.url);
+      return next;
+    });
+  }
+
+  function submitMessage(e?: React.FormEvent) {
+    e?.preventDefault();
+    if (isLoading) return;
+
+    const text = inputValue.trim();
+    const hasFiles = pendingImages.length > 0;
+    if (!text && !hasFiles) return;
+
+    if (hasFiles) {
+      const dt = new DataTransfer();
+      pendingImages.forEach((p) => dt.items.add(p.file));
+      sendMessage({
+        text: text || IMG_PLACEHOLDER,
+        files: dt.files,
+      });
+      pendingImages.forEach((p) => URL.revokeObjectURL(p.url));
+      setPendingImages([]);
+    } else {
+      sendMessage({ text: text });
+    }
     setInputValue("");
   }
 
-  function handleFormSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    handleSend(inputValue);
+  function handleSuggestionSend(label: string) {
+    if (isLoading) return;
+    sendMessage({ text: label.trim() });
   }
+
+  const canSend =
+    (inputValue.trim().length > 0 || pendingImages.length > 0) && !isLoading;
 
   return (
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/20 backdrop-blur-sm"
+            className="fixed inset-0 z-50 bg-black/35 backdrop-blur-md"
             onClick={useChatStore.getState().close}
           />
 
-          {/* Modal */}
           <motion.div
             initial={{ y: "100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
-            transition={{ type: "spring", damping: 30, stiffness: 300 }}
-            className="fixed bottom-24 left-1/2 z-50 flex w-[calc(100%-2rem)] max-w-xl -translate-x-1/2 flex-col rounded-2xl border border-border bg-white shadow-2xl md:bottom-24"
-            style={{ maxHeight: "min(600px, 80vh)" }}
+            transition={{ type: "spring", damping: 32, stiffness: 320 }}
+            className="fixed bottom-24 left-1/2 z-50 flex w-[calc(100%-1.25rem)] max-w-xl -translate-x-1/2 flex-col overflow-hidden rounded-3xl border border-white/50 bg-white/75 shadow-2xl shadow-black/10 backdrop-blur-xl sm:bottom-24"
+            style={{ maxHeight: "min(680px, 85vh)" }}
           >
             {/* Header */}
-            <div className="flex items-center justify-between rounded-t-2xl bg-gradient-to-r from-accent to-[#3BB5E8] px-5 py-3.5">
-              <div className="flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-white" />
-                <h2 className="text-sm font-semibold text-white">
+            <div className="flex items-center justify-between px-4 pt-4 pb-2">
+              <div className="flex items-center gap-2.5">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-accent to-[#3BB5E8] text-white shadow-md shadow-accent/25">
+                  <Sparkles className="h-4 w-4" />
+                </div>
+                <span className="text-sm font-semibold tracking-tight text-foreground">
                   Asistente Diezypunto
-                </h2>
+                </span>
               </div>
               <button
+                type="button"
                 onClick={useChatStore.getState().close}
-                className="rounded-lg p-1 text-white/80 transition-colors hover:bg-white/20 hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-black/[0.06] text-foreground/70 transition-colors hover:bg-black/10 hover:text-foreground"
+                aria-label="Cerrar"
               >
                 <X className="h-4 w-4" />
               </button>
             </div>
 
-            {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-4 py-4">
-              {messages.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-6 text-center">
-                  <Sparkles className="mb-3 h-8 w-8 text-accent/40" />
-                  <p className="text-sm font-medium text-foreground">
-                    Hola! Que necesitas?
-                  </p>
-                  <p className="mt-1 text-xs text-muted">
-                    Contame sobre tu evento o busca productos
-                  </p>
+            {/* Body */}
+            <div className="flex min-h-0 flex-1 flex-col">
+              <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-2">
+                {!hasConversation ? (
+                  <div className="flex flex-col items-center pt-2 pb-4 text-center">
+                    <HeroOrb />
 
-                  {/* Suggestion grid */}
-                  <div className="mt-6 grid w-full grid-cols-2 gap-2">
-                    {SUGGESTIONS.map((s) => (
-                      <button
-                        key={s.label}
-                        onClick={() => handleSend(s.label)}
-                        className="flex items-center gap-2.5 rounded-xl border border-border px-3 py-3 text-left text-xs font-medium text-muted transition-all hover:border-accent hover:bg-accent-light hover:text-accent"
-                      >
-                        <s.icon className="h-4 w-4 shrink-0" />
-                        {s.label}
-                      </button>
-                    ))}
+                    <h2 className="mt-5 text-2xl font-bold tracking-tight text-foreground">
+                      {welcomeTitle}
+                    </h2>
+                    <p className="mt-1.5 text-sm text-muted">
+                      En qué te puedo ayudar hoy?
+                    </p>
+
+                    <div className="mt-6 flex w-full gap-2 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                      {SUGGESTIONS.map((s) => (
+                        <button
+                          key={s.label}
+                          type="button"
+                          onClick={() => handleSuggestionSend(s.label)}
+                          disabled={isLoading}
+                          className="flex shrink-0 snap-start items-center gap-2 rounded-full border border-black/[0.08] bg-white/90 px-3.5 py-2.5 text-left text-xs font-medium text-foreground/85 shadow-sm transition-all hover:border-accent/40 hover:bg-accent-light/80 hover:text-accent disabled:opacity-50"
+                        >
+                          <s.icon className="h-3.5 w-3.5 shrink-0 text-accent" />
+                          {s.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {messages.map((message) => (
-                    <ChatMessage key={message.id} message={message} />
-                  ))}
-                  {isLoading &&
-                    messages[messages.length - 1]?.role !== "assistant" && (
-                      <div className="flex items-center gap-2 text-xs text-muted">
-                        <Loader2 className="h-3 w-3 animate-spin" />
-                        Pensando...
+                ) : (
+                  <div className="space-y-4 pt-1">
+                    {messages.map((message, index) => (
+                      <ChatMessage
+                        key={message.id}
+                        message={message}
+                        deferAssistantContent={
+                          message.role === "assistant" &&
+                          isLoading &&
+                          index === messages.length - 1
+                        }
+                      />
+                    ))}
+                    {isLoading &&
+                      messages[messages.length - 1]?.role !== "assistant" && (
+                        <div className="flex items-center gap-2 text-xs text-muted">
+                          <Loader2 className="h-3 w-3 animate-spin" />
+                          Pensando...
+                        </div>
+                      )}
+                    {messages.some((m) => m.role === "assistant") && (
+                      <div className="pt-2">
+                        <Link
+                          href={catalogHref}
+                          className="inline-flex items-center gap-1.5 text-xs font-medium text-accent underline-offset-2 hover:underline"
+                          onClick={() => useChatStore.getState().close()}
+                        >
+                          Ver más opciones en el catálogo
+                        </Link>
                       </div>
                     )}
-                </div>
-              )}
-              <div ref={messagesEndRef} />
-            </div>
+                  </div>
+                )}
+                <div ref={messagesEndRef} />
+              </div>
 
-            {/* Footer: Input + Telegram link */}
-            <div className="border-t border-border px-4 py-3">
-              <form onSubmit={handleFormSubmit}>
-                <div className="flex items-center gap-2">
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    placeholder="Escribi lo que necesitas..."
-                    disabled={isLoading}
-                    className="flex-1 rounded-xl border border-border bg-surface px-4 py-2.5 text-sm outline-none placeholder:text-muted/60 focus:border-accent disabled:opacity-60"
-                  />
-                  <button
-                    type="submit"
-                    disabled={isLoading || !inputValue.trim()}
-                    className="rounded-xl bg-accent p-2.5 text-white transition-all hover:bg-accent-hover disabled:opacity-40"
+              {/* Composer */}
+              <div className="relative border-t border-white/40 bg-white/50 px-3 pb-3 pt-2">
+                {pendingImages.length > 0 && (
+                  <div className="mb-2 flex flex-wrap gap-2">
+                    {pendingImages.map((p, i) => (
+                      <div
+                        key={p.url + i}
+                        className="relative h-14 w-14 overflow-hidden rounded-lg border border-border bg-surface"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={p.url}
+                          alt=""
+                          className="h-full w-full object-cover"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => removePendingAt(i)}
+                          className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-foreground text-white shadow"
+                          aria-label="Quitar imagen"
+                        >
+                          <X className="h-3 w-3" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <form onSubmit={submitMessage}>
+                  <div className="rounded-2xl border border-black/[0.08] bg-white/90 p-3 shadow-inner">
+                    <textarea
+                      ref={textareaRef}
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" && !e.shiftKey) {
+                          e.preventDefault();
+                          if (canSend) submitMessage();
+                        }
+                      }}
+                      placeholder="Contame tu evento o pedido..."
+                      disabled={isLoading}
+                      rows={hasConversation ? 2 : 3}
+                      className="w-full resize-none bg-transparent text-sm text-foreground outline-none placeholder:text-muted/70 disabled:opacity-60"
+                    />
+
+                    <div className="mt-2 flex items-center justify-between gap-2 border-t border-black/[0.06] pt-2">
+                      <div className="flex items-center gap-1">
+                        <input
+                          ref={fileInputRef}
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          className="hidden"
+                          onChange={onPickImages}
+                        />
+                        <button
+                          type="button"
+                          onClick={() => fileInputRef.current?.click()}
+                          disabled={isLoading || pendingImages.length >= 4}
+                          className="flex h-9 w-9 items-center justify-center rounded-full text-foreground/60 transition-colors hover:bg-black/[0.06] hover:text-foreground disabled:opacity-40"
+                          aria-label="Adjuntar imagen"
+                          title="Adjuntar imagen"
+                        >
+                          <ImagePlus className="h-5 w-5" />
+                        </button>
+                      </div>
+
+                      <div className="flex items-center gap-1.5">
+                        <button
+                          type="button"
+                          onClick={toggleMic}
+                          disabled={isLoading || !speechSupported}
+                          className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
+                            isListening
+                              ? "bg-red-500/15 text-red-600"
+                              : "text-foreground/60 hover:bg-black/[0.06] hover:text-foreground"
+                          } disabled:opacity-40`}
+                          aria-label={
+                            speechSupported
+                              ? isListening
+                                ? "Detener dictado"
+                                : "Dictar con el micrófono"
+                              : "Dictado no disponible en este navegador"
+                          }
+                          title={
+                            speechSupported
+                              ? "Dictado (es-AR)"
+                              : "Probá con Chrome o Edge"
+                          }
+                        >
+                          <Mic className={`h-5 w-5 ${isListening ? "animate-pulse" : ""}`} />
+                        </button>
+                        <button
+                          type="submit"
+                          disabled={!canSend}
+                          className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-accent to-[#3BB5E8] text-white shadow-md shadow-accent/30 transition-all hover:opacity-95 disabled:opacity-35"
+                          aria-label="Enviar"
+                        >
+                          {isLoading ? (
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                          ) : (
+                            <ArrowUp className="h-4 w-4" />
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+                <div className="mt-2 flex items-center justify-center gap-2">
+                  <Sparkles className="h-3 w-3 text-accent/50" />
+                  <a
+                    href={telegramUrl()}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] text-muted transition-colors hover:text-accent"
                   >
-                    <Send className="h-4 w-4" />
-                  </button>
+                    Prefiero hablar con una persona
+                  </a>
                 </div>
-              </form>
-              <div className="mt-2 text-center">
-                <a
-                  href={telegramUrl()}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-muted transition-colors hover:text-accent"
-                >
-                  Prefiero hablar con una persona &rarr;
-                </a>
               </div>
             </div>
           </motion.div>
@@ -196,7 +484,70 @@ export default function ChatModal() {
   );
 }
 
-function ChatMessage({ message }: { message: UIMessage }) {
+function HeroOrb() {
+  return (
+    <div className="relative mx-auto h-[7.5rem] w-[7.5rem]">
+      <motion.div
+        className="absolute inset-0 rounded-full bg-gradient-to-br from-accent/25 via-cyan-200/20 to-amber-200/25 blur-2xl"
+        animate={{ opacity: [0.7, 1, 0.7], scale: [1, 1.05, 1] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/90 via-accent/15 to-cyan-100/40 shadow-[inset_0_-8px_24px_rgba(89,198,242,0.25)]" />
+      <motion.div
+        className="absolute inset-0 rounded-full"
+        style={{
+          background:
+            "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.85) 48%, rgba(253,230,138,0.5) 52%, transparent 65%)",
+        }}
+        animate={{ rotate: [0, 8, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <div className="absolute inset-3 rounded-full border border-white/40 bg-gradient-to-t from-accent/10 to-transparent" />
+    </div>
+  );
+}
+
+function AssistantStreamingPlaceholder() {
+  const [idx, setIdx] = useState(0);
+  useEffect(() => {
+    const id = setInterval(
+      () => setIdx((j) => (j + 1) % ROTATING_STATUS.length),
+      2200,
+    );
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <div className="flex justify-start">
+      <div className="flex max-w-[90%] items-center gap-2.5 rounded-2xl rounded-bl-md border border-border/60 bg-surface px-4 py-3.5">
+        <Loader2
+          className="h-4 w-4 shrink-0 animate-spin text-accent"
+          aria-hidden
+        />
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={idx}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2 }}
+            className="text-sm font-medium text-foreground/90"
+          >
+            {ROTATING_STATUS[idx]}
+          </motion.span>
+        </AnimatePresence>
+      </div>
+    </div>
+  );
+}
+
+function ChatMessage({
+  message,
+  deferAssistantContent = false,
+}: {
+  message: UIMessage;
+  deferAssistantContent?: boolean;
+}) {
   const isUser = message.role === "user";
 
   const textContent = message.parts
@@ -207,20 +558,66 @@ function ChatMessage({ message }: { message: UIMessage }) {
     .map((part) => part.text)
     .join("");
 
+  const fileParts = message.parts.filter(
+    (part): part is { type: "file"; url: string; mediaType: string } =>
+      part.type === "file",
+  );
+
   if (isUser) {
     return (
       <div className="flex justify-end">
-        <div className="max-w-[85%] rounded-2xl rounded-br-md bg-accent px-4 py-2.5 text-sm text-white">
-          {textContent}
+        <div className="max-w-[88%] space-y-2">
+          {fileParts.length > 0 && (
+            <div className="flex flex-wrap justify-end gap-1.5">
+              {fileParts.map((fp, i) =>
+                fp.mediaType.startsWith("image/") ? (
+                  <div
+                    key={i}
+                    className="max-h-40 overflow-hidden rounded-xl border border-white/30 bg-white/20"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={fp.url}
+                      alt="Adjunto"
+                      className="max-h-40 w-auto max-w-[200px] object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div
+                    key={i}
+                    className="rounded-lg border border-white/20 bg-accent/15 px-2 py-1 text-[10px] text-white/90"
+                  >
+                    Archivo
+                  </div>
+                ),
+              )}
+            </div>
+          )}
+          {textContent ? (
+            <div className="rounded-2xl rounded-br-md bg-accent px-4 py-2.5 text-sm text-white">
+              {textContent === IMG_PLACEHOLDER
+                ? "Foto adjunta — ayudame con el pedido"
+                : textContent}
+            </div>
+          ) : null}
         </div>
       </div>
     );
   }
 
+  if (deferAssistantContent) {
+    return <AssistantStreamingPlaceholder />;
+  }
+
   const parsed = parseProductTags(textContent);
 
   return (
-    <div className="flex justify-start">
+    <motion.div
+      className="flex justify-start"
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
+    >
       <div className="max-w-[90%] space-y-2">
         {parsed.map((part, i) => {
           if (part.type === "text" && part.text.trim()) {
@@ -239,7 +636,7 @@ function ChatMessage({ message }: { message: UIMessage }) {
           return null;
         })}
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -249,6 +646,7 @@ interface ProductProps {
   price: string;
   image: string;
   category: string;
+  suggested_qty?: string;
 }
 
 function InlineProductCard({
@@ -257,50 +655,125 @@ function InlineProductCard({
   price,
   image,
   category,
+  suggested_qty: suggestedQtyStr,
 }: ProductProps) {
   const addItem = useQuoteStore((s) => s.addItem);
+  const product = getLocalProduct(id);
+  const minQty = Math.max(1, product?.min_qty ?? 1);
+  const suggestedNum = suggestedQtyStr
+    ? parseInt(suggestedQtyStr, 10)
+    : NaN;
+  const initialQty =
+    Number.isFinite(suggestedNum) && suggestedNum >= minQty
+      ? suggestedNum
+      : minQty;
+
+  const [qty, setQty] = useState(initialQty);
+
+  const listPrice = product?.list_price ?? product?.price_max ?? product?.price ?? null;
+  const cat = product?.subcategory || product?.category || category;
+
+  const unitFinal = useMemo(() => {
+    if (product && listPrice != null && listPrice > 0) {
+      return getPriceForQuantity(listPrice, qty, cat).finalPrice;
+    }
+    if (price && price !== "Consultar" && !isNaN(Number(price))) {
+      return Number(price);
+    }
+    return null;
+  }, [product, listPrice, qty, cat, price]);
+
+  const lineTotal =
+    unitFinal != null ? Math.round(unitFinal * qty) : null;
 
   function handleAdd() {
-    const product = getLocalProduct(id);
-    if (product) {
-      addItem(product, 1);
-    }
+    if (!product) return;
+    addItem(product, qty);
+  }
+
+  function bump(delta: number) {
+    setQty((q) => Math.max(minQty, q + delta));
   }
 
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-border bg-white p-2.5">
-      <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-surface">
-        {image ? (
-          <img
-            src={image}
-            alt={title}
-            className="h-full w-full object-contain p-1"
+    <div className="rounded-xl border border-border bg-white p-2.5">
+      <div className="flex gap-3">
+        <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-surface">
+          {image ? (
+            <img
+              src={image}
+              alt={title}
+              className="h-full w-full object-contain p-1"
+            />
+          ) : (
+            <div className="flex h-full items-center justify-center text-muted/30">
+              <ShoppingBag className="h-5 w-5" />
+            </div>
+          )}
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-xs font-medium">{title}</p>
+          <p className="text-[10px] text-muted">{category}</p>
+          {unitFinal != null ? (
+            <>
+              <p className="text-xs font-bold text-accent">
+                ${unitFinal.toLocaleString("es-AR")}{" "}
+                <span className="font-normal text-muted">c/u + IVA</span>
+              </p>
+              {lineTotal != null && qty > 1 ? (
+                <p className="text-[10px] text-muted">
+                  Subtotal {qty} u.: ${lineTotal.toLocaleString("es-AR")} + IVA
+                </p>
+              ) : null}
+            </>
+          ) : price === "Consultar" ? (
+            <p className="text-xs font-medium text-muted">Consultar precio</p>
+          ) : null}
+        </div>
+      </div>
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-border/80 pt-2">
+        <div className="flex items-center gap-1">
+          <span className="text-[10px] text-muted">Cant.</span>
+          <button
+            type="button"
+            onClick={() => bump(-1)}
+            disabled={qty <= minQty}
+            className="flex h-7 w-7 items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors hover:bg-accent-light disabled:opacity-40"
+            aria-label="Menos"
+          >
+            <Minus className="h-3.5 w-3.5" />
+          </button>
+          <input
+            type="number"
+            min={minQty}
+            value={qty}
+            onChange={(e) => {
+              const n = parseInt(e.target.value, 10);
+              if (!Number.isFinite(n)) return;
+              setQty(Math.max(minQty, n));
+            }}
+            className="h-7 w-14 rounded-lg border border-border bg-white px-1 text-center text-xs tabular-nums outline-none focus:border-accent"
           />
-        ) : (
-          <div className="flex h-full items-center justify-center text-muted/30">
-            <ShoppingBag className="h-5 w-5" />
-          </div>
-        )}
+          <button
+            type="button"
+            onClick={() => bump(1)}
+            className="flex h-7 w-7 items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors hover:bg-accent-light"
+            aria-label="Más"
+          >
+            <Plus className="h-3.5 w-3.5" />
+          </button>
+        </div>
+        <button
+          type="button"
+          onClick={handleAdd}
+          disabled={!product}
+          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-accent px-2.5 py-1.5 text-xs font-medium text-white transition-all hover:bg-accent-hover disabled:opacity-40"
+          title="Agregar al carrito"
+        >
+          <ShoppingBag className="h-3.5 w-3.5" />
+          Agregar
+        </button>
       </div>
-      <div className="min-w-0 flex-1">
-        <p className="truncate text-xs font-medium">{title}</p>
-        <p className="text-[10px] text-muted">{category}</p>
-        {price && price !== "null" && price !== "Consultar" && !isNaN(Number(price)) ? (
-          <p className="text-xs font-bold text-accent">
-            ${Number(price).toLocaleString("es-AR")}{" "}
-            <span className="font-normal text-muted">+ IVA</span>
-          </p>
-        ) : price === "Consultar" ? (
-          <p className="text-xs font-medium text-muted">Consultar precio</p>
-        ) : null}
-      </div>
-      <button
-        onClick={handleAdd}
-        className="shrink-0 rounded-lg bg-accent p-1.5 text-white transition-all hover:bg-accent-hover"
-        title="Agregar al carrito"
-      >
-        <ShoppingBag className="h-3.5 w-3.5" />
-      </button>
     </div>
   );
 }
@@ -329,10 +802,18 @@ function parseProductTags(content: string): ParsedPart[] {
     const price = attrs.match(/price="([^"]*)"/)?.[1] || "";
     const image = attrs.match(/image="([^"]*)"/)?.[1] || "";
     const category = attrs.match(/category="([^"]*)"/)?.[1] || "";
+    const suggested_qty = attrs.match(/suggested_qty="([^"]*)"/)?.[1];
 
     parts.push({
       type: "product",
-      props: { id, title, price, image, category },
+      props: {
+        id,
+        title,
+        price,
+        image,
+        category,
+        ...(suggested_qty ? { suggested_qty } : {}),
+      },
     });
     lastIndex = match.index + match[0].length;
   }
