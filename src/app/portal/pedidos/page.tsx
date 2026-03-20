@@ -6,7 +6,9 @@ import OrderCard from "@/components/portal/OrderCard";
 
 interface Order {
   filename: string;
-  frontmatter: Record<string, unknown>;
+  status?: string;
+  date?: string;
+  [key: string]: unknown;
 }
 
 export default function PedidosPage() {
@@ -16,7 +18,7 @@ export default function PedidosPage() {
   useEffect(() => {
     fetch("/api/portal/orders")
       .then((r) => (r.ok ? r.json() : { orders: [] }))
-      .then((data) => setOrders(data.orders || []))
+      .then((data) => setOrders(Array.isArray(data) ? data : data.orders || []))
       .finally(() => setLoading(false));
   }, []);
 
@@ -47,9 +49,9 @@ export default function PedidosPage() {
           orders.map((o) => (
             <OrderCard
               key={o.filename}
-              id={o.filename.replace(".md", "")}
-              date={String(o.frontmatter.date || "")}
-              status={String(o.frontmatter.status || "pendiente")}
+              id={o.filename}
+              date={String(o.date || "")}
+              status={String(o.status || "pendiente")}
             />
           ))
         )}

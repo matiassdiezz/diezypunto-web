@@ -8,12 +8,18 @@ import { useAuth } from "@/lib/hooks/use-auth";
 
 interface Quote {
   filename: string;
-  frontmatter: Record<string, unknown>;
+  status?: string;
+  date?: string;
+  total?: number;
+  items_count?: number;
+  [key: string]: unknown;
 }
 
 interface Order {
   filename: string;
-  frontmatter: Record<string, unknown>;
+  status?: string;
+  date?: string;
+  [key: string]: unknown;
 }
 
 export default function PortalDashboard() {
@@ -28,8 +34,10 @@ export default function PortalDashboard() {
       fetch("/api/portal/orders").then((r) => (r.ok ? r.json() : { orders: [] })),
     ])
       .then(([q, o]) => {
-        setQuotes(q.quotes?.slice(0, 5) || []);
-        setOrders(o.orders?.slice(0, 5) || []);
+        const qList = Array.isArray(q) ? q : q.quotes || [];
+        const oList = Array.isArray(o) ? o : o.orders || [];
+        setQuotes(qList.slice(0, 5));
+        setOrders(oList.slice(0, 5));
       })
       .finally(() => setLoading(false));
   }, []);
@@ -97,11 +105,11 @@ export default function PortalDashboard() {
             {quotes.map((q) => (
               <QuoteCard
                 key={q.filename}
-                id={q.filename.replace(".md", "")}
-                date={String(q.frontmatter.date || "")}
-                status={String(q.frontmatter.status || "borrador")}
-                total={q.frontmatter.total as number | undefined}
-                itemCount={q.frontmatter.item_count as number | undefined}
+                id={q.filename}
+                date={String(q.date || "")}
+                status={String(q.status || "borrador")}
+                total={q.total}
+                itemCount={q.items_count}
               />
             ))}
           </div>
@@ -125,9 +133,9 @@ export default function PortalDashboard() {
             {orders.map((o) => (
               <OrderCard
                 key={o.filename}
-                id={o.filename.replace(".md", "")}
-                date={String(o.frontmatter.date || "")}
-                status={String(o.frontmatter.status || "pendiente")}
+                id={o.filename}
+                date={String(o.date || "")}
+                status={String(o.status || "pendiente")}
               />
             ))}
           </div>

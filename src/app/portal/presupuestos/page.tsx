@@ -6,7 +6,11 @@ import QuoteCard from "@/components/portal/QuoteCard";
 
 interface Quote {
   filename: string;
-  frontmatter: Record<string, unknown>;
+  status?: string;
+  date?: string;
+  total?: number;
+  items_count?: number;
+  [key: string]: unknown;
 }
 
 export default function PresupuestosPage() {
@@ -16,7 +20,7 @@ export default function PresupuestosPage() {
   useEffect(() => {
     fetch("/api/portal/quotes")
       .then((r) => (r.ok ? r.json() : { quotes: [] }))
-      .then((data) => setQuotes(data.quotes || []))
+      .then((data) => setQuotes(Array.isArray(data) ? data : data.quotes || []))
       .finally(() => setLoading(false));
   }, []);
 
@@ -50,11 +54,11 @@ export default function PresupuestosPage() {
           quotes.map((q) => (
             <QuoteCard
               key={q.filename}
-              id={q.filename.replace(".md", "")}
-              date={String(q.frontmatter.date || "")}
-              status={String(q.frontmatter.status || "borrador")}
-              total={q.frontmatter.total as number | undefined}
-              itemCount={q.frontmatter.item_count as number | undefined}
+              id={q.filename}
+              date={String(q.date || "")}
+              status={String(q.status || "borrador")}
+              total={q.total}
+              itemCount={q.items_count}
             />
           ))
         )}
