@@ -7,6 +7,7 @@ import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
+import { trackEvent } from "@/lib/analytics-client";
 import { Tote, Leaf, PaperPlaneTilt, Minus, Plus, Check } from "@phosphor-icons/react";
 import Link from "next/link";
 import { openTelegramWithContext } from "@/lib/telegram";
@@ -39,6 +40,14 @@ export default function ProductoPage() {
       .then((p) => {
         setProduct(p);
         setQty(1);
+        // Track product view
+        trackEvent("product_view", {
+          product_id: p.product_id,
+          title: p.title,
+          category: p.category,
+          price: p.price,
+          referrer: document.referrer || "direct",
+        });
         // Fetch related products from same category
         listProducts({ category: p.category, limit: 8 })
           .then((res) =>

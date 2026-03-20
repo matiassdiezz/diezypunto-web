@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { searchWithAI } from "@/lib/engine/llm";
 import { searchLocalCatalog, getDiversifiedSample } from "@/lib/engine/local-catalog";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
+import { trackServerEvent, trackAICost } from "@/lib/engine/analytics";
 
 export async function POST(req: NextRequest) {
   const ip =
@@ -34,7 +35,19 @@ export async function POST(req: NextRequest) {
       if (!seen.has(p.product_id)) candidates.push(p);
     }
   }
-  const { products, needs, summary } = await searchWithAI(query, candidates);
+  const t0 = Date.now();
+  const { products, needs, summary, usage } = await searchWithAI(query, candidates);
+  const latency = Date.now() - t0;
+
+  trackServerEvent("search_refine", {
+    query,
+    results_count: products.length,
+    session_id,
+  }, { ip, session_id });
+
+  if (usage.inputTokens > 0) {
+    trackAICost("search", usage, { model: usage.model, latency_ms: latency, ip, session_id });
+  }
 
   return NextResponse.json({
     session_id,

@@ -3,6 +3,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { reviewCart } from "@/lib/engine/llm";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
+import { trackServerEvent, trackAICost } from "@/lib/engine/analytics";
 
 export async function POST(request: NextRequest) {
   // Rate limit (shared with search)
@@ -26,8 +27,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
+    const t0 = Date.now();
     const result = await reviewCart(items);
-    return NextResponse.json(result);
+    const latency = Date.now() - t0;
+
+    trackServerEvent("cart_review", {
+      items_count: items.length,
+      total_qty: items.reduce((s: number, i: { qty: number }) => s + i.qty, 0),
+      score: result.score,
+    }, { ip });
+
+    if (result.usage.inputTokens > 0) {
+      trackAICost("cart_review", result.usage, { model: result.usage.model, latency_ms: latency, ip });
+    }
+
+    const { usage: _usage, ...data } = result;
+    return NextResponse.json(data);
   } catch {
     return NextResponse.json(
       { error: "Error al analizar el carrito." },

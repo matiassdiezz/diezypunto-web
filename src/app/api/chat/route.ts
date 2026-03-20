@@ -1,9 +1,32 @@
 import { anthropic } from "@ai-sdk/anthropic";
-import { streamText, tool, stepCountIs, convertToModelMessages } from "ai";
+import { streamText, tool, stepCountIs, convertToModelMessages, type ModelMessage } from "ai";
 import { z } from "zod";
 import { searchLocalCatalog, getLocalProduct, getAllProducts } from "@/lib/engine/local-catalog";
 import { getPriceForQuantity } from "@/lib/engine/pricing";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
+import { trackServerEvent, trackAICost } from "@/lib/engine/analytics";
+
+/**
+ * Convert data-URL file/image parts to inline Uint8Array so the AI SDK
+ * doesn't try to "download" them (which fails SSRF validation on data: scheme).
+ */
+function inlineDataUrls(messages: ModelMessage[]): ModelMessage[] {
+  return messages.map((msg) => {
+    if (msg.role !== "user" || !Array.isArray(msg.content)) return msg;
+    return {
+      ...msg,
+      content: msg.content.map((part) => {
+        if (part.type !== "file" || typeof part.data !== "string") return part;
+        const match = part.data.match(/^data:([^;]+);base64,([\s\S]+)$/);
+        if (!match) return part;
+        const mediaType = match[1];
+        const base64 = match[2];
+        const bytes = Uint8Array.from(atob(base64), (c) => c.charCodeAt(0));
+        return { ...part, data: bytes, mediaType } as typeof part;
+      }),
+    };
+  });
+}
 
 const SYSTEM_PROMPT = `Sos un vendedor experto de Diezypunto, empresa de merchandising corporativo B2B en Argentina. Profesional pero cercano, hablás de vos.
 
@@ -48,8 +71,18 @@ export async function POST(req: Request) {
     });
   }
 
+  try {
   const { messages } = await req.json();
-  const modelMessages = await convertToModelMessages(messages);
+  console.log("[chat] incoming:", messages.length, "messages, last role:", messages[messages.length - 1]?.role);
+  const rawModelMessages = await convertToModelMessages(messages);
+  const modelMessages = inlineDataUrls(rawModelMessages);
+  console.log("[chat] converted to", modelMessages.length, "model messages, calling streamText...");
+
+  const lastUserMsg = messages[messages.length - 1];
+  const conversationId = lastUserMsg?.id || "unknown";
+  const turnNumber = messages.filter((m: { role: string }) => m.role === "user").length;
+  const hasImage = Array.isArray(lastUserMsg?.content) && lastUserMsg.content.some((p: { type: string }) => p.type === "file" || p.type === "image");
+  const chatStartTime = Date.now();
 
   const result = streamText({
     model: anthropic("claude-sonnet-4-6"),
@@ -155,7 +188,50 @@ export async function POST(req: Request) {
       }),
     },
     stopWhen: stepCountIs(3),
+    onError: (event) => {
+      console.error("[chat] stream error:", event.error);
+    },
+    onFinish: ({ usage, steps }) => {
+      const latency = Date.now() - chatStartTime;
+
+      // Track chat message
+      trackServerEvent("chat_message", {
+        role: "user",
+        message_length: typeof lastUserMsg?.content === "string" ? lastUserMsg.content.length : JSON.stringify(lastUserMsg?.content || "").length,
+        has_image: hasImage,
+        turn_number: turnNumber,
+        conversation_id: conversationId,
+      }, { ip });
+
+      // Track tool calls
+      for (const step of steps) {
+        if (step.toolCalls) {
+          for (const tc of step.toolCalls) {
+            trackServerEvent("chat_tool_call", {
+              tool: tc.toolName,
+              input: "input" in tc ? tc.input : undefined,
+              conversation_id: conversationId,
+            }, { ip });
+          }
+        }
+      }
+
+      // Track AI cost
+      if (usage) {
+        trackAICost("chat", {
+          inputTokens: usage.inputTokens ?? 0,
+          outputTokens: usage.outputTokens ?? 0,
+        }, { model: "claude-sonnet-4-6", latency_ms: latency, ip });
+      }
+    },
   });
 
   return result.toUIMessageStreamResponse();
+  } catch (err) {
+    console.error("[chat] error:", err);
+    return new Response(
+      JSON.stringify({ error: "Error procesando tu mensaje. Intentá de nuevo." }),
+      { status: 500, headers: { "Content-Type": "application/json" } },
+    );
+  }
 }

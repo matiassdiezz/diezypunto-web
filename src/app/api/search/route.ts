@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { searchWithAI } from "@/lib/engine/llm";
 import { searchLocalCatalog, getDiversifiedSample } from "@/lib/engine/local-catalog";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
+import { trackServerEvent, trackAICost } from "@/lib/engine/analytics";
 import { randomUUID } from "crypto";
 import type { ExtractedNeeds } from "@/lib/types";
 
@@ -48,6 +49,7 @@ export async function POST(req: NextRequest) {
   const cached = searchCache.get(cacheKey);
   if (cached && Date.now() - cached.ts < CACHE_TTL) {
     const sessionId = session_id || randomUUID();
+    trackServerEvent("search", { query, results_count: (cached.data as { products: unknown[] }).products?.length ?? 0, cache_hit: true }, { ip, session_id: sessionId });
     return NextResponse.json({ ...cached.data, session_id: sessionId });
   }
 
@@ -64,7 +66,9 @@ export async function POST(req: NextRequest) {
   }
 
   // Step 2: Single Claude call — extract needs + rerank + summary
-  const { products, needs, summary } = await searchWithAI(query, candidates);
+  const t0 = Date.now();
+  const { products, needs, summary, usage } = await searchWithAI(query, candidates);
+  const latency = Date.now() - t0;
 
   // Session management
   let sessionId = session_id;
@@ -75,6 +79,19 @@ export async function POST(req: NextRequest) {
   } else {
     sessionId = randomUUID();
     sessions.set(sessionId, { needs, ts: Date.now() });
+  }
+
+  // Analytics
+  trackServerEvent("search", {
+    query,
+    results_count: products.length,
+    cache_hit: false,
+    top_product_ids: products.slice(0, 5).map((p) => p.product_id),
+    search_time_ms: latency,
+  }, { ip, session_id: sessionId });
+
+  if (usage.inputTokens > 0) {
+    trackAICost("search", usage, { model: usage.model, latency_ms: latency, ip, session_id: sessionId });
   }
 
   const responsePayload = {

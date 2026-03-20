@@ -61,6 +61,12 @@ function getClient(): Anthropic {
   return _client;
 }
 
+export interface AIUsage {
+  inputTokens: number;
+  outputTokens: number;
+  model: string;
+}
+
 /** Single Claude call: extract needs + rerank candidates + generate summary */
 export async function searchWithAI(
   query: string,
@@ -69,9 +75,10 @@ export async function searchWithAI(
   products: ProductResult[];
   needs: ExtractedNeeds;
   summary: string;
+  usage: AIUsage;
 }> {
   if (candidates.length === 0) {
-    return { products: [], needs: fallbackExtraction(query), summary: "" };
+    return { products: [], needs: fallbackExtraction(query), summary: "", usage: { inputTokens: 0, outputTokens: 0, model: "claude-haiku-4-5-20251001" } };
   }
 
   // Build compact product list for Claude
@@ -103,12 +110,18 @@ export async function searchWithAI(
       messages: [{ role: "user", content: context }],
     });
 
+    const aiUsage: AIUsage = {
+      inputTokens: response.usage?.input_tokens ?? 0,
+      outputTokens: response.usage?.output_tokens ?? 0,
+      model: "claude-haiku-4-5-20251001",
+    };
+
     const text =
       response.content[0].type === "text" ? response.content[0].text : "";
 
     const jsonMatch = text.match(/\{[\s\S]*\}/);
     if (!jsonMatch) {
-      return fallbackResult(query, candidates);
+      return { ...fallbackResult(query, candidates), usage: aiUsage };
     }
 
     const parsed = JSON.parse(jsonMatch[0]);
@@ -142,17 +155,17 @@ export async function searchWithAI(
       }
     }
 
-    return { products: reranked, needs, summary };
+    return { products: reranked, needs, summary, usage: aiUsage };
   } catch (error) {
     console.error("AI search failed:", error);
-    return fallbackResult(query, candidates);
+    return { ...fallbackResult(query, candidates), usage: { inputTokens: 0, outputTokens: 0, model: "claude-haiku-4-5-20251001" } };
   }
 }
 
 function fallbackResult(
   query: string,
   candidates: ProductResult[]
-): { products: ProductResult[]; needs: ExtractedNeeds; summary: string } {
+): { products: ProductResult[]; needs: ExtractedNeeds; summary: string; usage: AIUsage } {
   const top = candidates.slice(0, 12).map((p, i) => ({
     ...p,
     score: Math.round((1 - i / 12) * 1000) / 1000,
@@ -164,6 +177,7 @@ function fallbackResult(
       top.length > 0
         ? `Encontre ${top.length} productos que pueden servirte.`
         : "",
+    usage: { inputTokens: 0, outputTokens: 0, model: "claude-haiku-4-5-20251001" },
   };
 }
 
@@ -197,7 +211,7 @@ Responde SOLO con un JSON:
 
 export async function generateTopPicks(
   catalogSample: ProductResult[]
-): Promise<AIPicksResponse> {
+): Promise<AIPicksResponse & { usage: AIUsage }> {
   const productLines = catalogSample.map((p) => {
     const parts = [`ID:${p.product_id}`, p.title, p.category];
     if (p.materials.length > 0) parts.push(`Mat:${p.materials.join(",")}`);
@@ -248,6 +262,11 @@ export async function generateTopPicks(
     return {
       picks: (parsed.picks || []).slice(0, 6),
       collection_title: parsed.collection_title || `Seleccion de ${season}`,
+      usage: {
+        inputTokens: response.usage?.input_tokens ?? 0,
+        outputTokens: response.usage?.output_tokens ?? 0,
+        model: "claude-haiku-4-5-20251001",
+      },
     };
   } catch (error) {
     console.error("AI top picks failed:", error);
@@ -295,7 +314,7 @@ export async function reviewCart(
     personalization_methods: string[];
     min_qty: number;
   }[]
-): Promise<CartReviewResponse> {
+): Promise<CartReviewResponse & { usage: AIUsage }> {
   const lines = cartItems.map((item) => {
     const parts = [
       `ID:${item.product_id}`,
@@ -335,6 +354,11 @@ export async function reviewCart(
       summary: parsed.summary || "",
       score: Math.min(5, Math.max(1, parsed.score || 3)),
       insights: (parsed.insights || []).slice(0, 4),
+      usage: {
+        inputTokens: response.usage?.input_tokens ?? 0,
+        outputTokens: response.usage?.output_tokens ?? 0,
+        model: "claude-haiku-4-5-20251001",
+      },
     };
   } catch (error) {
     console.error("AI cart review failed:", error);

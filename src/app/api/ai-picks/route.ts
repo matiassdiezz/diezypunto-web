@@ -3,6 +3,7 @@
 import { NextResponse } from "next/server";
 import { generateTopPicks } from "@/lib/engine/llm";
 import { getCatalogSample } from "@/lib/engine/local-catalog";
+import { trackAICost } from "@/lib/engine/analytics";
 import type { AIPicksResponse } from "@/lib/types";
 
 interface CacheEntry {
@@ -23,10 +24,17 @@ export async function GET() {
 
   try {
     const sample = getCatalogSample(60);
+    const t0 = Date.now();
     const result = await generateTopPicks(sample);
+    const latency = Date.now() - t0;
 
-    cache = { data: result, expiresAt: now + TTL_MS };
-    return NextResponse.json(result);
+    if (result.usage.inputTokens > 0) {
+      trackAICost("picks", result.usage, { model: result.usage.model, latency_ms: latency });
+    }
+
+    const { usage: _usage, ...data } = result;
+    cache = { data, expiresAt: now + TTL_MS };
+    return NextResponse.json(data);
   } catch {
     // Fallback: random picks without reasoning
     const sample = getCatalogSample(6);
