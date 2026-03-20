@@ -3,6 +3,11 @@
 import { useState } from "react";
 import { Sparkles, ArrowUp } from "lucide-react";
 import { motion } from "framer-motion";
+import {
+  OPEN_CHAT_SUBMIT_BTN_CLASS,
+  OpenChatButton,
+  OpenChatSubmitOrb,
+} from "@/components/chat/OpenChatButton";
 import { useChatStore } from "@/lib/stores/chat-store";
 import ScrollReveal from "../shared/ScrollReveal";
 
@@ -107,11 +112,12 @@ export default function SearchSection() {
                   <motion.button
                     type="submit"
                     disabled={!input.trim()}
-                    className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-xl bg-accent text-white transition-all hover:bg-accent-hover hover:shadow-[0_0_20px_rgba(89,198,242,0.4)] disabled:opacity-20"
-                    animate={{ scale: focused && input.trim() ? 1.1 : 1 }}
+                    className={`absolute bottom-3 right-3 ${OPEN_CHAT_SUBMIT_BTN_CLASS}`}
+                    animate={{ scale: focused && input.trim() ? 1.06 : 1 }}
                     transition={{ type: "spring", stiffness: 400, damping: 20 }}
                   >
-                    <ArrowUp className="h-5 w-5" />
+                    <OpenChatSubmitOrb />
+                    <ArrowUp className="h-5 w-5 shrink-0" strokeWidth={2.25} />
                   </motion.button>
                 </div>
               </motion.div>
@@ -129,13 +135,14 @@ export default function SearchSection() {
               </p>
               <div className="grid grid-cols-2 gap-2">
                 {EXAMPLES.map((ex) => (
-                  <button
+                  <OpenChatButton
                     key={ex}
+                    compact
                     onClick={() => handleExample(ex)}
-                    className="rounded-xl border border-gray-200 bg-white px-4 py-3 text-left text-xs leading-relaxed text-gray-500 transition-all hover:border-accent hover:bg-accent-light hover:text-accent hover:shadow-sm"
+                    className="!h-auto w-full !items-start !justify-start !text-left font-normal text-xs leading-relaxed text-foreground/80 shadow-sm hover:text-accent md:!px-4 md:!py-3 md:text-sm"
                   >
                     {ex}
-                  </button>
+                  </OpenChatButton>
                 ))}
               </div>
             </motion.div>

@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { Send, Wand2 } from "lucide-react";
+import { Send } from "lucide-react";
+import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { telegramUrl } from "@/lib/telegram";
+import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
 import { useChatStore } from "@/lib/stores/chat-store";
 import ScrollReveal from "../shared/ScrollReveal";
 
@@ -35,13 +37,12 @@ export default function CtaBanner() {
             >
               Explorar catalogo
             </Link>
-            <button
-              onClick={() => openWithMessage("Quiero armar un pedido personalizado para mi evento")}
-              className="inline-flex items-center gap-2 rounded-xl border-2 border-white/40 px-6 py-3 font-semibold text-white transition-colors hover:bg-white/10"
+            <OpenChatButton
+              variant="glassOnAccent"
+              onClick={() => openWithMessage(PEDIDO_EVENTO_PRESET_MESSAGE)}
             >
-              <Wand2 className="h-4 w-4" />
               Armar pedido con AI
-            </button>
+            </OpenChatButton>
           </div>
         </div>
       </ScrollReveal>

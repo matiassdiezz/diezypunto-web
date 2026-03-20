@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, X } from "lucide-react";
+import Image from "next/image";
+import { X } from "lucide-react";
 import { useChatStore } from "@/lib/stores/chat-store";
+import { FLOATING_GLASS_BTN } from "@/components/chat/OpenChatButton";
 
 export default function ChatFAB() {
   const { isOpen, toggle } = useChatStore();
@@ -13,17 +15,25 @@ export default function ChatFAB() {
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.5 }}
       onClick={toggle}
-      className="fixed bottom-6 right-6 z-50 flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-[#3BB5E8] px-4 py-3.5 text-white shadow-lg shadow-accent/30 transition-all hover:scale-105 hover:shadow-xl hover:shadow-accent/40 active:scale-95"
-      aria-label={isOpen ? "Cerrar chat" : "Abrir chat"}
+      className={`fixed bottom-6 right-6 ${FLOATING_GLASS_BTN}`}
+      aria-label={isOpen ? "Cerrar chat" : "Pedir con AI"}
     >
       {isOpen ? (
-        <X className="h-5 w-5" />
+        <span className="flex h-5 w-5 shrink-0 items-center justify-center md:h-6 md:w-6">
+          <X className="h-5 w-5 text-foreground md:h-6 md:w-6" strokeWidth={2.25} />
+        </span>
       ) : (
         <>
-          <MessageCircle className="h-5 w-5" />
-          <span className="hidden text-sm font-medium sm:inline">
-            Hablar con AI
+          <span className="relative h-5 w-5 shrink-0 overflow-hidden rounded-full md:h-8 md:w-8">
+            <Image
+              src="/orbe-diezypunto.png"
+              alt=""
+              fill
+              className="object-cover object-center"
+              sizes="36px"
+            />
           </span>
+          <span className="tracking-tight">Pedir con AI</span>
         </>
       )}
     </motion.button>

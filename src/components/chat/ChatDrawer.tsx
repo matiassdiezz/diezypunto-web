@@ -78,7 +78,8 @@ const transport = new DefaultChatTransport({ api: "/api/chat" });
 
 export default function ChatModal() {
   const { client } = useContext(AuthContext);
-  const { isOpen, consumeInitialMessage } = useChatStore();
+  const isOpen = useChatStore((s) => s.isOpen);
+  const initialTurnEpoch = useChatStore((s) => s.initialTurnEpoch);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -86,14 +87,15 @@ export default function ChatModal() {
   const [pendingImages, setPendingImages] = useState<
     { url: string; file: File }[]
   >([]);
-  const initialConsumed = useRef(false);
+  const [presetThinking, setPresetThinking] = useState(false);
   const recognitionRef = useRef<SpeechRecognitionLike | null>(null);
   const [isListening, setIsListening] = useState(false);
   const speechSupported = typeof window !== "undefined" && !!getSpeechRecognitionCtor();
 
-  const { messages, sendMessage, status } = useChat({ transport });
+  const { messages, sendMessage, setMessages, status } = useChat({ transport });
 
   const isLoading = status === "streaming" || status === "submitted";
+  const composerBusy = isLoading || presetThinking;
   const hasConversation = messages.length > 0;
 
   const greetingName = client?.name?.trim();
@@ -117,7 +119,6 @@ export default function ChatModal() {
 
   useEffect(() => {
     if (isOpen) {
-      initialConsumed.current = false;
       setTimeout(() => textareaRef.current?.focus(), 300);
     }
   }, [isOpen]);
@@ -129,14 +130,62 @@ export default function ChatModal() {
   }, []);
 
   useEffect(() => {
-    if (isOpen && !initialConsumed.current) {
-      const msg = consumeInitialMessage();
-      if (msg) {
-        initialConsumed.current = true;
-        sendMessage({ text: msg });
-      }
+    if (!isOpen) return;
+
+    const state = useChatStore.getState();
+    const msg = state.initialMessage;
+    if (!msg) return;
+
+    const preset = state.initialPresetAssistant;
+    const capturedEpoch = state.initialTurnEpoch;
+
+    if (preset) {
+      if (state.presetDelayActive) return;
+      useChatStore.setState({ presetDelayActive: true });
+      setPresetThinking(true);
+
+      const userId = crypto.randomUUID();
+      const assistantId = crypto.randomUUID();
+      const userMsg = {
+        id: userId,
+        role: "user" as const,
+        parts: [{ type: "text" as const, text: msg }],
+      };
+      const assistantMsg = {
+        id: assistantId,
+        role: "assistant" as const,
+        parts: [{ type: "text" as const, text: preset }],
+      };
+
+      setMessages([userMsg]);
+
+      const timer = window.setTimeout(() => {
+        useChatStore.setState({
+          presetDelayActive: false,
+          initialMessage: null,
+          initialPresetAssistant: null,
+        });
+        if (useChatStore.getState().initialTurnEpoch !== capturedEpoch) {
+          setPresetThinking(false);
+          return;
+        }
+        setMessages([userMsg, assistantMsg]);
+        setPresetThinking(false);
+      }, 3000);
+
+      return () => {
+        window.clearTimeout(timer);
+        useChatStore.setState({ presetDelayActive: false });
+        setPresetThinking(false);
+      };
     }
-  }, [isOpen, consumeInitialMessage, sendMessage]);
+
+    useChatStore.setState({
+      initialMessage: null,
+      initialPresetAssistant: null,
+    });
+    sendMessage({ text: msg });
+  }, [isOpen, initialTurnEpoch, sendMessage, setMessages]);
 
   const stopListening = useCallback(() => {
     try {
@@ -220,7 +269,7 @@ export default function ChatModal() {
 
   function submitMessage(e?: React.FormEvent) {
     e?.preventDefault();
-    if (isLoading) return;
+    if (composerBusy) return;
 
     const text = inputValue.trim();
     const hasFiles = pendingImages.length > 0;
@@ -242,12 +291,12 @@ export default function ChatModal() {
   }
 
   function handleSuggestionSend(label: string) {
-    if (isLoading) return;
+    if (composerBusy) return;
     sendMessage({ text: label.trim() });
   }
 
   const canSend =
-    (inputValue.trim().length > 0 || pendingImages.length > 0) && !isLoading;
+    (inputValue.trim().length > 0 || pendingImages.length > 0) && !composerBusy;
 
   return (
     <AnimatePresence>
@@ -257,7 +306,7 @@ export default function ChatModal() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/35 backdrop-blur-md"
+            className="fixed inset-0 z-50 backdrop-blur-md"
             onClick={useChatStore.getState().close}
           />
 
@@ -266,7 +315,7 @@ export default function ChatModal() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{ type: "spring", damping: 32, stiffness: 320 }}
-            className="fixed bottom-24 left-1/2 z-50 flex w-[calc(100%-1.25rem)] max-w-xl -translate-x-1/2 flex-col overflow-hidden rounded-3xl border border-white/50 bg-white/75 shadow-2xl shadow-black/10 backdrop-blur-xl sm:bottom-24"
+            className="fixed bottom-24 left-1/2 z-50 flex w-[calc(100%-1.25rem)] max-w-xl -translate-x-1/2 flex-col overflow-hidden rounded-3xl border border-white/50 bg-white/35 shadow-2xl shadow-black/10 backdrop-blur-xl sm:bottom-24"
             style={{ maxHeight: "min(680px, 85vh)" }}
           >
             {/* Header */}
@@ -309,7 +358,7 @@ export default function ChatModal() {
                           key={s.label}
                           type="button"
                           onClick={() => handleSuggestionSend(s.label)}
-                          disabled={isLoading}
+                          disabled={composerBusy}
                           className="flex shrink-0 snap-start items-center gap-2 rounded-full border border-black/[0.08] bg-white/90 px-3.5 py-2.5 text-left text-xs font-medium text-foreground/85 shadow-sm transition-all hover:border-accent/40 hover:bg-accent-light/80 hover:text-accent disabled:opacity-50"
                         >
                           <s.icon className="h-3.5 w-3.5 shrink-0 text-accent" />
@@ -331,13 +380,16 @@ export default function ChatModal() {
                         }
                       />
                     ))}
-                    {isLoading &&
-                      messages[messages.length - 1]?.role !== "assistant" && (
+                    {(isLoading || presetThinking) &&
+                      messages[messages.length - 1]?.role !== "assistant" &&
+                      (presetThinking ? (
+                        <AssistantStreamingPlaceholder />
+                      ) : (
                         <div className="flex items-center gap-2 text-xs text-muted">
                           <Loader2 className="h-3 w-3 animate-spin" />
                           Pensando...
                         </div>
-                      )}
+                      ))}
                     {messages.some((m) => m.role === "assistant") && (
                       <div className="pt-2">
                         <Link
@@ -395,7 +447,7 @@ export default function ChatModal() {
                         }
                       }}
                       placeholder="Contame tu evento o pedido..."
-                      disabled={isLoading}
+                      disabled={composerBusy}
                       rows={hasConversation ? 2 : 3}
                       className="w-full resize-none bg-transparent text-sm text-foreground outline-none placeholder:text-muted/70 disabled:opacity-60"
                     />
@@ -413,7 +465,7 @@ export default function ChatModal() {
                         <button
                           type="button"
                           onClick={() => fileInputRef.current?.click()}
-                          disabled={isLoading || pendingImages.length >= 4}
+                          disabled={composerBusy || pendingImages.length >= 4}
                           className="flex h-9 w-9 items-center justify-center rounded-full text-foreground/60 transition-colors hover:bg-black/[0.06] hover:text-foreground disabled:opacity-40"
                           aria-label="Adjuntar imagen"
                           title="Adjuntar imagen"
@@ -426,7 +478,7 @@ export default function ChatModal() {
                         <button
                           type="button"
                           onClick={toggleMic}
-                          disabled={isLoading || !speechSupported}
+                          disabled={composerBusy || !speechSupported}
                           className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
                             isListening
                               ? "bg-red-500/15 text-red-600"
@@ -484,25 +536,33 @@ export default function ChatModal() {
   );
 }
 
+/**
+ * Orbe de marca (/public/orbe-diezypunto.png).
+ * La imagen es un cuadrado con fondo negro: hay que recortar a círculo EN el elemento que rota;
+ * si rotás un <div> cuadrado con la img dentro, se ve el “rombo” negro.
+ */
+function RotatingDiezypuntoOrb({ size = "lg" }: { size?: "lg" | "sm" }) {
+  const dim = size === "lg" ? "h-[15rem] w-[15rem]" : "h-10 w-10";
+  const duration = size === "lg" ? 28 : 22;
+  return (
+    <motion.img
+      src="/orbe-diezypunto.png"
+      alt=""
+      animate={{ rotate: 360 }}
+      transition={{ duration, repeat: Infinity, ease: "linear" }}
+      className={`pointer-events-none mx-auto shrink-0 select-none rounded-full object-cover object-center [will-change:transform] ${dim}`}
+      draggable={false}
+      aria-hidden
+    />
+  );
+}
+
 function HeroOrb() {
   return (
-    <div className="relative mx-auto h-[7.5rem] w-[7.5rem]">
-      <motion.div
-        className="absolute inset-0 rounded-full bg-gradient-to-br from-accent/25 via-cyan-200/20 to-amber-200/25 blur-2xl"
-        animate={{ opacity: [0.7, 1, 0.7], scale: [1, 1.05, 1] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <div className="absolute inset-2 rounded-full bg-gradient-to-br from-white/90 via-accent/15 to-cyan-100/40 shadow-[inset_0_-8px_24px_rgba(89,198,242,0.25)]" />
-      <motion.div
-        className="absolute inset-0 rounded-full"
-        style={{
-          background:
-            "linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.85) 48%, rgba(253,230,138,0.5) 52%, transparent 65%)",
-        }}
-        animate={{ rotate: [0, 8, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <div className="absolute inset-3 rounded-full border border-white/40 bg-gradient-to-t from-accent/10 to-transparent" />
+    <div className="relative mx-auto flex items-center justify-center py-1">
+      <div className="rounded-full bg-gradient-to-b from-white to-accent-light/40 ">
+        <RotatingDiezypuntoOrb size="lg" />
+      </div>
     </div>
   );
 }
@@ -519,11 +579,10 @@ function AssistantStreamingPlaceholder() {
 
   return (
     <div className="flex justify-start">
-      <div className="flex max-w-[90%] items-center gap-2.5 rounded-2xl rounded-bl-md border border-border/60 bg-surface px-4 py-3.5">
-        <Loader2
-          className="h-4 w-4 shrink-0 animate-spin text-accent"
-          aria-hidden
-        />
+      <div className="flex max-w-[90%] items-center gap-3 rounded-2xl rounded-bl-md border border-border/60 bg-surface px-3 py-3">
+        <div className="shrink-0 rounded-full bg-white/95 p-0.5 ring-1 ring-black/[0.05]">
+          <RotatingDiezypuntoOrb size="sm" />
+        </div>
         <AnimatePresence mode="wait">
           <motion.span
             key={idx}
@@ -695,42 +754,61 @@ function InlineProductCard({
     setQty((q) => Math.max(minQty, q + delta));
   }
 
+  const productHref = id ? `/producto/${encodeURIComponent(id)}` : "";
+
+  const productHeader = (
+    <>
+      <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-surface">
+        {image ? (
+          <img
+            src={image}
+            alt=""
+            className="h-full w-full object-contain p-1"
+          />
+        ) : (
+          <div className="flex h-full items-center justify-center text-muted/30">
+            <ShoppingBag className="h-5 w-5" />
+          </div>
+        )}
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className="truncate text-xs font-medium text-foreground group-hover:text-accent group-hover:underline">
+          {title}
+        </p>
+        <p className="text-[10px] text-muted">{category}</p>
+        {unitFinal != null ? (
+          <>
+            <p className="text-xs font-bold text-accent">
+              ${unitFinal.toLocaleString("es-AR")}{" "}
+              <span className="font-normal text-muted">c/u + IVA</span>
+            </p>
+            {lineTotal != null && qty > 1 ? (
+              <p className="text-[10px] text-muted">
+                Subtotal {qty} u.: ${lineTotal.toLocaleString("es-AR")} + IVA
+              </p>
+            ) : null}
+          </>
+        ) : price === "Consultar" ? (
+          <p className="text-xs font-medium text-muted">Consultar precio</p>
+        ) : null}
+      </div>
+    </>
+  );
+
   return (
     <div className="rounded-xl border border-border bg-white p-2.5">
-      <div className="flex gap-3">
-        <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-surface">
-          {image ? (
-            <img
-              src={image}
-              alt={title}
-              className="h-full w-full object-contain p-1"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center text-muted/30">
-              <ShoppingBag className="h-5 w-5" />
-            </div>
-          )}
-        </div>
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-xs font-medium">{title}</p>
-          <p className="text-[10px] text-muted">{category}</p>
-          {unitFinal != null ? (
-            <>
-              <p className="text-xs font-bold text-accent">
-                ${unitFinal.toLocaleString("es-AR")}{" "}
-                <span className="font-normal text-muted">c/u + IVA</span>
-              </p>
-              {lineTotal != null && qty > 1 ? (
-                <p className="text-[10px] text-muted">
-                  Subtotal {qty} u.: ${lineTotal.toLocaleString("es-AR")} + IVA
-                </p>
-              ) : null}
-            </>
-          ) : price === "Consultar" ? (
-            <p className="text-xs font-medium text-muted">Consultar precio</p>
-          ) : null}
-        </div>
-      </div>
+      {productHref ? (
+        <Link
+          href={productHref}
+          className="group flex gap-3 rounded-lg outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-accent"
+          onClick={() => useChatStore.getState().close()}
+          aria-label={`Ver ficha: ${title}`}
+        >
+          {productHeader}
+        </Link>
+      ) : (
+        <div className="flex gap-3">{productHeader}</div>
+      )}
       <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-border/80 pt-2">
         <div className="flex items-center gap-1">
           <span className="text-[10px] text-muted">Cant.</span>

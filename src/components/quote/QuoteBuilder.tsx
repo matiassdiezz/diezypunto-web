@@ -8,8 +8,9 @@ import {
   Send,
   CreditCard,
   Loader2,
-  Wand2,
 } from "lucide-react";
+import { OpenChatButton } from "@/components/chat/OpenChatButton";
+import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
 import { useChatStore } from "@/lib/stores/chat-store";
 import { openTelegramWithContext } from "@/lib/telegram";
 import { useQuoteStore } from "@/lib/stores/quote-store";
@@ -126,13 +127,12 @@ export default function QuoteBuilder() {
         <p className="mt-1 text-sm text-muted">
           Busca productos y agregalos al carrito.
         </p>
-        <button
-          onClick={() => openWithMessage("Quiero armar un pedido personalizado para mi evento")}
-          className="mt-6 inline-flex items-center gap-2 rounded-xl bg-accent px-6 py-3 font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg hover:shadow-accent/20"
+        <OpenChatButton
+          className="mt-6"
+          onClick={() => openWithMessage(PEDIDO_EVENTO_PRESET_MESSAGE)}
         >
-          <Wand2 className="h-4 w-4" />
           Arma tu pedido con AI
-        </button>
+        </OpenChatButton>
       </div>
     );
   }

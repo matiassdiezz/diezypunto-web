@@ -112,12 +112,12 @@ export default function Navbar() {
           )}
           <Link
             href="/carrito"
-            className="relative flex items-center gap-1.5 rounded-full bg-[#59C6F2] px-4 py-2 text-sm font-medium text-white transition-all hover:bg-[#3BB5E8]"
+            className="relative flex items-center gap-2 rounded-full border border-black/10 bg-white/55 px-4 py-2 text-sm font-semibold text-foreground shadow-md shadow-black/5 backdrop-blur-xl transition-all hover:bg-white/75 hover:shadow-lg md:gap-2.5 md:px-6 md:py-3 md:text-base"
           >
-            <ShoppingBag className="h-4 w-4" />
+            <ShoppingBag className="h-4 w-4 shrink-0 text-accent md:h-5 md:w-5" />
             Carrito
             {mounted && totalItems > 0 && (
-              <span className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full bg-[#3BB5E8] text-xs text-white">
+              <span className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-[11px] font-bold text-white shadow-sm md:-right-2 md:-top-2 md:h-6 md:w-6 md:text-xs">
                 {totalItems}
               </span>
             )}

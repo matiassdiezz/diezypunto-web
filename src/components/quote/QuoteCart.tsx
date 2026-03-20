@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useHasMounted } from "@/lib/hooks/use-has-mounted";
+import { FLOATING_GLASS_BTN } from "@/components/chat/OpenChatButton";
 
 export default function QuoteCart() {
   const mounted = useHasMounted();
@@ -14,10 +15,14 @@ export default function QuoteCart() {
   return (
     <Link
       href="/carrito"
-      className="fixed bottom-6 left-6 z-50 flex items-center gap-2 rounded-full bg-accent px-4 py-3 text-sm font-medium text-white shadow-lg transition-transform hover:scale-105"
+      className={`fixed bottom-6 left-6 ${FLOATING_GLASS_BTN}`}
+      aria-label={`Ir al carrito (${totalItems} items)`}
     >
-      <ShoppingBag className="h-5 w-5" />
-      <span>{totalItems}</span>
+      <ShoppingBag
+        className="h-5 w-5 shrink-0 text-foreground md:h-6 md:w-6"
+        strokeWidth={2.25}
+      />
+      <span className="tabular-nums">{totalItems}</span>
     </Link>
   );
 }
