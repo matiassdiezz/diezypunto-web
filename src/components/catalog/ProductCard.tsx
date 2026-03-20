@@ -20,29 +20,30 @@ export default function ProductCard({
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const [added, setAdded] = useState(false);
-  const [qty, setQty] = useState(1);
+  const [qty, setQty] = useState<number | "">(1);
 
   const imageUrl = product.image_urls[0];
 
   function handleAdd() {
-    addItem(product, qty);
-    openDrawer(product, qty);
+    const finalQty = qty || 1;
+    addItem(product, finalQty);
+    openDrawer(product, finalQty);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-2xl bg-white/70 shadow-sm backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-accent/15 bg-white/60 shadow-[0_10px_32px_rgba(15,23,42,0.09)] backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/25 hover:shadow-[0_16px_40px_rgba(15,23,42,0.14)]">
       {/* Image */}
       <Link
         href={`/producto/${product.product_id}`}
-        className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-accent-light"
+        className="relative aspect-[4/5] overflow-hidden rounded-b-none rounded-t-3xl bg-white"
       >
         {imageUrl ? (
           <img
             src={imageUrl}
             alt={product.title}
-            className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-105 sm:p-5"
+            className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-[1.03] sm:p-5"
           />
         ) : (
           <div className="flex h-full items-center justify-center text-accent/20">
@@ -53,12 +54,12 @@ export default function ProductCard({
         {/* Badges — frosted glass */}
         <div className="absolute left-2 top-2 flex flex-col gap-1 sm:left-3 sm:top-3 sm:gap-1.5">
           {product.eco_friendly && (
-            <span className="flex items-center gap-1 rounded-lg bg-white/90 px-2 py-1 text-[10px] font-semibold text-eco shadow-sm backdrop-blur-sm sm:text-xs">
+            <span className="flex items-center gap-1 rounded-full border border-white/60 bg-white/82 px-2 py-1 text-[10px] font-semibold text-eco shadow-sm backdrop-blur-sm sm:text-xs">
               <Leaf className="h-3 w-3" /> Eco
             </span>
           )}
           {product.premium_tier && (
-            <span className="rounded-lg bg-white/90 px-2 py-1 text-[10px] font-semibold text-accent shadow-sm backdrop-blur-sm sm:text-xs">
+            <span className="rounded-full border border-white/60 bg-white/82 px-2 py-1 text-[10px] font-semibold text-accent shadow-sm backdrop-blur-sm sm:text-xs">
               Premium
             </span>
           )}
@@ -66,7 +67,7 @@ export default function ProductCard({
         </div>
 
         {showScore && product.score > 0 && (
-          <span className="absolute right-2 top-2 rounded-lg bg-accent px-2 py-0.5 text-[10px] font-bold text-white shadow-sm sm:right-3 sm:top-3 sm:px-2.5 sm:text-xs">
+          <span className="absolute right-2 top-2 rounded-full border border-white/40 bg-accent/95 px-2 py-0.5 text-[10px] font-bold text-white shadow-sm sm:right-3 sm:top-3 sm:px-2.5 sm:text-xs">
             {Math.round(product.score * 100)}%
           </span>
         )}
@@ -85,7 +86,7 @@ export default function ProductCard({
 
         <div className="mt-auto pt-2 sm:pt-3">
           {/* Price */}
-          <div>
+          <div className="rounded-2xl border border-white/55 bg-white/55 px-2.5 py-2 backdrop-blur-sm">
             {product.price != null ? (
               <p className="text-sm font-bold text-foreground sm:text-base">
                 {product.price_tiers && product.price_tiers.length > 1 && (
@@ -105,23 +106,34 @@ export default function ProductCard({
           {/* Stepper + Add */}
           <div className="mt-2 flex items-center gap-1.5">
             <div
-              className="flex items-center rounded-xl border border-border"
+              className="flex items-center rounded-xl border border-white/65 bg-white/70 backdrop-blur-sm"
               role="group"
               aria-label="Cantidad"
             >
               <button
-                onClick={() => setQty((q) => Math.max(1, q - 1))}
-                className="rounded-l-xl px-2 py-1.5 text-muted hover:bg-surface sm:px-2.5 sm:py-2"
+                onClick={() => setQty((q) => Math.max(1, (q || 1) - 1))}
+                className="rounded-l-xl px-2 py-1.5 text-muted transition-colors hover:bg-white/80 sm:px-2.5 sm:py-2"
                 aria-label="Disminuir cantidad"
               >
                 <Minus className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
               </button>
-              <span className="w-8 border-x border-border py-1.5 text-center text-xs font-medium tabular-nums sm:w-10 sm:py-2 sm:text-sm">
-                {qty}
-              </span>
+              <input
+                type="text"
+                inputMode="numeric"
+                value={qty}
+                onChange={(e) => {
+                  const raw = e.target.value;
+                  if (raw === "") { setQty(""); return; }
+                  const v = parseInt(raw);
+                  if (!isNaN(v) && v >= 1) setQty(v);
+                }}
+                onBlur={() => { if (qty === "" || qty < 1) setQty(1); }}
+                className="w-8 border-x border-white/65 bg-transparent py-1.5 text-center text-xs font-medium tabular-nums outline-none sm:w-10 sm:py-2 sm:text-sm"
+                aria-label="Cantidad"
+              />
               <button
-                onClick={() => setQty((q) => q + 1)}
-                className="rounded-r-xl px-2 py-1.5 text-muted hover:bg-surface sm:px-2.5 sm:py-2"
+                onClick={() => setQty((q) => (q || 0) + 1)}
+                className="rounded-r-xl px-2 py-1.5 text-muted transition-colors hover:bg-white/80 sm:px-2.5 sm:py-2"
                 aria-label="Aumentar cantidad"
               >
                 <Plus className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
@@ -130,10 +142,10 @@ export default function ProductCard({
 
             <button
               onClick={handleAdd}
-              className={`flex flex-1 items-center justify-center gap-1.5 rounded-xl py-1.5 text-xs font-medium text-white transition-all sm:py-2 sm:text-sm ${
+              className={`flex flex-1 items-center justify-center gap-1.5 rounded-xl border border-white/35 py-1.5 text-xs font-medium text-white transition-all sm:py-2 sm:text-sm ${
                 added
                   ? "bg-success"
-                  : "bg-[#59C6F2] hover:bg-[#3BB5E8] hover:shadow-[0_0_15px_rgba(89,198,242,0.3)]"
+                  : "bg-accent hover:bg-accent-hover hover:shadow-[0_6px_18px_rgba(89,198,242,0.35)]"
               }`}
               title="Agregar al carrito"
             >

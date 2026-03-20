@@ -22,8 +22,8 @@ export default function ProductGrid({
 }: ProductGridProps) {
   if (products.length === 0) {
     return (
-      <div className="flex flex-col items-center py-20 text-center text-muted">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-surface">
+      <div className="flex flex-col items-center rounded-3xl border border-white/55 bg-white/55 py-20 text-center text-muted shadow-[0_10px_32px_rgba(15,23,42,0.08)] backdrop-blur-md">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/60 bg-white/70">
           <MagnifyingGlass className="h-7 w-7 text-muted/50" />
         </div>
         <p className="mt-4 text-lg font-medium text-foreground">No se encontraron productos</p>
@@ -34,14 +34,14 @@ export default function ProductGrid({
           {onClearFilters && (
             <button
               onClick={onClearFilters}
-              className="rounded-xl border border-border bg-white px-6 py-2 text-sm text-foreground transition-colors hover:bg-surface"
+              className="rounded-xl border border-white/65 bg-white/75 px-6 py-2 text-sm text-foreground backdrop-blur-sm transition-colors hover:bg-white"
             >
               Limpiar filtros
             </button>
           )}
           <Link
             href="/catalogo"
-            className="rounded-xl border border-border bg-white px-6 py-2 text-sm text-foreground transition-colors hover:bg-surface"
+            className="rounded-xl border border-white/65 bg-white/75 px-6 py-2 text-sm text-foreground backdrop-blur-sm transition-colors hover:bg-white"
           >
             Ver todo el catalogo
           </Link>
@@ -62,7 +62,7 @@ export default function ProductGrid({
         <button
           onClick={onLoadMore}
           disabled={loading}
-          className="mt-8 w-full rounded-xl border border-border bg-white py-3 text-sm font-medium text-foreground transition-colors hover:bg-surface disabled:opacity-50"
+          className="mt-8 w-full rounded-2xl border border-white/65 bg-white/65 py-3 text-sm font-medium text-foreground shadow-[0_8px_24px_rgba(15,23,42,0.07)] backdrop-blur-sm transition-colors hover:bg-white/80 disabled:opacity-50"
         >
           {loading ? "Cargando..." : "Cargar mas productos"}
         </button>

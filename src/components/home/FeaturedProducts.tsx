@@ -48,7 +48,7 @@ export default function FeaturedProducts() {
   if (featured.length === 0 && aiPicks.length === 0) return null;
 
   return (
-    <section className="section-blend bg-[#EBF7FE] py-20">
+    <section className="py-20">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
           <h2 className="text-center text-2xl font-bold">
@@ -125,8 +125,8 @@ export default function FeaturedProducts() {
                   <div className="flex flex-col h-full">
                     <ProductCard product={{ ...pick.product, reason: pick.reason }} showScore={false} />
                     {pick.reason && (
-                      <div className="mt-1.5 rounded-lg bg-accent-light px-3 py-1.5">
-                        <p className="text-xs text-accent font-medium text-center">
+                      <div className="mt-2 rounded-2xl border border-white/55 bg-white/58 px-3 py-1.5 text-center shadow-[0_6px_20px_rgba(15,23,42,0.08)] backdrop-blur-sm">
+                        <p className="text-xs font-medium text-accent">
                           {pick.reason}
                         </p>
                       </div>

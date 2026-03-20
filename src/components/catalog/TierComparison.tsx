@@ -78,10 +78,10 @@ function TierCard({
 
   return (
     <div
-      className={`relative flex flex-col rounded-xl border p-3 sm:p-4 ${
+      className={`relative flex flex-col rounded-2xl border p-3 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md sm:p-4 ${
         isCurrent
-          ? "border-accent bg-accent-light/50"
-          : "border-border bg-white"
+          ? "border-accent/40 bg-accent-light/30"
+          : "border-white/55 bg-white/60"
       }`}
     >
       {isCurrent && (
@@ -92,7 +92,7 @@ function TierCard({
       <span className="text-[10px] font-semibold uppercase tracking-wider text-muted">
         {label}
       </span>
-      <div className="mt-2 aspect-square overflow-hidden rounded-lg bg-surface">
+      <div className="mt-2 aspect-square overflow-hidden rounded-xl border border-white/50 bg-white/70 backdrop-blur-sm">
         {product.image_urls[0] ? (
           <img src={product.image_urls[0]} alt="" className="h-full w-full object-contain p-2" />
         ) : (
@@ -123,7 +123,7 @@ function TierCard({
       {!isCurrent && (
         <button
           onClick={handleAdd}
-          className={`mt-2 rounded-lg py-1.5 text-xs font-medium text-white transition-all ${
+          className={`mt-2 rounded-xl border border-white/35 py-1.5 text-xs font-medium text-white transition-all ${
             added ? "bg-success" : "bg-accent hover:bg-accent-hover"
           }`}
         >

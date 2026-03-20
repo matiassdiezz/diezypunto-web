@@ -700,7 +700,7 @@ function ChatMessage({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.28, ease: [0.25, 0.1, 0.25, 1] }}
     >
-      <div className="max-w-[90%] space-y-2">
+      <div className="max-w-[96%] space-y-2.5">
         {parsed.map((part, i) => {
           if (part.type === "text" && part.text.trim()) {
             return (
@@ -741,23 +741,18 @@ function InlineProductCard({
 }: ProductProps) {
   const addItem = useQuoteStore((s) => s.addItem);
   const product = getLocalProduct(id);
-  const minQty = Math.max(1, product?.min_qty ?? 1);
-  const suggestedNum = suggestedQtyStr
-    ? parseInt(suggestedQtyStr, 10)
-    : NaN;
+  const minQty = 1;
+  const suggestedNum = suggestedQtyStr ? parseInt(suggestedQtyStr, 10) : NaN;
   const initialQty =
-    Number.isFinite(suggestedNum) && suggestedNum >= minQty
-      ? suggestedNum
-      : minQty;
-
-  const [qty, setQty] = useState(initialQty);
+    Number.isFinite(suggestedNum) && suggestedNum >= minQty ? suggestedNum : minQty;
+  const [qty, setQty] = useState<number | "">(initialQty);
 
   const listPrice = product?.list_price ?? product?.price_max ?? product?.price ?? null;
   const cat = product?.subcategory || product?.category || category;
 
   const unitFinal = useMemo(() => {
     if (product && listPrice != null && listPrice > 0) {
-      return getPriceForQuantity(listPrice, qty, cat).finalPrice;
+      return getPriceForQuantity(listPrice, qty || minQty, cat).finalPrice;
     }
     if (price && price !== "Consultar" && !isNaN(Number(price))) {
       return Number(price);
@@ -765,28 +760,24 @@ function InlineProductCard({
     return null;
   }, [product, listPrice, qty, cat, price]);
 
-  const lineTotal =
-    unitFinal != null ? Math.round(unitFinal * qty) : null;
-
   function handleAdd() {
     if (!product) return;
-    addItem(product, qty);
+    addItem(product, qty || minQty);
   }
 
   function bump(delta: number) {
-    setQty((q) => Math.max(minQty, q + delta));
+    setQty((current) => Math.max(minQty, (current || minQty) + delta));
   }
 
   const productHref = id ? `/producto/${encodeURIComponent(id)}` : "";
-
   const productHeader = (
     <>
-      <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-surface">
+      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-2xl border border-white/60 bg-white/70 backdrop-blur-sm">
         {image ? (
           <img
             src={image}
             alt=""
-            className="h-full w-full object-contain p-1"
+            className="h-full w-full object-contain p-1.5"
           />
         ) : (
           <div className="flex h-full items-center justify-center text-muted/30">
@@ -795,22 +786,14 @@ function InlineProductCard({
         )}
       </div>
       <div className="min-w-0 flex-1">
-        <p className="truncate text-xs font-medium text-foreground group-hover:text-accent group-hover:underline">
+        <p className="line-clamp-2 text-sm font-semibold leading-snug text-foreground group-hover:text-accent group-hover:underline">
           {title}
         </p>
-        <p className="text-[10px] text-muted">{category}</p>
         {unitFinal != null ? (
-          <>
-            <p className="text-xs font-bold text-accent">
-              ${unitFinal.toLocaleString("es-AR")}{" "}
-              <span className="font-normal text-muted">c/u + IVA</span>
-            </p>
-            {lineTotal != null && qty > 1 ? (
-              <p className="text-[10px] text-muted">
-                Subtotal {qty} u.: ${lineTotal.toLocaleString("es-AR")} + IVA
-              </p>
-            ) : null}
-          </>
+          <p className="mt-1 text-base font-bold text-foreground">
+            ${unitFinal.toLocaleString("es-AR")}{" "}
+            <span className="font-normal text-muted">c/u + IVA</span>
+          </p>
         ) : price === "Consultar" ? (
           <p className="text-xs font-medium text-muted">Consultar precio</p>
         ) : null}
@@ -819,56 +802,72 @@ function InlineProductCard({
   );
 
   return (
-    <div className="rounded-xl border border-border bg-white p-2.5">
-      {productHref ? (
-        <Link
-          href={productHref}
-          className="group flex gap-3 rounded-lg outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-accent"
-          onClick={() => useChatStore.getState().close()}
-          aria-label={`Ver ficha: ${title}`}
-        >
-          {productHeader}
-        </Link>
-      ) : (
-        <div className="flex gap-3">{productHeader}</div>
-      )}
-      <div className="mt-2 flex flex-wrap items-center justify-between gap-2 border-t border-border/80 pt-2">
-        <div className="flex items-center gap-1">
-          <span className="text-[10px] text-muted">Cant.</span>
+    <div className="w-full rounded-2xl border border-white/65 bg-white/62 p-3 shadow-[0_10px_26px_rgba(15,23,42,0.1)] backdrop-blur-md">
+      <div className="flex items-center gap-2.5">
+        {productHref ? (
+          <Link
+            href={productHref}
+            className="group min-w-0 flex flex-1 items-center gap-3 rounded-xl outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-accent"
+            onClick={() => useChatStore.getState().close()}
+            aria-label={`Ver ficha: ${title}`}
+          >
+            {productHeader}
+          </Link>
+        ) : (
+          <div className="min-w-0 flex flex-1 items-center gap-3">{productHeader}</div>
+        )}
+        <div className="relative z-10 flex items-center rounded-xl border border-white/65 bg-white/75 backdrop-blur-sm">
           <button
             type="button"
-            onClick={() => bump(-1)}
-            disabled={qty <= minQty}
-            className="flex h-7 w-7 items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors hover:bg-accent-light disabled:opacity-40"
-            aria-label="Menos"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              bump(-1);
+            }}
+            className="px-2 py-1.5 text-muted transition-colors hover:bg-white"
+            aria-label="Disminuir cantidad"
+            disabled={(qty || minQty) <= minQty}
           >
             <Minus className="h-3.5 w-3.5" />
           </button>
           <input
-            type="number"
-            min={minQty}
+            type="text"
+            inputMode="numeric"
             value={qty}
             onChange={(e) => {
-              const n = parseInt(e.target.value, 10);
-              if (!Number.isFinite(n)) return;
-              setQty(Math.max(minQty, n));
+              e.stopPropagation();
+              const raw = e.target.value;
+              if (raw === "") { setQty(""); return; }
+              const v = parseInt(raw);
+              if (!isNaN(v) && v >= minQty) setQty(v);
             }}
-            className="h-7 w-14 rounded-lg border border-border bg-white px-1 text-center text-xs tabular-nums outline-none focus:border-accent"
+            onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
+            onClick={(e) => e.stopPropagation()}
+            className="w-7 border-x border-white/65 bg-transparent py-1.5 text-center text-xs font-semibold tabular-nums outline-none"
+            aria-label="Cantidad"
           />
           <button
             type="button"
-            onClick={() => bump(1)}
-            className="flex h-7 w-7 items-center justify-center rounded-lg border border-border bg-surface text-foreground transition-colors hover:bg-accent-light"
-            aria-label="Más"
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              bump(1);
+            }}
+            className="px-2 py-1.5 text-muted transition-colors hover:bg-white"
+            aria-label="Aumentar cantidad"
           >
             <Plus className="h-3.5 w-3.5" />
           </button>
         </div>
         <button
           type="button"
-          onClick={handleAdd}
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            handleAdd();
+          }}
           disabled={!product}
-          className="inline-flex shrink-0 items-center gap-1.5 rounded-lg bg-accent px-2.5 py-1.5 text-xs font-medium text-white transition-all hover:bg-accent-hover disabled:opacity-40"
+          className="relative z-10 inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-white/35 bg-accent px-3.5 py-2 text-xs font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-[0_8px_18px_rgba(89,198,242,0.35)] disabled:opacity-40"
           title="Agregar al carrito"
         >
           <Tote className="h-3.5 w-3.5" />

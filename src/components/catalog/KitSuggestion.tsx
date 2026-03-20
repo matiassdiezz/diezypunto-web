@@ -34,7 +34,7 @@ export default function KitSuggestion({ products, currentProductId }: KitSuggest
           <h2 className="text-lg font-bold sm:text-xl">Arma tu kit</h2>
           <button
             onClick={handleAddAll}
-            className={`flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-medium text-white transition-all sm:text-sm ${
+            className={`flex items-center gap-1.5 rounded-xl border border-white/35 px-4 py-2 text-xs font-medium text-white transition-all sm:text-sm ${
               allAdded
                 ? "bg-success"
                 : "bg-accent hover:bg-accent-hover"
@@ -74,8 +74,8 @@ function KitCard({ product }: { product: ProductResult }) {
   }
 
   return (
-    <div className="flex items-center gap-3 rounded-xl border border-border bg-white p-3 transition-all hover:shadow-md">
-      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-lg bg-surface">
+    <div className="flex items-center gap-3 rounded-2xl border border-white/55 bg-white/60 p-3 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md transition-all hover:shadow-[0_12px_28px_rgba(15,23,42,0.12)]">
+      <div className="h-16 w-16 shrink-0 overflow-hidden rounded-xl border border-white/50 bg-white/70 backdrop-blur-sm">
         {product.image_urls[0] ? (
           <img
             src={product.image_urls[0]}
@@ -99,7 +99,7 @@ function KitCard({ product }: { product: ProductResult }) {
       </div>
       <button
         onClick={handleAdd}
-        className={`shrink-0 rounded-lg p-2 text-white transition-all ${
+        className={`shrink-0 rounded-xl border border-white/35 p-2 text-white transition-all ${
           added ? "bg-success" : "bg-accent hover:bg-accent-hover"
         }`}
       >

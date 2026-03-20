@@ -71,8 +71,8 @@ export default function Home() {
       />
       <Hero />
       <HowItWorks />
-      <SearchSection />
       <FeaturedProducts />
+      <SearchSection />
       <LogoBar />
       <Testimonials />
       <EcoFaq />

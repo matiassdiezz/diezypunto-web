@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { create } from "zustand";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Tote, Check } from "@phosphor-icons/react";
+import { X, Tote, Check, Minus, Plus } from "@phosphor-icons/react";
 import Link from "next/link";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
@@ -83,8 +83,8 @@ export default function AddToCartDrawer() {
             </div>
 
             {/* Added product */}
-            <div className="mt-3 flex items-center gap-3 rounded-xl border border-border p-3">
-              <div className="h-12 w-12 shrink-0 overflow-hidden rounded-lg bg-surface">
+            <div className="mt-3 flex items-center gap-3 rounded-2xl border border-white/55 bg-white/60 p-3 shadow-[0_4px_16px_rgba(15,23,42,0.06)] backdrop-blur-sm">
+              <div className="h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-white/50 bg-white/70 backdrop-blur-sm">
                 {product.image_urls[0] ? (
                   <img src={product.image_urls[0]} alt="" className="h-full w-full object-contain p-1" />
                 ) : (
@@ -144,18 +144,18 @@ export default function AddToCartDrawer() {
 
 function SuggestionRow({ product }: { product: ProductResult }) {
   const addItem = useQuoteStore((s) => s.addItem);
-  const openDrawer = useDrawerStore((s) => s.open);
   const [added, setAdded] = useState(false);
+  const [qty, setQty] = useState<number | "">(1);
 
   function handleAdd() {
-    addItem(product, 1);
+    addItem(product, qty || 1);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }
 
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-border p-2">
-      <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-surface">
+    <div className="flex items-center gap-2 rounded-xl border border-white/50 bg-white/55 p-2 shadow-[0_4px_16px_rgba(15,23,42,0.06)] backdrop-blur-sm">
+      <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg border border-white/50 bg-white/70 backdrop-blur-sm">
         {product.image_urls[0] ? (
           <img src={product.image_urls[0]} alt="" className="h-full w-full object-contain p-0.5" />
         ) : (
@@ -170,9 +170,39 @@ function SuggestionRow({ product }: { product: ProductResult }) {
           <p className="text-xs text-accent">${product.price.toLocaleString("es-AR")} <span className="text-muted">+ IVA</span></p>
         )}
       </div>
+      <div className="flex shrink-0 items-center rounded-lg border border-white/60 bg-white/70 backdrop-blur-sm">
+        <button
+          onClick={() => setQty((q) => Math.max(1, (q || 1) - 1))}
+          className="px-1.5 py-1 text-muted transition-colors hover:bg-white/80"
+          aria-label="Disminuir cantidad"
+        >
+          <Minus className="h-3 w-3" />
+        </button>
+        <input
+          type="text"
+          inputMode="numeric"
+          value={qty}
+          onChange={(e) => {
+            const raw = e.target.value;
+            if (raw === "") { setQty(""); return; }
+            const v = parseInt(raw);
+            if (!isNaN(v) && v >= 1) setQty(v);
+          }}
+          onBlur={() => { if (qty === "" || qty < 1) setQty(1); }}
+          className="w-7 border-x border-white/60 bg-transparent py-1 text-center text-[11px] font-medium tabular-nums outline-none"
+          aria-label="Cantidad"
+        />
+        <button
+          onClick={() => setQty((q) => (q || 0) + 1)}
+          className="px-1.5 py-1 text-muted transition-colors hover:bg-white/80"
+          aria-label="Aumentar cantidad"
+        >
+          <Plus className="h-3 w-3" />
+        </button>
+      </div>
       <button
         onClick={handleAdd}
-        className={`shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium text-white transition-all ${
+        className={`shrink-0 rounded-lg px-2.5 py-1.5 text-xs font-medium text-white transition-all ${
           added ? "bg-success" : "bg-accent hover:bg-accent-hover"
         }`}
       >

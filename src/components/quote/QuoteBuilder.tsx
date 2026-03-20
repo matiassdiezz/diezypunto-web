@@ -18,7 +18,6 @@ import { listProducts } from "@/lib/api";
 import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult, QuoteItem } from "@/lib/types";
 import CartMilestone from "@/components/quote/CartMilestone";
-import CartReview from "@/components/quote/CartReview";
 import ProductCard from "@/components/catalog/ProductCard";
 import SaveQuoteButton from "@/components/portal/SaveQuoteButton";
 import { useAuth } from "@/lib/hooks/use-auth";
@@ -142,13 +141,10 @@ export default function QuoteBuilder() {
       {/* Cart Milestone */}
       <CartMilestone total={total} />
 
-      {/* AI Cart Review */}
-      <CartReview />
-
       {/* Table */}
-      <div className="overflow-x-auto rounded-2xl border border-border">
+      <div className="overflow-x-auto rounded-3xl border border-white/55 bg-white/58 shadow-[0_12px_32px_rgba(15,23,42,0.09)] backdrop-blur-md">
         <table className="w-full text-left text-sm">
-          <thead className="bg-surface text-xs uppercase text-muted">
+          <thead className="bg-white/65 text-xs uppercase text-muted backdrop-blur-sm">
             <tr>
               <th className="px-6 py-3">Producto</th>
               <th className="px-6 py-3 text-center">Cantidad</th>
@@ -167,7 +163,7 @@ export default function QuoteBuilder() {
               return (
                 <tr
                   key={item.product.product_id}
-                  className="border-t border-border"
+                  className="border-t border-white/50 transition-colors hover:bg-white/45"
                 >
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
@@ -175,7 +171,7 @@ export default function QuoteBuilder() {
                         <img
                           src={item.product.image_urls[0]}
                           alt={item.product.title}
-                          className="h-12 w-12 rounded-lg object-contain bg-surface"
+                          className="h-12 w-12 rounded-lg border border-white/55 bg-white/70 object-contain"
                         />
                       )}
                       <div>
@@ -200,7 +196,7 @@ export default function QuoteBuilder() {
                             }
                           }
                         }}
-                        className="rounded-lg border border-border p-1 hover:bg-surface"
+                        className="rounded-lg border border-white/65 bg-white/75 p-1 transition-colors hover:bg-white"
                       >
                         <Minus className="h-3 w-3" />
                       </button>
@@ -214,7 +210,7 @@ export default function QuoteBuilder() {
                             item.quantity + 1,
                           )
                         }
-                        className="rounded-lg border border-border p-1 hover:bg-surface"
+                        className="rounded-lg border border-white/65 bg-white/75 p-1 transition-colors hover:bg-white"
                       >
                         <Plus className="h-3 w-3" />
                       </button>
@@ -249,7 +245,7 @@ export default function QuoteBuilder() {
       <div className="mt-6 space-y-4">
         {/* Total */}
         {total > 0 && (
-          <div className="flex items-center justify-between rounded-xl border border-border bg-card p-4">
+          <div className="flex items-center justify-between rounded-2xl border border-white/60 bg-white/60 p-4 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-sm">
             <p className="text-sm font-medium text-muted">Total estimado</p>
             <p className="text-2xl font-bold">
               ${total.toLocaleString("es-AR")}
@@ -265,7 +261,7 @@ export default function QuoteBuilder() {
             <button
               onClick={handleMercadoPago}
               disabled={mpLoading}
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-accent py-3.5 text-base font-medium text-white transition-all hover:bg-accent-hover disabled:opacity-60"
+              className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/40 bg-accent py-3.5 text-base font-medium text-white transition-all hover:bg-accent-hover hover:shadow-[0_8px_20px_rgba(89,198,242,0.35)] disabled:opacity-60"
             >
               {mpLoading ? (
                 <SpinnerGap className="h-5 w-5 animate-spin" />
@@ -281,8 +277,8 @@ export default function QuoteBuilder() {
             onClick={handleTelegram}
             className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3.5 text-base font-medium transition-all ${
               hasItemsWithoutPrice
-                ? "bg-accent text-white hover:bg-accent-hover"
-                : "border border-border bg-white text-foreground hover:bg-surface"
+                ? "border border-white/40 bg-accent text-white hover:bg-accent-hover hover:shadow-[0_8px_20px_rgba(89,198,242,0.35)]"
+                : "border border-white/65 bg-white/70 text-foreground backdrop-blur-sm hover:bg-white"
             }`}
           >
             <PaperPlaneTilt className="h-5 w-5" />

@@ -307,6 +307,10 @@ body {
 .section-blend {
   position: relative;
 }
+.section-blend > * {
+  position: relative;
+  z-index: 1;
+}
 .section-blend::before,
 .section-blend::after {
   content: '';
@@ -315,7 +319,7 @@ body {
   right: 0;
   height: 120px;
   pointer-events: none;
-  z-index: 1;
+  z-index: 0;
 }
 .section-blend::before {
   top: 0;

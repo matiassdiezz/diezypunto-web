@@ -64,7 +64,7 @@ function CartLoader() {
 
 export default function CarritoPage() {
   return (
-    <div className="px-6 lg:px-16 pb-20 pt-28">
+    <div className="px-4 pb-20 pt-6 sm:px-6 lg:px-16 sm:pt-8">
       <ScrollReveal>
         <h1 className="text-3xl font-bold">Carrito</h1>
         <p className="mt-2 text-muted">

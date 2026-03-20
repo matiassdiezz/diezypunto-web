@@ -62,8 +62,8 @@ export default function AITopPicks() {
               <div className="flex flex-col h-full">
                 <ProductCard product={{ ...pick.product, reason: pick.reason }} showScore={false} />
                 {pick.reason && (
-                  <div className="mt-1.5 rounded-lg bg-accent-light px-3 py-1.5">
-                    <p className="text-xs text-accent font-medium text-center">
+                  <div className="mt-2 rounded-2xl border border-white/55 bg-white/58 px-3 py-2 text-center shadow-[0_6px_20px_rgba(15,23,42,0.08)] backdrop-blur-sm">
+                    <p className="text-xs font-medium text-accent">
                       {pick.reason}
                     </p>
                   </div>
