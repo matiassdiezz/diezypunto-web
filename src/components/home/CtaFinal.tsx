@@ -10,7 +10,7 @@ export default function CtaFinal() {
   const openWithMessage = useChatStore((s) => s.openWithMessage);
 
   return (
-    <section className="relative overflow-hidden bg-[#EBF7FE] py-20 md:py-24">
+    <section className="section-blend relative overflow-hidden bg-[#EBF7FE] py-20 md:py-24">
       {/* Radial gradient overlay */}
       <div
         className="pointer-events-none absolute inset-0"

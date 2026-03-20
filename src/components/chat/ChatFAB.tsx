@@ -15,7 +15,7 @@ export default function ChatFAB() {
       animate={{ scale: 1, opacity: 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 20, delay: 0.5 }}
       onClick={toggle}
-      className={`fixed bottom-6 right-6 ${FLOATING_GLASS_BTN}`}
+      className={`fixed bottom-6 right-6 md:hidden ${FLOATING_GLASS_BTN}`}
       aria-label={isOpen ? "Cerrar chat" : "Pedir con AI"}
     >
       {isOpen ? (

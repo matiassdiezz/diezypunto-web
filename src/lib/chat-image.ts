@@ -7,7 +7,7 @@ export async function compressImageFile(
 ): Promise<File> {
   const maxEdge = options.maxEdge ?? 1600;
   const quality = options.quality ?? 0.82;
-  const maxBytes = options.maxBytes ?? 1_800_000;
+  const maxBytes = options.maxBytes ?? 800_000;
 
   if (!file.type.startsWith("image/")) {
     return file;

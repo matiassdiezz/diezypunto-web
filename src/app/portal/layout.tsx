@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function PortalLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex min-h-screen bg-surface pt-[72px]">
+    <div className="flex min-h-screen bg-surface pt-16">
       <PortalSidebar />
       <div className="flex flex-1 flex-col">
         <PortalHeader />

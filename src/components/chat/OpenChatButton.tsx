@@ -65,7 +65,7 @@ export function OpenChatButton({
   return (
     <button
       type="button"
-      className={`inline-flex items-center justify-center gap-2 rounded-xl border font-semibold backdrop-blur-xl transition-all hover:scale-[1.02] active:scale-[0.98] disabled:pointer-events-none disabled:opacity-35 ${v} px-5 py-3 text-sm md:px-7 md:py-3.5 md:text-base ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-xl border font-semibold backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98] disabled:pointer-events-none disabled:opacity-35 cursor-pointer ${v} px-5 py-3 text-sm md:px-7 md:py-3.5 md:text-base ${className}`}
       {...rest}
     >
       <span className={`relative shrink-0 overflow-hidden rounded-full ${orbBox}`}>

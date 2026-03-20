@@ -15,7 +15,7 @@ export default function QuoteCart() {
   return (
     <Link
       href="/carrito"
-      className={`fixed bottom-6 left-6 ${FLOATING_GLASS_BTN}`}
+      className={`fixed bottom-6 left-6 md:hidden ${FLOATING_GLASS_BTN}`}
       aria-label={`Ir al carrito (${totalItems} items)`}
     >
       <Tote

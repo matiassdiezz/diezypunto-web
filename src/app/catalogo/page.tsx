@@ -35,7 +35,7 @@ function CatalogContent() {
   ];
 
   return (
-    <div className="px-4 pb-20 pt-24 sm:px-6 lg:px-16 sm:pt-28">
+    <div className="px-4 pb-20 pt-6 sm:px-6 lg:px-16 sm:pt-8">
       <Breadcrumbs items={breadcrumbs} />
 
       <ScrollReveal>

@@ -92,7 +92,12 @@ export default function ChatModal() {
   const [isListening, setIsListening] = useState(false);
   const speechSupported = typeof window !== "undefined" && !!getSpeechRecognitionCtor();
 
-  const { messages, sendMessage, setMessages, status } = useChat({ transport });
+  const { messages, sendMessage, setMessages, status } = useChat({
+    transport,
+    onError: () => {
+      // Reset status so the UI doesn't stay stuck on "thinking"
+    },
+  });
 
   const isLoading = status === "streaming" || status === "submitted";
   const composerBusy = isLoading || presetThinking;
@@ -315,19 +320,32 @@ export default function ChatModal() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "100%", opacity: 0 }}
             transition={{ type: "spring", damping: 32, stiffness: 320 }}
-            className="fixed bottom-24 left-1/2 z-50 flex w-[calc(100%-1.25rem)] max-w-xl -translate-x-1/2 flex-col overflow-hidden rounded-3xl border border-white/50 bg-white/35 shadow-2xl shadow-black/10 backdrop-blur-xl sm:bottom-24"
+            className="fixed bottom-24 left-1/2 z-50 flex w-[calc(100%-1.25rem)] max-w-xl -translate-x-1/2 flex-col overflow-hidden rounded-3xl border border-white/50 bg-white/75 shadow-2xl shadow-black/10 backdrop-blur-xl sm:bottom-24"
             style={{ maxHeight: "min(680px, 85vh)" }}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 pt-4 pb-2">
-              <div className="flex items-center gap-2.5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-accent to-[#3BB5E8] text-white shadow-md shadow-accent/25">
-                  <Sparkle className="h-4 w-4" />
-                </div>
-                <span className="text-sm font-semibold tracking-tight text-foreground">
-                  Asistente Diezypunto
-                </span>
-              </div>
+              <AnimatePresence>
+                {hasConversation && (
+                  <motion.div
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-2.5"
+                  >
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-b from-white to-accent-light/40">
+                      <RotatingDiezypuntoOrb size="xs" />
+                    </div>
+                    <motion.span
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ delay: 0.15 }}
+                      className="text-sm font-semibold tracking-tight text-foreground"
+                    >
+                      Asistente Diezypunto
+                    </motion.span>
+                  </motion.div>
+                )}
+              </AnimatePresence>
               <button
                 type="button"
                 onClick={useChatStore.getState().close}
@@ -340,7 +358,7 @@ export default function ChatModal() {
 
             {/* Body */}
             <div className="flex min-h-0 flex-1 flex-col">
-              <div className="min-h-0 flex-1 overflow-y-auto px-4 pb-2">
+              <div className="min-h-0 flex-1 overflow-y-auto rounded-2xl bg-white/50 mx-2 px-4 pt-3 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {!hasConversation ? (
                   <div className="flex flex-col items-center pt-2 pb-4 text-center">
                     <HeroOrb />
@@ -407,7 +425,7 @@ export default function ChatModal() {
               </div>
 
               {/* Composer */}
-              <div className="relative border-t border-white/40 bg-white/50 px-3 pb-3 pt-2">
+              <div className="relative border-t border-white/40 bg-white/50 px-3 pb-3 pt-1.5 mt-2">
                 {pendingImages.length > 0 && (
                   <div className="mb-2 flex flex-wrap gap-2">
                     {pendingImages.map((p, i) => (
@@ -541,8 +559,13 @@ export default function ChatModal() {
  * La imagen es un cuadrado con fondo negro: hay que recortar a círculo EN el elemento que rota;
  * si rotás un <div> cuadrado con la img dentro, se ve el “rombo” negro.
  */
-function RotatingDiezypuntoOrb({ size = "lg" }: { size?: "lg" | "sm" }) {
-  const dim = size === "lg" ? "h-[15rem] w-[15rem]" : "h-10 w-10";
+function RotatingDiezypuntoOrb({ size = "lg" }: { size?: "lg" | "sm" | "xs" }) {
+  const dim =
+    size === "lg"
+      ? "h-[15rem] w-[15rem]"
+      : size === "sm"
+        ? "h-10 w-10"
+        : "h-9 w-9";
   const duration = size === "lg" ? 28 : 22;
   return (
     <motion.img
@@ -560,7 +583,7 @@ function RotatingDiezypuntoOrb({ size = "lg" }: { size?: "lg" | "sm" }) {
 function HeroOrb() {
   return (
     <div className="relative mx-auto flex items-center justify-center py-1">
-      <div className="rounded-full bg-gradient-to-b from-white to-accent-light/40 ">
+      <div className="rounded-full bg-gradient-to-b from-white to-accent-light/40">
         <RotatingDiezypuntoOrb size="lg" />
       </div>
     </div>
