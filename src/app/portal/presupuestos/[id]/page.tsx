@@ -1,22 +1,42 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, SpinnerGap } from "@phosphor-icons/react";
+import { ArrowLeft, SpinnerGap, FilePdf, CopySimple } from "@phosphor-icons/react";
+import { exportQuotePdf } from "@/lib/export-quote-pdf";
+
+interface QuoteItem {
+  product_name: string;
+  sku: string;
+  quantity: number;
+  unit_price: number;
+  category: string;
+}
 
 interface QuoteDetail {
-  filename: string;
-  frontmatter: Record<string, unknown>;
-  body: string;
+  // vault-api format
+  filename?: string;
+  frontmatter?: Record<string, unknown>;
+  body?: string;
+  // mock / flat format
+  id?: string;
+  date?: string;
+  status?: string;
+  total?: number;
+  items?: QuoteItem[];
+  description?: string;
+  notes?: string;
 }
 
 export default function QuoteDetailPage() {
   const params = useParams();
+  const router = useRouter();
   const id = params.id as string;
   const [quote, setQuote] = useState<QuoteDetail | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [duplicating, setDuplicating] = useState(false);
 
   useEffect(() => {
     fetch(`/api/portal/quotes/${id}`)
@@ -28,6 +48,45 @@ export default function QuoteDetailPage() {
       .catch(() => setError("Presupuesto no encontrado"))
       .finally(() => setLoading(false));
   }, [id]);
+
+  async function handleDuplicate() {
+    if (!quote || duplicating) return;
+    const quoteItems = quote.items || [];
+    if (quoteItems.length === 0) return;
+
+    setDuplicating(true);
+    try {
+      const fm = quote.frontmatter;
+      const desc = String(fm?.description || quote.description || "");
+      const qNotes = String(fm?.notes || quote.notes || "");
+      const res = await fetch("/api/portal/quotes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          description: desc ? `Copia: ${desc}` : `Copia presupuesto ${id}`,
+          notes: qNotes,
+          items: quoteItems.map((i) => ({
+            product_name: i.product_name,
+            sku: i.sku,
+            quantity: i.quantity,
+            category: i.category,
+          })),
+        }),
+      });
+
+      if (!res.ok) throw new Error("Failed to create quote");
+      const data = await res.json();
+      const newId = data.id || data.filename?.replace(".md", "");
+      if (newId) {
+        router.push(`/portal/presupuestos/${newId}`);
+      } else {
+        router.push("/portal/presupuestos");
+      }
+    } catch {
+      setError("No se pudo duplicar el presupuesto");
+      setDuplicating(false);
+    }
+  }
 
   if (loading) {
     return (
@@ -51,7 +110,15 @@ export default function QuoteDetailPage() {
     );
   }
 
+  // Support both vault-api format (frontmatter) and mock/flat format
   const fm = quote.frontmatter;
+  const status = String(fm?.status || quote.status || "borrador");
+  const date = String(fm?.date || quote.date || "");
+  const total = Number(fm?.total ?? quote.total ?? 0);
+  const items = quote.items || [];
+  const description = String(fm?.description || quote.description || "");
+  const notes = String(fm?.notes || quote.notes || "");
+
   const statusColors: Record<string, string> = {
     draft: "bg-gray-100 text-gray-600",
     borrador: "bg-gray-100 text-gray-600",
@@ -60,7 +127,6 @@ export default function QuoteDetailPage() {
     rechazado: "bg-red-50 text-red-600",
     vencido: "bg-amber-50 text-amber-700",
   };
-  const status = String(fm.status || "borrador");
 
   return (
     <div className="mx-auto max-w-4xl">
@@ -75,26 +141,86 @@ export default function QuoteDetailPage() {
         <div className="flex items-start justify-between">
           <div>
             <h1 className="text-xl font-bold text-foreground">{id}</h1>
-            <p className="mt-1 text-sm text-muted">
-              {String(fm.date || "")}
-            </p>
+            {description && (
+              <p className="mt-0.5 text-sm text-foreground">{description}</p>
+            )}
+            <p className="mt-1 text-sm text-muted">{date}</p>
           </div>
-          <span
-            className={`rounded-full px-3 py-1 text-xs font-medium ${statusColors[status] || "bg-gray-100 text-gray-600"}`}
-          >
-            {status.charAt(0).toUpperCase() + status.slice(1)}
-          </span>
+          <div className="flex items-center gap-3">
+            {items.length > 0 && (
+              <button
+                onClick={handleDuplicate}
+                disabled={duplicating}
+                className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-surface disabled:opacity-50"
+              >
+                {duplicating ? (
+                  <SpinnerGap className="h-4 w-4 animate-spin" />
+                ) : (
+                  <CopySimple className="h-4 w-4" />
+                )}
+                Duplicar
+              </button>
+            )}
+            <button
+              onClick={() =>
+                exportQuotePdf({ id, date, status, total, description, notes, items })
+              }
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-surface"
+            >
+              <FilePdf className="h-4 w-4" />
+              Exportar PDF
+            </button>
+            <span
+              className={`rounded-full px-3 py-1 text-xs font-medium ${statusColors[status] || "bg-gray-100 text-gray-600"}`}
+            >
+              {status.charAt(0).toUpperCase() + status.slice(1)}
+            </span>
+          </div>
         </div>
 
-        {fm.total != null && (
+        {total > 0 && (
           <p className="mt-4 text-lg font-bold">
-            Total: ${Number(fm.total).toLocaleString("es-AR")}
+            Total: ${total.toLocaleString("es-AR")}
             <span className="ml-1 text-sm font-normal text-muted">+ IVA</span>
           </p>
         )}
 
-        {/* Render body as items table (body is markdown) */}
-        {quote.body && (
+        {notes && (
+          <p className="mt-2 text-sm text-muted">Notas: {notes}</p>
+        )}
+
+        {/* Render items as table — from flat array or markdown body */}
+        {items.length > 0 ? (
+          <div className="mt-6">
+            <h2 className="mb-3 text-sm font-semibold uppercase text-muted">
+              Items
+            </h2>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    <th className="border border-border bg-surface px-3 py-2 text-left text-xs font-medium uppercase text-muted">Producto</th>
+                    <th className="border border-border bg-surface px-3 py-2 text-left text-xs font-medium uppercase text-muted">SKU</th>
+                    <th className="border border-border bg-surface px-3 py-2 text-right text-xs font-medium uppercase text-muted">Cant.</th>
+                    <th className="border border-border bg-surface px-3 py-2 text-right text-xs font-medium uppercase text-muted">Precio Unit.</th>
+                    <th className="border border-border bg-surface px-3 py-2 text-right text-xs font-medium uppercase text-muted">Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {items.map((item) => (
+                    <tr key={item.sku}>
+                      <td className="border border-border px-3 py-2 text-sm">{item.product_name}</td>
+                      <td className="border border-border px-3 py-2 text-sm text-muted">{item.sku}</td>
+                      <td className="border border-border px-3 py-2 text-right text-sm">{item.quantity}</td>
+                      <td className="border border-border px-3 py-2 text-right text-sm">${item.unit_price.toLocaleString("es-AR")}</td>
+                      <td className="border border-border px-3 py-2 text-right text-sm font-medium">${(item.quantity * item.unit_price).toLocaleString("es-AR")}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ) : quote.body ? (
           <div className="mt-6">
             <h2 className="mb-3 text-sm font-semibold uppercase text-muted">
               Items
@@ -104,7 +230,7 @@ export default function QuoteDetailPage() {
               dangerouslySetInnerHTML={{ __html: markdownTableToHtml(quote.body) }}
             />
           </div>
-        )}
+        ) : null}
       </div>
     </div>
   );

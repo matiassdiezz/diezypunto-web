@@ -66,6 +66,27 @@ function LoginContent() {
     );
   }
 
+  const handleDevLogin = () => {
+    setStatus("verifying");
+    fetch("/api/portal/verify", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ client_id: "test", token: "dev" }),
+    })
+      .then(async (res) => {
+        if (res.ok) {
+          router.replace("/portal");
+        } else {
+          setStatus("error");
+          setErrorMsg("Error en login de prueba.");
+        }
+      })
+      .catch(() => {
+        setStatus("error");
+        setErrorMsg("Error de conexion.");
+      });
+  };
+
   return (
     <div className="flex min-h-screen items-center justify-center">
       <div className="mx-4 max-w-md text-center">
@@ -84,6 +105,14 @@ function LoginContent() {
             Contacta a Diezypunto
           </a>
         </p>
+        {process.env.NODE_ENV === "development" && (
+          <button
+            onClick={handleDevLogin}
+            className="mt-8 rounded-lg border border-dashed border-amber-500/50 bg-amber-500/10 px-6 py-3 text-sm font-medium text-amber-600 transition-colors hover:bg-amber-500/20"
+          >
+            Entrar como usuario de prueba
+          </button>
+        )}
       </div>
     </div>
   );

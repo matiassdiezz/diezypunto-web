@@ -21,7 +21,7 @@ function CartLoader() {
     loaded.current = true;
 
     setLoading(true);
-    fetch(`/api/telegram-cart/${code}`)
+    fetch(`/api/share-code/${code}`)
       .then((res) => (res.ok ? res.json() : null))
       .then(async (payload) => {
         if (!payload?.items) return;

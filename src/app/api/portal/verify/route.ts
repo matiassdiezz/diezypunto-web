@@ -13,6 +13,22 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Dev bypass: skip vault-api when DEV_PORTAL_BYPASS is enabled
+  if (process.env.DEV_PORTAL_BYPASS === "true" && client_id === "test") {
+    const response = NextResponse.json({
+      success: true,
+      client_id: "test",
+    });
+    response.cookies.set("session", "dev", {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+      maxAge: 72 * 3600,
+      path: "/",
+    });
+    return response;
+  }
+
   const res = await fetch(`${VAULT_API_URL}/api/v1/auth/verify`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },

@@ -5,7 +5,8 @@ import { Package, SpinnerGap } from "@phosphor-icons/react";
 import OrderCard from "@/components/portal/OrderCard";
 
 interface Order {
-  filename: string;
+  id?: string;
+  filename?: string;
   status?: string;
   date?: string;
   [key: string]: unknown;
@@ -46,14 +47,17 @@ export default function PedidosPage() {
             </p>
           </div>
         ) : (
-          orders.map((o) => (
-            <OrderCard
-              key={o.filename}
-              id={o.filename}
-              date={String(o.date || "")}
-              status={String(o.status || "pendiente")}
-            />
-          ))
+          orders.map((o) => {
+            const oid = o.id || o.filename || "";
+            return (
+              <OrderCard
+                key={oid}
+                id={oid}
+                date={String(o.date || "")}
+                status={String(o.status || "pendiente")}
+              />
+            );
+          })
         )}
       </div>
     </div>

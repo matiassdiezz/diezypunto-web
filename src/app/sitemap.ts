@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import catalogData from "@/data/catalog.json";
-
-const BASE_URL = "https://diezypunto-web.vercel.app";
+import { getSiteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const BASE_URL = getSiteUrl();
   const now = new Date();
 
   // Static pages

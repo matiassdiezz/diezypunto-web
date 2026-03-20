@@ -13,6 +13,16 @@ export async function GET(
 
   const { id } = await params;
 
+  // Dev bypass: find mock order by id
+  if (process.env.DEV_PORTAL_BYPASS === "true" && session === "dev") {
+    const { MOCK_ORDERS } = await import("../route");
+    const order = MOCK_ORDERS.find((o) => o.id === id);
+    if (!order) {
+      return NextResponse.json({ error: "Order not found" }, { status: 404 });
+    }
+    return NextResponse.json(order);
+  }
+
   const res = await fetch(`${VAULT_API_URL}/api/v1/orders/${id}`, {
     headers: { Cookie: `session=${session}` },
   });

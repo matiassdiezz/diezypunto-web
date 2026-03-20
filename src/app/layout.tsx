@@ -32,6 +32,13 @@ export const metadata: Metadata = {
       "Merchandising corporativo con +1,400 productos. Busca con tus palabras y encontra lo que necesitas en segundos.",
     images: ["/logo-diezypunto.webp"],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "diezypunto | Merchandising Corporativo",
+    description:
+      "Merchandising corporativo con +1,400 productos. Busca con tus palabras y encontra lo que necesitas en segundos.",
+    images: ["/logo-diezypunto.webp"],
+  },
 };
 
 const jsonLd = {
@@ -40,8 +47,8 @@ const jsonLd = {
     {
       "@type": "Organization",
       name: "Diezypunto",
-      url: "https://diezypunto-web.vercel.app",
-      logo: "https://diezypunto-web.vercel.app/logo-diezypunto.webp",
+      url: siteUrl,
+      logo: `${siteUrl}/logo-diezypunto.webp`,
       description:
         "Proveedor B2B de merchandising y regalos corporativos en Argentina. +528 productos personalizables.",
       contactPoint: {
@@ -53,13 +60,12 @@ const jsonLd = {
     {
       "@type": "WebSite",
       name: "Diezypunto",
-      url: "https://diezypunto-web.vercel.app",
+      url: siteUrl,
       potentialAction: {
         "@type": "SearchAction",
         target: {
           "@type": "EntryPoint",
-          urlTemplate:
-            "https://diezypunto-web.vercel.app/catalogo?search={search_term}",
+          urlTemplate: `${siteUrl}/catalogo?search={search_term}`,
         },
         "query-input": "required name=search_term",
       },

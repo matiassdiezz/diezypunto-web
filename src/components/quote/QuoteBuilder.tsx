@@ -8,6 +8,8 @@ import {
   PaperPlaneTilt,
   CreditCard,
   SpinnerGap,
+  X,
+  ShoppingCart,
 } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
@@ -21,11 +23,14 @@ import CartMilestone from "@/components/quote/CartMilestone";
 import ProductCard from "@/components/catalog/ProductCard";
 import SaveQuoteButton from "@/components/portal/SaveQuoteButton";
 import { useAuth } from "@/lib/hooks/use-auth";
+import ShareButton from "@/components/shared/ShareButtons";
+import { buildCartShareUrl, buildCartWhatsAppMessage } from "@/lib/share";
 
 export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();
   const { client } = useAuth();
   const [mpLoading, setMpLoading] = useState(false);
+  const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
   const [minQtyWarn, setMinQtyWarn] = useState<string | null>(null);
   const openWithMessage = useChatStore((s) => s.openWithMessage);
@@ -249,48 +254,16 @@ export default function QuoteBuilder() {
           </div>
         )}
 
-        {/* Primary CTAs */}
-        <div className="flex flex-col gap-2 sm:flex-row">
-          {/* Mercado Pago — primary if all items have price */}
-          {total > 0 && !hasItemsWithoutPrice && (
-            <button
-              onClick={handleMercadoPago}
-              disabled={mpLoading}
-              className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/40 bg-accent py-3.5 text-base font-medium text-white transition-all hover:bg-accent-hover hover:shadow-[0_8px_20px_rgba(89,198,242,0.35)] disabled:opacity-60"
-            >
-              {mpLoading ? (
-                <SpinnerGap className="h-5 w-5 animate-spin" />
-              ) : (
-                <CreditCard className="h-5 w-5" />
-              )}
-              {mpLoading ? "Redirigiendo..." : "Pagar con Mercado Pago"}
-            </button>
-          )}
+        {/* Single CTA */}
+        <button
+          onClick={() => setCheckoutOpen(true)}
+          className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-accent py-3.5 text-base font-medium text-white transition-all hover:bg-accent-hover hover:shadow-[0_8px_20px_rgba(89,198,242,0.35)]"
+        >
+          <ShoppingCart className="h-5 w-5" />
+          Confirmar pedido
+        </button>
 
-          {/* Telegram — primary if items lack price, secondary otherwise */}
-          <button
-            onClick={handleTelegram}
-            className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3.5 text-base font-medium transition-all ${
-              hasItemsWithoutPrice
-                ? "border border-white/40 bg-accent text-white hover:bg-accent-hover hover:shadow-[0_8px_20px_rgba(89,198,242,0.35)]"
-                : "border border-white/65 bg-white/70 text-foreground backdrop-blur-sm hover:bg-white"
-            }`}
-          >
-            <PaperPlaneTilt className="h-5 w-5" />
-            {hasItemsWithoutPrice ? "Solicitar presupuesto por Telegram" : "Consultar por Telegram"}
-          </button>
-
-          {/* Guardar en vault (solo autenticados) */}
-          {client && <SaveQuoteButton />}
-        </div>
-
-        {hasItemsWithoutPrice && (
-          <p className="text-center text-xs text-muted">
-            Algunos productos requieren cotización. Contactanos por Telegram para un presupuesto completo.
-          </p>
-        )}
-
-        <div className="text-center">
+        <div className="flex items-center justify-center gap-2">
           <button
             onClick={() => {
               if (window.confirm("¿Seguro que querés vaciar el carrito?")) {
@@ -301,8 +274,90 @@ export default function QuoteBuilder() {
           >
             Vaciar carrito
           </button>
+          <span className="text-muted/30">|</span>
+          <ShareButton
+            getShareUrl={() => buildCartShareUrl(items)}
+            getWhatsAppMessage={(url) =>
+              buildCartWhatsAppMessage(items.length, url)
+            }
+            context="cart"
+            trackingData={{ item_count: items.length }}
+          />
         </div>
       </div>
+
+      {/* Checkout modal */}
+      {checkoutOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-end justify-center sm:items-center"
+          onClick={(e) => { if (e.target === e.currentTarget) setCheckoutOpen(false); }}
+        >
+          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
+          <div className="relative w-full max-w-md rounded-t-2xl bg-white p-6 shadow-2xl sm:rounded-2xl">
+            <div className="mb-5 flex items-center justify-between">
+              <h2 className="text-lg font-bold">¿Cómo querés continuar?</h2>
+              <button
+                onClick={() => setCheckoutOpen(false)}
+                className="rounded-lg p-1.5 text-muted hover:bg-surface hover:text-foreground"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+
+            <div className="space-y-2">
+              {/* Mercado Pago */}
+              {total > 0 && !hasItemsWithoutPrice && (
+                <button
+                  onClick={() => { setCheckoutOpen(false); handleMercadoPago(); }}
+                  disabled={mpLoading}
+                  className="flex w-full items-center gap-3 rounded-xl border border-border p-4 text-left transition-all hover:border-accent hover:bg-accent/5 disabled:opacity-60"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                    {mpLoading ? (
+                      <SpinnerGap className="h-5 w-5 animate-spin text-accent" />
+                    ) : (
+                      <CreditCard className="h-5 w-5 text-accent" />
+                    )}
+                  </div>
+                  <div>
+                    <p className="font-medium">Pagar con Mercado Pago</p>
+                    <p className="text-xs text-muted">Tarjeta, transferencia o efectivo</p>
+                  </div>
+                </button>
+              )}
+
+              {/* Telegram */}
+              <button
+                onClick={() => { setCheckoutOpen(false); handleTelegram(); }}
+                className="flex w-full items-center gap-3 rounded-xl border border-border p-4 text-left transition-all hover:border-[#229ED9] hover:bg-[#229ED9]/5"
+              >
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#229ED9]/10">
+                  <PaperPlaneTilt className="h-5 w-5 text-[#229ED9]" />
+                </div>
+                <div>
+                  <p className="font-medium">
+                    {hasItemsWithoutPrice ? "Solicitar presupuesto" : "Consultar por Telegram"}
+                  </p>
+                  <p className="text-xs text-muted">
+                    {hasItemsWithoutPrice
+                      ? "Algunos productos requieren cotización"
+                      : "Hablá con nosotros antes de pagar"}
+                  </p>
+                </div>
+              </button>
+
+              {/* Guardar presupuesto */}
+              {client && (
+                <div className="rounded-xl border border-border p-4 transition-all hover:border-accent hover:bg-accent/5">
+                  <div className="flex items-center gap-3">
+                    <SaveQuoteButton />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Cart Cross-Sell */}
       {crossSell.length > 0 && (

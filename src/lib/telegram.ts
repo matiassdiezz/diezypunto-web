@@ -28,7 +28,7 @@ type TelegramPayload = CartPayload | ProductPayload;
  */
 export async function openTelegramWithContext(payload: TelegramPayload): Promise<void> {
   try {
-    const res = await fetch("/api/telegram-cart", {
+    const res = await fetch("/api/share-code", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),

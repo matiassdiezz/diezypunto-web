@@ -13,6 +13,16 @@ export async function GET(
 
   const { id } = await params;
 
+  // Dev bypass: find mock quote by id
+  if (process.env.DEV_PORTAL_BYPASS === "true" && session === "dev") {
+    const { MOCK_QUOTES } = await import("../route");
+    const quote = MOCK_QUOTES.find((q) => q.id === id);
+    if (!quote) {
+      return NextResponse.json({ error: "Quote not found" }, { status: 404 });
+    }
+    return NextResponse.json(quote);
+  }
+
   const res = await fetch(`${VAULT_API_URL}/api/v1/quotes/${id}`, {
     headers: { Cookie: `session=${session}` },
   });

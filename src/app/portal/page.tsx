@@ -1,26 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FileText, Package, SpinnerGap } from "@phosphor-icons/react";
-import QuoteCard from "@/components/portal/QuoteCard";
-import OrderCard from "@/components/portal/OrderCard";
+import { SpinnerGap } from "@phosphor-icons/react";
 import { useAuth } from "@/lib/hooks/use-auth";
-
-interface Quote {
-  filename: string;
-  status?: string;
-  date?: string;
-  total?: number;
-  items_count?: number;
-  [key: string]: unknown;
-}
-
-interface Order {
-  filename: string;
-  status?: string;
-  date?: string;
-  [key: string]: unknown;
-}
+import ActiveOrdersCard from "@/components/portal/ActiveOrdersCard";
+import DashboardSummary from "@/components/portal/DashboardSummary";
+import RecentQuotesCard from "@/components/portal/RecentQuotesCard";
+import DeliveryHistoryTable from "@/components/portal/DeliveryHistoryTable";
+import type { Order } from "@/components/portal/ActiveOrdersCard";
+import type { Quote } from "@/components/portal/RecentQuotesCard";
 
 export default function PortalDashboard() {
   const { client } = useAuth();
@@ -30,14 +18,14 @@ export default function PortalDashboard() {
 
   useEffect(() => {
     Promise.all([
-      fetch("/api/portal/quotes").then((r) => (r.ok ? r.json() : { quotes: [] })),
-      fetch("/api/portal/orders").then((r) => (r.ok ? r.json() : { orders: [] })),
+      fetch("/api/portal/quotes").then((r) => (r.ok ? r.json() : [])),
+      fetch("/api/portal/orders").then((r) => (r.ok ? r.json() : [])),
     ])
       .then(([q, o]) => {
         const qList = Array.isArray(q) ? q : q.quotes || [];
         const oList = Array.isArray(o) ? o : o.orders || [];
-        setQuotes(qList.slice(0, 5));
-        setOrders(oList.slice(0, 5));
+        setQuotes(qList);
+        setOrders(oList);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -50,97 +38,43 @@ export default function PortalDashboard() {
     );
   }
 
+  const activeOrders = orders.filter(
+    (o) => o.status === "confirmado" || o.status === "en_produccion"
+  );
+  const deliveredOrders = orders.filter((o) => o.status === "entregado");
+  const activeTotal = activeOrders.reduce((sum, o) => sum + o.total, 0);
+
   return (
-    <div className="mx-auto max-w-4xl space-y-8">
+    <div className="mx-auto max-w-6xl space-y-6">
       <div>
         <h1 className="text-2xl font-bold text-foreground">
-          Bienvenido{client?.name ? `, ${client.name}` : ""}
+          Portal Corporativo
         </h1>
         <p className="mt-1 text-sm text-muted">
-          Administra tus presupuestos y pedidos desde aca.
+          Gestiona tus presupuestos y pedidos de merchandising.
         </p>
       </div>
 
-      {/* Stats */}
-      <div className="grid grid-cols-2 gap-4">
-        <div className="rounded-xl border border-border bg-white p-5">
-          <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-blue-50 p-2">
-              <FileText className="h-5 w-5 text-blue-500" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold">{quotes.length}</p>
-              <p className="text-xs text-muted">Presupuestos</p>
-            </div>
-          </div>
-        </div>
-        <div className="rounded-xl border border-border bg-white p-5">
-          <div className="flex items-center gap-3">
-            <div className="rounded-lg bg-green-50 p-2">
-              <Package className="h-5 w-5 text-green-500" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold">{orders.length}</p>
-              <p className="text-xs text-muted">Pedidos</p>
-            </div>
-          </div>
-        </div>
+      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+        <ActiveOrdersCard
+          orders={activeOrders}
+          className="lg:col-span-2"
+        />
+        <DashboardSummary
+          totalQuotes={quotes.length}
+          activeOrders={activeOrders.length}
+          deliveredOrders={deliveredOrders.length}
+          activeTotal={activeTotal}
+        />
+        <RecentQuotesCard
+          quotes={quotes.slice(0, 5)}
+          className="lg:col-span-2"
+        />
+        <DeliveryHistoryTable
+          orders={deliveredOrders}
+          className="lg:col-span-3"
+        />
       </div>
-
-      {/* Recent Quotes */}
-      <section>
-        <h2 className="mb-3 text-lg font-bold text-foreground">
-          Presupuestos recientes
-        </h2>
-        {quotes.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-border bg-white p-8 text-center">
-            <FileText className="mx-auto h-8 w-8 text-muted/40" />
-            <p className="mt-2 text-sm text-muted">
-              Todavia no tenes presupuestos. Arma tu carrito y guarda un
-              presupuesto.
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-2">
-            {quotes.map((q) => (
-              <QuoteCard
-                key={q.filename}
-                id={q.filename}
-                date={String(q.date || "")}
-                status={String(q.status || "borrador")}
-                total={q.total}
-                itemCount={q.items_count}
-              />
-            ))}
-          </div>
-        )}
-      </section>
-
-      {/* Recent Orders */}
-      <section>
-        <h2 className="mb-3 text-lg font-bold text-foreground">
-          Pedidos recientes
-        </h2>
-        {orders.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-border bg-white p-8 text-center">
-            <Package className="mx-auto h-8 w-8 text-muted/40" />
-            <p className="mt-2 text-sm text-muted">
-              Todavia no tenes pedidos.
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-2">
-            {orders.map((o) => (
-              <OrderCard
-                key={o.filename}
-                id={o.filename}
-                date={String(o.date || "")}
-                status={String(o.status || "pendiente")}
-              />
-            ))}
-          </div>
-        )}
-      </section>
     </div>
   );
 }

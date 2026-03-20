@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/hero/Hero";
 import HowItWorks from "@/components/home/HowItWorks";
 import SearchSection from "@/components/home/SearchSection";
@@ -6,6 +7,12 @@ import LogoBar from "@/components/home/LogoBar";
 import Testimonials from "@/components/home/Testimonials";
 import EcoFaq from "@/components/home/EcoFaq";
 import CtaFinal from "@/components/home/CtaFinal";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "/",
+  },
+};
 
 const faqJsonLd = {
   "@context": "https://schema.org",

@@ -4,6 +4,7 @@ import PortalHeader from "@/components/portal/PortalHeader";
 
 export const metadata = {
   title: "Portal de Clientes | Diezypunto",
+  robots: { index: false, follow: false },
 };
 
 export default function PortalLayout({ children }: { children: ReactNode }) {

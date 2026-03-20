@@ -5,11 +5,13 @@ import { FileText, SpinnerGap } from "@phosphor-icons/react";
 import QuoteCard from "@/components/portal/QuoteCard";
 
 interface Quote {
-  filename: string;
+  id?: string;
+  filename?: string;
   status?: string;
   date?: string;
   total?: number;
   items_count?: number;
+  items?: unknown[];
   [key: string]: unknown;
 }
 
@@ -51,16 +53,19 @@ export default function PresupuestosPage() {
             </p>
           </div>
         ) : (
-          quotes.map((q) => (
-            <QuoteCard
-              key={q.filename}
-              id={q.filename}
-              date={String(q.date || "")}
-              status={String(q.status || "borrador")}
-              total={q.total}
-              itemCount={q.items_count}
-            />
-          ))
+          quotes.map((q) => {
+            const qid = q.id || q.filename || "";
+            return (
+              <QuoteCard
+                key={qid}
+                id={qid}
+                date={String(q.date || "")}
+                status={String(q.status || "borrador")}
+                total={q.total}
+                itemCount={q.items_count ?? q.items?.length}
+              />
+            );
+          })
         )}
       </div>
     </div>

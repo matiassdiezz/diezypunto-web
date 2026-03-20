@@ -9,6 +9,14 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
   }
 
+  // Dev bypass: return mock client without calling vault-api
+  if (process.env.DEV_PORTAL_BYPASS === "true" && session === "dev") {
+    return NextResponse.json({
+      client_id: "test",
+      name: "Usuario de Prueba",
+    });
+  }
+
   const res = await fetch(`${VAULT_API_URL}/api/v1/auth/me`, {
     headers: { Cookie: `session=${session}` },
   });
