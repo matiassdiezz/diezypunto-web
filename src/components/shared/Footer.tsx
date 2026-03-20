@@ -68,6 +68,14 @@ export default function Footer() {
             </h4>
             <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
               <a
+                href="https://wa.me/541162345062"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-foreground"
+              >
+                WhatsApp: 011 6234-5062
+              </a>
+              <a
                 href={telegramUrl()}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -81,6 +89,8 @@ export default function Footer() {
               >
                 info@diezypunto.com.ar
               </a>
+              <p>Av. del Mirador 290, Nordelta</p>
+              <p>Lun a Vie 8–13h / 14–17h</p>
             </div>
           </div>
           <div>

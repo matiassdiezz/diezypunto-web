@@ -141,49 +141,42 @@ export default function QuoteBuilder() {
       {/* Cart Milestone */}
       <CartMilestone total={total} />
 
-      {/* Table */}
-      <div className="overflow-x-auto rounded-3xl border border-white/55 bg-white/58 shadow-[0_12px_32px_rgba(15,23,42,0.09)] backdrop-blur-md">
-        <table className="w-full text-left text-sm">
-          <thead className="bg-white/65 text-xs uppercase text-muted backdrop-blur-sm">
-            <tr>
-              <th className="px-6 py-3">Producto</th>
-              <th className="px-6 py-3 text-center">Cantidad</th>
-              <th className="px-6 py-3 text-right">Precio unit.</th>
-              <th className="px-6 py-3 text-right">Subtotal</th>
-              <th className="px-6 py-3" />
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item) => {
-              const unitPrice = getItemUnitPrice(item);
-              const subtotal = unitPrice
-                ? unitPrice * item.quantity
-                : null;
-              const atMin = item.quantity <= 1;
-              return (
-                <tr
-                  key={item.product.product_id}
-                  className="border-t border-white/50 transition-colors hover:bg-white/45"
-                >
-                  <td className="px-6 py-4">
-                    <div className="flex items-center gap-3">
-                      {item.product.image_urls[0] && (
-                        <img
-                          src={item.product.image_urls[0]}
-                          alt={item.product.title}
-                          className="h-12 w-12 rounded-lg border border-white/55 bg-white/70 object-contain"
-                        />
-                      )}
-                      <div>
-                        <p className="font-medium">{item.product.title}</p>
-                        <p className="text-xs text-muted">
-                          {item.product.category}
-                        </p>
-                      </div>
+      {/* Items */}
+      <div className="space-y-3">
+        {items.map((item) => {
+          const unitPrice = getItemUnitPrice(item);
+          const subtotal = unitPrice ? unitPrice * item.quantity : null;
+          const atMin = item.quantity <= 1;
+          return (
+            <div
+              key={item.product.product_id}
+              className="rounded-2xl border border-white/55 bg-white/58 p-4 shadow-[0_4px_16px_rgba(15,23,42,0.06)] backdrop-blur-md transition-colors hover:bg-white/65"
+            >
+              <div className="flex items-start gap-3">
+                {item.product.image_urls[0] && (
+                  <img
+                    src={item.product.image_urls[0]}
+                    alt={item.product.title}
+                    className="h-16 w-16 shrink-0 rounded-xl border border-white/55 bg-white/70 object-contain"
+                  />
+                )}
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="min-w-0">
+                      <p className="truncate font-medium">{item.product.title}</p>
+                      <p className="text-xs text-muted">{item.product.category}</p>
                     </div>
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="flex items-center justify-center gap-2">
+                    <button
+                      onClick={() => removeItem(item.product.product_id)}
+                      className="shrink-0 rounded-lg p-1.5 text-muted transition-colors hover:bg-red-50 hover:text-red-500"
+                    >
+                      <Trash className="h-4 w-4" />
+                    </button>
+                  </div>
+
+                  <div className="mt-3 flex items-center justify-between gap-3">
+                    {/* Qty controls */}
+                    <div className="flex items-center gap-2">
                       <button
                         onClick={() => {
                           if (!atMin) {
@@ -196,49 +189,51 @@ export default function QuoteBuilder() {
                             }
                           }
                         }}
-                        className="rounded-lg border border-white/65 bg-white/75 p-1 transition-colors hover:bg-white"
+                        className="rounded-lg border border-white/65 bg-white/75 p-1.5 transition-colors hover:bg-white"
                       >
                         <Minus className="h-3 w-3" />
                       </button>
-                      <span className="w-8 text-center font-medium">
+                      <span className="w-8 text-center text-sm font-medium">
                         {item.quantity}
                       </span>
                       <button
                         onClick={() =>
-                          updateQty(
-                            item.product.product_id,
-                            item.quantity + 1,
-                          )
+                          updateQty(item.product.product_id, item.quantity + 1)
                         }
-                        className="rounded-lg border border-white/65 bg-white/75 p-1 transition-colors hover:bg-white"
+                        className="rounded-lg border border-white/65 bg-white/75 p-1.5 transition-colors hover:bg-white"
                       >
                         <Plus className="h-3 w-3" />
                       </button>
                     </div>
-                  </td>
-                  <td className="px-6 py-4 text-right">
-                    {unitPrice != null
-                      ? <><span>${unitPrice.toLocaleString("es-AR")}</span><span className="ml-0.5 text-xs text-muted">+ IVA</span></>
-                      : "Consultar"}
-                  </td>
-                  <td className="px-6 py-4 text-right font-medium">
-                    {subtotal != null
-                      ? <><span>${subtotal.toLocaleString("es-AR")}</span><span className="ml-0.5 text-xs font-normal text-muted">+ IVA</span></>
-                      : "-"}
-                  </td>
-                  <td className="px-6 py-4">
-                    <button
-                      onClick={() => removeItem(item.product.product_id)}
-                      className="text-muted hover:text-red-500"
-                    >
-                      <Trash className="h-4 w-4" />
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+
+                    {/* Price */}
+                    <div className="text-right">
+                      {subtotal != null ? (
+                        <>
+                          <p className="text-sm font-semibold">
+                            ${subtotal.toLocaleString("es-AR")}
+                            <span className="ml-0.5 text-xs font-normal text-muted">+ IVA</span>
+                          </p>
+                          <p className="text-[11px] text-muted">
+                            ${unitPrice!.toLocaleString("es-AR")} c/u
+                          </p>
+                        </>
+                      ) : (
+                        <p className="text-sm text-muted">Consultar</p>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {minQtyWarn === item.product.product_id && item.product.min_qty && (
+                <p className="mt-2 text-xs text-amber-600">
+                  Pedido mínimo: {item.product.min_qty} unidades
+                </p>
+              )}
+            </div>
+          );
+        })}
       </div>
 
       {/* Footer */}

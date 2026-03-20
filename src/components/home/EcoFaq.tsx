@@ -71,26 +71,30 @@ export default function EcoFaq() {
     <section className="bg-white py-16 md:py-20">
       <div className="px-6 lg:px-16">
         <div className="mx-auto max-w-6xl grid gap-10 md:grid-cols-2 md:gap-16">
-          {/* Eco */}
+          {/* Eco — full-bleed image with overlay text */}
           <ScrollReveal>
-            <div>
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-eco/15 to-eco/5 shadow-sm shadow-eco/10">
-                <Leaf className="h-7 w-7 text-eco" />
+            <div className="relative overflow-hidden rounded-3xl shadow-lg" style={{ minHeight: 320 }}>
+              <img
+                src="/eco-forest.jpg"
+                alt="Vista aérea de un bosque"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/50 to-transparent" />
+              <div className="relative flex h-full min-h-[320px] flex-col justify-end p-8">
+                <h2 className="text-2xl font-bold text-white">
+                  Comprometidos con el medio ambiente
+                </h2>
+                <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/80">
+                  Productos eco-friendly fabricados con materiales reciclados,
+                  bambu, corcho y algodon organico.
+                </p>
+                <Link
+                  href="/catalogo?eco_friendly=true"
+                  className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-white hover:gap-2 transition-all"
+                >
+                  Ver productos eco <ArrowRight className="h-4 w-4" />
+                </Link>
               </div>
-              <h3 className="mt-4 text-lg font-bold">
-                Comprometidos con el medio ambiente
-              </h3>
-              <p className="mt-2 text-sm text-muted">
-                Contamos con una linea de productos eco-friendly fabricados con
-                materiales reciclados, bambu, corcho y algodon organico.
-                Personaliza tu marca con responsabilidad.
-              </p>
-              <Link
-                href="/catalogo?eco_friendly=true"
-                className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-eco hover:gap-2 transition-all"
-              >
-                Ver productos eco <ArrowRight className="h-4 w-4" />
-              </Link>
             </div>
           </ScrollReveal>
 

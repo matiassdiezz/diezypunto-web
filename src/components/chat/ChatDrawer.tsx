@@ -38,6 +38,8 @@ import {
   getSpeechRecognitionCtor,
   type SpeechRecognitionLike,
 } from "@/lib/speech-recognition";
+import AiOrb from "./AiOrb";
+import type { OrbState } from "./AiOrb";
 
 const SUGGESTIONS = [
   { icon: Target, label: "Armar un combo para mi evento" },
@@ -102,6 +104,12 @@ export default function ChatModal() {
   const isLoading = status === "streaming" || status === "submitted";
   const composerBusy = isLoading || presetThinking;
   const hasConversation = messages.length > 0;
+  const orbState: OrbState =
+    presetThinking || status === "submitted"
+      ? "thinking"
+      : status === "streaming"
+        ? "streaming"
+        : "idle";
 
   const greetingName = client?.name?.trim();
   const welcomeTitle = greetingName
@@ -332,8 +340,8 @@ export default function ChatModal() {
                     animate={{ opacity: 1, x: 0 }}
                     className="flex items-center gap-2.5"
                   >
-                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-b from-white to-accent-light/40">
-                      <RotatingDiezypuntoOrb size="xs" />
+                    <div className="flex h-9 w-9 items-center justify-center">
+                      <AiOrb state={orbState} size={28} />
                     </div>
                     <motion.span
                       initial={{ opacity: 0 }}
@@ -361,7 +369,7 @@ export default function ChatModal() {
               <div className="min-h-0 flex-1 overflow-y-auto rounded-2xl bg-white/50 mx-2 px-4 pt-3 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
                 {!hasConversation ? (
                   <div className="flex flex-col items-center pt-2 pb-4 text-center">
-                    <HeroOrb />
+                    <AiOrb state={orbState} size={200} className="mx-auto" />
 
                     <h2 className="mt-5 text-2xl font-bold tracking-tight text-foreground">
                       {welcomeTitle}
@@ -554,41 +562,6 @@ export default function ChatModal() {
   );
 }
 
-/**
- * Orbe de marca (/public/orbe-diezypunto.png).
- * La imagen es un cuadrado con fondo negro: hay que recortar a círculo EN el elemento que rota;
- * si rotás un <div> cuadrado con la img dentro, se ve el “rombo” negro.
- */
-function RotatingDiezypuntoOrb({ size = "lg" }: { size?: "lg" | "sm" | "xs" }) {
-  const dim =
-    size === "lg"
-      ? "h-[15rem] w-[15rem]"
-      : size === "sm"
-        ? "h-10 w-10"
-        : "h-9 w-9";
-  const duration = size === "lg" ? 28 : 22;
-  return (
-    <motion.img
-      src="/orbe-diezypunto.png"
-      alt=""
-      animate={{ rotate: 360 }}
-      transition={{ duration, repeat: Infinity, ease: "linear" }}
-      className={`pointer-events-none mx-auto shrink-0 select-none rounded-full object-cover object-center [will-change:transform] ${dim}`}
-      draggable={false}
-      aria-hidden
-    />
-  );
-}
-
-function HeroOrb() {
-  return (
-    <div className="relative mx-auto flex items-center justify-center py-1">
-      <div className="rounded-full bg-gradient-to-b from-white to-accent-light/40">
-        <RotatingDiezypuntoOrb size="lg" />
-      </div>
-    </div>
-  );
-}
 
 function AssistantStreamingPlaceholder() {
   const [idx, setIdx] = useState(0);
@@ -603,8 +576,8 @@ function AssistantStreamingPlaceholder() {
   return (
     <div className="flex justify-start">
       <div className="flex max-w-[90%] items-center gap-3 rounded-2xl rounded-bl-md border border-border/60 bg-surface px-3 py-3">
-        <div className="shrink-0 rounded-full bg-white/95 p-0.5 ring-1 ring-black/[0.05]">
-          <RotatingDiezypuntoOrb size="sm" />
+        <div className="shrink-0">
+          <AiOrb state="thinking" size={32} />
         </div>
         <AnimatePresence mode="wait">
           <motion.span

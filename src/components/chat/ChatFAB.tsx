@@ -1,10 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { X } from "@phosphor-icons/react";
 import { useChatStore } from "@/lib/stores/chat-store";
 import { FLOATING_GLASS_BTN } from "@/components/chat/OpenChatButton";
+import AiOrb from "./AiOrb";
 
 export default function ChatFAB() {
   const { isOpen, toggle } = useChatStore();
@@ -24,15 +24,7 @@ export default function ChatFAB() {
         </span>
       ) : (
         <>
-          <span className="relative h-5 w-5 shrink-0 overflow-hidden rounded-full md:h-8 md:w-8">
-            <Image
-              src="/orbe-diezypunto.png"
-              alt=""
-              fill
-              className="object-cover object-center"
-              sizes="36px"
-            />
-          </span>
+          <AiOrb state="idle" size={24} className="shrink-0" />
           <span className="tracking-tight">Pedir con AI</span>
         </>
       )}

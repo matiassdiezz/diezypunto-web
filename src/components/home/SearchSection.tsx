@@ -12,6 +12,8 @@ import {
 } from "@phosphor-icons/react";
 import { motion } from "framer-motion";
 import ScrollReveal from "../shared/ScrollReveal";
+import { OpenChatSubmitOrb } from "@/components/chat/OpenChatButton";
+import AiOrb from "@/components/chat/AiOrb";
 import {
   getSpeechRecognitionCtor,
   type SpeechRecognitionLike,
@@ -159,6 +161,20 @@ export default function SearchSection() {
       id="ai-search"
       className="relative scroll-mt-20 overflow-hidden bg-white py-16"
     >
+      {/* Drifting aurora glow */}
+      <motion.div
+        className="pointer-events-none absolute top-1/2 -translate-y-1/2 select-none"
+        aria-hidden="true"
+        animate={{ x: ["-10%", "60%", "-10%"] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          width: "55%",
+          height: "120%",
+          background: "radial-gradient(ellipse at 50% 50%, rgba(89,198,242,0.12) 0%, rgba(89,198,242,0.04) 45%, transparent 70%)",
+          filter: "blur(40px)",
+        }}
+      />
+
       {/* ASCII background texture */}
       <div
         className="pointer-events-none absolute inset-0 flex items-center justify-center select-none"
@@ -172,13 +188,12 @@ export default function SearchSection() {
       <div className="relative z-10 px-6 lg:px-16">
         <ScrollReveal>
           <div className="mx-auto max-w-2xl">
-            <div className="flex items-center justify-center gap-2 text-sm font-medium text-accent">
-              <Sparkle className="h-4 w-4" />
-              Busqueda inteligente
+            <div className="flex items-center justify-center gap-3">
+              <AiOrb state="idle" size={44} />
+              <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
+                Pedi con <span className="gradient-text-accent">AI</span>
+              </h2>
             </div>
-            <h2 className="mt-3 text-center text-3xl font-bold tracking-tight sm:text-4xl">
-              Pedi con <span className="gradient-text-accent">AI</span>
-            </h2>
             <p className="mt-3 text-center text-muted">
               Escribi lo que necesitas como si le hablaras a una persona
               <br className="hidden sm:block" />y te mostramos las mejores
@@ -298,10 +313,11 @@ export default function SearchSection() {
                       <button
                         type="submit"
                         disabled={!input.trim()}
-                        className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-accent to-[#3BB5E8] text-white shadow-md shadow-accent/30 transition-all hover:opacity-95 disabled:opacity-35"
+                        className="flex h-11 items-center gap-1.5 rounded-xl border border-black/10 bg-white/50 px-2.5 text-accent shadow-md shadow-black/5 backdrop-blur-xl transition-all hover:scale-105 hover:bg-white/65 disabled:pointer-events-none disabled:opacity-20"
                         aria-label="Enviar"
                       >
-                        <ArrowUp className="h-4 w-4" />
+                        <OpenChatSubmitOrb />
+                        <ArrowUp className="h-5 w-5 shrink-0" strokeWidth={2.25} />
                       </button>
                     </div>
                   </div>

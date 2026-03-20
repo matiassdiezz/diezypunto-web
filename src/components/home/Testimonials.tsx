@@ -96,9 +96,9 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="section-blend bg-[#EBF7FE] px-6 lg:px-16 py-14">
+    <section className="bg-white px-6 lg:px-16 py-14">
       <ScrollReveal>
-        <h2 className="text-center text-xl md:text-2xl tracking-tight font-bold">Resenas</h2>
+        <h2 className="text-center text-xl md:text-2xl tracking-tight font-bold">Reseñas</h2>
         <p className="mt-1.5 text-center text-sm text-muted">Lo que dicen nuestros clientes</p>
       </ScrollReveal>
 

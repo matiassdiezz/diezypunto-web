@@ -10,15 +10,7 @@ export default function CtaFinal() {
   const openWithMessage = useChatStore((s) => s.openWithMessage);
 
   return (
-    <section className="section-blend relative overflow-hidden bg-[#EBF7FE] py-20 md:py-24">
-      {/* Radial gradient overlay */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 0%, rgba(89,198,242,0.08) 0%, transparent 70%)",
-        }}
-      />
+    <section className="relative overflow-hidden bg-white py-20 md:py-24">
 
       <div className="relative z-10 px-6 lg:px-16">
         <ScrollReveal>

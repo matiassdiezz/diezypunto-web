@@ -11,7 +11,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="section-blend bg-[#EBF7FE] py-16 md:py-20">
+    <section className="bg-white py-16 md:py-20">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
           <h2 className="text-center text-xl md:text-2xl tracking-tight font-bold">Como funciona</h2>

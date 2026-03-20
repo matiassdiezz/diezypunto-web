@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import type { ButtonHTMLAttributes, ReactNode } from "react";
+import AiOrb from "./AiOrb";
 
 /** FAB / carrito flotante: misma base visual, tamaño mayor en desktop */
 export const FLOATING_GLASS_BTN =
@@ -25,19 +25,7 @@ export function OpenChatSubmitOrb({
 }: {
   className?: string;
 }) {
-  return (
-    <span
-      className={`relative h-6 w-6 shrink-0 overflow-hidden rounded-full md:h-7 md:w-7 ${className}`}
-    >
-      <Image
-        src="/orbe-diezypunto.png"
-        alt=""
-        fill
-        className="object-cover object-center"
-        sizes="28px"
-      />
-    </span>
-  );
+  return <AiOrb state="idle" size={24} className={`shrink-0 ${className}`} />;
 }
 
 export type OpenChatButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -68,15 +56,7 @@ export function OpenChatButton({
       className={`inline-flex items-center justify-center gap-2 rounded-xl border font-semibold backdrop-blur-xl transition-all hover:-translate-y-0.5 hover:shadow-xl active:scale-[0.98] disabled:pointer-events-none disabled:opacity-35 cursor-pointer ${v} px-5 py-3 text-sm md:px-7 md:py-3.5 md:text-base ${className}`}
       {...rest}
     >
-      <span className={`relative shrink-0 overflow-hidden rounded-full ${orbBox}`}>
-        <Image
-          src="/orbe-diezypunto.png"
-          alt=""
-          fill
-          className="object-cover object-center"
-          sizes="32px"
-        />
-      </span>
+      <AiOrb state="idle" size={compact ? 18 : 22} className="shrink-0" />
       {children}
     </button>
   );

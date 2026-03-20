@@ -13,6 +13,7 @@ import {
   UserCircle,
   SquaresFour,
 } from "@phosphor-icons/react";
+import AiOrb from "@/components/chat/AiOrb";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useAuth } from "@/lib/hooks/use-auth";
 import { useHasMounted } from "@/lib/hooks/use-has-mounted";
@@ -181,9 +182,7 @@ export default function Navbar() {
                 className="ai-glow-btn group relative flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-muted transition-colors hover:text-foreground cursor-pointer"
               >
                 <span className="pointer-events-none absolute inset-0 rounded-full ai-glow-border" />
-                <span className="relative h-5 w-5 shrink-0 overflow-hidden rounded-full">
-                  <Image src="/orbe-diezypunto.png" alt="" fill className="object-cover" sizes="20px" />
-                </span>
+                <AiOrb state="idle" size={20} className="shrink-0" />
                 <span className="relative">Pedir con AI</span>
               </button>
               <Link

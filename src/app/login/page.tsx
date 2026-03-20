@@ -54,7 +54,7 @@ function LoginContent() {
               </div>
               <p className="text-lg font-medium text-foreground">{errorMsg}</p>
               <a
-                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "5491151234567"}`}
+                href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "541162345062"}`}
                 className="mt-2 text-sm text-accent hover:underline"
               >
                 Contactar por WhatsApp
@@ -78,7 +78,7 @@ function LoginContent() {
         <p className="mt-6 text-sm text-muted">
           ¿No tenes el link?{" "}
           <a
-            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "5491151234567"}`}
+            href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "541162345062"}`}
             className="text-accent hover:underline"
           >
             Contacta a Diezypunto
