@@ -318,7 +318,7 @@ export default function TopBar() {
     <>
       {/* Spacer to compensate for fixed navbar + fixed topbar */}
       <div className="pt-[116px] md:pt-[112px]" />
-      <div className="fixed top-[72px] left-0 right-0 z-40 border-b border-border bg-white/95 backdrop-blur-md">
+      <div className="fixed top-[72px] left-0 right-0 z-40 w-full overflow-x-clip border-b border-border bg-white/95 backdrop-blur-md">
         {/* Desktop */}
         <div className="hidden md:flex items-center justify-center gap-1 px-6 lg:px-16 py-2">
           {CATEGORIES.map((cat) => {
@@ -378,7 +378,7 @@ export default function TopBar() {
         )}
 
         {/* Mobile — horizontal scroll */}
-        <div className="flex md:hidden items-center gap-1 overflow-x-auto scrollbar-hide px-4 py-2">
+        <div className="flex md:hidden items-center gap-1 overflow-x-auto overscroll-x-contain scrollbar-hide px-4 py-2 [-webkit-overflow-scrolling:touch]">
           {CATEGORIES.map((cat) => {
             const isFast = cat === FAST_DELIVERY_KEY;
             return (

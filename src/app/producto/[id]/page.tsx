@@ -135,48 +135,55 @@ export default function ProductoPage() {
   };
 
   return (
-    <div className="px-4 pb-20 pt-24 sm:px-6 lg:px-16 sm:pt-28">
+    <div className="w-full min-w-0 max-w-full px-4 pb-20 pt-24 sm:px-6 lg:px-16 sm:pt-28">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
       <Breadcrumbs items={breadcrumbs} />
 
-      <div className="mt-4 grid gap-6 sm:mt-6 sm:gap-10 lg:grid-cols-2">
+      <div className="mt-4 grid min-w-0 gap-6 sm:mt-6 sm:gap-10 lg:grid-cols-2">
         {/* Gallery */}
         <ScrollReveal direction="up">
-          <div className="space-y-3 sm:space-y-4">
-            <div className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-border bg-surface p-4 sm:rounded-2xl sm:p-6">
-              {product.image_urls[selectedImage] ? (
-                <img
-                  src={product.image_urls[selectedImage]}
-                  alt={product.title}
-                  className="h-auto w-auto max-h-full max-w-full object-contain"
-                />
-              ) : (
-                <div className="flex items-center justify-center text-muted/30">
-                  <ShoppingBag className="h-16 w-16 sm:h-20 sm:w-20" />
-                </div>
-              )}
+          <div className="min-w-0 overflow-x-clip space-y-3 sm:space-y-4">
+            {/* absolute inset-0: WebKit resuelve max-h-full contra altura definida (flex+aspect-square solo falla en mobile) */}
+            <div className="relative aspect-square overflow-hidden rounded-xl border border-border bg-surface sm:rounded-2xl">
+              <div className="absolute inset-0 flex min-h-0 min-w-0 items-center justify-center p-4 sm:p-6">
+                {product.image_urls[selectedImage] ? (
+                  <img
+                    src={product.image_urls[selectedImage]}
+                    alt={product.title}
+                    className="max-h-full max-w-full object-contain object-center"
+                    decoding="async"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center text-muted/30">
+                    <ShoppingBag className="h-16 w-16 sm:h-20 sm:w-20" />
+                  </div>
+                )}
+              </div>
             </div>
             {product.image_urls.length > 1 && (
-              <div className="flex gap-2 overflow-x-auto pb-1">
+              <div className="flex w-full min-w-0 max-w-full gap-2 overflow-x-auto overscroll-x-contain pb-1 [-webkit-overflow-scrolling:touch]">
                 {product.image_urls.map((url, i) => (
                   <button
                     key={i}
                     type="button"
                     onClick={() => setSelectedImage(i)}
-                    className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border bg-surface p-1 sm:h-16 sm:w-16 ${
+                    className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-lg border bg-surface sm:h-16 sm:w-16 ${
                       i === selectedImage
                         ? "border-accent"
                         : "border-border"
                     }`}
                   >
-                    <img
-                      src={url}
-                      alt=""
-                      className="h-auto w-auto max-h-full max-w-full object-contain"
-                    />
+                    <span className="absolute inset-0 flex min-h-0 min-w-0 items-center justify-center p-1">
+                      <img
+                        src={url}
+                        alt=""
+                        className="max-h-full max-w-full object-contain object-center"
+                        decoding="async"
+                      />
+                    </span>
                   </button>
                 ))}
               </div>
@@ -185,8 +192,8 @@ export default function ProductoPage() {
         </ScrollReveal>
 
         {/* Info */}
-        <ScrollReveal direction="right">
-          <div>
+        <ScrollReveal direction="up">
+          <div className="min-w-0">
             <Link
               href={`/catalogo/${encodeURIComponent(product.category)}`}
               className="text-xs text-muted hover:text-accent sm:text-sm"
