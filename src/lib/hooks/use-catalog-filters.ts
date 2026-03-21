@@ -57,14 +57,24 @@ export function useCatalogFilters(initialCategory?: string) {
   const fetchId = useRef(0);
 
   const page = filters.page ?? 1;
+  const skipNextEffect = useRef(false);
 
   useEffect(() => {
+    // Skip effect when loadMore just updated the URL — products are already appended
+    if (skipNextEffect.current) {
+      skipNextEffect.current = false;
+      return;
+    }
+
     const id = ++fetchId.current;
     setLoading(true);
 
+    // When landing on a URL with page > 1, fetch all products up to that page
+    const effectiveLimit = page > 1 ? page * LIMIT : LIMIT;
+
     const apiParams: Record<string, unknown> = {
-      limit: LIMIT,
-      offset: (page - 1) * LIMIT,
+      limit: effectiveLimit,
+      offset: 0,
     };
     if (effectiveCategory) apiParams.category = effectiveCategory;
     if (filters.search) apiParams.search = filters.search;
@@ -141,7 +151,8 @@ export function useCatalogFilters(initialCategory?: string) {
         setProducts((prev) => [...prev, ...res.products]);
         setTotal(res.total);
         setHasMore(res.has_more);
-        // Update page in URL without scroll
+        // Update page in URL without scroll — skip the next effect to avoid re-fetching
+        skipNextEffect.current = true;
         const params = new URLSearchParams(searchParams.toString());
         params.set("page", String(nextPage));
         router.replace(`${pathname}?${params.toString()}`, { scroll: false });
