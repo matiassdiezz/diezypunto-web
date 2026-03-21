@@ -22,9 +22,8 @@ export default function FeaturedProducts() {
   const [aiTitle, setAiTitle] = useState("");
 
   useEffect(() => {
-    fetch("/api/top-picks")
-      .then((r) => r.json())
-      .then((data) => setFeatured(data.products || []))
+    listProducts({ limit: 8 })
+      .then((res) => setFeatured(res.products))
       .catch(() => {});
 
     fetch("/api/ai-picks")
