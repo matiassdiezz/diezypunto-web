@@ -55,7 +55,7 @@ function LoginContent() {
               <p className="text-lg font-medium text-foreground">{errorMsg}</p>
               <a
                 href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "541162345062"}`}
-                className="mt-2 text-sm text-accent hover:underline"
+                className="mt-2 inline-block py-2 text-sm text-accent hover:underline"
               >
                 Contactar por WhatsApp
               </a>
@@ -100,7 +100,7 @@ function LoginContent() {
           ¿No tenes el link?{" "}
           <a
             href={`https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_PHONE || "541162345062"}`}
-            className="text-accent hover:underline"
+            className="inline-block py-2 text-accent hover:underline"
           >
             Contacta a Diezypunto
           </a>

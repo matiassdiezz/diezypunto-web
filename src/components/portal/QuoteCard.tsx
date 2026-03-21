@@ -51,14 +51,14 @@ export default function QuoteCard({
           <p className="text-xs text-muted">{date}</p>
         </div>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3">
         {itemCount != null && (
-          <span className="text-xs text-muted">
+          <span className="hidden text-xs text-muted sm:inline">
             {itemCount} item{itemCount !== 1 ? "s" : ""}
           </span>
         )}
         {total != null && (
-          <span className="text-sm font-medium">
+          <span className="text-xs font-medium sm:text-sm">
             ${total.toLocaleString("es-AR")}
           </span>
         )}

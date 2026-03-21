@@ -152,8 +152,8 @@ export default function OrderDetailPage() {
         <ArrowLeft className="h-4 w-4" /> Pedidos
       </Link>
 
-      <div className="rounded-xl border border-border bg-white p-6">
-        <div className="flex items-start justify-between">
+      <div className="rounded-xl border border-border bg-white p-4 sm:p-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <h1 className="text-xl font-bold text-foreground">{id}</h1>
             {description && (
@@ -161,12 +161,12 @@ export default function OrderDetailPage() {
             )}
             <p className="mt-1 text-sm text-muted">{date}</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             {items.length > 0 && (
               <button
                 onClick={handleRepeatOrder}
                 disabled={repeating}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-surface disabled:opacity-50"
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-border px-3 py-2.5 text-xs font-medium text-foreground transition-colors hover:bg-surface disabled:opacity-50 sm:min-h-0 sm:py-1.5"
               >
                 {repeating ? (
                   <SpinnerGap className="h-4 w-4 animate-spin" />
@@ -209,7 +209,8 @@ export default function OrderDetailPage() {
             <h2 className="mb-3 text-sm font-semibold uppercase text-muted">
               Items
             </h2>
-            <div className="overflow-x-auto">
+            {/* Desktop table */}
+            <div className="hidden overflow-x-auto sm:block">
               <table className="w-full border-collapse">
                 <thead>
                   <tr>
@@ -232,6 +233,19 @@ export default function OrderDetailPage() {
                   ))}
                 </tbody>
               </table>
+            </div>
+            {/* Mobile cards */}
+            <div className="space-y-3 sm:hidden">
+              {items.map((item) => (
+                <div key={item.sku} className="rounded-lg border border-border p-3">
+                  <p className="text-sm font-medium">{item.product_name}</p>
+                  <p className="mt-0.5 text-xs text-muted">{item.sku}</p>
+                  <div className="mt-2 flex justify-between text-sm">
+                    <span className="text-muted">{item.quantity} × ${(item.unit_price || 0).toLocaleString("es-AR")}</span>
+                    <span className="font-medium">${((item.quantity || 0) * (item.unit_price || 0)).toLocaleString("es-AR")}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ) : order.body ? (

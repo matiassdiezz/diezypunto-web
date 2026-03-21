@@ -17,7 +17,7 @@ export default function DashboardSummary({
   className = "",
 }: DashboardSummaryProps) {
   return (
-    <div className={`rounded-xl border border-border bg-white p-6 ${className}`}>
+    <div className={`rounded-xl border border-border bg-white p-4 sm:p-6 ${className}`}>
       <h2 className="text-lg font-bold text-foreground">Resumen</h2>
 
       <div className="mt-5 space-y-4">
@@ -54,7 +54,7 @@ export default function DashboardSummary({
 
       <div className="mt-6 rounded-lg bg-surface p-4">
         <p className="text-sm text-muted">Total en curso</p>
-        <p className="text-2xl font-bold text-foreground">
+        <p className="text-xl font-bold text-foreground sm:text-2xl">
           ${(activeTotal || 0).toLocaleString("es-AR")}
         </p>
       </div>

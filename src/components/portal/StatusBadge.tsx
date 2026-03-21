@@ -20,7 +20,7 @@ export default function StatusBadge({ status }: { status: string }) {
 
   return (
     <span
-      className={`rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider ${config.className}`}
+      className={`whitespace-nowrap rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide ${config.className}`}
     >
       {config.label}
     </span>

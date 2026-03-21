@@ -137,8 +137,8 @@ export default function QuoteDetailPage() {
         <ArrowLeft className="h-4 w-4" /> Presupuestos
       </Link>
 
-      <div className="rounded-xl border border-border bg-white p-6">
-        <div className="flex items-start justify-between">
+      <div className="rounded-xl border border-border bg-white p-4 sm:p-6">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <h1 className="text-xl font-bold text-foreground">{id}</h1>
             {description && (
@@ -146,12 +146,12 @@ export default function QuoteDetailPage() {
             )}
             <p className="mt-1 text-sm text-muted">{date}</p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             {items.length > 0 && (
               <button
                 onClick={handleDuplicate}
                 disabled={duplicating}
-                className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-surface disabled:opacity-50"
+                className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-border px-3 py-2.5 text-xs font-medium text-foreground transition-colors hover:bg-surface disabled:opacity-50 sm:min-h-0 sm:py-1.5"
               >
                 {duplicating ? (
                   <SpinnerGap className="h-4 w-4 animate-spin" />
@@ -165,7 +165,7 @@ export default function QuoteDetailPage() {
               onClick={() =>
                 exportQuotePdf({ id, date, status, total, description, notes, items })
               }
-              className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-surface"
+              className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-border px-3 py-2.5 text-xs font-medium text-foreground transition-colors hover:bg-surface sm:min-h-0 sm:py-1.5"
             >
               <FilePdf className="h-4 w-4" />
               Exportar PDF
@@ -195,7 +195,8 @@ export default function QuoteDetailPage() {
             <h2 className="mb-3 text-sm font-semibold uppercase text-muted">
               Items
             </h2>
-            <div className="overflow-x-auto">
+            {/* Desktop table */}
+            <div className="hidden overflow-x-auto sm:block">
               <table className="w-full border-collapse">
                 <thead>
                   <tr>
@@ -219,6 +220,19 @@ export default function QuoteDetailPage() {
                 </tbody>
               </table>
             </div>
+            {/* Mobile cards */}
+            <div className="space-y-3 sm:hidden">
+              {items.map((item) => (
+                <div key={item.sku} className="rounded-lg border border-border p-3">
+                  <p className="text-sm font-medium">{item.product_name}</p>
+                  <p className="mt-0.5 text-xs text-muted">{item.sku}</p>
+                  <div className="mt-2 flex justify-between text-sm">
+                    <span className="text-muted">{item.quantity} × ${(item.unit_price || 0).toLocaleString("es-AR")}</span>
+                    <span className="font-medium">${((item.quantity || 0) * (item.unit_price || 0)).toLocaleString("es-AR")}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         ) : quote.body ? (
           <div className="mt-6">
@@ -226,9 +240,10 @@ export default function QuoteDetailPage() {
               Items
             </h2>
             <div
-              className="prose prose-sm max-w-none text-foreground [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-border [&_th]:bg-surface [&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_th]:text-xs [&_th]:font-medium [&_th]:uppercase [&_th]:text-muted [&_td]:border [&_td]:border-border [&_td]:px-3 [&_td]:py-2 [&_td]:text-sm"
+              className="prose prose-sm hidden max-w-none text-foreground sm:block [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-border [&_th]:bg-surface [&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_th]:text-xs [&_th]:font-medium [&_th]:uppercase [&_th]:text-muted [&_td]:border [&_td]:border-border [&_td]:px-3 [&_td]:py-2 [&_td]:text-sm"
               dangerouslySetInnerHTML={{ __html: markdownTableToHtml(quote.body) }}
             />
+            <p className="text-sm text-muted sm:hidden">Girá el dispositivo para ver la tabla completa</p>
           </div>
         ) : null}
       </div>

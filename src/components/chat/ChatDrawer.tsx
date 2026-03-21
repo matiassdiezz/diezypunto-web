@@ -780,15 +780,17 @@ function InlineProductCard({
         {productHref ? (
           <Link
             href={productHref}
-            className="group min-w-0 flex flex-1 items-center gap-3 rounded-xl outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-accent"
+            className="group flex min-w-0 flex-1 items-center gap-3 rounded-xl outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-accent"
             onClick={() => useChatStore.getState().close()}
             aria-label={`Ver ficha: ${title}`}
           >
             {productHeader}
           </Link>
         ) : (
-          <div className="min-w-0 flex flex-1 items-center gap-3">{productHeader}</div>
+          <div className="flex min-w-0 flex-1 items-center gap-3">{productHeader}</div>
         )}
+      </div>
+      <div className="mt-2.5 flex items-center justify-end gap-2">
         <div className="relative z-10 flex items-center rounded-xl border border-white/65 bg-white/75 backdrop-blur-sm">
           <button
             type="button"
@@ -797,7 +799,7 @@ function InlineProductCard({
               e.stopPropagation();
               bump(-1);
             }}
-            className="px-2 py-1.5 text-muted transition-colors hover:bg-white"
+            className="min-h-[44px] px-3 py-1.5 text-muted transition-colors hover:bg-white"
             aria-label="Disminuir cantidad"
             disabled={(qty || minQty) <= minQty}
           >
@@ -816,7 +818,7 @@ function InlineProductCard({
             }}
             onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
             onClick={(e) => e.stopPropagation()}
-            className="w-7 border-x border-white/65 bg-transparent py-1.5 text-center text-xs font-semibold tabular-nums outline-none"
+            className="w-8 border-x border-white/65 bg-transparent py-1.5 text-center text-sm font-semibold tabular-nums outline-none"
             aria-label="Cantidad"
           />
           <button
@@ -826,7 +828,7 @@ function InlineProductCard({
               e.stopPropagation();
               bump(1);
             }}
-            className="px-2 py-1.5 text-muted transition-colors hover:bg-white"
+            className="min-h-[44px] px-3 py-1.5 text-muted transition-colors hover:bg-white"
             aria-label="Aumentar cantidad"
           >
             <Plus className="h-3.5 w-3.5" />
@@ -840,10 +842,10 @@ function InlineProductCard({
             handleAdd();
           }}
           disabled={!product}
-          className="relative z-10 inline-flex shrink-0 items-center gap-1.5 rounded-xl border border-white/35 bg-accent px-3.5 py-2 text-xs font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-[0_8px_18px_rgba(89,198,242,0.35)] disabled:opacity-40"
+          className="relative z-10 inline-flex min-h-[44px] shrink-0 items-center gap-1.5 rounded-xl border border-white/35 bg-accent px-4 py-2 text-sm font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-[0_8px_18px_rgba(89,198,242,0.35)] disabled:opacity-40"
           title="Agregar al carrito"
         >
-          <Tote className="h-3.5 w-3.5" />
+          <Tote className="h-4 w-4" />
           Agregar
         </button>
       </div>

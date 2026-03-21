@@ -34,7 +34,7 @@ export default function ActiveOrdersCard({
   className = "",
 }: ActiveOrdersCardProps) {
   return (
-    <div className={`rounded-xl border border-border bg-white p-6 ${className}`}>
+    <div className={`rounded-xl border border-border bg-white p-4 sm:p-6 ${className}`}>
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-bold text-accent">Pedidos Activos</h2>
         {orders.length > 0 && (
@@ -53,7 +53,7 @@ export default function ActiveOrdersCard({
             <Link
               key={order.id}
               href={`/portal/pedidos/${order.id}`}
-              className="flex items-center gap-4 rounded-lg p-3 transition-colors hover:bg-surface/50"
+              className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-surface/50 sm:gap-4"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface">
                 <Truck className="h-5 w-5 text-muted" />
@@ -69,8 +69,8 @@ export default function ActiveOrdersCard({
                   )}
                 </p>
               </div>
-              <div className="flex shrink-0 items-center gap-3">
-                <span className="text-sm font-semibold text-foreground">
+              <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+                <span className="text-xs font-semibold text-foreground sm:text-sm">
                   ${(order.total || 0).toLocaleString("es-AR")}
                 </span>
                 <StatusBadge status={order.status} />

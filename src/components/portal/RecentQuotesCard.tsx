@@ -23,7 +23,7 @@ export default function RecentQuotesCard({
   className = "",
 }: RecentQuotesCardProps) {
   return (
-    <div className={`rounded-xl border border-border bg-white p-6 ${className}`}>
+    <div className={`rounded-xl border border-border bg-white p-4 sm:p-6 ${className}`}>
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-bold text-foreground">Presupuestos</h2>
         <Link
@@ -47,7 +47,7 @@ export default function RecentQuotesCard({
             <Link
               key={quote.id}
               href={`/portal/presupuestos/${quote.id}`}
-              className="flex items-center gap-3 rounded-lg p-3 transition-colors hover:bg-surface/50"
+              className="flex items-center gap-2 rounded-lg p-3 transition-colors hover:bg-surface/50 sm:gap-3"
             >
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-surface">
                 <FileText className="h-5 w-5 text-muted" />
@@ -60,11 +60,11 @@ export default function RecentQuotesCard({
                   {quote.id} · {formatDate(quote.date)}
                 </p>
               </div>
-              <span className="shrink-0 text-sm font-medium text-foreground">
+              <span className="shrink-0 text-xs font-medium text-foreground sm:text-sm">
                 ${(quote.total || 0).toLocaleString("es-AR")}
               </span>
               <StatusBadge status={quote.status} />
-              <CaretRight className="h-4 w-4 shrink-0 text-muted" />
+              <CaretRight className="hidden h-4 w-4 shrink-0 text-muted sm:block" />
             </Link>
           ))}
         </div>

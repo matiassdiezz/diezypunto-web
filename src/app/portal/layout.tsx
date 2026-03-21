@@ -13,7 +13,7 @@ export default function PortalLayout({ children }: { children: ReactNode }) {
       <PortalSidebar />
       <div className="flex flex-1 flex-col">
         <PortalHeader />
-        <div className="flex-1 p-6">{children}</div>
+        <div className="flex-1 p-4 sm:p-6">{children}</div>
       </div>
     </div>
   );

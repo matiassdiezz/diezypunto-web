@@ -40,7 +40,7 @@ export default function PedidosPage() {
 
       <div className="mt-6 space-y-2">
         {orders.length === 0 ? (
-          <div className="rounded-xl border border-dashed border-border bg-white p-12 text-center">
+          <div className="rounded-xl border border-dashed border-border bg-white p-6 text-center sm:p-12">
             <Package className="mx-auto h-10 w-10 text-muted/40" />
             <p className="mt-3 text-muted">
               Todavia no tenes pedidos.

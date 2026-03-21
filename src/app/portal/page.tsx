@@ -66,7 +66,7 @@ export default function PortalDashboard() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
         <ActiveOrdersCard
           orders={activeOrders}
           className="lg:col-span-2"
