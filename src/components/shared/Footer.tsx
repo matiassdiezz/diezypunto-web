@@ -60,6 +60,12 @@ export default function Footer() {
               >
                 Carrito
               </Link>
+              <Link
+                href="/quienes-somos"
+                className="text-sm text-muted hover:text-foreground"
+              >
+                Quiénes Somos
+              </Link>
             </div>
           </div>
           <div>

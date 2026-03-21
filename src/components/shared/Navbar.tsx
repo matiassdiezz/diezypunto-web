@@ -192,6 +192,12 @@ export default function Navbar() {
                 <SquaresFour className="h-4 w-4" />
                 Catálogo
               </Link>
+              <Link
+                href="/quienes-somos"
+                className="flex items-center rounded-full px-3 py-2 text-sm text-muted transition-colors hover:bg-surface hover:text-foreground"
+              >
+                Nosotros
+              </Link>
               {client && (
                 <Link
                   href="/portal"
@@ -325,6 +331,13 @@ export default function Navbar() {
                     className="rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-surface hover:text-foreground"
                   >
                     Ver todo el catálogo
+                  </Link>
+                  <Link
+                    href="/quienes-somos"
+                    onClick={() => setMobileOpen(false)}
+                    className="rounded-lg px-3 py-2.5 text-sm text-muted transition-colors hover:bg-surface hover:text-foreground"
+                  >
+                    Quiénes Somos
                   </Link>
                   <Link
                     href="/carrito"
