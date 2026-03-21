@@ -12,12 +12,13 @@ interface OrderItem {
 
 export interface Order {
   id: string;
+  filename?: string;
   quote_id?: string;
   date: string;
   status: string;
   total: number;
-  items: OrderItem[];
-  description: string;
+  items?: OrderItem[];
+  description?: string;
   notes?: string;
   estimated_delivery?: string;
   delivered_date?: string;
@@ -59,7 +60,7 @@ export default function ActiveOrdersCard({
               </div>
               <div className="min-w-0 flex-1">
                 <p className="truncate font-medium text-foreground">
-                  {order.description}
+                  {order.description || `Pedido ${order.id}`}
                 </p>
                 <p className="text-sm text-muted">
                   Pedido #{order.id}
@@ -70,7 +71,7 @@ export default function ActiveOrdersCard({
               </div>
               <div className="flex shrink-0 items-center gap-3">
                 <span className="text-sm font-semibold text-foreground">
-                  ${order.total.toLocaleString("es-AR")}
+                  ${(order.total || 0).toLocaleString("es-AR")}
                 </span>
                 <StatusBadge status={order.status} />
               </div>

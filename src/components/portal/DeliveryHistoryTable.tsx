@@ -52,7 +52,7 @@ export default function DeliveryHistoryTable({
                     {order.id}
                   </td>
                   <td className="py-3 text-sm text-muted">
-                    {order.description}
+                    {order.description || `Pedido ${order.id}`}
                   </td>
                   <td className="py-3 text-sm text-muted">
                     {order.delivered_date
@@ -60,7 +60,7 @@ export default function DeliveryHistoryTable({
                       : "—"}
                   </td>
                   <td className="py-3 text-right text-sm font-medium text-foreground">
-                    ${order.total.toLocaleString("es-AR")}
+                    ${(order.total || 0).toLocaleString("es-AR")}
                   </td>
                 </tr>
               ))}

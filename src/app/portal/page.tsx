@@ -10,6 +10,17 @@ import DeliveryHistoryTable from "@/components/portal/DeliveryHistoryTable";
 import type { Order } from "@/components/portal/ActiveOrdersCard";
 import type { Quote } from "@/components/portal/RecentQuotesCard";
 
+// Normalize vault-api responses: map filename→id, default missing fields
+function normalize<T extends Record<string, unknown>>(item: T): T {
+  return {
+    ...item,
+    id: item.id || item.filename || "",
+    total: Number(item.total ?? 0),
+    description: item.description || "",
+    items: item.items || [],
+  } as T;
+}
+
 export default function PortalDashboard() {
   const { client } = useAuth();
   const [quotes, setQuotes] = useState<Quote[]>([]);
@@ -22,8 +33,8 @@ export default function PortalDashboard() {
       fetch("/api/portal/orders").then((r) => (r.ok ? r.json() : [])),
     ])
       .then(([q, o]) => {
-        const qList = Array.isArray(q) ? q : q.quotes || [];
-        const oList = Array.isArray(o) ? o : o.orders || [];
+        const qList = (Array.isArray(q) ? q : q.quotes || []).map(normalize);
+        const oList = (Array.isArray(o) ? o : o.orders || []).map(normalize);
         setQuotes(qList);
         setOrders(oList);
       })

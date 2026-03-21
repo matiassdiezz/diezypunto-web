@@ -4,11 +4,12 @@ import StatusBadge from "./StatusBadge";
 
 export interface Quote {
   id: string;
+  filename?: string;
   date: string;
   status: string;
   total: number;
-  items: { product_name: string; sku: string; quantity: number; unit_price: number; category: string }[];
-  description: string;
+  items?: { product_name: string; sku: string; quantity: number; unit_price: number; category: string }[];
+  description?: string;
   notes?: string;
 }
 
@@ -53,14 +54,14 @@ export default function RecentQuotesCard({
               </div>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium text-foreground">
-                  {quote.description}
+                  {quote.description || `Presupuesto ${quote.id}`}
                 </p>
                 <p className="text-xs text-muted">
                   {quote.id} · {formatDate(quote.date)}
                 </p>
               </div>
               <span className="shrink-0 text-sm font-medium text-foreground">
-                ${quote.total.toLocaleString("es-AR")}
+                ${(quote.total || 0).toLocaleString("es-AR")}
               </span>
               <StatusBadge status={quote.status} />
               <CaretRight className="h-4 w-4 shrink-0 text-muted" />

@@ -226,8 +226,8 @@ export default function OrderDetailPage() {
                       <td className="border border-border px-3 py-2 text-sm">{item.product_name}</td>
                       <td className="border border-border px-3 py-2 text-sm text-muted">{item.sku}</td>
                       <td className="border border-border px-3 py-2 text-right text-sm">{item.quantity}</td>
-                      <td className="border border-border px-3 py-2 text-right text-sm">${item.unit_price.toLocaleString("es-AR")}</td>
-                      <td className="border border-border px-3 py-2 text-right text-sm font-medium">${(item.quantity * item.unit_price).toLocaleString("es-AR")}</td>
+                      <td className="border border-border px-3 py-2 text-right text-sm">${(item.unit_price || 0).toLocaleString("es-AR")}</td>
+                      <td className="border border-border px-3 py-2 text-right text-sm font-medium">${((item.quantity || 0) * (item.unit_price || 0)).toLocaleString("es-AR")}</td>
                     </tr>
                   ))}
                 </tbody>

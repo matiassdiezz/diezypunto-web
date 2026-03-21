@@ -55,7 +55,7 @@ export default function DashboardSummary({
       <div className="mt-6 rounded-lg bg-surface p-4">
         <p className="text-sm text-muted">Total en curso</p>
         <p className="text-2xl font-bold text-foreground">
-          ${activeTotal.toLocaleString("es-AR")}
+          ${(activeTotal || 0).toLocaleString("es-AR")}
         </p>
       </div>
 
