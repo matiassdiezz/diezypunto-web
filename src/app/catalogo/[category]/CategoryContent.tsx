@@ -11,6 +11,7 @@ import CatalogSidebar from "@/components/catalog/CatalogSidebar";
 import CatalogToolbar from "@/components/catalog/CatalogToolbar";
 import Breadcrumbs from "@/components/catalog/Breadcrumbs";
 import ScrollReveal from "@/components/shared/ScrollReveal";
+import TopPicksRow from "@/components/catalog/TopPicksRow";
 
 export default function CategoryContent() {
   const params = useParams();
@@ -79,6 +80,8 @@ export default function CategoryContent() {
               activeFilterCount={activeFilterCount}
               onOpenFilters={() => setSidebarOpen(true)}
             />
+
+            {!filters.search && <TopPicksRow category={category} />}
 
             <div className="mt-4 sm:mt-6">
               {loading && products.length === 0 ? (
