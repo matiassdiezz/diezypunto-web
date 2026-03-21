@@ -7,21 +7,6 @@ import type { ProductResult } from "@/lib/types";
 
 const LIMIT = 24;
 
-function useTopPickIds(category?: string) {
-  const [ids, setIds] = useState<Set<string>>(new Set());
-  useEffect(() => {
-    const params = category ? `?category=${encodeURIComponent(category)}` : "";
-    fetch(`/api/top-picks${params}`)
-      .then((r) => r.json())
-      .then((data) => {
-        const products = data.products || [];
-        setIds(new Set(products.map((p: { product_id: string }) => p.product_id)));
-      })
-      .catch(() => {});
-  }, [category]);
-  return ids;
-}
-
 export type SortOption =
   | "relevancia"
   | "price_asc"
@@ -64,7 +49,6 @@ export function useCatalogFilters(initialCategory?: string) {
   const filters = parseFilters(searchParams);
   // If on /catalogo/[category] route, use that as the category
   const effectiveCategory = initialCategory ?? filters.category;
-  const featuredIds = useTopPickIds(effectiveCategory);
 
   const [products, setProducts] = useState<ProductResult[]>([]);
   const [total, setTotal] = useState(0);
@@ -199,6 +183,5 @@ export function useCatalogFilters(initialCategory?: string) {
     clearFilters,
     loadMore,
     activeFilterCount,
-    featuredIds,
   };
 }

@@ -11,7 +11,6 @@ interface ProductGridProps {
   loading?: boolean;
   onLoadMore?: () => void;
   onClearFilters?: () => void;
-  featuredIds?: Set<string>;
 }
 
 export default function ProductGrid({
@@ -20,7 +19,6 @@ export default function ProductGrid({
   loading,
   onLoadMore,
   onClearFilters,
-  featuredIds,
 }: ProductGridProps) {
   if (products.length === 0) {
     return (
@@ -56,7 +54,7 @@ export default function ProductGrid({
     <div>
       <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
         {products.map((product) => (
-          <ProductCard key={product.product_id} product={product} featured={featuredIds?.has(product.product_id)} />
+          <ProductCard key={product.product_id} product={product} />
         ))}
       </div>
 
