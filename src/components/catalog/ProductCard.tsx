@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Tote, Leaf, Check, Minus, Plus } from "@phosphor-icons/react";
+import { Tote, Leaf, Check, Minus, Plus, Star } from "@phosphor-icons/react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
@@ -11,11 +11,13 @@ import SocialProofBadge from "@/components/catalog/SocialProofBadge";
 interface ProductCardProps {
   product: ProductResult;
   showScore?: boolean;
+  featured?: boolean;
 }
 
 export default function ProductCard({
   product,
   showScore = false,
+  featured = false,
 }: ProductCardProps) {
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
@@ -64,6 +66,11 @@ export default function ProductCard({
             </span>
           )}
           <SocialProofBadge product={product} />
+          {featured && (
+            <span className="flex items-center gap-1 rounded-full border border-accent/20 bg-accent/10 px-2 py-1 text-[10px] font-semibold text-accent shadow-sm backdrop-blur-sm sm:text-xs">
+              <Star className="h-3 w-3" weight="fill" /> Top
+            </span>
+          )}
         </div>
 
         {showScore && product.score > 0 && (

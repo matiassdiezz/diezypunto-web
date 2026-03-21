@@ -10,7 +10,6 @@ import CatalogSidebar from "@/components/catalog/CatalogSidebar";
 import CatalogToolbar from "@/components/catalog/CatalogToolbar";
 import Breadcrumbs from "@/components/catalog/Breadcrumbs";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import TopPicksRow from "@/components/catalog/TopPicksRow";
 
 export default function CatalogContent() {
   const {
@@ -23,6 +22,7 @@ export default function CatalogContent() {
     clearFilters,
     loadMore,
     activeFilterCount,
+    featuredIds,
   } = useCatalogFilters();
 
   const { query: aiQuery, isLoading: aiLoading, results: aiResults } = useSearchStore();
@@ -76,8 +76,6 @@ export default function CatalogContent() {
               onOpenFilters={() => setSidebarOpen(true)}
             />
 
-            {!filters.search && !filters.category && <TopPicksRow />}
-
             <div className="mt-4 sm:mt-6">
               {loading && products.length === 0 ? (
                 <p className="py-20 text-center text-muted">
@@ -90,6 +88,7 @@ export default function CatalogContent() {
                   loading={loading}
                   onLoadMore={loadMore}
                   onClearFilters={clearFilters}
+                  featuredIds={featuredIds}
                 />
               )}
             </div>
