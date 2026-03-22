@@ -20,6 +20,7 @@ export type EventType =
   | "cart_clear"
   | "cart_review"
   | "checkout_start"
+  | "checkout_transfer"
   | "ai_cost";
 
 export interface AnalyticsEvent {

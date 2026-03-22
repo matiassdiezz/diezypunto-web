@@ -9,10 +9,12 @@ import {
   SpinnerGap,
   X,
   ShoppingCart,
-  Receipt,
   ShieldCheck,
   MapPinLine,
   User,
+  Bank,
+  Check,
+  EnvelopeSimple,
 } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
@@ -83,14 +85,16 @@ const DEFAULT_BILLING_FORM: BillingFormState = {
 };
 
 const FIELD_CLASSNAME =
-  "w-full rounded-2xl border border-white/65 bg-white/88 px-4 py-3 text-sm text-foreground shadow-[0_6px_20px_rgba(15,23,42,0.05)] outline-none transition-all placeholder:text-muted/70 focus:border-accent focus:bg-white focus:shadow-[0_10px_28px_rgba(89,198,242,0.16)]";
+  "w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-foreground outline-none transition-all placeholder:text-muted/60 focus:border-accent focus:ring-2 focus:ring-accent/20";
 
-const LABEL_CLASSNAME = "text-[11px] font-semibold uppercase tracking-[0.18em] text-muted";
+const LABEL_CLASSNAME = "text-xs font-medium text-slate-600";
 
 export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();
   const { client } = useAuth();
   const [mpLoading, setMpLoading] = useState(false);
+  const [transferLoading, setTransferLoading] = useState(false);
+  const [transferSent, setTransferSent] = useState(false);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
   const [minQtyWarn, setMinQtyWarn] = useState<string | null>(null);
@@ -220,6 +224,56 @@ export default function QuoteBuilder() {
       alert("Error de conexion. Intenta de nuevo.");
     } finally {
       setMpLoading(false);
+    }
+  };
+
+  const handleTransfer = async () => {
+    const payableItems = items.filter((i) => i.product.price != null);
+    if (payableItems.length === 0) return;
+
+    const validationError = validateBillingForm();
+    if (validationError) {
+      setBillingError(validationError);
+      return;
+    }
+
+    setTransferLoading(true);
+    setBillingError(null);
+    try {
+      const res = await fetch("/api/checkout/transfer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          items: payableItems.map((i) => ({
+            id: i.id,
+            title: getItemLabel(i),
+            quantity: i.quantity,
+            unit_price: getItemUnitPrice(i) ?? i.product.price,
+          })),
+          billing: {
+            first_name: billingForm.firstName.trim(),
+            last_name: billingForm.lastName.trim(),
+            company: billingForm.company.trim(),
+            document_type: billingForm.documentType,
+            document_number: billingForm.documentNumber.trim(),
+            street_address: billingForm.streetAddress.trim(),
+            city: billingForm.city.trim(),
+            province: billingForm.province.trim(),
+            phone: billingForm.phone.trim(),
+            email: billingForm.email.trim(),
+          },
+        }),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        setTransferSent(true);
+      } else {
+        alert(data.error || "Error al enviar los datos");
+      }
+    } catch {
+      alert("Error de conexión. Intentá de nuevo.");
+    } finally {
+      setTransferLoading(false);
     }
   };
 
@@ -399,100 +453,103 @@ export default function QuoteBuilder() {
           onClick={(e) => { if (e.target === e.currentTarget) setCheckoutOpen(false); }}
         >
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className="relative max-h-[96vh] w-full max-w-6xl overflow-y-auto rounded-t-[28px] border border-white/60 bg-[linear-gradient(180deg,rgba(244,249,252,0.98)_0%,rgba(255,255,255,0.98)_22%,rgba(248,251,253,0.98)_100%)] p-3 shadow-[0_28px_80px_rgba(15,23,42,0.22)] sm:rounded-[28px] sm:p-3.5">
-            <div className="mb-3 flex items-center justify-between gap-4">
-              <div className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-accent shadow-[0_6px_18px_rgba(89,198,242,0.18)]">
-                <Receipt className="h-3.5 w-3.5" />
-                Checkout
+          <div className="relative max-h-[96vh] w-full max-w-4xl overflow-y-auto rounded-t-2xl bg-white p-5 shadow-2xl sm:rounded-2xl sm:p-6 lg:p-8">
+            {/* Header */}
+            <div className="mb-6 flex items-center justify-between">
+              <div>
+                <h2 className="text-lg font-bold text-foreground">Finalizar pedido</h2>
+                <p className="text-sm text-muted">Completá tus datos para continuar al pago.</p>
               </div>
               <button
                 onClick={() => setCheckoutOpen(false)}
-                className="shrink-0 rounded-2xl border border-white/65 bg-white/80 p-2 text-muted shadow-[0_6px_16px_rgba(15,23,42,0.06)] transition-colors hover:bg-white hover:text-foreground"
+                className="rounded-xl p-2 text-muted transition-colors hover:bg-slate-100 hover:text-foreground"
+                aria-label="Cerrar"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="grid gap-3 lg:grid-cols-[minmax(0,1.7fr)_300px]">
-              <div className="space-y-3">
-                <section className="rounded-[20px] border border-white/60 bg-white/75 p-3.5 shadow-[0_12px_34px_rgba(15,23,42,0.08)] backdrop-blur-sm">
-                  <div className="mb-2.5 flex items-center gap-2.5">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-accent/12 text-accent">
-                      <User className="h-4.5 w-4.5" />
+            <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
+              {/* Left: Form */}
+              <div className="space-y-6">
+                {/* Datos del comprador */}
+                <section>
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-accent/10 text-accent">
+                      <User className="h-4 w-4" />
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold">Datos del comprador</p>
-                      <p className="text-xs text-muted">Facturación y contacto.</p>
-                    </div>
+                    <h3 className="text-sm font-semibold">Datos del comprador</h3>
                   </div>
-                  <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-6">
-                    <label className="space-y-1.5 lg:col-span-3">
-                      <span className={LABEL_CLASSNAME}>Nombre</span>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className="space-y-1.5">
+                      <span className={LABEL_CLASSNAME}>Nombre <span className="text-red-400">*</span></span>
                       <input
                         value={billingForm.firstName}
                         onChange={(e) => updateBillingField("firstName", e.target.value)}
                         className={FIELD_CLASSNAME}
-                        placeholder="Nombre"
+                        placeholder="Juan"
                       />
                     </label>
-                    <label className="space-y-1.5 lg:col-span-3">
-                      <span className={LABEL_CLASSNAME}>Apellido</span>
+                    <label className="space-y-1.5">
+                      <span className={LABEL_CLASSNAME}>Apellido <span className="text-red-400">*</span></span>
                       <input
                         value={billingForm.lastName}
                         onChange={(e) => updateBillingField("lastName", e.target.value)}
                         className={FIELD_CLASSNAME}
-                        placeholder="Apellido"
+                        placeholder="Pérez"
                       />
                     </label>
-                    <label className="space-y-1.5 sm:col-span-2 lg:col-span-2">
-                      <span className={LABEL_CLASSNAME}>Nombre de la empresa</span>
+                    <label className="space-y-1.5">
+                      <span className={LABEL_CLASSNAME}>Empresa <span className="text-muted/50">(opcional)</span></span>
                       <input
                         value={billingForm.company}
                         onChange={(e) => updateBillingField("company", e.target.value)}
                         className={FIELD_CLASSNAME}
-                        placeholder="Opcional"
+                        placeholder="Nombre de la empresa"
                       />
                     </label>
-                    <label className="space-y-1.5 lg:col-span-2">
-                      <span className={LABEL_CLASSNAME}>Tipo de documento</span>
-                      <select
-                        value={billingForm.documentType}
-                        onChange={(e) =>
-                          updateBillingField(
-                            "documentType",
-                            e.target.value as BillingFormState["documentType"],
-                          )
-                        }
-                        className={FIELD_CLASSNAME}
-                      >
-                        {DOCUMENT_TYPES.map((type) => (
-                          <option key={type} value={type}>
-                            {type}
-                          </option>
-                        ))}
-                      </select>
-                    </label>
-                    <label className="space-y-1.5 lg:col-span-2">
-                      <span className={LABEL_CLASSNAME}>Número</span>
-                      <input
-                        value={billingForm.documentNumber}
-                        onChange={(e) => updateBillingField("documentNumber", e.target.value)}
-                        className={FIELD_CLASSNAME}
-                        placeholder="Ingresá tu CUIT o DNI"
-                      />
-                    </label>
-                    <label className="space-y-1.5 lg:col-span-2">
-                      <span className={LABEL_CLASSNAME}>Teléfono</span>
+                    <div className="grid grid-cols-[120px_1fr] gap-2">
+                      <label className="space-y-1.5">
+                        <span className={LABEL_CLASSNAME}>Documento <span className="text-red-400">*</span></span>
+                        <select
+                          value={billingForm.documentType}
+                          onChange={(e) =>
+                            updateBillingField(
+                              "documentType",
+                              e.target.value as BillingFormState["documentType"],
+                            )
+                          }
+                          className={FIELD_CLASSNAME}
+                        >
+                          {DOCUMENT_TYPES.map((type) => (
+                            <option key={type} value={type}>
+                              {type}
+                            </option>
+                          ))}
+                        </select>
+                      </label>
+                      <label className="space-y-1.5">
+                        <span className={LABEL_CLASSNAME}>&nbsp;</span>
+                        <input
+                          value={billingForm.documentNumber}
+                          onChange={(e) => updateBillingField("documentNumber", e.target.value)}
+                          className={FIELD_CLASSNAME}
+                          placeholder="Ej: 20-12345678-9"
+                        />
+                      </label>
+                    </div>
+                    <label className="space-y-1.5">
+                      <span className={LABEL_CLASSNAME}>Teléfono <span className="text-red-400">*</span></span>
                       <input
                         value={billingForm.phone}
                         onChange={(e) => updateBillingField("phone", e.target.value)}
                         className={FIELD_CLASSNAME}
-                        placeholder="Teléfono"
+                        placeholder="11 1234-5678"
                         type="tel"
                       />
                     </label>
-                    <label className="space-y-1.5 sm:col-span-2 lg:col-span-4">
-                      <span className={LABEL_CLASSNAME}>Mail</span>
+                    <label className="space-y-1.5">
+                      <span className={LABEL_CLASSNAME}>Email <span className="text-red-400">*</span></span>
                       <input
                         value={billingForm.email}
                         onChange={(e) => updateBillingField("email", e.target.value)}
@@ -504,28 +561,28 @@ export default function QuoteBuilder() {
                   </div>
                 </section>
 
-                <section className="rounded-[20px] border border-white/60 bg-white/75 p-3.5 shadow-[0_12px_34px_rgba(15,23,42,0.08)] backdrop-blur-sm">
-                  <div className="mb-2.5 flex items-center gap-2.5">
-                    <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-100 text-slate-700">
-                      <MapPinLine className="h-4.5 w-4.5" />
+                <hr className="border-slate-100" />
+
+                {/* Dirección de facturación */}
+                <section>
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
+                      <MapPinLine className="h-4 w-4" />
                     </div>
-                    <div>
-                      <p className="text-sm font-semibold">Dirección de facturación</p>
-                      <p className="text-xs text-muted">Operación y registro.</p>
-                    </div>
+                    <h3 className="text-sm font-semibold">Dirección de facturación</h3>
                   </div>
-                  <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
-                    <label className="space-y-1.5 sm:col-span-2 lg:col-span-2">
-                      <span className={LABEL_CLASSNAME}>Dirección de la calle</span>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <label className="space-y-1.5 sm:col-span-2">
+                      <span className={LABEL_CLASSNAME}>Dirección <span className="text-red-400">*</span></span>
                       <input
                         value={billingForm.streetAddress}
                         onChange={(e) => updateBillingField("streetAddress", e.target.value)}
                         className={FIELD_CLASSNAME}
-                        placeholder="Número de la casa y nombre de la calle"
+                        placeholder="Calle y número"
                       />
                     </label>
                     <label className="space-y-1.5">
-                      <span className={LABEL_CLASSNAME}>Ciudad</span>
+                      <span className={LABEL_CLASSNAME}>Ciudad <span className="text-red-400">*</span></span>
                       <input
                         value={billingForm.city}
                         onChange={(e) => updateBillingField("city", e.target.value)}
@@ -534,7 +591,7 @@ export default function QuoteBuilder() {
                       />
                     </label>
                     <label className="space-y-1.5">
-                      <span className={LABEL_CLASSNAME}>Provincia</span>
+                      <span className={LABEL_CLASSNAME}>Provincia <span className="text-red-400">*</span></span>
                       <select
                         value={billingForm.province}
                         onChange={(e) => updateBillingField("province", e.target.value)}
@@ -548,132 +605,129 @@ export default function QuoteBuilder() {
                       </select>
                     </label>
                   </div>
-
-                  {billingError && (
-                    <div className="mt-3 rounded-[18px] border border-red-200 bg-[linear-gradient(135deg,rgba(254,242,242,0.98),rgba(255,255,255,0.98))] px-4 py-3 text-sm text-red-600 shadow-[0_10px_24px_rgba(239,68,68,0.08)]">
-                      {billingError}
-                    </div>
-                  )}
                 </section>
+
+                {billingError && (
+                  <div className="flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+                    <span className="shrink-0">!</span>
+                    {billingError}
+                  </div>
+                )}
               </div>
 
-              <div className="space-y-2.5">
-                <section className="rounded-[20px] border border-white/60 bg-[linear-gradient(160deg,rgba(10,132,184,0.08),rgba(255,255,255,0.94)_36%,rgba(255,255,255,0.98)_100%)] p-3.5 shadow-[0_14px_38px_rgba(15,23,42,0.1)]">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
-                      Resumen del pedido
-                    </p>
-                    <h3 className="mt-2 text-xl font-bold">
-                      ${total.toLocaleString("es-AR")}
-                    </h3>
-                    <p className="text-sm text-muted">Total estimado + IVA</p>
-                  </div>
-                  <div className="rounded-2xl border border-white/70 bg-white/85 px-3 py-2 text-right shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
-                    <p className="text-lg font-semibold">{items.length}</p>
-                    <p className="text-[11px] uppercase tracking-[0.14em] text-muted">productos</p>
-                  </div>
-                </div>
+              {/* Right: Summary + CTA */}
+              <div className="lg:sticky lg:top-0">
+                <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
+                  <h3 className="text-sm font-semibold text-foreground">Resumen del pedido</h3>
 
-                <div className="mt-2.5 rounded-[18px] border border-white/65 bg-white/82 p-3 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted">Unidades</span>
-                    <span className="font-medium">{totalQuantity}</span>
-                  </div>
-                  <div className="mt-2 flex items-center justify-between text-sm">
-                    <span className="text-muted">Pago</span>
-                    <span className="font-medium">Mercado Pago</span>
-                  </div>
-                  <div className="mt-2 flex items-center justify-between text-sm">
-                    <span className="text-muted">Facturación</span>
-                    <span className="font-medium">Paso previo obligatorio</span>
-                  </div>
-                </div>
-
-                <div className="mt-2.5 space-y-1.5">
-                  {items.slice(0, 2).map((item) => {
-                    const unitPrice = getItemUnitPrice(item);
-                    const subtotal = unitPrice ? unitPrice * item.quantity : null;
-                    return (
-                      <div
-                        key={item.id}
-                        className="rounded-[16px] border border-white/60 bg-white/78 px-3 py-2 shadow-[0_8px_20px_rgba(15,23,42,0.05)]"
-                      >
-                        <div className="flex items-start justify-between gap-3">
+                  {/* Items */}
+                  <div className="mt-4 space-y-2.5">
+                    {items.map((item) => {
+                      const unitPrice = getItemUnitPrice(item);
+                      const subtotal = unitPrice ? unitPrice * item.quantity : null;
+                      return (
+                        <div key={item.id} className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
-                            <p className="truncate text-sm font-medium">{item.product.title}</p>
-                            <p className="mt-0.5 text-xs text-muted">
-                              {item.quantity} u.
-                              {(item.color || item.personalization_method) &&
-                                ` · ${[item.color, item.personalization_method].filter(Boolean).join(" · ")}`}
+                            <p className="truncate text-sm">{item.product.title}</p>
+                            <p className="text-xs text-muted">
+                              {item.quantity} u. × ${unitPrice?.toLocaleString("es-AR") ?? "—"}
+                              {item.color && ` · ${item.color}`}
                             </p>
                           </div>
-                          <div className="text-right">
-                            <p className="text-sm font-semibold">
-                              {subtotal != null ? `$${subtotal.toLocaleString("es-AR")}` : "Consultar"}
-                            </p>
-                          </div>
+                          <p className="shrink-0 text-sm font-medium">
+                            {subtotal != null ? `$${subtotal.toLocaleString("es-AR")}` : "Consultar"}
+                          </p>
                         </div>
+                      );
+                    })}
+                  </div>
+
+                  <hr className="my-4 border-slate-200" />
+
+                  {/* Totals */}
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-muted">{items.length} {items.length === 1 ? "producto" : "productos"} · {totalQuantity} unidades</span>
+                    </div>
+                    <div className="flex items-baseline justify-between">
+                      <span className="font-medium">Total estimado</span>
+                      <div className="text-right">
+                        <span className="text-xl font-bold">${total.toLocaleString("es-AR")}</span>
+                        <span className="ml-1 text-xs text-muted">+ IVA</span>
                       </div>
-                    );
-                  })}
-                  {items.length > 2 && (
-                    <div className="rounded-[16px] border border-dashed border-white/65 bg-white/55 px-3 py-2 text-sm text-muted">
-                      + {items.length - 2} producto{items.length - 2 !== 1 ? "s" : ""} más en el pedido
+                    </div>
+                  </div>
+
+                  {/* Payment options */}
+                  {total > 0 && !hasItemsWithoutPrice && !transferSent && (
+                    <div className="mt-5 space-y-2.5">
+                      <p className="text-xs font-medium text-slate-500">Elegí cómo pagar</p>
+                      <button
+                        onClick={handleMercadoPago}
+                        disabled={mpLoading || transferLoading}
+                        className="flex w-full items-center gap-3 rounded-xl bg-accent px-4 py-3 text-left text-white transition-all hover:bg-accent-hover hover:shadow-lg disabled:opacity-60"
+                      >
+                        {mpLoading ? (
+                          <SpinnerGap className="h-5 w-5 shrink-0 animate-spin" />
+                        ) : (
+                          <CreditCard className="h-5 w-5 shrink-0" />
+                        )}
+                        <div>
+                          <p className="text-sm font-semibold">Mercado Pago</p>
+                          <p className="text-xs text-white/70">Tarjeta, transferencia o efectivo</p>
+                        </div>
+                      </button>
+                      <button
+                        onClick={handleTransfer}
+                        disabled={mpLoading || transferLoading}
+                        className="flex w-full items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-left transition-all hover:border-slate-300 hover:bg-slate-50 disabled:opacity-60"
+                      >
+                        {transferLoading ? (
+                          <SpinnerGap className="h-5 w-5 shrink-0 animate-spin text-slate-600" />
+                        ) : (
+                          <Bank className="h-5 w-5 shrink-0 text-slate-600" />
+                        )}
+                        <div>
+                          <p className="text-sm font-semibold text-foreground">Transferencia bancaria</p>
+                          <p className="text-xs text-muted">Te enviamos los datos por mail</p>
+                        </div>
+                      </button>
                     </div>
                   )}
-                </div>
 
-                <div className="mt-2.5 rounded-[18px] border border-emerald-100 bg-[linear-gradient(135deg,rgba(236,253,245,0.96),rgba(255,255,255,0.96))] p-3 text-sm text-slate-700 shadow-[0_10px_24px_rgba(16,185,129,0.08)]">
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex items-start gap-3">
-                      <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
-                        <ShieldCheck className="h-4.5 w-4.5" />
+                  {/* Transfer success */}
+                  {transferSent && (
+                    <div className="mt-5 rounded-xl border border-emerald-200 bg-emerald-50 p-4">
+                      <div className="flex items-center gap-2">
+                        <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-emerald-100">
+                          <Check className="h-4 w-4 text-emerald-600" />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-emerald-900">Datos enviados</p>
+                          <p className="text-xs text-emerald-700">
+                            Revisá tu mail con los datos para transferir.
+                          </p>
+                        </div>
                       </div>
-                      <div>
-                        <p className="font-semibold text-slate-900">Pago seguro</p>
-                        <p className="mt-1 leading-6 text-muted">
-                          Después de completar estos datos, seguís a Mercado Pago para terminar la operación.
-                        </p>
+                      <div className="mt-3 flex items-center gap-1.5 text-xs text-emerald-600">
+                        <EnvelopeSimple className="h-3.5 w-3.5" />
+                        <span>{billingForm.email}</span>
                       </div>
                     </div>
-                  </div>
-                </div>
-                </section>
+                  )}
 
-                <section className="space-y-2.5 rounded-[20px] border border-white/60 bg-white/75 p-3.5 shadow-[0_12px_34px_rgba(15,23,42,0.08)] backdrop-blur-sm">
-                  <div className="mb-1">
-                    <p className="text-sm font-semibold">Continuar con el pago</p>
-                    <p className="text-xs text-muted">Revisá los datos y seguí al cobro.</p>
-                  </div>
-                {total > 0 && !hasItemsWithoutPrice && (
-                  <button
-                    onClick={handleMercadoPago}
-                    disabled={mpLoading}
-                    className="flex w-full items-center gap-3 rounded-[18px] border border-white/40 bg-accent px-4 py-3 text-left text-white shadow-[0_16px_34px_rgba(89,198,242,0.3)] transition-all hover:bg-accent-hover hover:shadow-[0_20px_38px_rgba(89,198,242,0.36)] disabled:opacity-60"
-                  >
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm">
-                      {mpLoading ? (
-                        <SpinnerGap className="h-5 w-5 animate-spin text-white" />
-                      ) : (
-                        <CreditCard className="h-5 w-5 text-white" />
-                      )}
-                    </div>
-                    <div>
-                      <p className="font-semibold">Continuar a Mercado Pago</p>
-                      <p className="text-sm text-white/80">Tarjeta, transferencia o efectivo</p>
-                    </div>
-                  </button>
-                )}
-
-                {client && (
-                  <div className="rounded-[18px] border border-white/60 bg-white/78 p-3 shadow-[0_10px_26px_rgba(15,23,42,0.08)] transition-all hover:border-accent hover:bg-accent/5">
-                    <div className="flex items-center gap-3">
+                  {client && (
+                    <div className="mt-2.5">
                       <SaveQuoteButton />
                     </div>
+                  )}
+
+                  {/* Trust signal */}
+                  <div className="mt-4 flex items-start gap-2 text-xs text-muted">
+                    <ShieldCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-emerald-500" />
+                    <p>Todas las transacciones son seguras y tus datos están protegidos.</p>
                   </div>
-                )}
-                </section>
+                </div>
               </div>
             </div>
           </div>
