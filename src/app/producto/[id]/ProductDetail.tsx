@@ -16,7 +16,6 @@ import ProductCard from "@/components/catalog/ProductCard";
 import QuantityNudge from "@/components/catalog/QuantityNudge";
 import PersonalizationCard from "@/components/catalog/PersonalizationCard";
 import SocialProofBadge from "@/components/catalog/SocialProofBadge";
-import AlternativeBadge from "@/components/catalog/AlternativeBadge";
 import TierComparison from "@/components/catalog/TierComparison";
 import ShareButton from "@/components/shared/ShareButtons";
 import { buildProductShareUrl, buildProductWhatsAppMessage } from "@/lib/share";
@@ -182,9 +181,6 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                 {product.description}
               </p>
             )}
-
-            {/* Alternative badge (eco/premium) */}
-            <AlternativeBadge product={product} />
 
             {/* Price */}
             <div className="relative mt-4 rounded-xl border border-border bg-card p-4 sm:mt-6 sm:rounded-2xl sm:p-6">
