@@ -19,6 +19,8 @@ const PROVIDER_UPLIFTS: Record<string, number> = {
   zecat: 1.08,
 };
 
+const DISPLAY_UPLIFT = 1.2;
+
 // --- Volume classification per category ---
 
 export type VolumeClass = "masivo" | "intermedio" | "premium";
@@ -234,26 +236,32 @@ export function calculatePricing(
   const personalizationPrice = getPersonalizationPrice(category);
   const uplift = PROVIDER_UPLIFTS[providerKey] ?? 1;
 
+  function applyDisplayUplift(value: number): number {
+    return roundCurrency(value * DISPLAY_UPLIFT);
+  }
+
   const pricedTiers: PricedTier[] = providerKey === "zecat"
     ? tiers.map((tier) => {
       const firstTierMarkup = tiers[0]?.markup || 1;
       const unitPrice = roundCurrency(listPrice * (tier.markup / firstTierMarkup));
+      const finalPrice = roundCurrency((unitPrice * uplift) + personalizationPrice);
       return {
         label: tier.label,
         min: tier.min,
         max: tier.max,
         unitPrice,
-        finalPrice: roundCurrency((unitPrice * uplift) + personalizationPrice),
+        finalPrice: applyDisplayUplift(finalPrice),
       };
     })
     : tiers.map((tier) => {
       const unitPrice = roundCurrency(listPrice * factorDescuento * tier.markup);
+      const finalPrice = roundCurrency(unitPrice + personalizationPrice);
       return {
         label: tier.label,
         min: tier.min,
         max: tier.max,
         unitPrice,
-        finalPrice: roundCurrency(unitPrice + personalizationPrice),
+        finalPrice: applyDisplayUplift(finalPrice),
       };
     });
 

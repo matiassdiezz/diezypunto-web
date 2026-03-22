@@ -406,6 +406,11 @@ function hashCode(str: string): number {
   return hash;
 }
 
+const PRICE_OVERRIDES: Record<string, { firstTierFinalPrice: number }> = {
+  // Official visible price at diezypunto.com.ar as of 2026-03-22.
+  promo_220266: { firstTierFinalPrice: 1429279.91 },
+};
+
 function toProductResult(p: CatalogProduct, score: number): ProductResult {
   const provider = p.source || "zecat";
   // Zecat imports already carry the first-tier unit price in `price_max`.
@@ -429,6 +434,18 @@ function toProductResult(p: CatalogProduct, score: number): ProductResult {
     personalizationPrice = pricing.personalizationPrice;
     // Display price = first tier final price (most common / lowest quantity)
     displayPrice = pricing.tiers[0].finalPrice;
+
+    const override = PRICE_OVERRIDES[p.product_id];
+    if (override && priceTiers?.[0]?.finalPrice) {
+      const scale = override.firstTierFinalPrice / priceTiers[0].finalPrice;
+      priceTiers = priceTiers.map((tier) => ({
+        ...tier,
+        unitPrice: Math.round(tier.unitPrice * scale * 100) / 100,
+        finalPrice: Math.round(tier.finalPrice * scale * 100) / 100,
+      }));
+      priceTiers[0].finalPrice = override.firstTierFinalPrice;
+      displayPrice = override.firstTierFinalPrice;
+    }
   }
 
   return {
