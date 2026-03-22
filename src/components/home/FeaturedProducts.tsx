@@ -21,10 +21,37 @@ export default function FeaturedProducts() {
   const [aiPicks, setAiPicks] = useState<PickWithProduct[]>([]);
   const [aiTitle, setAiTitle] = useState("");
 
+  // Martín's curated trending products (from diezypunto.com.ar)
+  const FEATURED_IDS = [
+    "3773",        // Botella ALU c/handle color (≈ Mallow)
+    "4561",        // Botella PENGUIN
+    "4912",        // Cooler Tote Mars
+    "promo_6149",  // Notes Plain Board Color
+    "promo_201070",// Notes PU Plain Board Color
+    "promo_263483",// Contigo vaso térmico Westloop 3.0
+    "promo_202309",// Botella de Aluminio Explorer
+  ];
+
   useEffect(() => {
-    listProducts({ limit: 8 })
-      .then((res) => setFeatured(res.products))
-      .catch(() => {});
+    Promise.all(FEATURED_IDS.map((id) => getProduct(id).catch(() => null)))
+      .then((results) => {
+        const valid = results.filter(Boolean) as ProductResult[];
+        // Pad with random products if we got fewer than 8
+        if (valid.length < 8) {
+          listProducts({ limit: 8 - valid.length })
+            .then((res) => {
+              const ids = new Set(valid.map((p) => p.product_id));
+              const extra = res.products.filter((p) => !ids.has(p.product_id));
+              setFeatured([...valid, ...extra].slice(0, 8));
+            })
+            .catch(() => setFeatured(valid));
+        } else {
+          setFeatured(valid.slice(0, 8));
+        }
+      })
+      .catch(() => {
+        listProducts({ limit: 8 }).then((res) => setFeatured(res.products)).catch(() => {});
+      });
 
     fetch("/api/ai-picks")
       .then((r) => r.json())
@@ -55,7 +82,7 @@ export default function FeaturedProducts() {
             Nuestros productos
           </h2>
           <p className="mt-2 text-center text-muted">
-            Los mas pedidos y las recomendaciones de nuestra IA
+            Los más pedidos y las recomendaciones de nuestra IA
           </p>
         </ScrollReveal>
 
