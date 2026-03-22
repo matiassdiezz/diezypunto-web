@@ -40,7 +40,7 @@ export const useQuoteStore = create<QuoteState>()(
             lastAdded: { product, quantity },
           });
         } else {
-          set({ items: [...items, { product, quantity, color }], lastAdded: { product, quantity } });
+          set({ items: [...items, { id: product.product_id, product, quantity, color }], lastAdded: { product, quantity } });
         }
         const newItems = get().items;
         trackEvent("cart_add", {
