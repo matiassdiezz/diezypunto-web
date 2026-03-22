@@ -1,0 +1,274 @@
+{
+  "hero": {
+    "badge": "Merch corporativo AI",
+    "headline": "Mati es un boludo",
+    "headlineAccent": "personalizado",
+    "subtitle": "El catalogo mas completo de Argentina para tu marca",
+    "valuePoints": [
+      {
+        "icon": "Package",
+        "text": "+1,400 productos"
+      },
+      {
+        "icon": "PaintBrush",
+        "text": "Serigrafia, bordado, laser y mas"
+      },
+      {
+        "icon": "Truck",
+        "text": "Envio a todo el pais"
+      },
+      {
+        "icon": "Trophy",
+        "text": "+10 anos de experiencia"
+      }
+    ],
+    "ctaCatalog": "Explorar catalogo",
+    "ctaAI": "Arma tu pedido con AI",
+    "heroImage": "/hero-products.jpg",
+    "heroImageAlt": "Productos de merchandising corporativo: mochila, remera, taza, botella termica, bolsa y cuaderno"
+  },
+  "howItWorks": {
+    "title": "Como funciona",
+    "subtitle": "Del pedido a tu oficina en 4 pasos",
+    "steps": [
+      {
+        "number": "1",
+        "title": "Busca",
+        "description": "Describi lo que necesitas o explora el catalogo"
+      },
+      {
+        "number": "2",
+        "title": "Elegi",
+        "description": "Compara opciones y armalas en tu carrito"
+      },
+      {
+        "number": "3",
+        "title": "Compra",
+        "description": "Paga con Mercado Pago o consulta por Telegram"
+      },
+      {
+        "number": "4",
+        "title": "Recibi",
+        "description": "Coordinamos produccion y entrega"
+      }
+    ]
+  },
+  "ctaBanner": {
+    "title": "Tenes un proyecto en mente?",
+    "subtitle": "Contanos que necesitas y te armamos una propuesta personalizada",
+    "ctaTelegram": "Hablar por Telegram",
+    "ctaCatalog": "Explorar catalogo",
+    "ctaAI": "Armar pedido con AI"
+  },
+  "testimonials": {
+    "title": "Reseñas",
+    "subtitle": "Lo que dicen nuestros clientes",
+    "stats": [
+      {
+        "value": "+500",
+        "label": "Empresas atendidas"
+      },
+      {
+        "value": "+50,000",
+        "label": "Productos entregados"
+      },
+      {
+        "value": "4.9",
+        "label": "Estrellas en Google",
+        "icon": true
+      }
+    ],
+    "items": [
+      {
+        "quote": "Excelente calidad y atencion. Nos armaron los kits de bienvenida en tiempo record para el onboarding de 200 personas.",
+        "name": "Carolina M.",
+        "role": "HR Manager",
+        "company": "Empresa de tecnologia"
+      },
+      {
+        "quote": "Llevamos 3 anos trabajando con ellos para todos nuestros eventos. Siempre cumplen con los plazos y la personalizacion es impecable.",
+        "name": "Martin R.",
+        "role": "Director de Marketing",
+        "company": "Consultora financiera"
+      },
+      {
+        "quote": "Nos ayudaron a encontrar opciones eco-friendly para nuestra campana de sustentabilidad. El catalogo es enorme.",
+        "name": "Lucia G.",
+        "role": "Brand Manager",
+        "company": "Empresa de consumo masivo"
+      }
+    ]
+  },
+  "eco": {
+    "title": "Comprometidos con el medio ambiente",
+    "description": "Productos eco-friendly fabricados con materiales reciclados, bambu, corcho y algodon organico.",
+    "ctaText": "Ver productos eco",
+    "image": "/eco-forest.jpg",
+    "imageAlt": "Vista aerea de un bosque"
+  },
+  "faq": {
+    "title": "Preguntas frecuentes",
+    "items": [
+      {
+        "q": "Cual es la cantidad minima de pedido?",
+        "a": "Podes pedir desde 1 unidad por producto. Para personalización con tu logo, consultanos las opciones segun la cantidad."
+      },
+      {
+        "q": "Cuanto demora la entrega?",
+        "a": "En promedio, entre 7 y 15 dias habiles una vez aprobado el diseno."
+      },
+      {
+        "q": "Que metodos de personalizacion ofrecen?",
+        "a": "Serigrafia, bordado, grabado laser, sublimacion, impresion UV, tampografia y mas."
+      },
+      {
+        "q": "Hacen envios a todo el pais?",
+        "a": "Si, realizamos envios a todo el territorio argentino."
+      },
+      {
+        "q": "Puedo ver una muestra antes de comprar?",
+        "a": "Si, podemos enviar muestras fisicas o mockups digitales con tu logo."
+      },
+      {
+        "q": "Como funciona la compra?",
+        "a": "Agrega productos al carrito, indica cantidades y paga con Mercado Pago o consulta por Telegram."
+      }
+    ]
+  },
+  "ctaFinal": {
+    "title": "Listo para armar tu pedido?",
+    "subtitle": "Explora el catalogo o deja que nuestra IA te ayude a encontrar lo que necesitas",
+    "note": "Respuesta en menos de 24hs. Sin compromiso.",
+    "ctaCatalog": "Explorar catalogo",
+    "ctaAI": "Arma tu pedido con AI"
+  },
+  "logoBar": {
+    "title": "Empresas que confian en nosotros",
+    "row1": [
+      {
+        "src": "/logos/Disney.webp",
+        "alt": "Disney"
+      },
+      {
+        "src": "/logos/toyota.webp",
+        "alt": "Toyota"
+      },
+      {
+        "src": "/logos/sony.webp",
+        "alt": "Sony"
+      },
+      {
+        "src": "/logos/Nestle.webp",
+        "alt": "Nestle"
+      },
+      {
+        "src": "/logos/globant.webp",
+        "alt": "Globant"
+      },
+      {
+        "src": "/logos/ypf.webp",
+        "alt": "YPF"
+      },
+      {
+        "src": "/logos/espn.webp",
+        "alt": "ESPN"
+      },
+      {
+        "src": "/logos/loreal.webp",
+        "alt": "L'Oreal"
+      },
+      {
+        "src": "/logos/quilmes.webp",
+        "alt": "Quilmes"
+      },
+      {
+        "src": "/logos/amex.webp",
+        "alt": "American Express"
+      },
+      {
+        "src": "/logos/Honda.webp",
+        "alt": "Honda"
+      },
+      {
+        "src": "/logos/afa.webp",
+        "alt": "AFA"
+      }
+    ],
+    "row2": [
+      {
+        "src": "/logos/carrefour.webp",
+        "alt": "Carrefour"
+      },
+      {
+        "src": "/logos/lexus.webp",
+        "alt": "Lexus"
+      },
+      {
+        "src": "/logos/pedidos-ya.webp",
+        "alt": "PedidosYa"
+      },
+      {
+        "src": "/logos/osde.webp",
+        "alt": "OSDE"
+      },
+      {
+        "src": "/logos/western-union.webp",
+        "alt": "Western Union"
+      },
+      {
+        "src": "/logos/axion.webp",
+        "alt": "Axion"
+      },
+      {
+        "src": "/logos/stanley.webp",
+        "alt": "Stanley"
+      },
+      {
+        "src": "/logos/mc-cain.webp",
+        "alt": "McCain"
+      },
+      {
+        "src": "/logos/remax.webp",
+        "alt": "RE/MAX"
+      },
+      {
+        "src": "/logos/cinemark.webp",
+        "alt": "Cinemark"
+      },
+      {
+        "src": "/logos/la-serenisima.webp",
+        "alt": "La Serenisima"
+      },
+      {
+        "src": "/logos/fiserv.webp",
+        "alt": "Fiserv"
+      }
+    ]
+  },
+  "faqJsonLd": [
+    {
+      "question": "¿Cuál es la cantidad mínima de pedido?",
+      "answer": "Depende del producto y el método de personalización. En general, los mínimos arrancan desde 25 unidades."
+    },
+    {
+      "question": "¿Cuánto demora la entrega?",
+      "answer": "En promedio, entre 7 y 15 días hábiles una vez aprobado el diseño."
+    },
+    {
+      "question": "¿Qué métodos de personalización ofrecen?",
+      "answer": "Serigrafía, bordado, grabado láser, sublimación, impresión UV, tampografía y más. Cada producto indica los métodos disponibles."
+    },
+    {
+      "question": "¿Hacen envíos a todo el país?",
+      "answer": "Sí, realizamos envíos a todo el territorio argentino. Los costos de envío se calculan según destino y volumen del pedido."
+    },
+    {
+      "question": "¿Puedo ver una muestra antes de comprar?",
+      "answer": "Sí, podemos enviar muestras físicas o virtuales (mockups digitales con tu logo) antes de confirmar el pedido."
+    },
+    {
+      "question": "¿Cómo funciona la compra?",
+      "answer": "Agregá productos al carrito desde el catálogo, indicá las cantidades y pagá con Mercado Pago o consultá por Telegram."
+    }
+  ]
+}
