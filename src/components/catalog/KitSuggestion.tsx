@@ -21,8 +21,9 @@ export default function KitSuggestion({ products, currentProductId }: KitSuggest
   if (suggestions.length === 0) return null;
 
   function handleAddAll() {
-    suggestions.forEach((p) => addItem(p, 1));
-    openDrawer(suggestions[suggestions.length - 1], 1);
+    suggestions.forEach((p) => addItem(p, p.price_tiers?.[0]?.min ?? p.min_qty ?? 1));
+    const last = suggestions[suggestions.length - 1];
+    openDrawer(last, last.price_tiers?.[0]?.min ?? last.min_qty ?? 1);
     setAllAdded(true);
     setTimeout(() => setAllAdded(false), 1500);
   }
@@ -65,7 +66,8 @@ function KitCard({ product }: { product: ProductResult }) {
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const [added, setAdded] = useState(false);
-  const [qty, setQty] = useState(1);
+  const minQty = product.price_tiers?.[0]?.min ?? product.min_qty ?? 1;
+  const [qty, setQty] = useState(minQty);
 
   function handleAdd() {
     addItem(product, qty);
@@ -101,7 +103,7 @@ function KitCard({ product }: { product: ProductResult }) {
       <div className="flex shrink-0 items-center gap-1.5">
         <div className="flex items-center rounded-lg border border-border">
           <button
-            onClick={() => setQty(Math.max(1, qty - 1))}
+            onClick={() => setQty(Math.max(minQty, qty - 1))}
             className="px-1.5 py-1.5 text-muted hover:bg-surface rounded-l-lg"
           >
             <Minus className="h-3 w-3" />

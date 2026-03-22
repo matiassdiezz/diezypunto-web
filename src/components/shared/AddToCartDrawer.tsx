@@ -151,10 +151,11 @@ export default function AddToCartDrawer() {
 function SuggestionRow({ product }: { product: ProductResult }) {
   const addItem = useQuoteStore((s) => s.addItem);
   const [added, setAdded] = useState(false);
-  const [qty, setQty] = useState<number | "">(1);
+  const minQty = product.price_tiers?.[0]?.min ?? product.min_qty ?? 1;
+  const [qty, setQty] = useState<number | "">(minQty);
 
   function handleAdd() {
-    addItem(product, qty || 1);
+    addItem(product, qty || minQty);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }
@@ -178,7 +179,7 @@ function SuggestionRow({ product }: { product: ProductResult }) {
       </div>
       <div className="flex shrink-0 items-center rounded-lg border border-white/60 bg-white/70 backdrop-blur-sm">
         <button
-          onClick={() => setQty((q) => Math.max(1, (q || 1) - 1))}
+          onClick={() => setQty((q) => Math.max(minQty, (q || minQty) - 1))}
           className="px-1.5 py-1 text-muted transition-colors hover:bg-white/80"
           aria-label="Disminuir cantidad"
         >
@@ -192,9 +193,9 @@ function SuggestionRow({ product }: { product: ProductResult }) {
             const raw = e.target.value;
             if (raw === "") { setQty(""); return; }
             const v = parseInt(raw);
-            if (!isNaN(v) && v >= 1) setQty(v);
+            if (!isNaN(v) && v >= minQty) setQty(v);
           }}
-          onBlur={() => { if (qty === "" || qty < 1) setQty(1); }}
+          onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
           className="w-7 border-x border-white/60 bg-transparent py-1 text-center text-[11px] font-medium tabular-nums outline-none"
           aria-label="Cantidad"
         />

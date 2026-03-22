@@ -20,12 +20,13 @@ export default function ProductCard({
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const [added, setAdded] = useState(false);
-  const [qty, setQty] = useState<number | "">(1);
+  const minQty = product.price_tiers?.[0]?.min ?? product.min_qty ?? 1;
+  const [qty, setQty] = useState<number | "">(minQty);
 
   const imageUrl = product.image_urls[0];
 
   function handleAdd() {
-    const finalQty = qty || 1;
+    const finalQty = qty || minQty;
     addItem(product, finalQty);
     openDrawer(product, finalQty);
     setAdded(true);
@@ -111,7 +112,7 @@ export default function ProductCard({
               aria-label="Cantidad"
             >
               <button
-                onClick={() => setQty((q) => Math.max(1, (q || 1) - 1))}
+                onClick={() => setQty((q) => Math.max(minQty, (q || minQty) - 1))}
                 className="rounded-l-xl px-2 py-1.5 text-muted transition-colors hover:bg-white/80 sm:px-2.5 sm:py-2"
                 aria-label="Disminuir cantidad"
               >
@@ -125,9 +126,9 @@ export default function ProductCard({
                   const raw = e.target.value;
                   if (raw === "") { setQty(""); return; }
                   const v = parseInt(raw);
-                  if (!isNaN(v) && v >= 1) setQty(v);
+                  if (!isNaN(v) && v >= minQty) setQty(v);
                 }}
-                onBlur={() => { if (qty === "" || qty < 1) setQty(1); }}
+                onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
                 className="w-8 border-x border-white/65 bg-transparent py-1.5 text-center text-xs font-medium tabular-nums outline-none sm:w-10 sm:py-2 sm:text-sm"
                 aria-label="Cantidad"
               />

@@ -177,9 +177,9 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
             <div className="relative mt-4 rounded-xl border border-border bg-card p-4 sm:mt-6 sm:rounded-2xl sm:p-6">
               <div className="absolute right-3 top-3">
                 <ShareButton
-                  getShareUrl={() => buildProductShareUrl(product.product_id, qty || 1)}
+                  getShareUrl={() => buildProductShareUrl(product.product_id, qty || minQty)}
                   getWhatsAppMessage={(url) =>
-                    buildProductWhatsAppMessage(product.title, qty || 1, product.price, url)
+                    buildProductWhatsAppMessage(product.title, qty || minQty, product.price, url)
                   }
                   context="product"
                   trackingData={{ product_id: product.product_id }}
