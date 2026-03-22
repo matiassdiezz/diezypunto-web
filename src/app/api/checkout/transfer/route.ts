@@ -197,7 +197,7 @@ export async function POST(req: NextRequest) {
 
   const resend = new Resend(apiKey);
 
-  const fromAddress = process.env.RESEND_FROM_EMAIL || "Diez y Punto <pedidos@diezypunto.com.ar>";
+  const fromAddress = process.env.RESEND_FROM_EMAIL || "Diez y Punto <onboarding@resend.dev>";
 
   try {
     // Send bank details to customer
