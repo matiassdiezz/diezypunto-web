@@ -1,11 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
-import { Tote, Check } from "@phosphor-icons/react";
+import { Tote, ArrowRight } from "@phosphor-icons/react";
 import type { ProductResult } from "@/lib/types";
-import { useQuoteStore } from "@/lib/stores/quote-store";
-import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 interface TierComparisonProps {
@@ -65,23 +62,12 @@ function TierCard({
   label: string;
   isCurrent: boolean;
 }) {
-  const addItem = useQuoteStore((s) => s.addItem);
-  const openDrawer = useDrawerStore((s) => s.open);
-  const [added, setAdded] = useState(false);
-
-  function handleAdd() {
-    addItem(product, 1);
-    openDrawer(product, 1);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 1200);
-  }
-
-  return (
+  const content = (
     <div
-      className={`relative flex flex-col rounded-2xl border p-3 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md sm:p-4 ${
+      className={`relative flex h-full flex-col rounded-2xl border p-3 shadow-[0_8px_24px_rgba(15,23,42,0.08)] backdrop-blur-md transition-all sm:p-4 ${
         isCurrent
           ? "border-accent/40 bg-accent-light/30"
-          : "border-white/55 bg-white/60"
+          : "border-white/55 bg-white/60 hover:border-accent/30 hover:shadow-[0_12px_28px_rgba(15,23,42,0.12)]"
       }`}
     >
       {isCurrent && (
@@ -101,17 +87,9 @@ function TierCard({
           </div>
         )}
       </div>
-      {isCurrent ? (
-        <Link href={`/producto/${product.product_id}`}>
-          <p className="mt-2 line-clamp-2 text-xs font-medium sm:text-sm">{product.title}</p>
-        </Link>
-      ) : (
-        <Link href={`/producto/${product.product_id}`} className="group">
-          <p className="mt-2 line-clamp-2 text-xs font-medium group-hover:text-accent sm:text-sm">
-            {product.title}
-          </p>
-        </Link>
-      )}
+      <p className="mt-2 line-clamp-2 text-xs font-medium sm:text-sm">
+        {product.title}
+      </p>
       {product.materials.length > 0 && (
         <p className="mt-1 text-[10px] text-muted">{product.materials.slice(0, 2).join(", ")}</p>
       )}
@@ -121,15 +99,16 @@ function TierCard({
         </p>
       )}
       {!isCurrent && (
-        <button
-          onClick={handleAdd}
-          className={`mt-2 rounded-xl border border-white/35 py-1.5 text-xs font-medium text-white transition-all ${
-            added ? "bg-success" : "bg-accent hover:bg-accent-hover"
-          }`}
-        >
-          {added ? <Check className="mx-auto h-3.5 w-3.5" /> : "Agregar"}
-        </button>
+        <span className="mt-2 flex items-center justify-center gap-1.5 rounded-xl bg-accent py-1.5 text-xs font-medium text-white transition-all hover:bg-accent-hover">
+          Elegir <ArrowRight className="h-3.5 w-3.5" />
+        </span>
       )}
     </div>
+  );
+
+  return (
+    <Link href={`/producto/${product.product_id}`} className="block">
+      {content}
+    </Link>
   );
 }

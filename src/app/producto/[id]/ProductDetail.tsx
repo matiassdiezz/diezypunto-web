@@ -3,7 +3,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import { listProducts } from "@/lib/api";
-import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
@@ -18,7 +17,6 @@ import QuantityNudge from "@/components/catalog/QuantityNudge";
 import PersonalizationCard from "@/components/catalog/PersonalizationCard";
 import SocialProofBadge from "@/components/catalog/SocialProofBadge";
 import AlternativeBadge from "@/components/catalog/AlternativeBadge";
-import KitSuggestion from "@/components/catalog/KitSuggestion";
 import TierComparison from "@/components/catalog/TierComparison";
 import ShareButton from "@/components/shared/ShareButtons";
 import { buildProductShareUrl, buildProductWhatsAppMessage } from "@/lib/share";
@@ -26,12 +24,12 @@ import { buildProductShareUrl, buildProductWhatsAppMessage } from "@/lib/share";
 export default function ProductDetail({ product }: { product: ProductResult }) {
   const searchParams = useSearchParams();
   const [related, setRelated] = useState<ProductResult[]>([]);
-  const [kitProducts, setKitProducts] = useState<ProductResult[]>([]);
   const [selectedImage, setSelectedImage] = useState(0);
+  const minQty = product.price_tiers?.[0]?.min ?? 1;
   const initialQty = (() => {
     const q = searchParams.get("qty");
-    if (q) { const n = parseInt(q); if (!isNaN(n) && n >= 1) return n; }
-    return 1;
+    if (q) { const n = parseInt(q); if (!isNaN(n) && n >= minQty) return n; }
+    return minQty;
   })();
   const [qty, setQty] = useState<number | "">(initialQty);
   const [justAdded, setJustAdded] = useState(false);
@@ -53,7 +51,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
     setSelectedImage(0);
     const q = searchParams.get("qty");
     const parsed = q ? parseInt(q) : NaN;
-    setQty(!isNaN(parsed) && parsed >= 1 ? parsed : 1);
+    setQty(!isNaN(parsed) && parsed >= minQty ? parsed : minQty);
 
     // Track product view
     trackEvent("product_view", {
@@ -73,19 +71,6 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
       )
       .catch(console.error);
 
-    // Fetch complementary products for "Arma tu kit"
-    const complementary = getComplementaryCategories(product.category);
-    if (complementary.length > 0) {
-      Promise.all(
-        complementary.slice(0, 3).map((cat) =>
-          listProducts({ category: cat, limit: 1 })
-            .then((r) => r.products[0])
-            .catch(() => null),
-        ),
-      ).then((results) =>
-        setKitProducts(results.filter(Boolean) as ProductResult[]),
-      );
-    }
   }, [product]);
 
   function handleAdd() {
@@ -233,10 +218,11 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                           return (
                             <div
                               key={tier.label}
-                              className={`rounded-xl border p-3 text-center transition-all ${
+                              onClick={() => setQty(tier.min)}
+                              className={`cursor-pointer rounded-xl border p-3 text-center transition-all ${
                                 isActive
                                   ? "border-accent bg-accent/5 ring-1 ring-accent/30"
-                                  : "border-border"
+                                  : "border-border hover:border-accent/30"
                               }`}
                             >
                               <p className="text-[10px] font-medium text-muted sm:text-xs">
@@ -281,22 +267,22 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
               <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
                 <div className="flex items-center rounded-xl border border-border">
                   <button
-                    onClick={() => setQty(Math.max(1, (qty || 1) - 1))}
+                    onClick={() => setQty(Math.max(minQty, (qty || minQty) - 1))}
                     className="rounded-l-xl px-3 py-2.5 text-muted hover:bg-surface"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
                   <input
                     type="number"
-                    min={1}
+                    min={minQty}
                     value={qty}
                     onChange={(e) => {
                       const raw = e.target.value;
                       if (raw === "") { setQty(""); return; }
                       const v = parseInt(raw);
-                      if (!isNaN(v) && v >= 1) setQty(v);
+                      if (!isNaN(v) && v >= minQty) setQty(v);
                     }}
-                    onBlur={() => { if (qty === "" || qty < 1) setQty(1); }}
+                    onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
                     className="w-16 border-x border-border bg-white py-2.5 text-center text-sm font-medium tabular-nums outline-none"
                   />
                   <button
@@ -371,11 +357,6 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
           </div>
         </ScrollReveal>
       </div>
-
-      {/* Kit Suggestion — cross-sell from complementary categories */}
-      {kitProducts.length > 0 && (
-        <KitSuggestion products={kitProducts} currentProductId={product.product_id} />
-      )}
 
       {/* Tier Comparison — Good/Better/Best from same category */}
       {related.length >= 2 && (

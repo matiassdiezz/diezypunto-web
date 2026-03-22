@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Tote, Check } from "@phosphor-icons/react";
+import { Tote, Check, Minus, Plus } from "@phosphor-icons/react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
@@ -65,10 +65,11 @@ function KitCard({ product }: { product: ProductResult }) {
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const [added, setAdded] = useState(false);
+  const [qty, setQty] = useState(1);
 
   function handleAdd() {
-    addItem(product, 1);
-    openDrawer(product, 1);
+    addItem(product, qty);
+    openDrawer(product, qty);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
   }
@@ -97,18 +98,35 @@ function KitCard({ product }: { product: ProductResult }) {
           </p>
         )}
       </div>
-      <button
-        onClick={handleAdd}
-        className={`shrink-0 rounded-xl border border-white/35 p-2 text-white transition-all ${
-          added ? "bg-success" : "bg-accent hover:bg-accent-hover"
-        }`}
-      >
-        {added ? (
-          <Check className="h-4 w-4" />
-        ) : (
-          <Tote className="h-4 w-4" />
-        )}
-      </button>
+      <div className="flex shrink-0 items-center gap-1.5">
+        <div className="flex items-center rounded-lg border border-border">
+          <button
+            onClick={() => setQty(Math.max(1, qty - 1))}
+            className="px-1.5 py-1.5 text-muted hover:bg-surface rounded-l-lg"
+          >
+            <Minus className="h-3 w-3" />
+          </button>
+          <span className="w-7 text-center text-xs font-medium tabular-nums">{qty}</span>
+          <button
+            onClick={() => setQty(qty + 1)}
+            className="px-1.5 py-1.5 text-muted hover:bg-surface rounded-r-lg"
+          >
+            <Plus className="h-3 w-3" />
+          </button>
+        </div>
+        <button
+          onClick={handleAdd}
+          className={`rounded-xl border border-white/35 p-2 text-white transition-all ${
+            added ? "bg-success" : "bg-accent hover:bg-accent-hover"
+          }`}
+        >
+          {added ? (
+            <Check className="h-4 w-4" />
+          ) : (
+            <Tote className="h-4 w-4" />
+          )}
+        </button>
+      </div>
     </div>
   );
 }
