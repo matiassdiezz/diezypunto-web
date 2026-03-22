@@ -721,17 +721,18 @@ function InlineProductCard({
   const [qty, setQty] = useState<number | "">(initialQty);
 
   const listPrice = product?.list_price ?? product?.price_max ?? product?.price ?? null;
+  const provider = product?.source ?? "zecat";
   const cat = product?.subcategory || product?.category || category;
 
   const unitFinal = useMemo(() => {
     if (product && listPrice != null && listPrice > 0) {
-      return getPriceForQuantity(listPrice, qty || minQty, cat).finalPrice;
+      return getPriceForQuantity(listPrice, qty || minQty, cat, provider).finalPrice;
     }
     if (price && price !== "Consultar" && !isNaN(Number(price))) {
       return Number(price);
     }
     return null;
-  }, [product, listPrice, qty, cat, price]);
+  }, [product, listPrice, qty, cat, price, provider]);
 
   function handleAdd() {
     if (!product) return;

@@ -42,14 +42,15 @@ export interface ProductResult {
   eco_friendly: boolean;
   premium_tier: boolean;
   image_urls: string[];
+  source?: string;
   lead_time_days: number | null;
   score: number;
   reason: string;
   /** Pricing tiers — present when list price is available */
   price_tiers?: PriceTier[];
-  /** Personalization cost included in finalPrice of each tier */
+  /** Extra pricing component included in finalPrice when applicable */
   personalization_price?: number;
-  /** Provider list price (pre-markup) */
+  /** Provider pricing base used by the engine */
   list_price?: number | null;
 }
 
@@ -82,9 +83,11 @@ export interface ProductListResponse {
 }
 
 export interface QuoteItem {
+  id: string;
   product: ProductResult;
   quantity: number;
   color?: string;
+  personalization_method?: string;
 }
 
 /* AI Top Picks */

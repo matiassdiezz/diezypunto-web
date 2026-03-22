@@ -15,6 +15,10 @@ const PROVIDER_FACTORS: Record<string, number> = {
   promoproductos: 0.72,
 };
 
+const PROVIDER_UPLIFTS: Record<string, number> = {
+  zecat: 1.08,
+};
+
 // --- Volume classification per category ---
 
 export type VolumeClass = "masivo" | "intermedio" | "premium";
@@ -208,6 +212,10 @@ export interface PricingResult {
   factorDescuento: number;
 }
 
+function roundCurrency(value: number): number {
+  return Math.round(value * 100) / 100;
+}
+
 /**
  * Calculate D&P pricing for a product.
  * @param listPrice - Provider list price (pre-discount)
@@ -219,28 +227,42 @@ export function calculatePricing(
   category: string,
   provider = "zecat",
 ): PricingResult {
-  const factorDescuento = PROVIDER_FACTORS[provider.toLowerCase()] ?? PROVIDER_FACTORS.zecat;
+  const providerKey = provider.toLowerCase();
+  const factorDescuento = PROVIDER_FACTORS[providerKey] ?? PROVIDER_FACTORS.zecat;
   const volumeClass = getVolumeClass(category);
   const tiers = TIERS[volumeClass];
   const personalizationPrice = getPersonalizationPrice(category);
+  const uplift = PROVIDER_UPLIFTS[providerKey] ?? 1;
 
-  const pricedTiers: PricedTier[] = tiers.map((tier) => {
-    const unitPrice = Math.round(listPrice * factorDescuento * tier.markup);
-    return {
-      label: tier.label,
-      min: tier.min,
-      max: tier.max,
-      unitPrice,
-      finalPrice: unitPrice + personalizationPrice,
-    };
-  });
+  const pricedTiers: PricedTier[] = providerKey === "zecat"
+    ? tiers.map((tier) => {
+      const firstTierMarkup = tiers[0]?.markup || 1;
+      const unitPrice = roundCurrency(listPrice * (tier.markup / firstTierMarkup));
+      return {
+        label: tier.label,
+        min: tier.min,
+        max: tier.max,
+        unitPrice,
+        finalPrice: roundCurrency((unitPrice * uplift) + personalizationPrice),
+      };
+    })
+    : tiers.map((tier) => {
+      const unitPrice = roundCurrency(listPrice * factorDescuento * tier.markup);
+      return {
+        label: tier.label,
+        min: tier.min,
+        max: tier.max,
+        unitPrice,
+        finalPrice: roundCurrency(unitPrice + personalizationPrice),
+      };
+    });
 
   return {
     tiers: pricedTiers,
     personalizationPrice,
     volumeClass,
     provider,
-    factorDescuento,
+    factorDescuento: providerKey === "zecat" ? 1 : factorDescuento,
   };
 }
 

@@ -140,6 +140,7 @@ export async function POST(req: Request) {
                     list,
                     qty,
                     full.subcategory || full.category,
+                    full.source || "zecat",
                   ).finalPrice;
                 }
               }

@@ -407,17 +407,18 @@ function hashCode(str: string): number {
 }
 
 function toProductResult(p: CatalogProduct, score: number): ProductResult {
-  // Apply D&P pricing: use price_max (list price) as base for markup calculation
-  const listPrice = p.price_max ?? p.price;
+  const provider = p.source || "zecat";
+  // Zecat imports already carry the first-tier unit price in `price_max`.
+  // Use that as the pricing base so the web matches diezypunto.com.ar.
+  const pricingBasePrice = provider === "zecat" ? (p.price_max ?? p.price) : (p.price_max ?? p.price);
   // Use subcategory for pricing classification when available (more accurate tier)
   const pricingCategory = p.subcategory || p.category;
   let priceTiers: ProductResult["price_tiers"];
   let personalizationPrice: number | undefined;
   let displayPrice = p.price;
 
-  if (listPrice != null && listPrice > 0) {
-    const provider = p.source || "zecat";
-    const pricing = calculatePricing(listPrice, pricingCategory, provider);
+  if (pricingBasePrice != null && pricingBasePrice > 0) {
+    const pricing = calculatePricing(pricingBasePrice, pricingCategory, provider);
     priceTiers = pricing.tiers.map((t) => ({
       label: t.label,
       min: t.min,
@@ -447,11 +448,12 @@ function toProductResult(p: CatalogProduct, score: number): ProductResult {
     eco_friendly: p.eco_friendly,
     premium_tier: false,
     image_urls: p.image_urls,
+    source: p.source,
     lead_time_days: null,
     score,
     reason: "",
     price_tiers: priceTiers,
     personalization_price: personalizationPrice,
-    list_price: listPrice,
+    list_price: pricingBasePrice,
   };
 }

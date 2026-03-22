@@ -120,7 +120,7 @@ function transformProduct(z: any): ProductResult {
       f.description?.toLowerCase().includes("sustentable"),
     ) || z.tag?.toLowerCase().includes("sustentable");
 
-  const listPrice = z.price || null;
+  const pricingBasePrice = z.price ?? resolveDiscountPrice(z) ?? null;
   const category = mainFamily?.description || "Sin categoría";
 
   // Apply D&P pricing
@@ -128,8 +128,8 @@ function transformProduct(z: any): ProductResult {
   let personalizationPrice: number | undefined;
   let displayPrice = resolveDiscountPrice(z);
 
-  if (listPrice != null && listPrice > 0) {
-    const pricing = calculatePricing(listPrice, category, "zecat");
+  if (pricingBasePrice != null && pricingBasePrice > 0) {
+    const pricing = calculatePricing(pricingBasePrice, category, "zecat");
     priceTiers = pricing.tiers.map((t) => ({
       label: t.label,
       min: t.min,
@@ -149,7 +149,7 @@ function transformProduct(z: any): ProductResult {
     category,
     subcategory: "",
     price: displayPrice,
-    price_max: listPrice,
+    price_max: z.price || null,
     currency: z.currency || "ARS",
     min_qty: z.minimum_order_quantity || 1,
     materials,
@@ -158,12 +158,13 @@ function transformProduct(z: any): ProductResult {
     eco_friendly: ecoFriendly,
     premium_tier: false,
     image_urls: sortedImages.map((img: any) => img.image_url || img.imageUrl),
+    source: "zecat",
     lead_time_days: null,
     score: 0,
     reason: "",
     price_tiers: priceTiers,
     personalization_price: personalizationPrice,
-    list_price: listPrice,
+    list_price: pricingBasePrice,
   };
 }
 
