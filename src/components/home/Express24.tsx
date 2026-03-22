@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Lightning, ArrowRight } from "@phosphor-icons/react";
 import ScrollReveal from "../shared/ScrollReveal";
