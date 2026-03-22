@@ -322,17 +322,20 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted">
                     Colores disponibles
                   </p>
-                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                  <div className="mt-1.5 flex flex-wrap gap-2">
                     {product.colors.map((color) => (
                       <button
                         key={color}
                         onClick={() => setSelectedColor(selectedColor === color ? null : color)}
-                        className={`rounded-full border px-3 py-1 text-xs font-medium transition-all ${
+                        className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
                           selectedColor === color
                             ? "border-accent bg-accent/10 text-accent"
-                            : "border-border text-muted hover:border-accent/30"
+                            : "border-border text-foreground hover:border-accent/30"
                         }`}
                       >
+                        <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${
+                          selectedColor === color ? "bg-accent" : "bg-muted/40"
+                        }`} />
                         {color}
                       </button>
                     ))}
