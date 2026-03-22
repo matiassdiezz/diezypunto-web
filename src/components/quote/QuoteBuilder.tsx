@@ -5,16 +5,18 @@ import {
   Minus,
   Plus,
   Trash,
-  PaperPlaneTilt,
   CreditCard,
   SpinnerGap,
   X,
   ShoppingCart,
+  Receipt,
+  ShieldCheck,
+  MapPinLine,
+  User,
 } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
 import { useChatStore } from "@/lib/stores/chat-store";
-import { openTelegramWithContext } from "@/lib/telegram";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { listProducts } from "@/lib/api";
 import { getComplementaryCategories } from "@/lib/engine/affinity";
@@ -26,6 +28,65 @@ import { useAuth } from "@/lib/hooks/use-auth";
 import ShareButton from "@/components/shared/ShareButtons";
 import { buildCartShareUrl, buildCartWhatsAppMessage } from "@/lib/share";
 
+const DOCUMENT_TYPES = ["DNI", "CUIT", "CUIL", "Pasaporte"] as const;
+const PROVINCES = [
+  "Buenos Aires",
+  "CABA",
+  "Catamarca",
+  "Chaco",
+  "Chubut",
+  "Córdoba",
+  "Corrientes",
+  "Entre Ríos",
+  "Formosa",
+  "Jujuy",
+  "La Pampa",
+  "La Rioja",
+  "Mendoza",
+  "Misiones",
+  "Neuquén",
+  "Río Negro",
+  "Salta",
+  "San Juan",
+  "San Luis",
+  "Santa Cruz",
+  "Santa Fe",
+  "Santiago del Estero",
+  "Tierra del Fuego",
+  "Tucumán",
+] as const;
+
+type BillingFormState = {
+  firstName: string;
+  lastName: string;
+  company: string;
+  documentType: (typeof DOCUMENT_TYPES)[number];
+  documentNumber: string;
+  streetAddress: string;
+  city: string;
+  province: string;
+  phone: string;
+  email: string;
+};
+
+const DEFAULT_BILLING_FORM: BillingFormState = {
+  firstName: "",
+  lastName: "",
+  company: "",
+  documentType: "DNI",
+  documentNumber: "",
+  streetAddress: "",
+  city: "",
+  province: "Buenos Aires",
+  phone: "",
+  email: "",
+};
+
+const FIELD_CLASSNAME =
+  "w-full rounded-2xl border border-white/65 bg-white/88 px-4 py-3 text-sm text-foreground shadow-[0_6px_20px_rgba(15,23,42,0.05)] outline-none transition-all placeholder:text-muted/70 focus:border-accent focus:bg-white focus:shadow-[0_10px_28px_rgba(89,198,242,0.16)]";
+
+const LABEL_CLASSNAME = "text-[11px] font-semibold uppercase tracking-[0.18em] text-muted";
+
 export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();
   const { client } = useAuth();
@@ -33,7 +94,15 @@ export default function QuoteBuilder() {
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
   const [minQtyWarn, setMinQtyWarn] = useState<string | null>(null);
+  const [billingForm, setBillingForm] = useState<BillingFormState>(DEFAULT_BILLING_FORM);
+  const [billingError, setBillingError] = useState<string | null>(null);
   const openWithMessage = useChatStore((s) => s.openWithMessage);
+
+  function getItemLabel(item: QuoteItem): string {
+    const details = [item.color, item.personalization_method].filter(Boolean);
+    if (details.length === 0) return item.product.title;
+    return `${item.product.title} · ${details.join(" · ")}`;
+  }
 
   /** Get the unit price for a cart item based on its quantity and price tiers */
   function getItemUnitPrice(item: { product: ProductResult; quantity: number }): number | null {
@@ -51,6 +120,7 @@ export default function QuoteBuilder() {
     if (unitPrice) return sum + unitPrice * i.quantity;
     return sum;
   }, 0);
+  const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const hasItemsWithoutPrice = items.some((i) => i.product.price == null);
 
@@ -81,34 +151,63 @@ export default function QuoteBuilder() {
     ).then((results) => setCrossSell(results.flat().slice(0, 6)));
   }, [items.length]);
 
-  const handleTelegram = () => {
-    openTelegramWithContext({
-      type: "cart",
-      items: items.map((i) => ({
-        product_id: i.product.product_id,
-        title: i.product.title,
-        qty: i.quantity,
-        price: i.product.price,
-      })),
-    });
+  const updateBillingField = <K extends keyof BillingFormState>(
+    field: K,
+    value: BillingFormState[K],
+  ) => {
+    setBillingForm((current) => ({ ...current, [field]: value }));
+    setBillingError(null);
+  };
+
+  const validateBillingForm = (): string | null => {
+    if (!billingForm.firstName.trim()) return "Completá el nombre.";
+    if (!billingForm.lastName.trim()) return "Completá el apellido.";
+    if (!billingForm.documentNumber.trim()) return "Completá el número de documento.";
+    if (!billingForm.streetAddress.trim()) return "Completá la dirección.";
+    if (!billingForm.city.trim()) return "Completá la ciudad.";
+    if (!billingForm.province.trim()) return "Seleccioná una provincia.";
+    if (!billingForm.phone.trim()) return "Completá el teléfono.";
+    if (!billingForm.email.trim()) return "Completá el mail.";
+    const email = billingForm.email.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return "Ingresá un mail válido.";
+    return null;
   };
 
   const handleMercadoPago = async () => {
     const payableItems = items.filter((i) => i.product.price != null);
     if (payableItems.length === 0) return;
 
+    const validationError = validateBillingForm();
+    if (validationError) {
+      setBillingError(validationError);
+      return;
+    }
+
     setMpLoading(true);
+    setBillingError(null);
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           items: payableItems.map((i) => ({
-            id: i.product.product_id,
-            title: i.product.title,
+            id: i.id,
+            title: getItemLabel(i),
             quantity: i.quantity,
             unit_price: getItemUnitPrice(i) ?? i.product.price,
           })),
+          billing: {
+            first_name: billingForm.firstName.trim(),
+            last_name: billingForm.lastName.trim(),
+            company: billingForm.company.trim(),
+            document_type: billingForm.documentType,
+            document_number: billingForm.documentNumber.trim(),
+            street_address: billingForm.streetAddress.trim(),
+            city: billingForm.city.trim(),
+            province: billingForm.province.trim(),
+            phone: billingForm.phone.trim(),
+            email: billingForm.email.trim(),
+          },
         }),
       });
       const data = await res.json();
@@ -154,7 +253,7 @@ export default function QuoteBuilder() {
           const atMin = item.quantity <= 1;
           return (
             <div
-              key={item.product.product_id}
+              key={item.id}
               className="rounded-2xl border border-white/55 bg-white/58 p-4 shadow-[0_4px_16px_rgba(15,23,42,0.06)] backdrop-blur-md transition-colors hover:bg-white/65"
             >
               <div className="flex items-start gap-3">
@@ -170,11 +269,18 @@ export default function QuoteBuilder() {
                     <div className="min-w-0">
                       <p className="truncate font-medium">{item.product.title}</p>
                       <p className="text-xs text-muted">
-                        {item.product.category}{item.color ? ` · ${item.color}` : ""}
+                        {item.product.category}
                       </p>
+                      {(item.color || item.personalization_method) && (
+                        <p className="mt-1 text-xs text-muted">
+                          {[item.color, item.personalization_method]
+                            .filter(Boolean)
+                            .join(" · ")}
+                        </p>
+                      )}
                     </div>
                     <button
-                      onClick={() => removeItem(item.product.product_id)}
+                      onClick={() => removeItem(item.id)}
                       className="shrink-0 rounded-lg p-1.5 text-muted transition-colors hover:bg-red-50 hover:text-red-500"
                     >
                       <Trash className="h-4 w-4" />
@@ -188,7 +294,7 @@ export default function QuoteBuilder() {
                         onClick={() => {
                           if (!atMin) {
                             const newQty = item.quantity - 1;
-                            updateQty(item.product.product_id, newQty);
+                            updateQty(item.id, newQty);
                             if (item.product.min_qty && newQty < item.product.min_qty) {
                               setMinQtyWarn(item.product.product_id);
                             } else {
@@ -204,9 +310,7 @@ export default function QuoteBuilder() {
                         {item.quantity}
                       </span>
                       <button
-                        onClick={() =>
-                          updateQty(item.product.product_id, item.quantity + 1)
-                        }
+                        onClick={() => updateQty(item.id, item.quantity + 1)}
                         className="rounded-lg border border-white/65 bg-white/75 p-1.5 transition-colors hover:bg-white"
                       >
                         <Plus className="h-3 w-3" />
@@ -295,67 +399,282 @@ export default function QuoteBuilder() {
           onClick={(e) => { if (e.target === e.currentTarget) setCheckoutOpen(false); }}
         >
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className="relative w-full max-w-md rounded-t-2xl bg-white p-6 shadow-2xl sm:rounded-2xl">
-            <div className="mb-5 flex items-center justify-between">
-              <h2 className="text-lg font-bold">¿Cómo querés continuar?</h2>
+          <div className="relative max-h-[96vh] w-full max-w-6xl overflow-y-auto rounded-t-[28px] border border-white/60 bg-[linear-gradient(180deg,rgba(244,249,252,0.98)_0%,rgba(255,255,255,0.98)_22%,rgba(248,251,253,0.98)_100%)] p-3 shadow-[0_28px_80px_rgba(15,23,42,0.22)] sm:rounded-[28px] sm:p-3.5">
+            <div className="mb-3 flex items-center justify-between gap-4">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-accent shadow-[0_6px_18px_rgba(89,198,242,0.18)]">
+                <Receipt className="h-3.5 w-3.5" />
+                Checkout
+              </div>
               <button
                 onClick={() => setCheckoutOpen(false)}
-                className="rounded-lg p-1.5 text-muted hover:bg-surface hover:text-foreground"
+                className="shrink-0 rounded-2xl border border-white/65 bg-white/80 p-2 text-muted shadow-[0_6px_16px_rgba(15,23,42,0.06)] transition-colors hover:bg-white hover:text-foreground"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
-            <div className="space-y-2">
-              {/* Mercado Pago */}
-              {total > 0 && !hasItemsWithoutPrice && (
-                <button
-                  onClick={() => { setCheckoutOpen(false); handleMercadoPago(); }}
-                  disabled={mpLoading}
-                  className="flex w-full items-center gap-3 rounded-xl border border-border p-4 text-left transition-all hover:border-accent hover:bg-accent/5 disabled:opacity-60"
-                >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent/10">
-                    {mpLoading ? (
-                      <SpinnerGap className="h-5 w-5 animate-spin text-accent" />
-                    ) : (
-                      <CreditCard className="h-5 w-5 text-accent" />
-                    )}
+            <div className="grid gap-3 lg:grid-cols-[minmax(0,1.7fr)_300px]">
+              <div className="space-y-3">
+                <section className="rounded-[20px] border border-white/60 bg-white/75 p-3.5 shadow-[0_12px_34px_rgba(15,23,42,0.08)] backdrop-blur-sm">
+                  <div className="mb-2.5 flex items-center gap-2.5">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-accent/12 text-accent">
+                      <User className="h-4.5 w-4.5" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold">Datos del comprador</p>
+                      <p className="text-xs text-muted">Facturación y contacto.</p>
+                    </div>
                   </div>
+                  <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-6">
+                    <label className="space-y-1.5 lg:col-span-3">
+                      <span className={LABEL_CLASSNAME}>Nombre</span>
+                      <input
+                        value={billingForm.firstName}
+                        onChange={(e) => updateBillingField("firstName", e.target.value)}
+                        className={FIELD_CLASSNAME}
+                        placeholder="Nombre"
+                      />
+                    </label>
+                    <label className="space-y-1.5 lg:col-span-3">
+                      <span className={LABEL_CLASSNAME}>Apellido</span>
+                      <input
+                        value={billingForm.lastName}
+                        onChange={(e) => updateBillingField("lastName", e.target.value)}
+                        className={FIELD_CLASSNAME}
+                        placeholder="Apellido"
+                      />
+                    </label>
+                    <label className="space-y-1.5 sm:col-span-2 lg:col-span-2">
+                      <span className={LABEL_CLASSNAME}>Nombre de la empresa</span>
+                      <input
+                        value={billingForm.company}
+                        onChange={(e) => updateBillingField("company", e.target.value)}
+                        className={FIELD_CLASSNAME}
+                        placeholder="Opcional"
+                      />
+                    </label>
+                    <label className="space-y-1.5 lg:col-span-2">
+                      <span className={LABEL_CLASSNAME}>Tipo de documento</span>
+                      <select
+                        value={billingForm.documentType}
+                        onChange={(e) =>
+                          updateBillingField(
+                            "documentType",
+                            e.target.value as BillingFormState["documentType"],
+                          )
+                        }
+                        className={FIELD_CLASSNAME}
+                      >
+                        {DOCUMENT_TYPES.map((type) => (
+                          <option key={type} value={type}>
+                            {type}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className="space-y-1.5 lg:col-span-2">
+                      <span className={LABEL_CLASSNAME}>Número</span>
+                      <input
+                        value={billingForm.documentNumber}
+                        onChange={(e) => updateBillingField("documentNumber", e.target.value)}
+                        className={FIELD_CLASSNAME}
+                        placeholder="Ingresá tu CUIT o DNI"
+                      />
+                    </label>
+                    <label className="space-y-1.5 lg:col-span-2">
+                      <span className={LABEL_CLASSNAME}>Teléfono</span>
+                      <input
+                        value={billingForm.phone}
+                        onChange={(e) => updateBillingField("phone", e.target.value)}
+                        className={FIELD_CLASSNAME}
+                        placeholder="Teléfono"
+                        type="tel"
+                      />
+                    </label>
+                    <label className="space-y-1.5 sm:col-span-2 lg:col-span-4">
+                      <span className={LABEL_CLASSNAME}>Mail</span>
+                      <input
+                        value={billingForm.email}
+                        onChange={(e) => updateBillingField("email", e.target.value)}
+                        className={FIELD_CLASSNAME}
+                        placeholder="mail@empresa.com"
+                        type="email"
+                      />
+                    </label>
+                  </div>
+                </section>
+
+                <section className="rounded-[20px] border border-white/60 bg-white/75 p-3.5 shadow-[0_12px_34px_rgba(15,23,42,0.08)] backdrop-blur-sm">
+                  <div className="mb-2.5 flex items-center gap-2.5">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-2xl bg-slate-100 text-slate-700">
+                      <MapPinLine className="h-4.5 w-4.5" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold">Dirección de facturación</p>
+                      <p className="text-xs text-muted">Operación y registro.</p>
+                    </div>
+                  </div>
+                  <div className="grid gap-2.5 sm:grid-cols-2 lg:grid-cols-4">
+                    <label className="space-y-1.5 sm:col-span-2 lg:col-span-2">
+                      <span className={LABEL_CLASSNAME}>Dirección de la calle</span>
+                      <input
+                        value={billingForm.streetAddress}
+                        onChange={(e) => updateBillingField("streetAddress", e.target.value)}
+                        className={FIELD_CLASSNAME}
+                        placeholder="Número de la casa y nombre de la calle"
+                      />
+                    </label>
+                    <label className="space-y-1.5">
+                      <span className={LABEL_CLASSNAME}>Ciudad</span>
+                      <input
+                        value={billingForm.city}
+                        onChange={(e) => updateBillingField("city", e.target.value)}
+                        className={FIELD_CLASSNAME}
+                        placeholder="Ciudad"
+                      />
+                    </label>
+                    <label className="space-y-1.5">
+                      <span className={LABEL_CLASSNAME}>Provincia</span>
+                      <select
+                        value={billingForm.province}
+                        onChange={(e) => updateBillingField("province", e.target.value)}
+                        className={FIELD_CLASSNAME}
+                      >
+                        {PROVINCES.map((province) => (
+                          <option key={province} value={province}>
+                            {province}
+                          </option>
+                        ))}
+                      </select>
+                    </label>
+                  </div>
+
+                  {billingError && (
+                    <div className="mt-3 rounded-[18px] border border-red-200 bg-[linear-gradient(135deg,rgba(254,242,242,0.98),rgba(255,255,255,0.98))] px-4 py-3 text-sm text-red-600 shadow-[0_10px_24px_rgba(239,68,68,0.08)]">
+                      {billingError}
+                    </div>
+                  )}
+                </section>
+              </div>
+
+              <div className="space-y-2.5">
+                <section className="rounded-[20px] border border-white/60 bg-[linear-gradient(160deg,rgba(10,132,184,0.08),rgba(255,255,255,0.94)_36%,rgba(255,255,255,0.98)_100%)] p-3.5 shadow-[0_14px_38px_rgba(15,23,42,0.1)]">
+                <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="font-medium">Pagar con Mercado Pago</p>
-                    <p className="text-xs text-muted">Tarjeta, transferencia o efectivo</p>
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent">
+                      Resumen del pedido
+                    </p>
+                    <h3 className="mt-2 text-xl font-bold">
+                      ${total.toLocaleString("es-AR")}
+                    </h3>
+                    <p className="text-sm text-muted">Total estimado + IVA</p>
                   </div>
-                </button>
-              )}
-
-              {/* Telegram */}
-              <button
-                onClick={() => { setCheckoutOpen(false); handleTelegram(); }}
-                className="flex w-full items-center gap-3 rounded-xl border border-border p-4 text-left transition-all hover:border-[#229ED9] hover:bg-[#229ED9]/5"
-              >
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#229ED9]/10">
-                  <PaperPlaneTilt className="h-5 w-5 text-[#229ED9]" />
-                </div>
-                <div>
-                  <p className="font-medium">
-                    {hasItemsWithoutPrice ? "Solicitar presupuesto" : "Consultar por Telegram"}
-                  </p>
-                  <p className="text-xs text-muted">
-                    {hasItemsWithoutPrice
-                      ? "Algunos productos requieren cotización"
-                      : "Hablá con nosotros antes de pagar"}
-                  </p>
-                </div>
-              </button>
-
-              {/* Guardar presupuesto */}
-              {client && (
-                <div className="rounded-xl border border-border p-4 transition-all hover:border-accent hover:bg-accent/5">
-                  <div className="flex items-center gap-3">
-                    <SaveQuoteButton />
+                  <div className="rounded-2xl border border-white/70 bg-white/85 px-3 py-2 text-right shadow-[0_6px_18px_rgba(15,23,42,0.06)]">
+                    <p className="text-lg font-semibold">{items.length}</p>
+                    <p className="text-[11px] uppercase tracking-[0.14em] text-muted">productos</p>
                   </div>
                 </div>
-              )}
+
+                <div className="mt-2.5 rounded-[18px] border border-white/65 bg-white/82 p-3 shadow-[0_8px_24px_rgba(15,23,42,0.06)]">
+                  <div className="flex items-center justify-between text-sm">
+                    <span className="text-muted">Unidades</span>
+                    <span className="font-medium">{totalQuantity}</span>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between text-sm">
+                    <span className="text-muted">Pago</span>
+                    <span className="font-medium">Mercado Pago</span>
+                  </div>
+                  <div className="mt-2 flex items-center justify-between text-sm">
+                    <span className="text-muted">Facturación</span>
+                    <span className="font-medium">Paso previo obligatorio</span>
+                  </div>
+                </div>
+
+                <div className="mt-2.5 space-y-1.5">
+                  {items.slice(0, 2).map((item) => {
+                    const unitPrice = getItemUnitPrice(item);
+                    const subtotal = unitPrice ? unitPrice * item.quantity : null;
+                    return (
+                      <div
+                        key={item.id}
+                        className="rounded-[16px] border border-white/60 bg-white/78 px-3 py-2 shadow-[0_8px_20px_rgba(15,23,42,0.05)]"
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="min-w-0">
+                            <p className="truncate text-sm font-medium">{item.product.title}</p>
+                            <p className="mt-0.5 text-xs text-muted">
+                              {item.quantity} u.
+                              {(item.color || item.personalization_method) &&
+                                ` · ${[item.color, item.personalization_method].filter(Boolean).join(" · ")}`}
+                            </p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-sm font-semibold">
+                              {subtotal != null ? `$${subtotal.toLocaleString("es-AR")}` : "Consultar"}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  {items.length > 2 && (
+                    <div className="rounded-[16px] border border-dashed border-white/65 bg-white/55 px-3 py-2 text-sm text-muted">
+                      + {items.length - 2} producto{items.length - 2 !== 1 ? "s" : ""} más en el pedido
+                    </div>
+                  )}
+                </div>
+
+                <div className="mt-2.5 rounded-[18px] border border-emerald-100 bg-[linear-gradient(135deg,rgba(236,253,245,0.96),rgba(255,255,255,0.96))] p-3 text-sm text-slate-700 shadow-[0_10px_24px_rgba(16,185,129,0.08)]">
+                  <div className="flex items-start justify-between gap-4">
+                    <div className="flex items-start gap-3">
+                      <div className="mt-0.5 flex h-8 w-8 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
+                        <ShieldCheck className="h-4.5 w-4.5" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-slate-900">Pago seguro</p>
+                        <p className="mt-1 leading-6 text-muted">
+                          Después de completar estos datos, seguís a Mercado Pago para terminar la operación.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                </section>
+
+                <section className="space-y-2.5 rounded-[20px] border border-white/60 bg-white/75 p-3.5 shadow-[0_12px_34px_rgba(15,23,42,0.08)] backdrop-blur-sm">
+                  <div className="mb-1">
+                    <p className="text-sm font-semibold">Continuar con el pago</p>
+                    <p className="text-xs text-muted">Revisá los datos y seguí al cobro.</p>
+                  </div>
+                {total > 0 && !hasItemsWithoutPrice && (
+                  <button
+                    onClick={handleMercadoPago}
+                    disabled={mpLoading}
+                    className="flex w-full items-center gap-3 rounded-[18px] border border-white/40 bg-accent px-4 py-3 text-left text-white shadow-[0_16px_34px_rgba(89,198,242,0.3)] transition-all hover:bg-accent-hover hover:shadow-[0_20px_38px_rgba(89,198,242,0.36)] disabled:opacity-60"
+                  >
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/15 backdrop-blur-sm">
+                      {mpLoading ? (
+                        <SpinnerGap className="h-5 w-5 animate-spin text-white" />
+                      ) : (
+                        <CreditCard className="h-5 w-5 text-white" />
+                      )}
+                    </div>
+                    <div>
+                      <p className="font-semibold">Continuar a Mercado Pago</p>
+                      <p className="text-sm text-white/80">Tarjeta, transferencia o efectivo</p>
+                    </div>
+                  </button>
+                )}
+
+                {client && (
+                  <div className="rounded-[18px] border border-white/60 bg-white/78 p-3 shadow-[0_10px_26px_rgba(15,23,42,0.08)] transition-all hover:border-accent hover:bg-accent/5">
+                    <div className="flex items-center gap-3">
+                      <SaveQuoteButton />
+                    </div>
+                  </div>
+                )}
+                </section>
+              </div>
             </div>
           </div>
         </div>
