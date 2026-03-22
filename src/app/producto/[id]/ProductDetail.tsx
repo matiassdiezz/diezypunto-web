@@ -7,9 +7,8 @@ import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
 import { trackEvent } from "@/lib/analytics-client";
-import { Tote, Leaf, PaperPlaneTilt, Minus, Plus, Check } from "@phosphor-icons/react";
+import { Tote, Leaf, Minus, Plus, Check } from "@phosphor-icons/react";
 import Link from "next/link";
-import { openTelegramWithContext } from "@/lib/telegram";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import Breadcrumbs from "@/components/catalog/Breadcrumbs";
 import ProductCard from "@/components/catalog/ProductCard";
@@ -80,17 +79,6 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
     setTimeout(() => setJustAdded(false), 1500);
   }
 
-  const handleTelegram = () => {
-    openTelegramWithContext({
-      type: "product",
-      product_id: product.product_id,
-      title: product.title,
-      qty: qty || 1,
-      message: product.price == null
-        ? `Necesito precio para: ${product.title}, ${qty} unidades.`
-        : `Me interesa el producto: ${product.title}, ${qty} unidades.`,
-    });
-  };
 
   const breadcrumbs = [
     { label: "Inicio", href: "/" },
@@ -313,16 +301,6 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
               {/* Quantity Nudge */}
               <QuantityNudge qty={qty} product={product} />
 
-              <p className="mt-3 text-center text-xs text-muted">
-                ¿Necesitás ayuda?{" "}
-                <button
-                  onClick={handleTelegram}
-                  className="inline-flex items-center gap-1 text-accent underline underline-offset-2 hover:text-accent-hover"
-                >
-                  <PaperPlaneTilt className="inline h-3 w-3" />
-                  Consultanos por Telegram
-                </button>
-              </p>
 
             </div>
 

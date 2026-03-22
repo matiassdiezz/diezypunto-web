@@ -1,8 +1,3 @@
-"use client";
-
-import { PaperPlaneTilt } from "@phosphor-icons/react";
-import { openTelegramWithContext } from "@/lib/telegram";
-
 interface PersonalizationCardProps {
   methods: string[];
   productTitle: string;
@@ -36,16 +31,6 @@ const TIER_COLORS: Record<string, string> = {
 export default function PersonalizationCard({ methods, productTitle }: PersonalizationCardProps) {
   if (methods.length === 0) return null;
 
-  const handleTelegram = () => {
-    openTelegramWithContext({
-      type: "product",
-      product_id: "",
-      title: productTitle,
-      qty: 1,
-      message: `Quiero personalizar: ${productTitle}. Me interesa saber las opciones de personalización.`,
-    });
-  };
-
   return (
     <div className="space-y-3">
       <p className="text-xs font-semibold uppercase tracking-wider text-muted">
@@ -76,13 +61,6 @@ export default function PersonalizationCard({ methods, productTitle }: Personali
           );
         })}
       </div>
-      <button
-        onClick={handleTelegram}
-        className="flex w-full items-center justify-center gap-2 rounded-xl border border-border bg-white py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-surface"
-      >
-        <PaperPlaneTilt className="h-4 w-4" />
-        Habla con nosotros para personalizar
-      </button>
     </div>
   );
 }
