@@ -199,6 +199,8 @@ export default function QuoteBuilder() {
             title: getItemLabel(i),
             quantity: i.quantity,
             unit_price: getItemUnitPrice(i) ?? i.product.price,
+            image_url: i.product.image_urls[0] || undefined,
+            color: i.color || undefined,
           })),
           billing: {
             first_name: billingForm.firstName.trim(),
@@ -249,6 +251,8 @@ export default function QuoteBuilder() {
             title: getItemLabel(i),
             quantity: i.quantity,
             unit_price: getItemUnitPrice(i) ?? i.product.price,
+            image_url: i.product.image_urls[0] || undefined,
+            color: i.color || undefined,
           })),
           billing: {
             first_name: billingForm.firstName.trim(),

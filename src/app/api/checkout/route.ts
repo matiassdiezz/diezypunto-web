@@ -1,19 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { MercadoPagoConfig, Preference } from "mercadopago";
+import { Resend } from "resend";
 import { trackServerEvent } from "@/lib/engine/analytics";
+import {
+  buildQuoteEmail,
+  buildOrderNotifyEmail,
+  type EmailBilling,
+} from "@/lib/email/templates";
 
-type BillingPayload = {
-  first_name: string;
-  last_name: string;
-  company?: string;
-  document_type: string;
-  document_number: string;
-  street_address: string;
-  city: string;
-  province: string;
-  phone: string;
-  email: string;
-};
+type BillingPayload = EmailBilling;
 
 function splitStreetAddress(streetAddress: string) {
   const trimmed = streetAddress.trim();
@@ -42,6 +37,8 @@ export async function POST(req: NextRequest) {
       quantity: number;
       unit_price: number;
       id: string;
+      image_url?: string;
+      color?: string;
     }[];
     billing?: BillingPayload;
   };
@@ -125,6 +122,36 @@ export async function POST(req: NextRequest) {
         .join(" | "),
     },
   });
+
+  // Send quote email to customer + notify Martín (non-blocking)
+  const resendKey = process.env.RESEND_API_KEY;
+  if (resendKey && billing.email) {
+    const resend = new Resend(resendKey);
+    const fromAddress =
+      process.env.RESEND_FROM_EMAIL || "Diez y Punto <onboarding@resend.dev>";
+    const total = items.reduce((s, i) => s + i.quantity * i.unit_price, 0);
+    const emailItems = items.map((i) => ({
+      id: i.id,
+      title: i.title,
+      quantity: i.quantity,
+      unit_price: i.unit_price,
+    }));
+
+    Promise.all([
+      resend.emails.send({
+        from: fromAddress,
+        to: billing.email,
+        subject: "Tu presupuesto — Diez y Punto",
+        html: buildQuoteEmail(emailItems, billing, total, "mercadopago", `${origin}/carrito`),
+      }),
+      resend.emails.send({
+        from: fromAddress,
+        to: "martin@diezypunto.com.ar",
+        subject: `Nuevo pedido MP — ${billing.first_name} ${billing.last_name} — $${total.toLocaleString("es-AR")}`,
+        html: buildOrderNotifyEmail(emailItems, billing, total, "mercadopago"),
+      }),
+    ]).catch((err) => console.error("Quote email error:", err));
+  }
 
   return NextResponse.json({ init_point: result.init_point });
 }
