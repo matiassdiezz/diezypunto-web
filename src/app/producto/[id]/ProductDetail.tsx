@@ -95,7 +95,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
 
   const breadcrumbs = [
     { label: "Inicio", href: "/" },
-    { label: "Catalogo", href: "/catalogo" },
+    { label: "Catálogo", href: "/catalogo" },
     {
       label: product.category,
       href: `/catalogo/${encodeURIComponent(product.category)}`,
@@ -259,7 +259,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
               )}
               {product.lead_time_days != null && (
                 <p className="mt-1 text-xs text-muted sm:text-sm">
-                  Tiempo de entrega: ~{product.lead_time_days} dias
+                  Tiempo de entrega: ~{product.lead_time_days} días
                 </p>
               )}
 

@@ -27,7 +27,7 @@ export default function QuantityNudge({ qty: rawQty, product }: QuantityNudgePro
   if (qty < tiers[0].min) {
     return (
       <p className="mt-2 text-xs text-muted sm:text-sm">
-        Pedido minimo: {tiers[0].min} unidades — ${tiers[0].finalPrice.toLocaleString("es-AR")}/u.
+        Pedido mínimo: {tiers[0].min} unidades — ${tiers[0].finalPrice.toLocaleString("es-AR")}/u.
       </p>
     );
   }

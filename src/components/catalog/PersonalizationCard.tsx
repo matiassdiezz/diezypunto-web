@@ -9,25 +9,25 @@ interface PersonalizationCardProps {
 }
 
 const METHOD_INFO: Record<string, { tier: string; description: string }> = {
-  "Serigrafía": { tier: "Economico", description: "Ideal para pedidos grandes, tintas solidas" },
-  "Tampografía": { tier: "Economico", description: "Ideal para superficies curvas y objetos pequeños" },
-  "Tampo Metal": { tier: "Economico", description: "Tampografia sobre superficies metalicas" },
-  "Transfer monocolor": { tier: "Standard", description: "Transferencia termica de un color" },
-  "Transfer full color": { tier: "Standard", description: "Full color, ideal para disenos complejos y fotos" },
+  "Serigrafía": { tier: "Económico", description: "Ideal para pedidos grandes, tintas sólidas" },
+  "Tampografía": { tier: "Económico", description: "Ideal para superficies curvas y objetos pequeños" },
+  "Tampo Metal": { tier: "Económico", description: "Tampografía sobre superficies metálicas" },
+  "Transfer monocolor": { tier: "Standard", description: "Transferencia térmica de un color" },
+  "Transfer full color": { tier: "Standard", description: "Full color, ideal para diseños complejos y fotos" },
   "Sublimación": { tier: "Standard", description: "Full color permanente sobre superficies claras" },
   "Hot Stamping": { tier: "Standard", description: "Acabado metalizado, ideal para logos elegantes" },
   "Bordado": { tier: "Premium", description: "Duradero, premium para textiles" },
-  "Bordado 3D": { tier: "Premium", description: "Bordado con relieve, maxima presencia" },
-  "Patch Bordado": { tier: "Premium", description: "Parche bordado aplicable, versatil" },
+  "Bordado 3D": { tier: "Premium", description: "Bordado con relieve, máxima presencia" },
+  "Patch Bordado": { tier: "Premium", description: "Parche bordado aplicable, versátil" },
   "Laser": { tier: "Premium+", description: "Grabado permanente, acabado premium" },
-  "Laser CO2": { tier: "Premium+", description: "Grabado laser para materiales organicos" },
-  "Speed Laser": { tier: "Premium+", description: "Grabado laser de alta velocidad" },
-  "UV": { tier: "Premium+", description: "Impresion directa full color sobre cualquier superficie" },
-  "UV Rotativa": { tier: "Premium+", description: "Impresion UV sobre objetos cilindricos" },
+  "Laser CO2": { tier: "Premium+", description: "Grabado láser para materiales orgánicos" },
+  "Speed Laser": { tier: "Premium+", description: "Grabado láser de alta velocidad" },
+  "UV": { tier: "Premium+", description: "Impresión directa full color sobre cualquier superficie" },
+  "UV Rotativa": { tier: "Premium+", description: "Impresión UV sobre objetos cilíndricos" },
 };
 
 const TIER_COLORS: Record<string, string> = {
-  Economico: "bg-surface text-muted",
+  Económico: "bg-surface text-muted",
   Standard: "bg-accent-light text-accent",
   Premium: "bg-amber-50 text-amber-700",
   "Premium+": "bg-amber-100 text-amber-800",
@@ -42,7 +42,7 @@ export default function PersonalizationCard({ methods, productTitle }: Personali
       product_id: "",
       title: productTitle,
       qty: 1,
-      message: `Quiero personalizar: ${productTitle}. Me interesa saber las opciones de personalizacion.`,
+      message: `Quiero personalizar: ${productTitle}. Me interesa saber las opciones de personalización.`,
     });
   };
 
@@ -53,11 +53,11 @@ export default function PersonalizationCard({ methods, productTitle }: Personali
           Tu logo incluido en el precio
         </p>
         <p className="mt-0.5 text-xs text-accent/70">
-          Todos los productos se cotizan con personalizacion. Tiempo estimado: 1 semana.
+          Todos los productos se cotizan con personalización. Tiempo estimado: 1 semana.
         </p>
       </div>
       <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-        Metodos disponibles
+        Métodos disponibles
       </p>
       <div className="space-y-2">
         {methods.map((method) => {

@@ -38,7 +38,7 @@ export default function AlternativeBadge({ product }: AlternativeBadgeProps) {
         >
           <Leaf className="h-4 w-4 shrink-0" />
           <span>
-            Disponible en version eco-friendly:{" "}
+            Disponible en versión eco-friendly:{" "}
             <span className="font-medium underline">{ecoAlt.title}</span>
           </span>
         </Link>
@@ -50,7 +50,7 @@ export default function AlternativeBadge({ product }: AlternativeBadgeProps) {
         >
           <Star className="h-4 w-4 shrink-0" />
           <span>
-            Disponible en version premium:{" "}
+            Disponible en versión premium:{" "}
             <span className="font-medium underline">{premiumAlt.title}</span>
           </span>
         </Link>
