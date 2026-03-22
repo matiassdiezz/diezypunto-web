@@ -11,7 +11,7 @@
 
 const PROVIDER_FACTORS: Record<string, number> = {
   zecat: 0.325,
-  cdo: 0.61,
+  cdo: 1.0, // net_price already has provider discount applied
   promoproductos: 0.72,
 };
 

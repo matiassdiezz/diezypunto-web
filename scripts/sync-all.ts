@@ -18,6 +18,7 @@ const DATA_DIR = fileURLToPath(new URL("../src/data", import.meta.url));
 const ZECAT_PATH = `${DATA_DIR}/catalog.json`;
 const PROMO_PATH = `${DATA_DIR}/promoproductos-catalog.json`;
 const XTRADE_PATH = `${DATA_DIR}/xtrade-catalog.json`;
+const CDO_PATH = `${DATA_DIR}/cdo-catalog.json`;
 const OUTPUT_PATH = `${DATA_DIR}/catalog.json`;
 
 interface CatalogProduct {
@@ -85,6 +86,16 @@ async function main() {
     } catch {
       console.error("X-Trade sync failed, using existing file if available");
     }
+
+    console.log("\n=== Syncing CDO ===\n");
+    try {
+      execSync(`npx tsx ${scriptDir}/sync-cdo.ts`, {
+        stdio: "inherit",
+        env: process.env,
+      });
+    } catch {
+      console.error("CDO sync failed, using existing file if available");
+    }
     console.log("\n=== Merging catalogs ===\n");
   }
 
@@ -92,8 +103,9 @@ async function main() {
   const zecat = loadCatalog(ZECAT_PATH);
   const promo = loadCatalog(PROMO_PATH);
   const xtrade = loadCatalog(XTRADE_PATH);
+  const cdo = loadCatalog(CDO_PATH);
 
-  if (!zecat && !promo && !xtrade) {
+  if (!zecat && !promo && !xtrade && !cdo) {
     console.error("No catalog files found. Run with --sync to fetch first.");
     process.exit(1);
   }
@@ -114,12 +126,18 @@ async function main() {
     source: p.source || "xtrade",
   }));
 
+  const cdoProducts: CatalogProduct[] = (cdo?.products || []).map((p) => ({
+    ...p,
+    source: p.source || "cdo",
+  }));
+
   console.log(`Zecat: ${zecatProducts.length} products`);
   console.log(`Promoproductos: ${promoProducts.length} products`);
   console.log(`X-Trade: ${xtradeProducts.length} products`);
+  console.log(`CDO: ${cdoProducts.length} products`);
 
-  // Merge — Zecat first (primary), then Promoproductos, then X-Trade
-  const all = [...zecatProducts, ...promoProducts, ...xtradeProducts];
+  // Merge — Zecat first (primary), then Promoproductos, then X-Trade, then CDO
+  const all = [...zecatProducts, ...promoProducts, ...xtradeProducts, ...cdoProducts];
 
   // Deduplicate by product_id
   const seen = new Set<string>();
@@ -165,6 +183,11 @@ async function main() {
         count: bySource["xtrade"] || 0,
         synced_at: xtrade?.synced_at,
         usd_rate: xtrade?.usd_rate,
+      },
+      cdo: {
+        count: bySource["cdo"] || 0,
+        synced_at: cdo?.synced_at,
+        usd_rate: cdo?.usd_rate,
       },
     },
     products: unique,

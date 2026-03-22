@@ -415,7 +415,8 @@ function toProductResult(p: CatalogProduct, score: number): ProductResult {
   let displayPrice = p.price;
 
   if (listPrice != null && listPrice > 0) {
-    const pricing = calculatePricing(listPrice, pricingCategory, "zecat");
+    const provider = p.source || "zecat";
+    const pricing = calculatePricing(listPrice, pricingCategory, provider);
     priceTiers = pricing.tiers.map((t) => ({
       label: t.label,
       min: t.min,
