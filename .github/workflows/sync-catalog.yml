@@ -18,10 +18,11 @@ jobs:
 
       - run: npm ci
 
-      - name: Sync catalog from Zecat
-        run: npx tsx scripts/sync-catalog.ts
+      - name: Sync all catalogs and merge
+        run: npx tsx scripts/sync-all.ts --sync
         env:
           ZECAT_API_TOKEN: ${{ secrets.ZECAT_API_TOKEN }}
+          CDO_API_TOKEN: ${{ secrets.CDO_API_TOKEN }}
 
       - name: Commit if changed
         run: |
@@ -31,6 +32,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to catalog"
           else
-            git commit -m "chore: sync catalog from Zecat API"
+            git commit -m "chore: sync catalog from all providers"
             git push
           fi
