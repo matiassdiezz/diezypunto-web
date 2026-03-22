@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import Hero from "@/components/hero/Hero";
+import Express24 from "@/components/home/Express24";
 import HowItWorks from "@/components/home/HowItWorks";
 import SearchSection from "@/components/home/SearchSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import LogoBar from "@/components/home/LogoBar";
+import GoogleReviews from "@/components/home/GoogleReviews";
 import Testimonials from "@/components/home/Testimonials";
+import BrandBar from "@/components/home/BrandBar";
 import EcoFaq from "@/components/home/EcoFaq";
 import CtaFinal from "@/components/home/CtaFinal";
 
@@ -77,11 +80,14 @@ export default function Home() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <Hero />
+      <Express24 />
       <HowItWorks />
       <FeaturedProducts />
       <SearchSection />
       <LogoBar />
+      <GoogleReviews />
       <Testimonials />
+      <BrandBar />
       <EcoFaq />
       <CtaFinal />
     </>
