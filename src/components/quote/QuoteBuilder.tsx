@@ -169,7 +169,9 @@ export default function QuoteBuilder() {
                   <div className="flex items-start justify-between gap-2">
                     <div className="min-w-0">
                       <p className="truncate font-medium">{item.product.title}</p>
-                      <p className="text-xs text-muted">{item.product.category}</p>
+                      <p className="text-xs text-muted">
+                        {item.product.category}{item.color ? ` · ${item.color}` : ""}
+                      </p>
                     </div>
                     <button
                       onClick={() => removeItem(item.product.product_id)}

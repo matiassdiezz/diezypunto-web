@@ -30,6 +30,9 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
     return minQty;
   })();
   const [qty, setQty] = useState<number | "">(initialQty);
+  const [selectedColor, setSelectedColor] = useState<string | null>(
+    product.colors.length === 1 ? product.colors[0] : null,
+  );
   const [justAdded, setJustAdded] = useState(false);
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
@@ -72,8 +75,8 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   }, [product]);
 
   function handleAdd() {
-    const q = qty || 1;
-    addItem(product, q);
+    const q = qty || minQty;
+    addItem(product, q, selectedColor ?? undefined);
     openDrawer(product, q);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1500);
@@ -319,7 +322,21 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted">
                     Colores disponibles
                   </p>
-                  <p className="mt-1 text-sm">{product.colors.join(", ")}</p>
+                  <div className="mt-1.5 flex flex-wrap gap-1.5">
+                    {product.colors.map((color) => (
+                      <button
+                        key={color}
+                        onClick={() => setSelectedColor(selectedColor === color ? null : color)}
+                        className={`rounded-full border px-3 py-1 text-xs font-medium transition-all ${
+                          selectedColor === color
+                            ? "border-accent bg-accent/10 text-accent"
+                            : "border-border text-muted hover:border-accent/30"
+                        }`}
+                      >
+                        {color}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
               {/* Personalization Card — replaces plain pills */}

@@ -84,6 +84,7 @@ export interface ProductListResponse {
 export interface QuoteItem {
   product: ProductResult;
   quantity: number;
+  color?: string;
 }
 
 /* AI Top Picks */

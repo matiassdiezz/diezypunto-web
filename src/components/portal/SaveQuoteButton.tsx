@@ -24,6 +24,7 @@ export default function SaveQuoteButton() {
             title: i.product.title,
             quantity: i.quantity,
             category: i.product.category,
+            ...(i.color && { color: i.color }),
           })),
           status: "borrador",
         }),

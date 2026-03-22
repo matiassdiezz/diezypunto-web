@@ -8,7 +8,7 @@ interface QuoteState {
   lastAdded: { product: ProductResult; quantity: number } | null;
   lastSyncedAt: number | null;
   isSyncing: boolean;
-  addItem: (product: ProductResult, quantity?: number) => void;
+  addItem: (product: ProductResult, quantity?: number, color?: string) => void;
   removeItem: (productId: string) => void;
   updateQty: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -25,7 +25,7 @@ export const useQuoteStore = create<QuoteState>()(
       lastSyncedAt: null,
       isSyncing: false,
 
-      addItem: (product, quantity = 1) => {
+      addItem: (product, quantity = 1, color?) => {
         const items = get().items;
         const existing = items.find(
           (i) => i.product.product_id === product.product_id,
@@ -34,13 +34,13 @@ export const useQuoteStore = create<QuoteState>()(
           set({
             items: items.map((i) =>
               i.product.product_id === product.product_id
-                ? { ...i, quantity: i.quantity + quantity }
+                ? { ...i, quantity: i.quantity + quantity, color: color ?? i.color }
                 : i,
             ),
             lastAdded: { product, quantity },
           });
         } else {
-          set({ items: [...items, { product, quantity }], lastAdded: { product, quantity } });
+          set({ items: [...items, { product, quantity, color }], lastAdded: { product, quantity } });
         }
         const newItems = get().items;
         trackEvent("cart_add", {

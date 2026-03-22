@@ -28,7 +28,11 @@ export const useDrawerStore = create<DrawerState>((set) => ({
 
 export default function AddToCartDrawer() {
   const { isOpen, product, quantity, close } = useDrawerStore();
+  const cartItems = useQuoteStore((s) => s.items);
   const [suggestions, setSuggestions] = useState<ProductResult[]>([]);
+  const addedColor = product
+    ? cartItems.find((i) => i.product.product_id === product.product_id)?.color
+    : undefined;
 
   useEffect(() => {
     if (!product) return;
@@ -95,7 +99,9 @@ export default function AddToCartDrawer() {
               </div>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">{product.title}</p>
-                <p className="text-xs text-muted">{quantity}u</p>
+                <p className="text-xs text-muted">
+                  {quantity}u{addedColor ? ` · ${addedColor}` : ""}
+                </p>
               </div>
               {product.price != null && (
                 <p className="text-sm font-bold">
