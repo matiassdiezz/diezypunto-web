@@ -19,6 +19,7 @@ interface CatalogProduct {
   currency: string;
   min_qty: number;
   image_urls: string[];
+  source?: string;
 }
 
 interface CatalogData {
