@@ -90,11 +90,8 @@ export default function ProductCard({
           <div className="rounded-2xl border border-white/55 bg-white/55 px-2.5 py-2 backdrop-blur-sm">
             {product.price != null ? (
               <p className="text-sm font-bold text-foreground sm:text-base">
-                {product.price_tiers && product.price_tiers.length > 1 && (
-                  <span className="text-[10px] font-normal text-muted sm:text-xs">Desde </span>
-                )}
                 ${(product.price_tiers
-                  ? product.price_tiers[product.price_tiers.length - 1].finalPrice
+                  ? product.price_tiers[0].finalPrice
                   : product.price
                 ).toLocaleString("es-AR")}
                 <span className="ml-0.5 text-[10px] font-normal text-muted sm:text-xs">+ IVA</span>

@@ -1,0 +1,5027 @@
+{
+  "synced_at": "2026-03-22T17:23:59.641Z",
+  "source": "cdo",
+  "usd_rate": 1410,
+  "total": 189,
+  "products": [
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_123",
+      "external_id": "123",
+      "title": "Test",
+      "description": "test",
+      "category": "General",
+      "materials": [],
+      "colors": [
+        "Transparente"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1339.5,
+      "price_max": 1339.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/008/228/original/1.jpg?1670259554"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_301234",
+      "external_id": "301234",
+      "title": "OCEAN ",
+      "description": "Plástico. Ø 8 x 20,5 cm. Capacidad 810 ml. Cuerpo traslucido. Tapa de rosca con lazo. No utilizar con bebidas gaseosas ni líquidos calientes. Libre de bpa.",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [],
+      "colors": [
+        "Transparente/Verde Manzana",
+        "Transparente/Rojo",
+        "Transparente/Blanco",
+        "Rojo/Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 274907.7,
+      "price_max": 289374.3,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/014/716/original/T520_verde_manzana.jpg?1557319245",
+        "https://assets.cdo.dev.yellowspot.com.ar/pictures/original/missing.png"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP100",
+      "external_id": "BP100",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo triangular. Pulsador y puntera color plata. Grip de goma. Clip traslúcido. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 352.5,
+      "price_max": 352.5,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/540/original/bp100bajablanco.JPG?1519664206",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/541/original/BP100-03.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/542/original/BP100-04.jpg?1670258817",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/543/original/BP100-05.jpg?1670258818",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/544/original/BP100-20.jpg?1670258819"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP131",
+      "external_id": "BP131",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Cuerpo curvo de color. Pulsador, clip y puntera color plata. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Blanco",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 423,
+      "price_max": 423,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/556/original/BP131-01.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/557/original/BP131-03.jpg?1670258829",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/558/original/BP131-04.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/559/original/BP131-05.jpg?1670258830",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/560/original/BP131-20.jpg?1670258831"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP133",
+      "external_id": "BP133",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Frozen. Pulsador y puntera color plata. Clip de igual color que el cuerpo. Grip de goma. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 479.4,
+      "price_max": 479.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/561/original/BP_133-white.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/562/original/BP133-02.jpg?1670258832",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/563/original/BP133-03.jpg?1670258833",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/564/original/BP133-05.jpg?1670258834"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP134",
+      "external_id": "BP134",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo frozen de color. Pulsador y grip traslúcidos. Clip anatómico de goma y puntera transparentes. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Transparente",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Amarillo",
+        "Naranja",
+        "Violeta"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 408.9,
+      "price_max": 408.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/565/original/BP134-transparente.jpg?1670258834",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/566/original/BP134-03.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/567/original/BP134-04.jpg?1670258835",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/568/original/BP134-05.jpg?1670258836",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/569/original/BP134-11.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/570/original/BP134-20.jpg?1670258837",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/571/original/BP134-50.jpg?1670258838"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP135",
+      "external_id": "BP135",
+      "title": "BOLÍGRAFO",
+      "description": "Plástico. Cuerpo, pulsador, clip y puntera color plata. Grip de color. Tinta negra.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Verde",
+        "Rojo",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 267.9,
+      "price_max": 267.9,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/572/original/BP_135_grey.jpg?1670258838",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/573/original/BP135-03.jpg?1670258839",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/574/original/BP135-04.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/575/original/BP135-05.jpg?1670258840",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/576/original/BP135-20.jpg?1670258841"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP144",
+      "external_id": "BP144",
+      "title": "BOLÍGRAFO \"SPACE\"",
+      "description": "Plástico. Pulsador, clip y puntera color plata. Grip de goma de color. Detalles negros. Clip metálico. Tinta negra. DETALLE METÁLICO.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Negro",
+        "Azul",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 535.8,
+      "price_max": 535.8,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/584/original/BP144-02.jpg?1670258846",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/585/original/BP144-03.jpg?1670258847",
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/586/original/BP144-05.jpg?1670258848"
+      ],
+      "source": "cdo"
+    },
+    {
+      "product_id": "cdo_BP145",
+      "external_id": "BP145",
+      "title": "BOLÍGRAFO \"IRON\"",
+      "description": "Metálico. Apertura giratoria. Tinta negra. METAL.",
+      "category": "Escritura",
+      "materials": [],
+      "colors": [
+        "Plata"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 4427.4,
+      "price_max": 4427.4,
+      "currency": "ARS",
+      "min_qty": 10,
+      "image_urls": [
+        "https://d1ok1ldurjeiif.cloudfront.net/product_images/pictures/000/007/587/original/BP145-frente.jpg?1670258848"
+      ],
+      "source": "cdo"
+    }
+  ]
+}
