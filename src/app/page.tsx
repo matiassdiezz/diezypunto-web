@@ -5,9 +5,7 @@ import HowItWorks from "@/components/home/HowItWorks";
 import SearchSection from "@/components/home/SearchSection";
 import FeaturedProducts from "@/components/home/FeaturedProducts";
 import LogoBar from "@/components/home/LogoBar";
-import GoogleReviews from "@/components/home/GoogleReviews";
 import Testimonials from "@/components/home/Testimonials";
-import BrandBar from "@/components/home/BrandBar";
 import EcoFaq from "@/components/home/EcoFaq";
 import CtaFinal from "@/components/home/CtaFinal";
 
@@ -85,9 +83,7 @@ export default function Home() {
       <FeaturedProducts />
       <SearchSection />
       <LogoBar />
-      <GoogleReviews />
       <Testimonials />
-      <BrandBar />
       <EcoFaq />
       <CtaFinal />
     </>

@@ -11,9 +11,9 @@ import { useChatStore } from "@/lib/stores/chat-store";
 
 const VALUE_POINTS = [
   { icon: Package, text: "+1,400 productos" },
-  { icon: PaintBrush, text: "Serigrafia, bordado, laser y mas" },
-  { icon: Truck, text: "Envio a todo el pais" },
-  { icon: Trophy, text: "+10 anos de experiencia" },
+  { icon: PaintBrush, text: "Serigrafía, bordado, láser y más" },
+  { icon: Truck, text: "Envío a todo el país" },
+  { icon: Trophy, text: "+10 años de experiencia" },
 ];
 
 const spring = { type: "spring" as const, stiffness: 100, damping: 20 };
@@ -115,7 +115,7 @@ export default function Hero() {
                 transition={{ ...spring, delay: 0.14 }}
                 className="mt-4 text-lg text-muted"
               >
-                El catalogo mas completo de Argentina para tu marca
+                El catálogo más completo de Argentina para tu marca
               </motion.p>
 
               {/* Value points — 2x2 grid */}
@@ -162,7 +162,7 @@ export default function Hero() {
                     href="/catalogo"
                     className="hero-cta-catalog inline-flex w-full items-center justify-center rounded-xl px-6 py-3.5 font-semibold transition-all sm:w-auto"
                   >
-                    Explorar catalogo
+                    Explorar catálogo
                   </Link>
                 </motion.div>
                 <motion.div

@@ -8,28 +8,28 @@ import ScrollReveal from "../shared/ScrollReveal";
 
 const FAQS = [
   {
-    q: "Cual es la cantidad minima de pedido?",
-    a: "Podes pedir desde 1 unidad por producto. Para personalización con tu logo, consultanos las opciones segun la cantidad.",
+    q: "¿Cuál es la cantidad mínima de pedido?",
+    a: "Podés pedir desde 1 unidad por producto. Para personalización con tu logo, consultanos las opciones según la cantidad.",
   },
   {
-    q: "Cuanto demora la entrega?",
-    a: "En promedio, entre 7 y 15 dias habiles una vez aprobado el diseno.",
+    q: "¿Cuánto demora la entrega?",
+    a: "En promedio, entre 7 y 15 días hábiles una vez aprobado el diseño.",
   },
   {
-    q: "Que metodos de personalizacion ofrecen?",
-    a: "Serigrafia, bordado, grabado laser, sublimacion, impresion UV, tampografia y mas.",
+    q: "¿Qué métodos de personalización ofrecen?",
+    a: "Serigrafía, bordado, grabado láser, sublimación, impresión UV, tampografía y más.",
   },
   {
-    q: "Hacen envios a todo el pais?",
-    a: "Si, realizamos envios a todo el territorio argentino.",
+    q: "¿Hacen envíos a todo el país?",
+    a: "Sí, realizamos envíos a todo el territorio argentino.",
   },
   {
-    q: "Puedo ver una muestra antes de comprar?",
-    a: "Si, podemos enviar muestras fisicas o mockups digitales con tu logo.",
+    q: "¿Puedo ver una muestra antes de comprar?",
+    a: "Sí, podemos enviar muestras físicas o mockups digitales con tu logo.",
   },
   {
-    q: "Como funciona la compra?",
-    a: "Agrega productos al carrito, indica cantidades y paga con Mercado Pago o consulta por Telegram.",
+    q: "¿Cómo funciona la compra?",
+    a: "Agregá productos al carrito, indicá cantidades y pagá con Mercado Pago o consultá por Telegram.",
   },
 ];
 
@@ -86,7 +86,7 @@ export default function EcoFaq() {
                 </h2>
                 <p className="mt-2 max-w-sm text-sm leading-relaxed text-white/80">
                   Productos eco-friendly fabricados con materiales reciclados,
-                  bambu, corcho y algodon organico.
+                  bambú, corcho y algodón orgánico.
                 </p>
                 <Link
                   href="/catalogo?eco_friendly=true"

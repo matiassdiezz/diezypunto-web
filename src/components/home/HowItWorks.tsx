@@ -3,10 +3,10 @@
 import ScrollReveal from "../shared/ScrollReveal";
 
 const STEPS = [
-  { number: "1", title: "Busca", description: "Describi lo que necesitas o explora el catalogo" },
-  { number: "2", title: "Elegi", description: "Compara opciones y armalas en tu carrito" },
-  { number: "3", title: "Compra", description: "Paga con Mercado Pago o consulta por Telegram" },
-  { number: "4", title: "Recibi", description: "Coordinamos produccion y entrega" },
+  { number: "1", title: "Buscá", description: "Describí lo que necesitás o explorá el catálogo" },
+  { number: "2", title: "Elegí", description: "Compará opciones y armalas en tu carrito" },
+  { number: "3", title: "Comprá", description: "Pagá con Mercado Pago o consultá por Telegram" },
+  { number: "4", title: "Recibí", description: "Coordinamos producción y entrega" },
 ];
 
 export default function HowItWorks() {
@@ -14,7 +14,7 @@ export default function HowItWorks() {
     <section className="bg-white py-16 md:py-20">
       <div className="px-6 lg:px-16">
         <ScrollReveal>
-          <h2 className="text-center text-xl md:text-2xl tracking-tight font-bold">Como funciona</h2>
+          <h2 className="text-center text-xl md:text-2xl tracking-tight font-bold">Cómo funciona</h2>
           <p className="mt-1.5 text-center text-sm text-muted">Del pedido a tu oficina en 4 pasos</p>
         </ScrollReveal>
 

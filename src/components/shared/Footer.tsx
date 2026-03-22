@@ -2,9 +2,42 @@ import Link from "next/link";
 import Image from "next/image";
 import { telegramUrl } from "@/lib/telegram";
 
+const BRANDS = [
+  { src: "/brands/stanley.webp", alt: "Stanley" },
+  { src: "/brands/samsonite.webp", alt: "Samsonite" },
+  { src: "/brands/american.webp", alt: "American Tourister" },
+  { src: "/brands/hershell.webp", alt: "Herschel" },
+  { src: "/brands/waterdog.webp", alt: "Waterdog" },
+  { src: "/brands/coleman.webp", alt: "Coleman" },
+  { src: "/brands/cardon.webp", alt: "Cardón" },
+  { src: "/brands/pampero.webp", alt: "Pampero" },
+  { src: "/brands/waterman.webp", alt: "Waterman" },
+  { src: "/brands/polarbox.webp", alt: "Polarbox" },
+  { src: "/brands/callaway.webp", alt: "Callaway" },
+];
+
 export default function Footer() {
   return (
     <footer className="border-t border-border bg-card">
+      {/* Brand logos */}
+      <div className="border-b border-border px-6 py-8 lg:px-16">
+        <p className="mb-5 text-center text-xs font-medium uppercase tracking-wider text-muted">
+          Marcas que nos acompañan
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10">
+          {BRANDS.map((brand) => (
+            <Image
+              key={brand.alt}
+              src={brand.src}
+              alt={brand.alt}
+              width={96}
+              height={48}
+              className="h-8 w-auto object-contain opacity-40 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 sm:h-10"
+            />
+          ))}
+        </div>
+      </div>
+
       <div className="px-6 lg:px-16 py-12">
         <div className="grid gap-8 sm:grid-cols-4">
           <div>
@@ -17,7 +50,7 @@ export default function Footer() {
             />
             <p className="mt-2 text-sm text-muted">
               Merchandising corporativo con +1,400 productos. Calidad y
-              personalizacion para tu marca.
+              personalización para tu marca.
             </p>
             <div className="mt-4 flex gap-3">
               <a
@@ -42,28 +75,19 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-muted">
-              Navegacion
+              Navegación
             </h4>
             <div className="mt-3 flex flex-col gap-2">
               <Link href="/" className="text-sm text-muted hover:text-foreground">
                 Inicio
               </Link>
-              <Link
-                href="/catalogo"
-                className="text-sm text-muted hover:text-foreground"
-              >
-                Catalogo
+              <Link href="/catalogo" className="text-sm text-muted hover:text-foreground">
+                Catálogo
               </Link>
-              <Link
-                href="/carrito"
-                className="text-sm text-muted hover:text-foreground"
-              >
+              <Link href="/carrito" className="text-sm text-muted hover:text-foreground">
                 Carrito
               </Link>
-              <Link
-                href="/quienes-somos"
-                className="text-sm text-muted hover:text-foreground"
-              >
+              <Link href="/quienes-somos" className="text-sm text-muted hover:text-foreground">
                 Quiénes Somos
               </Link>
             </div>
@@ -101,13 +125,13 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="text-sm font-semibold uppercase tracking-wider text-muted">
-              Informacion
+              Información
             </h4>
             <div className="mt-3 flex flex-col gap-2 text-sm text-muted">
-              <p>Mercado Pago, transferencia bancaria, efectivo, y mas.</p>
-              <p>Facturacion A y B disponible.</p>
-              <p>Envios a todo el pais. CABA y GBA en 24-72hs.</p>
-              <p>Cambios y devoluciones dentro de los 10 dias.</p>
+              <p>Mercado Pago, transferencia bancaria, efectivo y más.</p>
+              <p>Facturación A y B disponible.</p>
+              <p>Envíos a todo el país. CABA y GBA en 24-72hs.</p>
+              <p>Cambios y devoluciones dentro de los 10 días.</p>
             </div>
           </div>
         </div>
