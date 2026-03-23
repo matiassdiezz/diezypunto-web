@@ -10,10 +10,10 @@
 
 const ACCENT = "#59C6F2";
 const ACCENT_DARK = "#3BA8D4";
-const LOGO_URL = "https://diezypunto.com.ar/logo-diezypunto.png";
-const SITE_URL = "https://diezypunto.com.ar";
-const PORTAL_URL = "https://diezypunto.com.ar/portal";
-const WSP_NUMBER = "5491112345678"; // Martín's WhatsApp — update with real number
+const LOGO_URL = "https://diezypunto.vercel.app/logo-diezypunto.webp";
+const SITE_URL = "https://diezypunto.vercel.app";
+const PORTAL_URL = "https://diezypunto.vercel.app/portal";
+const WSP_NUMBER = "541162345062";
 const GOOGLE_REVIEW_URL = "https://reviewthis.biz/shy-wind-6626";
 
 const BANK_INFO = {
