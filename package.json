@@ -19,6 +19,7 @@
     "@ai-sdk/react": "^3.0.118",
     "@anthropic-ai/sdk": "^0.78.0",
     "@phosphor-icons/react": "^2.1.10",
+    "@vercel/analytics": "^2.0.1",
     "ai": "^6.0.116",
     "framer-motion": "^12.35.1",
     "jspdf": "^4.2.1",
