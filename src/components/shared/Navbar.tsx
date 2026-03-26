@@ -196,7 +196,7 @@ export default function Navbar() {
                 href="/quienes-somos"
                 className="flex items-center rounded-full px-3 py-2 text-sm text-muted transition-colors hover:bg-surface hover:text-foreground"
               >
-                Nosotros
+                Quiénes Somos
               </Link>
               {client && (
                 <Link

@@ -139,6 +139,19 @@ async function main() {
   // Merge — Zecat first (primary), then Promoproductos, then X-Trade, then CDO
   const all = [...zecatProducts, ...promoProducts, ...xtradeProducts, ...cdoProducts];
 
+  // Normalize category names across providers (different providers use different names)
+  const CATEGORY_NORMALIZE: Record<string, string> = {
+    "Hogar & Tiempo Libre": "Hogar y Tiempo Libre",
+    "Oficina": "Oficina y Negocios",
+    "Apparel - Remeras": "Apparel",
+    "2026 Minería": "General",
+  };
+  for (const p of all) {
+    if (CATEGORY_NORMALIZE[p.category]) {
+      p.category = CATEGORY_NORMALIZE[p.category];
+    }
+  }
+
   // Deduplicate by product_id
   const seen = new Set<string>();
   const unique = all.filter((p) => {

@@ -1,10 +1,10 @@
 {
-  "synced_at": "2026-03-26T02:33:05.287Z",
+  "synced_at": "2026-03-26T03:02:41.839Z",
   "total": 1403,
   "sources": {
     "zecat": {
       "count": 526,
-      "synced_at": "2026-03-26T02:32:52.098Z"
+      "synced_at": "2026-03-26T02:33:05.287Z"
     },
     "promoproductos": {
       "count": 347,
@@ -191,7 +191,7 @@
       "external_id": "02017000028",
       "title": "Holder POP UP",
       "description": "Holder POP UP plástico para celular compacto. Colores: Blanco o negro. \nMedidas: 4 cm. \nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -223,7 +223,7 @@
       "external_id": "02024000000",
       "title": "Auriculares NUCLEO",
       "description": "Auricular bluetooth universal en estuche con micrófono. \n\nCaracterísticas: Versión inalámbrica: V4.2 + EDR. \nFrecuencia: 2.4 GHz. Impedancia: 32 OHM. Transmisión: class2. Potencia de salida: 30 mW. Rango: 33 pies. Tiempo que habla: 3-4 horas\nTiempo en espera: 120 horas \nBatería recargable de Li 60 mAh\n\nTamaño del producto: Longitud 25 MM * Ancho 15 MM * Alto 35 MM. Carga de la energía: DC5V fuente de alimentación (puerto USB del ordenador, cargador de teléfono móvil, cargador de coche). Medidas estuche: 5,5 x 2,5 cm. \n\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -567,7 +567,7 @@
       "external_id": "04037000007",
       "title": "Gorro TAHG 168 c/broche",
       "description": "Gorro de Gabardina de 6 paneles. Material 100% algodón.Broche de metal. \nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -795,7 +795,7 @@
       "external_id": "05014000000",
       "title": "Manta COLORADO c/cuadros",
       "description": "Manta plegable con reverso realizado en PVC impermeable aislante. \nMedidas producto plegado: 18 x 30 x 9 cm\nMedidas producto desplegado: 130 x 120 x 0,5 cm\nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -827,7 +827,7 @@
       "external_id": "05017000002",
       "title": "Costurero MINI",
       "description": "Mini costurero de viaje de plástico Incluye: Espejo, aguja con 4 tonos de hilo, botón y alfiler de gancho. Medidas: 5,5 x 8 cm. Tahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -856,7 +856,7 @@
       "external_id": "05017000003",
       "title": "Espejo POCKET",
       "description": "Mini espejo de bolsillo con tapa plegable.\nDiámetro 6 cm. \nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -1008,7 +1008,7 @@
       "external_id": "05054000011",
       "title": "Termo AVANZA 1Lt.",
       "description": "Termo realizado en acero inoxidable 304 con esmalte especial protector. Producto aprobado por el I.N.A.L. para el contacto con alimentos. Colores disponibles: Gris, Blanco, Negro, Rojo, Azul. Medidas: 32 cm x diámetro 8,3 cm. Capacidad: 1 Lt. Producto libre de BPA. \nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [
         "Acero"
@@ -1166,7 +1166,7 @@
       "external_id": "05061000009",
       "title": "Silla QUICK",
       "description": "Realizada en Polyester 600x300D. Tratamiento de protección UV.\nPaño removible con velcro en la parte posterior. Incluye funda de transporte. \nMedidas: 70 x 49 x 49 cm. \nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -1198,7 +1198,7 @@
       "external_id": "05061000012",
       "title": "Silla FUSION",
       "description": "Realizada en Polyester 600x300D Peach Skin PVC Coating. Tratamiento de protección UV. Incluye bolso cooler en la base. Paño removible con velcro en la parte posterior. Incluye funda de transporte. \nMedidas: 30 cm x 40 cm x 66 cm. \nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -1300,7 +1300,7 @@
       "external_id": "05405000700",
       "title": "New Cooler Antartida",
       "description": "Cooler confeccionado en tela Nylon 600D, interior térmico forrado en PVC gris. Bolsillos laterales. Apto para llevar botellas, termos y otros. Colores: Negro, Blanco, Azul y Rojo. Medidas: 28 alto x 20 ancho x 14 base cm. Capacidad: 8 Lts. \nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -1756,7 +1756,7 @@
       "external_id": "10097000013",
       "title": "Bolsa Shopping Metalica 36x40x10",
       "description": "Realizada en Nonwoven Laminated Metallic. Manijas reforzadas. Medidas: 36 x 40 x 10 cm. \n\nCapacidad: 14.5 Lt. \n\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -1784,7 +1784,7 @@
       "external_id": "10098000005",
       "title": "Cooler ARTIC",
       "description": "Realizado en Polyester. Interior térmico en aluminium foil. Doble cierre. Bolsillo frontal. \nCapacidad: 20 Lts. \nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -1826,7 +1826,7 @@
       "external_id": "10098000006",
       "title": "Cooler Frozen",
       "description": "Realizado en Polyester. Interior térmico en peva de 5mm. Correa ajustable. Manijas reforzadas. Bolsillo superior y frontal. \n\nCapacidad: 25 Lts. \n\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -1855,7 +1855,7 @@
       "external_id": "10098000007",
       "title": "Cooler MINI",
       "description": "Realizado en Friselina (NON WOVEN). Interior en aluminio y PE Foam 2mm. Tiras para sujetar. Compartimiento principal superior. \n\nMedidas: 20 x 14 x 15,5 cm. Capacidad 4,5 Lts. \n\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -2105,7 +2105,7 @@
       "external_id": "13017000013",
       "title": "Lapiz Carpintero",
       "description": "Lápiz de carpintero de forma rectangular. Apto para múltiples superficies. \n\nColores: Rojo o Negro. Mina HB. Medidas: 1,2 x 17,8 x 0,8 cm. \n\nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -2480,7 +2480,7 @@
       "external_id": "18059000006",
       "title": "La Baule Master Cheese",
       "description": "Delicada quesera / mantequera con tapa acrílica transparente, sobre tabla de bamboo con decantador, combinada con plato de vidrio antideslizante. Ideal para utilizarse con diferentes tipos de quesos o para proteger los panes de mantequilla. Diámetro: 18 cm. Producto libre de BPA. \n\nLa Baule.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -2765,7 +2765,7 @@
       "external_id": "19061000000",
       "title": "Silla Plegable Pampero",
       "description": "Silla plegable con Estructura reforzada con terminación epoxi rugosa. Paneles con interior de foam garantizando comodidad. Apoyabrazos acolchados. Bases adaptables a la superficie. Panel desmontable en el respaldo para logueo. \n\nMedidas: Ancho: 59cm, Profundidad: 55cm, Altura respaldo: 89cm. \n\nPampero",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -2799,7 +2799,7 @@
       "external_id": "19098000001",
       "title": "Cooler GLACIAR",
       "description": "Interior de PEVA con soldadura hermética y estanca para evitar el derrame de líquido. Cuenta con manijas laterales y tapón inferior de desagote. Posibilidad de guardado del conjunto plegado. Completamente desmontable, permitiendo facilidad de limpieza. Patas con apoyo antideslizante. Compartimentos: Superior principal de gran apertura con cierre. Superior con menor apertura con velcro permitiendo retirar bebida sin perder el frio en su interior. Incluye funda de transporte.\n\n Medidas: Conjunto abierto: 77,5 x 45,5 x 45,5 cm. Contenedor: 34 x 45,5 x 45,5 cm. Capacidad: 50 Lts. \n\nLa foto es ilustrativa, no incluye bebidas. \n\nPampero.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -3123,7 +3123,7 @@
       "external_id": "20097000003",
       "title": "Botinero Net",
       "description": "Realizado en Snow. Compartimiento principal con cierre. Bolsillo frontal y lateral con cierre.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -3157,7 +3157,7 @@
       "external_id": "20098000000",
       "title": "Cooler GRAND",
       "description": "Realizado en 600D Polyester y 420D Dobby. Interior en aluminio. Compartimiento principal con doble cierre y bolsillo frontal con velcro. Medidas: 34,5 x 31 x 29,5 cm. Capacidad: 31,5 Lts. Foto ilustrativa, no incluye bebida. \n\nSlazenger. \n\nLas fechas, precios en portada y entregas son estimativas y están sujetas a cambios.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -3292,7 +3292,7 @@
       "external_id": "21098000000",
       "title": "Cooler California TAHG",
       "description": "Realizado en Polyester 600 x 300D en su exterior y Aluminio con 3mm PE FOAM en su interior. Compartimento principal Superior y bolsillo Lateral. Medidas: 36 x 26 x 16 cm. Capacidad: 10 Lts. Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -3462,7 +3462,7 @@
       "external_id": "29091000001",
       "title": "FT Waist Bag",
       "description": "Portavalores ideal para viajes, cuenta con un diseño ergonómico y deportivo para poder trasladar con seguridad tus valores. Desarrollada en Ripstop + Polyester. Recomendamos personalizarlo en el panel frontal. Medidas: 30 x 13 cm.  \n\nFast Travel.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -3544,7 +3544,7 @@
       "external_id": "99030500000",
       "title": "Set de 8 Cubiertos Laguiole",
       "description": "Set de 8 cubiertos, incluye 4 cuchillos y 4 tenedores. Hojas de acero forjado 420 y mango ABS con detalles metálicos. Medidas de la caja: 28cm x 18cm x 3cm. Producto libre de BPA. Laguiole.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -3571,7 +3571,7 @@
       "external_id": "99030500300",
       "title": "Set de mesa x 16 piezas Laguiole",
       "description": "Set de cubiertos para 4 personas de diseño francés. Piezas con hojas de acero forjado 420 y mango de madera noble con detalles metálicos. Producto aprobado por el I.N.A.L. para el contacto con alimentos. La caja de madera negra contiene: 4 tenedores, 4 cuchillos, 4 cucharas soperas, 4 cucharas de té. \nMedidas de la caja: 25,8 x 35  x 7 cm. \nProducto libre de BPA. \nLaguiole.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -3929,7 +3929,7 @@
       "external_id": "99030769640",
       "title": "Cooler Dakota",
       "description": "Cooler de Polyester 420D con compartimiento principal superior y bolsillo frontal. Posee interior en Aluminio y PE foam. Medidas: 37 x 24 x 13 cm. Capacidad: 11,5 Litros. \nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -4000,7 +4000,7 @@
       "external_id": "99030769635",
       "title": "Cooler Aurora",
       "description": "Cooler de Polycanvas con Interior en PEVA y Foam de 3 mm. Posee estructura plegable de aluminio. Cuenta con agarres en rubber y Bolsillo frontal organizador. Medidas: 32 x 36 x 20 cm. Capacidad: 23 Litros. Tahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -4028,7 +4028,7 @@
       "external_id": "10001100103",
       "title": "Bobina Iman S/PVC",
       "description": "Bobina de Imán Virgen, Sin PVC de  0,35mm x 0,61mts x 50,5mts. Terminación Mate",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -4051,7 +4051,7 @@
       "external_id": "05014000001",
       "title": "Toallon CLOUD",
       "description": "Toallón de microfibra de secado rápido  y máxima absorción. Puntas redondeadas y elástico combinado  para optimizar su guardado. Medida: 130 x 80 Cm. Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -4467,7 +4467,7 @@
       "external_id": "99030769750",
       "title": "\tAuriculares Concerto",
       "description": "Auriculares inalámbricos con estuche de carga y micrófono incorporado. Posee tecnología bluetooth 5.0, la capacidad del auricular es de 55mAh y su capacidad de carga es de 300mAh. Cuenta con cobertura bluetooth en una distancia de 10 metros y su duración en funcionamiento es de 3 horas seguidas. \n\nMantiene la carga sin uso por 120 horas y el tiempo de carga es de 50 minutos. Funciones touch: un toque para pausar/reproducir música, dos toques para redial.\n\n Medidas: 8 x 3,5 cm. \n\nKingtech.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -4539,7 +4539,7 @@
       "external_id": "31048000000",
       "title": "Frontier Multitool",
       "description": "Multi Herramienta de acero inoxidable y aluminio con 13 funciones. Incluye funda negra. Medidas Multitool: 2.2 x 4.5 x 10.5 cm. Medidas Packaging: 4.3 x 14.3 x 15.5 cm. Suns Tools.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -4569,7 +4569,7 @@
       "external_id": "31048000001",
       "title": "Rescue Multitool",
       "description": "Martillo multifuncional con elementos de acero inoxidable y aluminio de 6 funciones. Incluye estuche negro. Medidas:19,3 x 20,5 x 3,8 cm. Suns Tools.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -4849,7 +4849,7 @@
       "external_id": "13017000015",
       "title": "Lapiz Negro con Goma",
       "description": "Lápiz negro con goma. Realizado en madera con detalle de aluminio en reborde de goma. Material de la goma: Caucho. Punta sin preafilar. \nMedidas: 189 mm x 0,8 mm. Mina: 2mm. \nTahg",
-      "category": "2026 Minería",
+      "category": "General",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -4966,7 +4966,7 @@
       "external_id": "33024000000",
       "title": "Auriculares GALIO",
       "description": "Auriculares inalámbricos con estuche de carga y micrófono incorporado. Posee tecnología bluetooth 5.0. La capacidad del auricular es de 30mAh y su capacidad de carga es de 300mAh. Cuenta con cobertura bluetooth en una distancia de 10 metros y su duración en funcionamiento es de 2 horas seguidas. El tiempo de carga es de 1 hora. Medidas: 3.5 x 6cm. \nKingtech.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -5041,7 +5041,7 @@
       "external_id": "10097000000",
       "title": "\tSet de Belleza BLACK",
       "description": "Set de belleza, incluye tijera, cortauñas, pinza de depilar y lima, todos en acero inoxidable color negro. El estuche de está confeccionado en cuero PU negro. Medidas:10 x 7 x1.5cm. Tahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -5072,7 +5072,7 @@
       "external_id": "34053000003",
       "title": "TAZA RECTA 230",
       "description": "Taza de Porcelana recta con asa. Resiste altas temperaturas. \nCapacidad: 200 ml. Medidas: 9,8 cm x 7 cm. Producto aprobado por el I.N.A.L. para el contacto con alimentos.  Dimensiones de la GiftBox 10x9x9cm.\n\nEs apto para lavavajillas. Es apto para microondas.\n\nVerbano.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [
         "Ceramica"
@@ -5595,7 +5595,7 @@
       "external_id": "05014000002",
       "title": "Toalla Sport 30 x 45",
       "description": "Toalla Sport, confeccionada 100% en algodón de 400 grs/m². Medida: 30 x 45 Cm. ReUseMe",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -5625,7 +5625,7 @@
       "external_id": "05014000004",
       "title": "Toallon Shower 70 x 140",
       "description": "Toallón Shower, confeccionado 100% en algodón de 400 grs/m².  Medidas: 70 x 140 Cm. ReUseMe",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -6115,7 +6115,7 @@
       "external_id": "35059000001",
       "title": "Tabla de quesos Gruyere",
       "description": "Tabla para picadas de quesos, elaborada en bamboo, con espacio imantado para organizar los utensilios. Incluye cubiertos de acero inoxidable con mango en bamboo: espátula, cuchillo y tenedor. Producto aprobado por el I.N.A.L. para el contacto con alimentos. Medidas: 43 x 24 x 1,5 cm. Laguiole.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -6145,7 +6145,7 @@
       "external_id": "22024000001",
       "title": "Auriculares Demo",
       "description": "Auriculares inalámbricos estilo diadema, con micrófono incorporado. Realizado en ABS y Wheat Straw, pasta de tallo de trigo, un material sustentable que reduce el consumo de plásticos vírgenes. Cuenta con cobertura bluetooth en una distancia de 10 metros y conector para cable jack de 3.5mm, y ranura para tarjetas de memoria. Incluye cable micro USB de carga. Incluye botones de comando para encender, apagar, retroceder y avanzar. \n\nSu capacidad de carga es de 450mAh. \n\nMedidas: 195 x 165 x 75 mm. Tiene una potencia de 15mWx2 y una sensibilidad de 85dB. Impedancia: 32 Ω. Bluetooth: 5.1. \n\nDebido a que la pasta de trigo es un material sustentable y 100% natural, puede haber ligeras variaciones en el color del producto de un lote a otro. \n\nReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -6207,7 +6207,7 @@
       "external_id": "22011000013",
       "title": "Set de Sorbetes",
       "description": "Set de 4 sorbetes reutilizables, confeccionados 100% en acero inoxidable. Incluye cepillo limpiador y funda de lienzo para su transporte. Producto aprobado por el I.N.A.L. para el contacto con alimentos. ReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -6574,7 +6574,7 @@
       "external_id": "05011000003",
       "title": "Bota de Navidad",
       "description": "Bota Navideña de tela. Fabricada en pañolenci, ideal para personalizar con tu logo, y regalarla o utilizarla para decorar espacios o eventos corporativos. Dimensiones: 26 x 36cm. Tahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -6645,7 +6645,7 @@
       "external_id": "22097000003",
       "title": "Bolsa Shiny 40x38x10",
       "description": "Bolsa reutilizable Shiny realizada en friselina de primera calidad con manijas tipo correa de 45 cm. Soporta hasta 15 kg de carga. Confeccionada 100% en polipropileno reciclable. Medidas: 40 cm alto x 38 cm ancho x 10 cm fuelle lateral e inferior. ReUseMe",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -6749,7 +6749,7 @@
       "external_id": "09084000015",
       "title": "Llavero Cinta Métrica",
       "description": "Cinta métrica retráctil con llavero fabricada en ABS y hierro. Cuenta con mecanismo retráctil de 1 metro, anillo metálico para llaves y cuerpo ergonómico. Es ideal para llevar siempre a mano en tareas de medición rápidas, reparaciones en el hogar, actividades de bricolaje o uso profesional diario.\n\nCapacidad en metros: 1 metro\n\nTAHG.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -6819,7 +6819,7 @@
       "external_id": "21017000001",
       "title": "Card Holder Stop",
       "description": "Protector de tarjetas sube o credenciales de silicona. Tiene una cinta adhesiva en la parte posterior que le permite adherirse a cualquier superficie lisa. Cuenta con una soporte adaptable como apoyo. Colores disponibles: blanco, negro y gris. Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -6860,7 +6860,7 @@
       "external_id": "21017000003",
       "title": "Card Holder Sube",
       "description": "Protector de tarjetas sube o credenciales. Tiene una cinta adhesiva en la parte posterior que le permite adherirse a cualquier superficie lisa. Colores disponibles: blanco, azul y rojo. Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -6901,7 +6901,7 @@
       "external_id": "22050000000",
       "title": "Set Cutlery Bamboo",
       "description": "Set de Cubiertos reutilizables de Bamboo con funda personalizable de tela.Incluye cuchillo, tenedor y cuchara. Medidas: 22 x 7 cm. \nReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -7007,7 +7007,7 @@
       "external_id": "09084000016",
       "title": "Llavero Destapador",
       "description": "Llavero con destapador de aluminio.\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -7104,7 +7104,7 @@
       "external_id": "22006000000",
       "title": "Contenedor Health",
       "description": "Contenedor de alimentos realizado en PP y Wheat Straw, pasta de tallo de trigo, un material sustentable que reduce el consumo de plásticos vírgenes. Incluye tenedor y panel divisor interno móvil, para colocar diferentes alimentos. Tapa con traba y espacio para apoyar tenedor. No apto para microondas. \n\nDebido a que la pasta de trigo es un material 100% natural, puede haber ligeras variaciones en el color del producto de un lote a otro. \n\nReUseMe",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -7509,7 +7509,7 @@
       "external_id": "05052000012",
       "title": "Coctail set Barman",
       "description": "Set de Cocteleria, realizado en acero inoxidable. Medidas: 21,5 x 5,8 x 8,3 cm. Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -7539,7 +7539,7 @@
       "external_id": "22098000003",
       "title": "Cooler tree",
       "description": "Cooler con formato tipo cartera. Realizado en su exterior en papel kraft, con interior térmico de PEVA. Medidas: 30,5 x 12 x 34 cm. Capacidad: 12L. ReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -7567,7 +7567,7 @@
       "external_id": "15011000010",
       "title": "Set Stationery Visibility",
       "description": "Cartuchera plástica transparente con cierre. Incluye: Bolígrafo (Tinta Azul), lápiz, regla y sacapuntas. \nColores: negro, rojo y azul.  \nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -7624,7 +7624,7 @@
       "external_id": "10098000008",
       "title": "Cooler Refresh",
       "description": "Formato tipo mochila. Realizado en RPET/Polyester , confeccionado a partir de botellas recicladas. Interior térmico. Medidas: 25 x 19,5 x 34 cm. Capacidad: 16 Lts. ReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -7791,7 +7791,7 @@
       "external_id": "05014000006",
       "title": "Lona Rest",
       "description": "Lona plegable Rest, realizada en lienzo color natural, 100% algodón 20/20, ideal para compartir mates y picnic al aire libre.\nReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -7852,7 +7852,7 @@
       "external_id": "22098000004",
       "title": "Cooler Tone",
       "description": "Cooler confeccionado en polyester sustentable RPET, fabricado en base a botellas recicladas. Interior térmico. Capacidad 6L. Medidas: 21,5 x 13 x 23 cm. ReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -7883,7 +7883,7 @@
       "external_id": "13017000008",
       "title": "Porta Objetos Geco",
       "description": "Portaobjetos, realizado en Polyester con cierre. Usala para: para proteger objetos de tecnología, como auriculares y cargadores, para transportar artículos de escritura, o productos de cuidado personal o para contener lo que necesites en tus viajes. Fotos ilustrativas, no incluye objetos. Dimensiones: 22 x 10 cm. Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8073,7 +8073,7 @@
       "external_id": "22098000005",
       "title": "Cooler Eris",
       "description": "Cooler confeccionado en poliuretano, poliéster con revestimiento de PVC, espuma de polietileno 3mm utilizada como aislante y PEVA Lining, un revestimiento de polietileno vinil acetato, conocido por ser impermeable y usado en recubrimientos. \nCuenta con interior térmico. \nCapacidad: 7 Lts.  \nReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8104,7 +8104,7 @@
       "external_id": "22098000006",
       "title": "Cooler Tote Mars",
       "description": "Cooler confeccionado en polyester RPET sustentable, fabricado en base a botellas recicladas. Interior térmico. Capacidad: 16 Lts. Medidas:46 x 29 x 15 cm. ReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8139,7 +8139,7 @@
       "external_id": "22098000007",
       "title": "Cooler Clifton",
       "description": "Cooler tipo morral, confeccionado en tela Nylon 600D. Tiene interior térmico forrado en aluminio. \nCuenta con un compartimiento principal, 3 bolsillos con cierre. \nCapacidad: 7 Lts. \nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8176,7 +8176,7 @@
       "external_id": "99030760601",
       "title": "Caja SMALL",
       "description": "Caja personalizable, confeccionada en cartulina kraft. Tiene los cantos reforzados mediante doble pared para proteger los productos que quieras incluir. La caja se entrega armada. No incluye viruta. Dimensiones: 29cm x12cm x10cm.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8211,7 +8211,7 @@
       "external_id": "99030760602",
       "title": "Caja MEDIUM",
       "description": "Caja personalizable, confeccionada en cartulina kraft. Tiene los cantos reforzados mediante doble pared para proteger los productos que quieras incluir. La caja se entrega armada. No incluye viruta.  Dimensiones: 29cm x22cm x11cm.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8240,7 +8240,7 @@
       "external_id": "99030760603",
       "title": "Caja LARGE",
       "description": "Caja personalizable, confeccionada en cartulina kraft. Tiene los cantos reforzados mediante doble pared para proteger los productos que quieras incluir. La caja se entrega armada. No incluye viruta. Dimensiones: 42cm x19cm x11cm.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8268,7 +8268,7 @@
       "external_id": "99030760604",
       "title": "Caja Extra Large",
       "description": "Caja personalizable, confeccionada en cartulina kraft. Tiene los cantos reforzados mediante doble pared para proteger los productos que quieras incluir. La caja se entrega armada. No incluye viruta. Dimensiones: 50 cm ancho x 37 cm profundidad x16 cm alto.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8298,7 +8298,7 @@
       "external_id": "33014000011",
       "title": "Hoodie Snake",
       "description": "Hoodie de frisa 50% algodón y 50% poliéster de 280g, tipo canguro unisex con capucha.\n  \nCERTIFICACIÓN: PETA-Approved Vegan \nRECOMENDACIONES DE USO: Lavar a máquina a 30°. No lavar en seco. No blanquear. No planchar. No secar en máquina.\n\nSol´s.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8335,7 +8335,7 @@
       "external_id": "22097000021",
       "title": "Bolsa Kraft 32x10x30",
       "description": "Bolsa de Papel Kraft, con manijas trenzadas. Están confeccionadas en papel sustentable con Certificación FSC, lo cual garantiza el Manejo Responsable de Bosques y Espacios Forestales. Medidas: 32x10x30 cm. Capacidad:9.6 L. ReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8363,7 +8363,7 @@
       "external_id": "22097000022",
       "title": "Bolsa Kraft 43x12x32",
       "description": "Bolsa de Papel Kraft, con manijas trenzadas. Están confeccionadas en papel con Certificación FSC, lo cual garantiza el Manejo Responsable de Bosques y Espacios Forestales. Medidas: 42x12x32 cm. Capacidad:9.6 L. ReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8430,7 +8430,7 @@
       "external_id": "99030777010",
       "title": "Cooler Duomo",
       "description": "Cooler fabricado en Polycanvas en su exterior y Peva color gris con espuma 3mm en su interior. Cuenta con un compartimiento principal superior y un bolsillo con red lateral. Cierre color negro y cabezal de metal. Capacidad 12 lts. Medidas: 36 x 17 x 20 (Altura x Longitud x Ancho). Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -8798,7 +8798,7 @@
       "external_id": "99030777029",
       "title": "Set de Asado Chicago",
       "description": "Set de asado con estuche de polyester y nylon color gris. Contiene: 2 juegos de cuchillo y tenedor, 1 pinza, 1 cuchillo asador y 1 espátula. Todas las piezas cuentan con mango de madera. Producto aprobado por el INAL para el contacto con alimentos. Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -9436,7 +9436,7 @@
       "external_id": "99030769661",
       "title": "Cooler Bags Yute 9 L",
       "description": "Cooler con exterior de Yute e interior térmico confeccionado en PEVA. Debido a la naturaleza rústica del material, el producto puede presentar imperfecciones. Medidas: 30 x 24 x 13 cm. Capacidad: 9L. ReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -9465,7 +9465,7 @@
       "external_id": "99030769662",
       "title": "Cooler Bags Yute 5 L",
       "description": "Cooler con exterior de Yute e interior térmico confeccionado en PEVA. Debido a la naturaleza rústica del material, el producto puede presentar imperfecciones. Medidas: 20.5 x 15 x 16 cm. ReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -9562,7 +9562,7 @@
       "external_id": "99030777041",
       "title": "Silla Maipu",
       "description": "Silla Reposera plegable confeccionada en Polycanvas. El respaldo cuenta con un marco de madera, protegido con Cetol, que permite regular la inclinación, y con un bolsillo con cierre removible, pegado en velcro. También posee una correa regulable para transportarla fácilmente y elásticos en los extremos para cerrarla. \n\nDimensiones desplegada: 137 x 44 cm. Dimensiones cerrada: 56 x 9 cm. Dimensiones bolsillo: 38 x 30 cm. \n\nCardon.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -9888,7 +9888,7 @@
       "external_id": "99030777055",
       "title": "Porta Documento Urquiza",
       "description": "El porta documento Urquiza, realizado en cuero argentino genuino, es un excelente accesorio que además de aportar elegancia y estilo, te servirá para guardar tus tarjetas de crédito, pasaporte y documentos importantes. Dimensiones abierto: 20 x 14 cm. \nCardon",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -10116,7 +10116,7 @@
       "external_id": "99030777081",
       "title": "Set de Asado ROTI",
       "description": "El set de asado Roti contiene: tenedor y cuchillo de 33 cm, ambos con mango de madera y, tabla de bamboo de 30 x 20 x 1,2 cm. Este set incluye todo lo que necesitas, ideal para los amantes del asado. Pampa Spirit",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -10263,7 +10263,7 @@
       "external_id": "99030777113",
       "title": "Toalla de Golf",
       "description": "Toalla deportiva de microfibra, con un gancho sujetador para transportarla y colgarla con facilidad.\n\nMedidas del producto desplegado: 37 x 11 x 0,5 cm.\nMedidas del producto plegado: 15 x 11 x 0,5 cm.\n\nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -10444,7 +10444,7 @@
       "external_id": "99030777123",
       "title": "Jarro Horizon",
       "description": "Jarro de 600 ml fabricado en doble pared de acero inoxidable, diseñado para mantener la temperatura ideal, ya sea fría o caliente. Su tapa de PP incluye un destapador de botellas, combinando estilo y funcionalidad, perfecto para cualquier ocasión. \nProducto libre de BPA, aprobado por el I.N.A.L. para el contacto con alimentos. \n\nNo es apto para lavavajillas. No es apto para microondas.\n\nPampa Spirit",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [
         "Acero"
@@ -10479,7 +10479,7 @@
       "external_id": "99030777127",
       "title": "Delantal Jute",
       "description": "El delantal de ReUseMe está confeccionado en tela de Jute laminada con TNT, tela no tejida. Cuenta con dos tiras regulables para atar en la cintura y un bolsillo frontal. ReUseMe",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -10508,7 +10508,7 @@
       "external_id": "99030777128",
       "title": "Cooler Felt",
       "description": "Cooler confeccionado en RPET-felt o felt regular, con espuma de PE de 2 mm laminada con película de aluminio en el interior. Forro interno de PEVA 100% gris. Incluye un bolsillo exterior y correas laterales para facilitar el transporte. Ideal para mantener tus alimentos y bebidas frescos en salidas al aire libre o jornadas laborales. Re Use Me.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -10547,7 +10547,7 @@
       "external_id": "99030777129",
       "title": "Delantal Master",
       "description": "El delantal de Pampa Spirit está confeccionado en tela 50% polyester, 50% algodón. Incluye un bolsillo grande principal y un bolsillo pequeño. Cuenta con dos tiras regulables para atar en la cintura. \nDimensiones: 80 cm de alto y 70 cm de ancho. \nPampa Spirit.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -10893,7 +10893,7 @@
       "external_id": "99030777144",
       "title": "Jarro Titan",
       "description": "Jarro de doble pared con capacidad 887ml. Está confeccionado en acero inoxidable 304 en su interior, y su exterior en acero inoxidable esmaltado. Tapa realizada en ABS y PP, con sorbete incluido de silicona y acero inoxidable. Ideal para uso diario.\nEl producto viene en una bolsa de PLA 100% compostable dentro de una Gift Box confeccionada en cartulina Kraft ¡personalizala con un mensaje especial!\nPampa Spirit.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [
         "Acero"
@@ -10944,7 +10944,7 @@
       "external_id": "99030777148",
       "title": "Silla PALMAR",
       "description": "Silla reposera plegable confeccionada en Polycanvas, con una estructura de caños de aluminio que garantiza durabilidad y ligereza. Su respaldo cuenta con un marco que le da la inclinación perfecta para relajarte, e incluso puede ser retirado para acostar completamente la silla. Además, Incluye bolsa para guardarla y transportarla con facilidad. Es ideal para disfrutar de un día de playa, un picnic o simplemente relajarte en tu jardín. Recomendada para un uso de hasta 100kilos. \nPampero.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -11046,7 +11046,7 @@
       "external_id": "99030777153",
       "title": "Tote Krustal 33x43x18",
       "description": "Bolsa reutilizable de friselina, (TNT, tela no tejida) laminado de 80gr con fuelle. \nCapacidad: 28 Lts. \nReUseMe",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -11086,7 +11086,7 @@
       "external_id": "99030777156",
       "title": "Taza - Canvas Sublimation",
       "description": "Taza fabricada en cerámica de alta calidad de color blanco ideal para sublimación. Cuenta con capacidad de 330 ml. Apta microondas\nDimensiones: 8,1 x 9,6 cm. \nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [
         "Ceramica"
@@ -11193,7 +11193,7 @@
       "external_id": "99030777159",
       "title": "Cooler Pivot",
       "description": "Cooler confeccionado en tela tejida tipo snow canvas, con interior de PE Foam y forro de PEVA. Tiene una capacidad de 6L. Ideal para mantener alimentos y bebidas frescos en actividades al aire libre, viajes o picnics. \nMedidas: 22,5 x 18 x 16 cm. \nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -11524,7 +11524,7 @@
       "external_id": "99030777173",
       "title": "Destapador Ohe",
       "description": "Abrebotellas fabricado en madera de haya y acero inoxidable 420SS. \nReUseMe.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -12117,7 +12117,7 @@
       "external_id": "99030777191",
       "title": "Cooler CERRILLO",
       "description": "Cooler confeccionado en Tarpaulin con interior en PEVA + PE. Cuenta con estructura de aluminio, dos manijas para facilitar el transporte, cierre y cabezal metálico color negro y un bolsillo frontal para guardar objetos pequeños. Además, el cooler Cerillo es plegable, facilitando el transporte y almacenamiento del mismo. Capacidad: 26 Lts. Es el compañero ideal para llevar a picnics, viajes o cualquier actividad al aire libre. Pampero",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -12241,7 +12241,7 @@
       "external_id": "16007001204",
       "title": "Set de cubiertos Bone",
       "description": "Set de cubiertos de PP y Wheat Straw, pasta de tallo de trigo, un material sustentable que reduce el consumo de plásticos vírgenes. Incluye: tenedor, cuchara, cuchillo y contenedor. Debido a que la pasta de trigo es un material 100% natural, puede haber ligeras variaciones en el color del producto de un lote a otro. \nReUseMe",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -12304,7 +12304,7 @@
       "external_id": "99030777059",
       "title": "Silla Pastor",
       "description": "Silla baja plegable confeccionada en Polyester 600x300D/PVC, acolchado de espuma. En el apoyabrazo, cuenta con soporte de mesh para sostener bebida. Incluye funda de transporte. Material de la estructura: Acero 16*0.8/1.0mm. Medidas: 61 x 53 x 53 cm (Altura x Longitud x Ancho). Ideal para llevarla a la playa o para un día de camping. Pampero.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -12878,7 +12878,7 @@
       "external_id": "05048000032",
       "title": "Set de herramientas OPTIMA",
       "description": "Set de herramientas, con en maletin de tapa transparente. Incluye: pinza, 2 llaves allen, destornillador de puntas intercambiables y 2 mini destornilladores Medidas: 22 x 16 x 2,7 cm. Tahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -12910,7 +12910,7 @@
       "external_id": "21011000003",
       "title": "Set de Asado Brasa",
       "description": "El Set BBQ Brasa es ideal para tus parrilladas y asados. Contiene: 1 tabla, 1 cuchillo, 1 tenedor y 1 pinza. Viene presentado en un estuche de poliéster de alta calidad, perfecto para almacenar y transportar tus utensilios. Tahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -12943,7 +12943,7 @@
       "external_id": "21011000004",
       "title": "Set de Asado Fuego",
       "description": "El Set BBQ Fuego es ideal para tus parrilladas y asados. Contiene: tenedor, pinza, espátula, afilador, tijera, guante y destapador abridor de cervezas. Viene presentado en un estuche de poliéster de alta calidad, perfecto para almacenar y transportar tus utensilios. Tahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -12977,7 +12977,7 @@
       "external_id": "09017000016",
       "title": "Llavero destapador wide",
       "description": "Llavero confeccionado en aluminio y poliéster, diseñado como llavero y destapador. Ideal para llevar tus llaves y tener siempre a mano un destapador. Es perfecto para enganchar donde quieras, ya sea en tu mochila, bolso o cinturón, manteniendo tus llaves y destapador accesibles en todo momento. Medidas: 11,7 x 2,2 cm. El producto se presenta en una caja de plástico termoformado.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -13033,7 +13033,7 @@
       "external_id": "09017000019",
       "title": "Llavero Smooth",
       "description": "Llavero confeccionado en aluminio y poliuretano (PU), disponible en dos opciones de color: negro con detalles en negro o marrón con detalles dorados. Este llavero añade un toque sofisticado a tu colección de accesorios. Su diseño permite que puedas colgarlo en cualquier lugar, asegurando que tus llaves estén siempre al alcance. El producto se presenta en una caja de plástico termoformado.\n\nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -13065,7 +13065,7 @@
       "external_id": "09017000020",
       "title": "Llavero Head",
       "description": "Llavero confeccionado en aluminio y poliuretano (PU) en color negro. Accesorio ideal para mantener tus llaves organizadas y al alcance, ya que su diseño permite que puedas colgarlo en cualquier lugar. El producto se presenta en una caja de plástico termoformado",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -13323,7 +13323,7 @@
       "external_id": "10094000275",
       "title": "Cartuchera Capsul",
       "description": "Cartuchera fabricada con un exterior de nylon gucci. Cuenta con dos compartimentos con cierres de colores contrastantes y un forro interior completo de 210D. Los colores disponibles son negro y gris. Medidas: 25 x 10 x 6 cm. Ideal para organizar útiles escolares o artículos personales, ofreciendo estilo y funcionalidad en un diseño compacto. El producto viene en una bolsa hecha de material 100% PLA, biodegradable y compostable. Tahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -13566,7 +13566,7 @@
       "external_id": "99030777263",
       "title": "Caja para Botellas",
       "description": "Caja confeccionada en cartón Kraft, elaborado con tres capas: una exterior de 250g, una capa corrugada de 80g, y una interior de 85g. \nIdeal para quienes necesitan un packaging adicional para proteger y transportar botellas de forma segura. \nCompatibles con modelos de Botellas Island, Penguin, Circuit, Ring, Alu, Sport Aluminum, Jim. Comprá la botella junto con el producto y pedile a tu Ejecutivo Customer que te lo entreguemos ya mecanizado",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -14154,7 +14154,7 @@
       "external_id": "99030777290",
       "title": "Set Asado Criollo.",
       "description": "El Set de Asado Criollo es el compañero ideal para disfrutar de un buen asado. \nIncluye: dos tablas de madera de acacia de 21 x 21 cm y dos juegos de cuchillo (23 cm) y tenedor (19 cm), con mango de madera de acacia. \nViene presentado en un estuche marrón de PU (poliuretano), garantizándote un fácil transporte y almacenamiento seguro. \nUn set imprescindible para los amantes de la parrilla y la tradición. \nPampa Spirit.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -14185,7 +14185,7 @@
       "external_id": "99030777317",
       "title": "Mouse Pad Beta",
       "description": "Mousepad fabricado en PU y caucho. Envuelto en bolsa de PLA de forma individual. \nDimensiones: 22,5 x 18,5 cm. \nTahg.\n\nLa foto es ilustrativa, el mouse no está incluido.",
-      "category": "2026 Minería",
+      "category": "General",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -14222,7 +14222,7 @@
       "external_id": "99030777291",
       "title": "Destapador Amber",
       "description": "Destapador de botellas fabricado en acero con mando de madera de caucho, combina un diseño clásico con materiales resistentes y duraderos. \nIdeal para cualquier ocasión, desde reuniones con amigos hasta cenas especiales. Un imprescindible para los amantes de las buenas bebidas.\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -14356,7 +14356,7 @@
       "external_id": "99030777304",
       "title": "Soga de Saltar Altitude",
       "description": "Soga de saltar fabricada en PVC (cuerda) y PP (agarre). Su largo de 2,6 metros se adapta a diferentes estaturas y niveles de entrenamiento.\nYa sea para calentar antes de una rutina intensa o para una sesión de cardio en casa, la soga de saltar Altitude es una excelente opción para optimizar tu rendimiento y llevar tu entrenamiento al siguiente nivel.\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -15093,7 +15093,7 @@
       "external_id": "99030777341",
       "title": "Paraguas RAINY",
       "description": "Paraguas practico con funda. El paraguas Rainy esta fabricado con paneles de RPET Pongee 190T fabric, con costillas de metal y fibra de vidrio. Su agarre esta diseñado para que sea cómodo y elegante con un agarre de madera. Cuenta con una funda propia y una cinta de agarre en el mango. Ideal para tener a mano en días lluviosos ya que es pequeño y fácil de llevar. \nRe use Me",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -15200,7 +15200,7 @@
       "external_id": "99030777346",
       "title": "Tote HAMPTON",
       "description": "Bolso tipo tote confeccionado en algodón reciclado de 680 grs. Cuenta con amplio compartimento principal, doble asa reforzada y base resistente. Es ideal para llevar objetos de uso diario, hacer compras o salidas al aire libre con comodidad y estilo. \nRe use Me",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -15242,7 +15242,7 @@
       "external_id": "99030777347",
       "title": "Tote MALIBU",
       "description": "Bolso tipo tote liviano y practico. Hecho de lona canvas de 12 oz. Cuenta con compartimento amplio, asas largas reforzadas y base firme. Es ideal para uso diario, salidas ligeras o llevar tus pertenencias con practicidad y estilo. \nRe use me",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -15821,7 +15821,7 @@
       "external_id": "99030777366",
       "title": "Cooler Blackstone",
       "description": "Cooler con manija superior y cierre. Está confeccionado en polycanvas 600D, con interior forrado en aluminio. Cuenta con compartimiento principal con cierre, bolsillo frontal y correa de mano. Es ideal para conservar alimentos y bebidas en traslados cortos al aire libre. Incluye forro térmico completo y estructura semirrígida. \n\nDimensiones: 21x21cm\n\nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -15856,7 +15856,7 @@
       "external_id": "99030777367",
       "title": "Cooler Campi",
       "description": "Cooler rectangular compacto con cierre y manijas laterales. Está confeccionado en polipropileno no tejido, con interior forrado en aluminio. Cuenta con compartimiento principal con cierre y asas a los lados para transporte. Es ideal para conservar alimentos y bebidas en salidas.\n\nCapacidad: 4.5 lts.\n\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -15888,7 +15888,7 @@
       "external_id": "99030777369",
       "title": "Cooler Chill",
       "description": "Cooler rectangular con bolsillo frontal y correa lateral. Confeccionado en poliéster, con interior de PEVA + PE. Cuenta con compartimiento principal con cierre, correa ajustable y manija superior. Es ideal para transportar alimentos y bebidas en salidas o uso diario. \nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -15979,7 +15979,7 @@
       "external_id": "99030777374",
       "title": "Cooler Aspen 30",
       "description": "Cooler con doble asa y correa regulable. Está confeccionado en tela 70D, con interior de aluminio y espuma PE. Cuenta con compartimiento principal con cierre, bolsillo frontal y dos asas superiores reforzadas. Es ideal para conservar alimentos y bebidas en salidas o traslados.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -16016,7 +16016,7 @@
       "external_id": "99030777375",
       "title": "Cooler Icono",
       "description": "Mochila térmica con compartimientos laterales y bolsillo frontal. Está confeccionada en polycanvas 600D, con interior de aluminio. Cuenta con compartimiento principal térmico con cierre, dos bolsillos laterales y bolsillo frontal. Es ideal para transportar alimentos y bebidas en salidas, picnics o traslados diarios. Incluye correas acolchadas ajustables y manija superior. \nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -16047,7 +16047,7 @@
       "external_id": "99030777376",
       "title": "Cooler Sub-zero",
       "description": "Cooler con bolsillo frontal y correa regulable. Está confeccionado en tela 600D con interior en PEVA. Cuenta con compartimiento principal térmico con cierre, bolsillo frontal externo y correa larga ajustable. Es ideal para transportar alimentos y bebidas en salidas, almuerzos o traslados diarios. \nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -16448,7 +16448,7 @@
       "external_id": "99030777390",
       "title": "Cooler ROW",
       "description": "Cooler realizado en su exterior de polyester 210T y en su interior de aluminio y PE Foam 2mm. Contiene tiras para transportar, compartimiento principal superior y un bolsillo frontal. Medidas: 20,3 x 15,2 x 15,2 cm. \nCapacidad 5 Lt.\nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -16570,7 +16570,7 @@
       "external_id": "99030777393",
       "title": "Botella Classic 20oz",
       "description": "Botella térmica de 592 ml fabricada en doble pared de acero inoxidable, manteniendo las bebidas calientes durante 24 horas y frías durante 63 horas. Exterior en polvo Klean Coat, resistente a las astillas, es duradero y seguro para las personas y el planeta. Cuenta con tapa a rosca y gancho de agarre.\n\n\nEs la botella ideal para llevar al trabajo, la facultad, al gimnasio o de viaje, perfecta para esos días en los que estarás fuera de casa y necesitas mantener tu bebida a la temperatura ideal.\nProducto libre de BPA. Apta para lavavajillas. Entra en el portavasos del auto.\n\nEs apto para lavavajillas. No es apto para microondas.\n\nKlean Kanteen.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [
         "Acero"
@@ -16779,7 +16779,7 @@
       "external_id": "99030777400",
       "title": "Camisa Boston Hombre/Unisex",
       "description": "Camisa de manga larga de corte recto. Confeccionada en Oxford (70% algodón y 30% poliéster), ideal para uso profesional. \nCuenta con cuello reforzado, puños ajustables, bolsillo en el pecho izquierdo y dos cómodos pliegues en la espalda para mayor libertad de movimiento. Botones a tono. CERTIFICACIÓN: PETA-Approved Vegan\n\nRECOMENDACIONES DE USO: Lavar a máquina a 40°, no blanquear, no secar en máquina, planchar a temperatura media.\n\nSol´s.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -16824,7 +16824,7 @@
       "external_id": "99030777401",
       "title": "Camisa Baltimore Hombre/Unisex",
       "description": "Camisa de manga larga de corte recto. Confeccionada en poplín (65% poliéster y 35% algodón), ideal para uso profesional. \nCuenta con cuello reforzado, puños ajustables, bolsillo en el pecho izquierdo y dos cómodos pliegues en la espalda para mayor libertad de movimiento. Botones a tono. CERTIFICACIÓN: PETA-Approved Vegan\n\nRECOMENDACIONES DE USO: Lavar a máquina a 40°, no blanquear, no secar en máquina, planchar a temperatura media.\n\nLas dimensiones del producto pueden verse en la tabla de talles.\n\nSol´s.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -16931,7 +16931,7 @@
       "external_id": "99030777402",
       "title": "Bolsa M1 30x30x10",
       "description": "Bolsa reutilizable plana sin fuelle lateral, con base oval. Fabricada en friselina de 80g/m2. Cuenta con manijas tipo correa y es ideal para entregar productos pequeños o medianos en eventos, ferias o locales. \nDimensiones: Alto: 30cm,  Ancho: 30 cm, Base: 10cm.\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17018,7 +17018,7 @@
       "external_id": "99030777404",
       "title": "Bolsa M3 40x35x10",
       "description": "Bolsa reutilizable plana sin fuelle lateral, con base plana. Fabricada en friselina de 80g/m2. Cuenta con manijas tipo correa y es ideal para transportar libros, artículos/accesorios de tecnología, libretas A4, compras de supermercado, etc.\nDimensiones: Alto: 40cm,  Ancho: 35cm, Base: 10cm\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17178,7 +17178,7 @@
       "external_id": "99030777407",
       "title": "Bolsa M6 25x23x10",
       "description": "Bolsa reutilizable con fuelle lateral y base. Fabricada en friselina de 100 g/m2. Cuenta con manija tipo correa. Ideal para accesorios de tecnología o sets pequeños de regalo. Su diseño con base firme permite portar productos delicados o organizados. \nDimensiones: Alto: 25cm, Ancho: 23cm, Fuelle Base: 10cm, Fuelle Lateral: 10cm\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17236,7 +17236,7 @@
       "external_id": "99030777408",
       "title": "Bolsa M7 39x31x12",
       "description": "Bolsa reutilizable con fuelle lateral y base. Fabricada en friselina de 100 g/m2. Cuenta con manija tipo correa. Ideal para compras de supermercado o productos de farmacia. Cómoda para el uso diario y objetos variados. \nDimensiones: Alto: 39cm, Ancho: 31cm, Fuelle base: 12cm, Fuelle lateral: 12cm\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17375,7 +17375,7 @@
       "external_id": "99030777421",
       "title": "Cooler Tote Dual",
       "description": "Bolso térmico tipo tote con doble compartimiento. Confeccionado con poliéster RPEAT 300D y 150D, malla RPEAT, espuma PE de 3 mm y revestimiento interior de PEVA 13C. Cuenta con compartimento superior con malla, base térmica aislante y asas largas reforzadas. Es ideal para mantener alimentos y bebidas frescas durante salidas al parque, la playa o picnics.\nRe use Me",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17414,7 +17414,7 @@
       "external_id": "99030777423",
       "title": "Set de Asado Estribo",
       "description": "Set de asado con tabla y utensilios. Hecho de madera de acacia, cuero y acero inoxidable. Cuenta con tabla redonda con mango, cuchillo y tenedor, todo guardado en una bolsa de cuero con cierre tipo estríbo. Es ideal para disfrutar de un asado al aire libre o en casa en un formato compacto y funcional. Pampa Spirit",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17449,7 +17449,7 @@
       "external_id": "99030777425",
       "title": "Set bbq Delantal Grill",
       "description": "Set parrillero con delantal, espátula, tenedor, pinza y guante. El delantal de policanvas cuenta con compartimientos para guardar los utensilios fabricados en acero inoxidable 420, madera y poliéster. Incluye espátula de 36 cm, tenedor de 35 cm, pinza de 36 cm y un guante resistente al calor. Ideal para hacer asados cómodamente, con todo ordenado y fácil de llevar para las parrilladas y juntas al aire libre. \nPampa Spirit.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17477,7 +17477,7 @@
       "external_id": "99030777426",
       "title": "Destapador Grand Cru",
       "description": "Destapador multiple con mango de madera. Fabricado en madera natural y acero inoxidable 420. Cuenta con sacacorchos de doble palanca, cuchilla retráctil y mango ergonómico de madera. Es ideal para abrir botellas de vino con facilidad, para uso en el hogar o en servicio profesional.   \nLAGUIOLE",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17510,7 +17510,7 @@
       "external_id": "99030777427",
       "title": "Set Palma",
       "description": "Set de asado con cuchillo, tenedor y pinza. Fabricado en madera de hevea y acero inoxidable 420. Contiene cuchillo, tenedor trinchador , pinza para asado y bolsa de guardado de nylon. Es ideal para manipular cortes de carne con precisión y comodidad durante la parrilla o asados al aire libre.   Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17599,7 +17599,7 @@
       "external_id": "99030777432",
       "title": "Set de Asado Peña",
       "description": "Set de asado con tabla y utensilios. Hecho de madera de acacia y acero inoxidable 420. Cuenta con tabla rectangular con canaleta para jugos, cuchillo y tenedor de acero con mangos de madera, y soporte metálico para mantenerlos en su lugar. Es ideal para cortar y servir carnes con comodidad y estilo, perfecto para reuniones y parrilladas.   Pampa Spirit",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17633,7 +17633,7 @@
       "external_id": "99030777433",
       "title": "Set de Golf Swing",
       "description": "Set de golf con tees, marcadores y arregla piques. Fabricado con bolsa de poliéster 600D, tees de madera y accesorios de PS. Cuenta con bolsa con cierre y soporte para fácil transporte, cuatro tees, un divot reparador y dos marcadores, todo organizado para llevar al campo de golf. Ideal para regalos empresariales y eventos deportivos. \nTAHG.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17694,7 +17694,7 @@
       "external_id": "99030777436",
       "title": "Banco Twist",
       "description": "Banco plegable con diseño tipo acordeón. Esta fabricado en polipropileno (PP). Cuenta con una estructura plegable tipo acordeón, tapa plana sin diseño y una bolsa de transporte de tela Oxford 600D color gris. Es ideal para llevar en salidas al aire libre, camping o utilizar como asiento portátil en cualquier ocasión gracias a su diseño liviano y resistente. \n\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17749,7 +17749,7 @@
       "external_id": "99030777437",
       "title": "Toalla de Golf Caddy",
       "description": "Toalla negra para golf con ojal colgante. Confeccionada en algodón de 400 gramos por metro cuadrado (gsm). Cuenta con ojal metálico con cordón para colgar y franja decorativa central. Es ideal para secar manos, pelotas o palos durante el juego, manteniendo todo limpio y funcional.\nTahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -17777,7 +17777,7 @@
       "external_id": "99030777438",
       "title": "Set de Asado Andino",
       "description": "Set de asado con funda organizadora compacta. Hecho en polycanvas de alta calidad, con detalles reforzados y cierre de cremallera resistente. Cuenta con bolsillo frontal, manija superior, espacio para 2 juegos de cubiertos y 2 platos, todo sujeto con bandas elásticas. Es ideal para llevar a picnics, campings o disfrutar un asado al aire libre. Tahg.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -18611,7 +18611,7 @@
       "external_id": "99030778244",
       "title": "Tag Cork",
       "description": "Etiqueta de equipaje fabricada en corcho natural con gancho de hierro. Hecha con corcho de 4 mm de grosor, ofrece un diseño ligero, resistente y de textura natural. Cuenta con correa ajustable y gancho metálico que aseguran un anclaje firme a maletas y bolsos. Es ideal para viajeros que buscan un accesorio funcional y sostenible para identificar fácilmente su equipaje.\n\nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -18696,7 +18696,7 @@
       "external_id": "99030778247",
       "title": "Tumbler Hydra Go",
       "description": "Tumbler térmico con sorbete incluido fabricado en acero inoxidable. Cuenta con tapa plástica, sorbete reutilizable, cepillo limpiador y doble pared aislante que conserva la temperatura por horas. Es ideal para mantener bebidas frías hasta por 8 horas o calientes hasta por 6 horas, perfecto para el gimnasio, oficina, auto o actividades al aire libre.\n\nCapacidad: 887 ml\n\nHydra Go",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [
         "Acero"
@@ -18742,7 +18742,7 @@
       "external_id": "99030778248",
       "title": "Handler Hydra Go",
       "description": "Botella térmica con manija integrada fabricada en acero inoxidable. Hecha con cuerpo interior de acero inoxidable 304, exterior y base de acero inoxidable 201 y tapa de polipropileno, AS y silicona. Cuenta con doble pared aislante, tapa a rosca con cierre hermético y manija ergonómica incorporada para fácil transporte. Es ideal para mantener tus bebidas frías o calientes durante el día, perfecta para la oficina, actividades al aire libre o viajes.\n\nCapacidad: 600 ml / 20 oz\n\nHydra Go",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -19197,7 +19197,7 @@
       "external_id": "99030778270",
       "title": "Maletin Ocean",
       "description": "Maletín para ordenador fabricado con OceanGuard™, un tejido resistente elaborado a partir de plástico oceánico reciclado con certificación OceanCycle. Cuenta con funda acolchada para laptop de hasta 16\", bolsillo interior y frontal ambos con cierre, correa para maletas con ruedas y correa para el hombro extraíble incluida.  Es ideal para desplazamientos diarios, trabajo remoto o transporte diario, ya que es ligero, duradero y resistente al agua, creado para ayudar a proteger nuestros océanos.\n\nCapacidad: 14 litros\n\nChili Concept",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -19338,7 +19338,7 @@
       "external_id": "99030778282",
       "title": "Power Bank Odeon",
       "description": "Cargador portátil ultradelgado fabricado en aluminio con batería de polímero de litio. Cuenta con dos salidas USB-A y entrada Tipo-C de 5V/2A (10W), incluye cable USB-A a USB-C y posee indicador LED para monitoreo de carga. Es ideal para quienes buscan un accesorio liviano y sofisticado para cargar hasta dos dispositivos en simultáneo, perfecto para el trabajo, viajes o uso diario.\n\nCapacidad: 4000 mAh\n\nKingtech",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -19370,7 +19370,7 @@
       "external_id": "99030778283",
       "title": "Power Bank Sync",
       "description": "Power bank portátil hecho de ABS con batería de polímero de litio fabricado en un diseño compacto y ligero. Cuenta con entrada Tipo-C y salida USB-A de 5V/1A (5W de potencia máxima), incluye cable de carga USB-A a USB-C y posee un diseño ligero con correa para fácil transporte. Es ideal para llevar en el bolsillo y recargar dispositivos esenciales durante salidas rápidas, viajes o uso diario.\n\nCapacidad: 2.000 mAh\n\nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -19400,7 +19400,7 @@
       "external_id": "99030778284",
       "title": "Power Bank Tron",
       "description": "Cargador portátil con diseño ultradelgado fabricado en aluminio y ABS, con batería de polímero de litio. Cuenta con entrada y salida Tipo-C con carga rápida hasta 20W, y tecnología de carga inalámbrica con salidas de hasta 15W, compatible con múltiples dispositivos. Incluye cable USB a Tipo-C. Es ideal para usuarios modernos que buscan una solución versátil y veloz para cargar celulares y accesorios en movimiento sin necesidad de cables.\n\nCapacidad: 5000 mAh\n\nKingtech",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -19433,7 +19433,7 @@
       "external_id": "99030778307",
       "title": "Caja Plegable",
       "description": "Caja plegable de cartón laminado mate en color negro, fabricada con materiales resistentes y diseño estructural reforzado. Cuenta con cierre magnético, esquinas con cinta adhesiva doble faz transparente para poder armarla y diseño plano que permite fácil almacenamiento y armado. Es ideal para presentaciones de productos, embalaje premium o uso como contenedor organizador en oficinas o eventos.\n\nTahg",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -19501,7 +19501,7 @@
       "external_id": "99030778309",
       "title": "Set Midnight",
       "description": "Set de cuaderno y bolígrafo fabricado con materiales de alta calidad, presentado en una caja negra laminada mate. El cuaderno está compuesto por hojas rayadas A5, cinta señaladora negra y tapa con diseño frontal lineado, mientras que el bolígrafo es ballpen metálico en color negro. Es ideal para uso profesional, reuniones de negocios, conferencias o como regalo institucional.\n\nThe Daily Book",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -19534,7 +19534,7 @@
       "external_id": "99030778310",
       "title": "Set Welkom",
       "description": "Set corporativo en caja laminada mate de papel. Cuenta con un cuaderno A5 de hojas rayadas, bolígrafo roller metálico y una botella reutilizable de acero inoxidable de doble pared y con una capacidad de 350ml. Es ideal para regalos corporativos, kits de bienvenida, acciones promocionales o para uso ejecutivo diario.\n\nCapacidad botella: 350ml\n\nThe Daily Book",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -19794,7 +19794,7 @@
       "external_id": "99030778343",
       "title": "Bombilla Caviahue",
       "description": "Bombilla reutilizable de acero inoxidable, fabricada en acero SS304 con recubrimiento black powder coated en la parte superior. Cuenta con pico curvo para un mejor ángulo de consumo y filtro desmontable tipo pala con perforaciones múltiples. Es ideal para acompañar cualquier mate con estilo y practicidad, brindando una experiencia cómoda y duradera tanto en interiores como exteriores.\n\nPampero",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [
         "Acero"
@@ -19824,7 +19824,7 @@
       "external_id": "99030778379",
       "title": "Cooler Box Hydrago",
       "description": "Conservadora rígida de 11.5 litros hecha de PE, EPS y PP. Cuenta con una tapa superior removible, correas resistentes y ganchos en color negro, lo que la hace robusta y funcional para transportar bebidas o alimentos. Es ideal para actividades al aire libre como picnic, camping, playa o días de campo, manteniendo la temperatura de los productos durante más tiempo.\n\nCapacidad: 11.5 litros\n\nHydra Go.",
-      "category": "Hogar & Tiempo Libre",
+      "category": "Hogar y Tiempo Libre",
       "subcategory": "",
       "materials": [],
       "colors": [
@@ -21104,7 +21104,7 @@
       "external_id": "P27.030",
       "title": "Cutter Chico Dúo",
       "description": "Cutter de plástico cuerpo de color",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [
         "[\"Plástico\"]"
       ],
@@ -23414,7 +23414,7 @@
       "external_id": "P23.010",
       "title": "Porta Tarjeta Extensible Translúcido",
       "description": "Porta tarjeta extensible translúcido",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [
         "[\"Plástico\"]"
       ],
@@ -29631,7 +29631,7 @@
       "external_id": "gpw-0002",
       "title": "GPW-0002",
       "description": "PORTFOLIO\nProtfolio en PU simil gabardina. Frente con un bolsillo con detalle en simil cuero. En su interior, solapa para papeles, y sobre ella diversos porta tarjetas, bolsillo principal y dos al frente (uno elastizado). Porta bolígrafo central y block de 30 hojas rayadas.\nMaterial: PU simil gabardina\nDimenciones: 32cm x 25cm",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -29665,7 +29665,7 @@
       "external_id": "lsd-2075",
       "title": "LSD-2075",
       "description": "JARRA TÉRMICA\nJarra térmica de 800ml pared doble de acero. Mantiene hasta 12 horas de agua caliente o 24 horas de agua fría. Tapa hermética anti-derrames con botón pulsador. Ideal para trasladar. Base con goma anti deslizante. Diseño moderno y elegante en negro mate. Caja contenedora de cartón blanco.\nMedidas: 19.5cm de alto, diámetro máximo base 9.5cm\nMaterial: Acero y PVC",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Negro"
@@ -29692,7 +29692,7 @@
       "external_id": "lsd-3005",
       "title": "LSD-3005",
       "description": "BOTELLA ALUMINIO\nBotella de aluminio de 600ml pared simple. Tapa transparente a rosca con tira de agarre de silicona de 8 cm. Incluye caja de cartón blanca.\nMedidas: 23cm de alto, diámetro 6.5cm\nMaterial: Aluminio",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -29736,7 +29736,7 @@
       "external_id": "lsd-1022",
       "title": "LSD-1022",
       "description": "BOTELLA TERMICA\nBotella térmica de 350 ml. acero inoxidable. Botella doble pared, sellada al vacío. Interior en acero 304 y exterior en acero 201. Tapa de bamboo a rosca con manija rebatible metálica y base de bamboo. Presentación en caja de cartón blanca.\nMedidas: 18.5cm de alto, diámetro 7.5cm\nMateriales: Acero y Bamboo",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Blanco",
@@ -29806,7 +29806,7 @@
       "external_id": "gpw-053a",
       "title": "GPW-053A",
       "description": "CUADERNO ECO CUERO A6\nCuaderno de tapas duras forrado en simil cuero PU. Posee 80 hojas rayadas, banda elástica de sujección al tono y cinta señaladora.\nMATERIAL: Cartón, papel, símil cuero\nMEDIDAS: 14cm x 9cm x 1,5cm",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -29906,7 +29906,7 @@
       "external_id": "ls-54039",
       "title": "LS-54039",
       "description": "TACO TAPA DURA\nTaco para escritorio encuadernado tipo libro, en la tapa superior provee kit de señaladores. Contiene 100 hojas.\nMateriales: Cartón Kraft y papel\nMedidas: 8cm x 8cm x 2cm de alto",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Negro",
@@ -29935,7 +29935,7 @@
       "external_id": "ls-54052",
       "title": "LS-54052",
       "description": "SET ECO CALENDARIO ESCRITORIO\nSet Eco calendario de escritorio: Calendario semanal de mesa con diseño multifuncional de 100 hojas. Incluye cubierta kraft, clips, kit de notas adhesivas, bolígrafo eco con tinta negra.\nMateriales: Papel y cartón\nDimensiones: 20cm x 24cm x 1.5cm de alto (Superficie tapa 7cm x 24cm)",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Marrón"
@@ -30602,7 +30602,7 @@
       "external_id": "gpw-0618",
       "title": "GPW-0618",
       "description": "PORTAFOLIO CON CIERRE\nPortafolio color negro con cinta de cierre en símil cuero\nPosee en el interior de su tapa izquierda un fuelle guarda objetos y una solapa y un bolsillo y porta tarjetas. En su tapa derecha solapa porta bloc.\nMATERIAL: Símil cuero\nMEDIDAS: 33cm x 25 cm.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Negro"
@@ -30628,7 +30628,7 @@
       "external_id": "gpw-0607",
       "title": "GPW-0607",
       "description": "PORTAFOLIO ECO CUERO\nPortafolio color negro en símil cuero\nPosee en el interior de su tapa izquierda una solapa y un bolsillo, porta bolígrafos y porta tarjetas. En su tapa derecha broche porta block. Block no incluido.\nMATERIAL: Símil cuero\nMEDIDAS: 32.5cm x 24.5cm.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Negro"
@@ -30652,7 +30652,7 @@
       "external_id": "gpw-053",
       "title": "GPW-053",
       "description": "CUADERNO ECO CUERO\nCuaderno de tapas duras forrado en simil cuero A. Posee 80 hojas rayadas, banda elástica de sujección al tono y cinta señaladora.\nMATERIAL: Cartón, papel, símil cuero\nMEDIDAS: 21cm x 14cm x 1,5cm",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -30687,7 +30687,7 @@
       "external_id": "gpw-07",
       "title": "GPW-07",
       "description": "CUADERNO DETALLE BAMBOO\nCuaderno de tapas duras con detalle en bamboo forrado en simil cuero. Posee 100 hojas rayadas, banda elástica de sujección al tono y cinta señaladora. Sujetador de bolígrafo.\nMATERIAL: Cartón, papel, símil cuero y bamboo\nMEDIDAS: 21cm x 14cm x 1,5cm",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -31573,7 +31573,7 @@
       "external_id": "hl9760",
       "title": "HL9760",
       "description": "Anotador Ecológico\nDescripción: Tapa de cartón 100% reciclado con notas adhesivas y block de papel con 68 hojas en el interior.\nEspiral negra. Un bolígrafo de papel reciclado con detalle negro de punta y clip incluido.\nMaterial: Papel reciclado\nTamaño: 13,9&#215;7,4 cm",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Marrón"
@@ -31596,7 +31596,7 @@
       "external_id": "hl8836",
       "title": "HL8836",
       "description": "Porta Clip con Apoyo Celular\nDescripción: El juego incluye clips de papel y carpeta. Capacidad para una variedad de teléfonos para una fácil visualización.\nTamaño abierto giratorio: 10,3 x 10,3 x 6,5 cm.\nEmbalaje: 1 unidad/bolsa de plástico, 100 unidades/caja de cartón\nGW: 16kg NW: 15kg\nMedidas: 56x56x25.5cm\nMaterial: Plástico",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Negro"
@@ -31673,7 +31673,7 @@
       "external_id": "21169",
       "title": "21169",
       "description": "Descripción: Cuaderno ecológico espiralado, provee un bolígrafo ecológico de 14cm, block rayado de 70 hojas, en la tapa frontal un post-it de 10cm x 7,5cm, otro de 5cm x 7,5cm y 5 set de marcadores autoadhesivos. Tapa con cierre imantado.\nMedidas: 18cm alto x 13.5 cm ancho\nMateriales: cartón y papel",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -31918,7 +31918,7 @@
       "external_id": "hl2894",
       "title": "HL2894",
       "description": "Cuaderno símil cuero\nDESCRIPCIÓN: Cuaderno símil cuero con cierre magnético y sujetador de bolígrafo (no incluído). Detalle de color, cinta señaladora, 100 páginas rayadas.\nMATERIAL: Cartón, papel, símil cuero\nMEDIDAS: 14,5cm x 21cm x 1,5cm",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -32650,7 +32650,7 @@
       "external_id": "ly8521",
       "title": "LY8521",
       "description": "Memo Pad\nDescripción: Block anillado contenedor de memos adhesivos, posee 3 blocks con 25 notas de 7,5*4,5cm y uno dividido en 5 chicos.\nDimensiones: 7,5*7.5*1.5cm de alto.\nMaterial: Papel y cartón recubierto de PVC.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -32677,7 +32677,7 @@
       "external_id": "LY8522",
       "title": "LY8522",
       "description": "Memo Pad con Bolígrafo\nDescripción: Libreta de cartón con bolígrafo inserto, block blanco adhesivo de 50 hojas y señaladotes adhesivos.\nDimensiones: 10.5*8.5*1cm de alto.\nMaterial: Papel y cartón recubierto de PVC.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Gris"
@@ -32972,7 +32972,7 @@
       "external_id": "ufd-998",
       "title": "UFD-998",
       "description": "Descripción: Pendrive llavero de 16GB metálico combinado en silver y negro mate. Presentación en estuche plástico tipo sandwich, posee base sostenedora del estuche.\nDimensiones: 4.5cm x 2.5cm x 0.8cm de ancho (sin el aro)\nMaterial: Metal.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Negro"
@@ -32999,7 +32999,7 @@
       "external_id": "ufd-1129",
       "title": "UFD-1129",
       "description": "Descripción: Pendrive llavero de 16GB metálico con frente plastico blanco mate. Presentación en estuche plástico tipo sandwich, posee base sostenedora del estuche.\nDimensiones: 5cm x 3cm x 0.5cm de ancho (sin el aro).\nMaterial: Metal y Plástico.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Blanco"
@@ -33159,7 +33159,7 @@
       "external_id": "pk701",
       "title": "PK701",
       "description": "Set resaltadores gel.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Translúcido"
@@ -33233,7 +33233,7 @@
       "external_id": "9659",
       "title": "9659",
       "description": "Porta taco ecológico con señaladores y porta clip.\nDetalle:\nContiene taco central de 10cm x 7,5cm.\nSeñaladores adhesivos que se deslizan para dejar el espacio al porta clip que vienen incluidos en el sector.\nBolígrafo en su contenedor.\nMateriales:\nCartón y papel.\nDimensiones:\n16,5 cm x 10 cm x 2 cm de alto. En su estado cerrado.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Marrón"
@@ -33340,7 +33340,7 @@
       "external_id": "5763",
       "title": "5763",
       "description": "Portatarjeta:\nDescripción: Portatarjeta combinado en metal y simil cuero, base interior revestida en pana. Posee caja contenedora cartón negro.\nDimensiones: 9.5 x 6cm.\nMateriales: Metal y simil cuero.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Negro",
@@ -33487,7 +33487,7 @@
       "external_id": "9230",
       "title": "9230",
       "description": "PORTA TACO ECOLOGICO CON BOLIGRAFO\nDescripción: Porta taco con bolígrafo ecológico. Apertura desplegable de cuatro solapas. Contiene taco adhesivo central, taco adhesivo lateral (menor tamaño), señaladotes adhesivos y taco tipo libreta lateral, también el bolígrafo en su contenedor.\nMateriales: Cartón y papel.\nDimensiones: 10cm x 12cm x 4cm de alto cerrado.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Marrón"
@@ -33512,7 +33512,7 @@
       "external_id": "9661",
       "title": "9661",
       "description": "PORTA TACO ECOLOGICO CUBO\nDescripción: Porta taco ecológico desplegable, queda armado como set de escritorio con porta objetos. Provee un taco principal (100 hojas) de 7.5&#215;7.5cm, taco adhesivo (50 hojas) de 7.5x5cm y kit de señaladotes adhesivos (25 x color).\nMateriales: Cartón y papel.\nDimensiones: 9.3cm x 9.3cm x 9.3cm cerrado.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Marrón"
@@ -33635,7 +33635,7 @@
       "external_id": "2297",
       "title": "2297",
       "description": "Descripción: Portalápiz con reloj de escritorio, indicador de hora, fecha, día y temperatura. Requiere dos pilas AAA. Caja contenedora de cartón gris e instrucciones.\nMaterial: Plástico.\nDimensiones: 8.5cm de alto, 17cm de frente y 8cm ancho máximo.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Plateado"
@@ -34044,7 +34044,7 @@
       "external_id": "4296",
       "title": "4296",
       "description": "Set de 3 resaltadores de gel en estuche con cierre a presión.\nMaterial: Plástico.\nMedidas: 10.5 x 5.5cm.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Blanco"
@@ -34992,7 +34992,7 @@
       "external_id": "mf-662",
       "title": "MF-662",
       "description": "Calculadora con Multipuerto USB\nDescripción: Calculadora de 12 dígitos visor retractil y multipuerto de 3 bocas USB de 1.1, con hora, alarma, calendario, temperatura y multi hora, provee cable USB y requiere de 2 pilas AAA. Con estuche de cartón blanco.\nDimensiones: 18 cm x 9 cm.\nMaterial: Plástico.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Blanco"
@@ -35019,7 +35019,7 @@
       "external_id": "4736",
       "title": "4736",
       "description": "Calculadora de escritorio de 8 dígitos\nMaterial: plástico.\nMedidas: 16cm x 10.5 cm.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -35054,7 +35054,7 @@
       "external_id": "com904",
       "title": "COM904",
       "description": "Porta taco acrílico con porta bolígrafo.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Translúcido"
@@ -35078,7 +35078,7 @@
       "external_id": "com903",
       "title": "COM903",
       "description": "Porta Clip y tarjeteros acrílico.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Translúcido"
@@ -35102,7 +35102,7 @@
       "external_id": "12077",
       "title": "12077",
       "description": "Memo holder con patas adhesivadas\nMaterial: plástico.\nDimensiones: 6 cm alto, 5 cm de ancho. Frente silver 5 cm.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -35128,7 +35128,7 @@
       "external_id": "2709",
       "title": "2709",
       "description": "Memo clip\nCon imán posterior y grip de goma.\nMaterial: plástico, 7 cm x 5 cm.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -35154,7 +35154,7 @@
       "external_id": "2707",
       "title": "2707",
       "description": "Dispensador de Memos\nDescripción: Dispensador de memos con 50 hojas adhesivas, base negra y tapa cristal.\nMaterial: plástico.\nDimensiones: 10 cm x 10,5 cm x 3,5 cm.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Translúcido"
@@ -35180,7 +35180,7 @@
       "external_id": "2665",
       "title": "2665",
       "description": "Dispenser de hojas automático\nCon 50 hojas recargables.\nMaterial: plástico.\nDimensiones: 5 cm alto, 8 cm de ancho, 11,5 cm profundidad.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -35209,7 +35209,7 @@
       "external_id": "2115",
       "title": "2115",
       "description": "Dispensador de memos con señaladores\nDescripción: Dispensador de memos con señaladores adhesivos.\nBlock de 100 hojas de 7.5 cm x 7.5 cm. Base con 4 topes de goma.\nDimensiones: 16cm x 13 cm x 3.5cm de alto.\nMaterial: plástico.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Blanco"
@@ -35233,7 +35233,7 @@
       "external_id": "13190",
       "title": "13190",
       "description": "Anotador con bolígrafo\nContiene block de 100 hojas en su interior.\nMaterial: plástico.\nDimensiones: 10,5 cm alto, 8 cm de ancho.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -35261,7 +35261,7 @@
       "external_id": "4267",
       "title": "4267",
       "description": "Pen Set\n(incluye boligrafo rojo, boligrafo azul, resaltador y portaminas).\nMedidas: 13 x 5 cm.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Blanco"
@@ -35286,7 +35286,7 @@
       "external_id": "1859",
       "title": "1859",
       "description": "Set de Lápices\nDescripción: Set de lápices en tubo de cartón con tapa plástica que provee saca puntas incorporado.\nContiene 12 lápices.\nDimensiones: 10.5 cm x 3.5 cm.\nMaterial: plástico y madera.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -35336,7 +35336,7 @@
       "external_id": "508",
       "title": "508",
       "description": "Portalápiz con hora, fecha, temperatura y alarma\nMaterial: acrílico exterior, frente silver plástico.\nDimensiones: 11 cm alto, 10,5 cm de ancho. Display 4 cm.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Translúcido"
@@ -35360,7 +35360,7 @@
       "external_id": "pk60",
       "title": "PK60",
       "description": "Set de 4 resaltadores en contenedor plástico\nMaterial: plástico.\nDimensiones: 7,5 cm de alto, 5 cm de ancho, 7 cm de profundidad.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Blanco",
@@ -35380,7 +35380,7 @@
       "external_id": "hl4226",
       "title": "HL4226",
       "description": "Resaltador con banderita.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Amarillo",
@@ -35404,7 +35404,7 @@
       "external_id": "3177",
       "title": "3177",
       "description": "3 en 1 Cutter\nQuitabroche, Postit.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -35426,7 +35426,7 @@
       "external_id": "3028",
       "title": "3028",
       "description": "Cutter\nMaterial: plástico.\nDimensiones: 13,5 de largo, 1,5 cm de ancho.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -35459,7 +35459,7 @@
       "external_id": "5302",
       "title": "5302",
       "description": "Clip Dispenser\nDescripción: Dispensador de Clip´s con centro imantado, tapa traslucida y base blanca, incluye 10 clip´s multi color.\nDimensiones: 5 cm de base, 4cm de alto.\nMaterial: Plástico.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -35480,7 +35480,7 @@
       "external_id": "2508",
       "title": "2508",
       "description": "Engrapadora de papel\nDescripción:No utiliza ningún tipo de ganchos.\nMaterial: plástico.\nDimensiones: 4,5 cm de alto, 5 cm de ancho.",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",
@@ -36523,7 +36523,7 @@
       "external_id": "9840",
       "title": "9840",
       "description": "Porta taco con señaladores adhesivos\nMATERIAL: Plástico.\nMEDIDAS: 15.5cm x 8cm, 1.5cm alto.\nImágenes Download PNG",
-      "category": "Oficina",
+      "category": "Oficina y Negocios",
       "materials": [],
       "colors": [
         "Azul",

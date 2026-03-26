@@ -13,7 +13,7 @@ const VALUE_POINTS = [
   { icon: Package, text: "+1,400 productos" },
   { icon: PaintBrush, text: "Serigrafía, bordado, láser y más" },
   { icon: Truck, text: "Envío a todo el país" },
-  { icon: Trophy, text: "+10 años de experiencia" },
+  { icon: Trophy, text: "+20 años de experiencia" },
 ];
 
 const spring = { type: "spring" as const, stiffness: 100, damping: 20 };
