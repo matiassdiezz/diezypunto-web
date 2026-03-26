@@ -18,7 +18,6 @@ import {
   WhatsappLogo,
 } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
-import AiOrb from "@/components/chat/AiOrb";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
 import { useChatStore } from "@/lib/stores/chat-store";
 import { useQuoteStore } from "@/lib/stores/quote-store";
@@ -511,27 +510,15 @@ export default function QuoteBuilder() {
                   <p className="mt-2 text-xs text-amber-600">* Algunos productos requieren cotización personalizada</p>
                 </div>
 
-                <div className="space-y-3">
-                  <button
-                    onClick={() => {
-                      setCheckoutOpen(false);
-                      openWithMessage("Hola, tengo productos en mi carrito que necesitan cotización. ¿Me ayudás con los precios?");
-                    }}
-                    className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-accent px-4 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg"
-                  >
-                    <AiOrb state="idle" size={20} className="shrink-0" />
-                    Consultar precios con AI
-                  </button>
-                  <a
-                    href={`https://wa.me/${WSP_NUMBER}?text=${encodeURIComponent("Hola, tengo productos que necesitan cotización en diezypunto.com")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:border-slate-300 hover:bg-slate-50"
-                  >
-                    <WhatsappLogo className="h-5 w-5 text-[#25D366]" weight="fill" />
-                    O consultar por WhatsApp
-                  </a>
-                </div>
+                <a
+                  href={`https://wa.me/${WSP_NUMBER}?text=${encodeURIComponent("Hola, tengo productos que necesitan cotización en diezypunto.com")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#1fba59] hover:shadow-lg"
+                >
+                  <WhatsappLogo className="h-5 w-5" weight="fill" />
+                  Consultar precios por WhatsApp
+                </a>
               </div>
             ) : (
             <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
