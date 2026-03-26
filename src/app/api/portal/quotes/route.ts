@@ -75,7 +75,7 @@ export async function GET(req: NextRequest) {
   }
 
   const res = await fetch(`${VAULT_API_URL}/api/v1/quotes/`, {
-    headers: { Cookie: `session=${session}` },
+    headers: { Cookie: `session=${session}`, "Ngrok-Skip-Browser-Warning": "true" },
   });
 
   if (!res.ok) {
@@ -111,6 +111,7 @@ export async function POST(req: NextRequest) {
     headers: {
       "Content-Type": "application/json",
       Cookie: `session=${session}`,
+      "Ngrok-Skip-Browser-Warning": "true",
     },
     body: JSON.stringify(mappedBody),
   });

@@ -18,7 +18,7 @@ export async function GET(req: NextRequest) {
   }
 
   const res = await fetch(`${VAULT_API_URL}/api/v1/auth/me`, {
-    headers: { Cookie: `session=${session}` },
+    headers: { Cookie: `session=${session}`, "Ngrok-Skip-Browser-Warning": "true" },
   });
 
   if (!res.ok) {
@@ -32,7 +32,7 @@ export async function GET(req: NextRequest) {
   try {
     const profileRes = await fetch(
       `${VAULT_API_URL}/api/v1/clients/me`,
-      { headers: { Cookie: `session=${session}` } },
+      { headers: { Cookie: `session=${session}`, "Ngrok-Skip-Browser-Warning": "true" } },
     );
     if (profileRes.ok) {
       const profile = await profileRes.json();

@@ -63,7 +63,7 @@ export async function GET(req: NextRequest) {
   }
 
   const res = await fetch(`${VAULT_API_URL}/api/v1/orders/`, {
-    headers: { Cookie: `session=${session}` },
+    headers: { Cookie: `session=${session}`, "Ngrok-Skip-Browser-Warning": "true" },
   });
 
   if (!res.ok) {

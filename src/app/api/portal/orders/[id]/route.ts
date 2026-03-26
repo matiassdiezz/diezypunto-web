@@ -24,7 +24,7 @@ export async function GET(
   }
 
   const res = await fetch(`${VAULT_API_URL}/api/v1/orders/${id}`, {
-    headers: { Cookie: `session=${session}` },
+    headers: { Cookie: `session=${session}`, "Ngrok-Skip-Browser-Warning": "true" },
   });
 
   if (!res.ok) {

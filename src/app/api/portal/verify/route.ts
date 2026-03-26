@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
 
   const res = await fetch(`${VAULT_API_URL}/api/v1/auth/verify`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { "Content-Type": "application/json", "Ngrok-Skip-Browser-Warning": "true" },
     body: JSON.stringify({ client_id, token }),
   });
 
