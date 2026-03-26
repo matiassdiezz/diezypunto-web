@@ -516,15 +516,49 @@ export default function QuoteBuilder() {
                   <p className="mt-2 text-xs text-amber-600">* Algunos productos requieren cotización personalizada</p>
                 </div>
 
-                <a
-                  href={`https://wa.me/${WSP_NUMBER}?text=${encodeURIComponent("Hola, tengo productos que necesitan cotización en diezypunto.com")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={async () => {
+                    try {
+                      const cartUrl = await buildCartShareUrl(items);
+                      const lines = [
+                        "Hola, necesito cotización para estos productos:",
+                        "",
+                        ...items.map((item) => {
+                          const parts = [`• *${item.product.title}*`];
+                          parts.push(`${item.quantity} u.`);
+                          if (item.color) parts.push(`Color: ${item.color}`);
+                          if (item.personalization_method) parts.push(`Personalización: ${item.personalization_method}`);
+                          const unitPrice = getItemUnitPrice(item);
+                          if (unitPrice != null) parts.push(`$${unitPrice.toLocaleString("es-AR")} c/u`);
+                          else parts.push("_A cotizar_");
+                          return parts.join(" — ");
+                        }),
+                        "",
+                        `Ver carrito: ${cartUrl}`,
+                      ];
+                      const msg = lines.join("\n");
+                      window.open(`https://wa.me/${WSP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+                    } catch {
+                      // Fallback sin link del carrito
+                      const lines = [
+                        "Hola, necesito cotización para estos productos:",
+                        "",
+                        ...items.map((item) => {
+                          const parts = [`• *${item.product.title}*`];
+                          parts.push(`${item.quantity} u.`);
+                          if (item.color) parts.push(`Color: ${item.color}`);
+                          if (item.personalization_method) parts.push(`Personalización: ${item.personalization_method}`);
+                          return parts.join(" — ");
+                        }),
+                      ];
+                      window.open(`https://wa.me/${WSP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`, "_blank");
+                    }
+                  }}
                   className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-4 py-3.5 text-sm font-semibold text-white transition-all hover:bg-[#1fba59] hover:shadow-lg"
                 >
                   <WhatsappLogo className="h-5 w-5" weight="fill" />
                   Consultar precios por WhatsApp
-                </a>
+                </button>
               </div>
             ) : (
             <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
