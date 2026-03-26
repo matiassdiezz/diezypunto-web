@@ -17,11 +17,11 @@ const WSP_NUMBER = "541162345062";
 const GOOGLE_REVIEW_URL = "https://reviewthis.biz/shy-wind-6626";
 
 const BANK_INFO = {
-  titular: "Diez y Punto S.A.S.",
-  cbu: "0000003100099812345678",
-  alias: "DIEZYPUNTO.VENTAS",
-  banco: "Banco Galicia",
-  cuit: "30-71234567-8",
+  titular: "DIEZ Y DIEZ COMUNICACION S A",
+  cbu: "0720109320000012972​36",
+  alias: "diezypunto",
+  banco: "Santander",
+  cuit: "33-69894396-9",
 };
 
 // ─── Types ──────────────────────────────────────────────────────────
