@@ -15,8 +15,10 @@ import {
   Bank,
   Check,
   EnvelopeSimple,
+  WhatsappLogo,
 } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
+import AiOrb from "@/components/chat/AiOrb";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
 import { useChatStore } from "@/lib/stores/chat-store";
 import { useQuoteStore } from "@/lib/stores/quote-store";
@@ -89,6 +91,8 @@ const FIELD_CLASSNAME =
 
 const LABEL_CLASSNAME = "text-xs font-medium text-slate-600";
 
+const WSP_NUMBER = "541162345062";
+
 export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();
   const { client } = useAuth();
@@ -101,6 +105,8 @@ export default function QuoteBuilder() {
   const [billingForm, setBillingForm] = useState<BillingFormState>(DEFAULT_BILLING_FORM);
   const [billingError, setBillingError] = useState<string | null>(null);
   const openWithMessage = useChatStore((s) => s.openWithMessage);
+  const [clearConfirmOpen, setClearConfirmOpen] = useState(false);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
 
   function getItemLabel(item: QuoteItem): string {
     const details = [item.color, item.personalization_method].filter(Boolean);
@@ -189,6 +195,7 @@ export default function QuoteBuilder() {
 
     setMpLoading(true);
     setBillingError(null);
+    setPaymentError(null);
     try {
       const res = await fetch("/api/checkout", {
         method: "POST",
@@ -220,10 +227,10 @@ export default function QuoteBuilder() {
       if (data.init_point) {
         window.location.href = data.init_point;
       } else {
-        alert(data.error || "Error al crear el pago");
+        setPaymentError(data.error || "Error al crear el pago");
       }
     } catch {
-      alert("Error de conexion. Intenta de nuevo.");
+      setPaymentError("Error de conexión. Intentá de nuevo.");
     } finally {
       setMpLoading(false);
     }
@@ -241,6 +248,7 @@ export default function QuoteBuilder() {
 
     setTransferLoading(true);
     setBillingError(null);
+    setPaymentError(null);
     try {
       const res = await fetch("/api/checkout/transfer", {
         method: "POST",
@@ -272,10 +280,10 @@ export default function QuoteBuilder() {
       if (data.ok) {
         setTransferSent(true);
       } else {
-        alert(data.error || "Error al enviar los datos");
+        setPaymentError(data.error || "Error al enviar los datos");
       }
     } catch {
-      alert("Error de conexión. Intentá de nuevo.");
+      setPaymentError("Error de conexión. Intentá de nuevo.");
     } finally {
       setTransferLoading(false);
     }
@@ -429,11 +437,7 @@ export default function QuoteBuilder() {
 
         <div className="flex items-center justify-center gap-2">
           <button
-            onClick={() => {
-              if (window.confirm("¿Seguro que querés vaciar el carrito?")) {
-                clearCart();
-              }
-            }}
+            onClick={() => setClearConfirmOpen(true)}
             className="text-sm text-muted underline hover:text-foreground"
           >
             Vaciar carrito
@@ -457,12 +461,12 @@ export default function QuoteBuilder() {
           onClick={(e) => { if (e.target === e.currentTarget) setCheckoutOpen(false); }}
         >
           <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className="relative max-h-[96vh] w-full max-w-4xl overflow-y-auto rounded-t-2xl bg-white p-5 shadow-2xl sm:rounded-2xl sm:p-6 lg:p-8">
+          <div className={`relative max-h-[96vh] w-full overflow-y-auto rounded-t-2xl bg-white p-5 shadow-2xl sm:rounded-2xl sm:p-6 lg:p-8 ${hasItemsWithoutPrice ? "max-w-lg" : "max-w-4xl"}`}>
             {/* Header */}
             <div className="mb-6 flex items-center justify-between">
               <div>
-                <h2 className="text-lg font-bold text-foreground">Finalizar pedido</h2>
-                <p className="text-sm text-muted">Completá tus datos para continuar al pago.</p>
+                <h2 className="text-lg font-bold text-foreground">{hasItemsWithoutPrice ? "Solicitar cotización" : "Finalizar pedido"}</h2>
+                <p className="text-sm text-muted">{hasItemsWithoutPrice ? "Algunos productos requieren cotización personalizada." : "Completá tus datos para continuar al pago."}</p>
               </div>
               <button
                 onClick={() => setCheckoutOpen(false)}
@@ -473,6 +477,63 @@ export default function QuoteBuilder() {
               </button>
             </div>
 
+            {hasItemsWithoutPrice ? (
+              /* ── Quote request view — items without price ── */
+              <div className="space-y-6">
+                <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
+                  <h3 className="text-sm font-semibold text-foreground">Tu pedido</h3>
+                  <div className="mt-4 space-y-2.5">
+                    {items.map((item) => {
+                      const unitPrice = getItemUnitPrice(item);
+                      return (
+                        <div key={item.id} className="flex items-start justify-between gap-3">
+                          <div className="min-w-0">
+                            <p className="truncate text-sm">{item.product.title}</p>
+                            <p className="text-xs text-muted">
+                              {item.quantity} u.{unitPrice != null ? ` × $${unitPrice.toLocaleString("es-AR")}` : ""}
+                              {item.color && ` · ${item.color}`}
+                            </p>
+                          </div>
+                          <p className="shrink-0 text-sm font-medium">
+                            {unitPrice != null ? `$${(unitPrice * item.quantity).toLocaleString("es-AR")}` : "A cotizar"}
+                          </p>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <hr className="my-4 border-slate-200" />
+                  {total > 0 && (
+                    <div className="flex items-baseline justify-between text-sm">
+                      <span className="text-muted">Subtotal (con precio)</span>
+                      <span className="font-medium">${total.toLocaleString("es-AR")} <span className="text-xs text-muted">+ IVA</span></span>
+                    </div>
+                  )}
+                  <p className="mt-2 text-xs text-amber-600">* Algunos productos requieren cotización personalizada</p>
+                </div>
+
+                <div className="space-y-3">
+                  <button
+                    onClick={() => {
+                      setCheckoutOpen(false);
+                      openWithMessage("Hola, tengo productos en mi carrito que necesitan cotización. ¿Me ayudás con los precios?");
+                    }}
+                    className="flex w-full items-center justify-center gap-2.5 rounded-xl bg-accent px-4 py-3.5 text-sm font-semibold text-white transition-all hover:bg-accent-hover hover:shadow-lg"
+                  >
+                    <AiOrb state="idle" size={20} className="shrink-0" />
+                    Consultar precios con AI
+                  </button>
+                  <a
+                    href={`https://wa.me/${WSP_NUMBER}?text=${encodeURIComponent("Hola, tengo productos que necesitan cotización en diezypunto.com")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex w-full items-center justify-center gap-2.5 rounded-xl border border-slate-200 bg-white px-4 py-3.5 text-sm font-semibold text-foreground transition-all hover:border-slate-300 hover:bg-slate-50"
+                  >
+                    <WhatsappLogo className="h-5 w-5 text-[#25D366]" weight="fill" />
+                    O consultar por WhatsApp
+                  </a>
+                </div>
+              </div>
+            ) : (
             <div className="grid gap-6 lg:grid-cols-[1fr_320px]">
               {/* Left: Form */}
               <div className="space-y-6">
@@ -662,6 +723,13 @@ export default function QuoteBuilder() {
                     </div>
                   </div>
 
+                  {paymentError && (
+                    <div className="mt-4 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600">
+                      <span className="shrink-0">!</span>
+                      {paymentError}
+                    </div>
+                  )}
+
                   {/* Payment options */}
                   {total > 0 && !hasItemsWithoutPrice && !transferSent && (
                     <div className="mt-5 space-y-2.5">
@@ -732,6 +800,45 @@ export default function QuoteBuilder() {
                     <p>Todas las transacciones son seguras y tus datos están protegidos.</p>
                   </div>
                 </div>
+              </div>
+            </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* Clear cart confirmation modal */}
+      {clearConfirmOpen && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center"
+          onClick={(e) => { if (e.target === e.currentTarget) setClearConfirmOpen(false); }}
+        >
+          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
+          <div className="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
+            <div className="flex flex-col items-center text-center">
+              <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-50">
+                <Trash className="h-5 w-5 text-red-500" />
+              </div>
+              <h3 className="mt-4 text-lg font-bold text-foreground">¿Vaciar carrito?</h3>
+              <p className="mt-1.5 text-sm text-muted">
+                Se van a eliminar {items.length} {items.length === 1 ? "producto" : "productos"} de tu carrito.
+              </p>
+              <div className="mt-6 flex w-full gap-3">
+                <button
+                  onClick={() => setClearConfirmOpen(false)}
+                  className="flex-1 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-slate-50"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={() => {
+                    clearCart();
+                    setClearConfirmOpen(false);
+                  }}
+                  className="flex-1 rounded-xl bg-red-500 px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-red-600"
+                >
+                  Vaciar
+                </button>
               </div>
             </div>
           </div>
