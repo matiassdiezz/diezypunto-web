@@ -200,14 +200,17 @@ export default function QuoteBuilder() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          items: payableItems.map((i) => ({
-            id: i.id,
-            title: getItemLabel(i),
-            quantity: i.quantity,
-            unit_price: getItemUnitPrice(i) ?? i.product.price,
-            image_url: i.product.image_urls[0] || undefined,
-            color: i.color || undefined,
-          })),
+          items: payableItems.map((i) => {
+            const base = getItemUnitPrice(i) ?? i.product.price ?? 0;
+            return {
+              id: i.id,
+              title: getItemLabel(i),
+              quantity: i.quantity,
+              unit_price: Math.round(base * 1.21 * 100) / 100,
+              image_url: i.product.image_urls[0] || undefined,
+              color: i.color || undefined,
+            };
+          }),
           billing: {
             first_name: billingForm.firstName.trim(),
             last_name: billingForm.lastName.trim(),
@@ -253,14 +256,17 @@ export default function QuoteBuilder() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          items: payableItems.map((i) => ({
-            id: i.id,
-            title: getItemLabel(i),
-            quantity: i.quantity,
-            unit_price: getItemUnitPrice(i) ?? i.product.price,
-            image_url: i.product.image_urls[0] || undefined,
-            color: i.color || undefined,
-          })),
+          items: payableItems.map((i) => {
+            const base = getItemUnitPrice(i) ?? i.product.price ?? 0;
+            return {
+              id: i.id,
+              title: getItemLabel(i),
+              quantity: i.quantity,
+              unit_price: Math.round(base * 1.21 * 100) / 100,
+              image_url: i.product.image_urls[0] || undefined,
+              color: i.color || undefined,
+            };
+          }),
           billing: {
             first_name: billingForm.firstName.trim(),
             last_name: billingForm.lastName.trim(),
@@ -701,12 +707,18 @@ export default function QuoteBuilder() {
                     <div className="flex justify-between">
                       <span className="text-muted">{items.length} {items.length === 1 ? "producto" : "productos"} · {totalQuantity} unidades</span>
                     </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted">Subtotal</span>
+                      <span>${total.toLocaleString("es-AR")}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-muted">IVA (21%)</span>
+                      <span>${Math.round(total * 0.21).toLocaleString("es-AR")}</span>
+                    </div>
+                    <hr className="border-slate-200" />
                     <div className="flex items-baseline justify-between">
-                      <span className="font-medium">Total estimado</span>
-                      <div className="text-right">
-                        <span className="text-xl font-bold">${total.toLocaleString("es-AR")}</span>
-                        <span className="ml-1 text-xs text-muted">+ IVA</span>
-                      </div>
+                      <span className="font-semibold">Total</span>
+                      <span className="text-xl font-bold">${Math.round(total * 1.21).toLocaleString("es-AR")}</span>
                     </div>
                   </div>
 

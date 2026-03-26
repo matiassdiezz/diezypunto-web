@@ -143,7 +143,7 @@ function totalBlock(total: number, itemCount: number, totalQty: number): string 
       </td>
       <td style="padding:16px 20px;text-align:right">
         <p style="margin:0;font-size:11px;color:#64748b">Total estimado</p>
-        <p style="margin:2px 0 0;font-size:22px;font-weight:700;color:#0f172a">$${fmtPrice(total)} <span style="font-size:12px;font-weight:400;color:#94a3b8">+ IVA</span></p>
+        <p style="margin:2px 0 0;font-size:22px;font-weight:700;color:#0f172a">$${fmtPrice(total)} <span style="font-size:12px;font-weight:400;color:#94a3b8">IVA incluido</span></p>
       </td>
     </tr>
   </table>`;
@@ -317,7 +317,7 @@ export function buildOrderNotifyEmail(
   return `${emailHead()}
 <div style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,0.08)">
   <div style="background:#0f172a;padding:24px 32px">
-    <h1 style="margin:0;color:white;font-size:18px;font-weight:600">Nuevo pedido — $${fmtPrice(total)} + IVA</h1>
+    <h1 style="margin:0;color:white;font-size:18px;font-weight:600">Nuevo pedido — $${fmtPrice(total)} IVA inc.</h1>
     <p style="margin:6px 0 0;color:#94a3b8;font-size:13px">${methodLabel} · ${clientName}${billing.company ? ` · ${billing.company}` : ""}</p>
   </div>
 
@@ -336,7 +336,7 @@ export function buildOrderNotifyEmail(
     <table width="100%" cellpadding="0" cellspacing="0">${itemRows}</table>
 
     <div style="margin-top:16px;background:#f0fdf4;border-radius:12px;padding:16px;text-align:right">
-      <p style="margin:0;font-size:20px;font-weight:700;color:#166534">$${fmtPrice(total)} <span style="font-size:12px;color:#64748b">+ IVA</span></p>
+      <p style="margin:0;font-size:20px;font-weight:700;color:#166534">$${fmtPrice(total)} <span style="font-size:12px;color:#64748b">IVA incluido</span></p>
     </div>
   </div>
 </div>
