@@ -1,7 +1,7 @@
 {
   "hero": {
     "badge": "Merch corporativo AI",
-    "headline": "Merchandising corporativo personalizado",
+    "headline": "Merchandising corporativo",
     "headlineAccent": "personalizado",
     "subtitle": "El catalogo mas completo de Argentina para tu marca",
     "valuePoints": [
@@ -73,7 +73,7 @@
         "label": "Productos entregados"
       },
       {
-        "value": "4.9",
+        "value": "4.7",
         "label": "Estrellas en Google",
         "icon": true
       }
