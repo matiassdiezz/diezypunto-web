@@ -19,7 +19,8 @@ const CDO_API_BASE =
 const FETCH_TIMEOUT = 30_000; // 30s
 
 interface CDOVariant {
-  color: string;
+  // v1: color is string, v2: color is {id, name, hex_code, picture}
+  color: string | { id: number; name: string; hex_code?: string; picture?: string };
   novedad: boolean;
   stock_available: number;
   stock_existent: number;
@@ -35,14 +36,33 @@ interface CDOVariant {
     medium: string;
     original: string;
   };
+  other_pictures?: Array<{ original: string }>;
 }
 
 interface CDOProduct {
   code: string;
   name: string;
   description: string;
+  // v1: category is a string, v2: categories is array of {id, name}
   category?: string;
+  categories?: Array<{ id: number; name: string }>;
+  // v2 extras
+  icons?: Array<{ label: string; short_name: string }>;
   variants: CDOVariant[];
+}
+
+/** Extract color name from v1 string or v2 object */
+function getColorName(color: CDOVariant["color"]): string {
+  if (typeof color === "string") return color;
+  return color?.name ?? "";
+}
+
+/** Extract category string from v1 or v2 format */
+function getCategoryString(p: CDOProduct): string | undefined {
+  if (p.categories && p.categories.length > 0) {
+    return p.categories.map((c) => c.name).join(",");
+  }
+  return p.category;
 }
 
 interface CDOResponse {
@@ -180,17 +200,46 @@ async function fetchAllProducts(token: string): Promise<CDOProduct[]> {
       throw new Error(`CDO API ${res.status}: ${await res.text()}`);
     }
 
-    const data: CDOResponse = await res.json();
-    allProducts.push(...data.products);
+    const raw = await res.json();
+
+    // Detect response structure — v2 production may differ from v1 test
+    let products: CDOProduct[];
+    let pagination: CDOResponse["meta"] | undefined;
+
+    if (Array.isArray(raw)) {
+      // Response is a bare array of products
+      products = raw;
+    } else if (Array.isArray(raw?.products)) {
+      // Standard { products: [...], meta?: {...} }
+      products = raw.products;
+      pagination = raw.meta;
+    } else if (Array.isArray(raw?.data?.products)) {
+      // Wrapped { data: { products: [...] }, meta?: {...} }
+      products = raw.data.products;
+      pagination = raw.data.meta ?? raw.meta;
+    } else if (Array.isArray(raw?.data)) {
+      // { data: [...] } format
+      products = raw.data;
+      pagination = raw.meta;
+    } else {
+      // Unknown structure — log for debugging and bail
+      const keys = Object.keys(raw ?? {});
+      const sample = JSON.stringify(raw, null, 2).slice(0, 500);
+      throw new Error(
+        `CDO API returned unexpected structure. Keys: [${keys.join(", ")}]\nSample:\n${sample}`
+      );
+    }
+
+    allProducts.push(...products);
 
     // Handle pagination if present
-    if (data.meta?.pagination) {
-      totalPages = data.meta.pagination.total_pages;
-      console.log(`    Got ${data.products.length} products (total: ${data.meta.pagination.total_count})`);
-      if (!data.meta.pagination.next_page) break;
+    if (pagination?.pagination) {
+      totalPages = pagination.pagination.total_pages;
+      console.log(`    Got ${products.length} products (total: ${pagination.pagination.total_count})`);
+      if (!pagination.pagination.next_page) break;
     } else {
       // No pagination — got everything in one shot
-      console.log(`    Got ${data.products.length} products (no pagination)`);
+      console.log(`    Got ${products.length} products (no pagination)`);
       break;
     }
 
@@ -222,23 +271,26 @@ async function main() {
   const catalog: CatalogProduct[] = [];
 
   for (const p of valid) {
-    // Collect colors from variants
+    // Collect colors from variants (v1: string, v2: {name})
     const colors = [
       ...new Set(
         p.variants
-          .map((v) => v.color)
+          .map((v) => getColorName(v.color))
           .filter((c) => c && c !== "." && c !== "...")
       ),
     ];
 
-    // Collect images from variants (original resolution, deduplicated)
-    const imageUrls = [
-      ...new Set(
-        p.variants
-          .map((v) => v.picture?.original)
-          .filter(Boolean)
-      ),
-    ];
+    // Collect images from variants + other_pictures (v2)
+    const imageSet = new Set<string>();
+    for (const v of p.variants) {
+      if (v.picture?.original) imageSet.add(v.picture.original);
+      if (v.other_pictures) {
+        for (const op of v.other_pictures) {
+          if (op.original) imageSet.add(op.original);
+        }
+      }
+    }
+    const imageUrls = [...imageSet];
 
     // Use net_price (already discounted) — parse as float, take the lowest across variants
     const prices = p.variants
@@ -253,19 +305,26 @@ async function main() {
     // Skip products with zero/null price
     if (priceArs == null || priceArs <= 0) continue;
 
+    const categoryStr = getCategoryString(p);
     const ecoFriendly =
-      (p.category?.toLowerCase().includes("sustentable") ||
-       p.category?.toLowerCase().includes("eco")) ?? false;
+      (categoryStr?.toLowerCase().includes("sustentable") ||
+       categoryStr?.toLowerCase().includes("eco")) ?? false;
+
+    // Extract personalization methods from v2 icons (filter out eco badges)
+    const ECO_BADGES = new Set(["RECICLABLE", "REUTILIZABLE", "BIODEGRADABLE", "COMPOSTABLE", "ECO", "ECO FRIENDLY"]);
+    const personalizationMethods = (p.icons ?? [])
+      .map((i) => i.label)
+      .filter((label) => label && !ECO_BADGES.has(label.toUpperCase()));
 
     catalog.push({
       product_id: `cdo_${p.code}`,
       external_id: p.code,
       title: p.name,
       description: stripHtml(p.description || ""),
-      category: normalizeCategory(p.category),
+      category: normalizeCategory(categoryStr),
       materials: [],
       colors,
-      personalization_methods: [],
+      personalization_methods: personalizationMethods,
       eco_friendly: ecoFriendly,
       price: priceArs,
       price_max: priceMaxArs,

@@ -1,8 +1,8 @@
 {
-  "synced_at": "2026-03-19T04:02:33.893Z",
+  "synced_at": "2026-03-26T02:30:00.035Z",
   "source": "promoproductos",
-  "usd_rate": 1415,
-  "total": 350,
+  "usd_rate": 1400,
+  "total": 347,
   "products": [
     {
       "product_id": "promo_550",
@@ -21,8 +21,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 165.56,
-      "price_max": 165.56,
+      "price": 163.8,
+      "price_max": 163.8,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -48,9 +48,9 @@
         "Blanco",
         "Blanco y Verde",
         "Blanco y Amarillo",
-        "Blanco y Rojo",
         "Blanco y Rosa",
         "Blanco y Violeta",
+        "Blanco y Rojo",
         "Blanco y Celeste",
         "Blanco y Negro",
         "Blanco y Azul Francia",
@@ -58,17 +58,17 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 495.25,
-      "price_max": 495.25,
+      "price": 490,
+      "price_max": 490,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1742581945_67ddb0b91db9f.jpg",
         "https://www.promoproductos.com/upload/preview_1743190675_67e6fa9312421.jpg",
         "https://www.promoproductos.com/upload/preview_1743190357_67e6f955e0469.jpg",
-        "https://www.promoproductos.com/upload/preview_1743190641_67e6fa7153248.jpg",
         "https://www.promoproductos.com/upload/preview_1743190660_67e6fa84d3e18.jpg",
         "https://www.promoproductos.com/upload/preview_1743190688_67e6faa069e1f.jpg",
+        "https://www.promoproductos.com/upload/preview_1743190641_67e6fa7153248.jpg",
         "https://www.promoproductos.com/upload/preview_1743190422_67e6f99642dce.jpg",
         "https://www.promoproductos.com/upload/preview_1743190627_67e6fa6335721.jpg",
         "https://www.promoproductos.com/upload/preview_1744119499_67f526cb08562.jpg",
@@ -101,8 +101,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 339.6,
-      "price_max": 339.6,
+      "price": 336,
+      "price_max": 336,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -137,14 +137,14 @@
         "Amarillo",
         "Azul Francia",
         "Verde claro",
-        "Azul Marino",
         "Naranja",
-        "Blanco"
+        "Blanco",
+        "Azul Marino"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 155.65,
-      "price_max": 155.65,
+      "price": 154,
+      "price_max": 154,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -154,9 +154,9 @@
         "https://www.promoproductos.com/upload/preview_1743793668_67f02e04d0092.jpg",
         "https://www.promoproductos.com/upload/preview_1743793723_67f02e3b98f0b.jpg",
         "https://www.promoproductos.com/upload/preview_1743793545_67f02d898c82d.jpg",
-        "https://www.promoproductos.com/upload/preview_1743021335_67e465171e281.jpg",
         "https://www.promoproductos.com/upload/preview_1743021596_67e4661c941e6.jpg",
-        "https://www.promoproductos.com/upload/preview_1743793354_67f02cca0234a.jpg"
+        "https://www.promoproductos.com/upload/preview_1743793354_67f02cca0234a.jpg",
+        "https://www.promoproductos.com/upload/preview_1743021335_67e465171e281.jpg"
       ],
       "source": "promoproductos"
     },
@@ -177,15 +177,15 @@
         "Gris Claro",
         "Violeta",
         "Azul Francia",
+        "Amarillo",
         "Naranja",
         "Negro",
-        "Blanco",
-        "Amarillo"
+        "Blanco"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 212.25,
-      "price_max": 212.25,
+      "price": 210,
+      "price_max": 210,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -196,10 +196,10 @@
         "https://www.promoproductos.com/upload/preview_1742583694_67ddb78ef14e4.jpg",
         "https://www.promoproductos.com/upload/preview_1742584010_67ddb8ca69a72.jpg",
         "https://www.promoproductos.com/upload/preview_1749674025_6849e8298c779.jpg",
+        "https://www.promoproductos.com/upload/preview_1742583527_67ddb6e7a0c44.jpg",
         "https://www.promoproductos.com/upload/preview_1742583737_67ddb7b901359.jpg",
         "https://www.promoproductos.com/upload/preview_1742583767_67ddb7d764b93.jpg",
-        "https://www.promoproductos.com/upload/preview_1742583665_67ddb77174eca.jpg",
-        "https://www.promoproductos.com/upload/preview_1742583527_67ddb6e7a0c44.jpg"
+        "https://www.promoproductos.com/upload/preview_1742583665_67ddb77174eca.jpg"
       ],
       "source": "promoproductos"
     },
@@ -224,8 +224,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 212.25,
-      "price_max": 212.25,
+      "price": 210,
+      "price_max": 210,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -258,8 +258,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 523.55,
-      "price_max": 523.55,
+      "price": 518,
+      "price_max": 518,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -290,8 +290,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 445.73,
-      "price_max": 445.73,
+      "price": 441,
+      "price_max": 441,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -325,8 +325,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 254.7,
-      "price_max": 254.7,
+      "price": 252,
+      "price_max": 252,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -355,35 +355,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1881.95,
-      "price_max": 1881.95,
+      "price": 1862,
+      "price_max": 1862,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1612373523_601ade13adf8f.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_181227",
-      "external_id": "P36.006",
-      "title": "Bolígrafo Cereal Cork",
-      "description": "Retráctil",
-      "category": "Escritura",
-      "materials": [
-        "[\"Corcho\",\"Fibra de paja de trigo\"]"
-      ],
-      "colors": [
-        "Gris Claro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": true,
-      "price": 665.05,
-      "price_max": 665.05,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1743797154_67f03ba25616e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -412,8 +389,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 339.6,
-      "price_max": 339.6,
+      "price": 336,
+      "price_max": 336,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -451,8 +428,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 466.95,
-      "price_max": 466.95,
+      "price": 462,
+      "price_max": 462,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -482,8 +459,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 877.3,
-      "price_max": 877.3,
+      "price": 868,
+      "price_max": 868,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -508,8 +485,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 311.3,
-      "price_max": 311.3,
+      "price": 308,
+      "price_max": 308,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -540,8 +517,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3183.75,
-      "price_max": 3183.75,
+      "price": 3150,
+      "price_max": 3150,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -578,8 +555,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1032.95,
-      "price_max": 1032.95,
+      "price": 1020.6,
+      "price_max": 1020.6,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -590,6 +567,29 @@
         "https://www.promoproductos.com/upload/preview_1743191491_67e6fdc324f97.jpg",
         "https://www.promoproductos.com/upload/preview_1743191512_67e6fdd8a3bba.jpg",
         "https://www.promoproductos.com/upload/preview_1743191539_67e6fdf32c33c.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_181227",
+      "external_id": "P36.006",
+      "title": "Bolígrafo Cereal Cork",
+      "description": "Retráctil",
+      "category": "Escritura",
+      "materials": [
+        "[\"Corcho\",\"Fibra de paja de trigo\"]"
+      ],
+      "colors": [
+        "Gris Claro"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": true,
+      "price": 658,
+      "price_max": 658,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1743797154_67f03ba25616e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -605,8 +605,8 @@
       "colors": [],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2957.35,
-      "price_max": 2957.35,
+      "price": 2926,
+      "price_max": 2926,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -632,8 +632,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 382.05,
-      "price_max": 382.05,
+      "price": 378,
+      "price_max": 378,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -676,21 +676,21 @@
       "colors": [
         "Verde claro",
         "Azul Francia",
-        "Blanco",
         "Naranja",
+        "Blanco",
         "Rojo"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 495.25,
-      "price_max": 495.25,
+      "price": 490,
+      "price_max": 490,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1629977206_61277a76e80cb.jpg",
         "https://www.promoproductos.com/upload/preview_1629977430_61277b56be518.jpg",
-        "https://www.promoproductos.com/upload/preview_1629977406_61277b3ed35f4.jpg",
         "https://www.promoproductos.com/upload/preview_1642164668_61e171bcbab77.jpg",
+        "https://www.promoproductos.com/upload/preview_1629977406_61277b3ed35f4.jpg",
         "https://www.promoproductos.com/upload/preview_1640701777_61cb1f51469cc.jpg"
       ],
       "source": "promoproductos"
@@ -709,8 +709,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2221.55,
-      "price_max": 2221.55,
+      "price": 2198,
+      "price_max": 2198,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -732,8 +732,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 834.85,
-      "price_max": 834.85,
+      "price": 826,
+      "price_max": 826,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -797,8 +797,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 564.59,
-      "price_max": 564.59,
+      "price": 558.6,
+      "price_max": 558.6,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -827,8 +827,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1481.51,
-      "price_max": 1481.51,
+      "price": 1465.8,
+      "price_max": 1465.8,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -858,8 +858,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2051.75,
-      "price_max": 2051.75,
+      "price": 2030,
+      "price_max": 2030,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -893,8 +893,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 566,
-      "price_max": 566,
+      "price": 560,
+      "price_max": 560,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -928,8 +928,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 396.2,
-      "price_max": 396.2,
+      "price": 392,
+      "price_max": 392,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -957,14 +957,14 @@
         "Gris Claro",
         "Verde oscuro",
         "Azul Francia",
-        "Naranja",
+        "Amarillo",
         "Rojo",
-        "Amarillo"
+        "Naranja"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4881.75,
-      "price_max": 4881.75,
+      "price": 4830,
+      "price_max": 4830,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -973,9 +973,9 @@
         "https://www.promoproductos.com/upload/preview_1768318727_69666707c955c.jpeg",
         "https://www.promoproductos.com/upload/preview_1768319020_6966682cead86.jpeg",
         "https://www.promoproductos.com/upload/preview_1768318593_69666681b28d5.jpeg",
-        "https://www.promoproductos.com/upload/preview_1768318961_696667f1e5d32.jpeg",
+        "https://www.promoproductos.com/upload/preview_1768318872_6966679801d5f.jpeg",
         "https://www.promoproductos.com/upload/preview_1768318662_696666c6eb906.jpeg",
-        "https://www.promoproductos.com/upload/preview_1768318872_6966679801d5f.jpeg"
+        "https://www.promoproductos.com/upload/preview_1768318961_696667f1e5d32.jpeg"
       ],
       "source": "promoproductos"
     },
@@ -999,8 +999,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 523.55,
-      "price_max": 523.55,
+      "price": 518,
+      "price_max": 518,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1036,8 +1036,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5447.75,
-      "price_max": 5447.75,
+      "price": 5390,
+      "price_max": 5390,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1064,9 +1064,9 @@
       ],
       "colors": [
         "Blanco",
-        "Azul Marino",
         "Negro",
         "Naranja",
+        "Azul Marino",
         "Rojo",
         "Rosa",
         "Violeta",
@@ -1075,15 +1075,15 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1188.6,
-      "price_max": 1188.6,
+      "price": 1176,
+      "price_max": 1176,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1731698473_67379f296951c.jpg",
-        "https://www.promoproductos.com/upload/preview_1731703259_6737b1dbd5fe6.jpg",
         "https://www.promoproductos.com/upload/preview_1731697851_67379cbb97964.jpg",
         "https://www.promoproductos.com/upload/preview_1731700095_6737a57f5f4b2.jpg",
+        "https://www.promoproductos.com/upload/preview_1731703259_6737b1dbd5fe6.jpg",
         "https://www.promoproductos.com/upload/preview_1731697988_67379d44d04e2.jpg",
         "https://www.promoproductos.com/upload/preview_1731698682_67379ffac49bd.jpg",
         "https://www.promoproductos.com/upload/preview_1731700228_6737a6044d1cf.jpg",
@@ -1111,8 +1111,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 481.1,
-      "price_max": 481.1,
+      "price": 476,
+      "price_max": 476,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1139,8 +1139,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 863.15,
-      "price_max": 863.15,
+      "price": 854,
+      "price_max": 854,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1171,8 +1171,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 212.25,
-      "price_max": 212.25,
+      "price": 210,
+      "price_max": 210,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1207,8 +1207,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 665.05,
-      "price_max": 665.05,
+      "price": 658,
+      "price_max": 658,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1230,8 +1230,8 @@
       "colors": [],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 608.45,
-      "price_max": 608.45,
+      "price": 602,
+      "price_max": 602,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [],
@@ -1254,8 +1254,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 905.6,
-      "price_max": 905.6,
+      "price": 896,
+      "price_max": 896,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1284,8 +1284,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 594.3,
-      "price_max": 594.3,
+      "price": 588,
+      "price_max": 588,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1294,41 +1294,6 @@
         "https://www.promoproductos.com/upload/preview_1748032533_6830dc15223a5.jpg",
         "https://www.promoproductos.com/upload/preview_1758832793_68d5a899bb8be.jpg",
         "https://www.promoproductos.com/upload/preview_1748032554_6830dc2a9aa69.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_457",
-      "external_id": "P14.031",
-      "title": "Bolígrafo Slim Touch",
-      "description": "Medio giro",
-      "category": "Escritura",
-      "materials": [
-        "[\"Metal\"]"
-      ],
-      "colors": [
-        "Gris Claro",
-        "Azul Marino",
-        "Verde claro",
-        "Azul Francia",
-        "Rojo",
-        "Blanco",
-        "Negro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 976.35,
-      "price_max": 976.35,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1743777209_67efedb93182b.jpg",
-        "https://www.promoproductos.com/upload/preview_1743777288_67efee087673c.png",
-        "https://www.promoproductos.com/upload/preview_1744825866_67ffee0aab008.jpg",
-        "https://www.promoproductos.com/upload/preview_1743777097_67efed49e246d.jpg",
-        "https://www.promoproductos.com/upload/preview_1744825832_67ffede806df9.jpg",
-        "https://www.promoproductos.com/upload/preview_1743776948_67efecb41c1a8.jpg",
-        "https://www.promoproductos.com/upload/preview_1743777247_67efeddfcd83e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -1350,8 +1315,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3509.2,
-      "price_max": 3509.2,
+      "price": 3472,
+      "price_max": 3472,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1378,8 +1343,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 169.8,
-      "price_max": 169.8,
+      "price": 168,
+      "price_max": 168,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1407,8 +1372,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 551.85,
-      "price_max": 551.85,
+      "price": 546,
+      "price_max": 546,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1441,8 +1406,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4584.6,
-      "price_max": 4584.6,
+      "price": 4536,
+      "price_max": 4536,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1470,8 +1435,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2688.5,
-      "price_max": 2688.5,
+      "price": 2660,
+      "price_max": 2660,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1499,8 +1464,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3212.05,
-      "price_max": 3212.05,
+      "price": 3178,
+      "price_max": 3178,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1511,35 +1476,6 @@
         "https://www.promoproductos.com/upload/preview_1766409679_694945cf48e25.jpg",
         "https://www.promoproductos.com/upload/preview_1766409725_694945fd10039.jpg",
         "https://www.promoproductos.com/upload/preview_1766409756_6949461cdf68f.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_49739",
-      "external_id": "P12.035",
-      "title": "Espejo redondo plastico",
-      "description": "Espejo redondo de maquillaje",
-      "category": "Cuidado Personal",
-      "materials": [
-        "[\"Plástico\"]"
-      ],
-      "colors": [
-        "Blanco",
-        "Azul Francia",
-        "Negro",
-        "Rosa"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 580.15,
-      "price_max": 580.15,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1606833250_5fc654622af69.jpg",
-        "https://www.promoproductos.com/upload/preview_1604950748_5fa99adcabc78.jpg",
-        "https://www.promoproductos.com/upload/preview_1604950854_5fa99b46d2f3c.jpg",
-        "https://www.promoproductos.com/upload/preview_1607012589_5fc910edc9416.jpg"
       ],
       "source": "promoproductos"
     },
@@ -1560,8 +1496,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 764.1,
-      "price_max": 764.1,
+      "price": 756,
+      "price_max": 756,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1591,8 +1527,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1032.95,
-      "price_max": 1032.95,
+      "price": 1022,
+      "price_max": 1022,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1623,8 +1559,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 5985.45,
-      "price_max": 5985.45,
+      "price": 5922,
+      "price_max": 5922,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1650,12 +1586,41 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 636.75,
-      "price_max": 636.75,
+      "price": 630,
+      "price_max": 630,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1696525167_651eeb6ff1a61.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_49739",
+      "external_id": "P12.035",
+      "title": "Espejo redondo plastico",
+      "description": "Espejo redondo de maquillaje",
+      "category": "Cuidado Personal",
+      "materials": [
+        "[\"Plástico\"]"
+      ],
+      "colors": [
+        "Blanco",
+        "Azul Francia",
+        "Negro",
+        "Rosa"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 574,
+      "price_max": 574,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1606833250_5fc654622af69.jpg",
+        "https://www.promoproductos.com/upload/preview_1604950748_5fa99adcabc78.jpg",
+        "https://www.promoproductos.com/upload/preview_1604950854_5fa99b46d2f3c.jpg",
+        "https://www.promoproductos.com/upload/preview_1607012589_5fc910edc9416.jpg"
       ],
       "source": "promoproductos"
     },
@@ -1670,20 +1635,20 @@
       ],
       "colors": [
         "Plateado",
-        "Negro",
         "Blanco",
+        "Negro",
         "Rojo"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3608.25,
-      "price_max": 3608.25,
+      "price": 3570,
+      "price_max": 3570,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1675693826_63e10f020680a.jpg",
-        "https://www.promoproductos.com/upload/preview_1675694202_63e1107ad3b24.jpg",
         "https://www.promoproductos.com/upload/preview_1703608118_658aff36a9d52.jpg",
+        "https://www.promoproductos.com/upload/preview_1675694202_63e1107ad3b24.jpg",
         "https://www.promoproductos.com/upload/preview_1703607927_658afe77090b1.jpg"
       ],
       "source": "promoproductos"
@@ -1703,8 +1668,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2023.45,
-      "price_max": 2023.45,
+      "price": 2002,
+      "price_max": 2002,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1734,8 +1699,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 764.1,
-      "price_max": 764.1,
+      "price": 756,
+      "price_max": 756,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1765,8 +1730,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 6226,
-      "price_max": 6226,
+      "price": 6160,
+      "price_max": 6160,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1789,12 +1754,47 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 4768.55,
-      "price_max": 4768.55,
+      "price": 4718,
+      "price_max": 4718,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1596719718_5f2c0266d9333.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_457",
+      "external_id": "P14.031",
+      "title": "Bolígrafo Slim Touch",
+      "description": "Medio giro",
+      "category": "Escritura",
+      "materials": [
+        "[\"Metal\"]"
+      ],
+      "colors": [
+        "Gris Claro",
+        "Azul Marino",
+        "Verde claro",
+        "Azul Francia",
+        "Rojo",
+        "Blanco",
+        "Negro"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 826,
+      "price_max": 826,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1743777209_67efedb93182b.jpg",
+        "https://www.promoproductos.com/upload/preview_1743777288_67efee087673c.png",
+        "https://www.promoproductos.com/upload/preview_1744825866_67ffee0aab008.jpg",
+        "https://www.promoproductos.com/upload/preview_1743777097_67efed49e246d.jpg",
+        "https://www.promoproductos.com/upload/preview_1744825832_67ffede806df9.jpg",
+        "https://www.promoproductos.com/upload/preview_1743776948_67efecb41c1a8.jpg",
+        "https://www.promoproductos.com/upload/preview_1743777247_67efeddfcd83e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -1817,8 +1817,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 396.2,
-      "price_max": 396.2,
+      "price": 392,
+      "price_max": 392,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1848,8 +1848,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 806.55,
-      "price_max": 806.55,
+      "price": 798,
+      "price_max": 798,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1880,8 +1880,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 622.6,
-      "price_max": 622.6,
+      "price": 616,
+      "price_max": 616,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1912,8 +1912,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1485.75,
-      "price_max": 1485.75,
+      "price": 1470,
+      "price_max": 1470,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1938,8 +1938,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3424.3,
-      "price_max": 3424.3,
+      "price": 3388,
+      "price_max": 3388,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1966,8 +1966,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 9211.65,
-      "price_max": 9211.65,
+      "price": 9114,
+      "price_max": 9114,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -1977,39 +1977,6 @@
         "https://www.promoproductos.com/upload/preview_1753199263_687fb29fbb791.jpg",
         "https://www.promoproductos.com/upload/preview_1753199093_687fb1f58cc18.jpg",
         "https://www.promoproductos.com/upload/preview_1590110491_5ec7291b2f5bd.png"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_101967",
-      "external_id": "P18.111",
-      "title": "Eco Bolsa Durabag - plana con asas 45x40+10",
-      "description": "Bolsa Ecológica plana reutilizable",
-      "category": "Bolsos y Mochilas",
-      "materials": [
-        "[\"Friselina\"]"
-      ],
-      "colors": [
-        "Azul Marino",
-        "Beige",
-        "Verde oscuro",
-        "Blanco",
-        "Rojo",
-        "Negro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": true,
-      "price": 655.15,
-      "price_max": 655.15,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1664458300_63359e3c7927d.jpg",
-        "https://www.promoproductos.com/upload/preview_1664458143_63359d9f3c4e4.jpg",
-        "https://www.promoproductos.com/upload/preview_1664458434_63359ec259347.jpg",
-        "https://www.promoproductos.com/upload/preview_1664457686_63359bd6c5779.jpg",
-        "https://www.promoproductos.com/upload/preview_1664458044_63359d3c1c1b6.jpg",
-        "https://www.promoproductos.com/upload/preview_1664457890_63359ca2a317f.jpg"
       ],
       "source": "promoproductos"
     },
@@ -2027,8 +1994,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1966.85,
-      "price_max": 1966.85,
+      "price": 1946,
+      "price_max": 1946,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2052,8 +2019,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 27168,
-      "price_max": 27168,
+      "price": 26880,
+      "price_max": 26880,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2081,8 +2048,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 71599000,
-      "price_max": 71599000,
+      "price": 50600,
+      "price_max": 50600,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2111,8 +2078,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 806.55,
-      "price_max": 806.55,
+      "price": 798,
+      "price_max": 798,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2136,21 +2103,21 @@
         "Azul Francia",
         "Naranja",
         "Verde claro",
-        "Negro",
-        "Rojo"
+        "Rojo",
+        "Negro"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2688.5,
-      "price_max": 2688.5,
+      "price": 2660,
+      "price_max": 2660,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1641926424_61ddcf187226d.jpg",
         "https://www.promoproductos.com/upload/preview_1641927971_61ddd5235cfb3.jpg",
         "https://www.promoproductos.com/upload/preview_1666268949_63513f1560423.jpg",
-        "https://www.promoproductos.com/upload/preview_1666268886_63513ed63cf51.jpg",
-        "https://www.promoproductos.com/upload/preview_1641927128_61ddd1d866c7a.jpg"
+        "https://www.promoproductos.com/upload/preview_1641927128_61ddd1d866c7a.jpg",
+        "https://www.promoproductos.com/upload/preview_1666268886_63513ed63cf51.jpg"
       ],
       "source": "promoproductos"
     },
@@ -2177,8 +2144,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1981,
-      "price_max": 1981,
+      "price": 1960,
+      "price_max": 1960,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2213,8 +2180,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 7202.35,
-      "price_max": 7202.35,
+      "price": 7126,
+      "price_max": 7126,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2244,8 +2211,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1132,
-      "price_max": 1132,
+      "price": 1120,
+      "price_max": 1120,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2254,6 +2221,37 @@
         "https://www.promoproductos.com/upload/preview_1742584243_67ddb9b3a331a.jpg",
         "https://www.promoproductos.com/upload/preview_1742584323_67ddba0368be0.jpg",
         "https://www.promoproductos.com/upload/preview_1742584410_67ddba5a2d7b2.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_227377",
+      "external_id": "P17.043",
+      "title": "Eco Pencil Endless",
+      "description": "Eco Pencil",
+      "category": "Escritura",
+      "materials": [
+        "[\"Aluminio\"]"
+      ],
+      "colors": [
+        "Negro",
+        "Azul Marino",
+        "Blanco",
+        "Verde oscuro",
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": true,
+      "price": 1890,
+      "price_max": 1890,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1730468895_6724dc1f051bd.jpg",
+        "https://www.promoproductos.com/upload/preview_1730476029_6724f7fd93540.jpg",
+        "https://www.promoproductos.com/upload/preview_1730476067_6724f823e3a92.jpg",
+        "https://www.promoproductos.com/upload/preview_1730476172_6724f88cc1a12.jpg",
+        "https://www.promoproductos.com/upload/preview_1730476104_6724f8480890c.jpg"
       ],
       "source": "promoproductos"
     },
@@ -2278,8 +2276,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4796.85,
-      "price_max": 4796.85,
+      "price": 4746,
+      "price_max": 4746,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2314,66 +2312,6 @@
       "source": "promoproductos"
     },
     {
-      "product_id": "promo_227377",
-      "external_id": "P17.043",
-      "title": "Eco Pencil Endless",
-      "description": "Eco Pencil",
-      "category": "Escritura",
-      "materials": [
-        "[\"Aluminio\"]"
-      ],
-      "colors": [
-        "Negro",
-        "Azul Marino",
-        "Blanco",
-        "Verde oscuro",
-        "Rojo"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": true,
-      "price": 2730.95,
-      "price_max": 2730.95,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1730468895_6724dc1f051bd.jpg",
-        "https://www.promoproductos.com/upload/preview_1730476029_6724f7fd93540.jpg",
-        "https://www.promoproductos.com/upload/preview_1730476067_6724f823e3a92.jpg",
-        "https://www.promoproductos.com/upload/preview_1730476172_6724f88cc1a12.jpg",
-        "https://www.promoproductos.com/upload/preview_1730476104_6724f8480890c.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_73505",
-      "external_id": "P23.010",
-      "title": "Porta Tarjeta Extensible Translúcido",
-      "description": "Porta tarjeta extensible translúcido",
-      "category": "Oficina",
-      "materials": [
-        "[\"Plástico\"]"
-      ],
-      "colors": [
-        "Negro",
-        "Rojo",
-        "Blanco",
-        "Azul Francia"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 834.85,
-      "price_max": 834.85,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1641920884_61ddb974ac78f.jpg",
-        "https://www.promoproductos.com/upload/preview_1641921351_61ddbb473b533.jpg",
-        "https://www.promoproductos.com/upload/preview_1641921562_61ddbc1ab5d93.jpg",
-        "https://www.promoproductos.com/upload/preview_1641921205_61ddbab5327a1.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
       "product_id": "promo_67086",
       "external_id": "P14.034",
       "title": "Bolígrafo Shiny",
@@ -2393,8 +2331,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4683.65,
-      "price_max": 4683.65,
+      "price": 4634,
+      "price_max": 4634,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2405,6 +2343,39 @@
         "https://www.promoproductos.com/upload/preview_1743776858_67efec5ae043f.jpg",
         "https://www.promoproductos.com/upload/preview_1743776882_67efec7265920.jpg",
         "https://www.promoproductos.com/upload/preview_1743776346_67efea5a7a83f.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_101967",
+      "external_id": "P18.111",
+      "title": "Eco Bolsa Durabag - plana con asas 45x40+10",
+      "description": "Bolsa Ecológica plana reutilizable",
+      "category": "Bolsos y Mochilas",
+      "materials": [
+        "[\"Friselina\"]"
+      ],
+      "colors": [
+        "Azul Marino",
+        "Beige",
+        "Verde oscuro",
+        "Blanco",
+        "Rojo",
+        "Negro"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": true,
+      "price": 648.2,
+      "price_max": 648.2,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1664458300_63359e3c7927d.jpg",
+        "https://www.promoproductos.com/upload/preview_1664458143_63359d9f3c4e4.jpg",
+        "https://www.promoproductos.com/upload/preview_1664458434_63359ec259347.jpg",
+        "https://www.promoproductos.com/upload/preview_1664457686_63359bd6c5779.jpg",
+        "https://www.promoproductos.com/upload/preview_1664458044_63359d3c1c1b6.jpg",
+        "https://www.promoproductos.com/upload/preview_1664457890_63359ca2a317f.jpg"
       ],
       "source": "promoproductos"
     },
@@ -2422,8 +2393,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 29856.5,
-      "price_max": 29856.5,
+      "price": 29540,
+      "price_max": 29540,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2448,8 +2419,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 905.6,
-      "price_max": 905.6,
+      "price": 896,
+      "price_max": 896,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2474,8 +2445,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3268.65,
-      "price_max": 3268.65,
+      "price": 3234,
+      "price_max": 3234,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2503,8 +2474,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4004.45,
-      "price_max": 4004.45,
+      "price": 3962,
+      "price_max": 3962,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2536,8 +2507,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 353.75,
-      "price_max": 353.75,
+      "price": 350,
+      "price_max": 350,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2566,8 +2537,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 9805.95,
-      "price_max": 9805.95,
+      "price": 9702,
+      "price_max": 9702,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2599,8 +2570,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 566,
-      "price_max": 566,
+      "price": 560,
+      "price_max": 560,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2629,59 +2600,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 33054.4,
-      "price_max": 33054.4,
+      "price": 32704,
+      "price_max": 32704,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1605039684_5faaf64441416.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_218419",
-      "external_id": "P14.036",
-      "title": "Bolígrafo Rings Aluminium",
-      "description": "Bolígrafo de aluminio",
-      "category": "Escritura",
-      "materials": [
-        "[\"Aluminio\"]"
-      ],
-      "colors": [
-        "Dorado",
-        "Gris Claro",
-        "Violeta",
-        "Negro",
-        "Rosa",
-        "Naranja",
-        "Plateado",
-        "Bordó",
-        "Gris Oscuro",
-        "Azul Francia",
-        "Azul Marino",
-        "Verde oscuro",
-        "Blanco"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 877.3,
-      "price_max": 877.3,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1743537593_67ec45b9d90f4.png",
-        "https://www.promoproductos.com/upload/preview_1743537831_67ec46a7ca0e4.png",
-        "https://www.promoproductos.com/upload/preview_1743537900_67ec46ecc54ba.jpg",
-        "https://www.promoproductos.com/upload/preview_1743537636_67ec45e4396fe.png",
-        "https://www.promoproductos.com/upload/preview_1743537758_67ec465e88f2a.png",
-        "https://www.promoproductos.com/upload/preview_1757702466_68c469424fdc4.png",
-        "https://www.promoproductos.com/upload/preview_1743537727_67ec463f08d06.png",
-        "https://www.promoproductos.com/upload/preview_1743537797_67ec4685e1714.png",
-        "https://www.promoproductos.com/upload/preview_1743537923_67ec470351081.png",
-        "https://www.promoproductos.com/upload/preview_1743537815_67ec46973d768.png",
-        "https://www.promoproductos.com/upload/preview_1743537775_67ec466f8b0aa.png",
-        "https://www.promoproductos.com/upload/preview_1743537744_67ec4650005e4.png",
-        "https://www.promoproductos.com/upload/preview_1743537705_67ec4629f3856.png"
       ],
       "source": "promoproductos"
     },
@@ -2702,8 +2626,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 679.2,
-      "price_max": 679.2,
+      "price": 672,
+      "price_max": 672,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2711,6 +2635,53 @@
         "https://www.promoproductos.com/upload/preview_1601580273_5f762cf1ca35d.jpg",
         "https://www.promoproductos.com/upload/preview_1601580395_5f762d6bb7166.jpg",
         "https://www.promoproductos.com/upload/preview_1605125252_5fac4484143fe.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_218419",
+      "external_id": "P14.036",
+      "title": "Bolígrafo Rings Aluminium",
+      "description": "Bolígrafo de aluminio",
+      "category": "Escritura",
+      "materials": [
+        "[\"Aluminio\"]"
+      ],
+      "colors": [
+        "Dorado",
+        "Gris Claro",
+        "Violeta",
+        "Rosa",
+        "Naranja",
+        "Negro",
+        "Plateado",
+        "Bordó",
+        "Gris Oscuro",
+        "Azul Francia",
+        "Azul Marino",
+        "Verde oscuro",
+        "Blanco"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 868,
+      "price_max": 868,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1743537593_67ec45b9d90f4.png",
+        "https://www.promoproductos.com/upload/preview_1743537831_67ec46a7ca0e4.png",
+        "https://www.promoproductos.com/upload/preview_1743537900_67ec46ecc54ba.jpg",
+        "https://www.promoproductos.com/upload/preview_1743537758_67ec465e88f2a.png",
+        "https://www.promoproductos.com/upload/preview_1757702466_68c469424fdc4.png",
+        "https://www.promoproductos.com/upload/preview_1743537636_67ec45e4396fe.png",
+        "https://www.promoproductos.com/upload/preview_1743537727_67ec463f08d06.png",
+        "https://www.promoproductos.com/upload/preview_1743537797_67ec4685e1714.png",
+        "https://www.promoproductos.com/upload/preview_1743537923_67ec470351081.png",
+        "https://www.promoproductos.com/upload/preview_1743537815_67ec46973d768.png",
+        "https://www.promoproductos.com/upload/preview_1743537775_67ec466f8b0aa.png",
+        "https://www.promoproductos.com/upload/preview_1743537744_67ec4650005e4.png",
+        "https://www.promoproductos.com/upload/preview_1743537705_67ec4629f3856.png"
       ],
       "source": "promoproductos"
     },
@@ -2729,8 +2700,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5433.6,
-      "price_max": 5433.6,
+      "price": 5376,
+      "price_max": 5376,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2755,8 +2726,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3098.85,
-      "price_max": 3098.85,
+      "price": 3066,
+      "price_max": 3066,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2780,8 +2751,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 130180,
-      "price_max": 130180,
+      "price": 128800,
+      "price_max": 128800,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2804,8 +2775,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 9197.5,
-      "price_max": 9197.5,
+      "price": 9100,
+      "price_max": 9100,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2828,8 +2799,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 6197.7,
-      "price_max": 6197.7,
+      "price": 6132,
+      "price_max": 6132,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2855,8 +2826,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5094,
-      "price_max": 5094,
+      "price": 5040,
+      "price_max": 5040,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2884,8 +2855,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 622.6,
-      "price_max": 622.6,
+      "price": 616,
+      "price_max": 616,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2909,8 +2880,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 8362.65,
-      "price_max": 8362.65,
+      "price": 8274,
+      "price_max": 8274,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2919,7 +2890,7 @@
       "source": "promoproductos"
     },
     {
-      "product_id": "promo_265835",
+      "product_id": "promo_265832",
       "external_id": "P01.011",
       "title": "Botella Aluminio Eco Daily",
       "description": "Botella de aluminio con tapón de PP 660 ml",
@@ -2928,21 +2899,21 @@
         "[\"Aluminio\"]"
       ],
       "colors": [
-        "Azul Marino",
         "Blanco",
+        "Azul Marino",
         "Rojo",
         "Negro",
         "Plateado"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 6551.45,
-      "price_max": 6551.45,
+      "price": 6482,
+      "price_max": 6482,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1751898158_686bd82ea2f54.jpg",
         "https://www.promoproductos.com/upload/preview_1751898312_686bd8c8e7650.jpg",
+        "https://www.promoproductos.com/upload/preview_1751898158_686bd82ea2f54.jpg",
         "https://www.promoproductos.com/upload/preview_1751471951_6865574f8f118.jpg",
         "https://www.promoproductos.com/upload/preview_1751901790_686be65e7bfdc.jpg",
         "https://www.promoproductos.com/upload/preview_1751898363_686bd8fbcf60c.jpg"
@@ -2963,8 +2934,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4400.65,
-      "price_max": 4400.65,
+      "price": 4354,
+      "price_max": 4354,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -2990,8 +2961,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 8221.15,
-      "price_max": 8221.15,
+      "price": 8134,
+      "price_max": 8134,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3000,6 +2971,35 @@
         "https://www.promoproductos.com/upload/preview_1748011161_68308899566db.jpg",
         "https://www.promoproductos.com/upload/preview_1748011230_683088de6ca68.jpg",
         "https://www.promoproductos.com/upload/preview_1694464980_64ff7bd4a7f06.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_73505",
+      "external_id": "P23.010",
+      "title": "Porta Tarjeta Extensible Translúcido",
+      "description": "Porta tarjeta extensible translúcido",
+      "category": "Oficina",
+      "materials": [
+        "[\"Plástico\"]"
+      ],
+      "colors": [
+        "Negro",
+        "Blanco",
+        "Rojo",
+        "Azul Francia"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 826,
+      "price_max": 826,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1641920884_61ddb974ac78f.jpg",
+        "https://www.promoproductos.com/upload/preview_1641921562_61ddbc1ab5d93.jpg",
+        "https://www.promoproductos.com/upload/preview_1641921351_61ddbb473b533.jpg",
+        "https://www.promoproductos.com/upload/preview_1641921205_61ddbab5327a1.jpg"
       ],
       "source": "promoproductos"
     },
@@ -3026,8 +3026,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 10173.85,
-      "price_max": 10173.85,
+      "price": 10066,
+      "price_max": 10066,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3058,39 +3058,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 14120.28,
-      "price_max": 14120.28,
+      "price": 13970.6,
+      "price_max": 13970.6,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1699368081_654a4c91ad72c.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_547",
-      "external_id": "P03.030",
-      "title": "Termo Contigo Thermalock 740 ml",
-      "description": "Pico vertedor. A prueba de derrames y fugas.",
-      "category": "Drinkware",
-      "materials": [
-        "[\"Acero\"]"
-      ],
-      "colors": [
-        "Negro",
-        "Plateado",
-        "Blanco"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 86617435.03,
-      "price_max": 86617435.03,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1566407630_5d5d7bcea5828.jpg",
-        "https://www.promoproductos.com/upload/preview_1620423966_6095b51ea0b5c.jpg",
-        "https://www.promoproductos.com/upload/preview_1748638734_683a1c0e7ec91.jpg"
       ],
       "source": "promoproductos"
     },
@@ -3115,8 +3088,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4245,
-      "price_max": 4245,
+      "price": 4200,
+      "price_max": 4200,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3149,8 +3122,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2674.35,
-      "price_max": 2674.35,
+      "price": 2646,
+      "price_max": 2646,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3176,8 +3149,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 17588.45,
-      "price_max": 17588.45,
+      "price": 17402,
+      "price_max": 17402,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3202,8 +3175,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 14970.7,
-      "price_max": 14970.7,
+      "price": 14812,
+      "price_max": 14812,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3232,8 +3205,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5108.15,
-      "price_max": 5108.15,
+      "price": 5054,
+      "price_max": 5054,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3259,12 +3232,39 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 6466.55,
-      "price_max": 6466.55,
+      "price": 6398,
+      "price_max": 6398,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1641933728_61ddeba07f711.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_547",
+      "external_id": "P03.030",
+      "title": "Termo Contigo Thermalock 740 ml",
+      "description": "Pico vertedor. A prueba de derrames y fugas.",
+      "category": "Drinkware",
+      "materials": [
+        "[\"Acero\"]"
+      ],
+      "colors": [
+        "Negro",
+        "Plateado",
+        "Blanco"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 61213.74,
+      "price_max": 61213.74,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1566407630_5d5d7bcea5828.jpg",
+        "https://www.promoproductos.com/upload/preview_1620423966_6095b51ea0b5c.jpg",
+        "https://www.promoproductos.com/upload/preview_1748638734_683a1c0e7ec91.jpg"
       ],
       "source": "promoproductos"
     },
@@ -3285,8 +3285,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 13654.75,
-      "price_max": 13654.75,
+      "price": 13510,
+      "price_max": 13510,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3311,8 +3311,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 50883.4,
-      "price_max": 50883.4,
+      "price": 50344,
+      "price_max": 50344,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3334,8 +3334,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 116030,
-      "price_max": 116030,
+      "price": 114800,
+      "price_max": 114800,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3357,8 +3357,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 8192.85,
-      "price_max": 8192.85,
+      "price": 8106,
+      "price_max": 8106,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3381,8 +3381,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1481.51,
-      "price_max": 1481.51,
+      "price": 1465.8,
+      "price_max": 1465.8,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3405,8 +3405,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2773.4,
-      "price_max": 2773.4,
+      "price": 2744,
+      "price_max": 2744,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3447,8 +3447,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 48110,
-      "price_max": 48110,
+      "price": 47600,
+      "price_max": 47600,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3470,8 +3470,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 10784230.06,
-      "price_max": 10784230.06,
+      "price": 7621.36,
+      "price_max": 7621.36,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3494,36 +3494,13 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 13626.45,
-      "price_max": 13626.45,
+      "price": 13482,
+      "price_max": 13482,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1740746202_67c1adda425ab.jpg",
         "https://www.promoproductos.com/upload/preview_1699367414_654a49f682b74.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_180114",
-      "external_id": "P06.018",
-      "title": "Auriculares Pods Eco Cereal",
-      "description": "Auriculares inalámbricos Eco Cereal",
-      "category": "Tecnología",
-      "materials": [
-        "[\"Fibra de paja de trigo\"]"
-      ],
-      "colors": [
-        "Beige"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": true,
-      "price": 52878.55,
-      "price_max": 52878.55,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1670869079_63977057606ab.jpg"
       ],
       "source": "promoproductos"
     },
@@ -3545,8 +3522,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 9423.9,
-      "price_max": 9423.9,
+      "price": 9324,
+      "price_max": 9324,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3571,8 +3548,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 117162,
-      "price_max": 117162,
+      "price": 115920,
+      "price_max": 115920,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3597,8 +3574,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 110380800.7,
-      "price_max": 110380800.7,
+      "price": 78007.63,
+      "price_max": 78007.63,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3620,22 +3597,22 @@
       "colors": [
         "Verde oscuro",
         "Azul Marino",
-        "Gris Oscuro",
         "Blanco",
+        "Gris Oscuro",
         "Bordó",
         "Negro"
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1146.15,
-      "price_max": 1146.15,
+      "price": 1134,
+      "price_max": 1134,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_P14.038.18-00.jpg",
         "https://www.promoproductos.com/upload/preview_P14.038.03-00.jpg",
-        "https://www.promoproductos.com/upload/preview_P14.038.09-00.jpg",
         "https://www.promoproductos.com/upload/preview_P14.038.05-00.jpg",
+        "https://www.promoproductos.com/upload/preview_P14.038.09-00.jpg",
         "https://www.promoproductos.com/upload/preview_P14.038.06-00.jpg",
         "https://www.promoproductos.com/upload/preview_P14.038.12-00.jpg"
       ],
@@ -3659,8 +3636,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 6579.75,
-      "price_max": 6579.75,
+      "price": 6510,
+      "price_max": 6510,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3669,6 +3646,29 @@
         "https://www.promoproductos.com/upload/preview_1682350007_64469fb7cf078.jpg",
         "https://www.promoproductos.com/upload/preview_1682350070_64469ff672a50.jpg",
         "https://www.promoproductos.com/upload/preview_1682349853_64469f1d78a49.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_180114",
+      "external_id": "P06.018",
+      "title": "Auriculares Pods Eco Cereal",
+      "description": "Auriculares inalámbricos Eco Cereal",
+      "category": "Tecnología",
+      "materials": [
+        "[\"Fibra de paja de trigo\"]"
+      ],
+      "colors": [
+        "Beige"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": true,
+      "price": 31360,
+      "price_max": 31360,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1670869079_63977057606ab.jpg"
       ],
       "source": "promoproductos"
     },
@@ -3686,8 +3686,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 19413.8,
-      "price_max": 19413.8,
+      "price": 19208,
+      "price_max": 19208,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3710,8 +3710,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 26545.4,
-      "price_max": 26545.4,
+      "price": 26264,
+      "price_max": 26264,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3736,43 +3736,14 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2801.7,
-      "price_max": 2801.7,
+      "price": 2772,
+      "price_max": 2772,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1732034917_673cc165b16c8.jpg",
         "https://www.promoproductos.com/upload/preview_1732034863_673cc12f529dc.jpg",
         "https://www.promoproductos.com/upload/preview_1732033091_673cba433a51d.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_236986",
-      "external_id": "P19.081",
-      "title": "Gorro Kids 5 gajos poliéster",
-      "description": "Para niños",
-      "category": "Gorros",
-      "materials": [
-        "[\"Poliéster\"]"
-      ],
-      "colors": [
-        "Blanco",
-        "Verde claro",
-        "Rojo",
-        "Azul Marino"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 2730.95,
-      "price_max": 2730.95,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1753211108_687fe0e419fea.jpg",
-        "https://www.promoproductos.com/upload/preview_1753209829_687fdbe5cb17b.jpg",
-        "https://www.promoproductos.com/upload/preview_1753210939_687fe03b0b470.jpg",
-        "https://www.promoproductos.com/upload/preview_1732033814_673cbd16cafea.jpg"
       ],
       "source": "promoproductos"
     },
@@ -3790,8 +3761,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 176875,
-      "price_max": 176875,
+      "price": 175000,
+      "price_max": 175000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3813,8 +3784,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 161310,
-      "price_max": 161310,
+      "price": 159600,
+      "price_max": 159600,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3838,14 +3809,43 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 21918.35,
-      "price_max": 21918.35,
+      "price": 21686,
+      "price_max": 21686,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1744378891_67f91c0b41539.jpg",
         "https://www.promoproductos.com/upload/preview_1709562055_65e5d8c79585a.jpg",
         "https://www.promoproductos.com/upload/preview_1709559524_65e5cee446e71.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_236986",
+      "external_id": "P19.081",
+      "title": "Gorro Kids 5 gajos poliéster",
+      "description": "Para niños",
+      "category": "Gorros",
+      "materials": [
+        "[\"Poliéster\"]"
+      ],
+      "colors": [
+        "Blanco",
+        "Verde claro",
+        "Rojo",
+        "Azul Marino"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 2436,
+      "price_max": 2436,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1753211108_687fe0e419fea.jpg",
+        "https://www.promoproductos.com/upload/preview_1753209829_687fdbe5cb17b.jpg",
+        "https://www.promoproductos.com/upload/preview_1753210939_687fe03b0b470.jpg",
+        "https://www.promoproductos.com/upload/preview_1732033814_673cbd16cafea.jpg"
       ],
       "source": "promoproductos"
     },
@@ -3864,8 +3864,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 12467.57,
-      "price_max": 12467.57,
+      "price": 12335.4,
+      "price_max": 12335.4,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3889,8 +3889,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 27649.1,
-      "price_max": 27649.1,
+      "price": 27356,
+      "price_max": 27356,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3932,8 +3932,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 32177.1,
-      "price_max": 32177.1,
+      "price": 31836,
+      "price_max": 31836,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3959,8 +3959,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 7060.85,
-      "price_max": 7060.85,
+      "price": 6986,
+      "price_max": 6986,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -3986,8 +3986,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4117.65,
-      "price_max": 4117.65,
+      "price": 4074,
+      "price_max": 4074,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4010,8 +4010,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 88607.3,
-      "price_max": 88607.3,
+      "price": 87668,
+      "price_max": 87668,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4037,8 +4037,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 22158.9,
-      "price_max": 22158.9,
+      "price": 21924,
+      "price_max": 21924,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4062,21 +4062,21 @@
         "Azul Tornasol",
         "Negro",
         "Plateado y Dorado",
-        "Azul y Plateado",
-        "Blanco"
+        "Blanco",
+        "Azul y Plateado"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 43843398.61,
-      "price_max": 43843398.61,
+      "price": 30984.73,
+      "price_max": 30984.73,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1597967932_5f3f0e3c5737c.jpg",
         "https://www.promoproductos.com/upload/preview_1588275843_5eab2a832c5be.jpg",
         "https://www.promoproductos.com/upload/preview_1643118427_61efff5bac0c1.jpg",
-        "https://www.promoproductos.com/upload/preview_1571406904_5da9c4384ac8c.jpg",
-        "https://www.promoproductos.com/upload/preview_1748638660_683a1bc4db7c4.jpg"
+        "https://www.promoproductos.com/upload/preview_1748638660_683a1bc4db7c4.jpg",
+        "https://www.promoproductos.com/upload/preview_1571406904_5da9c4384ac8c.jpg"
       ],
       "source": "promoproductos"
     },
@@ -4096,8 +4096,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2929.05,
-      "price_max": 2929.05,
+      "price": 2898,
+      "price_max": 2898,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4122,8 +4122,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 58479.12,
-      "price_max": 58479.12,
+      "price": 57859.2,
+      "price_max": 57859.2,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4148,58 +4148,14 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1400.85,
-      "price_max": 1400.85,
+      "price": 1386,
+      "price_max": 1386,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1605038877_5faaf31dba188.jpg",
         "https://www.promoproductos.com/upload/preview_1638909318_61afc5868d512.jpg",
         "https://www.promoproductos.com/upload/preview_1605039115_5faaf40b7d300.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_216202",
-      "external_id": "K0005",
-      "title": "Kit Food & Wine",
-      "description": "Food & Wine",
-      "category": "Kits",
-      "materials": [],
-      "colors": [],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": null,
-      "price_max": null,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1716411013_664e5a85cd08c.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_61749",
-      "external_id": "P12.040",
-      "title": "Set manicura Premium",
-      "description": "Con estuche plastico",
-      "category": "Cuidado Personal",
-      "materials": [
-        "[\"Metal\",\"Plástico\"]"
-      ],
-      "colors": [
-        "Blanco",
-        "Rosa"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 3197.9,
-      "price_max": 3197.9,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1753205891_687fcc8334527.jpg",
-        "https://www.promoproductos.com/upload/preview_1753206108_687fcd5c64ee0.jpg"
       ],
       "source": "promoproductos"
     },
@@ -4218,8 +4174,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5858.1,
-      "price_max": 5858.1,
+      "price": 5796,
+      "price_max": 5796,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4248,6 +4204,31 @@
       "source": "promoproductos"
     },
     {
+      "product_id": "promo_61749",
+      "external_id": "P12.040",
+      "title": "Set manicura Premium",
+      "description": "Con estuche plastico",
+      "category": "Cuidado Personal",
+      "materials": [
+        "[\"Metal\",\"Plástico\"]"
+      ],
+      "colors": [
+        "Blanco",
+        "Rosa"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 3164,
+      "price_max": 3164,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1753205891_687fcc8334527.jpg",
+        "https://www.promoproductos.com/upload/preview_1753206108_687fcd5c64ee0.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
       "product_id": "promo_191093",
       "external_id": "P22.010",
       "title": "Paraguas Full Color",
@@ -4264,8 +4245,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 11447.35,
-      "price_max": 11447.35,
+      "price": 11326,
+      "price_max": 11326,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4290,60 +4271,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1132,
-      "price_max": 1132,
+      "price": 1120,
+      "price_max": 1120,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1678290942_6408affe16e52.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_73514",
-      "external_id": "P20.014",
-      "title": "Llavero Metálico Sweet Home",
-      "description": "Llavero Metálico Sweet Home",
-      "category": "Llaveros",
-      "materials": [
-        "[\"Metal\"]"
-      ],
-      "colors": [
-        "Plateado"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 1160.3,
-      "price_max": 1160.3,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1641934431_61ddee5f39a1d.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_66228",
-      "external_id": "P25.016",
-      "title": "Cargador inalámbrico Fast",
-      "description": "- Cargador  inalámbrico 10W para celulares - Incluye cable USB / micro USB para cargar",
-      "category": "Tecnología",
-      "materials": [
-        "[\"Aluminio\",\"ABS\"]"
-      ],
-      "colors": [
-        "Negro",
-        "Blanco"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 16272.5,
-      "price_max": 16272.5,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1633107670_61573ed68f703.jpg",
-        "https://www.promoproductos.com/upload/preview_1633110239_615748dfc7e67.jpg"
       ],
       "source": "promoproductos"
     },
@@ -4358,19 +4291,19 @@
       ],
       "colors": [
         "Gris Oscuro",
-        "Azul Marino",
-        "Rojo"
+        "Rojo",
+        "Azul Marino"
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 9367.3,
-      "price_max": 9367.3,
+      "price": 9268,
+      "price_max": 9268,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1655306009_62a9f71936aaf.png",
-        "https://www.promoproductos.com/upload/preview_1655305893_62a9f6a5cac6c.png",
-        "https://www.promoproductos.com/upload/preview_1655306131_62a9f7935bb7c.png"
+        "https://www.promoproductos.com/upload/preview_1655306131_62a9f7935bb7c.png",
+        "https://www.promoproductos.com/upload/preview_1655305893_62a9f6a5cac6c.png"
       ],
       "source": "promoproductos"
     },
@@ -4391,8 +4324,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 7060.85,
-      "price_max": 7060.85,
+      "price": 6986,
+      "price_max": 6986,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4400,6 +4333,31 @@
         "https://www.promoproductos.com/upload/preview_1660054551_62f26c17ee4c4.jpg",
         "https://www.promoproductos.com/upload/preview_1660054128_62f26a706a536.jpg",
         "https://www.promoproductos.com/upload/preview_1660054474_62f26bca3aa2a.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_66228",
+      "external_id": "P25.016",
+      "title": "Cargador inalámbrico Fast",
+      "description": "- Cargador  inalámbrico 10W para celulares - Incluye cable USB / micro USB para cargar",
+      "category": "Tecnología",
+      "materials": [
+        "[\"Aluminio\",\"ABS\"]"
+      ],
+      "colors": [
+        "Negro",
+        "Blanco"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 16100,
+      "price_max": 16100,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1633107670_61573ed68f703.jpg",
+        "https://www.promoproductos.com/upload/preview_1633110239_615748dfc7e67.jpg"
       ],
       "source": "promoproductos"
     },
@@ -4419,8 +4377,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 29432,
-      "price_max": 29432,
+      "price": 29120,
+      "price_max": 29120,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4446,8 +4404,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 27875.5,
-      "price_max": 27875.5,
+      "price": 27580,
+      "price_max": 27580,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4469,8 +4427,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 144330,
-      "price_max": 144330,
+      "price": 142800,
+      "price_max": 142800,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4492,12 +4450,35 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 35757.05,
-      "price_max": 35757.05,
+      "price": 35378,
+      "price_max": 35378,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1731516009_6734d6692ee9a.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_73514",
+      "external_id": "P20.014",
+      "title": "Llavero Metálico Sweet Home",
+      "description": "Llavero Metálico Sweet Home",
+      "category": "Llaveros",
+      "materials": [
+        "[\"Metal\"]"
+      ],
+      "colors": [
+        "Plateado"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 1148,
+      "price_max": 1148,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1641934431_61ddee5f39a1d.jpg"
       ],
       "source": "promoproductos"
     },
@@ -4515,8 +4496,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 14616.95,
-      "price_max": 14616.95,
+      "price": 14462,
+      "price_max": 14462,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4539,8 +4520,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 32898.75,
-      "price_max": 32898.75,
+      "price": 32550,
+      "price_max": 32550,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4563,8 +4544,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 6650.5,
-      "price_max": 6650.5,
+      "price": 6580,
+      "price_max": 6580,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4589,8 +4570,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 27323084,
-      "price_max": 27323084,
+      "price": 19309.6,
+      "price_max": 19309.6,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4616,8 +4597,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 23630.5,
-      "price_max": 23630.5,
+      "price": 23380,
+      "price_max": 23380,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4641,8 +4622,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3268.65,
-      "price_max": 3268.65,
+      "price": 3234,
+      "price_max": 3234,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4666,8 +4647,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 6141.1,
-      "price_max": 6141.1,
+      "price": 6076,
+      "price_max": 6076,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4690,37 +4671,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 61439.3,
-      "price_max": 61439.3,
+      "price": 60788,
+      "price_max": 60788,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1753198662_687fb046b17e8.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_428",
-      "external_id": "P21.024",
-      "title": "Mochila - Maletín Bagsmart",
-      "description": "Porta Laptop",
-      "category": "Bolsos y Mochilas",
-      "materials": [
-        "[\"Poliéster\"]"
-      ],
-      "colors": [
-        "Gris Claro",
-        "Negro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 85522.6,
-      "price_max": 85522.6,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1549913130_5c61cc2a41472.jpg",
-        "https://www.promoproductos.com/upload/preview_1549914807_5c61d2b75d207.jpg"
       ],
       "source": "promoproductos"
     },
@@ -4740,8 +4696,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 11037,
-      "price_max": 11037,
+      "price": 10920,
+      "price_max": 10920,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4767,8 +4723,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 138670,
-      "price_max": 138670,
+      "price": 137200,
+      "price_max": 137200,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4797,8 +4753,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 55185,
-      "price_max": 55185,
+      "price": 54600,
+      "price_max": 54600,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4818,7 +4774,7 @@
       "external_id": "P21.101",
       "title": "Herschel Heritage Backpack",
       "description": "Heritage Negra con detalles en Marrón",
-      "category": "Sustentables",
+      "category": "Bolsos y Mochilas",
       "materials": [
         "[\"Poliéster\",\"rPet\"]"
       ],
@@ -4831,8 +4787,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 198623.55,
-      "price_max": 198623.55,
+      "price": 196518,
+      "price_max": 196518,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4863,8 +4819,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 139646.35,
-      "price_max": 139646.35,
+      "price": 138166,
+      "price_max": 138166,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4891,8 +4847,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 55185,
-      "price_max": 55185,
+      "price": 54600,
+      "price_max": 54600,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4914,8 +4870,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 70042.5,
-      "price_max": 70042.5,
+      "price": 69300,
+      "price_max": 69300,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4940,8 +4896,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 16201.75,
-      "price_max": 16201.75,
+      "price": 16030,
+      "price_max": 16030,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -4965,38 +4921,13 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 6524809.8,
-      "price_max": 6524809.8,
+      "price": 4611.17,
+      "price_max": 4611.17,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1718829783_667342d82d8bd.jpg",
         "https://www.promoproductos.com/upload/preview_1718829469_6673419e132ac.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_242479",
-      "external_id": "P11.026",
-      "title": "Delantal Gourmet",
-      "description": "Delantal con pechera y bolsillo",
-      "category": "Cocina",
-      "materials": [
-        "[\"Algodón\"]"
-      ],
-      "colors": [
-        "Negro",
-        "Azul Marino"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 30974.35,
-      "price_max": 30974.35,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1737576682_679150eab6b69.png",
-        "https://www.promoproductos.com/upload/preview_1737575249_67914b51b5e89.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5014,8 +4945,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 12735,
-      "price_max": 12735,
+      "price": 12600,
+      "price_max": 12600,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5037,12 +4968,37 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 39704.9,
-      "price_max": 39704.9,
+      "price": 39284,
+      "price_max": 39284,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1670944767_639897ff76d89.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_242479",
+      "external_id": "P11.026",
+      "title": "Delantal Gourmet",
+      "description": "Delantal con pechera y bolsillo",
+      "category": "Cocina",
+      "materials": [
+        "[\"Algodón\"]"
+      ],
+      "colors": [
+        "Negro",
+        "Azul Marino"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 30646,
+      "price_max": 30646,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1737576682_679150eab6b69.png",
+        "https://www.promoproductos.com/upload/preview_1737575249_67914b51b5e89.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5063,8 +5019,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 23220.15,
-      "price_max": 23220.15,
+      "price": 22974,
+      "price_max": 22974,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5090,13 +5046,40 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 114230088.87,
-      "price_max": 114230088.87,
+      "price": 80727.98,
+      "price_max": 80727.98,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1764269433_69289d79d092a.jpg",
         "https://www.promoproductos.com/upload/preview_1769521310_6978c09e43214.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_270865",
+      "external_id": "P04.037.2x1",
+      "title": "Contigo Tumbler Streeterville 1180 ml",
+      "description": "Tumbler 1180 ml",
+      "category": "Drinkware",
+      "materials": [
+        "[\"Acero\"]"
+      ],
+      "colors": [
+        "Blanco",
+        "Verde Agua",
+        "Naranja"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 50600,
+      "price_max": 50600,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1751641895_6867ef278349d.jpg",
+        "https://www.promoproductos.com/upload/preview_1730382732_67238b8caee0d.jpg",
+        "https://www.promoproductos.com/upload/preview_1730382486_67238a96ab228.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5117,8 +5100,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4344.05,
-      "price_max": 4344.05,
+      "price": 4298,
+      "price_max": 4298,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5126,64 +5109,6 @@
         "https://www.promoproductos.com/upload/preview_1675275786_63daae0a856ff.jpg",
         "https://www.promoproductos.com/upload/preview_1675275671_63daad972bd2f.jpg",
         "https://www.promoproductos.com/upload/preview_1675275717_63daadc5227f2.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_37221",
-      "external_id": "P04.033",
-      "title": "Contigo vaso térmico Huron 2.0",
-      "description": "Tapa a prueba de fugas y derrames, mantiene la temperatura durante 6h caliente y 12 hs frío",
-      "category": "Drinkware",
-      "materials": [
-        "[\"Plástico\",\"Acero 340\"]"
-      ],
-      "colors": [
-        "Gris Oscuro",
-        "Magenta",
-        "Azul Marino",
-        "Blanco",
-        "Rosa",
-        "Negro",
-        "Azul Francia"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 39803627.38,
-      "price_max": 39803627.38,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1599597637_5f57ec4541734.jpg",
-        "https://www.promoproductos.com/upload/preview_1599597720_5f57ec98d9a1b.jpg",
-        "https://www.promoproductos.com/upload/preview_1599597761_5f57ecc1056cf.jpg",
-        "https://www.promoproductos.com/upload/preview_1749133165_6841a76dc1622.png",
-        "https://www.promoproductos.com/upload/preview_1743081554_67e55052326c3.jpg",
-        "https://www.promoproductos.com/upload/preview_1744223344_67f6bc70e70af.jpg",
-        "https://www.promoproductos.com/upload/preview_1751646923_686802cbe9887.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_233310",
-      "external_id": "P07.016",
-      "title": "Lona Rústica XL de Algodón Tejido Poncho Pampa",
-      "description": "Lona XL tejida con flecos",
-      "category": "Hogar y Tiempo Libre",
-      "materials": [
-        "[\"Algodón\"]"
-      ],
-      "colors": [
-        "Crudo y Azul Marino"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 41742.5,
-      "price_max": 41742.5,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1731525267_6734fa9305775.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5205,8 +5130,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 273109.15,
-      "price_max": 273109.15,
+      "price": 270214,
+      "price_max": 270214,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5242,6 +5167,54 @@
       "source": "promoproductos"
     },
     {
+      "product_id": "promo_233310",
+      "external_id": "P07.016",
+      "title": "Lona Rústica XL de Algodón Tejido Poncho Pampa",
+      "description": "Lona XL tejida con flecos",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [
+        "[\"Algodón\"]"
+      ],
+      "colors": [
+        "Crudo y Azul Marino"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 41300,
+      "price_max": 41300,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1731525267_6734fa9305775.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_428",
+      "external_id": "P21.024",
+      "title": "Mochila - Maletín Bagsmart",
+      "description": "Porta Laptop",
+      "category": "Bolsos y Mochilas",
+      "materials": [
+        "[\"Poliéster\"]"
+      ],
+      "colors": [
+        "Gris Claro",
+        "Negro"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 84616,
+      "price_max": 84616,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1549913130_5c61cc2a41472.jpg",
+        "https://www.promoproductos.com/upload/preview_1549914807_5c61d2b75d207.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
       "product_id": "promo_210388",
       "external_id": "P34.049",
       "title": "Contenedor Rubbermaid Take Alongs 500 ml",
@@ -5255,39 +5228,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4719025,
-      "price_max": 4719025,
+      "price": 3335,
+      "price_max": 3335,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1705593648_65a94b30ca93d.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_231297",
-      "external_id": "P04.037.2x1",
-      "title": "Contigo Tumbler Streeterville 1180 ml",
-      "description": "Tumbler 1180 ml",
-      "category": "Drinkware",
-      "materials": [
-        "[\"Acero\"]"
-      ],
-      "colors": [
-        "Verde Agua",
-        "Blanco",
-        "Naranja"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 71599000,
-      "price_max": 71599000,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1730382732_67238b8caee0d.jpg",
-        "https://www.promoproductos.com/upload/preview_1751641895_6867ef278349d.jpg",
-        "https://www.promoproductos.com/upload/preview_1730382486_67238a96ab228.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5308,8 +5254,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 34458998.34,
-      "price_max": 34458998.34,
+      "price": 24352.65,
+      "price_max": 24352.65,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5338,8 +5284,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 50940000,
-      "price_max": 50940000,
+      "price": 36000,
+      "price_max": 36000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5366,13 +5312,106 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 93256339.1,
-      "price_max": 93256339.1,
+      "price": 65905.54,
+      "price_max": 65905.54,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1753462756_6883b7e4883e9.jpg",
         "https://www.promoproductos.com/upload/preview_1743795569_67f03571b7ba0.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_275661",
+      "external_id": "P04.051",
+      "title": "Contigo Vaso Térmico Byron 2.0 591 ml",
+      "description": "Vaso térmico Snapseal™ con grip y tapa de seguridad.",
+      "category": "Drinkware",
+      "materials": [
+        "[\"Acero\"]"
+      ],
+      "colors": [
+        "Negro",
+        "Plateado",
+        "Azul Francia"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 33713.75,
+      "price_max": 33713.75,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1754923975_689a03c7bddbe.jpg",
+        "https://www.promoproductos.com/upload/preview_1754924050_689a041280aae.jpg",
+        "https://www.promoproductos.com/upload/preview_1754924024_689a03f83aeb3.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_37223",
+      "external_id": "P04.033",
+      "title": "Contigo vaso térmico Huron 2.0",
+      "description": "Tapa a prueba de fugas y derrames, mantiene la temperatura durante 6h caliente y 12 hs frío",
+      "category": "Drinkware",
+      "materials": [
+        "[\"Plástico\",\"Acero 340\"]"
+      ],
+      "colors": [
+        "Magenta",
+        "Azul Marino",
+        "Rosa",
+        "Blanco",
+        "Negro",
+        "Gris Oscuro",
+        "Azul Francia"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 28129.77,
+      "price_max": 28129.77,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1599597720_5f57ec98d9a1b.jpg",
+        "https://www.promoproductos.com/upload/preview_1599597761_5f57ecc1056cf.jpg",
+        "https://www.promoproductos.com/upload/preview_1743081554_67e55052326c3.jpg",
+        "https://www.promoproductos.com/upload/preview_1749133165_6841a76dc1622.png",
+        "https://www.promoproductos.com/upload/preview_1744223344_67f6bc70e70af.jpg",
+        "https://www.promoproductos.com/upload/preview_1599597637_5f57ec4541734.jpg",
+        "https://www.promoproductos.com/upload/preview_1751646923_686802cbe9887.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_37205",
+      "external_id": "P01.033",
+      "title": "Contigo Botella Matterhorn Couture 591 ml",
+      "description": "Cuerpo de Acero 304 de doble pared. Mantiene el frio por 24hs y calor hasta 10hs.",
+      "category": "Drinkware",
+      "materials": [
+        "[\"Acero 340\"]"
+      ],
+      "colors": [
+        "Marmolado Rosa y Blanco",
+        "Marmol Veteado Gris",
+        "Merlot Blanco y violeta",
+        "Camuflado Verde",
+        "Marmolado Dorado y Blanco"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 30984.73,
+      "price_max": 30984.73,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1755547691_68a3882b8348d.jpg",
+        "https://www.promoproductos.com/upload/preview_1599251520_5f52a4408a2a2.jpg",
+        "https://www.promoproductos.com/upload/preview_1599251657_5f52a4c9987bf.jpg",
+        "https://www.promoproductos.com/upload/preview_1599251431_5f52a3e77d618.jpg",
+        "https://www.promoproductos.com/upload/preview_1599251562_5f52a46add772.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5390,8 +5429,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 35375,
-      "price_max": 35375,
+      "price": 35000,
+      "price_max": 35000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5415,45 +5454,14 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 79240000,
-      "price_max": 79240000,
+      "price": 56000,
+      "price_max": 56000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1763567620_691de804633d6.jpg",
         "https://www.promoproductos.com/upload/preview_1763567321_691de6d9d6133.jpg",
         "https://www.promoproductos.com/upload/preview_1763567753_691de88984306.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_37226",
-      "external_id": "P04.035",
-      "title": "Contigo Vaso Térmico Byron 2.0",
-      "description": "Vaso térmico Byron 2.0 Snapseal™ 473 ml",
-      "category": "Drinkware",
-      "materials": [
-        "[\"Plástico\",\"Acero 340\"]"
-      ],
-      "colors": [
-        "Negro",
-        "Verde claro",
-        "Violeta",
-        "Bronce",
-        "Gris Oscuro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 43368136.9,
-      "price_max": 43368136.9,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1599597874_5f57ed3275534.jpg",
-        "https://www.promoproductos.com/upload/preview_1743523485_67ec0e9d4d0a3.jpg",
-        "https://www.promoproductos.com/upload/preview_1743523587_67ec0f03d17b2.jpg",
-        "https://www.promoproductos.com/upload/preview_1743523610_67ec0f1a6f6fd.jpg",
-        "https://www.promoproductos.com/upload/preview_1599597915_5f57ed5b6faec.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5471,8 +5479,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 155650,
-      "price_max": 155650,
+      "price": 154000,
+      "price_max": 154000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5495,8 +5503,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 9565.4,
-      "price_max": 9565.4,
+      "price": 9464,
+      "price_max": 9464,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5517,26 +5525,26 @@
       "colors": [
         "Plateado y Azul",
         "Negro y Plata",
-        "Plateado",
         "Plateado y Rojo",
         "Plateado y Violeta",
         "Plateado y Cobre",
+        "Plateado",
         "Plateado y Celeste",
         "Plateado y Dorado"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 50138092.62,
-      "price_max": 50138092.62,
+      "price": 35433.28,
+      "price_max": 35433.28,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1743192845_67e7030d3b3ab.jpg",
         "https://www.promoproductos.com/upload/preview_1744057609_67f43509884fd.jpg",
-        "https://www.promoproductos.com/upload/preview_1743193041_67e703d15c69d.jpg",
         "https://www.promoproductos.com/upload/preview_1744057983_67f4367f88aef.jpg",
         "https://www.promoproductos.com/upload/preview_1744057907_67f436339deb7.jpg",
         "https://www.promoproductos.com/upload/preview_1744057701_67f4356532487.jpg",
+        "https://www.promoproductos.com/upload/preview_1743193041_67e703d15c69d.jpg",
         "https://www.promoproductos.com/upload/preview_1744057783_67f435b73a637.jpg",
         "https://www.promoproductos.com/upload/preview_1743192921_67e7035950eee.jpg"
       ],
@@ -5556,8 +5564,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 509.4,
-      "price_max": 509.4,
+      "price": 504,
+      "price_max": 504,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5581,8 +5589,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 2179.1,
-      "price_max": 2179.1,
+      "price": 2156,
+      "price_max": 2156,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5591,25 +5599,27 @@
       "source": "promoproductos"
     },
     {
-      "product_id": "promo_263483",
-      "external_id": "P04.032",
-      "title": "Contigo vaso térmico Westloop 3.0",
-      "description": "Vaso térmico AUTOSEAL® 100% a prueba de derrames.",
-      "category": "Drinkware",
-      "materials": [
-        "[\"Acero\"]"
-      ],
+      "product_id": "promo_60037",
+      "external_id": "P34.003",
+      "title": "Contenedor Sistema Lunch Sandwich 450ml",
+      "description": "Contenedor Sistema Lunch de color con cierre de seguridad",
+      "category": "Cocina",
+      "materials": [],
       "colors": [
-        "Blanco"
+        "Verde claro",
+        "Rosa",
+        "Celeste"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 54536911.61,
-      "price_max": 54536911.61,
+      "price": 7274.94,
+      "price_max": 7274.94,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1755533834_68a3520a7fe40.jpg"
+        "https://www.promoproductos.com/upload/preview_1704897977_659eadb98c79c.jpg",
+        "https://www.promoproductos.com/upload/preview_1704897825_659ead211715b.jpg",
+        "https://www.promoproductos.com/upload/preview_1704897692_659eac9c7ff9e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5630,8 +5640,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 47515275.5,
-      "price_max": 47515275.5,
+      "price": 33579.7,
+      "price_max": 33579.7,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5643,27 +5653,33 @@
       "source": "promoproductos"
     },
     {
-      "product_id": "promo_60037",
-      "external_id": "P34.003",
-      "title": "Contenedor Sistema Lunch Sandwich 450ml",
-      "description": "Contenedor Sistema Lunch de color con cierre de seguridad",
-      "category": "Cocina",
-      "materials": [],
+      "product_id": "promo_37226",
+      "external_id": "P04.035",
+      "title": "Contigo Vaso Térmico Byron 2.0",
+      "description": "Vaso térmico Byron 2.0 Snapseal™ 473 ml",
+      "category": "Drinkware",
+      "materials": [
+        "[\"Plástico\",\"Acero 340\"]"
+      ],
       "colors": [
+        "Negro",
         "Verde claro",
-        "Rosa",
-        "Celeste"
+        "Violeta",
+        "Bronce",
+        "Gris Oscuro"
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 10294037.27,
-      "price_max": 10294037.27,
+      "price": 30648.86,
+      "price_max": 30648.86,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1704897977_659eadb98c79c.jpg",
-        "https://www.promoproductos.com/upload/preview_1704897825_659ead211715b.jpg",
-        "https://www.promoproductos.com/upload/preview_1704897692_659eac9c7ff9e.jpg"
+        "https://www.promoproductos.com/upload/preview_1599597874_5f57ed3275534.jpg",
+        "https://www.promoproductos.com/upload/preview_1743523485_67ec0e9d4d0a3.jpg",
+        "https://www.promoproductos.com/upload/preview_1743523587_67ec0f03d17b2.jpg",
+        "https://www.promoproductos.com/upload/preview_1743523610_67ec0f1a6f6fd.jpg",
+        "https://www.promoproductos.com/upload/preview_1599597915_5f57ed5b6faec.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5681,8 +5697,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 933.9,
-      "price_max": 933.9,
+      "price": 924,
+      "price_max": 924,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5704,12 +5720,35 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5902480.06,
-      "price_max": 5902480.06,
+      "price": 4171.36,
+      "price_max": 4171.36,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1705592106_65a9452a2231d.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_210389",
+      "external_id": "P34.046",
+      "title": "Contenedor Rubbermaid Take Alongs Cuadrado 1.2L",
+      "description": "Contenedor Rubbermaid - Take alongs. Con tapas apilables",
+      "category": "Cocina",
+      "materials": [
+        "[\"Plástico\"]"
+      ],
+      "colors": [
+        "Rojo"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 3335,
+      "price_max": 3335,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1705593897_65a94c29274b2.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5727,12 +5766,35 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 14186661.24,
-      "price_max": 14186661.24,
+      "price": 10025.91,
+      "price_max": 10025.91,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1705597932_65a95becaea5b.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_263483",
+      "external_id": "P04.032",
+      "title": "Contigo vaso térmico Westloop 3.0",
+      "description": "Vaso térmico AUTOSEAL® 100% a prueba de derrames.",
+      "category": "Drinkware",
+      "materials": [
+        "[\"Acero\"]"
+      ],
+      "colors": [
+        "Blanco"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 38541.99,
+      "price_max": 38541.99,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1755533834_68a3520a7fe40.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5750,8 +5812,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 219325,
-      "price_max": 219325,
+      "price": 217000,
+      "price_max": 217000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5773,8 +5835,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 16257706.18,
-      "price_max": 16257706.18,
+      "price": 11489.55,
+      "price_max": 11489.55,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5801,8 +5863,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 100465000,
-      "price_max": 100465000,
+      "price": 71000,
+      "price_max": 71000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5812,29 +5874,6 @@
         "https://www.promoproductos.com/upload/preview_1763582730_691e230a2eded.jpg",
         "https://www.promoproductos.com/upload/preview_1763582899_691e23b3ed175.jpg",
         "https://www.promoproductos.com/upload/preview_1763582798_691e234e1136a.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_210389",
-      "external_id": "P34.046",
-      "title": "Contenedor Rubbermaid Take Alongs Cuadrado 1.2L",
-      "description": "Contenedor Rubbermaid - Take alongs. Con tapas apilables",
-      "category": "Cocina",
-      "materials": [
-        "[\"Plástico\"]"
-      ],
-      "colors": [
-        "Rojo"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 4719025,
-      "price_max": 4719025,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1705593897_65a94c29274b2.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5853,8 +5892,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 721.65,
-      "price_max": 721.65,
+      "price": 714,
+      "price_max": 714,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5877,12 +5916,47 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 8617.35,
-      "price_max": 8617.35,
+      "price": 8526,
+      "price_max": 8526,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1535819259_5b8abdfb32e27.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_240913",
+      "external_id": "P24.016",
+      "title": "Necessaire See-Me",
+      "description": "Necessaire de PU + PVC",
+      "category": "Bolsos y Mochilas",
+      "materials": [
+        "[\"PVC\",\"PU\"]"
+      ],
+      "colors": [
+        "Blanco",
+        "Gris Claro",
+        "Rosa",
+        "Verde oscuro",
+        "Rojo",
+        "Azul Marino",
+        "Negro"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 6440,
+      "price_max": 6440,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1736252400_677d1bf039242.jpg",
+        "https://www.promoproductos.com/upload/preview_1736259514_677d37ba39f25.jpg",
+        "https://www.promoproductos.com/upload/preview_1736258649_677d3459babb8.jpg",
+        "https://www.promoproductos.com/upload/preview_1736258038_677d31f6ed44d.jpg",
+        "https://www.promoproductos.com/upload/preview_1736257734_677d30c696408.jpg",
+        "https://www.promoproductos.com/upload/preview_1736257419_677d2f8be657c.jpg",
+        "https://www.promoproductos.com/upload/preview_1736257041_677d2e11c8be9.jpg"
       ],
       "source": "promoproductos"
     },
@@ -5900,8 +5974,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 21225,
-      "price_max": 21225,
+      "price": 21000,
+      "price_max": 21000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5924,8 +5998,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 39803627.38,
-      "price_max": 39803627.38,
+      "price": 28129.77,
+      "price_max": 28129.77,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5950,8 +6024,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 169800,
-      "price_max": 169800,
+      "price": 168000,
+      "price_max": 168000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -5977,8 +6051,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 39620000,
-      "price_max": 39620000,
+      "price": 28000,
+      "price_max": 28000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6037,8 +6111,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 16697,
-      "price_max": 16697,
+      "price": 16520,
+      "price_max": 16520,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6060,39 +6134,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4719025,
-      "price_max": 4719025,
+      "price": 3335,
+      "price_max": 3335,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1607949251_5fd75bc368764.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_275661",
-      "external_id": "P04.051",
-      "title": "Contigo Vaso Térmico Byron 2.0 591 ml",
-      "description": "Vaso térmico Snapseal™ con grip y tapa de seguridad.",
-      "category": "Drinkware",
-      "materials": [
-        "[\"Acero\"]"
-      ],
-      "colors": [
-        "Negro",
-        "Plateado",
-        "Azul Francia"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 47704950.59,
-      "price_max": 47704950.59,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1754923975_689a03c7bddbe.jpg",
-        "https://www.promoproductos.com/upload/preview_1754924050_689a041280aae.jpg",
-        "https://www.promoproductos.com/upload/preview_1754924024_689a03f83aeb3.jpg"
       ],
       "source": "promoproductos"
     },
@@ -6110,8 +6157,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5362.85,
-      "price_max": 5362.85,
+      "price": 5306,
+      "price_max": 5306,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6133,8 +6180,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 42250.49,
-      "price_max": 42250.49,
+      "price": 41802.6,
+      "price_max": 41802.6,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6156,8 +6203,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 37987.09,
-      "price_max": 37987.09,
+      "price": 37584.4,
+      "price_max": 37584.4,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6179,8 +6226,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 9322996.35,
-      "price_max": 9322996.35,
+      "price": 6588.69,
+      "price_max": 6588.69,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6202,8 +6249,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 6938002.53,
-      "price_max": 6938002.53,
+      "price": 4903.18,
+      "price_max": 4903.18,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6225,8 +6272,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 9748706.18,
-      "price_max": 9748706.18,
+      "price": 6889.55,
+      "price_max": 6889.55,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6248,8 +6295,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 13003206.18,
-      "price_max": 13003206.18,
+      "price": 9189.55,
+      "price_max": 9189.55,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6271,8 +6318,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 127350000,
-      "price_max": 127350000,
+      "price": 90000,
+      "price_max": 90000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6295,8 +6342,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 87705435.6,
-      "price_max": 87705435.6,
+      "price": 61982.64,
+      "price_max": 61982.64,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6319,8 +6366,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 14186661.24,
-      "price_max": 14186661.24,
+      "price": 10025.91,
+      "price_max": 10025.91,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6342,8 +6389,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 8565252.53,
-      "price_max": 8565252.53,
+      "price": 6053.18,
+      "price_max": 6053.18,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6365,8 +6412,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 106125000,
-      "price_max": 106125000,
+      "price": 75000,
+      "price_max": 75000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6388,8 +6435,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 39704.9,
-      "price_max": 39704.9,
+      "price": 39284,
+      "price_max": 39284,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6409,8 +6456,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2548712.15,
-      "price_max": 2548712.15,
+      "price": 1801.21,
+      "price_max": 1801.21,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6433,8 +6480,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 82238578.86,
-      "price_max": 82238578.86,
+      "price": 58119.14,
+      "price_max": 58119.14,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6460,8 +6507,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 23785333.55,
-      "price_max": 23785333.55,
+      "price": 16809.42,
+      "price_max": 16809.42,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6490,8 +6537,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 22017146.72,
-      "price_max": 22017146.72,
+      "price": 15559.82,
+      "price_max": 15559.82,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6517,8 +6564,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 54536911.61,
-      "price_max": 54536911.61,
+      "price": 38541.99,
+      "price_max": 38541.99,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6541,8 +6588,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 6834840.54,
-      "price_max": 6834840.54,
+      "price": 4830.28,
+      "price_max": 4830.28,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6567,8 +6614,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 7782.5,
-      "price_max": 7782.5,
+      "price": 7700,
+      "price_max": 7700,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6590,8 +6637,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 10858868.48,
-      "price_max": 10858868.48,
+      "price": 7674.11,
+      "price_max": 7674.11,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6614,8 +6661,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 22753.2,
-      "price_max": 22753.2,
+      "price": 22512,
+      "price_max": 22512,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6638,8 +6685,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 46695000,
-      "price_max": 46695000,
+      "price": 33000,
+      "price_max": 33000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6661,8 +6708,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 16930796.21,
-      "price_max": 16930796.21,
+      "price": 11965.23,
+      "price_max": 11965.23,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6684,8 +6731,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 84900000,
-      "price_max": 84900000,
+      "price": 60000,
+      "price_max": 60000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6707,35 +6754,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4719025,
-      "price_max": 4719025,
+      "price": 3335,
+      "price_max": 3335,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1603226500_5f8f4b84bce91.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_177741",
-      "external_id": "P18.013",
-      "title": "Bolsa con Base Mediana - 40x45x8",
-      "description": "Bolsa ecológica reutilizable con base",
-      "category": "Bolsos y Mochilas",
-      "materials": [
-        "[\"Algodón\"]"
-      ],
-      "colors": [
-        "Natural"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": true,
-      "price": 9027.7,
-      "price_max": 9027.7,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1671195574_639c6bb6c548e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -6753,8 +6777,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 481100,
-      "price_max": 481100,
+      "price": 476000,
+      "price_max": 476000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6778,8 +6802,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 138151006.3,
-      "price_max": 138151006.3,
+      "price": 97633.22,
+      "price_max": 97633.22,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6805,14 +6829,37 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 13541818.85,
-      "price_max": 13541818.85,
+      "price": 9570.19,
+      "price_max": 9570.19,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1706705498_65ba425a68749.jpg",
         "https://www.promoproductos.com/upload/preview_1706705005_65ba406d91a1f.jpg",
         "https://www.promoproductos.com/upload/preview_1706705891_65ba43e3912c5.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_236992",
+      "external_id": "P18.023",
+      "title": "Bolsa String 100% Algodón",
+      "description": "Bolsa ecológica reutilizable",
+      "category": "Bolsos y Mochilas",
+      "materials": [
+        "[\"Algodón\"]"
+      ],
+      "colors": [
+        "Natural"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": true,
+      "price": 2814,
+      "price_max": 2814,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1736779125_67852575cdff3.jpg"
       ],
       "source": "promoproductos"
     },
@@ -6828,8 +6875,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1626613.25,
-      "price_max": 1626613.25,
+      "price": 1149.55,
+      "price_max": 1149.55,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6851,8 +6898,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 77710526.5,
-      "price_max": 77710526.5,
+      "price": 54919.1,
+      "price_max": 54919.1,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6872,8 +6919,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3004045,
-      "price_max": 3004045,
+      "price": 2123,
+      "price_max": 2123,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6893,8 +6940,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3316151.55,
-      "price_max": 3316151.55,
+      "price": 2343.57,
+      "price_max": 2343.57,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6914,8 +6961,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 8421202.7,
-      "price_max": 8421202.7,
+      "price": 5951.38,
+      "price_max": 5951.38,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -6937,35 +6984,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 116568648.05,
-      "price_max": 116568648.05,
+      "price": 82380.67,
+      "price_max": 82380.67,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1743795530_67f0354a57c82.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_64145",
-      "external_id": "P01.009",
-      "title": "Botella Cycle 530ml",
-      "description": "Botella deportiva con boquilla Push-pull",
-      "category": "Drinkware",
-      "materials": [
-        "[\"Plástico\"]"
-      ],
-      "colors": [
-        "Blanco y Negro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 2929.05,
-      "price_max": 2929.05,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1753207849_687fd42980e8e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -6985,8 +7009,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 163192303.75,
-      "price_max": 163192303.75,
+      "price": 115330.25,
+      "price_max": 115330.25,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7008,8 +7032,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2417598.25,
-      "price_max": 2417598.25,
+      "price": 1708.55,
+      "price_max": 1708.55,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7031,8 +7055,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 452800000,
-      "price_max": 452800000,
+      "price": 320000,
+      "price_max": 320000,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7052,8 +7076,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 7359018.8,
-      "price_max": 7359018.8,
+      "price": 5200.72,
+      "price_max": 5200.72,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7075,8 +7099,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 53345.5,
-      "price_max": 53345.5,
+      "price": 52780,
+      "price_max": 52780,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7098,43 +7122,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 104600094.12,
-      "price_max": 104600094.12,
+      "price": 73922.33,
+      "price_max": 73922.33,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1743796535_67f03937794e0.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_37205",
-      "external_id": "P01.033",
-      "title": "Contigo Botella Matterhorn Couture 591 ml",
-      "description": "Cuerpo de Acero 304 de doble pared. Mantiene el frio por 24hs y calor hasta 10hs.",
-      "category": "Drinkware",
-      "materials": [
-        "[\"Acero 340\"]"
-      ],
-      "colors": [
-        "Marmolado Rosa y Blanco",
-        "Marmol Veteado Gris",
-        "Merlot Blanco y violeta",
-        "Camuflado Verde",
-        "Marmolado Dorado y Blanco"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 43843398.61,
-      "price_max": 43843398.61,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1755547691_68a3882b8348d.jpg",
-        "https://www.promoproductos.com/upload/preview_1599251520_5f52a4408a2a2.jpg",
-        "https://www.promoproductos.com/upload/preview_1599251657_5f52a4c9987bf.jpg",
-        "https://www.promoproductos.com/upload/preview_1599251431_5f52a3e77d618.jpg",
-        "https://www.promoproductos.com/upload/preview_1599251562_5f52a46add772.jpg"
       ],
       "source": "promoproductos"
     },
@@ -7152,8 +7145,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2702.65,
-      "price_max": 2702.65,
+      "price": 2674,
+      "price_max": 2674,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7177,8 +7170,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 111903322.3,
-      "price_max": 111903322.3,
+      "price": 79083.62,
+      "price_max": 79083.62,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7203,8 +7196,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 111203860.92,
-      "price_max": 111203860.92,
+      "price": 78589.3,
+      "price_max": 78589.3,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7227,8 +7220,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 14999,
-      "price_max": 14999,
+      "price": 14840,
+      "price_max": 14840,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7250,8 +7243,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 17489.4,
-      "price_max": 17489.4,
+      "price": 17304,
+      "price_max": 17304,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7273,12 +7266,35 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 29417.85,
-      "price_max": 29417.85,
+      "price": 29106,
+      "price_max": 29106,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1535847065_5b8b2a9910cd6.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_59548",
+      "external_id": "P13.024",
+      "title": "Bolígrafo Parker IM Achromatic",
+      "description": "Bolígrafo de punta media",
+      "category": "Escritura",
+      "materials": [
+        "[\"Metal\"]"
+      ],
+      "colors": [
+        "Negro"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 53818.57,
+      "price_max": 53818.57,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1743191890_67e6ff5208941.jpg"
       ],
       "source": "promoproductos"
     },
@@ -7296,12 +7312,35 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 2702.65,
-      "price_max": 2702.65,
+      "price": 2674,
+      "price_max": 2674,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1642101431_61e07ab7906f2.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_64145",
+      "external_id": "P01.009",
+      "title": "Botella Cycle 530ml",
+      "description": "Botella deportiva con boquilla Push-pull",
+      "category": "Drinkware",
+      "materials": [
+        "[\"Plástico\"]"
+      ],
+      "colors": [
+        "Blanco y Negro"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 2898,
+      "price_max": 2898,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1753207849_687fd42980e8e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -7319,8 +7358,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 38304.05,
-      "price_max": 38304.05,
+      "price": 37898,
+      "price_max": 37898,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7342,8 +7381,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 35941,
-      "price_max": 35941,
+      "price": 35560,
+      "price_max": 35560,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7365,8 +7404,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 24357435.03,
-      "price_max": 24357435.03,
+      "price": 17213.74,
+      "price_max": 17213.74,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7388,8 +7427,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 12735,
-      "price_max": 12735,
+      "price": 12600,
+      "price_max": 12600,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7411,39 +7450,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1755884950.18,
-      "price_max": 1755884950.18,
+      "price": 1240908.09,
+      "price_max": 1240908.09,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1724343831_66c766177ee0e.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_201602",
-      "external_id": "P13.010",
-      "title": "Bolígrafo Parker IM",
-      "description": "Bolígrafo de punta media",
-      "category": "Escritura",
-      "materials": [
-        "[\"Metal\"]"
-      ],
-      "colors": [
-        "Plateado",
-        "Negro Mate",
-        "Negro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 63461127,
-      "price_max": 63461127,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1744215665_67f69e712de44.jpg",
-        "https://www.promoproductos.com/upload/preview_1744057130_67f4332ab1770.jpg",
-        "https://www.promoproductos.com/upload/preview_1743192024_67e6ffd87f6b7.jpg"
       ],
       "source": "promoproductos"
     },
@@ -7461,8 +7473,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 110509104.41,
-      "price_max": 110509104.41,
+      "price": 78098.31,
+      "price_max": 78098.31,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7484,8 +7496,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 131399730,
-      "price_max": 131399730,
+      "price": 92862,
+      "price_max": 92862,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7510,8 +7522,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 349246069.15,
-      "price_max": 349246069.15,
+      "price": 246817.01,
+      "price_max": 246817.01,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7539,8 +7551,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 16937.55,
-      "price_max": 16937.55,
+      "price": 16758,
+      "price_max": 16758,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7567,8 +7579,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 99468755.1,
-      "price_max": 99468755.1,
+      "price": 70295.94,
+      "price_max": 70295.94,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7592,8 +7604,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 156726532,
-      "price_max": 156726532,
+      "price": 110760.8,
+      "price_max": 110760.8,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7615,8 +7627,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 34243,
-      "price_max": 34243,
+      "price": 33880,
+      "price_max": 33880,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7638,8 +7650,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 523.55,
-      "price_max": 523.55,
+      "price": 518,
+      "price_max": 518,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7662,8 +7674,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 94139992.45,
-      "price_max": 94139992.45,
+      "price": 66530.03,
+      "price_max": 66530.03,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7686,58 +7698,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 72529315.8,
-      "price_max": 72529315.8,
+      "price": 51257.47,
+      "price_max": 51257.47,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1764358022_6929f78612920.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_236992",
-      "external_id": "P18.023",
-      "title": "Bolsa String 100% Algodón",
-      "description": "Bolsa ecológica reutilizable",
-      "category": "Bolsos y Mochilas",
-      "materials": [
-        "[\"Algodón\"]"
-      ],
-      "colors": [
-        "Natural"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": true,
-      "price": 2844.15,
-      "price_max": 2844.15,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1736779125_67852575cdff3.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_220264",
-      "external_id": "P40.001",
-      "title": "Cafetera Oster 12 Tazas",
-      "description": "Cafetera de Filtro",
-      "category": "Cocina",
-      "materials": [
-        "[\"Plástico\"]"
-      ],
-      "colors": [
-        "Negro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 82267567.96,
-      "price_max": 82267567.96,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1767628483_695bdec32563e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -7757,14 +7723,37 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 83920991.22,
-      "price_max": 83920991.22,
+      "price": 59308.12,
+      "price_max": 59308.12,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1744590554_67fc56da0c4cb.png",
         "https://www.promoproductos.com/upload/preview_1744590537_67fc56c9245e5.png",
         "https://www.promoproductos.com/upload/preview_1744590518_67fc56b67d084.png"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_220264",
+      "external_id": "P40.001",
+      "title": "Cafetera Oster 12 Tazas",
+      "description": "Cafetera de Filtro",
+      "category": "Cocina",
+      "materials": [
+        "[\"Plástico\"]"
+      ],
+      "colors": [
+        "Negro"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 58139.62,
+      "price_max": 58139.62,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1767628483_695bdec32563e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -7782,8 +7771,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1938.55,
-      "price_max": 1938.55,
+      "price": 1918,
+      "price_max": 1918,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7806,8 +7795,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 44926.25,
-      "price_max": 44926.25,
+      "price": 44450,
+      "price_max": 44450,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7830,12 +7819,39 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 135066828.44,
-      "price_max": 135066828.44,
+      "price": 95453.59,
+      "price_max": 95453.59,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1723129875_66b4e01343055.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_201602",
+      "external_id": "P13.010",
+      "title": "Bolígrafo Parker IM",
+      "description": "Bolígrafo de punta media",
+      "category": "Escritura",
+      "materials": [
+        "[\"Metal\"]"
+      ],
+      "colors": [
+        "Plateado",
+        "Negro Mate",
+        "Negro"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": false,
+      "price": 44848.85,
+      "price_max": 44848.85,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1744215665_67f69e712de44.jpg",
+        "https://www.promoproductos.com/upload/preview_1744057130_67f4332ab1770.jpg",
+        "https://www.promoproductos.com/upload/preview_1743192024_67e6ffd87f6b7.jpg"
       ],
       "source": "promoproductos"
     },
@@ -7855,8 +7871,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 13216.1,
-      "price_max": 13216.1,
+      "price": 13076,
+      "price_max": 13076,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7880,8 +7896,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 87166745.1,
-      "price_max": 87166745.1,
+      "price": 61601.94,
+      "price_max": 61601.94,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7904,8 +7920,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 205817013.8,
-      "price_max": 205817013.8,
+      "price": 145453.72,
+      "price_max": 145453.72,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7928,8 +7944,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 121387345.65,
-      "price_max": 121387345.65,
+      "price": 85786.11,
+      "price_max": 85786.11,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -7951,47 +7967,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 6678.8,
-      "price_max": 6678.8,
+      "price": 6608,
+      "price_max": 6608,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1736455176_67803408cc494.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_240918",
-      "external_id": "P24.016",
-      "title": "Necessaire See-Me",
-      "description": "Necessaire de PU + PVC",
-      "category": "Bolsos y Mochilas",
-      "materials": [
-        "[\"PVC\",\"PU\"]"
-      ],
-      "colors": [
-        "Gris Claro",
-        "Rosa",
-        "Verde oscuro",
-        "Rojo",
-        "Azul Marino",
-        "Blanco",
-        "Negro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 6509,
-      "price_max": 6509,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1736259514_677d37ba39f25.jpg",
-        "https://www.promoproductos.com/upload/preview_1736258649_677d3459babb8.jpg",
-        "https://www.promoproductos.com/upload/preview_1736258038_677d31f6ed44d.jpg",
-        "https://www.promoproductos.com/upload/preview_1736257734_677d30c696408.jpg",
-        "https://www.promoproductos.com/upload/preview_1736257419_677d2f8be657c.jpg",
-        "https://www.promoproductos.com/upload/preview_1736252400_677d1bf039242.jpg",
-        "https://www.promoproductos.com/upload/preview_1736257041_677d2e11c8be9.jpg"
       ],
       "source": "promoproductos"
     },
@@ -8007,35 +7988,12 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 6328485.62,
-      "price_max": 6328485.62,
+      "price": 4472.43,
+      "price_max": 4472.43,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1718830108_6673441cb0c22.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_180115",
-      "external_id": "P11.017",
-      "title": "Set de vino para botella",
-      "description": "Set de vino con 4 piezas",
-      "category": "Hogar y Tiempo Libre",
-      "materials": [
-        "[\"Bambú\"]"
-      ],
-      "colors": [
-        "Marrón"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": true,
-      "price": 44431,
-      "price_max": 44431,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1670870660_63977684d55ad.jpg"
       ],
       "source": "promoproductos"
     },
@@ -8053,8 +8011,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 8419.25,
-      "price_max": 8419.25,
+      "price": 8330,
+      "price_max": 8330,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8076,8 +8034,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 20998.6,
-      "price_max": 20998.6,
+      "price": 20776,
+      "price_max": 20776,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8099,8 +8057,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 45450068.85,
-      "price_max": 45450068.85,
+      "price": 32120.19,
+      "price_max": 32120.19,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8122,8 +8080,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 99.05,
-      "price_max": 99.05,
+      "price": 98,
+      "price_max": 98,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8145,8 +8103,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 30106154.11,
-      "price_max": 30106154.11,
+      "price": 21276.43,
+      "price_max": 21276.43,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8168,8 +8126,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 331529765.41,
-      "price_max": 331529765.41,
+      "price": 234296.65,
+      "price_max": 234296.65,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8191,8 +8149,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 107552664.25,
-      "price_max": 107552664.25,
+      "price": 76008.95,
+      "price_max": 76008.95,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8216,8 +8174,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 11037,
-      "price_max": 11037,
+      "price": 10920,
+      "price_max": 10920,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8244,8 +8202,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 269180577.96,
-      "price_max": 269180577.96,
+      "price": 190233.62,
+      "price_max": 190233.62,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8268,8 +8226,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 2136.65,
-      "price_max": 2136.65,
+      "price": 2114,
+      "price_max": 2114,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8293,8 +8251,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 22640,
-      "price_max": 22640,
+      "price": 22400,
+      "price_max": 22400,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8318,8 +8276,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 98995833.8,
-      "price_max": 98995833.8,
+      "price": 69961.72,
+      "price_max": 69961.72,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8343,8 +8301,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 8773,
-      "price_max": 8773,
+      "price": 8680,
+      "price_max": 8680,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8373,8 +8331,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5999.6,
-      "price_max": 5999.6,
+      "price": 5936,
+      "price_max": 5936,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8404,8 +8362,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 7159.9,
-      "price_max": 7159.9,
+      "price": 7084,
+      "price_max": 7084,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8413,29 +8371,6 @@
         "https://www.promoproductos.com/upload/preview_1634657653_616ee57538dd6.png",
         "https://www.promoproductos.com/upload/preview_1627483362_61016ce26c615.jpg",
         "https://www.promoproductos.com/upload/preview_1627483279_61016c8f01086.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_59548",
-      "external_id": "P13.024",
-      "title": "Bolígrafo Parker IM Achromatic",
-      "description": "Bolígrafo de punta media",
-      "category": "Escritura",
-      "materials": [
-        "[\"Metal\"]"
-      ],
-      "colors": [
-        "Negro"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 72526928.7,
-      "price_max": 72526928.7,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1743191890_67e6ff5208941.jpg"
       ],
       "source": "promoproductos"
     },
@@ -8455,8 +8390,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 209253857.77,
-      "price_max": 209253857.77,
+      "price": 147882.59,
+      "price_max": 147882.59,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8481,8 +8416,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 203382424.23,
-      "price_max": 203382424.23,
+      "price": 143733.16,
+      "price_max": 143733.16,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8507,8 +8442,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 261908109.05,
-      "price_max": 261908109.05,
+      "price": 185094.07,
+      "price_max": 185094.07,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8532,8 +8467,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1825.35,
-      "price_max": 1825.35,
+      "price": 1806,
+      "price_max": 1806,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8555,8 +8490,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 322153064.15,
-      "price_max": 322153064.15,
+      "price": 227670.01,
+      "price_max": 227670.01,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8578,8 +8513,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 222285547.9,
-      "price_max": 222285547.9,
+      "price": 157092.26,
+      "price_max": 157092.26,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8602,8 +8537,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 240472910.8,
-      "price_max": 240472910.8,
+      "price": 169945.52,
+      "price_max": 169945.52,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8626,8 +8561,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 81285170.25,
-      "price_max": 81285170.25,
+      "price": 57445.35,
+      "price_max": 57445.35,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8649,8 +8584,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 82369933.3,
-      "price_max": 82369933.3,
+      "price": 58211.97,
+      "price_max": 58211.97,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8672,8 +8607,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 280659986.2,
-      "price_max": 280659986.2,
+      "price": 198346.28,
+      "price_max": 198346.28,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8693,8 +8628,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 8207,
-      "price_max": 8207,
+      "price": 8120,
+      "price_max": 8120,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8714,8 +8649,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 8963699.55,
-      "price_max": 8963699.55,
+      "price": 6334.77,
+      "price_max": 6334.77,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8737,8 +8672,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 5009.1,
-      "price_max": 5009.1,
+      "price": 4956,
+      "price_max": 4956,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8758,8 +8693,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 45676.2,
-      "price_max": 45676.2,
+      "price": 45192,
+      "price_max": 45192,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8781,8 +8716,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 122788025.85,
-      "price_max": 122788025.85,
+      "price": 86775.99,
+      "price_max": 86775.99,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8807,8 +8742,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2207.4,
-      "price_max": 2207.4,
+      "price": 2184,
+      "price_max": 2184,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8831,8 +8766,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 69075538.53,
-      "price_max": 69075538.53,
+      "price": 48816.64,
+      "price_max": 48816.64,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8855,8 +8790,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 55185,
-      "price_max": 55185,
+      "price": 54600,
+      "price_max": 54600,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8879,8 +8814,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 111615.2,
-      "price_max": 111615.2,
+      "price": 110432,
+      "price_max": 110432,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8902,8 +8837,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 702621235.65,
-      "price_max": 702621235.65,
+      "price": 496552.11,
+      "price_max": 496552.11,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8925,8 +8860,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 77571785.75,
-      "price_max": 77571785.75,
+      "price": 54821.05,
+      "price_max": 54821.05,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8948,8 +8883,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 76039114.35,
-      "price_max": 76039114.35,
+      "price": 53737.89,
+      "price_max": 53737.89,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -8971,12 +8906,58 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 56812575.45,
-      "price_max": 56812575.45,
+      "price": 40150.23,
+      "price_max": 40150.23,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1684765144_646b79d8421eb.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_180115",
+      "external_id": "P11.017",
+      "title": "Set de vino para botella",
+      "description": "Set de vino con 4 piezas",
+      "category": "Hogar y Tiempo Libre",
+      "materials": [
+        "[\"Bambú\"]"
+      ],
+      "colors": [
+        "Marrón"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": true,
+      "price": 43960,
+      "price_max": 43960,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1670870660_63977684d55ad.jpg"
+      ],
+      "source": "promoproductos"
+    },
+    {
+      "product_id": "promo_177741",
+      "external_id": "P18.013",
+      "title": "Bolsa con Base Mediana - 40x45x8",
+      "description": "Bolsa ecológica reutilizable con base",
+      "category": "Bolsos y Mochilas",
+      "materials": [
+        "[\"Algodón\"]"
+      ],
+      "colors": [
+        "Natural"
+      ],
+      "personalization_methods": [],
+      "eco_friendly": true,
+      "price": 8932,
+      "price_max": 8932,
+      "currency": "ARS",
+      "min_qty": 1,
+      "image_urls": [
+        "https://www.promoproductos.com/upload/preview_1671195574_639c6bb6c548e.jpg"
       ],
       "source": "promoproductos"
     },
@@ -8994,8 +8975,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1252.28,
-      "price_max": 1252.28,
+      "price": 1239,
+      "price_max": 1239,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -9017,8 +8998,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 141.5,
-      "price_max": 141.5,
+      "price": 140,
+      "price_max": 140,
       "currency": "ARS",
       "min_qty": 1,
       "image_urls": [
@@ -9141,25 +9122,6 @@
       "source": "promoproductos"
     },
     {
-      "product_id": "promo_227487",
-      "external_id": "K0006",
-      "title": "Kit Essentials",
-      "description": "Kit con productos para tu día a día",
-      "category": "Kits",
-      "materials": [],
-      "colors": [],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": null,
-      "price_max": null,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [
-        "https://www.promoproductos.com/upload/preview_1725897054_66df195eb90aa.jpg"
-      ],
-      "source": "promoproductos"
-    },
-    {
       "product_id": "promo_211049",
       "external_id": "K0003",
       "title": "Welcome Kit Master",
@@ -9195,25 +9157,6 @@
       "image_urls": [
         "https://www.promoproductos.com/upload/preview_1706205126_65b29fc627936.jpg"
       ],
-      "source": "promoproductos"
-    },
-    {
-      "product_id": "promo_176335",
-      "external_id": "",
-      "title": null,
-      "description": "",
-      "category": "Escritura",
-      "materials": [
-        "[\"\"]"
-      ],
-      "colors": [],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": null,
-      "price_max": null,
-      "currency": "ARS",
-      "min_qty": 1,
-      "image_urls": [],
       "source": "promoproductos"
     }
   ]

@@ -293,9 +293,17 @@ async function main() {
         ? [rawMat]
         : [];
 
-    // Convert price USD → ARS
-    const priceUsd = primary.price;
-    const priceArs = priceUsd != null ? Math.round(priceUsd * usdRate * 100) / 100 : null;
+    // Promoproductos mixes currencies in Algolia:
+    // - Promotional products (generic): prices in USD ($0.10 - ~$200)
+    // - Brand products (Parker, Coleman, Oster, etc.): prices in ARS ($2,000+)
+    // Clean gap between $193 (max USD) and $2,344 (min ARS). Threshold: $500.
+    const rawPrice = primary.price;
+    const ARS_THRESHOLD = 500;
+    const priceArs = rawPrice != null
+      ? rawPrice >= ARS_THRESHOLD
+        ? Math.round(rawPrice * 100) / 100             // already ARS
+        : Math.round(rawPrice * usdRate * 100) / 100   // USD → ARS
+      : null;
 
     const ecoFriendly =
       primary.category.toLowerCase().includes("sustentable") ||
