@@ -15,6 +15,11 @@ export default function PortalSidebar() {
 
   return (
     <aside className="hidden w-56 shrink-0 border-r border-border bg-card lg:block">
+      <div className="p-4 pb-2">
+        <span className="text-xs font-semibold uppercase tracking-wider text-muted">
+          Portal
+        </span>
+      </div>
       <nav className="flex flex-col gap-1 p-4">
         {navItems.map((item) => {
           const active =
@@ -25,10 +30,10 @@ export default function PortalSidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm transition-colors ${
+              className={`flex items-center gap-3 rounded-r-lg rounded-l-none pl-2.5 pr-3 py-2.5 text-sm transition-colors ${
                 active
-                  ? "bg-accent/10 font-medium text-accent"
-                  : "text-muted hover:bg-surface hover:text-foreground"
+                  ? "border-l-[3px] border-accent bg-accent/10 font-medium text-accent"
+                  : "border-l-[3px] border-transparent text-muted hover:bg-surface hover:text-foreground"
               }`}
             >
               <item.icon className="h-4 w-4" />

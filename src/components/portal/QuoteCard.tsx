@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { FileText } from "@phosphor-icons/react";
+import { getStatusStyle } from "./StatusBadge";
 
 interface QuoteCardProps {
   id: string;
@@ -7,25 +8,8 @@ interface QuoteCardProps {
   status: string;
   total?: number;
   itemCount?: number;
+  description?: string;
 }
-
-const statusColors: Record<string, string> = {
-  draft: "bg-gray-100 text-gray-600",
-  borrador: "bg-gray-100 text-gray-600",
-  enviado: "bg-blue-50 text-blue-600",
-  aceptado: "bg-green-50 text-green-600",
-  rechazado: "bg-red-50 text-red-600",
-  vencido: "bg-amber-50 text-amber-700",
-};
-
-const statusLabels: Record<string, string> = {
-  draft: "Borrador",
-  borrador: "Borrador",
-  enviado: "Enviado",
-  aceptado: "Aceptado",
-  rechazado: "Rechazado",
-  vencido: "Vencido",
-};
 
 export default function QuoteCard({
   id,
@@ -33,41 +17,48 @@ export default function QuoteCard({
   status,
   total,
   itemCount,
+  description,
 }: QuoteCardProps) {
-  const colorClass = statusColors[status] || "bg-gray-100 text-gray-600";
-  const label = statusLabels[status] || status;
+  const { className: colorClass, label } = getStatusStyle(status);
 
   return (
     <Link
       href={`/portal/presupuestos/${id}`}
-      className="flex items-center justify-between rounded-xl border border-border bg-white p-4 transition-colors hover:border-accent/40 hover:bg-accent-light/30"
+      className="flex flex-col rounded-xl border border-border bg-white p-4 transition-colors hover:border-accent/40 hover:bg-accent-light/30"
     >
-      <div className="flex items-center gap-3">
-        <div className="rounded-lg bg-surface p-2">
-          <FileText className="h-5 w-5 text-muted" />
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="shrink-0 rounded-lg bg-surface p-2">
+            <FileText className="h-5 w-5 text-muted" />
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm font-medium text-foreground line-clamp-1">
+              {description || id}
+            </p>
+            <p className="text-xs text-muted">
+              {id} · {date}
+            </p>
+          </div>
         </div>
-        <div>
-          <p className="text-sm font-medium text-foreground">{id}</p>
-          <p className="text-xs text-muted">{date}</p>
+        <div className="flex shrink-0 flex-col items-end gap-1 ml-3">
+          {total != null && (
+            <span className="text-sm font-medium">
+              ${total.toLocaleString("es-AR")}
+            </span>
+          )}
+          <span
+            className={`rounded-full px-2.5 py-1 text-xs font-medium ${colorClass}`}
+          >
+            {label}
+          </span>
         </div>
       </div>
-      <div className="flex items-center gap-2 sm:gap-3">
-        {itemCount != null && (
-          <span className="hidden text-xs text-muted sm:inline">
-            {itemCount} item{itemCount !== 1 ? "s" : ""}
-          </span>
-        )}
-        {total != null && (
-          <span className="text-xs font-medium sm:text-sm">
-            ${total.toLocaleString("es-AR")}
-          </span>
-        )}
-        <span
-          className={`rounded-full px-2.5 py-1 text-xs font-medium ${colorClass}`}
-        >
-          {label}
-        </span>
-      </div>
+
+      {itemCount != null && (
+        <div className="mt-2 text-xs text-muted">
+          {itemCount} item{itemCount !== 1 ? "s" : ""}
+        </div>
+      )}
     </Link>
   );
 }

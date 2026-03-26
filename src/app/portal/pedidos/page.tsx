@@ -9,6 +9,18 @@ interface Order {
   filename?: string;
   status?: string;
   date?: string;
+  total?: number;
+  items_count?: number;
+  items?: unknown[];
+  estimated_delivery?: string;
+  description?: string;
+  frontmatter?: {
+    total?: number;
+    items_count?: number;
+    estimated_delivery?: string;
+    description?: string;
+    [key: string]: unknown;
+  };
   [key: string]: unknown;
 }
 
@@ -38,7 +50,7 @@ export default function PedidosPage() {
         Historial de todos tus pedidos.
       </p>
 
-      <div className="mt-6 space-y-2">
+      <div className="mt-6 space-y-3">
         {orders.length === 0 ? (
           <div className="rounded-xl border border-dashed border-border bg-white p-6 text-center sm:p-12">
             <Package className="mx-auto h-10 w-10 text-muted/40" />
@@ -55,6 +67,10 @@ export default function PedidosPage() {
                 id={oid}
                 date={String(o.date || "")}
                 status={String(o.status || "pendiente")}
+                total={Number(o.total ?? o.frontmatter?.total ?? 0) || undefined}
+                itemCount={o.items_count ?? o.items?.length ?? o.frontmatter?.items_count}
+                estimatedDelivery={o.estimated_delivery || o.frontmatter?.estimated_delivery}
+                description={o.description || o.frontmatter?.description}
               />
             );
           })

@@ -12,6 +12,11 @@ interface Quote {
   total?: number;
   items_count?: number;
   items?: unknown[];
+  description?: string;
+  frontmatter?: {
+    description?: string;
+    [key: string]: unknown;
+  };
   [key: string]: unknown;
 }
 
@@ -41,7 +46,7 @@ export default function PresupuestosPage() {
         Todos tus presupuestos en un solo lugar.
       </p>
 
-      <div className="mt-6 space-y-2">
+      <div className="mt-6 space-y-3">
         {quotes.length === 0 ? (
           <div className="rounded-xl border border-dashed border-border bg-white p-6 text-center sm:p-12">
             <FileText className="mx-auto h-10 w-10 text-muted/40" />
@@ -63,6 +68,7 @@ export default function PresupuestosPage() {
                 status={String(q.status || "borrador")}
                 total={q.total}
                 itemCount={q.items_count ?? q.items?.length}
+                description={q.description || q.frontmatter?.description}
               />
             );
           })

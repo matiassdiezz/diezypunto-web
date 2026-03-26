@@ -5,6 +5,9 @@ import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, SpinnerGap, FilePdf, CopySimple } from "@phosphor-icons/react";
 import { exportQuotePdf } from "@/lib/export-quote-pdf";
+import ItemsTable from "@/components/portal/ItemsTable";
+import StatusBadge from "@/components/portal/StatusBadge";
+import { useAuth } from "@/lib/hooks/use-auth";
 
 interface QuoteItem {
   product_name: string;
@@ -32,6 +35,7 @@ interface QuoteDetail {
 export default function QuoteDetailPage() {
   const params = useParams();
   const router = useRouter();
+  const { client } = useAuth();
   const id = params.id as string;
   const [quote, setQuote] = useState<QuoteDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -119,15 +123,6 @@ export default function QuoteDetailPage() {
   const description = String(fm?.description || quote.description || "");
   const notes = String(fm?.notes || quote.notes || "");
 
-  const statusColors: Record<string, string> = {
-    draft: "bg-gray-100 text-gray-600",
-    borrador: "bg-gray-100 text-gray-600",
-    enviado: "bg-blue-50 text-blue-600",
-    aceptado: "bg-green-50 text-green-600",
-    rechazado: "bg-red-50 text-red-600",
-    vencido: "bg-amber-50 text-amber-700",
-  };
-
   return (
     <div className="mx-auto max-w-4xl">
       <Link
@@ -163,26 +158,37 @@ export default function QuoteDetailPage() {
             )}
             <button
               onClick={() =>
-                exportQuotePdf({ id, date, status, total, description, notes, items })
+                exportQuotePdf(
+                  { id, date, status, total, description, notes, items },
+                  client ? { name: client.name || "" } : undefined
+                )
               }
               className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-border px-3 py-2.5 text-xs font-medium text-foreground transition-colors hover:bg-surface sm:min-h-0 sm:py-1.5"
             >
               <FilePdf className="h-4 w-4" />
               Exportar PDF
             </button>
-            <span
-              className={`rounded-full px-3 py-1 text-xs font-medium ${statusColors[status] || "bg-gray-100 text-gray-600"}`}
-            >
-              {status.charAt(0).toUpperCase() + status.slice(1)}
-            </span>
+            <StatusBadge status={status} />
           </div>
         </div>
 
         {total > 0 && (
-          <p className="mt-4 text-lg font-bold">
-            Total: ${total.toLocaleString("es-AR")}
-            <span className="ml-1 text-sm font-normal text-muted">+ IVA</span>
-          </p>
+          <div className="mt-4 flex justify-end">
+            <div className="text-sm">
+              <div className="flex justify-between gap-8">
+                <span className="text-muted">Subtotal</span>
+                <span>${total.toLocaleString("es-AR")}</span>
+              </div>
+              <div className="flex justify-between gap-8 mt-1">
+                <span className="text-muted">IVA (21%)</span>
+                <span>${Math.round(total * 0.21).toLocaleString("es-AR")}</span>
+              </div>
+              <div className="flex justify-between gap-8 mt-2 border-t border-border pt-2 text-base font-bold">
+                <span>Total</span>
+                <span>${Math.round(total * 1.21).toLocaleString("es-AR")}</span>
+              </div>
+            </div>
+          </div>
         )}
 
         {notes && (
@@ -195,44 +201,7 @@ export default function QuoteDetailPage() {
             <h2 className="mb-3 text-sm font-semibold uppercase text-muted">
               Items
             </h2>
-            {/* Desktop table */}
-            <div className="hidden overflow-x-auto sm:block">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr>
-                    <th className="border border-border bg-surface px-3 py-2 text-left text-xs font-medium uppercase text-muted">Producto</th>
-                    <th className="border border-border bg-surface px-3 py-2 text-left text-xs font-medium uppercase text-muted">SKU</th>
-                    <th className="border border-border bg-surface px-3 py-2 text-right text-xs font-medium uppercase text-muted">Cant.</th>
-                    <th className="border border-border bg-surface px-3 py-2 text-right text-xs font-medium uppercase text-muted">Precio Unit.</th>
-                    <th className="border border-border bg-surface px-3 py-2 text-right text-xs font-medium uppercase text-muted">Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {items.map((item) => (
-                    <tr key={item.sku}>
-                      <td className="border border-border px-3 py-2 text-sm">{item.product_name}</td>
-                      <td className="border border-border px-3 py-2 text-sm text-muted">{item.sku}</td>
-                      <td className="border border-border px-3 py-2 text-right text-sm">{item.quantity}</td>
-                      <td className="border border-border px-3 py-2 text-right text-sm">${(item.unit_price || 0).toLocaleString("es-AR")}</td>
-                      <td className="border border-border px-3 py-2 text-right text-sm font-medium">${((item.quantity || 0) * (item.unit_price || 0)).toLocaleString("es-AR")}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            {/* Mobile cards */}
-            <div className="space-y-3 sm:hidden">
-              {items.map((item) => (
-                <div key={item.sku} className="rounded-lg border border-border p-3">
-                  <p className="text-sm font-medium">{item.product_name}</p>
-                  <p className="mt-0.5 text-xs text-muted">{item.sku}</p>
-                  <div className="mt-2 flex justify-between text-sm">
-                    <span className="text-muted">{item.quantity} × ${(item.unit_price || 0).toLocaleString("es-AR")}</span>
-                    <span className="font-medium">${((item.quantity || 0) * (item.unit_price || 0)).toLocaleString("es-AR")}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ItemsTable items={items} />
           </div>
         ) : quote.body ? (
           <div className="mt-6">
@@ -243,7 +212,7 @@ export default function QuoteDetailPage() {
               className="prose prose-sm hidden max-w-none text-foreground sm:block [&_table]:w-full [&_table]:border-collapse [&_th]:border [&_th]:border-border [&_th]:bg-surface [&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_th]:text-xs [&_th]:font-medium [&_th]:uppercase [&_th]:text-muted [&_td]:border [&_td]:border-border [&_td]:px-3 [&_td]:py-2 [&_td]:text-sm"
               dangerouslySetInnerHTML={{ __html: markdownTableToHtml(quote.body) }}
             />
-            <p className="text-sm text-muted sm:hidden">Girá el dispositivo para ver la tabla completa</p>
+            <p className="text-sm text-muted sm:hidden">Gir\u00e1 el dispositivo para ver la tabla completa</p>
           </div>
         ) : null}
       </div>

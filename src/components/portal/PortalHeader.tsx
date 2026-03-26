@@ -38,7 +38,7 @@ export default function PortalHeader() {
         </button>
       </div>
       {/* Mobile nav */}
-      <nav className="flex gap-1.5 overflow-x-auto border-t border-border px-4 py-2 lg:hidden">
+      <nav className="flex gap-0 overflow-x-auto border-t border-border px-4 lg:hidden">
         {mobileNav.map((item) => {
           const active =
             item.href === "/portal"
@@ -48,10 +48,10 @@ export default function PortalHeader() {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex min-h-[44px] items-center gap-1.5 whitespace-nowrap rounded-lg px-3 py-2 text-sm transition-colors ${
+              className={`flex min-h-[44px] items-center gap-1.5 whitespace-nowrap px-4 py-3 text-sm transition-colors ${
                 active
-                  ? "bg-accent/10 font-medium text-accent"
-                  : "text-muted hover:text-foreground"
+                  ? "border-b-2 border-accent font-medium text-accent"
+                  : "border-b-2 border-transparent text-muted hover:text-foreground"
               }`}
             >
               <item.icon className="h-4 w-4" />

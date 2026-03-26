@@ -3,7 +3,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, SpinnerGap, ArrowsClockwise } from "@phosphor-icons/react";
+import { ArrowLeft, SpinnerGap, ArrowsClockwise, FilePdf } from "@phosphor-icons/react";
+import ItemsTable from "@/components/portal/ItemsTable";
+import StatusBadge from "@/components/portal/StatusBadge";
+import { useAuth } from "@/lib/hooks/use-auth";
 
 interface OrderItem {
   product_name: string;
@@ -34,6 +37,7 @@ interface OrderDetail {
 export default function OrderDetailPage() {
   const params = useParams();
   const router = useRouter();
+  const { client } = useAuth();
   const id = params.id as string;
   const [order, setOrder] = useState<OrderDetail | null>(null);
   const [loading, setLoading] = useState(true);
@@ -122,27 +126,6 @@ export default function OrderDetailPage() {
   const estimatedDelivery = String(fm?.estimated_delivery || order.estimated_delivery || "");
   const deliveredDate = String(fm?.delivered_date || order.delivered_date || "");
 
-  const statusColors: Record<string, string> = {
-    cotizado: "bg-gray-100 text-gray-600",
-    confirmado: "bg-blue-50 text-blue-600",
-    comprado: "bg-indigo-50 text-indigo-600",
-    recibido: "bg-purple-50 text-purple-600",
-    en_produccion: "bg-amber-50 text-amber-700",
-    terminado: "bg-emerald-50 text-emerald-600",
-    entregado: "bg-green-50 text-green-600",
-    cancelado: "bg-red-50 text-red-600",
-  };
-  const statusLabels: Record<string, string> = {
-    cotizado: "Cotizado",
-    confirmado: "Confirmado",
-    comprado: "Comprado",
-    recibido: "Recibido",
-    en_produccion: "En producción",
-    terminado: "Terminado",
-    entregado: "Entregado",
-    cancelado: "Cancelado",
-  };
-
   return (
     <div className="mx-auto max-w-4xl">
       <Link
@@ -176,19 +159,41 @@ export default function OrderDetailPage() {
                 Repetir pedido
               </button>
             )}
-            <span
-              className={`rounded-full px-3 py-1 text-xs font-medium ${statusColors[status] || "bg-gray-100 text-gray-600"}`}
+            <button
+              onClick={() =>
+                import("@/lib/export-order-pdf").then(({ exportOrderPdf }) =>
+                  exportOrderPdf(
+                    { id, date, status, total, description, notes, items, quote_id: order.quote_id, estimated_delivery: estimatedDelivery, delivered_date: deliveredDate },
+                    client ? { name: client.name || "" } : undefined
+                  )
+                )
+              }
+              className="inline-flex min-h-[44px] items-center gap-1.5 rounded-lg border border-border px-3 py-2.5 text-xs font-medium text-foreground transition-colors hover:bg-surface disabled:opacity-50 sm:min-h-0 sm:py-1.5"
             >
-              {statusLabels[status] || status}
-            </span>
+              <FilePdf className="h-4 w-4" />
+              Exportar PDF
+            </button>
+            <StatusBadge status={status} />
           </div>
         </div>
 
         {total > 0 && (
-          <p className="mt-4 text-lg font-bold">
-            Total: ${total.toLocaleString("es-AR")}
-            <span className="ml-1 text-sm font-normal text-muted">+ IVA</span>
-          </p>
+          <div className="mt-4 flex justify-end">
+            <div className="text-sm">
+              <div className="flex justify-between gap-8">
+                <span className="text-muted">Subtotal</span>
+                <span>${total.toLocaleString("es-AR")}</span>
+              </div>
+              <div className="flex justify-between gap-8 mt-1">
+                <span className="text-muted">IVA (21%)</span>
+                <span>${Math.round(total * 0.21).toLocaleString("es-AR")}</span>
+              </div>
+              <div className="flex justify-between gap-8 mt-2 border-t border-border pt-2 text-base font-bold">
+                <span>Total</span>
+                <span>${Math.round(total * 1.21).toLocaleString("es-AR")}</span>
+              </div>
+            </div>
+          </div>
         )}
 
         <div className="mt-3 flex flex-wrap gap-4 text-sm text-muted">
@@ -209,44 +214,7 @@ export default function OrderDetailPage() {
             <h2 className="mb-3 text-sm font-semibold uppercase text-muted">
               Items
             </h2>
-            {/* Desktop table */}
-            <div className="hidden overflow-x-auto sm:block">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr>
-                    <th className="border border-border bg-surface px-3 py-2 text-left text-xs font-medium uppercase text-muted">Producto</th>
-                    <th className="border border-border bg-surface px-3 py-2 text-left text-xs font-medium uppercase text-muted">SKU</th>
-                    <th className="border border-border bg-surface px-3 py-2 text-right text-xs font-medium uppercase text-muted">Cant.</th>
-                    <th className="border border-border bg-surface px-3 py-2 text-right text-xs font-medium uppercase text-muted">Precio Unit.</th>
-                    <th className="border border-border bg-surface px-3 py-2 text-right text-xs font-medium uppercase text-muted">Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {items.map((item) => (
-                    <tr key={item.sku}>
-                      <td className="border border-border px-3 py-2 text-sm">{item.product_name}</td>
-                      <td className="border border-border px-3 py-2 text-sm text-muted">{item.sku}</td>
-                      <td className="border border-border px-3 py-2 text-right text-sm">{item.quantity}</td>
-                      <td className="border border-border px-3 py-2 text-right text-sm">${(item.unit_price || 0).toLocaleString("es-AR")}</td>
-                      <td className="border border-border px-3 py-2 text-right text-sm font-medium">${((item.quantity || 0) * (item.unit_price || 0)).toLocaleString("es-AR")}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-            {/* Mobile cards */}
-            <div className="space-y-3 sm:hidden">
-              {items.map((item) => (
-                <div key={item.sku} className="rounded-lg border border-border p-3">
-                  <p className="text-sm font-medium">{item.product_name}</p>
-                  <p className="mt-0.5 text-xs text-muted">{item.sku}</p>
-                  <div className="mt-2 flex justify-between text-sm">
-                    <span className="text-muted">{item.quantity} × ${(item.unit_price || 0).toLocaleString("es-AR")}</span>
-                    <span className="font-medium">${((item.quantity || 0) * (item.unit_price || 0)).toLocaleString("es-AR")}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <ItemsTable items={items} />
           </div>
         ) : order.body ? (
           <div className="mt-6 whitespace-pre-wrap text-sm text-foreground">
