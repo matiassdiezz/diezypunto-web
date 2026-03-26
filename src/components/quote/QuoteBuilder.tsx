@@ -21,6 +21,7 @@ import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
 import { useChatStore } from "@/lib/stores/chat-store";
 import { useQuoteStore } from "@/lib/stores/quote-store";
+import { useRecentlyViewedStore } from "@/lib/stores/recently-viewed-store";
 import { listProducts } from "@/lib/api";
 import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult, QuoteItem } from "@/lib/types";
@@ -891,6 +892,31 @@ export default function QuoteBuilder() {
           </div>
         </section>
       )}
+
+      {/* Recently Viewed */}
+      <RecentlyViewedSection cartProductIds={new Set(items.map((i) => i.product.product_id))} />
     </div>
+  );
+}
+
+function RecentlyViewedSection({ cartProductIds }: { cartProductIds: Set<string> }) {
+  const products = useRecentlyViewedStore((s) => s.products);
+  const mounted = typeof window !== "undefined";
+  if (!mounted) return null;
+
+  const filtered = products.filter((p) => !cartProductIds.has(p.product_id));
+  if (filtered.length === 0) return null;
+
+  return (
+    <section className="mt-10">
+      <h2 className="text-lg font-bold">Vistos recientemente</h2>
+      <div className="mt-4 flex gap-4 overflow-x-auto pb-2">
+        {filtered.slice(0, 6).map((p) => (
+          <div key={p.product_id} className="w-48 shrink-0 sm:w-56">
+            <ProductCard product={p} />
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }

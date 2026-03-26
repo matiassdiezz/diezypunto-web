@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { listProducts } from "@/lib/api";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
+import { useRecentlyViewedStore } from "@/lib/stores/recently-viewed-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
 import { trackEvent } from "@/lib/analytics-client";
 import { Tote, Leaf, Minus, Plus, Check } from "@phosphor-icons/react";
@@ -36,6 +37,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   const [justAdded, setJustAdded] = useState(false);
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
+  const addToRecentlyViewed = useRecentlyViewedStore((s) => s.addProduct);
 
   // Sync qty to URL
   useEffect(() => {
@@ -62,6 +64,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
       price: product.price,
       referrer: document.referrer || "direct",
     });
+    addToRecentlyViewed(product);
 
     // Fetch related products from same category
     listProducts({ category: product.category, limit: 8 })
