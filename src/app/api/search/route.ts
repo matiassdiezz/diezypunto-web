@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { searchWithAI } from "@/lib/engine/llm";
+import { searchWithAI, sanitizeQuery } from "@/lib/engine/llm";
 import { searchLocalCatalog, getDiversifiedSample } from "@/lib/engine/local-catalog";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
 import { trackServerEvent, trackAICost } from "@/lib/engine/analytics";
@@ -12,6 +12,7 @@ const sessions = new Map<string, { needs: ExtractedNeeds; ts: number }>();
 // In-memory search cache — avoids repeated Claude calls for identical queries
 const searchCache = new Map<string, { data: object; ts: number }>();
 const CACHE_TTL = 5 * 60 * 1000; // 5 min
+const MAX_CACHE_ENTRIES = 200; // Prevent unbounded memory growth
 
 function cleanup() {
   const cutoff = Date.now() - 30 * 60 * 1000;
@@ -37,9 +38,14 @@ export async function POST(req: NextRequest) {
 
   cleanup();
 
-  const { query, session_id } = await req.json();
-  if (!query || typeof query !== "string") {
+  const body = await req.json();
+  if (!body.query || typeof body.query !== "string") {
     return NextResponse.json({ error: "query is required" }, { status: 400 });
+  }
+  const query = sanitizeQuery(body.query);
+  const session_id = body.session_id;
+  if (query.length < 2) {
+    return NextResponse.json({ error: "Query demasiado corta" }, { status: 400 });
   }
 
   // Check cache — keyed on normalized query only (does not include filters/session context).
@@ -103,6 +109,11 @@ export async function POST(req: NextRequest) {
   };
 
   // Cache the result (without session_id — that's added per-request)
+  if (searchCache.size >= MAX_CACHE_ENTRIES) {
+    // Evict oldest entry
+    const oldest = searchCache.keys().next().value;
+    if (oldest) searchCache.delete(oldest);
+  }
   searchCache.set(cacheKey, { data: responsePayload, ts: Date.now() });
 
   return NextResponse.json({ ...responsePayload, session_id: sessionId });

@@ -26,6 +26,12 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+    if (items.length > 30) {
+      return NextResponse.json(
+        { error: "Máximo 30 productos por análisis." },
+        { status: 400 }
+      );
+    }
 
     const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
     const t0 = Date.now();

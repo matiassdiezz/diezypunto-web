@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { searchWithAI } from "@/lib/engine/llm";
+import { searchWithAI, sanitizeQuery } from "@/lib/engine/llm";
 import { searchLocalCatalog, getDiversifiedSample } from "@/lib/engine/local-catalog";
 import { checkRateLimit } from "@/lib/engine/rate-limit";
 import { trackServerEvent, trackAICost } from "@/lib/engine/analytics";
@@ -15,9 +15,14 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { session_id, query } = await req.json();
-  if (!query || typeof query !== "string") {
+  const body = await req.json();
+  if (!body.query || typeof body.query !== "string") {
     return NextResponse.json({ error: "query is required" }, { status: 400 });
+  }
+  const query = sanitizeQuery(body.query);
+  const session_id = body.session_id;
+  if (query.length < 2) {
+    return NextResponse.json({ error: "Query demasiado corta" }, { status: 400 });
   }
   if (!session_id) {
     return NextResponse.json(
