@@ -57,7 +57,7 @@ export default function QuienesSomosPage() {
         ].map((stat) => (
           <div
             key={stat.title}
-            className="rounded-xl border border-border bg-white p-5"
+            className="rounded-xl border border-border bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:border-accent/20"
           >
             <p className="text-2xl font-bold text-accent">{stat.title}</p>
             <p className="mt-1 text-sm text-muted">{stat.desc}</p>

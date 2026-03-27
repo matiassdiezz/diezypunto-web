@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { MagnifyingGlass } from "@phosphor-icons/react";
 import Link from "next/link";
 import type { ProductResult } from "@/lib/types";
@@ -53,8 +54,21 @@ export default function ProductGrid({
   return (
     <div>
       <div className="grid grid-cols-2 gap-3 sm:gap-6 lg:grid-cols-3">
-        {products.map((product) => (
-          <ProductCard key={product.product_id} product={product} />
+        {products.map((product, i) => (
+          <motion.div
+            key={product.product_id}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{
+              duration: 0.4,
+              delay: (i % 6) * 0.06,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+            className="h-full"
+          >
+            <ProductCard product={product} />
+          </motion.div>
         ))}
       </div>
 

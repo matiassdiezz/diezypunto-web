@@ -506,8 +506,8 @@ export default function QuoteBuilder() {
           className="fixed inset-0 z-50 flex items-end justify-center sm:items-center"
           onClick={(e) => { if (e.target === e.currentTarget) setCheckoutOpen(false); }}
         >
-          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className={`relative max-h-[96vh] w-full overflow-y-auto rounded-t-2xl bg-white p-5 shadow-2xl sm:rounded-2xl sm:p-6 lg:p-8 ${hasItemsWithoutPrice ? "max-w-lg" : "max-w-4xl"}`}>
+          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm animate-backdrop-in" />
+          <div className={`relative max-h-[96vh] w-full overflow-y-auto rounded-t-2xl bg-white p-5 shadow-2xl sm:rounded-2xl sm:p-6 lg:p-8 animate-modal-in ${hasItemsWithoutPrice ? "max-w-lg" : "max-w-4xl"}`}>
             {/* Header */}
             <div className="mb-6 flex items-center justify-between">
               <div>
@@ -955,8 +955,8 @@ export default function QuoteBuilder() {
           className="fixed inset-0 z-50 flex items-center justify-center"
           onClick={(e) => { if (e.target === e.currentTarget) setClearConfirmOpen(false); }}
         >
-          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-          <div className="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl">
+          <div className="fixed inset-0 bg-black/40 backdrop-blur-sm animate-backdrop-in" />
+          <div className="relative w-full max-w-sm rounded-2xl bg-white p-6 shadow-2xl animate-modal-in">
             <div className="flex flex-col items-center text-center">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-50">
                 <Trash className="h-5 w-5 text-red-500" />

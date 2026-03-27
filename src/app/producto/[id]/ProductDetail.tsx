@@ -8,6 +8,7 @@ import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useRecentlyViewedStore } from "@/lib/stores/recently-viewed-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
 import { trackEvent } from "@/lib/analytics-client";
+import { AnimatePresence, motion } from "framer-motion";
 import { Tote, Leaf, Minus, Plus, Check } from "@phosphor-icons/react";
 import Link from "next/link";
 import ScrollReveal from "@/components/shared/ScrollReveal";
@@ -105,17 +106,24 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
         <ScrollReveal direction="up">
           <div className="space-y-3 sm:space-y-4">
             <div className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-border bg-surface p-4 sm:rounded-2xl sm:p-6">
-              {product.image_urls[selectedImage] ? (
-                <img
-                  src={product.image_urls[selectedImage]}
-                  alt={product.title}
-                  className="h-auto w-auto max-h-full max-w-full object-contain"
-                />
-              ) : (
-                <div className="flex items-center justify-center text-muted/30">
-                  <Tote className="h-16 w-16 sm:h-20 sm:w-20" />
-                </div>
-              )}
+              <AnimatePresence mode="wait">
+                {product.image_urls[selectedImage] ? (
+                  <motion.img
+                    key={selectedImage}
+                    src={product.image_urls[selectedImage]}
+                    alt={product.title}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}
+                    className="h-auto w-auto max-h-full max-w-full object-contain"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center text-muted/30">
+                    <Tote className="h-16 w-16 sm:h-20 sm:w-20" />
+                  </div>
+                )}
+              </AnimatePresence>
             </div>
             {product.image_urls.length > 1 && (
               <div className="flex gap-2 overflow-x-auto pb-1">
@@ -124,10 +132,10 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                     key={i}
                     type="button"
                     onClick={() => setSelectedImage(i)}
-                    className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border bg-surface p-1 sm:h-16 sm:w-16 ${
+                    className={`flex h-14 w-14 shrink-0 items-center justify-center overflow-hidden rounded-lg border bg-surface p-1 transition-all duration-200 sm:h-16 sm:w-16 ${
                       i === selectedImage
-                        ? "border-accent"
-                        : "border-border"
+                        ? "border-accent ring-2 ring-accent/20 scale-[1.05]"
+                        : "border-border hover:border-accent/40"
                     }`}
                   >
                     <img
@@ -258,7 +266,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                 <div className="flex items-center rounded-xl border border-border">
                   <button
                     onClick={() => setQty(Math.max(minQty, (qty || minQty) - 1))}
-                    className="rounded-l-xl px-3 py-2.5 text-muted hover:bg-surface"
+                    className="rounded-l-xl px-3 py-2.5 text-muted transition-colors duration-200 hover:bg-surface"
                   >
                     <Minus className="h-4 w-4" />
                   </button>
@@ -277,7 +285,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                   />
                   <button
                     onClick={() => setQty((qty || 0) + 1)}
-                    className="rounded-r-xl px-3 py-2.5 text-muted hover:bg-surface"
+                    className="rounded-r-xl px-3 py-2.5 text-muted transition-colors duration-200 hover:bg-surface"
                   >
                     <Plus className="h-4 w-4" />
                   </button>
@@ -367,8 +375,21 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
             <h2 className="text-lg font-bold sm:text-xl">Productos relacionados</h2>
           </ScrollReveal>
           <div className="mt-4 grid grid-cols-2 gap-3 sm:mt-6 sm:gap-6 lg:grid-cols-4">
-            {related.slice(0, 4).map((p) => (
-              <ProductCard key={p.product_id} product={p} />
+            {related.slice(0, 4).map((p, i) => (
+              <motion.div
+                key={p.product_id}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{
+                  duration: 0.4,
+                  delay: i * 0.08,
+                  ease: [0.16, 1, 0.3, 1],
+                }}
+                className="h-full"
+              >
+                <ProductCard product={p} />
+              </motion.div>
             ))}
           </div>
         </section>

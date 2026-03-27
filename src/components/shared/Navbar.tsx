@@ -213,11 +213,20 @@ export default function Navbar() {
               >
                 <Tote className="h-[18px] w-[18px]" />
                 Carrito
-                {mounted && totalItems > 0 && (
-                  <span className="absolute -right-0.5 top-0.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-white">
-                    {totalItems}
-                  </span>
-                )}
+                <AnimatePresence>
+                  {mounted && totalItems > 0 && (
+                    <motion.span
+                      key={totalItems}
+                      initial={{ scale: 0.5, opacity: 0 }}
+                      animate={{ scale: 1, opacity: 1 }}
+                      exit={{ scale: 0.5, opacity: 0 }}
+                      transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                      className="absolute -right-0.5 top-0.5 flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-white"
+                    >
+                      {totalItems}
+                    </motion.span>
+                  )}
+                </AnimatePresence>
               </Link>
             </div>
 
@@ -239,11 +248,20 @@ export default function Navbar() {
               aria-label="Carrito"
             >
               <Tote className="h-5 w-5" />
-              {mounted && totalItems > 0 && (
-                <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-0.5 text-[9px] font-bold text-white">
-                  {totalItems}
-                </span>
-              )}
+              <AnimatePresence>
+                {mounted && totalItems > 0 && (
+                  <motion.span
+                    key={totalItems}
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.5, opacity: 0 }}
+                    transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                    className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-accent px-0.5 text-[9px] font-bold text-white"
+                  >
+                    {totalItems}
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </Link>
             <button
               onClick={() => {
@@ -346,11 +364,19 @@ export default function Navbar() {
                   >
                     <Tote className="h-4 w-4" />
                     Carrito
-                    {mounted && totalItems > 0 && (
-                      <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-white">
-                        {totalItems}
-                      </span>
-                    )}
+                    <AnimatePresence>
+                      {mounted && totalItems > 0 && (
+                        <motion.span
+                          key={totalItems}
+                          initial={{ scale: 0.5, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ type: "spring", stiffness: 500, damping: 25 }}
+                          className="flex h-5 min-w-5 items-center justify-center rounded-full bg-accent px-1 text-[10px] font-bold text-white"
+                        >
+                          {totalItems}
+                        </motion.span>
+                      )}
+                    </AnimatePresence>
                   </Link>
                   {client && (
                     <Link

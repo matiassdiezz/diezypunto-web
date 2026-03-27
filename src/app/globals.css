@@ -44,6 +44,28 @@ body {
 }
 
 /* ═══════════════════════════════════════════
+   Global Transitions — smooth interactions
+   ═══════════════════════════════════════════ */
+
+/* Button press feedback — subtle scale on click */
+button:active:not(:disabled),
+[role="button"]:active:not(:disabled) {
+  transform: scale(0.97);
+  transition-duration: 75ms;
+}
+
+/* Smooth focus ring transitions */
+*:focus-visible {
+  transition: outline-offset 150ms ease;
+}
+
+/* Links in body text — smooth underline + color */
+article a,
+.prose a {
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+
+/* ═══════════════════════════════════════════
    Hero — Light premium section
    ═══════════════════════════════════════════ */
 
@@ -258,6 +280,25 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
+/* Modal transitions */
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.animate-backdrop-in {
+  animation: backdrop-in 0.2s ease both;
+}
+
+.animate-modal-in {
+  animation: modal-in 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 .badge-shimmer {
   background-image: linear-gradient(
     110deg,
@@ -349,7 +390,9 @@ body {
   .logo-marquee,
   .logo-marquee-reverse,
   .badge-shimmer,
-  .float-gentle {
+  .float-gentle,
+  .animate-backdrop-in,
+  .animate-modal-in {
     animation: none !important;
   }
   html {
@@ -359,5 +402,9 @@ body {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  button:active:not(:disabled),
+  [role="button"]:active:not(:disabled) {
+    transform: none;
   }
 }
