@@ -20,6 +20,7 @@ import SocialProofBadge from "@/components/catalog/SocialProofBadge";
 import TierComparison from "@/components/catalog/TierComparison";
 import ShareButton from "@/components/shared/ShareButtons";
 import { buildProductShareUrl, buildProductWhatsAppMessage } from "@/lib/share";
+import { inferColor, isLightColor } from "@/lib/color-map";
 
 export default function ProductDetail({ product }: { product: ProductResult }) {
   const searchParams = useSearchParams();
@@ -288,22 +289,29 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                     Color{product.colors.length > 1 ? "" : ""}
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2">
-                    {product.colors.map((color) => (
-                      <button
-                        key={color}
-                        onClick={() => setSelectedColor(selectedColor === color ? null : color)}
-                        className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
-                          selectedColor === color
-                            ? "border-accent bg-accent/10 text-accent"
-                            : "border-border text-foreground hover:border-accent/30"
-                        }`}
-                      >
-                        <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${
-                          selectedColor === color ? "bg-accent" : "bg-muted/40"
-                        }`} />
-                        {color}
-                      </button>
-                    ))}
+                    {product.colors.map((color) => {
+                      const hex = inferColor(color);
+                      const light = isLightColor(hex);
+                      return (
+                        <button
+                          key={color}
+                          onClick={() => setSelectedColor(selectedColor === color ? null : color)}
+                          className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
+                            selectedColor === color
+                              ? "border-accent bg-accent/10 text-accent"
+                              : "border-border text-foreground hover:border-accent/30"
+                          }`}
+                        >
+                          <span
+                            className={`h-3 w-3 shrink-0 rounded-full ${light ? "border border-border/60" : ""} ${
+                              !hex ? (selectedColor === color ? "bg-accent" : "bg-muted/40") : ""
+                            }`}
+                            style={hex && hex !== "transparent" ? { backgroundColor: hex } : hex === "transparent" ? { background: "linear-gradient(135deg, #fff 40%, #e5e7eb 40%, #e5e7eb 60%, #fff 60%)" } : undefined}
+                          />
+                          {color}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               )}
