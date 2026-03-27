@@ -247,6 +247,7 @@ export default function QuoteBuilder() {
               unit_price: Math.round(base * 1.21 * 100) / 100,
               image_url: i.product.image_urls[0] || undefined,
               color: i.color || undefined,
+              personalization_method: i.personalization_method || undefined,
             };
           }),
           billing: {
@@ -305,6 +306,7 @@ export default function QuoteBuilder() {
               unit_price: Math.round(base * 1.21 * 100) / 100,
               image_url: i.product.image_urls[0] || undefined,
               color: i.color || undefined,
+              personalization_method: i.personalization_method || undefined,
             };
           }),
           billing: {

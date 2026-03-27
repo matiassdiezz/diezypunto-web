@@ -8,7 +8,7 @@ interface QuoteState {
   lastAdded: { product: ProductResult; quantity: number } | null;
   lastSyncedAt: number | null;
   isSyncing: boolean;
-  addItem: (product: ProductResult, quantity?: number, color?: string) => void;
+  addItem: (product: ProductResult, quantity?: number, color?: string, personalization_method?: string) => void;
   removeItem: (productId: string) => void;
   updateQty: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -25,7 +25,7 @@ export const useQuoteStore = create<QuoteState>()(
       lastSyncedAt: null,
       isSyncing: false,
 
-      addItem: (product, quantity = 1, color?) => {
+      addItem: (product, quantity = 1, color?, personalization_method?) => {
         const items = get().items;
         const existing = items.find(
           (i) => i.product.product_id === product.product_id,
@@ -34,13 +34,13 @@ export const useQuoteStore = create<QuoteState>()(
           set({
             items: items.map((i) =>
               i.product.product_id === product.product_id
-                ? { ...i, quantity: i.quantity + quantity, color: color ?? i.color }
+                ? { ...i, quantity: i.quantity + quantity, color: color ?? i.color, personalization_method: personalization_method ?? i.personalization_method }
                 : i,
             ),
             lastAdded: { product, quantity },
           });
         } else {
-          set({ items: [...items, { id: product.product_id, product, quantity, color }], lastAdded: { product, quantity } });
+          set({ items: [...items, { id: product.product_id, product, quantity, color, personalization_method }], lastAdded: { product, quantity } });
         }
         const newItems = get().items;
         trackEvent("cart_add", {

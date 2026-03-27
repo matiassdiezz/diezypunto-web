@@ -40,6 +40,7 @@ export async function POST(req: NextRequest) {
       id: string;
       image_url?: string;
       color?: string;
+      personalization_method?: string;
     }[];
     billing?: BillingPayload;
     logo_url?: string;
@@ -138,6 +139,7 @@ export async function POST(req: NextRequest) {
       title: i.title,
       quantity: i.quantity,
       unit_price: i.unit_price,
+      personalization_method: i.personalization_method,
     }));
 
     Promise.all([

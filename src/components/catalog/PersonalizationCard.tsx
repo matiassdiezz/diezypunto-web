@@ -1,6 +1,8 @@
 interface PersonalizationCardProps {
   methods: string[];
   productTitle: string;
+  selected?: string | null;
+  onSelect?: (method: string | null) => void;
 }
 
 const METHOD_INFO: Record<string, { tier: string; description: string }> = {
@@ -21,25 +23,57 @@ const METHOD_INFO: Record<string, { tier: string; description: string }> = {
   "UV Rotativa": { tier: "Premium+", description: "Impresión UV sobre objetos cilíndricos" },
 };
 
-const TIER_COLORS: Record<string, string> = {
-  Económico: "bg-surface text-muted",
-  Standard: "bg-accent-light text-accent",
-  Premium: "bg-amber-50 text-amber-700",
-  "Premium+": "bg-amber-100 text-amber-800",
+const TIER_COLORS: Record<string, { base: string; active: string }> = {
+  Económico: { base: "bg-surface text-muted", active: "bg-emerald-50 text-emerald-700" },
+  Standard: { base: "bg-accent-light text-accent", active: "bg-accent text-white" },
+  Premium: { base: "bg-amber-50 text-amber-700", active: "bg-amber-500 text-white" },
+  "Premium+": { base: "bg-amber-100 text-amber-800", active: "bg-amber-600 text-white" },
 };
 
-export default function PersonalizationCard({ methods, productTitle }: PersonalizationCardProps) {
+export default function PersonalizationCard({ methods, productTitle, selected, onSelect }: PersonalizationCardProps) {
   if (methods.length === 0) return null;
 
+  const isInteractive = !!onSelect;
+
   return (
-    <div className="space-y-3">
+    <div className="space-y-2">
       <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-        Métodos disponibles
+        Método de personalización
       </p>
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         {methods.map((method) => {
           const info = METHOD_INFO[method];
-          return (
+          const isSelected = selected === method;
+          const tierStyle = info ? TIER_COLORS[info.tier] : null;
+
+          return isInteractive ? (
+            <button
+              key={method}
+              type="button"
+              onClick={() => onSelect(isSelected ? null : method)}
+              className={`flex w-full items-center justify-between gap-2 rounded-lg border px-3 py-2.5 text-left transition-all ${
+                isSelected
+                  ? "border-accent bg-accent/5 ring-1 ring-accent/30"
+                  : "border-border hover:border-accent/30"
+              }`}
+            >
+              <div className="min-w-0">
+                <p className={`text-sm font-medium truncate ${isSelected ? "text-accent" : ""}`}>{method}</p>
+                {info && (
+                  <p className="text-xs text-muted">{info.description}</p>
+                )}
+              </div>
+              {tierStyle && (
+                <span
+                  className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium transition-colors ${
+                    isSelected ? tierStyle.active : tierStyle.base
+                  }`}
+                >
+                  {info!.tier}
+                </span>
+              )}
+            </button>
+          ) : (
             <div
               key={method}
               className="flex items-center justify-between gap-2 rounded-lg border border-border px-3 py-2"
@@ -50,11 +84,9 @@ export default function PersonalizationCard({ methods, productTitle }: Personali
                   <p className="text-xs text-muted">{info.description}</p>
                 )}
               </div>
-              {info && (
-                <span
-                  className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${TIER_COLORS[info.tier] ?? "bg-surface text-muted"}`}
-                >
-                  {info.tier}
+              {tierStyle && (
+                <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${tierStyle.base}`}>
+                  {info!.tier}
                 </span>
               )}
             </div>

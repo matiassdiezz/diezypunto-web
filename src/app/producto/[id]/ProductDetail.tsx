@@ -36,6 +36,9 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   const [selectedColor, setSelectedColor] = useState<string | null>(
     product.colors.length === 1 ? product.colors[0] : null,
   );
+  const [selectedMethod, setSelectedMethod] = useState<string | null>(
+    product.personalization_methods.length === 1 ? product.personalization_methods[0] : null,
+  );
   const [justAdded, setJustAdded] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
   const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
@@ -44,7 +47,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   const openDrawer = useDrawerStore((s) => s.open);
   const addToRecentlyViewed = useRecentlyViewedStore((s) => s.addProduct);
 
-  // Sync qty to URL
+  // Sync qty + method to URL
   useEffect(() => {
     const url = new URL(window.location.href);
     if (typeof qty === "number" && qty > 1) {
@@ -52,8 +55,13 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
     } else {
       url.searchParams.delete("qty");
     }
+    if (selectedMethod) {
+      url.searchParams.set("method", selectedMethod);
+    } else {
+      url.searchParams.delete("method");
+    }
     window.history.replaceState({}, "", url.toString());
-  }, [qty]);
+  }, [qty, selectedMethod]);
 
   useEffect(() => {
     setSelectedImage(0);
@@ -92,7 +100,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
 
   function handleAdd() {
     const q = qty || minQty;
-    addItem(product, q, selectedColor ?? undefined);
+    addItem(product, q, selectedColor ?? undefined, selectedMethod ?? undefined);
     openDrawer(product, q);
     setJustAdded(true);
     setTimeout(() => setJustAdded(false), 1500);
@@ -322,6 +330,8 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                   <PersonalizationCard
                     methods={product.personalization_methods}
                     productTitle={product.title}
+                    selected={selectedMethod}
+                    onSelect={setSelectedMethod}
                   />
                 </div>
               )}

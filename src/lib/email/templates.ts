@@ -33,6 +33,7 @@ export type EmailItem = {
   unit_price: number;
   image_url?: string;
   color?: string;
+  personalization_method?: string;
 };
 
 export type EmailBilling = {
@@ -114,6 +115,7 @@ function productGrid(items: EmailItem[]): string {
             <p style="margin:4px 0 0;font-size:13px;color:#64748b">
               ${item.quantity} u. × $${fmtPrice(item.unit_price)}
               ${item.color ? ` · ${item.color}` : ""}
+              ${item.personalization_method ? ` · ${item.personalization_method}` : ""}
             </p>
           </td>
         </tr></table>
