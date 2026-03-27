@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import {
   Minus,
   Plus,
@@ -337,17 +338,31 @@ export default function QuoteBuilder() {
 
   if (items.length === 0) {
     return (
-      <div className="py-20 text-center">
-        <p className="text-lg text-muted">Tu carrito esta vacio</p>
-        <p className="mt-1 text-sm text-muted">
-          Busca productos y agregalos al carrito.
+      <div className="flex flex-col items-center py-12 text-center sm:py-20">
+        <img
+          src="/illustrations/empty-cart.svg"
+          alt=""
+          width={220}
+          height={165}
+          className="pointer-events-none select-none"
+        />
+        <p className="mt-6 text-lg font-medium text-foreground">Tu carrito esta vacio</p>
+        <p className="mt-1.5 max-w-xs text-sm text-muted">
+          Busca productos en el catalogo y agregalos al carrito.
         </p>
-        <OpenChatButton
-          className="mt-6"
-          onClick={() => openWithMessage(PEDIDO_EVENTO_PRESET_MESSAGE)}
-        >
-          Arma tu pedido con AI
-        </OpenChatButton>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/catalogo"
+            className="inline-flex items-center justify-center rounded-xl bg-accent px-6 py-3 text-sm font-medium text-white transition-all hover:bg-accent-hover hover:-translate-y-0.5 hover:shadow-md"
+          >
+            Explorar catalogo
+          </Link>
+          <OpenChatButton
+            onClick={() => openWithMessage(PEDIDO_EVENTO_PRESET_MESSAGE)}
+          >
+            Arma tu pedido con AI
+          </OpenChatButton>
+        </div>
       </div>
     );
   }

@@ -41,11 +41,25 @@ export default function ProductCard({
         className="relative aspect-[4/5] overflow-hidden rounded-b-none rounded-t-3xl bg-white"
       >
         {imageUrl ? (
-          <img
-            src={imageUrl}
-            alt={product.title}
-            className="h-full w-full object-contain p-4 transition-transform duration-300 group-hover:scale-[1.03] sm:p-5"
-          />
+          <>
+            <img
+              src={imageUrl}
+              alt={product.title}
+              className={`h-full w-full object-contain p-4 sm:p-5 ${
+                product.image_urls[1]
+                  ? "transition-opacity duration-500 group-hover:opacity-0"
+                  : "transition-transform duration-300 group-hover:scale-[1.03]"
+              }`}
+            />
+            {product.image_urls[1] && (
+              <img
+                src={product.image_urls[1]}
+                alt=""
+                loading="lazy"
+                className="absolute inset-0 h-full w-full object-contain p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100 sm:p-5"
+              />
+            )}
+          </>
         ) : (
           <div className="flex h-full items-center justify-center text-accent/20">
             <Tote className="h-8 w-8 sm:h-12 sm:w-12" />

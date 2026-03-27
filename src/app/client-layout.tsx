@@ -9,6 +9,7 @@ import Toast from "@/components/shared/Toast";
 import AddToCartDrawer from "@/components/shared/AddToCartDrawer";
 import ChatFAB from "@/components/chat/ChatFAB";
 import ChatModal from "@/components/chat/ChatDrawer";
+import NavigationProgress from "@/components/shared/NavigationProgress";
 import { AuthProvider } from "@/lib/auth-context";
 import { useCartSync } from "@/lib/hooks/use-cart-sync";
 
@@ -20,6 +21,7 @@ function CartSyncProvider() {
 export default function ClientLayout({ children }: { children: ReactNode }) {
   return (
     <AuthProvider>
+      <NavigationProgress />
       <div className="min-w-0 max-w-full overflow-x-clip">
         <CartSyncProvider />
         <Navbar />

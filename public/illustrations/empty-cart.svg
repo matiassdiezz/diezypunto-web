@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Floor shadow -->
+  <ellipse cx="200" cy="268" rx="110" ry="10" fill="#59C6F2" opacity="0.08"/>
+
+  <!-- Shopping bag body -->
+  <path d="M120 110 L135 260 Q137 268 145 268 L255 268 Q263 268 265 260 L280 110 Z" fill="#f3f4f6" stroke="#59C6F2" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Bag opening -->
+  <path d="M120 110 Q118 100 125 98 L275 98 Q282 100 280 110" fill="none" stroke="#59C6F2" stroke-width="1.5" opacity="0.7"/>
+
+  <!-- Bag handles -->
+  <path d="M165 98 L165 70 Q165 48 185 48 L215 48 Q235 48 235 70 L235 98" fill="none" stroke="#59C6F2" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Dashed lines inside bag (empty feel) -->
+  <line x1="160" y1="150" x2="240" y2="150" stroke="#59C6F2" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.2"/>
+  <line x1="170" y1="180" x2="230" y2="180" stroke="#59C6F2" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.15"/>
+  <line x1="175" y1="210" x2="225" y2="210" stroke="#59C6F2" stroke-width="1.5" stroke-dasharray="8 6" opacity="0.1"/>
+
+  <!-- Small sparkle/plus decorations -->
+  <g opacity="0.25" stroke="#59C6F2" stroke-width="2" stroke-linecap="round">
+    <line x1="310" y1="70" x2="310" y2="90"/>
+    <line x1="300" y1="80" x2="320" y2="80"/>
+  </g>
+  <g opacity="0.18" stroke="#59C6F2" stroke-width="2" stroke-linecap="round">
+    <line x1="85" y1="140" x2="85" y2="155"/>
+    <line x1="77.5" y1="147.5" x2="92.5" y2="147.5"/>
+  </g>
+
+  <!-- Small decorative dots -->
+  <circle cx="330" cy="130" r="4" fill="#59C6F2" opacity="0.12"/>
+  <circle cx="75" cy="90" r="5" fill="#59C6F2" opacity="0.1"/>
+  <circle cx="340" cy="200" r="3" fill="#59C6F2" opacity="0.15"/>
+</svg>

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MagnifyingGlass } from "@phosphor-icons/react";
+import Image from "next/image";
 import Link from "next/link";
 import type { ProductResult } from "@/lib/types";
 import ProductCard from "./ProductCard";
@@ -23,31 +23,41 @@ export default function ProductGrid({
 }: ProductGridProps) {
   if (products.length === 0) {
     return (
-      <div className="flex flex-col items-center rounded-3xl border border-white/55 bg-white/55 py-20 text-center text-muted shadow-[0_10px_32px_rgba(15,23,42,0.08)] backdrop-blur-md">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/60 bg-white/70">
-          <MagnifyingGlass className="h-7 w-7 text-muted/50" />
-        </div>
-        <p className="mt-4 text-lg font-medium text-foreground">No se encontraron productos</p>
-        <p className="mt-1 text-sm">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        className="flex flex-col items-center rounded-3xl border border-white/55 bg-white/55 px-6 py-16 text-center text-muted shadow-[0_10px_32px_rgba(15,23,42,0.08)] backdrop-blur-md sm:py-20"
+      >
+        <Image
+          src="/illustrations/empty-search.svg"
+          alt=""
+          width={240}
+          height={180}
+          className="pointer-events-none select-none"
+          priority
+        />
+        <p className="mt-6 text-lg font-medium text-foreground">No se encontraron productos</p>
+        <p className="mt-1.5 max-w-xs text-sm">
           Proba con otros filtros o terminos de busqueda.
         </p>
-        <div className="mt-4 flex gap-2">
+        <div className="mt-5 flex gap-2">
           {onClearFilters && (
             <button
               onClick={onClearFilters}
-              className="rounded-xl border border-white/65 bg-white/75 px-6 py-2 text-sm text-foreground backdrop-blur-sm transition-colors hover:bg-white"
+              className="rounded-xl border border-white/65 bg-white/75 px-6 py-2.5 text-sm font-medium text-foreground backdrop-blur-sm transition-all hover:bg-white hover:-translate-y-0.5 hover:shadow-md"
             >
               Limpiar filtros
             </button>
           )}
           <Link
             href="/catalogo"
-            className="rounded-xl border border-white/65 bg-white/75 px-6 py-2 text-sm text-foreground backdrop-blur-sm transition-colors hover:bg-white"
+            className="rounded-xl bg-accent px-6 py-2.5 text-sm font-medium text-white transition-all hover:bg-accent-hover hover:-translate-y-0.5 hover:shadow-md"
           >
             Ver todo el catalogo
           </Link>
         </div>
-      </div>
+      </motion.div>
     );
   }
 

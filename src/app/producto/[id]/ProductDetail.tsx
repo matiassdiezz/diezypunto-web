@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { listProducts } from "@/lib/api";
 import type { ProductResult } from "@/lib/types";
@@ -36,6 +36,9 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
     product.colors.length === 1 ? product.colors[0] : null,
   );
   const [justAdded, setJustAdded] = useState(false);
+  const [isZooming, setIsZooming] = useState(false);
+  const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
+  const zoomRef = useRef<HTMLDivElement>(null);
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const addToRecentlyViewed = useRecentlyViewedStore((s) => s.addProduct);
@@ -78,6 +81,14 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
 
   }, [product]);
 
+  function handleZoomMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (!zoomRef.current) return;
+    const rect = zoomRef.current.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    setZoomOrigin(`${x}% ${y}%`);
+  }
+
   function handleAdd() {
     const q = qty || minQty;
     addItem(product, q, selectedColor ?? undefined);
@@ -105,7 +116,13 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
         {/* Gallery */}
         <ScrollReveal direction="up">
           <div className="space-y-3 sm:space-y-4">
-            <div className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-border bg-surface p-4 sm:rounded-2xl sm:p-6">
+            <div
+              ref={zoomRef}
+              className="flex aspect-square items-center justify-center overflow-hidden rounded-xl border border-border bg-surface p-4 sm:rounded-2xl sm:p-6 cursor-zoom-in"
+              onMouseEnter={() => setIsZooming(true)}
+              onMouseLeave={() => setIsZooming(false)}
+              onMouseMove={handleZoomMove}
+            >
               <AnimatePresence mode="wait">
                 {product.image_urls[selectedImage] ? (
                   <motion.img
@@ -116,7 +133,10 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2, ease: "easeInOut" }}
-                    className="h-auto w-auto max-h-full max-w-full object-contain"
+                    style={{ transformOrigin: zoomOrigin }}
+                    className={`h-auto w-auto max-h-full max-w-full object-contain transition-transform duration-300 ${
+                      isZooming ? "scale-[2]" : "scale-100"
+                    }`}
                   />
                 ) : (
                   <div className="flex items-center justify-center text-muted/30">
