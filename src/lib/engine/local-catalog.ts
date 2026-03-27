@@ -20,6 +20,7 @@ interface CatalogProduct {
   min_qty: number;
   image_urls: string[];
   source?: string;
+  stock_by_color?: Record<string, number>;
 }
 
 interface CatalogData {
@@ -472,5 +473,6 @@ function toProductResult(p: CatalogProduct, score: number): ProductResult {
     price_tiers: priceTiers,
     personalization_price: personalizationPrice,
     list_price: pricingBasePrice,
+    stock_by_color: p.stock_by_color,
   };
 }

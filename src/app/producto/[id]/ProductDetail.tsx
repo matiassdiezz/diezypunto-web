@@ -300,14 +300,19 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                     {product.colors.map((color) => {
                       const hex = inferColor(color);
                       const light = isLightColor(hex);
+                      const stock = product.stock_by_color?.[color];
+                      const outOfStock = stock !== undefined && stock <= 0;
                       return (
                         <button
                           key={color}
-                          onClick={() => setSelectedColor(selectedColor === color ? null : color)}
+                          onClick={() => !outOfStock && setSelectedColor(selectedColor === color ? null : color)}
+                          disabled={outOfStock}
                           className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
-                            selectedColor === color
-                              ? "border-accent bg-accent/10 text-accent"
-                              : "border-border text-foreground hover:border-accent/30"
+                            outOfStock
+                              ? "border-border/50 text-muted/40 line-through cursor-not-allowed opacity-60"
+                              : selectedColor === color
+                                ? "border-accent bg-accent/10 text-accent"
+                                : "border-border text-foreground hover:border-accent/30"
                           }`}
                         >
                           <span
@@ -317,6 +322,11 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                             style={hex && hex !== "transparent" ? { backgroundColor: hex } : hex === "transparent" ? { background: "linear-gradient(135deg, #fff 40%, #e5e7eb 40%, #e5e7eb 60%, #fff 60%)" } : undefined}
                           />
                           {color}
+                          {stock !== undefined && (
+                            <span className={`text-[10px] ${outOfStock ? "text-red-400" : "text-muted"}`}>
+                              {outOfStock ? "Sin stock" : `${stock}`}
+                            </span>
+                          )}
                         </button>
                       );
                     })}

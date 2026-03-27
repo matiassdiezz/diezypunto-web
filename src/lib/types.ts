@@ -52,6 +52,8 @@ export interface ProductResult {
   personalization_price?: number;
   /** Provider pricing base used by the engine */
   list_price?: number | null;
+  /** Stock per color variant (from Promoproductos and CDO) */
+  stock_by_color?: Record<string, number>;
 }
 
 export interface SearchResponse {

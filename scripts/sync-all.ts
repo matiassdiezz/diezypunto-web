@@ -37,6 +37,7 @@ interface CatalogProduct {
   min_qty: number;
   image_urls: string[];
   source?: string;
+  stock_by_color?: Record<string, number>;
 }
 
 interface CatalogFile {
@@ -111,10 +112,14 @@ async function main() {
   }
 
   // Tag products with source
-  const zecatProducts: CatalogProduct[] = (zecat?.products || []).map((p) => ({
-    ...p,
-    source: p.source || "zecat",
-  }));
+  // Note: zecat catalog.json may contain products from a previous merge.
+  // Only take products that are actually from Zecat (no promo_/cdo_/xtrade_ prefix).
+  const zecatProducts: CatalogProduct[] = (zecat?.products || [])
+    .filter((p) => !p.product_id.startsWith("promo_") && !p.product_id.startsWith("cdo_") && p.source !== "xtrade")
+    .map((p) => ({
+      ...p,
+      source: p.source || "zecat",
+    }));
 
   const promoProducts: CatalogProduct[] = (promo?.products || []).map((p) => ({
     ...p,

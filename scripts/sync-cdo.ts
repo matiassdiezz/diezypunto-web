@@ -93,6 +93,7 @@ interface CatalogProduct {
   min_qty: number;
   image_urls: string[];
   source: string;
+  stock_by_color?: Record<string, number>;
 }
 
 // Map CDO categories → D&P taxonomy (same as other sync scripts)
@@ -271,14 +272,15 @@ async function main() {
   const catalog: CatalogProduct[] = [];
 
   for (const p of valid) {
-    // Collect colors from variants (v1: string, v2: {name})
-    const colors = [
-      ...new Set(
-        p.variants
-          .map((v) => getColorName(v.color))
-          .filter((c) => c && c !== "." && c !== "...")
-      ),
-    ];
+    // Collect colors + stock from variants (v1: string, v2: {name})
+    const stockByColor: Record<string, number> = {};
+    for (const v of p.variants) {
+      const c = getColorName(v.color);
+      if (c && c !== "." && c !== "...") {
+        stockByColor[c] = (stockByColor[c] || 0) + (v.stock_available || 0);
+      }
+    }
+    const colors = Object.keys(stockByColor);
 
     // Collect images from variants + other_pictures (v2)
     const imageSet = new Set<string>();
@@ -332,6 +334,7 @@ async function main() {
       min_qty: 10,
       image_urls: imageUrls,
       source: "cdo",
+      stock_by_color: Object.keys(stockByColor).length > 0 ? stockByColor : undefined,
     });
   }
 

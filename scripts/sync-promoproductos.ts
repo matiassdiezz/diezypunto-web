@@ -52,6 +52,7 @@ interface CatalogProduct {
   min_qty: number;
   image_urls: string[];
   source: string;
+  stock_by_color?: Record<string, number>;
 }
 
 async function getUsdRate(): Promise<number> {
@@ -266,14 +267,15 @@ async function main() {
     // Skip products with no name
     if (!primary.name) continue;
 
-    // Collect all colors across variants
-    const colors = [
-      ...new Set(
-        variants
-          .map((v) => v.color)
-          .filter((c) => c && c !== "." && c !== "...")
-      ),
-    ];
+    // Collect all colors + stock across variants
+    const stockByColor: Record<string, number> = {};
+    for (const v of variants) {
+      const c = v.color;
+      if (c && c !== "." && c !== "...") {
+        stockByColor[c] = (stockByColor[c] || 0) + (v.stock || 0);
+      }
+    }
+    const colors = Object.keys(stockByColor);
 
     // Collect all images (main variant first, then others)
     const imageUrls = [
@@ -326,6 +328,7 @@ async function main() {
       min_qty: 1,
       image_urls: imageUrls,
       source: "promoproductos",
+      stock_by_color: Object.keys(stockByColor).length > 0 ? stockByColor : undefined,
     });
   }
 
