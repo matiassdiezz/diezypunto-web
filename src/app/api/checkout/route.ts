@@ -7,6 +7,7 @@ import {
   buildOrderNotifyEmail,
   type EmailBilling,
 } from "@/lib/email/templates";
+import { saveClientToVault } from "@/lib/save-client";
 
 type BillingPayload = EmailBilling;
 
@@ -31,7 +32,7 @@ export async function POST(req: NextRequest) {
   const client = new MercadoPagoConfig({ accessToken });
   const preference = new Preference(client);
 
-  const { items, billing } = (await req.json()) as {
+  const { items, billing, logo_url, instructions } = (await req.json()) as {
     items: {
       title: string;
       quantity: number;
@@ -41,6 +42,8 @@ export async function POST(req: NextRequest) {
       color?: string;
     }[];
     billing?: BillingPayload;
+    logo_url?: string;
+    instructions?: string;
   };
 
   if (!items?.length) {
@@ -148,9 +151,29 @@ export async function POST(req: NextRequest) {
         from: fromAddress,
         to: "martin@diezypunto.com.ar",
         subject: `Nuevo pedido MP — ${billing.first_name} ${billing.last_name} — $${total.toLocaleString("es-AR")}`,
-        html: buildOrderNotifyEmail(emailItems, billing, total, "mercadopago"),
+        html: buildOrderNotifyEmail(emailItems, billing, total, "mercadopago", { logo_url: logo_url || undefined, instructions: instructions || undefined }),
       }),
     ]).catch((err) => console.error("Quote email error:", err));
+  }
+
+  // Save client data to vault (fire-and-forget)
+  if (billing) {
+    saveClientToVault({
+      first_name: billing.first_name,
+      last_name: billing.last_name,
+      company: billing.company?.trim() || undefined,
+      email: billing.email,
+      phone: billing.phone,
+      document_type: billing.document_type,
+      document_number: billing.document_number,
+      street_address: billing.street_address,
+      city: billing.city,
+      province: billing.province,
+      logo_url: logo_url || undefined,
+      instructions: instructions || undefined,
+      payment_method: "mercadopago",
+      order_total: items.reduce((s, i) => s + i.quantity * i.unit_price, 0),
+    });
   }
 
   return NextResponse.json({ init_point: result.init_point });

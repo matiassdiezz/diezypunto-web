@@ -16,6 +16,9 @@ import {
   Check,
   EnvelopeSimple,
   WhatsappLogo,
+  Image as ImageIcon,
+  NotePencil,
+  UploadSimple,
 } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
@@ -107,6 +110,10 @@ export default function QuoteBuilder() {
   const openWithMessage = useChatStore((s) => s.openWithMessage);
   const [clearConfirmOpen, setClearConfirmOpen] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const [logoUrl, setLogoUrl] = useState<string>("");
+  const [logoUploading, setLogoUploading] = useState(false);
+  const [logoFileName, setLogoFileName] = useState<string>("");
+  const [instructions, setInstructions] = useState<string>("");
 
   function getItemLabel(item: QuoteItem): string {
     const details = [item.color, item.personalization_method].filter(Boolean);
@@ -169,6 +176,35 @@ export default function QuoteBuilder() {
     setBillingError(null);
   };
 
+  const handleLogoUpload = async (file: File) => {
+    if (!file.type.startsWith("image/")) {
+      setBillingError("Solo se permiten imágenes (JPG, PNG, SVG, etc.)");
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      setBillingError("El logo no puede superar 5 MB");
+      return;
+    }
+    setLogoUploading(true);
+    setBillingError(null);
+    try {
+      const form = new FormData();
+      form.append("file", file);
+      const res = await fetch("/api/upload", { method: "POST", body: form });
+      const data = await res.json();
+      if (data.url) {
+        setLogoUrl(data.url);
+        setLogoFileName(file.name);
+      } else {
+        setBillingError(data.error || "Error al subir el logo");
+      }
+    } catch {
+      setBillingError("Error de conexión al subir el logo");
+    } finally {
+      setLogoUploading(false);
+    }
+  };
+
   const validateBillingForm = (): string | null => {
     if (!billingForm.firstName.trim()) return "Completá el nombre.";
     if (!billingForm.lastName.trim()) return "Completá el apellido.";
@@ -224,6 +260,8 @@ export default function QuoteBuilder() {
             phone: billingForm.phone.trim(),
             email: billingForm.email.trim(),
           },
+          logo_url: logoUrl || undefined,
+          instructions: instructions.trim() || undefined,
         }),
       });
       const data = await res.json();
@@ -280,6 +318,8 @@ export default function QuoteBuilder() {
             phone: billingForm.phone.trim(),
             email: billingForm.email.trim(),
           },
+          logo_url: logoUrl || undefined,
+          instructions: instructions.trim() || undefined,
         }),
       });
       const data = await res.json();
@@ -696,6 +736,74 @@ export default function QuoteBuilder() {
                           </option>
                         ))}
                       </select>
+                    </label>
+                  </div>
+                </section>
+
+                <hr className="border-slate-100" />
+
+                {/* Logo y detalles del pedido */}
+                <section>
+                  <div className="mb-4 flex items-center gap-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-100 text-slate-600">
+                      <ImageIcon className="h-4 w-4" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm font-semibold">Logo e instrucciones</h3>
+                      <p className="text-xs text-muted">Opcional — para personalización de productos</p>
+                    </div>
+                  </div>
+                  <div className="space-y-4">
+                    {/* Logo upload */}
+                    <div className="space-y-1.5">
+                      <span className={LABEL_CLASSNAME}>Logo de tu empresa <span className="text-muted/50">(opcional)</span></span>
+                      <div className="flex items-center gap-3">
+                        <label className="flex cursor-pointer items-center gap-2 rounded-xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-600 transition-colors hover:border-accent hover:bg-accent/5 hover:text-accent">
+                          {logoUploading ? (
+                            <SpinnerGap className="h-4 w-4 animate-spin" />
+                          ) : (
+                            <UploadSimple className="h-4 w-4" />
+                          )}
+                          {logoUploading ? "Subiendo..." : "Subir logo"}
+                          <input
+                            type="file"
+                            accept="image/*"
+                            className="hidden"
+                            onChange={(e) => {
+                              const file = e.target.files?.[0];
+                              if (file) handleLogoUpload(file);
+                            }}
+                            disabled={logoUploading}
+                          />
+                        </label>
+                        {logoUrl && (
+                          <div className="flex items-center gap-2">
+                            <img src={logoUrl} alt="Logo" className="h-10 w-10 rounded-lg border border-slate-200 object-contain" />
+                            <div className="min-w-0">
+                              <p className="truncate text-xs font-medium text-foreground">{logoFileName}</p>
+                              <button
+                                onClick={() => { setLogoUrl(""); setLogoFileName(""); }}
+                                className="text-xs text-red-500 hover:underline"
+                              >
+                                Quitar
+                              </button>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                      <p className="text-xs text-muted">JPG, PNG o SVG. Máximo 5 MB.</p>
+                    </div>
+
+                    {/* Instructions */}
+                    <label className="block space-y-1.5">
+                      <span className={LABEL_CLASSNAME}>Instrucciones especiales <span className="text-muted/50">(opcional)</span></span>
+                      <textarea
+                        value={instructions}
+                        onChange={(e) => setInstructions(e.target.value)}
+                        className={`${FIELD_CLASSNAME} min-h-[80px] resize-y`}
+                        placeholder="Ej: Necesitamos las remeras para un evento el 15/04. Color del logo: Pantone 286C. Queremos el logo en el pecho y en la espalda."
+                        rows={3}
+                      />
                     </label>
                   </div>
                 </section>

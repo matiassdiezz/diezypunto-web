@@ -290,6 +290,7 @@ export function buildOrderNotifyEmail(
   billing: EmailBilling,
   total: number,
   paymentMethod: PaymentMethod,
+  extra?: { logo_url?: string; instructions?: string },
 ): string {
   const clientName = `${billing.first_name} ${billing.last_name}`;
   const wspMsg = `Hola ${billing.first_name}, soy Martín de Diez y Punto. Recibí tu pedido.`;
@@ -331,6 +332,25 @@ export function buildOrderNotifyEmail(
     </p>
 
     ${ctaButton("Contactar por WhatsApp", wspUrl, "#25D366")}
+
+    ${extra?.logo_url || extra?.instructions ? `
+    <div style="margin-top:24px;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">
+      <div style="background:#f8fafc;padding:12px 16px;border-bottom:1px solid #e2e8f0">
+        <p style="margin:0;font-size:13px;font-weight:700;color:#0f172a">📋 Personalización</p>
+      </div>
+      <div style="padding:16px">
+        ${extra.logo_url ? `
+        <div style="margin-bottom:${extra.instructions ? "12px" : "0"}">
+          <p style="margin:0;font-size:12px;color:#64748b;font-weight:600">LOGO</p>
+          <img src="${extra.logo_url}" width="80" height="80" style="margin-top:8px;border-radius:8px;border:1px solid #e2e8f0;object-fit:contain;background:white" />
+        </div>` : ""}
+        ${extra.instructions ? `
+        <div>
+          <p style="margin:0;font-size:12px;color:#64748b;font-weight:600">INSTRUCCIONES</p>
+          <p style="margin:6px 0 0;font-size:14px;color:#0f172a;line-height:1.5;white-space:pre-line">${extra.instructions}</p>
+        </div>` : ""}
+      </div>
+    </div>` : ""}
 
     <h2 style="margin:28px 0 12px;font-size:15px;color:#0f172a">Productos</h2>
     <table width="100%" cellpadding="0" cellspacing="0">${itemRows}</table>

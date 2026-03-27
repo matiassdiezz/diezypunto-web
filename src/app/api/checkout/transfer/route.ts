@@ -7,6 +7,7 @@ import {
   type EmailItem,
   type EmailBilling,
 } from "@/lib/email/templates";
+import { saveClientToVault } from "@/lib/save-client";
 
 const NOTIFY_EMAIL = "martin@diezypunto.com.ar";
 
@@ -19,9 +20,11 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const { items, billing } = (await req.json()) as {
+  const { items, billing, logo_url, instructions } = (await req.json()) as {
     items: EmailItem[];
     billing?: EmailBilling;
+    logo_url?: string;
+    instructions?: string;
   };
 
   if (!items?.length) {
@@ -86,9 +89,29 @@ export async function POST(req: NextRequest) {
         from: fromAddress,
         to: NOTIFY_EMAIL,
         subject: `Nuevo pedido por transferencia — ${billing.first_name} ${billing.last_name} — $${total.toLocaleString("es-AR")}`,
-        html: buildOrderNotifyEmail(items, billing, total, "transfer"),
+        html: buildOrderNotifyEmail(items, billing, total, "transfer", { logo_url: logo_url || undefined, instructions: instructions || undefined }),
       }),
     ]);
+
+    // Save client data to vault (fire-and-forget)
+    if (billing) {
+      saveClientToVault({
+        first_name: billing.first_name,
+        last_name: billing.last_name,
+        company: billing.company?.trim() || undefined,
+        email: billing.email,
+        phone: billing.phone,
+        document_type: billing.document_type,
+        document_number: billing.document_number,
+        street_address: billing.street_address,
+        city: billing.city,
+        province: billing.province,
+        logo_url: logo_url || undefined,
+        instructions: instructions || undefined,
+        payment_method: "transfer",
+        order_total: total,
+      });
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
