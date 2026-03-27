@@ -281,8 +281,45 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                 </p>
               )}
 
+              {/* Color selector — before add to cart */}
+              {product.colors.length > 0 && (
+                <div className="mt-4 border-t border-border/50 pt-4">
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">
+                    Color{product.colors.length > 1 ? "" : ""}
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {product.colors.map((color) => (
+                      <button
+                        key={color}
+                        onClick={() => setSelectedColor(selectedColor === color ? null : color)}
+                        className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
+                          selectedColor === color
+                            ? "border-accent bg-accent/10 text-accent"
+                            : "border-border text-foreground hover:border-accent/30"
+                        }`}
+                      >
+                        <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${
+                          selectedColor === color ? "bg-accent" : "bg-muted/40"
+                        }`} />
+                        {color}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Personalization method — before add to cart */}
+              {product.personalization_methods.length > 0 && (
+                <div className={product.colors.length > 0 ? "mt-3" : "mt-4 border-t border-border/50 pt-4"}>
+                  <PersonalizationCard
+                    methods={product.personalization_methods}
+                    productTitle={product.title}
+                  />
+                </div>
+              )}
+
               {/* Quantity stepper + Add */}
-              <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+              <div className="mt-4 flex flex-col gap-2 border-t border-border/50 pt-4 sm:flex-row sm:items-center sm:gap-3">
                 <div className="flex items-center rounded-xl border border-border">
                   <button
                     onClick={() => setQty(Math.max(minQty, (qty || minQty) - 1))}
@@ -338,47 +375,15 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
 
             </div>
 
-            {/* Specs */}
-            <div className="mt-4 space-y-3 sm:mt-6">
-              {product.materials.length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-                    Materiales
-                  </p>
-                  <p className="mt-1 text-sm">{product.materials.join(", ")}</p>
-                </div>
-              )}
-              {product.colors.length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-                    Colores disponibles
-                  </p>
-                  <div className="mt-1.5 flex flex-wrap gap-2">
-                    {product.colors.map((color) => (
-                      <button
-                        key={color}
-                        onClick={() => setSelectedColor(selectedColor === color ? null : color)}
-                        className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
-                          selectedColor === color
-                            ? "border-accent bg-accent/10 text-accent"
-                            : "border-border text-foreground hover:border-accent/30"
-                        }`}
-                      >
-                        <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${
-                          selectedColor === color ? "bg-accent" : "bg-muted/40"
-                        }`} />
-                        {color}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-              {/* Personalization Card — replaces plain pills */}
-              <PersonalizationCard
-                methods={product.personalization_methods}
-                productTitle={product.title}
-              />
-            </div>
+            {/* Specs — informational only */}
+            {product.materials.length > 0 && (
+              <div className="mt-4 sm:mt-6">
+                <p className="text-xs font-semibold uppercase tracking-wider text-muted">
+                  Materiales
+                </p>
+                <p className="mt-1 text-sm">{product.materials.join(", ")}</p>
+              </div>
+            )}
           </div>
         </ScrollReveal>
       </div>
