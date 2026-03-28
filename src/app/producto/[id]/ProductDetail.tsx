@@ -291,15 +291,12 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                               }`}>
                                 ${tier.finalPrice.toLocaleString("es-AR")}
                               </p>
-                              <p className="text-[10px] text-muted">
-                                + IVA
-                                {savingsPct > 0 && (
-                                  <span className="ml-1.5 font-semibold text-eco">-{savingsPct}%</span>
-                                )}
-                              </p>
-                              {isActive && (
+                              <p className="text-[10px] text-muted">+ IVA</p>
+                              {savingsPct > 0 ? (
+                                <p className="mt-1 text-[10px] font-semibold text-eco">Ahorrás {savingsPct}%</p>
+                              ) : isActive ? (
                                 <p className="mt-1 text-[10px] font-medium text-accent">Tu precio</p>
-                              )}
+                              ) : null}
                             </div>
                           );
                         })}
