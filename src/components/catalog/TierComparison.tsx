@@ -28,9 +28,9 @@ export default function TierComparison({ products, currentProduct }: TierCompari
   const pricier = sameCat.find((p) => (p.price ?? 0) > (currentProduct.price ?? 0));
 
   const tiers: { product: ProductResult; label: string }[] = [];
-  if (cheaper) tiers.push({ product: cheaper, label: "Good" });
-  tiers.push({ product: currentProduct, label: "Better" });
-  if (pricier) tiers.push({ product: pricier, label: "Best" });
+  if (cheaper) tiers.push({ product: cheaper, label: "Económico" });
+  tiers.push({ product: currentProduct, label: "Elegido" });
+  if (pricier) tiers.push({ product: pricier, label: "Superior" });
 
   if (tiers.length < 3) return null;
 
@@ -105,6 +105,8 @@ function TierCard({
       )}
     </div>
   );
+
+  if (isCurrent) return <div className="block">{content}</div>;
 
   return (
     <Link href={`/producto/${product.product_id}`} className="block">

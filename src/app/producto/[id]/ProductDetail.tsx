@@ -26,7 +26,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   const searchParams = useSearchParams();
   const [related, setRelated] = useState<ProductResult[]>([]);
   const [selectedImage, setSelectedImage] = useState(0);
-  const minQty = product.price_tiers?.[0]?.min ?? 1;
+  const minQty = product.price_tiers?.[0]?.min ?? product.min_qty ?? 1;
   const initialQty = (() => {
     const q = searchParams.get("qty");
     if (q) { const n = parseInt(q); if (!isNaN(n) && n >= minQty) return n; }
@@ -40,9 +40,11 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
     product.personalization_methods.length === 1 ? product.personalization_methods[0] : null,
   );
   const [justAdded, setJustAdded] = useState(false);
+  const [colorWarn, setColorWarn] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
   const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
   const zoomRef = useRef<HTMLDivElement>(null);
+  const addTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const addToRecentlyViewed = useRecentlyViewedStore((s) => s.addProduct);
@@ -80,14 +82,14 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
     addToRecentlyViewed(product);
 
     // Fetch related products from same category
+    let cancelled = false;
     listProducts({ category: product.category, limit: 8 })
-      .then((res) =>
-        setRelated(
-          res.products.filter((r) => r.product_id !== product.product_id),
-        ),
-      )
-      .catch(console.error);
+      .then((res) => {
+        if (!cancelled) setRelated(res.products.filter((r) => r.product_id !== product.product_id));
+      })
+      .catch((err) => { if (!cancelled) console.error(err); });
 
+    return () => { cancelled = true; };
   }, [product]);
 
   function handleZoomMove(e: React.MouseEvent<HTMLDivElement>) {
@@ -99,13 +101,30 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   }
 
   function handleAdd() {
+    if (product.colors.length > 0 && !selectedColor) {
+      setColorWarn(true);
+      setTimeout(() => setColorWarn(false), 2000);
+      return;
+    }
     const q = qty || minQty;
+    if (selectedColor) {
+      const stock = product.stock_by_color?.[selectedColor];
+      if (stock !== undefined && q > stock) return;
+    }
     addItem(product, q, selectedColor ?? undefined, selectedMethod ?? undefined);
     openDrawer(product, q);
     setJustAdded(true);
-    setTimeout(() => setJustAdded(false), 1500);
+    clearTimeout(addTimerRef.current);
+    addTimerRef.current = setTimeout(() => setJustAdded(false), 1500);
   }
 
+  useEffect(() => () => clearTimeout(addTimerRef.current), []);
+
+  const activePrice = product.price_tiers?.length
+    ? (product.price_tiers.find(
+        (t) => (qty || minQty) >= t.min && (t.max === null || (qty || minQty) <= t.max)
+      ) ?? product.price_tiers[0]).finalPrice
+    : product.price;
 
   const breadcrumbs = [
     { label: "Inicio", href: "/" },
@@ -219,7 +238,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                 <ShareButton
                   getShareUrl={() => buildProductShareUrl(product.product_id, qty || minQty)}
                   getWhatsAppMessage={(url) =>
-                    buildProductWhatsAppMessage(product.title, qty || minQty, product.price, url)
+                    buildProductWhatsAppMessage(product.title, qty || minQty, activePrice, url)
                   }
                   context="product"
                   trackingData={{ product_id: product.product_id }}
@@ -293,8 +312,8 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
               {/* Color selector — before add to cart */}
               {product.colors.length > 0 && (
                 <div className="mt-4 border-t border-border/50 pt-4">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-                    Color{product.colors.length > 1 ? "" : ""}
+                  <p className={`text-xs font-semibold uppercase tracking-wider transition-colors ${colorWarn ? "text-red-500" : "text-muted"}`}>
+                    Color{colorWarn ? " — Elegí un color" : ""}
                   </p>
                   <div className="mt-2 flex flex-wrap gap-2">
                     {product.colors.map((color) => {
@@ -305,7 +324,12 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                       return (
                         <button
                           key={color}
-                          onClick={() => !outOfStock && setSelectedColor(selectedColor === color ? null : color)}
+                          onClick={() => {
+                            if (outOfStock) return;
+                            const next = selectedColor === color && product.colors.length > 1 ? null : color;
+                            setSelectedColor(next);
+                            if (next) setColorWarn(false);
+                          }}
                           disabled={outOfStock}
                           className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
                             outOfStock
@@ -356,20 +380,25 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                     <Minus className="h-4 w-4" />
                   </button>
                   <input
-                    type="number"
-                    min={minQty}
+                    type="text"
+                    inputMode="numeric"
                     value={qty}
                     onChange={(e) => {
                       const raw = e.target.value;
                       if (raw === "") { setQty(""); return; }
                       const v = parseInt(raw);
-                      if (!isNaN(v) && v >= minQty) setQty(v);
+                      if (!isNaN(v) && v >= minQty && v <= 99999) setQty(v);
                     }}
                     onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
                     className="w-16 border-x border-border bg-white py-2.5 text-center text-sm font-medium tabular-nums outline-none"
                   />
                   <button
-                    onClick={() => setQty((qty || 0) + 1)}
+                    onClick={() => {
+                      const next = (qty || 0) + 1;
+                      const stock = selectedColor ? product.stock_by_color?.[selectedColor] : undefined;
+                      if ((stock !== undefined && next > stock) || next > 99999) return;
+                      setQty(next);
+                    }}
                     className="rounded-r-xl px-3 py-2.5 text-muted transition-colors duration-200 hover:bg-surface"
                   >
                     <Plus className="h-4 w-4" />

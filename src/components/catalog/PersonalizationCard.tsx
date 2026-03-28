@@ -38,7 +38,7 @@ export default function PersonalizationCard({ methods, productTitle, selected, o
   return (
     <div className="space-y-2">
       <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-        Método de personalización
+        Método de personalización{isInteractive && methods.length > 1 ? <span className="normal-case tracking-normal font-normal"> — Elegí uno</span> : ""}
       </p>
       <div className="space-y-1.5">
         {methods.map((method) => {
@@ -51,13 +51,18 @@ export default function PersonalizationCard({ methods, productTitle, selected, o
               key={method}
               type="button"
               onClick={() => onSelect(isSelected ? null : method)}
-              className={`flex w-full items-center justify-between gap-2 rounded-lg border px-3 py-2.5 text-left transition-all ${
+              className={`flex w-full items-center gap-3 rounded-lg border px-3 py-2.5 text-left transition-all ${
                 isSelected
                   ? "border-accent bg-accent/5 ring-1 ring-accent/30"
                   : "border-border hover:border-accent/30"
               }`}
             >
-              <div className="min-w-0">
+              <span className={`flex h-4 w-4 shrink-0 items-center justify-center rounded-full border-2 transition-colors ${
+                isSelected ? "border-accent bg-accent" : "border-muted/40"
+              }`}>
+                {isSelected && <span className="h-1.5 w-1.5 rounded-full bg-white" />}
+              </span>
+              <div className="min-w-0 flex-1">
                 <p className={`text-sm font-medium truncate ${isSelected ? "text-accent" : ""}`}>{method}</p>
                 {info && (
                   <p className="text-xs text-muted">{info.description}</p>
