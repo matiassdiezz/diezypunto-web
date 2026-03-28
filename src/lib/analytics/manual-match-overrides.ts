@@ -1,0 +1,81 @@
+import type { ManualMatchOverride } from "./competitor-snapshot";
+
+export const MANUAL_MATCH_OVERRIDES: ManualMatchOverride[] = [
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_197184",
+    competitorProductId: "grupovelski:pluma-parker-vibrant-rings",
+    note: "Mismo producto Parker; Velski omite el segmento IM en el título.",
+    score: 0.98,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_59548",
+    competitorProductId: "grupovelski:boligrafo-parker-achromatic",
+    note: "Misma línea Parker Achromatic; Velski recorta el segmento IM.",
+    score: 0.98,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_59551",
+    competitorProductId: "grupovelski:pluma-parker-achromatic",
+    note: "Misma pluma Parker Achromatic; diferencia mínima de naming.",
+    score: 0.98,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_37205",
+    competitorProductId: "grupovelski:im-1033-botella-contigo-matterhorn-couture-591-ml",
+    note: "Misma botella Contigo Matterhorn Couture 591 ml; Velski agrega prefijo interno IM.",
+    score: 0.99,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_37215",
+    competitorProductId: "grupovelski:im-4034-vaso-termico-contigo-huron-couture",
+    note: "Mismo vaso Contigo Huron Couture; el título cambia sólo por prefijo interno.",
+    score: 0.99,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_36122",
+    competitorProductId: "grupovelski:im-1032-botella-contigo-matterhorn-591-ml",
+    note: "Misma botella Contigo Matterhorn 591 ml con prefijo comercial distinto.",
+    score: 0.99,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_37226",
+    competitorProductId: "grupovelski:im-4035-vaso-termico-contigo-byron",
+    note: "Mismo vaso térmico Contigo Byron; Velski no publica el sufijo 2.0.",
+    score: 0.97,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_37223",
+    competitorProductId: "grupovelski:im-4033-vaso-termico-contigo-huron-2-0",
+    note: "Mismo vaso térmico Contigo Huron 2.0; naming equivalente.",
+    score: 0.99,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_220265",
+    competitorProductId: "grupovelski:im-0002-cafetera-oster-12-tazas-pantalla-tactil",
+    note: "Misma cafetera Oster 12 tazas con pantalla táctil; Velski agrega código interno.",
+    score: 0.99,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_220264",
+    competitorProductId: "grupovelski:im-0001c-cafetera-oster-12-tazas",
+    note: "Misma cafetera Oster 12 tazas; Velski agrega código interno IM 0001C.",
+    score: 0.99,
+  },
+  {
+    siteId: "grupovelski",
+    ourProductId: "diezypunto:promo_463",
+    competitorProductId: "grupovelski:jotter-parker",
+    note: "Mismo bolígrafo Parker Jotter con orden invertido de palabras.",
+    score: 0.97,
+  },
+];

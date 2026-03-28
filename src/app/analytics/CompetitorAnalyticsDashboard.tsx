@@ -1,0 +1,882 @@
+"use client";
+
+import Link from "next/link";
+import { startTransition, useDeferredValue, useState, type ReactNode } from "react";
+import type {
+  AnalyticsMatch,
+  AnalyticsProduct,
+  AnalyticsSite,
+  AnalyticsSiteId,
+  CompetitorAnalyticsSnapshot,
+  PriceStatus,
+} from "@/lib/analytics/competitor-snapshot";
+
+const priceFormatter = new Intl.NumberFormat("es-AR", {
+  style: "currency",
+  currency: "ARS",
+  maximumFractionDigits: 0,
+});
+
+const compactNumberFormatter = new Intl.NumberFormat("es-AR", {
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
+
+const PRICE_BUCKETS = [
+  { label: "Hasta $500", min: 0, max: 500 },
+  { label: "$500 a $1.500", min: 500, max: 1500 },
+  { label: "$1.500 a $5.000", min: 1500, max: 5000 },
+  { label: "$5.000 a $15.000", min: 5000, max: 15000 },
+  { label: "$15.000 a $50.000", min: 15000, max: 50000 },
+  { label: "Más de $50.000", min: 50000, max: Number.POSITIVE_INFINITY },
+];
+
+function formatCurrency(value: number | null) {
+  return value == null ? "Sin precio usable" : priceFormatter.format(value);
+}
+
+function formatCompact(value: number) {
+  return compactNumberFormatter.format(value);
+}
+
+function formatPercent(value: number | null) {
+  return value == null ? "N/D" : `${value.toFixed(1)}%`;
+}
+
+function formatMatchType(value: AnalyticsMatch["matchType"]) {
+  switch (value) {
+    case "exact_normalized_title":
+      return "Exacto";
+    case "manual_override":
+      return "Manual";
+    case "canonical_title_family":
+      return "Canónico";
+    default:
+      return value;
+  }
+}
+
+function matchTypeClass(value: AnalyticsMatch["matchType"]) {
+  switch (value) {
+    case "exact_normalized_title":
+      return "bg-sky-50 text-sky-700 ring-sky-200";
+    case "manual_override":
+      return "bg-emerald-50 text-emerald-700 ring-emerald-200";
+    case "canonical_title_family":
+      return "bg-indigo-50 text-indigo-700 ring-indigo-200";
+    default:
+      return "bg-zinc-100 text-zinc-700 ring-zinc-200";
+  }
+}
+
+function getMedian(values: number[]) {
+  if (values.length === 0) return null;
+  const sorted = [...values].sort((left, right) => left - right);
+  const middle = Math.floor(sorted.length / 2);
+  if (sorted.length % 2 === 0) {
+    return (sorted[middle - 1] + sorted[middle]) / 2;
+  }
+  return sorted[middle];
+}
+
+function getAverage(values: number[]) {
+  if (values.length === 0) return null;
+  return values.reduce((sum, value) => sum + value, 0) / values.length;
+}
+
+function formatPriceStatus(status: PriceStatus) {
+  switch (status) {
+    case "priced":
+      return "Con precio";
+    case "hidden":
+      return "Sin precio público";
+    case "placeholder":
+      return "Placeholder técnico";
+    default:
+      return "Desconocido";
+  }
+}
+
+function getPriceStatusClass(status: PriceStatus) {
+  switch (status) {
+    case "priced":
+      return "bg-emerald-50 text-emerald-700 ring-emerald-200";
+    case "hidden":
+      return "bg-slate-100 text-slate-700 ring-slate-200";
+    case "placeholder":
+      return "bg-amber-50 text-amber-700 ring-amber-200";
+    default:
+      return "bg-zinc-100 text-zinc-600 ring-zinc-200";
+  }
+}
+
+function matchesSearch(product: AnalyticsProduct, search: string) {
+  if (!search) return true;
+  const haystack = [
+    product.title,
+    product.siteName,
+    product.normalizedCategory,
+    ...product.rawCategories,
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return haystack.includes(search);
+}
+
+function matchesSearchInMatch(match: AnalyticsMatch, search: string) {
+  if (!search) return true;
+  const haystack = [
+    match.siteName,
+    match.ourTitle,
+    match.competitorTitle,
+    match.ourNormalizedCategory,
+    match.competitorNormalizedCategory,
+    ...match.ourRawCategories,
+    ...match.competitorRawCategories,
+  ]
+    .join(" ")
+    .toLowerCase();
+
+  return haystack.includes(search);
+}
+
+function parsePriceBound(value: string) {
+  const parsed = Number(value.trim().replace(/\./g, "").replace(/,/g, "."));
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function siteColor(site: AnalyticsSite) {
+  return {
+    backgroundColor: `${site.color}16`,
+    borderColor: `${site.color}33`,
+    color: site.color,
+  };
+}
+
+export default function CompetitorAnalyticsDashboard({
+  snapshot,
+}: {
+  snapshot: CompetitorAnalyticsSnapshot;
+}) {
+  const [selectedCompetitors, setSelectedCompetitors] = useState<AnalyticsSiteId[]>(
+    snapshot.sites.filter((site) => site.id !== "diezypunto").map((site) => site.id),
+  );
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const [priceMode, setPriceMode] = useState<"all" | "priced" | "without_usable_price">("all");
+  const [scope, setScope] = useState<"all_products" | "exact_matches">("all_products");
+  const [matchMode, setMatchMode] = useState<"all" | AnalyticsMatch["matchType"]>("all");
+  const [search, setSearch] = useState("");
+  const [minPrice, setMinPrice] = useState("");
+  const [maxPrice, setMaxPrice] = useState("");
+
+  const deferredSearch = useDeferredValue(search.trim().toLowerCase());
+  const selectedSiteIds = ["diezypunto", ...selectedCompetitors];
+  const minPriceValue = parsePriceBound(minPrice);
+  const maxPriceValue = parsePriceBound(maxPrice);
+
+  const filteredMatches = snapshot.matches
+    .filter((match) => selectedCompetitors.includes(match.siteId))
+    .filter((match) =>
+      selectedCategory === "all"
+        ? true
+        : match.ourNormalizedCategory === selectedCategory ||
+          match.competitorNormalizedCategory === selectedCategory,
+    )
+    .filter((match) => matchesSearchInMatch(match, deferredSearch))
+    .filter((match) => {
+      if (matchMode === "all") {
+        return true;
+      }
+      return match.matchType === matchMode;
+    })
+    .filter((match) => {
+      if (priceMode === "priced") {
+        return match.competitorPriceStatus === "priced";
+      }
+      if (priceMode === "without_usable_price") {
+        return match.competitorPriceStatus !== "priced";
+      }
+      return true;
+    })
+    .sort((left, right) => {
+      const leftGap = Math.abs(left.priceGapPct ?? 0);
+      const rightGap = Math.abs(right.priceGapPct ?? 0);
+      if (leftGap !== rightGap) {
+        return rightGap - leftGap;
+      }
+      return left.ourTitle.localeCompare(right.ourTitle, "es");
+    });
+
+  const exactMatchProductIds = new Set<string>();
+  for (const match of filteredMatches) {
+    exactMatchProductIds.add(match.ourProductId);
+    exactMatchProductIds.add(match.competitorProductId);
+  }
+
+  const filteredProducts = snapshot.products
+    .filter((product) => selectedSiteIds.includes(product.siteId))
+    .filter((product) =>
+      selectedCategory === "all" ? true : product.normalizedCategory === selectedCategory,
+    )
+    .filter((product) => matchesSearch(product, deferredSearch))
+    .filter((product) => {
+      if (scope === "exact_matches") {
+        return exactMatchProductIds.has(product.id);
+      }
+      return true;
+    })
+    .filter((product) => {
+      if (priceMode === "priced") {
+        return product.priceStatus === "priced";
+      }
+      if (priceMode === "without_usable_price") {
+        return product.priceStatus !== "priced";
+      }
+      return true;
+    })
+    .filter((product) => {
+      if (product.priceArs == null) {
+        return minPriceValue == null && maxPriceValue == null;
+      }
+      if (minPriceValue != null && product.priceArs < minPriceValue) {
+        return false;
+      }
+      if (maxPriceValue != null && product.priceArs > maxPriceValue) {
+        return false;
+      }
+      return true;
+    });
+
+  const pricedProducts = filteredProducts.filter((product) => product.priceStatus === "priced");
+  const pricedValues = pricedProducts
+    .map((product) => product.priceArs)
+    .filter((price): price is number => price != null);
+  const selectedSites = snapshot.sites.filter((site) => selectedSiteIds.includes(site.id));
+
+  const siteSummaries = selectedSites.map((site) => {
+    const siteProducts = filteredProducts.filter((product) => product.siteId === site.id);
+    const sitePrices = siteProducts
+      .map((product) => product.priceArs)
+      .filter((price): price is number => price != null);
+    const exactMatches =
+      site.id === "diezypunto"
+        ? new Set(filteredMatches.map((match) => match.ourProductId)).size
+        : new Set(
+            filteredMatches
+              .filter((match) => match.siteId === site.id)
+              .map((match) => match.competitorProductId),
+          ).size;
+
+    return {
+      site,
+      productCount: siteProducts.length,
+      pricedCount: siteProducts.filter((product) => product.priceStatus === "priced").length,
+      categoryCount: new Set(siteProducts.map((product) => product.normalizedCategory)).size,
+      medianPrice: getMedian(sitePrices),
+      averagePrice: getAverage(sitePrices),
+      exactMatches,
+    };
+  });
+
+  const categoryRows = snapshot.normalizedCategories
+    .map((category) => {
+      const perSite = selectedSites.map((site) => {
+        const siteProducts = filteredProducts.filter(
+          (product) => product.siteId === site.id && product.normalizedCategory === category,
+        );
+        const priced = siteProducts
+          .map((product) => product.priceArs)
+          .filter((price): price is number => price != null);
+
+        return {
+          siteId: site.id,
+          count: siteProducts.length,
+          median: getMedian(priced),
+        };
+      });
+
+      return {
+        category,
+        totalCount: perSite.reduce((sum, item) => sum + item.count, 0),
+        perSite,
+      };
+    })
+    .filter((row) => row.totalCount > 0)
+    .sort((left, right) => right.totalCount - left.totalCount);
+
+  const bucketRows = PRICE_BUCKETS.map((bucket) => ({
+    ...bucket,
+    perSite: selectedSites.map((site) => {
+      const count = filteredProducts.filter(
+        (product) =>
+          product.siteId === site.id &&
+          product.priceArs != null &&
+          product.priceArs >= bucket.min &&
+          product.priceArs < bucket.max,
+      ).length;
+
+      return { siteId: site.id, count };
+    }),
+  }));
+
+  const productRows = [...filteredProducts].sort((left, right) => {
+    if (left.siteId !== right.siteId) {
+      return left.siteId.localeCompare(right.siteId);
+    }
+    return left.title.localeCompare(right.title, "es");
+  });
+
+  const exactMatchCount = filteredMatches.filter(
+    (match) => match.matchType === "exact_normalized_title",
+  ).length;
+  const manualMatchCount = filteredMatches.filter(
+    (match) => match.matchType === "manual_override",
+  ).length;
+  const canonicalMatchCount = filteredMatches.filter(
+    (match) => match.matchType === "canonical_title_family",
+  ).length;
+
+  return (
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(89,198,242,0.14),_transparent_38%),linear-gradient(180deg,_#f8fcff_0%,_#ffffff_28%,_#f8fafc_100%)] px-6 pb-20 pt-28 lg:px-16">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8">
+        <section className="overflow-hidden rounded-[2rem] border border-white/70 bg-white/85 p-8 shadow-[0_30px_100px_rgba(15,23,42,0.08)] backdrop-blur">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="max-w-3xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-accent">
+                Analytics
+              </p>
+              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-950 lg:text-5xl">
+                Benchmark interactivo de Diez y Punto vs competidores
+              </h1>
+              <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+                Snapshot único con comparación de surtido, cobertura de precio, distribución por
+                categoría y matches exactos, manuales y canónicos contra Diez y Punto.
+              </p>
+            </div>
+            <div className="grid gap-3 rounded-3xl border border-slate-200 bg-slate-50/80 p-5 text-sm text-slate-600">
+              <div>
+                <span className="font-semibold text-slate-900">Snapshot:</span>{" "}
+                {snapshot.snapshotDate}
+              </div>
+              <div>
+                <span className="font-semibold text-slate-900">Generado:</span>{" "}
+                {new Date(snapshot.generatedAt).toLocaleString("es-AR")}
+              </div>
+              <div>
+                <span className="font-semibold text-slate-900">Productos:</span>{" "}
+                {formatCompact(snapshot.products.length)}
+              </div>
+              <div>
+                <span className="font-semibold text-slate-900">Matches:</span>{" "}
+                {formatCompact(snapshot.matches.length)}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-6 flex flex-wrap gap-2">
+            {snapshot.notes.map((note) => (
+              <span
+                key={note}
+                className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-medium text-slate-700 ring-1 ring-slate-200"
+              >
+                {note}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <section className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+              <div>
+                <h2 className="text-xl font-semibold text-slate-950">Filtros</h2>
+                <p className="mt-1 text-sm text-slate-600">
+                  El catálogo de Diez y Punto queda fijo como referencia. Los filtros afectan todas
+                  las secciones.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  type="button"
+                  onClick={() =>
+                    startTransition(() => setScope("all_products"))
+                  }
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                    scope === "all_products"
+                      ? "bg-slate-950 text-white"
+                      : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                  }`}
+                >
+                  Todos los productos
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    startTransition(() => setScope("exact_matches"))
+                  }
+                  className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                    scope === "exact_matches"
+                      ? "bg-slate-950 text-white"
+                      : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                  }`}
+                >
+                  Solo matches exactos
+                </button>
+              </div>
+            </div>
+
+            <div className="grid gap-5 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1fr]">
+              <label className="grid gap-2 text-sm text-slate-600">
+                Buscar producto o categoría
+                <input
+                  value={search}
+                  onChange={(event) => setSearch(event.target.value)}
+                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-accent"
+                  placeholder="Ej. bolígrafo, botellas, mochila"
+                />
+              </label>
+
+              <label className="grid gap-2 text-sm text-slate-600">
+                Categoría normalizada
+                <select
+                  value={selectedCategory}
+                  onChange={(event) =>
+                    startTransition(() => setSelectedCategory(event.target.value))
+                  }
+                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-accent"
+                >
+                  <option value="all">Todas</option>
+                  {snapshot.normalizedCategories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="grid gap-2 text-sm text-slate-600">
+                Cobertura de precio
+                <select
+                  value={priceMode}
+                  onChange={(event) =>
+                    startTransition(
+                      () =>
+                        setPriceMode(
+                          event.target.value as "all" | "priced" | "without_usable_price",
+                        ),
+                    )
+                  }
+                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-accent"
+                >
+                  <option value="all">Todo</option>
+                  <option value="priced">Solo con precio usable</option>
+                  <option value="without_usable_price">Solo sin precio usable</option>
+                </select>
+              </label>
+
+              <label className="grid gap-2 text-sm text-slate-600">
+                Tipo de match
+                <select
+                  value={matchMode}
+                  onChange={(event) =>
+                    startTransition(
+                      () =>
+                        setMatchMode(
+                          event.target.value as "all" | AnalyticsMatch["matchType"],
+                        ),
+                    )
+                  }
+                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-accent"
+                >
+                  <option value="all">Todos</option>
+                  <option value="exact_normalized_title">Exacto</option>
+                  <option value="manual_override">Manual</option>
+                  <option value="canonical_title_family">Canónico</option>
+                </select>
+              </label>
+
+              <div className="grid gap-2 text-sm text-slate-600">
+                <span>Rango de precio ARS</span>
+                <div className="grid grid-cols-2 gap-3">
+                  <input
+                    value={minPrice}
+                    onChange={(event) => setMinPrice(event.target.value)}
+                    className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-accent"
+                    placeholder="Mín."
+                  />
+                  <input
+                    value={maxPrice}
+                    onChange={(event) => setMaxPrice(event.target.value)}
+                    className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-accent"
+                    placeholder="Máx."
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {snapshot.sites
+                .filter((site) => site.id !== "diezypunto")
+                .map((site) => {
+                  const active = selectedCompetitors.includes(site.id);
+                  return (
+                    <button
+                      key={site.id}
+                      type="button"
+                      onClick={() =>
+                        startTransition(() =>
+                          setSelectedCompetitors((current) =>
+                            current.includes(site.id)
+                              ? current.filter((value) => value !== site.id)
+                              : [...current, site.id],
+                          ),
+                        )
+                      }
+                      className={`rounded-full px-4 py-2 text-sm font-medium ring-1 transition ${
+                        active
+                          ? "bg-slate-950 text-white ring-slate-950"
+                          : "bg-white text-slate-700 ring-slate-200 hover:bg-slate-50"
+                      }`}
+                    >
+                      {site.name}
+                    </button>
+                  );
+                })}
+            </div>
+          </div>
+        </section>
+
+        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <MetricCard
+            label="Productos filtrados"
+            value={formatCompact(filteredProducts.length)}
+            detail={`${formatCompact(pricedProducts.length)} con precio usable`}
+          />
+          <MetricCard
+            label="Mediana filtrada"
+            value={formatCurrency(getMedian(pricedValues))}
+            detail="Solo productos con precio usable"
+          />
+          <MetricCard
+            label="Categorías activas"
+            value={String(
+              new Set(filteredProducts.map((product) => product.normalizedCategory)).size,
+            )}
+            detail="Esquema unificado"
+          />
+          <MetricCard
+            label="Matches filtrados"
+            value={formatCompact(filteredMatches.length)}
+            detail={`${exactMatchCount} exactos · ${manualMatchCount} manuales · ${canonicalMatchCount} canónicos`}
+          />
+        </section>
+
+        <section className="grid gap-4 xl:grid-cols-4">
+          {siteSummaries.map(({ site, productCount, pricedCount, categoryCount, medianPrice, averagePrice, exactMatches }) => (
+            <article
+              key={site.id}
+              className="rounded-[1.75rem] border bg-white p-5 shadow-sm"
+              style={siteColor(site)}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <p className="text-sm font-medium">{site.name}</p>
+                  <p className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-500">
+                    {site.domain}
+                  </p>
+                </div>
+                <span className="rounded-full bg-white/80 px-2.5 py-1 text-xs font-semibold ring-1 ring-black/5">
+                  {formatCompact(productCount)} artículos
+                </span>
+              </div>
+
+              <dl className="mt-5 grid gap-3 text-sm text-slate-600">
+                <div className="flex items-center justify-between gap-4">
+                  <dt>Con precio usable</dt>
+                  <dd className="font-semibold text-slate-950">
+                    {pricedCount}/{productCount}
+                  </dd>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <dt>Mediana</dt>
+                  <dd className="font-semibold text-slate-950">{formatCurrency(medianPrice)}</dd>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <dt>Promedio</dt>
+                  <dd className="font-semibold text-slate-950">{formatCurrency(averagePrice)}</dd>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <dt>Categorías</dt>
+                  <dd className="font-semibold text-slate-950">{categoryCount}</dd>
+                </div>
+                <div className="flex items-center justify-between gap-4">
+                  <dt>Matches exactos</dt>
+                  <dd className="font-semibold text-slate-950">{exactMatches}</dd>
+                </div>
+              </dl>
+            </article>
+          ))}
+        </section>
+
+        <SectionCard
+          title="Comparación por categoría"
+          description="Cantidad de artículos y mediana de precio por rubro normalizado."
+        >
+          <div className="overflow-x-auto">
+            <table className="min-w-full border-separate border-spacing-y-2 text-sm">
+              <thead>
+                <tr className="text-left text-slate-500">
+                  <th className="px-4 py-2 font-medium">Categoría</th>
+                  {selectedSites.map((site) => (
+                    <th key={site.id} className="px-4 py-2 font-medium">
+                      {site.name}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {categoryRows.map((row) => (
+                  <tr key={row.category} className="rounded-2xl bg-slate-50 text-slate-700">
+                    <td className="rounded-l-2xl px-4 py-3 font-medium text-slate-950">
+                      {row.category}
+                    </td>
+                    {row.perSite.map((cell, index) => (
+                      <td
+                        key={`${row.category}-${cell.siteId}`}
+                        className={`px-4 py-3 ${index === row.perSite.length - 1 ? "rounded-r-2xl" : ""}`}
+                      >
+                        <div className="font-medium text-slate-950">{cell.count}</div>
+                        <div className="text-xs text-slate-500">
+                          Mediana: {formatCurrency(cell.median)}
+                        </div>
+                      </td>
+                    ))}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </SectionCard>
+
+        <SectionCard
+          title="Distribución de precios"
+          description="Buckets simples para leer en qué tramo compite cada sitio cuando sí hay precio usable."
+        >
+          <div className="grid gap-3">
+            {bucketRows.map((bucket) => (
+              <div
+                key={bucket.label}
+                className="rounded-2xl border border-slate-200 bg-slate-50/70 p-4"
+              >
+                <div className="mb-3 flex items-center justify-between gap-4">
+                  <h3 className="text-sm font-semibold text-slate-950">{bucket.label}</h3>
+                </div>
+                <div className="grid gap-2">
+                  {selectedSites.map((site) => {
+                    const value = bucket.perSite.find((item) => item.siteId === site.id)?.count ?? 0;
+                    const maxValue = Math.max(
+                      1,
+                      ...bucket.perSite.map((item) => item.count),
+                    );
+                    return (
+                      <div key={`${bucket.label}-${site.id}`} className="grid gap-1">
+                        <div className="flex items-center justify-between text-xs text-slate-600">
+                          <span>{site.name}</span>
+                          <span>{value}</span>
+                        </div>
+                        <div className="h-2 rounded-full bg-slate-200">
+                          <div
+                            className="h-2 rounded-full"
+                            style={{
+                              width: `${(value / maxValue) * 100}%`,
+                              backgroundColor: site.color,
+                            }}
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+          </div>
+        </SectionCard>
+
+        <SectionCard
+          title="Matches con Diez y Punto"
+          description="Tabla operativa de artículos comparables por match exacto, manual curado o canónico."
+        >
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <thead className="text-left text-slate-500">
+                <tr>
+                  <th className="px-3 py-3 font-medium">Producto DYP</th>
+                  <th className="px-3 py-3 font-medium">Competidor</th>
+                  <th className="px-3 py-3 font-medium">Tipo</th>
+                  <th className="px-3 py-3 font-medium">Categoría</th>
+                  <th className="px-3 py-3 font-medium">Precio DYP</th>
+                  <th className="px-3 py-3 font-medium">Precio comp.</th>
+                  <th className="px-3 py-3 font-medium">Gap</th>
+                  <th className="px-3 py-3 font-medium">Gap %</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredMatches.slice(0, 250).map((match) => (
+                  <tr
+                    key={`${match.siteId}-${match.ourProductId}-${match.competitorProductId}`}
+                    className="border-t border-slate-100 text-slate-700"
+                  >
+                    <td className="px-3 py-4">
+                      <Link href={match.ourUrl} target="_blank" className="font-medium text-slate-950 hover:text-accent">
+                        {match.ourTitle}
+                      </Link>
+                    </td>
+                    <td className="px-3 py-4">
+                      <div className="font-medium text-slate-950">{match.siteName}</div>
+                      <Link href={match.competitorUrl} target="_blank" className="text-xs text-slate-500 hover:text-accent">
+                        {match.competitorTitle}
+                      </Link>
+                    </td>
+                    <td className="px-3 py-4">
+                      <span
+                        className={`inline-flex rounded-full px-2 py-1 text-[11px] font-medium ring-1 ${matchTypeClass(
+                          match.matchType,
+                        )}`}
+                      >
+                        {formatMatchType(match.matchType)}
+                      </span>
+                      <div className="mt-1 text-xs text-slate-500">
+                        Score {match.matchScore.toFixed(2)}
+                      </div>
+                      {match.matchNote ? (
+                        <div className="mt-1 max-w-[16rem] text-xs leading-5 text-slate-500">
+                          {match.matchNote}
+                        </div>
+                      ) : null}
+                    </td>
+                    <td className="px-3 py-4">{match.ourNormalizedCategory}</td>
+                    <td className="px-3 py-4">{formatCurrency(match.ourPriceArs)}</td>
+                    <td className="px-3 py-4">
+                      <div>{formatCurrency(match.competitorPriceArs)}</div>
+                      <span
+                        className={`mt-1 inline-flex rounded-full px-2 py-1 text-[11px] font-medium ring-1 ${getPriceStatusClass(
+                          match.competitorPriceStatus,
+                        )}`}
+                      >
+                        {formatPriceStatus(match.competitorPriceStatus)}
+                      </span>
+                    </td>
+                    <td className="px-3 py-4">{formatCurrency(match.priceGapArs)}</td>
+                    <td className="px-3 py-4">{formatPercent(match.priceGapPct)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-xs text-slate-500">
+            Mostrando hasta 250 matches filtrados. Los matches combinan coincidencia exacta,
+            overrides manuales curados y equivalencias canónicas por familia/categoría.
+          </p>
+        </SectionCard>
+
+        <SectionCard
+          title="Explorador de catálogo"
+          description="Vista producto a producto para filtrar surtido, categoría y cobertura de precio."
+        >
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <thead className="text-left text-slate-500">
+                <tr>
+                  <th className="px-3 py-3 font-medium">Sitio</th>
+                  <th className="px-3 py-3 font-medium">Producto</th>
+                  <th className="px-3 py-3 font-medium">Categoría</th>
+                  <th className="px-3 py-3 font-medium">Precio</th>
+                  <th className="px-3 py-3 font-medium">Estado</th>
+                </tr>
+              </thead>
+              <tbody>
+                {productRows.slice(0, 300).map((product) => {
+                  const site = snapshot.sites.find((item) => item.id === product.siteId);
+                  return (
+                    <tr key={product.id} className="border-t border-slate-100 text-slate-700">
+                      <td className="px-3 py-4">
+                        <span
+                          className="inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ring-1"
+                          style={site ? siteColor(site) : undefined}
+                        >
+                          {product.siteName}
+                        </span>
+                      </td>
+                      <td className="px-3 py-4">
+                        <Link href={product.url} target="_blank" className="font-medium text-slate-950 hover:text-accent">
+                          {product.title}
+                        </Link>
+                        <div className="mt-1 text-xs text-slate-500">
+                          {product.rawCategories.slice(0, 3).join(" / ")}
+                        </div>
+                      </td>
+                      <td className="px-3 py-4">{product.normalizedCategory}</td>
+                      <td className="px-3 py-4">{formatCurrency(product.priceArs)}</td>
+                      <td className="px-3 py-4">
+                        <span
+                          className={`inline-flex rounded-full px-2 py-1 text-[11px] font-medium ring-1 ${getPriceStatusClass(
+                            product.priceStatus,
+                          )}`}
+                        >
+                          {formatPriceStatus(product.priceStatus)}
+                        </span>
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+          <p className="mt-4 text-xs text-slate-500">
+            Mostrando hasta 300 filas del filtro actual. Si querés revisar un producto puntual, usá
+            la búsqueda o abrilo desde la tabla.
+          </p>
+        </SectionCard>
+      </div>
+    </div>
+  );
+}
+
+function MetricCard({
+  label,
+  value,
+  detail,
+}: {
+  label: string;
+  value: string;
+  detail: string;
+}) {
+  return (
+    <article className="rounded-[1.6rem] border border-slate-200 bg-white p-5 shadow-sm">
+      <p className="text-sm font-medium text-slate-500">{label}</p>
+      <p className="mt-2 text-3xl font-semibold tracking-tight text-slate-950">{value}</p>
+      <p className="mt-2 text-sm text-slate-600">{detail}</p>
+    </article>
+  );
+}
+
+function SectionCard({
+  title,
+  description,
+  children,
+}: {
+  title: string;
+  description: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
+      <div className="mb-5">
+        <h2 className="text-xl font-semibold text-slate-950">{title}</h2>
+        <p className="mt-1 text-sm text-slate-600">{description}</p>
+      </div>
+      {children}
+    </section>
+  );
+}
