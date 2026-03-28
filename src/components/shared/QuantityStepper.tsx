@@ -76,7 +76,12 @@ export default function QuantityStepper({
           const raw = e.target.value;
           if (raw === "") { onChange(""); return; }
           const v = parseInt(raw);
-          if (!isNaN(v) && v >= min && v <= max) onChange(v);
+          // Allow intermediate values (e.g. typing "5" when min=50) — min enforced on blur
+          if (!isNaN(v) && v >= 1 && v <= max) onChange(v);
+        }}
+        onKeyDown={(e) => {
+          // Prevent Cmd+Backspace from triggering browser back navigation
+          if (e.key === "Backspace" && (e.metaKey || e.ctrlKey)) e.preventDefault();
         }}
         onBlur={() => { if (value === "" || value < min) onChange(min); }}
         className={`border-x ${border} ${inputBg} ${s.inp} text-center font-medium tabular-nums outline-none`}
