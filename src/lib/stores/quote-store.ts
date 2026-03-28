@@ -98,6 +98,29 @@ export const useQuoteStore = create<QuoteState>()(
       setSyncing: (syncing) => set({ isSyncing: syncing }),
       setSyncedAt: (timestamp) => set({ lastSyncedAt: timestamp, isSyncing: false }),
     }),
-    { name: "diezypunto-quote" },
+    {
+      name: "diezypunto-quote",
+      version: 1,
+      migrate: (persisted: unknown, version: number) => {
+        const state = persisted as QuoteState;
+        if (version === 0 && state.items) {
+          // Fix items from before compound lineId migration — old items lack "||" in id
+          const seen = new Set<string>();
+          state.items = state.items
+            .map((item) => ({
+              ...item,
+              id: item.id?.includes("||")
+                ? item.id
+                : lineId((item as any).product?.product_id ?? "", item.color, item.personalization_method),
+            }))
+            .filter((item) => {
+              if (seen.has(item.id)) return false;
+              seen.add(item.id);
+              return true;
+            });
+        }
+        return state;
+      },
+    },
   ),
 );
