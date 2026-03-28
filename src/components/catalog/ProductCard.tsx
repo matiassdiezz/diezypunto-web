@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Tote, Leaf, Check, Minus, Plus } from "@phosphor-icons/react";
+import { Tote, Leaf, Check } from "@phosphor-icons/react";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
+import { getMinQty } from "@/lib/product-utils";
+import QuantityStepper from "@/components/shared/QuantityStepper";
 import SocialProofBadge from "@/components/catalog/SocialProofBadge";
 
 interface ProductCardProps {
@@ -20,7 +22,7 @@ export default function ProductCard({
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const [added, setAdded] = useState(false);
-  const minQty = product.price_tiers?.[0]?.min ?? product.min_qty ?? 1;
+  const minQty = getMinQty(product);
   const [qty, setQty] = useState<number | "">(minQty);
 
   const imageUrl = product.image_urls[0];
@@ -117,40 +119,13 @@ export default function ProductCard({
 
           {/* Stepper + Add */}
           <div className="mt-2 flex items-center gap-1.5">
-            <div
-              className="flex items-center rounded-xl border border-white/65 bg-white/70 backdrop-blur-sm"
-              role="group"
-              aria-label="Cantidad"
-            >
-              <button
-                onClick={() => setQty((q) => Math.max(minQty, (q || minQty) - 1))}
-                className="rounded-l-xl px-2 py-1.5 text-muted transition-colors hover:bg-white/80 sm:px-2.5 sm:py-2"
-                aria-label="Disminuir cantidad"
-              >
-                <Minus className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-              </button>
-              <input
-                type="text"
-                inputMode="numeric"
-                value={qty}
-                onChange={(e) => {
-                  const raw = e.target.value;
-                  if (raw === "") { setQty(""); return; }
-                  const v = parseInt(raw);
-                  if (!isNaN(v) && v >= minQty) setQty(v);
-                }}
-                onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
-                className="w-8 border-x border-white/65 bg-transparent py-1.5 text-center text-xs font-medium tabular-nums outline-none sm:w-10 sm:py-2 sm:text-sm"
-                aria-label="Cantidad"
-              />
-              <button
-                onClick={() => setQty((q) => (q || 0) + 1)}
-                className="rounded-r-xl px-2 py-1.5 text-muted transition-colors hover:bg-white/80 sm:px-2.5 sm:py-2"
-                aria-label="Aumentar cantidad"
-              >
-                <Plus className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-              </button>
-            </div>
+            <QuantityStepper
+              value={qty}
+              onChange={setQty}
+              min={minQty}
+              size="sm"
+              glass
+            />
 
             <button
               onClick={handleAdd}

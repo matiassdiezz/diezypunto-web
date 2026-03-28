@@ -29,6 +29,7 @@ import { useRecentlyViewedStore } from "@/lib/stores/recently-viewed-store";
 import { listProducts } from "@/lib/api";
 import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult, QuoteItem } from "@/lib/types";
+import { getUnitPrice } from "@/lib/product-utils";
 import CartMilestone from "@/components/quote/CartMilestone";
 import ProductCard from "@/components/catalog/ProductCard";
 import SaveQuoteButton from "@/components/portal/SaveQuoteButton";
@@ -124,13 +125,7 @@ export default function QuoteBuilder() {
 
   /** Get the unit price for a cart item based on its quantity and price tiers */
   function getItemUnitPrice(item: { product: ProductResult; quantity: number }): number | null {
-    if (item.product.price_tiers && item.product.price_tiers.length > 0) {
-      const tier = item.product.price_tiers.find(
-        (t) => item.quantity >= t.min && (t.max === null || item.quantity <= t.max)
-      ) ?? item.product.price_tiers[0];
-      return tier.finalPrice;
-    }
-    return item.product.price;
+    return getUnitPrice(item.product, item.quantity);
   }
 
   const total = items.reduce((sum, i) => {

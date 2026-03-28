@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { create } from "zustand";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Tote, Check, Minus, Plus } from "@phosphor-icons/react";
+import { X, Tote, Check } from "@phosphor-icons/react";
 import Link from "next/link";
 import type { ProductResult } from "@/lib/types";
 import { useQuoteStore } from "@/lib/stores/quote-store";
+import { getMinQty, getUnitPrice } from "@/lib/product-utils";
+import QuantityStepper from "@/components/shared/QuantityStepper";
 import { listProducts } from "@/lib/api";
 import { getComplementaryCategories } from "@/lib/engine/affinity";
 
@@ -105,15 +107,7 @@ export default function AddToCartDrawer() {
               </div>
               {product.price != null && (
                 <p className="text-sm font-bold">
-                  ${((() => {
-                    if (product.price_tiers?.length) {
-                      const tier = product.price_tiers.find(
-                        (t) => quantity >= t.min && (t.max === null || quantity <= t.max)
-                      ) ?? product.price_tiers[0];
-                      return tier.finalPrice * quantity;
-                    }
-                    return product.price! * quantity;
-                  })()).toLocaleString("es-AR")}
+                  ${((getUnitPrice(product, quantity) ?? product.price!) * quantity).toLocaleString("es-AR")}
                   <span className="ml-0.5 text-xs font-normal text-muted">+ IVA</span>
                 </p>
               )}
@@ -159,7 +153,7 @@ export default function AddToCartDrawer() {
 function SuggestionRow({ product }: { product: ProductResult }) {
   const addItem = useQuoteStore((s) => s.addItem);
   const [added, setAdded] = useState(false);
-  const minQty = product.price_tiers?.[0]?.min ?? product.min_qty ?? 1;
+  const minQty = getMinQty(product);
   const [qty, setQty] = useState<number | "">(minQty);
 
   function handleAdd() {
@@ -185,36 +179,14 @@ function SuggestionRow({ product }: { product: ProductResult }) {
           <p className="text-xs text-accent">${product.price.toLocaleString("es-AR")} <span className="text-muted">+ IVA</span></p>
         )}
       </div>
-      <div className="flex shrink-0 items-center rounded-lg border border-white/60 bg-white/70 backdrop-blur-sm">
-        <button
-          onClick={() => setQty((q) => Math.max(minQty, (q || minQty) - 1))}
-          className="px-1.5 py-1 text-muted transition-colors hover:bg-white/80"
-          aria-label="Disminuir cantidad"
-        >
-          <Minus className="h-3 w-3" />
-        </button>
-        <input
-          type="text"
-          inputMode="numeric"
-          value={qty}
-          onChange={(e) => {
-            const raw = e.target.value;
-            if (raw === "") { setQty(""); return; }
-            const v = parseInt(raw);
-            if (!isNaN(v) && v >= minQty) setQty(v);
-          }}
-          onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
-          className="w-7 border-x border-white/60 bg-transparent py-1 text-center text-[11px] font-medium tabular-nums outline-none"
-          aria-label="Cantidad"
-        />
-        <button
-          onClick={() => setQty((q) => (q || 0) + 1)}
-          className="px-1.5 py-1 text-muted transition-colors hover:bg-white/80"
-          aria-label="Aumentar cantidad"
-        >
-          <Plus className="h-3 w-3" />
-        </button>
-      </div>
+      <QuantityStepper
+        value={qty}
+        onChange={setQty}
+        min={minQty}
+        size="xs"
+        glass
+        className="shrink-0"
+      />
       <button
         onClick={handleAdd}
         className={`shrink-0 rounded-lg px-2.5 py-1.5 text-xs font-medium text-white transition-all ${

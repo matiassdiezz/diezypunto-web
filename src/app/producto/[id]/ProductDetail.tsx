@@ -4,17 +4,19 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { listProducts } from "@/lib/api";
 import type { ProductResult } from "@/lib/types";
-import { useQuoteStore, MAX_QTY } from "@/lib/stores/quote-store";
+import { useQuoteStore } from "@/lib/stores/quote-store";
 import { useRecentlyViewedStore } from "@/lib/stores/recently-viewed-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
 import { trackEvent } from "@/lib/analytics-client";
+import { getMinQty, getUnitPrice, getColorStock } from "@/lib/product-utils";
 import { AnimatePresence, motion } from "framer-motion";
-import { Tote, Leaf, Minus, Plus, Check } from "@phosphor-icons/react";
+import { Tote, Leaf, Check } from "@phosphor-icons/react";
 import Link from "next/link";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import Breadcrumbs from "@/components/catalog/Breadcrumbs";
 import ProductCard from "@/components/catalog/ProductCard";
 import QuantityNudge from "@/components/catalog/QuantityNudge";
+import QuantityStepper from "@/components/shared/QuantityStepper";
 import PersonalizationCard from "@/components/catalog/PersonalizationCard";
 import SocialProofBadge from "@/components/catalog/SocialProofBadge";
 import TierComparison from "@/components/catalog/TierComparison";
@@ -26,7 +28,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   const searchParams = useSearchParams();
   const [related, setRelated] = useState<ProductResult[]>([]);
   const [selectedImage, setSelectedImage] = useState(0);
-  const minQty = product.price_tiers?.[0]?.min ?? product.min_qty ?? 1;
+  const minQty = getMinQty(product);
   const initialQty = (() => {
     const q = searchParams.get("qty");
     if (q) { const n = parseInt(q); if (!isNaN(n) && n >= minQty) return n; }
@@ -41,11 +43,13 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   );
   const [justAdded, setJustAdded] = useState(false);
   const [colorWarn, setColorWarn] = useState(false);
+  const [stockWarn, setStockWarn] = useState(false);
   const [isZooming, setIsZooming] = useState(false);
   const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
   const zoomRef = useRef<HTMLDivElement>(null);
   const addTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const colorWarnRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const stockWarnRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const addToRecentlyViewed = useRecentlyViewedStore((s) => s.addProduct);
@@ -101,6 +105,10 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
     setZoomOrigin(`${x}% ${y}%`);
   }
 
+  const effectiveQty = qty || minQty;
+  const stockLimit = getColorStock(product, selectedColor);
+  const activePrice = getUnitPrice(product, effectiveQty);
+
   function handleAdd() {
     if (product.colors.length > 0 && !selectedColor) {
       setColorWarn(true);
@@ -108,13 +116,14 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
       colorWarnRef.current = setTimeout(() => setColorWarn(false), 2000);
       return;
     }
-    const q = effectiveQty;
-    if (selectedColor) {
-      const stock = product.stock_by_color?.[selectedColor];
-      if (stock !== undefined && q > stock) return;
+    if (stockLimit !== undefined && effectiveQty > stockLimit) {
+      setStockWarn(true);
+      clearTimeout(stockWarnRef.current);
+      stockWarnRef.current = setTimeout(() => setStockWarn(false), 2000);
+      return;
     }
-    addItem(product, q, selectedColor ?? undefined, selectedMethod ?? undefined);
-    openDrawer(product, q);
+    addItem(product, effectiveQty, selectedColor ?? undefined, selectedMethod ?? undefined);
+    openDrawer(product, effectiveQty);
     setJustAdded(true);
     clearTimeout(addTimerRef.current);
     addTimerRef.current = setTimeout(() => setJustAdded(false), 1500);
@@ -123,15 +132,8 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   useEffect(() => () => {
     clearTimeout(addTimerRef.current);
     clearTimeout(colorWarnRef.current);
+    clearTimeout(stockWarnRef.current);
   }, []);
-
-  const effectiveQty = qty || minQty;
-
-  const activePrice = product.price_tiers?.length
-    ? (product.price_tiers.find(
-        (t) => effectiveQty >= t.min && (t.max === null || effectiveQty <= t.max)
-      ) ?? product.price_tiers[0]).finalPrice
-    : product.price;
 
   const breadcrumbs = [
     { label: "Inicio", href: "/" },
@@ -379,38 +381,13 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
 
               {/* Quantity stepper + Add */}
               <div className="mt-4 flex flex-col gap-2 border-t border-border/50 pt-4 sm:flex-row sm:items-center sm:gap-3">
-                <div className="flex items-center rounded-xl border border-border">
-                  <button
-                    onClick={() => setQty(Math.max(minQty, effectiveQty - 1))}
-                    className="rounded-l-xl px-3 py-2.5 text-muted transition-colors duration-200 hover:bg-surface"
-                  >
-                    <Minus className="h-4 w-4" />
-                  </button>
-                  <input
-                    type="text"
-                    inputMode="numeric"
-                    value={qty}
-                    onChange={(e) => {
-                      const raw = e.target.value;
-                      if (raw === "") { setQty(""); return; }
-                      const v = parseInt(raw);
-                      if (!isNaN(v) && v >= minQty && v <= MAX_QTY) setQty(v);
-                    }}
-                    onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
-                    className="w-16 border-x border-border bg-white py-2.5 text-center text-sm font-medium tabular-nums outline-none"
-                  />
-                  <button
-                    onClick={() => {
-                      const next = (qty || 0) + 1;
-                      const stock = selectedColor ? product.stock_by_color?.[selectedColor] : undefined;
-                      if ((stock !== undefined && next > stock) || next > MAX_QTY) return;
-                      setQty(next);
-                    }}
-                    className="rounded-r-xl px-3 py-2.5 text-muted transition-colors duration-200 hover:bg-surface"
-                  >
-                    <Plus className="h-4 w-4" />
-                  </button>
-                </div>
+                <QuantityStepper
+                  value={qty}
+                  onChange={setQty}
+                  min={minQty}
+                  max={stockLimit !== undefined ? stockLimit : undefined}
+                  size="md"
+                />
                 <button
                   onClick={handleAdd}
                   className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-medium text-white transition-all sm:text-base ${
@@ -436,6 +413,11 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
               {/* Quantity Nudge */}
               <QuantityNudge qty={qty} product={product} />
 
+              {stockWarn && stockLimit !== undefined && (
+                <p className="mt-2 text-xs text-red-500">
+                  Stock disponible: {stockLimit} unidades
+                </p>
+              )}
 
             </div>
 
