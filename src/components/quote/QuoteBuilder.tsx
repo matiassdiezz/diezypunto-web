@@ -3,8 +3,6 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import {
-  Minus,
-  Plus,
   Trash,
   CreditCard,
   SpinnerGap,
@@ -29,7 +27,8 @@ import { useRecentlyViewedStore } from "@/lib/stores/recently-viewed-store";
 import { listProducts } from "@/lib/api";
 import { getComplementaryCategories } from "@/lib/engine/affinity";
 import type { ProductResult, QuoteItem } from "@/lib/types";
-import { getUnitPrice } from "@/lib/product-utils";
+import { getUnitPrice, getColorStock } from "@/lib/product-utils";
+import QuantityStepper from "@/components/shared/QuantityStepper";
 import CartMilestone from "@/components/quote/CartMilestone";
 import ProductCard from "@/components/catalog/ProductCard";
 import SaveQuoteButton from "@/components/portal/SaveQuoteButton";
@@ -106,7 +105,6 @@ export default function QuoteBuilder() {
   const [transferSent, setTransferSent] = useState(false);
   const [checkoutOpen, setCheckoutOpen] = useState(false);
   const [crossSell, setCrossSell] = useState<ProductResult[]>([]);
-  const [minQtyWarn, setMinQtyWarn] = useState<string | null>(null);
   const [billingForm, setBillingForm] = useState<BillingFormState>(DEFAULT_BILLING_FORM);
   const [billingError, setBillingError] = useState<string | null>(null);
   const openWithMessage = useChatStore((s) => s.openWithMessage);
@@ -374,8 +372,6 @@ export default function QuoteBuilder() {
         {items.map((item) => {
           const unitPrice = getItemUnitPrice(item);
           const subtotal = unitPrice ? unitPrice * item.quantity : null;
-          const itemMinQty = item.product.min_qty || 1;
-          const atMin = item.quantity <= itemMinQty;
           return (
             <div
               key={item.id}
@@ -413,38 +409,7 @@ export default function QuoteBuilder() {
                   </div>
 
                   <div className="mt-3 flex items-center justify-between gap-3">
-                    {/* Qty controls */}
-                    <div className="flex items-center gap-2">
-                      <button
-                        onClick={() => {
-                          if (!atMin) {
-                            const newQty = item.quantity - 1;
-                            if (newQty < itemMinQty) {
-                              setMinQtyWarn(item.product.product_id);
-                            } else {
-                              updateQty(item.id, newQty);
-                              setMinQtyWarn(null);
-                            }
-                          }
-                        }}
-                        className="rounded-lg border border-white/65 bg-white/75 p-1.5 transition-colors hover:bg-white"
-                      >
-                        <Minus className="h-3 w-3" />
-                      </button>
-                      <span className="w-8 text-center text-sm font-medium">
-                        {item.quantity}
-                      </span>
-                      <button
-                        onClick={() => {
-                          const stock = item.color ? item.product.stock_by_color?.[item.color] : undefined;
-                          if (stock !== undefined && item.quantity >= stock) return;
-                          updateQty(item.id, item.quantity + 1);
-                        }}
-                        className="rounded-lg border border-white/65 bg-white/75 p-1.5 transition-colors hover:bg-white"
-                      >
-                        <Plus className="h-3 w-3" />
-                      </button>
-                    </div>
+                    <CartItemQty item={item} />
 
                     {/* Price */}
                     <div className="text-right">
@@ -466,11 +431,6 @@ export default function QuoteBuilder() {
                 </div>
               </div>
 
-              {minQtyWarn === item.product.product_id && item.product.min_qty && (
-                <p className="mt-2 text-xs text-amber-600">
-                  Pedido mínimo: {item.product.min_qty} unidades
-                </p>
-              )}
             </div>
           );
         })}
@@ -1043,5 +1003,29 @@ function RecentlyViewedSection({ cartProductIds }: { cartProductIds: Set<string>
         ))}
       </div>
     </section>
+  );
+}
+
+/** Per-item quantity control with local editing state */
+function CartItemQty({ item }: { item: QuoteItem }) {
+  const updateQty = useQuoteStore((s) => s.updateQty);
+  const min = item.product.min_qty || 1;
+  const stock = getColorStock(item.product, item.color);
+  const [localQty, setLocalQty] = useState<number | "">(item.quantity);
+
+  useEffect(() => { setLocalQty(item.quantity); }, [item.quantity]);
+
+  return (
+    <QuantityStepper
+      value={localQty}
+      onChange={(v) => {
+        setLocalQty(v);
+        if (typeof v === "number" && v >= min) updateQty(item.id, v);
+      }}
+      min={min}
+      max={stock}
+      size="xs"
+      glass
+    />
   );
 }
