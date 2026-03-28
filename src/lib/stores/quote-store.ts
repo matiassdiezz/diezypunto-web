@@ -3,6 +3,8 @@ import { persist } from "zustand/middleware";
 import type { QuoteItem, ProductResult } from "../types";
 import { trackEvent } from "../analytics-client";
 
+export const MAX_QTY = 99999;
+
 /** Build a unique cart line id from product + variant */
 function lineId(productId: string, color?: string, method?: string): string {
   return [productId, color ?? "", method ?? ""].join("||");
@@ -74,7 +76,6 @@ export const useQuoteStore = create<QuoteState>()(
 
       updateQty: (itemId, quantity) => {
         if (quantity < 1) return;
-        const MAX_QTY = 99999;
         const capped = Math.min(quantity, MAX_QTY);
         set({
           items: get().items.map((i) =>

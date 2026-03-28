@@ -4,7 +4,7 @@ import { useEffect, useState, useCallback, useRef } from "react";
 import { useSearchParams } from "next/navigation";
 import { listProducts } from "@/lib/api";
 import type { ProductResult } from "@/lib/types";
-import { useQuoteStore } from "@/lib/stores/quote-store";
+import { useQuoteStore, MAX_QTY } from "@/lib/stores/quote-store";
 import { useRecentlyViewedStore } from "@/lib/stores/recently-viewed-store";
 import { useDrawerStore } from "@/components/shared/AddToCartDrawer";
 import { trackEvent } from "@/lib/analytics-client";
@@ -45,6 +45,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   const [zoomOrigin, setZoomOrigin] = useState("50% 50%");
   const zoomRef = useRef<HTMLDivElement>(null);
   const addTimerRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
+  const colorWarnRef = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const addToRecentlyViewed = useRecentlyViewedStore((s) => s.addProduct);
@@ -103,10 +104,11 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   function handleAdd() {
     if (product.colors.length > 0 && !selectedColor) {
       setColorWarn(true);
-      setTimeout(() => setColorWarn(false), 2000);
+      clearTimeout(colorWarnRef.current);
+      colorWarnRef.current = setTimeout(() => setColorWarn(false), 2000);
       return;
     }
-    const q = qty || minQty;
+    const q = effectiveQty;
     if (selectedColor) {
       const stock = product.stock_by_color?.[selectedColor];
       if (stock !== undefined && q > stock) return;
@@ -118,11 +120,16 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
     addTimerRef.current = setTimeout(() => setJustAdded(false), 1500);
   }
 
-  useEffect(() => () => clearTimeout(addTimerRef.current), []);
+  useEffect(() => () => {
+    clearTimeout(addTimerRef.current);
+    clearTimeout(colorWarnRef.current);
+  }, []);
+
+  const effectiveQty = qty || minQty;
 
   const activePrice = product.price_tiers?.length
     ? (product.price_tiers.find(
-        (t) => (qty || minQty) >= t.min && (t.max === null || (qty || minQty) <= t.max)
+        (t) => effectiveQty >= t.min && (t.max === null || effectiveQty <= t.max)
       ) ?? product.price_tiers[0]).finalPrice
     : product.price;
 
@@ -236,9 +243,9 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
             <div className="relative mt-4 rounded-xl border border-border bg-card p-4 sm:mt-6 sm:rounded-2xl sm:p-6">
               <div className="absolute right-3 top-3">
                 <ShareButton
-                  getShareUrl={() => buildProductShareUrl(product.product_id, qty || minQty)}
+                  getShareUrl={() => buildProductShareUrl(product.product_id, effectiveQty)}
                   getWhatsAppMessage={(url) =>
-                    buildProductWhatsAppMessage(product.title, qty || minQty, activePrice, url)
+                    buildProductWhatsAppMessage(product.title, effectiveQty, activePrice, url)
                   }
                   context="product"
                   trackingData={{ product_id: product.product_id }}
@@ -374,7 +381,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
               <div className="mt-4 flex flex-col gap-2 border-t border-border/50 pt-4 sm:flex-row sm:items-center sm:gap-3">
                 <div className="flex items-center rounded-xl border border-border">
                   <button
-                    onClick={() => setQty(Math.max(minQty, (qty || minQty) - 1))}
+                    onClick={() => setQty(Math.max(minQty, effectiveQty - 1))}
                     className="rounded-l-xl px-3 py-2.5 text-muted transition-colors duration-200 hover:bg-surface"
                   >
                     <Minus className="h-4 w-4" />
@@ -387,7 +394,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                       const raw = e.target.value;
                       if (raw === "") { setQty(""); return; }
                       const v = parseInt(raw);
-                      if (!isNaN(v) && v >= minQty && v <= 99999) setQty(v);
+                      if (!isNaN(v) && v >= minQty && v <= MAX_QTY) setQty(v);
                     }}
                     onBlur={() => { if (qty === "" || qty < minQty) setQty(minQty); }}
                     className="w-16 border-x border-border bg-white py-2.5 text-center text-sm font-medium tabular-nums outline-none"
@@ -396,7 +403,7 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                     onClick={() => {
                       const next = (qty || 0) + 1;
                       const stock = selectedColor ? product.stock_by_color?.[selectedColor] : undefined;
-                      if ((stock !== undefined && next > stock) || next > 99999) return;
+                      if ((stock !== undefined && next > stock) || next > MAX_QTY) return;
                       setQty(next);
                     }}
                     className="rounded-r-xl px-3 py-2.5 text-muted transition-colors duration-200 hover:bg-surface"

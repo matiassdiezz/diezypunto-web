@@ -106,7 +106,7 @@ function TierCard({
     </div>
   );
 
-  if (isCurrent) return <div className="block">{content}</div>;
+  if (isCurrent) return <div>{content}</div>;
 
   return (
     <Link href={`/producto/${product.product_id}`} className="block">
