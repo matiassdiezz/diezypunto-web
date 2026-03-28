@@ -261,15 +261,18 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                         Precio por cantidad
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                        {product.price_tiers.map((tier) => {
+                        {product.price_tiers.map((tier, idx) => {
                           const q = qty || 0;
                           const matchedTier = product.price_tiers!.find(
                             (t) => q >= t.min && (t.max === null || q <= t.max)
                           );
-                          // If no tier matched (qty below all minimums), highlight first tier
                           const isActive = matchedTier
                             ? tier === matchedTier
                             : tier === product.price_tiers![0];
+                          const basePrice = product.price_tiers![0].finalPrice;
+                          const savingsPct = idx > 0
+                            ? Math.round((1 - tier.finalPrice / basePrice) * 100)
+                            : 0;
                           return (
                             <div
                               key={tier.label}
@@ -288,7 +291,12 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                               }`}>
                                 ${tier.finalPrice.toLocaleString("es-AR")}
                               </p>
-                              <p className="text-[10px] text-muted">+ IVA</p>
+                              <p className="text-[10px] text-muted">
+                                + IVA
+                                {savingsPct > 0 && (
+                                  <span className="ml-1.5 font-semibold text-eco">-{savingsPct}%</span>
+                                )}
+                              </p>
                               {isActive && (
                                 <p className="mt-1 text-[10px] font-medium text-accent">Tu precio</p>
                               )}
@@ -380,34 +388,81 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
               )}
 
               {/* Quantity stepper + Add */}
-              <div className="mt-4 flex flex-col gap-2 border-t border-border/50 pt-4 sm:flex-row sm:items-center sm:gap-3">
-                <QuantityStepper
-                  value={qty}
-                  onChange={setQty}
-                  min={minQty}
-                  max={stockLimit !== undefined ? stockLimit : undefined}
-                  size="md"
-                />
-                <button
-                  onClick={handleAdd}
-                  className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-medium text-white transition-all sm:text-base ${
-                    justAdded
-                      ? "bg-success"
-                      : "bg-accent hover:bg-accent-hover"
-                  }`}
-                >
-                  {justAdded ? (
-                    <>
-                      <Check className="h-5 w-5" />
-                      Agregado
-                    </>
-                  ) : (
-                    <>
-                      <Tote className="h-5 w-5" />
-                      Agregar al carrito
-                    </>
-                  )}
-                </button>
+              <div className="mt-4 border-t border-border/50 pt-4">
+                {/* Quick-fill pills */}
+                {product.price_tiers && product.price_tiers.length > 1 && (
+                  <div className="mb-2.5 flex flex-wrap gap-1.5">
+                    {product.price_tiers.map((tier) => {
+                      const active = effectiveQty >= tier.min && (tier.max === null || effectiveQty <= tier.max);
+                      return (
+                        <button
+                          key={tier.min}
+                          onClick={() => setQty(tier.min)}
+                          className={`rounded-full px-3 py-1 text-xs font-medium transition-all ${
+                            active
+                              ? "bg-accent text-white shadow-sm"
+                              : "bg-surface text-muted hover:bg-accent/10 hover:text-accent"
+                          }`}
+                        >
+                          {tier.min}+ u.
+                        </button>
+                      );
+                    })}
+                  </div>
+                )}
+
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:gap-3">
+                  <QuantityStepper
+                    value={qty}
+                    onChange={setQty}
+                    min={minQty}
+                    max={stockLimit !== undefined ? stockLimit : undefined}
+                    size="md"
+                  />
+                  <button
+                    onClick={handleAdd}
+                    className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-medium text-white transition-all sm:text-base ${
+                      justAdded
+                        ? "bg-success"
+                        : "bg-accent hover:bg-accent-hover"
+                    }`}
+                  >
+                    {justAdded ? (
+                      <>
+                        <Check className="h-5 w-5" />
+                        Agregado
+                      </>
+                    ) : (
+                      <>
+                        <Tote className="h-5 w-5" />
+                        Agregar al carrito
+                      </>
+                    )}
+                  </button>
+                </div>
+
+                {/* Subtotal + savings */}
+                {activePrice != null && effectiveQty > 0 && (
+                  <div className="mt-3 flex items-baseline justify-between rounded-lg bg-surface/60 px-3 py-2">
+                    <span className="text-xs text-muted">Subtotal estimado</span>
+                    <span className="text-sm font-bold">
+                      ${(activePrice * effectiveQty).toLocaleString("es-AR")}
+                      <span className="ml-0.5 text-xs font-normal text-muted">+ IVA</span>
+                    </span>
+                  </div>
+                )}
+                {(() => {
+                  if (!product.price_tiers?.length || product.price_tiers.length < 2) return null;
+                  const base = product.price_tiers[0].finalPrice;
+                  const current = activePrice ?? base;
+                  const saved = (base - current) * effectiveQty;
+                  if (saved <= 0) return null;
+                  return (
+                    <p className="mt-1.5 text-center text-xs font-medium text-eco">
+                      Ahorrás ${saved.toLocaleString("es-AR")} vs. precio base
+                    </p>
+                  );
+                })()}
               </div>
 
               {/* Quantity Nudge */}
