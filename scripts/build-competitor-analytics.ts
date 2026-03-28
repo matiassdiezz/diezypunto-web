@@ -11,6 +11,7 @@ import {
   type PriceBasis,
   type PriceStatus,
 } from "../src/lib/analytics/competitor-snapshot";
+import { getAllProducts } from "../src/lib/engine/local-catalog";
 import { MANUAL_MATCH_OVERRIDES } from "../src/lib/analytics/manual-match-overrides";
 
 const OUTPUT_DIR = path.resolve("analytics");
@@ -21,18 +22,6 @@ const REQUEST_TIMEOUT_MS = 20000;
 const RETRIES = 3;
 const PAGE_CONCURRENCY = 8;
 const PRODUCT_CONCURRENCY = 10;
-
-type CatalogProduct = {
-  product_id: string;
-  title: string;
-  category: string;
-  subcategory?: string;
-  price: number | null;
-};
-
-type CatalogFile = {
-  products: CatalogProduct[];
-};
 
 type ParsedListingPage = {
   categoryName: string;
@@ -259,17 +248,76 @@ function categoryNameFromUrl(url: string) {
 function parsePrice(value: string | null | undefined) {
   if (!value) return null;
 
-  const trimmed = value.trim();
+  const trimmed = decodeHtmlEntities(value)
+    .replace(/\s+/g, "")
+    .replace(/\$/g, "")
+    .trim();
   if (!trimmed) return null;
 
-  const direct = Number(trimmed);
-  if (Number.isFinite(direct)) {
-    return direct;
+  if (/^\d{1,3}(\.\d{3})+$/.test(trimmed)) {
+    const parsedThousands = Number(trimmed.replace(/\./g, ""));
+    return Number.isFinite(parsedThousands) ? parsedThousands : null;
   }
 
-  const normalized = trimmed.replace(/\./g, "").replace(/,/g, ".");
-  const parsed = Number(normalized);
-  return Number.isFinite(parsed) ? parsed : null;
+  if (/^\d{1,3}(,\d{3})+$/.test(trimmed)) {
+    const parsedThousands = Number(trimmed.replace(/,/g, ""));
+    return Number.isFinite(parsedThousands) ? parsedThousands : null;
+  }
+
+  if (trimmed.includes(".") && trimmed.includes(",")) {
+    const lastDot = trimmed.lastIndexOf(".");
+    const lastComma = trimmed.lastIndexOf(",");
+    const normalized =
+      lastComma > lastDot
+        ? trimmed.replace(/\./g, "").replace(/,/g, ".")
+        : trimmed.replace(/,/g, "");
+    const parsed = Number(normalized);
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  if (trimmed.includes(",")) {
+    const parsed = Number(trimmed.replace(/,/g, "."));
+    return Number.isFinite(parsed) ? parsed : null;
+  }
+
+  const direct = Number(trimmed);
+  return Number.isFinite(direct) ? direct : null;
+}
+
+function extractMerchPrimaryScope(html: string) {
+  const titleMatch = html.match(/<h1 class="product_title[^"]*">[\s\S]*?<\/h1>/);
+  if (!titleMatch || titleMatch.index == null) {
+    return html;
+  }
+
+  const start = titleMatch.index;
+  const tail = html.slice(start);
+  const endMarkers = [
+    /<section class="related products/i,
+    /<div class="related-and-upsells/i,
+    /<div class="products related/i,
+    /id="tab-related"/i,
+    /class="merch\.com\.artir"/i,
+    /data-gtm4wp_product_data=/i,
+  ];
+
+  const end = endMarkers.reduce((currentEnd, pattern) => {
+    const match = tail.match(pattern);
+    if (!match || match.index == null) {
+      return currentEnd;
+    }
+    return Math.min(currentEnd, match.index);
+  }, Math.min(tail.length, 20000));
+
+  return tail.slice(0, end);
+}
+
+function parseMerchVisiblePrice(html: string) {
+  return (
+    html.match(
+      /<p class="price">[\s\S]*?woocommerce-Price-currencySymbol[^>]*>(?:&#36;|\$)<\/span>(?:&nbsp;|\s*)([0-9.,]+)/,
+    )?.[1] ?? null
+  );
 }
 
 function sortProducts(products: AnalyticsProduct[]) {
@@ -450,10 +498,9 @@ function buildProduct(input: {
 }
 
 async function collectDiezypuntoProducts() {
-  const catalogPath = path.resolve("src/data/catalog.json");
-  const catalog = JSON.parse(await fs.readFile(catalogPath, "utf8")) as CatalogFile;
+  const { products } = getAllProducts({ limit: 10_000, offset: 0, sort: "name_asc" });
 
-  return catalog.products
+  return products
     .filter((product) => product.title?.trim())
     .map((product) =>
       buildProduct({
@@ -464,8 +511,8 @@ async function collectDiezypuntoProducts() {
         rawCategories: uniqueStrings([product.category, product.subcategory]),
         priceArs: product.price,
         priceStatus: product.price != null ? "priced" : "unknown",
-        priceBasis: "final",
-        priceLabel: product.price != null ? "Precio final" : null,
+        priceBasis: product.price != null ? "plus_vat" : "unknown",
+        priceLabel: product.price != null ? "Precio visible + IVA" : null,
         notes: null,
       }),
     );
@@ -487,6 +534,7 @@ function parseMerchProductPage(html: string, url: string): MerchParsedProduct {
     price?: number;
     item_category?: string;
   }>(html.match(/name="gtm4wp_product_data"\s+value="([^"]+)"/)?.[1]);
+  const primaryScope = extractMerchPrimaryScope(html);
 
   const title =
     stripTags(
@@ -497,13 +545,16 @@ function parseMerchProductPage(html: string, url: string): MerchParsedProduct {
     ) || productIdFromUrl(url);
 
   const rawPrice =
-    html.match(/"display_price":([0-9.]+)/)?.[1] ??
-    html.match(/<p class="price">[\s\S]*?woocommerce-Price-currencySymbol[^>]*>\$<\/span>([0-9.,]+)/)?.[1] ??
+    parseMerchVisiblePrice(primaryScope) ??
+    primaryScope.match(/&quot;display_price&quot;:([0-9.]+)/)?.[1] ??
+    (gtmProductData?.price != null && gtmProductData.price > 0 ? String(gtmProductData.price) : null) ??
     null;
 
   const classCategorySlugs = [
     ...new Set(
-      [...html.matchAll(/\bproduct_cat-([a-z0-9-]+)/g)].map((match) => slugToLabel(match[1])),
+      [...primaryScope.matchAll(/\bproduct_cat-([a-z0-9-]+)/g)].map((match) =>
+        slugToLabel(match[1]),
+      ),
     ),
   ];
 

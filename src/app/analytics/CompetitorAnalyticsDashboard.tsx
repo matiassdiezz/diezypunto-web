@@ -62,6 +62,24 @@ function formatSignedCurrency(value: number | null) {
   return `${value > 0 ? "+" : "-"}${priceFormatter.format(Math.abs(value))}`;
 }
 
+function formatSnapshotTimestamp(value: string) {
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) {
+    return value;
+  }
+
+  const argentinaOffsetMs = -3 * 60 * 60 * 1000;
+  const localDate = new Date(date.getTime() + argentinaOffsetMs);
+  const day = String(localDate.getUTCDate()).padStart(2, "0");
+  const month = String(localDate.getUTCMonth() + 1).padStart(2, "0");
+  const year = localDate.getUTCFullYear();
+  const hours = String(localDate.getUTCHours()).padStart(2, "0");
+  const minutes = String(localDate.getUTCMinutes()).padStart(2, "0");
+  const seconds = String(localDate.getUTCSeconds()).padStart(2, "0");
+
+  return `${day}/${month}/${year} ${hours}:${minutes}:${seconds} ART`;
+}
+
 function formatMatchType(value: AnalyticsMatch["matchType"]) {
   switch (value) {
     case "exact_normalized_title":
@@ -519,7 +537,7 @@ export default function CompetitorAnalyticsDashboard({
               </div>
               <div>
                 <span className="font-semibold text-slate-900">Generado:</span>{" "}
-                {new Date(snapshot.generatedAt).toLocaleString("es-AR")}
+                {formatSnapshotTimestamp(snapshot.generatedAt)}
               </div>
               <div>
                 <span className="font-semibold text-slate-900">Productos:</span>{" "}
