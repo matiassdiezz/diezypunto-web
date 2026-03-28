@@ -31,7 +31,7 @@ export default function AddToCartDrawer() {
   const cartItems = useQuoteStore((s) => s.items);
   const [suggestions, setSuggestions] = useState<ProductResult[]>([]);
   const addedColor = product
-    ? cartItems.find((i) => i.product.product_id === product.product_id)?.color
+    ? cartItems.findLast((i) => i.product.product_id === product.product_id)?.color
     : undefined;
 
   useEffect(() => {
@@ -105,7 +105,15 @@ export default function AddToCartDrawer() {
               </div>
               {product.price != null && (
                 <p className="text-sm font-bold">
-                  ${(product.price * quantity).toLocaleString("es-AR")}
+                  ${((() => {
+                    if (product.price_tiers?.length) {
+                      const tier = product.price_tiers.find(
+                        (t) => quantity >= t.min && (t.max === null || quantity <= t.max)
+                      ) ?? product.price_tiers[0];
+                      return tier.finalPrice * quantity;
+                    }
+                    return product.price! * quantity;
+                  })()).toLocaleString("es-AR")}
                   <span className="ml-0.5 text-xs font-normal text-muted">+ IVA</span>
                 </p>
               )}

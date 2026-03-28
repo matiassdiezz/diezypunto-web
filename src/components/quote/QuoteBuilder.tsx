@@ -379,7 +379,8 @@ export default function QuoteBuilder() {
         {items.map((item) => {
           const unitPrice = getItemUnitPrice(item);
           const subtotal = unitPrice ? unitPrice * item.quantity : null;
-          const atMin = item.quantity <= 1;
+          const itemMinQty = item.product.min_qty || 1;
+          const atMin = item.quantity <= itemMinQty;
           return (
             <div
               key={item.id}
@@ -423,10 +424,10 @@ export default function QuoteBuilder() {
                         onClick={() => {
                           if (!atMin) {
                             const newQty = item.quantity - 1;
-                            updateQty(item.id, newQty);
-                            if (item.product.min_qty && newQty < item.product.min_qty) {
+                            if (newQty < itemMinQty) {
                               setMinQtyWarn(item.product.product_id);
                             } else {
+                              updateQty(item.id, newQty);
                               setMinQtyWarn(null);
                             }
                           }
@@ -439,7 +440,11 @@ export default function QuoteBuilder() {
                         {item.quantity}
                       </span>
                       <button
-                        onClick={() => updateQty(item.id, item.quantity + 1)}
+                        onClick={() => {
+                          const stock = item.color ? item.product.stock_by_color?.[item.color] : undefined;
+                          if (stock !== undefined && item.quantity >= stock) return;
+                          updateQty(item.id, item.quantity + 1);
+                        }}
                         className="rounded-lg border border-white/65 bg-white/75 p-1.5 transition-colors hover:bg-white"
                       >
                         <Plus className="h-3 w-3" />
