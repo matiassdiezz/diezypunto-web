@@ -22,6 +22,10 @@ const compactNumberFormatter = new Intl.NumberFormat("es-AR", {
   maximumFractionDigits: 1,
 });
 
+const countDeltaFormatter = new Intl.NumberFormat("es-AR", {
+  maximumFractionDigits: 1,
+});
+
 const PRICE_BUCKETS = [
   { label: "Hasta $500", min: 0, max: 500 },
   { label: "$500 a $1.500", min: 500, max: 1500 },
@@ -41,6 +45,21 @@ function formatCompact(value: number) {
 
 function formatPercent(value: number | null) {
   return value == null ? "N/D" : `${value.toFixed(1)}%`;
+}
+
+function formatSignedPercent(value: number | null) {
+  return value == null ? "N/D" : `${value > 0 ? "+" : ""}${value.toFixed(1)}%`;
+}
+
+function formatSignedCount(value: number | null) {
+  if (value == null) return "N/D";
+  return `${value > 0 ? "+" : value < 0 ? "-" : ""}${countDeltaFormatter.format(Math.abs(value))}`;
+}
+
+function formatSignedCurrency(value: number | null) {
+  if (value == null) return "N/D";
+  if (value === 0) return formatCurrency(0);
+  return `${value > 0 ? "+" : "-"}${priceFormatter.format(Math.abs(value))}`;
 }
 
 function formatMatchType(value: AnalyticsMatch["matchType"]) {
@@ -152,6 +171,15 @@ function siteColor(site: AnalyticsSite) {
     borderColor: `${site.color}33`,
     color: site.color,
   };
+}
+
+function gapToneClass(value: number | null, inverted = false) {
+  if (value == null) return "text-slate-500";
+
+  const normalized = inverted ? value * -1 : value;
+  if (normalized > 0) return "text-rose-600";
+  if (normalized < 0) return "text-emerald-600";
+  return "text-slate-700";
 }
 
 export default function CompetitorAnalyticsDashboard({
@@ -336,6 +364,136 @@ export default function CompetitorAnalyticsDashboard({
   const canonicalMatchCount = filteredMatches.filter(
     (match) => match.matchType === "canonical_title_family",
   ).length;
+  const competitorSummaries = siteSummaries.filter(({ site }) => site.id !== "diezypunto");
+  const strongestCoverageSite = [...competitorSummaries].sort(
+    (left, right) => right.exactMatches - left.exactMatches || right.productCount - left.productCount,
+  )[0];
+  const pricedMatches = filteredMatches.filter(
+    (match) => match.ourPriceArs != null && match.competitorPriceArs != null,
+  );
+  const cheaperMatches = [...pricedMatches]
+    .filter((match) => (match.priceGapPct ?? 0) < 0)
+    .sort((left, right) => (left.priceGapPct ?? 0) - (right.priceGapPct ?? 0));
+  const pricierMatches = [...pricedMatches]
+    .filter((match) => (match.priceGapPct ?? 0) > 0)
+    .sort((left, right) => (right.priceGapPct ?? 0) - (left.priceGapPct ?? 0));
+  const bestPriceWin = cheaperMatches[0] ?? null;
+  const worstPriceLoss = pricierMatches[0] ?? null;
+  const categoryBalanceRows = snapshot.normalizedCategories
+    .map((category) => {
+      const ownProductsInCategory = filteredProducts.filter(
+        (product) => product.siteId === "diezypunto" && product.normalizedCategory === category,
+      );
+      const ownPricedValues = ownProductsInCategory
+        .map((product) => product.priceArs)
+        .filter((price): price is number => price != null);
+      const competitorRows = competitorSummaries.map(({ site }) => {
+        const products = filteredProducts.filter(
+          (product) => product.siteId === site.id && product.normalizedCategory === category,
+        );
+        const prices = products
+          .map((product) => product.priceArs)
+          .filter((price): price is number => price != null);
+
+        return {
+          count: products.length,
+          median: getMedian(prices),
+        };
+      });
+
+      const competitorCountTotal = competitorRows.reduce((sum, row) => sum + row.count, 0);
+      const competitorAverageCount =
+        competitorRows.length > 0 ? competitorCountTotal / competitorRows.length : 0;
+      const competitorMedianAverage = getAverage(
+        competitorRows
+          .map((row) => row.median)
+          .filter((median): median is number => median != null),
+      );
+
+      return {
+        category,
+        ownCount: ownProductsInCategory.length,
+        ownMedian: getMedian(ownPricedValues),
+        competitorCountTotal,
+        competitorAverageCount,
+        competitorMedianAverage,
+        deltaCount: ownProductsInCategory.length - competitorAverageCount,
+      };
+    })
+    .filter((row) => row.ownCount > 0 || row.competitorCountTotal > 0);
+  const strongestCategory = [...categoryBalanceRows]
+    .filter((row) => row.deltaCount > 0)
+    .sort((left, right) => right.deltaCount - left.deltaCount)[0];
+  const weakestCategory = [...categoryBalanceRows]
+    .filter((row) => row.deltaCount < 0)
+    .sort((left, right) => left.deltaCount - right.deltaCount)[0];
+  const executiveCategoryRows = [...categoryBalanceRows]
+    .sort(
+      (left, right) =>
+        Math.abs(right.deltaCount) - Math.abs(left.deltaCount) ||
+        right.ownCount - left.ownCount,
+    )
+    .slice(0, 10);
+  const competitorCoverageRows = competitorSummaries
+    .map(({ site, productCount, pricedCount, exactMatches }) => ({
+      site,
+      productCount,
+      pricedCount,
+      exactMatches,
+      matchCoveragePct: productCount > 0 ? (exactMatches / productCount) * 100 : null,
+      priceCoveragePct: productCount > 0 ? (pricedCount / productCount) * 100 : null,
+    }))
+    .sort(
+      (left, right) =>
+        (right.matchCoveragePct ?? 0) - (left.matchCoveragePct ?? 0) ||
+        right.exactMatches - left.exactMatches,
+    );
+  const competitorsWithoutUsablePricing = competitorCoverageRows.filter((row) => row.pricedCount === 0);
+  const executiveSignals = [
+    strongestCoverageSite
+      ? {
+          label: "Cobertura comparable",
+          title: `${strongestCoverageSite.site.name} es hoy la referencia más sólida`,
+          detail: `${formatCompact(strongestCoverageSite.exactMatches)} matches visibles sobre ${formatCompact(strongestCoverageSite.productCount)} artículos filtrados.`,
+          tone: "neutral" as const,
+        }
+      : null,
+    strongestCategory
+      ? {
+          label: "Ventaja de surtido",
+          title: `${strongestCategory.category} es la categoría más fuerte de DYP`,
+          detail: `${formatSignedCount(strongestCategory.deltaCount)} artículos contra el promedio de competidores seleccionados.`,
+          tone: "positive" as const,
+        }
+      : null,
+    weakestCategory
+      ? {
+          label: "Brecha de surtido",
+          title: `${weakestCategory.category} es la mayor brecha actual`,
+          detail: `${formatSignedCount(weakestCategory.deltaCount)} artículos frente al promedio competidor bajo el filtro activo.`,
+          tone: "negative" as const,
+        }
+      : null,
+    competitorsWithoutUsablePricing.length > 0
+      ? {
+          label: "Limitación de pricing",
+          title: `${competitorsWithoutUsablePricing.map((row) => row.site.name).join(" y ")} no aportan precio usable`,
+          detail: "La lectura de pricing comparable se apoya principalmente en los matches de Merch bajo el snapshot actual.",
+          tone: "neutral" as const,
+        }
+      : bestPriceWin || worstPriceLoss
+        ? {
+            label: "Lectura de precio",
+            title: worstPriceLoss ? "Hay sobreprecios detectables en DYP" : "DYP conserva ventajas puntuales de precio",
+            detail: worstPriceLoss
+              ? `${formatSignedPercent(worstPriceLoss.priceGapPct)} en ${worstPriceLoss.ourTitle} frente a ${worstPriceLoss.siteName}.`
+              : `${formatSignedPercent(bestPriceWin?.priceGapPct ?? null)} en ${bestPriceWin?.ourTitle} frente a ${bestPriceWin?.siteName}.`,
+            tone: worstPriceLoss ? ("negative" as const) : ("positive" as const),
+          }
+        : null,
+  ]
+    .filter((item): item is NonNullable<typeof item> => item != null)
+    .slice(0, 4);
 
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(89,198,242,0.14),_transparent_38%),linear-gradient(180deg,_#f8fcff_0%,_#ffffff_28%,_#f8fafc_100%)] px-6 pb-20 pt-28 lg:px-16">
@@ -421,7 +579,7 @@ export default function CompetitorAnalyticsDashboard({
                       : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                   }`}
                 >
-                  Solo matches exactos
+                  Solo productos con match
                 </button>
               </div>
             </div>
@@ -572,6 +730,44 @@ export default function CompetitorAnalyticsDashboard({
           />
         </section>
 
+        <section className="grid gap-4 xl:grid-cols-[1.15fr_0.85fr]">
+          <SectionCard
+            title="Hallazgos Clave"
+            description="Lectura rápida para presentar el benchmark sin entrar todavía a las tablas operativas."
+          >
+            <div className="grid gap-4 md:grid-cols-2">
+              {executiveSignals.map((signal) => (
+                <NarrativeCard
+                  key={`${signal.label}-${signal.title}`}
+                  label={signal.label}
+                  title={signal.title}
+                  detail={signal.detail}
+                  tone={signal.tone}
+                />
+              ))}
+            </div>
+          </SectionCard>
+
+          <SectionCard
+            title="Cobertura Por Competidor"
+            description="Qué tan comparable quedó cada sitio bajo el filtro actual y cuánta data de precio realmente aporta."
+          >
+            <div className="grid gap-4">
+              {competitorCoverageRows.map((row) => (
+                <CoverageCard
+                  key={row.site.id}
+                  site={row.site}
+                  matchCount={row.exactMatches}
+                  productCount={row.productCount}
+                  matchCoveragePct={row.matchCoveragePct}
+                  pricedCount={row.pricedCount}
+                  priceCoveragePct={row.priceCoveragePct}
+                />
+              ))}
+            </div>
+          </SectionCard>
+        </section>
+
         <section className="grid gap-4 xl:grid-cols-4">
           {siteSummaries.map(({ site, productCount, pricedCount, categoryCount, medianPrice, averagePrice, exactMatches }) => (
             <article
@@ -611,13 +807,142 @@ export default function CompetitorAnalyticsDashboard({
                   <dd className="font-semibold text-slate-950">{categoryCount}</dd>
                 </div>
                 <div className="flex items-center justify-between gap-4">
-                  <dt>Matches exactos</dt>
+                  <dt>Matches</dt>
                   <dd className="font-semibold text-slate-950">{exactMatches}</dd>
                 </div>
               </dl>
             </article>
           ))}
         </section>
+
+        <SectionCard
+          title="Lectura Ejecutiva"
+          description="Resumen rápido de cobertura comparable, surtido relativo y gaps de precio con data usable."
+        >
+          <div className="grid gap-4 xl:grid-cols-4">
+            <ExecutiveInsightCard
+              eyebrow="Cobertura comparable"
+              title={
+                strongestCoverageSite
+                  ? strongestCoverageSite.site.name
+                  : "Sin competidores activos"
+              }
+              value={
+                strongestCoverageSite
+                  ? `${formatCompact(strongestCoverageSite.exactMatches)} matches`
+                  : "N/D"
+              }
+              detail={
+                strongestCoverageSite
+                  ? `${formatCompact(strongestCoverageSite.productCount)} artículos filtrados en ${strongestCoverageSite.site.domain}`
+                  : "Seleccioná al menos un competidor para medir cobertura."
+              }
+            />
+            <ExecutiveInsightCard
+              eyebrow="Fortaleza de surtido"
+              title={strongestCategory ? strongestCategory.category : "Sin diferencial claro"}
+              value={strongestCategory ? formatSignedCount(strongestCategory.deltaCount) : "N/D"}
+              detail={
+                strongestCategory
+                  ? "Delta de DYP contra el promedio de competidores seleccionados."
+                  : "No aparece una ventaja positiva bajo el filtro actual."
+              }
+              tone="positive"
+            />
+            <ExecutiveInsightCard
+              eyebrow="Brecha de surtido"
+              title={weakestCategory ? weakestCategory.category : "Sin brecha clara"}
+              value={weakestCategory ? formatSignedCount(weakestCategory.deltaCount) : "N/D"}
+              detail={
+                weakestCategory
+                  ? "Delta de DYP contra el promedio de competidores seleccionados."
+                  : "No aparece una desventaja bajo el filtro actual."
+              }
+              tone="negative"
+            />
+            <ExecutiveInsightCard
+              eyebrow="Lectura de precio"
+              title={
+                worstPriceLoss
+                  ? "Mayor sobreprecio detectado"
+                  : bestPriceWin
+                    ? "Mayor ventaja detectada"
+                    : "Sin precio comparable"
+              }
+              value={
+                worstPriceLoss
+                  ? formatSignedPercent(worstPriceLoss.priceGapPct)
+                  : bestPriceWin
+                    ? formatSignedPercent(bestPriceWin.priceGapPct)
+                    : "N/D"
+              }
+              detail={
+                worstPriceLoss
+                  ? `${worstPriceLoss.ourTitle} vs ${worstPriceLoss.siteName}`
+                  : bestPriceWin
+                    ? `${bestPriceWin.ourTitle} vs ${bestPriceWin.siteName}`
+                    : "Con los filtros actuales no hay matches con precio usable en ambos lados."
+              }
+              tone={worstPriceLoss ? "negative" : bestPriceWin ? "positive" : "neutral"}
+            />
+          </div>
+        </SectionCard>
+
+        <SectionCard
+          title="Oportunidades De Precio"
+          description="Productos comparables con precio usable para detectar dónde DYP aparece más caro o más competitivo."
+        >
+          <div className="grid gap-4 xl:grid-cols-2">
+            <OpportunityList
+              title="DYP más caro que el competidor"
+              emptyLabel="No hay matches filtrados donde DYP quede por encima del competidor."
+              items={pricierMatches.slice(0, 6)}
+              tone="negative"
+            />
+            <OpportunityList
+              title="DYP más barato que el competidor"
+              emptyLabel="No hay matches filtrados donde DYP quede por debajo del competidor."
+              items={cheaperMatches.slice(0, 6)}
+              tone="positive"
+            />
+          </div>
+        </SectionCard>
+
+        <SectionCard
+          title="Balance Por Categoría"
+          description="Diferencia de surtido de Diez y Punto contra el promedio de los competidores seleccionados."
+        >
+          <div className="overflow-x-auto">
+            <table className="min-w-full text-sm">
+              <thead className="text-left text-slate-500">
+                <tr>
+                  <th className="px-3 py-3 font-medium">Categoría</th>
+                  <th className="px-3 py-3 font-medium">DYP</th>
+                  <th className="px-3 py-3 font-medium">Prom. competidor</th>
+                  <th className="px-3 py-3 font-medium">Delta</th>
+                  <th className="px-3 py-3 font-medium">Mediana DYP</th>
+                  <th className="px-3 py-3 font-medium">Mediana comp.</th>
+                </tr>
+              </thead>
+              <tbody>
+                {executiveCategoryRows.map((row) => (
+                  <tr key={row.category} className="border-t border-slate-100 text-slate-700">
+                    <td className="px-3 py-4 font-medium text-slate-950">{row.category}</td>
+                    <td className="px-3 py-4">{row.ownCount}</td>
+                    <td className="px-3 py-4">
+                      {countDeltaFormatter.format(row.competitorAverageCount)}
+                    </td>
+                    <td className={`px-3 py-4 font-semibold ${gapToneClass(row.deltaCount)}`}>
+                      {formatSignedCount(row.deltaCount)}
+                    </td>
+                    <td className="px-3 py-4">{formatCurrency(row.ownMedian)}</td>
+                    <td className="px-3 py-4">{formatCurrency(row.competitorMedianAverage)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </SectionCard>
 
         <SectionCard
           title="Comparación por categoría"
@@ -878,5 +1203,203 @@ function SectionCard({
       </div>
       {children}
     </section>
+  );
+}
+
+function ExecutiveInsightCard({
+  eyebrow,
+  title,
+  value,
+  detail,
+  tone = "neutral",
+}: {
+  eyebrow: string;
+  title: string;
+  value: string;
+  detail: string;
+  tone?: "neutral" | "positive" | "negative";
+}) {
+  const toneClass =
+    tone === "positive"
+      ? "border-emerald-200 bg-emerald-50/60"
+      : tone === "negative"
+        ? "border-rose-200 bg-rose-50/60"
+        : "border-slate-200 bg-slate-50/60";
+
+  return (
+    <article className={`rounded-[1.6rem] border p-5 ${toneClass}`}>
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{eyebrow}</p>
+      <h3 className="mt-3 text-lg font-semibold text-slate-950">{title}</h3>
+      <p className="mt-3 text-3xl font-semibold tracking-tight text-slate-950">{value}</p>
+      <p className="mt-3 text-sm leading-6 text-slate-600">{detail}</p>
+    </article>
+  );
+}
+
+function OpportunityList({
+  title,
+  items,
+  emptyLabel,
+  tone,
+}: {
+  title: string;
+  items: AnalyticsMatch[];
+  emptyLabel: string;
+  tone: "positive" | "negative";
+}) {
+  return (
+    <div className="rounded-[1.6rem] border border-slate-200 bg-slate-50/60 p-5">
+      <div className="flex items-center justify-between gap-4">
+        <h3 className="text-base font-semibold text-slate-950">{title}</h3>
+        <span
+          className={`rounded-full px-2.5 py-1 text-xs font-semibold ${
+            tone === "positive" ? "bg-emerald-100 text-emerald-700" : "bg-rose-100 text-rose-700"
+          }`}
+        >
+          {items.length} visibles
+        </span>
+      </div>
+      {items.length === 0 ? (
+        <p className="mt-4 text-sm text-slate-600">{emptyLabel}</p>
+      ) : (
+        <div className="mt-4 grid gap-3">
+          {items.map((match) => (
+            <div
+              key={`${title}-${match.siteId}-${match.ourProductId}-${match.competitorProductId}`}
+              className="rounded-2xl border border-white bg-white p-4"
+            >
+              <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="max-w-xl">
+                  <p className="text-sm font-semibold text-slate-950">{match.ourTitle}</p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    vs {match.siteName}: {match.competitorTitle}
+                  </p>
+                </div>
+                <div className="text-right">
+                  <p className={`text-lg font-semibold ${gapToneClass(match.priceGapPct)}`}>
+                    {formatSignedPercent(match.priceGapPct)}
+                  </p>
+                  <p className={`text-sm ${gapToneClass(match.priceGapArs)}`}>
+                    {formatSignedCurrency(match.priceGapArs)}
+                  </p>
+                </div>
+              </div>
+              <div className="mt-3 flex flex-wrap gap-2">
+                <span className="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700">
+                  {match.ourNormalizedCategory}
+                </span>
+                <span
+                  className={`rounded-full px-2.5 py-1 text-xs font-medium ring-1 ${matchTypeClass(
+                    match.matchType,
+                  )}`}
+                >
+                  {formatMatchType(match.matchType)}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function NarrativeCard({
+  label,
+  title,
+  detail,
+  tone,
+}: {
+  label: string;
+  title: string;
+  detail: string;
+  tone: "neutral" | "positive" | "negative";
+}) {
+  const toneClass =
+    tone === "positive"
+      ? "border-emerald-200 bg-emerald-50/70"
+      : tone === "negative"
+        ? "border-rose-200 bg-rose-50/70"
+        : "border-slate-200 bg-slate-50/70";
+
+  return (
+    <article className={`rounded-[1.6rem] border p-5 ${toneClass}`}>
+      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{label}</p>
+      <h3 className="mt-3 text-lg font-semibold leading-7 text-slate-950">{title}</h3>
+      <p className="mt-3 text-sm leading-6 text-slate-600">{detail}</p>
+    </article>
+  );
+}
+
+function CoverageCard({
+  site,
+  matchCount,
+  productCount,
+  matchCoveragePct,
+  pricedCount,
+  priceCoveragePct,
+}: {
+  site: AnalyticsSite;
+  matchCount: number;
+  productCount: number;
+  matchCoveragePct: number | null;
+  pricedCount: number;
+  priceCoveragePct: number | null;
+}) {
+  const safeMatchWidth = Math.max(0, Math.min(matchCoveragePct ?? 0, 100));
+  const safePriceWidth = Math.max(0, Math.min(priceCoveragePct ?? 0, 100));
+
+  return (
+    <article className="rounded-[1.6rem] border border-slate-200 bg-slate-50/70 p-5">
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <h3 className="text-base font-semibold text-slate-950">{site.name}</h3>
+          <p className="mt-1 text-xs uppercase tracking-[0.18em] text-slate-500">{site.domain}</p>
+        </div>
+        <span
+          className="inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ring-1"
+          style={siteColor(site)}
+        >
+          {matchCount} matches
+        </span>
+      </div>
+
+      <div className="mt-5 grid gap-4">
+        <div>
+          <div className="mb-2 flex items-center justify-between gap-4 text-xs text-slate-600">
+            <span>Cobertura comparable</span>
+            <span>{formatPercent(matchCoveragePct)}</span>
+          </div>
+          <div className="h-2.5 rounded-full bg-white">
+            <div
+              className="h-2.5 rounded-full"
+              style={{
+                width: `${safeMatchWidth}%`,
+                backgroundColor: site.color,
+              }}
+            />
+          </div>
+          <p className="mt-2 text-xs text-slate-500">
+            {formatCompact(matchCount)} de {formatCompact(productCount)} productos filtrados con match.
+          </p>
+        </div>
+
+        <div>
+          <div className="mb-2 flex items-center justify-between gap-4 text-xs text-slate-600">
+            <span>Precio usable</span>
+            <span>{formatPercent(priceCoveragePct)}</span>
+          </div>
+          <div className="h-2.5 rounded-full bg-white">
+            <div
+              className="h-2.5 rounded-full rounded-r-full bg-slate-400"
+              style={{ width: `${safePriceWidth}%` }}
+            />
+          </div>
+          <p className="mt-2 text-xs text-slate-500">
+            {formatCompact(pricedCount)} de {formatCompact(productCount)} productos filtrados con precio usable.
+          </p>
+        </div>
+      </div>
+    </article>
   );
 }
