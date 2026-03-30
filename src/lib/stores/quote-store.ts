@@ -3,14 +3,49 @@ import { persist } from "zustand/middleware";
 import type { QuoteItem, ProductResult } from "../types";
 import { trackEvent } from "../analytics-client";
 
+interface AddItemOptions {
+  color?: string;
+  personalizationMethod?: string;
+}
+
+function buildQuoteItemId(
+  productId: string,
+  color?: string,
+  personalizationMethod?: string,
+): string {
+  const normalizedColor = color?.trim().toLowerCase() || "sin-color";
+  const normalizedMethod =
+    personalizationMethod?.trim().toLowerCase() || "sin-metodo";
+  return `${productId}::${normalizedColor}::${normalizedMethod}`;
+}
+
+function normalizePersistedItem(
+  item: Partial<QuoteItem> | undefined,
+): QuoteItem | null {
+  if (!item?.product?.product_id) return null;
+  return {
+    id:
+      item.id ??
+      buildQuoteItemId(
+        item.product.product_id,
+        item.color,
+        item.personalization_method,
+      ),
+    product: item.product,
+    quantity: item.quantity ?? 1,
+    color: item.color,
+    personalization_method: item.personalization_method,
+  };
+}
+
 interface QuoteState {
   items: QuoteItem[];
-  lastAdded: { product: ProductResult; quantity: number } | null;
+  lastAdded: { itemId: string; product: ProductResult; quantity: number } | null;
   lastSyncedAt: number | null;
   isSyncing: boolean;
-  addItem: (product: ProductResult, quantity?: number, color?: string, personalization_method?: string) => void;
-  removeItem: (productId: string) => void;
-  updateQty: (productId: string, quantity: number) => void;
+  addItem: (product: ProductResult, quantity?: number, options?: AddItemOptions) => void;
+  removeItem: (itemId: string) => void;
+  updateQty: (itemId: string, quantity: number) => void;
   clearCart: () => void;
   totalItems: () => number;
   setSyncing: (syncing: boolean) => void;
@@ -25,22 +60,43 @@ export const useQuoteStore = create<QuoteState>()(
       lastSyncedAt: null,
       isSyncing: false,
 
-      addItem: (product, quantity = 1, color?, personalization_method?) => {
+      addItem: (product, quantity = 1, options) => {
         const items = get().items;
-        const existing = items.find(
-          (i) => i.product.product_id === product.product_id,
+        const itemId = buildQuoteItemId(
+          product.product_id,
+          options?.color,
+          options?.personalizationMethod,
         );
+        const existing = items.find((i) => i.id === itemId);
         if (existing) {
           set({
             items: items.map((i) =>
-              i.product.product_id === product.product_id
-                ? { ...i, quantity: i.quantity + quantity, color: color ?? i.color, personalization_method: personalization_method ?? i.personalization_method }
+              i.id === itemId
+                ? {
+                    ...i,
+                    quantity: i.quantity + quantity,
+                    color: options?.color ?? i.color,
+                    personalization_method:
+                      options?.personalizationMethod ?? i.personalization_method,
+                  }
                 : i,
             ),
-            lastAdded: { product, quantity },
+            lastAdded: { itemId, product, quantity },
           });
         } else {
-          set({ items: [...items, { id: product.product_id, product, quantity, color, personalization_method }], lastAdded: { product, quantity } });
+          set({
+            items: [
+              ...items,
+              {
+                id: itemId,
+                product,
+                quantity,
+                color: options?.color,
+                personalization_method: options?.personalizationMethod,
+              },
+            ],
+            lastAdded: { itemId, product, quantity },
+          });
         }
         const newItems = get().items;
         trackEvent("cart_add", {
@@ -49,30 +105,32 @@ export const useQuoteStore = create<QuoteState>()(
           category: product.category,
           quantity,
           price: product.price,
+          color: options?.color,
+          personalization_method: options?.personalizationMethod,
           cart_total_items: newItems.reduce((s, i) => s + i.quantity, 0),
           referrer: typeof window !== "undefined" ? document.referrer : "",
         });
       },
 
-      removeItem: (productId) => {
-        const item = get().items.find((i) => i.product.product_id === productId);
+      removeItem: (itemId) => {
+        const item = get().items.find((i) => i.id === itemId);
         set({
-          items: get().items.filter((i) => i.product.product_id !== productId),
+          items: get().items.filter((i) => i.id !== itemId),
         });
         if (item) {
           trackEvent("cart_remove", {
-            product_id: productId,
+            product_id: item.product.product_id,
             quantity: item.quantity,
             cart_total_items: get().items.reduce((s, i) => s + i.quantity, 0),
           });
         }
       },
 
-      updateQty: (productId, quantity) => {
+      updateQty: (itemId, quantity) => {
         if (quantity < 1) return; // Minimum 1 unit
         set({
           items: get().items.map((i) =>
-            i.product.product_id === productId ? { ...i, quantity } : i,
+            i.id === itemId ? { ...i, quantity } : i,
           ),
         });
       },
@@ -91,6 +149,34 @@ export const useQuoteStore = create<QuoteState>()(
       setSyncing: (syncing) => set({ isSyncing: syncing }),
       setSyncedAt: (timestamp) => set({ lastSyncedAt: timestamp, isSyncing: false }),
     }),
-    { name: "diezypunto-quote" },
+    {
+      name: "diezypunto-quote",
+      version: 2,
+      migrate: (persistedState) => {
+        if (!persistedState || typeof persistedState !== "object") {
+          return persistedState as QuoteState;
+        }
+
+        const state = persistedState as Partial<QuoteState> & {
+          items?: Partial<QuoteItem>[];
+        };
+
+        return {
+          ...state,
+          items: (state.items ?? [])
+            .map(normalizePersistedItem)
+            .filter((item): item is QuoteItem => item !== null),
+          lastAdded: state.lastAdded?.product?.product_id
+            ? {
+                itemId:
+                  state.lastAdded.itemId ??
+                  buildQuoteItemId(state.lastAdded.product.product_id),
+                product: state.lastAdded.product,
+                quantity: state.lastAdded.quantity,
+              }
+            : null,
+        } as QuoteState;
+      },
+    },
   ),
 );

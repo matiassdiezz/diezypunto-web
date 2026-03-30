@@ -15,7 +15,12 @@ export function useCartSync() {
     if (!client || items.length === 0) return;
 
     const itemsKey = JSON.stringify(
-      items.map((i) => ({ id: i.product.product_id, qty: i.quantity })),
+      items.map((i) => ({
+        id: i.id,
+        qty: i.quantity,
+        color: i.color,
+        personalization_method: i.personalization_method,
+      })),
     );
 
     // Skip if nothing changed
@@ -33,6 +38,8 @@ export function useCartSync() {
             title: i.product.title,
             quantity: i.quantity,
             category: i.product.category,
+            color: i.color,
+            personalization_method: i.personalization_method,
           })),
           status: "borrador",
         }),

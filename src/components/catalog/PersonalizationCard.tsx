@@ -1,6 +1,5 @@
 interface PersonalizationCardProps {
   methods: string[];
-  productTitle: string;
   selected?: string | null;
   onSelect?: (method: string | null) => void;
 }
@@ -30,7 +29,11 @@ const TIER_COLORS: Record<string, { base: string; active: string }> = {
   "Premium+": { base: "bg-amber-100 text-amber-800", active: "bg-amber-600 text-white" },
 };
 
-export default function PersonalizationCard({ methods, productTitle, selected, onSelect }: PersonalizationCardProps) {
+export default function PersonalizationCard({
+  methods,
+  selected,
+  onSelect,
+}: PersonalizationCardProps) {
   if (methods.length === 0) return null;
 
   const isInteractive = !!onSelect;
@@ -85,7 +88,9 @@ export default function PersonalizationCard({ methods, productTitle, selected, o
                 )}
               </div>
               {tierStyle && (
-                <span className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${tierStyle.base}`}>
+                <span
+                  className={`shrink-0 rounded-full px-2 py-0.5 text-[10px] font-medium ${tierStyle.base}`}
+                >
                   {info!.tier}
                 </span>
               )}

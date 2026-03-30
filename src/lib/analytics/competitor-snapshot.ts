@@ -2,7 +2,10 @@ export type AnalyticsSiteId =
   | "diezypunto"
   | "merch"
   | "grupovelski"
-  | "kapoi";
+  | "kapoi"
+  | "promoproductos"
+  | "cdo"
+  | "xtrade";
 
 export type PriceStatus = "priced" | "hidden" | "placeholder" | "unknown";
 
@@ -130,5 +133,23 @@ export const ANALYTICS_SITES: AnalyticsSite[] = [
     name: "Kapoi",
     domain: "kapoi.com.ar",
     color: "#C2410C",
+  },
+  {
+    id: "promoproductos",
+    name: "Promoproductos",
+    domain: "promoproductos.com",
+    color: "#7C3AED",
+  },
+  {
+    id: "cdo",
+    name: "CDO",
+    domain: "argentina.cdopromocionales.com",
+    color: "#0EA5E9",
+  },
+  {
+    id: "xtrade",
+    name: "X-Trade",
+    domain: "x-tradeonline.com.ar",
+    color: "#16A34A",
   },
 ];

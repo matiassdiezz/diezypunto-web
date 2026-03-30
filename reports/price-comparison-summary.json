@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-03-22T19:15:27.034Z",
+  "productSitemaps": 8,
+  "officialProducts": 1216,
+  "matchedProducts": 326,
+  "missingInOurCatalog": 0,
+  "missingOfficialRetailerId": 890,
+  "officialFetchErrors": 229,
+  "ourFetchErrors": 0,
+  "csvPath": "/Users/inakiseara/Documents/GitHub/diezypunto-web/reports/price-comparison.csv"
+}

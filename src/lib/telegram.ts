@@ -9,7 +9,14 @@ export function telegramUrl(): string {
 
 interface CartPayload {
   type: "cart";
-  items: { product_id: string; title: string; qty: number; price: number | null }[];
+  items: {
+    product_id: string;
+    title: string;
+    qty: number;
+    price: number | null;
+    color?: string;
+    personalization_method?: string;
+  }[];
 }
 
 interface ProductPayload {

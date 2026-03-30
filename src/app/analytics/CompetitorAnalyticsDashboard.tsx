@@ -1,10 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { startTransition, useDeferredValue, useState, type ReactNode } from "react";
+import { Fragment, startTransition, useDeferredValue, useState, type ReactNode } from "react";
 import type {
   AnalyticsMatch,
-  AnalyticsSite,
   AnalyticsSiteId,
   CompetitorAnalyticsSnapshot,
 } from "@/lib/analytics/competitor-snapshot";
@@ -59,6 +58,19 @@ type AggregateRow = {
   cheaperCount: number;
 };
 
+type HeatmapCell = {
+  siteId: AnalyticsSiteId;
+  siteName: string;
+  gapPct: number | null;
+  productCount: number;
+};
+
+type HeatmapRow = {
+  category: string;
+  productCount: number;
+  cells: HeatmapCell[];
+};
+
 function formatCurrency(value: number | null) {
   return value == null ? "N/D" : priceFormatter.format(value);
 }
@@ -75,21 +87,39 @@ function formatSignedPercent(value: number | null) {
   return value == null ? "N/D" : `${value > 0 ? "+" : ""}${value.toFixed(1)}%`;
 }
 
-function formatSnapshotTimestamp(value: string) {
-  const date = new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return value;
+function getHeatmapCellStyle(value: number | null) {
+  if (value == null) {
+    return {
+      backgroundColor: "rgba(148, 163, 184, 0.10)",
+      borderColor: "rgba(148, 163, 184, 0.18)",
+      color: "#64748b",
+    };
   }
 
-  const argentinaOffsetMs = -3 * 60 * 60 * 1000;
-  const localDate = new Date(date.getTime() + argentinaOffsetMs);
-  const day = String(localDate.getUTCDate()).padStart(2, "0");
-  const month = String(localDate.getUTCMonth() + 1).padStart(2, "0");
-  const year = localDate.getUTCFullYear();
-  const hours = String(localDate.getUTCHours()).padStart(2, "0");
-  const minutes = String(localDate.getUTCMinutes()).padStart(2, "0");
+  const intensity = 0.14 + clamp(Math.abs(value) / 40, 0, 1) * 0.22;
+  const tone = getSignalTone(value);
 
-  return `${day}/${month}/${year} ${hours}:${minutes} ART`;
+  if (tone === "negative") {
+    return {
+      backgroundColor: `rgba(244, 63, 94, ${intensity})`,
+      borderColor: `rgba(225, 29, 72, ${Math.min(intensity + 0.1, 0.52)})`,
+      color: "#9f1239",
+    };
+  }
+
+  if (tone === "positive") {
+    return {
+      backgroundColor: `rgba(16, 185, 129, ${intensity})`,
+      borderColor: `rgba(5, 150, 105, ${Math.min(intensity + 0.1, 0.52)})`,
+      color: "#065f46",
+    };
+  }
+
+  return {
+    backgroundColor: `rgba(245, 158, 11, ${intensity})`,
+    borderColor: `rgba(217, 119, 6, ${Math.min(intensity + 0.1, 0.52)})`,
+    color: "#92400e",
+  };
 }
 
 function getAverage(values: number[]) {
@@ -118,6 +148,42 @@ function normalizeComparableText(value: string) {
     .toLowerCase()
     .trim()
     .replace(/\s+/g, " ");
+}
+
+function splitRawCategory(rawCategory: string) {
+  const [root, ...rest] = rawCategory.split(":");
+  return {
+    category: root?.trim() || rawCategory.trim(),
+    subcategory: rest.join(":").trim() || null,
+  };
+}
+
+function getDashboardCategory(
+  rawCategories: string[] | null | undefined,
+  fallbackCategory: string,
+) {
+  const firstRawCategory = rawCategories?.find((category) => category.trim().length > 0);
+  if (!firstRawCategory) {
+    return fallbackCategory;
+  }
+
+  return splitRawCategory(firstRawCategory).category;
+}
+
+function getDashboardSubcategory(
+  rawCategories: string[] | null | undefined,
+  productFamily: string | null | undefined,
+  category?: string,
+) {
+  const firstDetailedRawCategory = rawCategories
+    ?.map(splitRawCategory)
+    .find((rawCategory) => rawCategory.subcategory);
+
+  if (firstDetailedRawCategory?.subcategory) {
+    return firstDetailedRawCategory.subcategory;
+  }
+
+  return formatSubcategoryLabel(productFamily, category);
 }
 
 function formatSubcategoryLabel(productFamily: string | null | undefined, category?: string) {
@@ -254,12 +320,16 @@ function aggregateRows(label: string, rows: ProductMarketRow[]): AggregateRow {
   };
 }
 
-function siteColor(site: AnalyticsSite) {
-  return {
-    backgroundColor: `${site.color}18`,
-    borderColor: `${site.color}33`,
-    color: site.color,
-  };
+function matchesProductQuery(row: ProductMarketRow, query: string) {
+  if (!query) return true;
+
+  const haystack = normalizeComparableText(
+    `${row.title} ${row.category} ${row.subcategory} ${row.competitors
+      .map((competitor) => competitor.siteName)
+      .join(" ")}`,
+  );
+
+  return haystack.includes(query);
 }
 
 export default function CompetitorAnalyticsDashboard({
@@ -274,6 +344,7 @@ export default function CompetitorAnalyticsDashboard({
   const [selectedCategory, setSelectedCategory] = useState(ALL_VALUE);
   const [selectedSubcategory, setSelectedSubcategory] = useState(ALL_VALUE);
   const [productQuery, setProductQuery] = useState("");
+  const activeCompetitorSites = competitorSites.filter((site) => selectedCompetitors.includes(site.id));
 
   const deferredProductQuery = useDeferredValue(normalizeComparableText(productQuery));
   const productsById = new Map(snapshot.products.map((product) => [product.id, product]));
@@ -317,8 +388,12 @@ export default function CompetitorAnalyticsDashboard({
         productId: match.ourProductId,
         title: match.ourTitle,
         url: match.ourUrl,
-        category: match.ourNormalizedCategory,
-        subcategory: formatSubcategoryLabel(ownProduct.productFamily, match.ourNormalizedCategory),
+        category: getDashboardCategory(ownProduct.rawCategories, match.ourNormalizedCategory),
+        subcategory: getDashboardSubcategory(
+          ownProduct.rawCategories,
+          ownProduct.productFamily,
+          getDashboardCategory(ownProduct.rawCategories, match.ourNormalizedCategory),
+        ),
         ourPrice: match.ourPriceArs,
         competitors: new Map(),
       };
@@ -393,22 +468,14 @@ export default function CompetitorAnalyticsDashboard({
       ? selectedSubcategory
       : ALL_VALUE;
 
-  const filteredProductRows = allProductRows.filter((row) => {
+  const searchedProductRows = allProductRows.filter((row) => matchesProductQuery(row, deferredProductQuery));
+
+  const filteredProductRows = searchedProductRows.filter((row) => {
     if (effectiveCategory !== ALL_VALUE && row.category !== effectiveCategory) {
       return false;
     }
     if (effectiveSubcategory !== ALL_VALUE && row.subcategory !== effectiveSubcategory) {
       return false;
-    }
-    if (deferredProductQuery) {
-      const haystack = normalizeComparableText(
-        `${row.title} ${row.category} ${row.subcategory} ${row.competitors
-          .map((competitor) => competitor.siteName)
-          .join(" ")}`,
-      );
-      if (!haystack.includes(deferredProductQuery)) {
-        return false;
-      }
     }
     return true;
   });
@@ -417,17 +484,7 @@ export default function CompetitorAnalyticsDashboard({
 
   const categoryRows = availableCategories
     .map((category) => {
-      const rows = allProductRows.filter((row) => {
-        if (row.category !== category) return false;
-        if (deferredProductQuery) {
-          return normalizeComparableText(
-            `${row.title} ${row.category} ${row.subcategory} ${row.competitors
-              .map((competitor) => competitor.siteName)
-              .join(" ")}`,
-          ).includes(deferredProductQuery);
-        }
-        return true;
-      });
+      const rows = searchedProductRows.filter((row) => row.category === category);
 
       return aggregateRows(category, rows);
     })
@@ -457,43 +514,35 @@ export default function CompetitorAnalyticsDashboard({
               left.label.localeCompare(right.label, "es"),
           );
 
-  const marketBenchmarkRows = [
-    {
-      label: "Promedio mercado",
-      averagePrice: overallSummary.averageMarketPrice,
-      gapPct: 0,
-      productCount: overallSummary.productCount,
-      site: null,
-    },
-    {
-      label: "Diez y Punto",
-      averagePrice: overallSummary.averageOurPrice,
-      gapPct: overallSummary.gapPct,
-      productCount: overallSummary.productCount,
-      site: snapshot.sites.find((site) => site.id === "diezypunto") ?? null,
-    },
-    ...competitorSites
-      .filter((site) => selectedCompetitors.includes(site.id))
-      .map((site) => {
-        const sitePrices = filteredProductRows
-          .map((row) => row.competitors.find((competitor) => competitor.siteId === site.id)?.averagePrice)
-          .filter((value): value is number => value != null);
-        const averagePrice = getAverage(sitePrices);
-        const marketPrice = overallSummary.averageMarketPrice;
+  const heatmapRows: HeatmapRow[] = categoryRows.map((categoryRow) => {
+    const rows = searchedProductRows.filter((row) => row.category === categoryRow.label);
 
-        return {
-          label: site.name,
-          averagePrice,
-          gapPct:
-            averagePrice != null && marketPrice != null && marketPrice > 0
-              ? ((averagePrice - marketPrice) / marketPrice) * 100
-              : null,
-          productCount: sitePrices.length,
-          site,
-        };
-      })
-      .filter((row) => row.averagePrice != null),
-  ];
+    const cells = activeCompetitorSites.map((site) => {
+      const comparableRows = rows
+        .map((row) => {
+          const competitor = row.competitors.find((entry) => entry.siteId === site.id);
+          if (!competitor || competitor.averagePrice <= 0) {
+            return null;
+          }
+
+          return ((row.ourPrice - competitor.averagePrice) / competitor.averagePrice) * 100;
+        })
+        .filter((value): value is number => value != null);
+
+      return {
+        siteId: site.id,
+        siteName: site.name,
+        gapPct: getAverage(comparableRows),
+        productCount: comparableRows.length,
+      };
+    });
+
+    return {
+      category: categoryRow.label,
+      productCount: categoryRow.productCount,
+      cells,
+    };
+  });
 
   const moreExpensiveProducts = [...filteredProductRows]
     .filter((row) => row.marketGapPct > PRICE_SIGNAL_THRESHOLD_PCT)
@@ -519,13 +568,6 @@ export default function CompetitorAnalyticsDashboard({
           categoryRows.length) *
         100
       : null;
-
-  const activeLabel =
-    effectiveCategory === ALL_VALUE
-      ? "Mercado completo"
-      : effectiveSubcategory === ALL_VALUE
-        ? effectiveCategory
-        : `${effectiveCategory} / ${effectiveSubcategory}`;
 
   const summaryCsvRows = categoryRows.map((row) => [
     row.label,
@@ -554,179 +596,144 @@ export default function CompetitorAnalyticsDashboard({
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(15,118,110,0.12),_transparent_26%),radial-gradient(circle_at_top_right,_rgba(14,165,233,0.12),_transparent_24%),linear-gradient(180deg,_#f8fafc_0%,_#ffffff_22%,_#f8fafc_100%)] px-6 pb-20 pt-24 lg:px-14">
       <div className="mx-auto flex max-w-7xl flex-col gap-6">
-        <section className="overflow-hidden rounded-[2rem] border border-white/70 bg-white/90 p-8 shadow-[0_30px_100px_rgba(15,23,42,0.08)] backdrop-blur">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-teal-700">
-                One Page
-              </p>
-              <h1 className="mt-3 text-4xl font-semibold tracking-tight text-slate-950 lg:text-5xl">
-                Precio DYP vs mercado
-              </h1>
-              <p className="mt-4 text-base leading-7 text-slate-600">
-                Lectura visual de categorías, subcategorías y productos usando solo matches exactos
-                con precio usable en ambos lados. El benchmark principal compara Diez y Punto
-                contra el promedio de mercado de los competidores activos.
-              </p>
-            </div>
-            <div className="grid gap-2 rounded-[1.6rem] border border-slate-200 bg-slate-50/90 p-5 text-sm text-slate-600">
-              <div>
-                <span className="font-semibold text-slate-950">Snapshot:</span> {snapshot.snapshotDate}
-              </div>
-              <div>
-                <span className="font-semibold text-slate-950">Generado:</span>{" "}
-                {formatSnapshotTimestamp(snapshot.generatedAt)}
-              </div>
-              <div>
-                <span className="font-semibold text-slate-950">Competidores activos:</span>{" "}
-                {selectedCompetitors.length}
-              </div>
-              <div>
-                <span className="font-semibold text-slate-950">Lectura actual:</span> {activeLabel}
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-6 flex flex-wrap gap-2">
-            <InfoChip label="Solo matches exactos" />
-            <InfoChip label="Solo precio válido" />
-            <InfoChip label="Benchmark: promedio de mercado" />
-            <InfoChip label={`${formatCompact(filteredProductRows.length)} productos comparables`} />
-          </div>
-        </section>
-
-        <section className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-              <div>
-                <h2 className="text-xl font-semibold text-slate-950">Filtros</h2>
-                <p className="mt-1 text-sm text-slate-600">
-                  Todo el dashboard responde a competidor, categoría, subcategoría y producto.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                <ActionButton
-                  label="Descargar resumen CSV"
-                  onClick={() =>
-                    downloadCsv(
-                      "price-benchmark-categorias.csv",
-                      [
-                        "Categoria",
-                        "Productos",
-                        "Precio promedio mercado",
-                        "Precio promedio DYP",
-                        "Gap promedio %",
-                        "Gap mediano %",
-                        "Mas caro",
-                        "Alineado",
-                        "Mas barato",
-                      ],
-                      summaryCsvRows,
-                    )
-                  }
-                />
-                <ActionButton
-                  label="Descargar productos CSV"
-                  onClick={() =>
-                    downloadCsv(
-                      "price-benchmark-productos.csv",
-                      [
-                        "Producto",
-                        "Categoria",
-                        "Subcategoria",
-                        "Precio DYP",
-                        "Precio mercado",
-                        "Gap %",
-                        "Gap ARS",
-                        "Competidores",
-                        "URL",
-                      ],
-                      productCsvRows,
-                    )
-                  }
-                />
-              </div>
-            </div>
-
-            <div className="grid gap-5 xl:grid-cols-[1.1fr_1fr_1fr]">
-              <label className="grid gap-2 text-sm text-slate-600">
-                Categoría
-                <select
-                  value={effectiveCategory}
-                  onChange={(event) =>
-                    startTransition(() => {
-                      setSelectedCategory(event.target.value);
-                      setSelectedSubcategory(ALL_VALUE);
-                    })
-                  }
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-teal-500"
-                >
-                  <option value={ALL_VALUE}>Todas</option>
-                  {availableCategories.map((category) => (
-                    <option key={category} value={category}>
-                      {category}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="grid gap-2 text-sm text-slate-600">
-                Subcategoría
-                <select
-                  value={effectiveSubcategory}
-                  onChange={(event) => startTransition(() => setSelectedSubcategory(event.target.value))}
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-teal-500"
-                >
-                  <option value={ALL_VALUE}>Todas</option>
-                  {availableSubcategories.map((subcategory) => (
-                    <option key={subcategory} value={subcategory}>
-                      {subcategory}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
-              <label className="grid gap-2 text-sm text-slate-600">
-                Producto
-                <input
-                  value={productQuery}
-                  onChange={(event) => setProductQuery(event.target.value)}
-                  placeholder="Buscar por producto"
-                  className="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-slate-900 outline-none transition focus:border-teal-500"
-                />
-              </label>
-            </div>
-
-            <div className="flex flex-wrap gap-3">
-              {competitorSites.map((site) => {
-                const active = selectedCompetitors.includes(site.id);
-                return (
-                  <button
-                    key={site.id}
-                    type="button"
-                    onClick={() =>
-                      startTransition(() =>
-                        setSelectedCompetitors((current) => {
-                          if (current.includes(site.id)) {
-                            return current.length === 1
-                              ? current
-                              : current.filter((value) => value !== site.id);
-                          }
-                          return [...current, site.id];
-                        }),
-                      )
+        <section className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm">
+          <div className="flex flex-col gap-4">
+            <div className="grid grid-cols-4 gap-3">
+                <label className="grid gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  Categoría
+                  <select
+                    value={effectiveCategory}
+                    onChange={(event) =>
+                      startTransition(() => {
+                        setSelectedCategory(event.target.value);
+                        setSelectedSubcategory(ALL_VALUE);
+                      })
                     }
-                    className={`rounded-full px-4 py-2 text-sm font-medium ring-1 transition ${
-                      active
-                        ? "bg-slate-950 text-white ring-slate-950"
-                        : "bg-white text-slate-700 ring-slate-200 hover:bg-slate-50"
-                    }`}
+                    className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-normal normal-case tracking-normal text-slate-900 outline-none transition focus:border-teal-500"
                   >
-                    {site.name}
-                  </button>
-                );
-              })}
+                    <option value={ALL_VALUE}>Todas</option>
+                    {availableCategories.map((category) => (
+                      <option key={category} value={category}>
+                        {category}
+                      </option>
+                    ))}
+                  </select>
+                </label>
 
+                <label className="grid gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  Subcategoría
+                  <select
+                    value={effectiveSubcategory}
+                    onChange={(event) => startTransition(() => setSelectedSubcategory(event.target.value))}
+                    className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-normal normal-case tracking-normal text-slate-900 outline-none transition focus:border-teal-500"
+                  >
+                    <option value={ALL_VALUE}>Todas</option>
+                    {availableSubcategories.map((subcategory) => (
+                      <option key={subcategory} value={subcategory}>
+                        {subcategory}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+
+                <label className="grid gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  Producto
+                  <input
+                    value={productQuery}
+                    onChange={(event) => setProductQuery(event.target.value)}
+                    placeholder="Buscar producto"
+                    className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-normal normal-case tracking-normal text-slate-900 outline-none transition focus:border-teal-500"
+                  />
+                </label>
+
+                <div className="grid gap-1 text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  Competidores
+                  <details className="group relative">
+                    <summary className="flex cursor-pointer list-none items-center justify-between rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-normal normal-case tracking-normal text-slate-900 outline-none transition marker:content-none focus:border-teal-500">
+                      <span>
+                        {selectedCompetitors.length === competitorSites.length
+                          ? "Todos"
+                          : `${selectedCompetitors.length} activos`}
+                      </span>
+                      <span className="text-slate-400 transition group-open:rotate-180">▾</span>
+                    </summary>
+                    <div className="absolute left-0 top-[calc(100%+0.5rem)] z-20 min-w-full rounded-2xl border border-slate-200 bg-white p-3 shadow-lg">
+                      <div className="grid gap-2">
+                        {competitorSites.map((site) => {
+                          const active = selectedCompetitors.includes(site.id);
+                          return (
+                            <label
+                              key={site.id}
+                              className="flex items-center justify-between gap-3 rounded-xl px-2 py-1.5 text-sm font-normal normal-case tracking-normal text-slate-700 hover:bg-slate-50"
+                            >
+                              <span>{site.name}</span>
+                              <input
+                                type="checkbox"
+                                checked={active}
+                                onChange={() =>
+                                  startTransition(() =>
+                                    setSelectedCompetitors((current) => {
+                                      if (current.includes(site.id)) {
+                                        return current.length === 1
+                                          ? current
+                                          : current.filter((value) => value !== site.id);
+                                      }
+                                      return [...current, site.id];
+                                    }),
+                                  )
+                                }
+                                className="h-4 w-4 rounded border-slate-300 text-slate-950 focus:ring-slate-400"
+                              />
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </details>
+                </div>
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              <ActionButton
+                label="Descargar resumen CSV"
+                onClick={() =>
+                  downloadCsv(
+                    "price-benchmark-categorias.csv",
+                    [
+                      "Categoria",
+                      "Productos",
+                      "Precio promedio mercado",
+                      "Precio promedio DYP",
+                      "Gap promedio %",
+                      "Gap mediano %",
+                      "Mas caro",
+                      "Alineado",
+                      "Mas barato",
+                    ],
+                    summaryCsvRows,
+                  )
+                }
+              />
+              <ActionButton
+                label="Descargar productos CSV"
+                onClick={() =>
+                  downloadCsv(
+                    "price-benchmark-productos.csv",
+                    [
+                      "Producto",
+                      "Categoria",
+                      "Subcategoria",
+                      "Precio DYP",
+                      "Precio mercado",
+                      "Gap %",
+                      "Gap ARS",
+                      "Competidores",
+                      "URL",
+                    ],
+                    productCsvRows,
+                  )
+                }
+              />
               <button
                 type="button"
                 onClick={() =>
@@ -749,30 +756,95 @@ export default function CompetitorAnalyticsDashboard({
           <ExecutiveStatCard
             label="Precio promedio mercado"
             value={formatCurrency(overallSummary.averageMarketPrice)}
-            detail={`${activeLabel} · promedio de competidores activos`}
           />
           <ExecutiveStatCard
             label="Productos comparables"
             value={formatCompact(filteredProductRows.length)}
-            detail="Solo exact matches con precio válido"
           />
           <ExecutiveStatCard
             label="% categorías con DYP más caro"
             value={formatPercent(expensiveCategoryPct)}
-            detail="Gap promedio mayor a +10%"
             tone={expensiveCategoryPct != null && expensiveCategoryPct > 50 ? "negative" : "neutral"}
           />
           <ExecutiveStatCard
             label="Gap mediano vs mercado"
             value={formatSignedPercent(overallSummary.medianGapPct)}
-            detail="Referencia de pricing del contexto activo"
             tone={getSignalTone(overallSummary.medianGapPct)}
           />
         </section>
 
         <SectionCard
+          title="Heatmap competidores × categorías"
+          description="Semáforo rápido para ver dónde DYP está arriba, alineado o abajo contra cada competidor activo."
+          collapsible
+        >
+          {heatmapRows.length === 0 || activeCompetitorSites.length === 0 ? (
+            <EmptyState label="No hay datos suficientes para armar el heatmap con los filtros actuales." />
+          ) : (
+            <div className="overflow-x-auto">
+              <div className="mb-4 flex flex-wrap gap-2">
+                <InfoChip label="Rojo: DYP más caro" />
+                <InfoChip label="Amarillo: alineado" />
+                <InfoChip label="Verde: DYP más barato" />
+              </div>
+
+              <div
+                className="grid min-w-[720px] gap-2"
+                style={{
+                  gridTemplateColumns: `minmax(190px, 1.4fr) repeat(${activeCompetitorSites.length}, minmax(130px, 1fr))`,
+                }}
+              >
+                <div className="px-3 py-2 text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+                  Categoría
+                </div>
+                {activeCompetitorSites.map((site) => (
+                  <div
+                    key={site.id}
+                    className="px-3 py-2 text-center text-xs font-semibold uppercase tracking-[0.14em] text-slate-400"
+                  >
+                    {site.name}
+                  </div>
+                ))}
+
+                {heatmapRows.map((row) => (
+                  <Fragment key={row.category}>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        startTransition(() => {
+                          setSelectedCategory(row.category);
+                          setSelectedSubcategory(ALL_VALUE);
+                        })
+                      }
+                      className={`rounded-[1.5rem] border px-4 py-3 text-left transition hover:-translate-y-0.5 ${
+                        effectiveCategory === row.category
+                          ? "border-slate-950 bg-white ring-2 ring-slate-950/10"
+                          : "border-slate-200 bg-slate-50/60"
+                      }`}
+                    >
+                      <p className="text-base font-semibold text-slate-950">{row.category}</p>
+                    </button>
+
+                    {row.cells.map((cell) => (
+                      <div
+                        key={`${row.category}-${cell.siteId}`}
+                        className="rounded-[1.5rem] border px-3 py-3 text-center shadow-sm"
+                        style={getHeatmapCellStyle(cell.gapPct)}
+                      >
+                        <p className="text-base font-semibold">{formatSignedPercent(cell.gapPct)}</p>
+                      </div>
+                    ))}
+                  </Fragment>
+                ))}
+              </div>
+            </div>
+          )}
+        </SectionCard>
+
+        <SectionCard
           title="Mapa de categorías"
           description="Vista compacta para detectar rápido dónde DYP se aleja del promedio de mercado."
+          collapsible
         >
           {categoryRows.length === 0 ? (
             <EmptyState label="No hay categorías comparables bajo el filtro activo." />
@@ -782,13 +854,10 @@ export default function CompetitorAnalyticsDashboard({
                 <CompactGapCard
                   key={row.label}
                   title={row.label}
-                  subtitle={`${row.productCount} prod.`}
-                  marketLabel={formatCurrency(row.averageMarketPrice)}
                   value={row.gapPct}
                   signalLabel={getSignalLabel(row.gapPct)}
                   active={effectiveCategory === row.label}
                   maxAbs={Math.max(...categoryRows.map((item) => Math.abs(item.gapPct ?? 0)), 1)}
-                  footer={`${row.expensiveCount} caros · ${row.cheaperCount} baratos`}
                   onClick={() =>
                     startTransition(() => {
                       setSelectedCategory(row.label);
@@ -801,72 +870,46 @@ export default function CompetitorAnalyticsDashboard({
           )}
         </SectionCard>
 
-        <section className="grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
-          <SectionCard
-            title="Subcategorías"
-            description={
-              effectiveCategory === ALL_VALUE
-                ? "Elegí una categoría del bloque anterior para abrir el drill-down."
-                : `Dentro de ${effectiveCategory}, dónde está el desvío real.`
-            }
-          >
-            {effectiveCategory === ALL_VALUE ? (
-              <EmptyState label="Seleccioná una categoría para ver subcategorías." />
-            ) : subcategoryRows.length === 0 ? (
-              <EmptyState label="No hay subcategorías comparables con los filtros actuales." />
-            ) : (
-              <div className="grid gap-3 sm:grid-cols-2">
-                {subcategoryRows.map((row) => (
-                  <CompactGapCard
-                    key={row.label}
-                    title={row.label}
-                    subtitle={`${row.productCount} prod.`}
-                    marketLabel={formatCurrency(row.averageMarketPrice)}
-                    value={row.gapPct}
-                    signalLabel={getSignalLabel(row.gapPct)}
-                    active={effectiveSubcategory === row.label}
-                    maxAbs={Math.max(...subcategoryRows.map((item) => Math.abs(item.gapPct ?? 0)), 1)}
-                    footer={`${row.expensiveCount} caros · ${row.cheaperCount} baratos`}
-                    onClick={() =>
-                      startTransition(() =>
-                        setSelectedSubcategory((current) => (current === row.label ? ALL_VALUE : row.label)),
-                      )
-                    }
-                  />
-                ))}
-              </div>
-            )}
-          </SectionCard>
-
-          <SectionCard
-            title="Detalle por competidor"
-            description="Primero contra el promedio de mercado y debajo el desvío de cada competidor contra ese promedio."
-          >
-            {marketBenchmarkRows.length === 0 ? (
-              <EmptyState label="No hay benchmark disponible para este filtro." />
-            ) : (
-              <div className="grid gap-3">
-                {marketBenchmarkRows.map((row) => (
-                  <BenchmarkProviderRow
-                    key={row.label}
-                    label={row.label}
-                    averagePrice={row.averagePrice}
-                    gapPct={row.gapPct}
-                    productCount={row.productCount}
-                    site={row.site}
-                    maxAbs={Math.max(...marketBenchmarkRows.map((item) => Math.abs(item.gapPct ?? 0)), 1)}
-                  />
-                ))}
-              </div>
-            )}
-          </SectionCard>
-        </section>
+        <SectionCard
+          title="Subcategorías"
+          description={
+            effectiveCategory === ALL_VALUE
+              ? "Elegí una categoría del bloque anterior para abrir el drill-down."
+              : `Dentro de ${effectiveCategory}, dónde está el desvío real.`
+          }
+          collapsible
+        >
+          {effectiveCategory === ALL_VALUE ? (
+            <EmptyState label="Seleccioná una categoría para ver subcategorías." />
+          ) : subcategoryRows.length === 0 ? (
+            <EmptyState label="No hay subcategorías comparables con los filtros actuales." />
+          ) : (
+            <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+              {subcategoryRows.map((row) => (
+                <CompactGapCard
+                  key={row.label}
+                  title={row.label}
+                  value={row.gapPct}
+                  signalLabel={getSignalLabel(row.gapPct)}
+                  active={effectiveSubcategory === row.label}
+                  maxAbs={Math.max(...subcategoryRows.map((item) => Math.abs(item.gapPct ?? 0)), 1)}
+                  onClick={() =>
+                    startTransition(() =>
+                      setSelectedSubcategory((current) => (current === row.label ? ALL_VALUE : row.label)),
+                    )
+                  }
+                />
+              ))}
+            </div>
+          )}
+        </SectionCard>
 
         <SectionCard
           title="Status productos"
           description="Los productos se ordenan por brecha contra el promedio de mercado del contexto actual."
+          collapsible
         >
-          <div className="grid gap-4 xl:grid-cols-3">
+          <div className="grid gap-4 md:grid-cols-3">
             <ProductActionColumn
               title="DYP más caro"
               tone="negative"
@@ -915,12 +958,10 @@ function ActionButton({ label, onClick }: { label: string; onClick: () => void }
 function ExecutiveStatCard({
   label,
   value,
-  detail,
   tone = "neutral",
 }: {
   label: string;
   value: string;
-  detail: string;
   tone?: "negative" | "neutral" | "positive";
 }) {
   const toneClass = getToneClass(tone);
@@ -929,7 +970,6 @@ function ExecutiveStatCard({
     <article className={`rounded-[1.6rem] border p-5 shadow-sm ${toneClass.soft}`}>
       <p className="text-sm font-medium text-slate-500">{label}</p>
       <p className={`mt-2 text-3xl font-semibold tracking-tight ${toneClass.text}`}>{value}</p>
-      <p className="mt-2 text-sm text-slate-600">{detail}</p>
     </article>
   );
 }
@@ -937,19 +977,34 @@ function ExecutiveStatCard({
 function SectionCard({
   title,
   description,
+  collapsible = false,
   children,
 }: {
   title: string;
   description: string;
+  collapsible?: boolean;
   children: ReactNode;
 }) {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
     <section className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm">
-      <div className="mb-5">
-        <h2 className="text-xl font-semibold text-slate-950">{title}</h2>
-        <p className="mt-1 text-sm text-slate-600">{description}</p>
+      <div className="mb-5 flex items-start justify-between gap-4">
+        <div>
+          <h2 className="text-xl font-semibold text-slate-950">{title}</h2>
+          {!collapsed ? <p className="mt-1 text-sm text-slate-600">{description}</p> : null}
+        </div>
+        {collapsible ? (
+          <button
+            type="button"
+            onClick={() => setCollapsed((current) => !current)}
+            className="rounded-full bg-slate-100 px-3 py-1.5 text-xs font-semibold text-slate-700 ring-1 ring-slate-200 transition hover:bg-slate-200"
+          >
+            {collapsed ? "Mostrar" : "Ocultar"}
+          </button>
+        ) : null}
       </div>
-      {children}
+      {!collapsed ? children : null}
     </section>
   );
 }
@@ -964,23 +1019,17 @@ function EmptyState({ label }: { label: string }) {
 
 function CompactGapCard({
   title,
-  subtitle,
-  marketLabel,
   value,
   signalLabel,
   active,
   maxAbs,
-  footer,
   onClick,
 }: {
   title: string;
-  subtitle: string;
-  marketLabel: string;
   value: number | null;
   signalLabel: string;
   active?: boolean;
   maxAbs: number;
-  footer: string;
   onClick?: () => void;
 }) {
   const tone = getSignalTone(value);
@@ -991,7 +1040,7 @@ function CompactGapCard({
     <button
       type="button"
       onClick={onClick}
-      className={`rounded-[1.35rem] border p-4 text-left transition hover:-translate-y-0.5 hover:shadow-sm ${
+      className={`rounded-[2rem] border p-4 text-left transition hover:-translate-y-0.5 hover:shadow-sm ${
         active
           ? "border-slate-950 bg-white ring-2 ring-slate-950/10"
           : "border-slate-200 bg-slate-50/60"
@@ -999,10 +1048,7 @@ function CompactGapCard({
     >
       <div className="flex items-start justify-between gap-3">
         <div>
-          <p className="text-sm font-semibold text-slate-950">{title}</p>
-          <p className="mt-1 text-xs text-slate-500">
-            {subtitle} · mercado {marketLabel}
-          </p>
+          <p className="text-base font-semibold text-slate-950">{title}</p>
         </div>
         <div className="text-right shrink-0">
           <span className={`inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ${toneClass.badge}`}>
@@ -1013,76 +1059,11 @@ function CompactGapCard({
       </div>
 
       <div className="mt-4">
-        <div className="mb-2 flex items-center justify-between gap-3 text-[11px] uppercase tracking-[0.16em] text-slate-400">
-          <span>Desvío</span>
-          <span>{footer}</span>
-        </div>
         <div className="h-2 rounded-full bg-white">
           <div className={`h-2 rounded-full ${toneClass.fill}`} style={{ width: `${safeWidth}%` }} />
         </div>
       </div>
     </button>
-  );
-}
-
-function BenchmarkProviderRow({
-  label,
-  averagePrice,
-  gapPct,
-  productCount,
-  site,
-  maxAbs,
-}: {
-  label: string;
-  averagePrice: number | null;
-  gapPct: number | null;
-  productCount: number;
-  site: AnalyticsSite | null;
-  maxAbs: number;
-}) {
-  const tone = label === "Promedio mercado" ? "neutral" : getSignalTone(gapPct);
-  const toneClass = getToneClass(tone);
-  const normalizedWidth = gapPct == null ? 0 : (Math.abs(gapPct) / Math.max(maxAbs, 1)) * 50;
-  const safeWidth = clamp(normalizedWidth, 0, 50);
-  const left = gapPct == null ? 50 : gapPct >= 0 ? 50 : 50 - safeWidth;
-
-  return (
-    <article className="rounded-[1.4rem] border border-slate-200 bg-slate-50/70 p-4">
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div className="flex items-center gap-3">
-          {site ? (
-            <span className="inline-flex rounded-full px-2.5 py-1 text-xs font-semibold ring-1" style={siteColor(site)}>
-              {label}
-            </span>
-          ) : (
-            <span className="inline-flex rounded-full bg-slate-950 px-2.5 py-1 text-xs font-semibold text-white">
-              {label}
-            </span>
-          )}
-          <span className="text-xs text-slate-500">{productCount} productos</span>
-        </div>
-        <div className="text-right">
-          <p className="text-sm font-semibold text-slate-950">{formatCurrency(averagePrice)}</p>
-          <p className={`mt-1 text-lg font-semibold ${toneClass.text}`}>
-            {label === "Promedio mercado" ? "Base 0%" : formatSignedPercent(gapPct)}
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-4">
-        <div className="relative h-3 rounded-full bg-white">
-          <div className="absolute inset-y-0 left-1/2 w-px bg-slate-300" />
-          {label !== "Promedio mercado" && gapPct != null ? (
-            <div
-              className={`absolute inset-y-0 rounded-full ${toneClass.fill}`}
-              style={{ left: `${left}%`, width: `${safeWidth}%` }}
-            />
-          ) : (
-            <div className="absolute inset-y-0 left-[49.5%] w-[1%] rounded-full bg-slate-900" />
-          )}
-        </div>
-      </div>
-    </article>
   );
 }
 
@@ -1100,9 +1081,9 @@ function ProductActionColumn({
   const toneClass = getToneClass(tone);
 
   return (
-    <div className={`rounded-[1.6rem] border p-5 ${toneClass.soft}`}>
+    <div className={`rounded-[2rem] border p-5 ${toneClass.soft}`}>
       <div className="flex items-center justify-between gap-4">
-        <h3 className="text-base font-semibold text-slate-950">{title}</h3>
+        <h3 className="text-lg font-semibold text-slate-950">{title}</h3>
         <span className={`rounded-full px-2.5 py-1 text-xs font-semibold ring-1 ${toneClass.badge}`}>
           {items.length} visibles
         </span>
@@ -1113,41 +1094,44 @@ function ProductActionColumn({
       ) : (
         <div className="mt-4 grid gap-3">
           {items.map((item) => (
-            <article key={`${title}-${item.productId}`} className="rounded-2xl border border-white bg-white p-4">
-              <div className="flex items-start justify-between gap-4">
-                <div className="max-w-[16rem]">
-                  <Link href={item.url} target="_blank" className="text-sm font-semibold text-slate-950 hover:text-teal-700">
+            <article
+              key={`${title}-${item.productId}`}
+              className="rounded-[2rem] border border-white bg-white p-3 shadow-sm"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div className="min-w-0 max-w-[15rem]">
+                  <Link
+                    href={item.url}
+                    target="_blank"
+                    className="line-clamp-2 text-base font-semibold text-slate-950 hover:text-teal-700"
+                  >
                     {item.title}
                   </Link>
-                  <p className="mt-1 text-xs text-slate-500">
-                    {item.category} · {item.subcategory}
+                </div>
+                <div className="shrink-0 text-right">
+                  <p className={`text-base font-semibold ${toneClass.text}`}>
+                    {formatSignedPercent(item.marketGapPct)}
                   </p>
                 </div>
-                <div className="text-right">
-                  <p className={`text-lg font-semibold ${toneClass.text}`}>{formatSignedPercent(item.marketGapPct)}</p>
-                  <p className="text-xs text-slate-500">{formatCurrency(item.marketAveragePrice)} mercado</p>
-                </div>
               </div>
 
-              <div className="mt-3 grid gap-2 text-xs text-slate-600">
-                <div className="flex items-center justify-between gap-4">
-                  <span>DYP</span>
-                  <span className="font-semibold text-slate-950">{formatCurrency(item.ourPrice)}</span>
-                </div>
-                <div className="flex items-center justify-between gap-4">
-                  <span>Promedio mercado</span>
-                  <span className="font-semibold text-slate-950">{formatCurrency(item.marketAveragePrice)}</span>
-                </div>
-              </div>
-
-              <div className="mt-3 flex flex-wrap gap-2">
+              <div className="mt-3 flex flex-wrap gap-1.5">
+                <Link
+                  href={item.url}
+                  target="_blank"
+                  className="rounded-full bg-slate-950 px-2.5 py-1 text-[10px] font-medium text-white ring-1 ring-slate-950 transition hover:bg-slate-800"
+                >
+                  DYP
+                </Link>
                 {item.competitors.map((competitor) => (
-                  <span
+                  <Link
                     key={`${item.productId}-${competitor.siteId}`}
-                    className="rounded-full bg-slate-100 px-2.5 py-1 text-[11px] font-medium text-slate-700 ring-1 ring-slate-200"
+                    href={competitor.sampleUrl}
+                    target="_blank"
+                    className="rounded-full bg-slate-100 px-2.5 py-1 text-[10px] font-medium text-slate-700 ring-1 ring-slate-200 transition hover:bg-slate-200"
                   >
-                    {competitor.siteName} {formatCurrency(competitor.averagePrice)}
-                  </span>
+                    {competitor.siteName}
+                  </Link>
                 ))}
               </div>
             </article>

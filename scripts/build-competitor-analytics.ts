@@ -23,6 +23,17 @@ const REQUEST_TIMEOUT_MS = 20000;
 const RETRIES = 3;
 const PAGE_CONCURRENCY = 8;
 const PRODUCT_CONCURRENCY = 10;
+const DATA_DIR = path.resolve("src/data");
+
+type LocalCatalogProduct = {
+  product_id: string;
+  external_id?: string;
+  title: string;
+  category?: string;
+  subcategory?: string;
+  price?: number | null;
+  price_max?: number | null;
+};
 
 type ParsedListingPage = {
   categoryName: string;
@@ -870,6 +881,58 @@ async function collectKapoiProducts() {
   });
 }
 
+function buildSearchUrl(siteId: AnalyticsSiteId, product: LocalCatalogProduct) {
+  const query = encodeURIComponent(product.title.trim());
+
+  if (siteId === "promoproductos") {
+    return `https://www.promoproductos.com/catalogsearch/result/?q=${query}`;
+  }
+
+  if (siteId === "xtrade") {
+    return `https://x-tradeonline.com.ar/?s=${query}&post_type=product`;
+  }
+
+  if (siteId === "cdo") {
+    return `https://argentina.cdopromocionales.com/?s=${query}`;
+  }
+
+  return `https://${ANALYTICS_SITES.find((site) => site.id === siteId)?.domain ?? ""}`;
+}
+
+async function collectLocalCatalogProducts(options: {
+  label: string;
+  siteId: Extract<AnalyticsSiteId, "promoproductos" | "cdo" | "xtrade">;
+  fileName: string;
+  priceBasis: PriceBasis;
+  priceLabel: string;
+}) {
+  const filePath = path.join(DATA_DIR, options.fileName);
+  const raw = await fs.readFile(filePath, "utf8");
+  const parsed = JSON.parse(raw) as { products?: LocalCatalogProduct[] };
+  const products = parsed.products ?? [];
+
+  console.log(`${options.label}: ${products.length} productos desde catálogo local`);
+
+  return sortProducts(
+    products
+      .filter((product) => product.title?.trim())
+      .map((product) =>
+        buildProduct({
+          id: `${options.siteId}:${product.product_id}`,
+          siteId: options.siteId,
+          title: product.title,
+          url: buildSearchUrl(options.siteId, product),
+          rawCategories: uniqueStrings([product.category, product.subcategory]),
+          priceArs: product.price_max ?? product.price ?? null,
+          priceStatus: (product.price_max ?? product.price) != null ? "priced" : "unknown",
+          priceBasis: (product.price_max ?? product.price) != null ? options.priceBasis : "unknown",
+          priceLabel: (product.price_max ?? product.price) != null ? options.priceLabel : null,
+          notes: "Fuente local sincronizada en src/data.",
+        }),
+      ),
+  );
+}
+
 function buildExactMatches(products: AnalyticsProduct[], siteId: AnalyticsMatch["siteId"]) {
   const ownProducts = products.filter((product) => product.siteId === "diezypunto");
   const competitorProducts = products.filter((product) => product.siteId === siteId);
@@ -946,7 +1009,11 @@ function buildCanonicalFamilyMatches(
   siteId: AnalyticsMatch["siteId"],
   existingMatches: AnalyticsMatch[],
 ) {
-  const ownMatchedIds = new Set(existingMatches.map((match) => match.ourProductId));
+  const ownMatchedIds = new Set(
+    existingMatches
+      .filter((match) => match.siteId === siteId)
+      .map((match) => match.ourProductId),
+  );
   const competitorMatchedIds = new Set(
     existingMatches
       .filter((match) => match.siteId === siteId)
@@ -1052,13 +1119,20 @@ function buildManualOverrideMatches(
   products: AnalyticsProduct[],
   existingMatches: AnalyticsMatch[],
 ) {
-  const matchedOwnIds = new Set(existingMatches.map((match) => match.ourProductId));
-  const matchedCompetitorIds = new Set(existingMatches.map((match) => match.competitorProductId));
-
   const productsById = new Map(products.map((product) => [product.id, product]));
   const matches: AnalyticsMatch[] = [];
 
   for (const override of MANUAL_MATCH_OVERRIDES) {
+    const matchedOwnIds = new Set(
+      existingMatches
+        .filter((match) => match.siteId === override.siteId)
+        .map((match) => match.ourProductId),
+    );
+    const matchedCompetitorIds = new Set(
+      existingMatches
+        .filter((match) => match.siteId === override.siteId)
+        .map((match) => match.competitorProductId),
+    );
     const own = productsById.get(override.ourProductId);
     const competitor = productsById.get(override.competitorProductId);
     const site = ANALYTICS_SITES.find((item) => item.id === override.siteId);
@@ -1118,9 +1192,6 @@ function buildManualOverrideMatches(
       priceGapArs,
       priceGapPct,
     });
-
-    matchedOwnIds.add(own.id);
-    matchedCompetitorIds.add(competitor.id);
   }
 
   return matches.sort((left, right) => left.ourTitle.localeCompare(right.ourTitle, "es"));
@@ -1221,26 +1292,46 @@ async function main() {
   const merchProducts = await collectMerchProducts();
   const velskiProducts = await collectVelskiProducts();
   const kapoiProducts = await collectKapoiProducts();
+  const promoproductosProducts = await collectLocalCatalogProducts({
+    label: "Promoproductos",
+    siteId: "promoproductos",
+    fileName: "promoproductos-catalog.json",
+    priceBasis: "unknown",
+    priceLabel: "Precio desde catálogo local",
+  });
+  const cdoProducts = await collectLocalCatalogProducts({
+    label: "CDO",
+    siteId: "cdo",
+    fileName: "cdo-catalog.json",
+    priceBasis: "unknown",
+    priceLabel: "Precio desde catálogo local",
+  });
+  const xtradeProducts = await collectLocalCatalogProducts({
+    label: "X-Trade",
+    siteId: "xtrade",
+    fileName: "xtrade-catalog.json",
+    priceBasis: "unknown",
+    priceLabel: "Precio desde catálogo local",
+  });
 
   const products = sortProducts([
     ...diezypuntoProducts,
     ...merchProducts,
     ...velskiProducts,
     ...kapoiProducts,
+    ...promoproductosProducts,
+    ...cdoProducts,
+    ...xtradeProducts,
   ]);
 
-  const matches = [
-    ...buildExactMatches(products, "merch"),
-    ...buildExactMatches(products, "grupovelski"),
-    ...buildExactMatches(products, "kapoi"),
-  ];
+  const competitorSiteIds = ANALYTICS_SITES.filter((site) => site.id !== "diezypunto").map(
+    (site) => site.id,
+  ) as AnalyticsMatch["siteId"][];
+
+  const matches = competitorSiteIds.flatMap((siteId) => buildExactMatches(products, siteId));
 
   matches.push(...buildManualOverrideMatches(products, matches));
-  matches.push(
-    ...buildCanonicalFamilyMatches(products, "merch", matches),
-    ...buildCanonicalFamilyMatches(products, "grupovelski", matches),
-    ...buildCanonicalFamilyMatches(products, "kapoi", matches),
-  );
+  matches.push(...competitorSiteIds.flatMap((siteId) => buildCanonicalFamilyMatches(products, siteId, matches)));
 
   await enrichKapoiPlaceholderMatches(matches, products);
 
@@ -1257,6 +1348,7 @@ async function main() {
       "Merch publica precio usable y se incluye en KPIs de precio.",
       "Grupo Velski expone catálogo público, pero no muestra precio público consistente; sus productos quedan fuera de KPIs de precio.",
       "Kapoi opera en modo presupuesto y en productos muestreados usa placeholder técnico ARS 1.00; queda fuera de KPIs agregados de precio.",
+      "Promoproductos, CDO y X-Trade se incorporan desde catálogos locales sincronizados en src/data.",
       "El matching usa tres niveles: exacto por título normalizado, manual por override curado y canónico por misma familia/categoría para variantes menores.",
       "La categoría normalizada agrupa taxonomías distintas en un esquema común para comparar volumen y nivel de precio por rubro.",
     ],

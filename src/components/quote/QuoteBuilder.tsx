@@ -18,7 +18,6 @@ import {
   EnvelopeSimple,
   WhatsappLogo,
   Image as ImageIcon,
-  NotePencil,
   UploadSimple,
 } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
@@ -35,6 +34,7 @@ import SaveQuoteButton from "@/components/portal/SaveQuoteButton";
 import { useAuth } from "@/lib/hooks/use-auth";
 import ShareButton from "@/components/shared/ShareButtons";
 import { buildCartShareUrl, buildCartWhatsAppMessage } from "@/lib/share";
+import { trackGoogleAnalyticsEvent } from "@/lib/google-analytics";
 
 const DOCUMENT_TYPES = ["DNI", "CUIT", "CUIL", "Pasaporte"] as const;
 const PROVINCES = [
@@ -97,6 +97,16 @@ const LABEL_CLASSNAME = "text-xs font-medium text-slate-600";
 
 const WSP_NUMBER = "541162345062";
 
+type AnalyticsCheckoutItem = {
+  id: string;
+  title: string;
+  category: string;
+  quantity: number;
+  unit_price: number;
+  color?: string;
+  personalization_method?: string;
+};
+
 export default function QuoteBuilder() {
   const { items, updateQty, removeItem, clearCart } = useQuoteStore();
   const { client } = useAuth();
@@ -141,6 +151,23 @@ export default function QuoteBuilder() {
   const totalQuantity = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const hasItemsWithoutPrice = items.some((i) => i.product.price == null);
+
+  function getCheckoutAnalyticsItems() {
+    return items
+      .filter((item) => getItemUnitPrice(item) != null)
+      .map((item) => {
+        const unitPrice = getItemUnitPrice(item);
+        return {
+          id: item.id,
+          title: getItemLabel(item),
+          category: item.product.category,
+          quantity: item.quantity,
+          unit_price: Math.round((unitPrice ?? 0) * 1.21 * 100) / 100,
+          color: item.color || undefined,
+          personalization_method: item.personalization_method || undefined,
+        } satisfies AnalyticsCheckoutItem;
+      });
+  }
 
   // Fetch cross-sell products based on cart categories
   useEffect(() => {
@@ -268,6 +295,13 @@ export default function QuoteBuilder() {
       });
       const data = await res.json();
       if (data.init_point) {
+        trackGoogleAnalyticsEvent("checkout_start", {
+          payment_method: "mercadopago",
+          total_value: Math.round(total * 1.21 * 100) / 100,
+          total_items: payableItems.length,
+          total_qty: totalQuantity,
+          items: getCheckoutAnalyticsItems(),
+        });
         window.location.href = data.init_point;
       } else {
         setPaymentError(data.error || "Error al crear el pago");
@@ -328,6 +362,13 @@ export default function QuoteBuilder() {
       const data = await res.json();
       if (data.ok) {
         setTransferSent(true);
+        trackGoogleAnalyticsEvent("checkout_transfer", {
+          payment_method: "transfer",
+          total_value: Math.round(total * 1.21 * 100) / 100,
+          total_items: payableItems.length,
+          total_qty: totalQuantity,
+          items: getCheckoutAnalyticsItems(),
+        });
       } else {
         setPaymentError(data.error || "Error al enviar los datos");
       }
@@ -491,7 +532,15 @@ export default function QuoteBuilder() {
 
         {/* Single CTA */}
         <button
-          onClick={() => setCheckoutOpen(true)}
+          onClick={() => {
+            trackGoogleAnalyticsEvent("begin_checkout", {
+              total_value: Math.round(total * 1.21 * 100) / 100,
+              total_items: items.length,
+              total_qty: totalQuantity,
+              items: getCheckoutAnalyticsItems(),
+            });
+            setCheckoutOpen(true);
+          }}
           className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/40 bg-accent py-3.5 text-base font-medium text-white transition-all hover:bg-accent-hover hover:shadow-[0_8px_20px_rgba(89,198,242,0.35)]"
         >
           <ShoppingCart className="h-5 w-5" />
@@ -576,6 +625,13 @@ export default function QuoteBuilder() {
 
                 <button
                   onClick={async () => {
+                    trackGoogleAnalyticsEvent("quote_request_whatsapp", {
+                      method: "whatsapp_quote",
+                      total_value: Math.round(total * 1.21 * 100) / 100,
+                      total_items: items.length,
+                      total_qty: totalQuantity,
+                      items: getCheckoutAnalyticsItems(),
+                    });
                     try {
                       const cartUrl = await buildCartShareUrl(items);
                       const lines = [

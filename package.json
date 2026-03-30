@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "analytics:snapshot": "npx tsx scripts/build-competitor-analytics.ts",
+    "price-dashboard:merch": "npx tsx scripts/export-price-dashboard-merch.ts",
     "sync-catalog": "npx tsx scripts/sync-catalog.ts",
     "sync-promo": "npx tsx scripts/sync-promoproductos.ts",
     "sync-xtrade": "npx tsx scripts/sync-xtrade.ts",
