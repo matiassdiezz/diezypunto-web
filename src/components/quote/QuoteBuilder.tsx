@@ -1015,8 +1015,11 @@ function CartItemQty({ item }: { item: QuoteItem }) {
     <QuantityStepper
       value={localQty}
       onChange={(v) => {
+        if (typeof v === "number") {
+          if (v < min) return;
+          updateQty(item.id, v);
+        }
         setLocalQty(v);
-        if (typeof v === "number" && v >= min) updateQty(item.id, v);
       }}
       min={min}
       max={stock}
