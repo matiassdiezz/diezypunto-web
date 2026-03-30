@@ -66,6 +66,27 @@ export type AnalyticsMatch = {
   priceGapPct: number | null;
 };
 
+export type AnalyticsCategoryBenchmark = {
+  siteId: Exclude<AnalyticsSiteId, "diezypunto">;
+  siteName: string;
+  domain: string;
+  normalizedCategory: string;
+  ownProductCount: number;
+  competitorProductCount: number;
+  catalogDeltaCount: number;
+  matchedProductCount: number;
+  pricedMatchCount: number;
+  catalogOverlapPct: number | null;
+  pricedMatchCoveragePct: number | null;
+  ownMedianPrice: number | null;
+  competitorMedianPrice: number | null;
+  medianPriceGapArs: number | null;
+  medianPriceGapPct: number | null;
+  cheaperMatchCount: number;
+  alignedMatchCount: number;
+  pricierMatchCount: number;
+};
+
 export type ManualMatchOverride = {
   siteId: Exclude<AnalyticsSiteId, "diezypunto">;
   ourProductId: string;
@@ -82,6 +103,7 @@ export type CompetitorAnalyticsSnapshot = {
   normalizedCategories: string[];
   products: AnalyticsProduct[];
   matches: AnalyticsMatch[];
+  categoryBenchmarks?: AnalyticsCategoryBenchmark[];
 };
 
 export const ANALYTICS_SITES: AnalyticsSite[] = [

@@ -13,6 +13,7 @@ import {
 } from "../src/lib/analytics/competitor-snapshot";
 import { getAllProducts } from "../src/lib/engine/local-catalog";
 import { MANUAL_MATCH_OVERRIDES } from "../src/lib/analytics/manual-match-overrides";
+import { buildCategoryBenchmarks } from "../src/lib/analytics/category-benchmarks";
 
 const OUTPUT_DIR = path.resolve("analytics");
 const SNAPSHOT_DIR = path.join(OUTPUT_DIR, "snapshots");
@@ -1263,6 +1264,12 @@ async function main() {
     normalizedCategories,
     products,
     matches,
+    categoryBenchmarks: buildCategoryBenchmarks({
+      sites: ANALYTICS_SITES,
+      normalizedCategories,
+      products,
+      matches,
+    }),
   };
 
   const datedFile = path.join(SNAPSHOT_DIR, `competitor-benchmark-${snapshotDate}.json`);
