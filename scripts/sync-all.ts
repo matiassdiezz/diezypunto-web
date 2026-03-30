@@ -1,9 +1,11 @@
 #!/usr/bin/env npx tsx
 /**
- * Merge Zecat + Promoproductos + X-Trade catalogs into a single catalog.json
+ * Merge Zecat + Promoproductos + X-Trade + Atlantic Trade + CDO catalogs into
+ * a single catalog.json
  *
  * Usage:
- *   1. Run sync-catalog.ts (Zecat), sync-promoproductos.ts, and sync-xtrade.ts first
+ *   1. Run sync-catalog.ts (Zecat), sync-promoproductos.ts, sync-xtrade.ts,
+ *      sync-atlantictrade.ts, and sync-cdo.ts first
  *   2. Then run this script to merge all into catalog.json
  *
  * Or run all at once:
@@ -18,6 +20,7 @@ const DATA_DIR = fileURLToPath(new URL("../src/data", import.meta.url));
 const ZECAT_PATH = `${DATA_DIR}/catalog.json`;
 const PROMO_PATH = `${DATA_DIR}/promoproductos-catalog.json`;
 const XTRADE_PATH = `${DATA_DIR}/xtrade-catalog.json`;
+const ATLANTICTRADE_PATH = `${DATA_DIR}/atlantictrade-catalog.json`;
 const CDO_PATH = `${DATA_DIR}/cdo-catalog.json`;
 const OUTPUT_PATH = `${DATA_DIR}/catalog.json`;
 
@@ -104,9 +107,10 @@ async function main() {
   const zecat = loadCatalog(ZECAT_PATH);
   const promo = loadCatalog(PROMO_PATH);
   const xtrade = loadCatalog(XTRADE_PATH);
+  const atlantictrade = loadCatalog(ATLANTICTRADE_PATH);
   const cdo = loadCatalog(CDO_PATH);
 
-  if (!zecat && !promo && !xtrade && !cdo) {
+  if (!zecat && !promo && !xtrade && !atlantictrade && !cdo) {
     console.error("No catalog files found. Run with --sync to fetch first.");
     process.exit(1);
   }
@@ -131,6 +135,13 @@ async function main() {
     source: p.source || "xtrade",
   }));
 
+  const atlantictradeProducts: CatalogProduct[] = (
+    atlantictrade?.products || []
+  ).map((p) => ({
+    ...p,
+    source: p.source || "atlantictrade",
+  }));
+
   const cdoProducts: CatalogProduct[] = (cdo?.products || []).map((p) => ({
     ...p,
     source: p.source || "cdo",
@@ -139,10 +150,18 @@ async function main() {
   console.log(`Zecat: ${zecatProducts.length} products`);
   console.log(`Promoproductos: ${promoProducts.length} products`);
   console.log(`X-Trade: ${xtradeProducts.length} products`);
+  console.log(`Atlantic Trade: ${atlantictradeProducts.length} products`);
   console.log(`CDO: ${cdoProducts.length} products`);
 
-  // Merge — Zecat first (primary), then Promoproductos, then X-Trade, then CDO
-  const all = [...zecatProducts, ...promoProducts, ...xtradeProducts, ...cdoProducts];
+  // Merge — Zecat first (primary), then Promoproductos, X-Trade,
+  // Atlantic Trade, and CDO
+  const all = [
+    ...zecatProducts,
+    ...promoProducts,
+    ...xtradeProducts,
+    ...atlantictradeProducts,
+    ...cdoProducts,
+  ];
 
   // Normalize category names across providers (different providers use different names)
   const CATEGORY_NORMALIZE: Record<string, string> = {
@@ -201,6 +220,11 @@ async function main() {
         count: bySource["xtrade"] || 0,
         synced_at: xtrade?.synced_at,
         usd_rate: xtrade?.usd_rate,
+      },
+      atlantictrade: {
+        count: bySource["atlantictrade"] || 0,
+        synced_at: atlantictrade?.synced_at,
+        usd_rate: atlantictrade?.usd_rate,
       },
       cdo: {
         count: bySource["cdo"] || 0,

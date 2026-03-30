@@ -11,6 +11,7 @@
     "sync-catalog": "npx tsx scripts/sync-catalog.ts",
     "sync-promo": "npx tsx scripts/sync-promoproductos.ts",
     "sync-xtrade": "npx tsx scripts/sync-xtrade.ts",
+    "sync-atlantictrade": "npx tsx scripts/sync-atlantictrade.ts",
     "sync-cdo": "npx tsx scripts/sync-cdo.ts",
     "sync-all": "npx tsx scripts/sync-all.ts"
   },
