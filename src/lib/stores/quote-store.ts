@@ -75,7 +75,10 @@ export const useQuoteStore = create<QuoteState>()(
       },
 
       updateQty: (itemId, quantity) => {
-        if (quantity < 1) return;
+        const item = get().items.find((i) => i.id === itemId);
+        if (!item) return;
+        const minQty = item.product.min_qty || 1;
+        if (quantity < minQty) return;
         const capped = Math.min(quantity, MAX_QTY);
         set({
           items: get().items.map((i) =>

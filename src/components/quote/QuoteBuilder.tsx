@@ -392,13 +392,9 @@ export default function QuoteBuilder() {
                       <p className="text-xs text-muted">
                         {item.product.category}
                       </p>
-                      {(item.color || item.personalization_method) && (
-                        <p className="mt-1 text-xs text-muted">
-                          {[item.color, item.personalization_method]
-                            .filter(Boolean)
-                            .join(" · ")}
-                        </p>
-                      )}
+                      <p className="mt-1 text-xs text-muted">
+                        {[item.color, item.personalization_method].filter(Boolean).join(" · ") || "Sin personalización"}
+                      </p>
                     </div>
                     <button
                       onClick={() => removeItem(item.id)}

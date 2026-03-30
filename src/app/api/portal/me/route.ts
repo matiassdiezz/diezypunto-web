@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
   const session = req.cookies.get("session")?.value;
 
   if (!session) {
-    return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+    return NextResponse.json({ client_id: null });
   }
 
   // Dev bypass: return mock client without calling vault-api

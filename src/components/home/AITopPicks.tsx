@@ -15,6 +15,7 @@ interface PickWithProduct {
 export default function AITopPicks() {
   const [picks, setPicks] = useState<PickWithProduct[]>([]);
   const [title, setTitle] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/ai-picks")
@@ -36,10 +37,11 @@ export default function AITopPicks() {
 
         setPicks(results.filter(Boolean) as PickWithProduct[]);
       })
-      .catch(() => {});
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, []);
 
-  if (picks.length === 0) return null;
+  if (!loading && picks.length === 0) return null;
 
   return (
     <section className="bg-white py-20">
@@ -52,10 +54,21 @@ export default function AITopPicks() {
                 Powered by Claude
               </span>
             </div>
-            <h2 className="text-center text-2xl font-bold">{title}</h2>
+            <h2 className="text-center text-2xl font-bold">{title || "Productos destacados"}</h2>
           </div>
         </ScrollReveal>
 
+        {loading ? (
+          <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6">
+            {Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="animate-pulse space-y-3">
+                <div className="aspect-square rounded-2xl bg-gray-100" />
+                <div className="h-4 w-3/4 rounded bg-gray-100" />
+                <div className="h-3 w-1/2 rounded bg-gray-100" />
+              </div>
+            ))}
+          </div>
+        ) : (
         <div className="mt-10 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6">
           {picks.map((pick, i) => (
             <ScrollReveal key={pick.product.product_id} delay={i * 0.05}>
@@ -72,6 +85,7 @@ export default function AITopPicks() {
             </ScrollReveal>
           ))}
         </div>
+        )}
       </div>
     </section>
   );

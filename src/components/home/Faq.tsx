@@ -8,7 +8,7 @@ import ScrollReveal from "../shared/ScrollReveal";
 const FAQS = [
   {
     q: "Cual es la cantidad minima de pedido?",
-    a: "Podes pedir desde 1 unidad por producto. Para personalización con tu logo, consultanos las opciones segun la cantidad.",
+    a: "La cantidad mínima varía según el producto (generalmente entre 10 y 50 unidades). Cada producto indica su mínimo en el catálogo. Para cantidades menores, consultanos y vemos opciones.",
   },
   {
     q: "Cuanto demora la entrega?",

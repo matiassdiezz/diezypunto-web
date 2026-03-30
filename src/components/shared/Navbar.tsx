@@ -34,8 +34,8 @@ const CATEGORIES = [
   { label: "Gorros", slug: "Gorros" },
   { label: "Indumentaria", slug: "Apparel" },
   { label: "Paraguas", slug: "Paraguas" },
-  { label: "Mates y Termos", slug: "Mates, termos y materas" },
-  { label: "Verano", slug: "Verano" },
+  { label: "Mates y Termos", slug: "Drinkware" },
+  { label: "Outdoor", slug: "Outdoor" },
 ];
 
 export default function Navbar() {

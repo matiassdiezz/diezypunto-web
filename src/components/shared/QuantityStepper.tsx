@@ -50,6 +50,8 @@ export default function QuantityStepper({
 }: QuantityStepperProps) {
   const s = sizes[size];
   const effective = value || min;
+  const atMin = effective <= min;
+  const atMax = effective >= max;
   const border = glass ? "border-white/60" : "border-border";
   const wrapBg = glass ? "bg-white/70 backdrop-blur-sm" : "";
   const inputBg = glass ? "bg-transparent" : "bg-white";
@@ -63,7 +65,8 @@ export default function QuantityStepper({
     >
       <button
         onClick={() => onChange(Math.max(min, effective - 1))}
-        className={`${s.bL} text-muted transition-colors ${hover}`}
+        disabled={atMin}
+        className={`${s.bL} transition-colors ${atMin ? "cursor-not-allowed text-muted/30" : `text-muted ${hover}`}`}
         aria-label="Disminuir cantidad"
       >
         <Minus className={s.ico} />
@@ -93,7 +96,8 @@ export default function QuantityStepper({
           if (next > max) return;
           onChange(next);
         }}
-        className={`${s.bR} text-muted transition-colors ${hover}`}
+        disabled={atMax}
+        className={`${s.bR} transition-colors ${atMax ? "cursor-not-allowed text-muted/30" : `text-muted ${hover}`}`}
         aria-label="Aumentar cantidad"
       >
         <Plus className={s.ico} />
