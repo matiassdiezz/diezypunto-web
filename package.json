@@ -8,11 +8,16 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
+    "analytics:snapshot": "npx tsx scripts/build-competitor-analytics.ts",
+    "price-dashboard:merch": "npx tsx scripts/export-price-dashboard-merch.ts",
     "sync-catalog": "npx tsx scripts/sync-catalog.ts",
     "sync-promo": "npx tsx scripts/sync-promoproductos.ts",
     "sync-xtrade": "npx tsx scripts/sync-xtrade.ts",
+    "sync-atlantictrade": "npx tsx scripts/sync-atlantictrade.ts",
     "sync-cdo": "npx tsx scripts/sync-cdo.ts",
-    "sync-all": "npx tsx scripts/sync-all.ts"
+    "sync-maya": "npx tsx scripts/sync-maya.ts",
+    "sync-all": "npx tsx scripts/sync-all.ts",
+    "analytics-report": "npx tsx scripts/generate-analytics-report.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^3.0.58",

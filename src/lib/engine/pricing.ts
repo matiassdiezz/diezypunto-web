@@ -13,6 +13,9 @@ const PROVIDER_FACTORS: Record<string, number> = {
   zecat: 0.325,
   cdo: 1.0, // net_price already has provider discount applied
   promoproductos: 0.72,
+  xtrade: 1.0, // already converted to ARS in the sync script
+  atlantictrade: 1.0, // already converted to ARS in the sync script
+  maya: 1.0, // Maya returns ARS list prices directly
 };
 
 const PROVIDER_UPLIFTS: Record<string, number> = {

@@ -31,24 +31,46 @@ export const useDrawerStore = create<DrawerState>((set) => ({
 export default function AddToCartDrawer() {
   const { isOpen, product, quantity, close } = useDrawerStore();
   const cartItems = useQuoteStore((s) => s.items);
+  const lastAdded = useQuoteStore((s) => s.lastAdded);
   const [suggestions, setSuggestions] = useState<ProductResult[]>([]);
-  const addedColor = product
-    ? cartItems.findLast((i) => i.product.product_id === product.product_id)?.color
+  const addedItem = lastAdded
+    ? cartItems.find((i) => i.id === lastAdded.itemId) ??
+      cartItems.find((i) => i.product.product_id === lastAdded.product.product_id)
     : undefined;
+  const addedSelections = [
+    addedItem?.color,
+    addedItem?.personalization_method,
+  ].filter(Boolean);
 
   useEffect(() => {
-    if (!product) return;
-    const categories = getComplementaryCategories(product.category);
-    if (categories.length === 0) {
-      setSuggestions([]);
-      return;
+    let cancelled = false;
+
+    async function loadSuggestions() {
+      if (!product) {
+        if (!cancelled) setSuggestions([]);
+        return;
+      }
+
+      const categories = getComplementaryCategories(product.category);
+      if (categories.length === 0) {
+        if (!cancelled) setSuggestions([]);
+        return;
+      }
+
+      const results = await Promise.all(
+        categories.slice(0, 3).map((cat) =>
+          listProducts({ category: cat, limit: 1 }).then((r) => r.products[0]).catch(() => null),
+        ),
+      );
+      if (!cancelled) {
+        setSuggestions(results.filter(Boolean) as ProductResult[]);
+      }
     }
-    // Fetch 1 product from each complementary category
-    Promise.all(
-      categories.slice(0, 3).map((cat) =>
-        listProducts({ category: cat, limit: 1 }).then((r) => r.products[0]).catch(() => null),
-      ),
-    ).then((results) => setSuggestions(results.filter(Boolean) as ProductResult[]));
+
+    void loadSuggestions();
+    return () => {
+      cancelled = true;
+    };
   }, [product]);
 
   // Auto-close after 8 seconds
@@ -102,7 +124,8 @@ export default function AddToCartDrawer() {
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">{product.title}</p>
                 <p className="text-xs text-muted">
-                  {quantity}u{addedColor ? ` · ${addedColor}` : ""}
+                  {quantity}u
+                  {addedSelections.length > 0 ? ` · ${addedSelections.join(" · ")}` : ""}
                 </p>
               </div>
               {product.price != null && (

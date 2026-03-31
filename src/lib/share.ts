@@ -23,6 +23,8 @@ export async function buildCartShareUrl(
         title: i.product.title,
         qty: i.quantity,
         price: i.product.price,
+        color: i.color,
+        personalization_method: i.personalization_method,
       })),
     }),
   });

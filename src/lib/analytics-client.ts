@@ -3,6 +3,8 @@
  * Lightweight, no Node.js dependencies. Fire-and-forget.
  */
 
+import { trackGoogleAnalyticsEvent } from "./google-analytics";
+
 let sessionId: string | null = null;
 
 function getSessionId(): string {
@@ -20,7 +22,7 @@ function getSessionId(): string {
   return sessionId;
 }
 
-let buffer: Record<string, unknown>[] = [];
+const buffer: Record<string, unknown>[] = [];
 let flushTimer: ReturnType<typeof setTimeout> | null = null;
 
 function scheduleFlush() {
@@ -65,6 +67,7 @@ export function trackEvent(
   type: string,
   data: Record<string, unknown>,
 ) {
+  trackGoogleAnalyticsEvent(type, data);
   buffer.push({
     type,
     ts: new Date().toISOString(),

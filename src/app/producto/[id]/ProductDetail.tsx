@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useCallback, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { listProducts } from "@/lib/api";
 import type { ProductResult } from "@/lib/types";
@@ -26,12 +26,15 @@ import { inferColor, isLightColor } from "@/lib/color-map";
 
 export default function ProductDetail({ product }: { product: ProductResult }) {
   const searchParams = useSearchParams();
+  const qtyParam = searchParams.get("qty");
   const [related, setRelated] = useState<ProductResult[]>([]);
   const [selectedImage, setSelectedImage] = useState(0);
   const minQty = getMinQty(product);
   const initialQty = (() => {
-    const q = searchParams.get("qty");
-    if (q) { const n = parseInt(q); if (!isNaN(n) && n >= minQty) return n; }
+    if (qtyParam) {
+      const n = parseInt(qtyParam);
+      if (!isNaN(n) && n >= minQty) return n;
+    }
     return minQty;
   })();
   const [qty, setQty] = useState<number | "">(initialQty);
@@ -53,6 +56,10 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   const addItem = useQuoteStore((s) => s.addItem);
   const openDrawer = useDrawerStore((s) => s.open);
   const addToRecentlyViewed = useRecentlyViewedStore((s) => s.addProduct);
+  const requiresPersonalizationMethod =
+    product.personalization_methods.length > 1;
+  const canAddToCart =
+    !requiresPersonalizationMethod || !!selectedMethod;
 
   // Sync qty + method to URL
   useEffect(() => {
@@ -71,10 +78,17 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
   }, [qty, selectedMethod]);
 
   useEffect(() => {
-    setSelectedImage(0);
-    const q = searchParams.get("qty");
-    const parsed = q ? parseInt(q) : NaN;
-    setQty(!isNaN(parsed) && parsed >= minQty ? parsed : minQty);
+    const frame = window.requestAnimationFrame(() => {
+      setSelectedImage(0);
+      const parsed = qtyParam ? parseInt(qtyParam) : NaN;
+      setQty(!isNaN(parsed) && parsed >= minQty ? parsed : minQty);
+      setSelectedColor(product.colors.length === 1 ? product.colors[0] : null);
+      setSelectedMethod(
+        product.personalization_methods.length === 1
+          ? product.personalization_methods[0]
+          : null,
+      );
+    });
 
     // Track product view
     trackEvent("product_view", {
@@ -94,8 +108,11 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
       })
       .catch((err) => { if (!cancelled) console.error(err); });
 
-    return () => { cancelled = true; };
-  }, [product]);
+    return () => {
+      cancelled = true;
+      window.cancelAnimationFrame(frame);
+    };
+  }, [product, qtyParam, minQty, addToRecentlyViewed]);
 
   function handleZoomMove(e: React.MouseEvent<HTMLDivElement>) {
     if (!zoomRef.current) return;
@@ -122,8 +139,12 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
       stockWarnRef.current = setTimeout(() => setStockWarn(false), 2000);
       return;
     }
-    addItem(product, effectiveQty, selectedColor ?? undefined, selectedMethod ?? undefined);
-    openDrawer(product, effectiveQty);
+    const q = qty || minQty;
+    addItem(product, q, {
+      color: selectedColor ?? undefined,
+      personalizationMethod: selectedMethod ?? undefined,
+    });
+    openDrawer(product, q);
     setJustAdded(true);
     clearTimeout(addTimerRef.current);
     addTimerRef.current = setTimeout(() => setJustAdded(false), 1500);
@@ -377,11 +398,15 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                 <div className={product.colors.length > 0 ? "mt-3" : "mt-4 border-t border-border/50 pt-4"}>
                   <PersonalizationCard
                     methods={product.personalization_methods}
-                    productTitle={product.title}
                     selected={selectedMethod}
                     onSelect={setSelectedMethod}
                   />
                 </div>
+              )}
+              {requiresPersonalizationMethod && !selectedMethod && (
+                <p className="mt-2 text-xs text-muted">
+                  Elegí un método para agregar este producto al carrito.
+                </p>
               )}
 
               {/* Quantity stepper + Add */}
@@ -418,10 +443,13 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                   />
                   <button
                     onClick={handleAdd}
+                    disabled={!canAddToCart}
                     className={`flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-sm font-medium text-white transition-all sm:text-base ${
-                      justAdded
-                        ? "bg-success"
-                        : "bg-accent hover:bg-accent-hover"
+                      !canAddToCart
+                        ? "cursor-not-allowed bg-muted"
+                        : justAdded
+                          ? "bg-success"
+                          : "bg-accent hover:bg-accent-hover"
                     }`}
                   >
                     {justAdded ? (
@@ -473,15 +501,42 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
 
             </div>
 
-            {/* Specs — informational only */}
-            {product.materials.length > 0 && (
-              <div className="mt-4 sm:mt-6">
-                <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-                  Materiales
-                </p>
-                <p className="mt-1 text-sm">{product.materials.join(", ")}</p>
-              </div>
-            )}
+            {/* Specs */}
+            <div className="mt-4 space-y-3 sm:mt-6">
+              {product.materials.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">
+                    Materiales
+                  </p>
+                  <p className="mt-1 text-sm">{product.materials.join(", ")}</p>
+                </div>
+              )}
+              {product.colors.length > 0 && (
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">
+                    Colores disponibles
+                  </p>
+                  <div className="mt-1.5 flex flex-wrap gap-2">
+                    {product.colors.map((color) => (
+                      <button
+                        key={color}
+                        onClick={() => setSelectedColor(selectedColor === color ? null : color)}
+                        className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
+                          selectedColor === color
+                            ? "border-accent bg-accent/10 text-accent"
+                            : "border-border text-foreground hover:border-accent/30"
+                        }`}
+                      >
+                        <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${
+                          selectedColor === color ? "bg-accent" : "bg-muted/40"
+                        }`} />
+                        {color}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </ScrollReveal>
       </div>

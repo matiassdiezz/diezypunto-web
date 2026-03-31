@@ -46,11 +46,14 @@ diezypunto-web/
 │   │   ├── api.ts                 # Client-side API wrapper
 │   │   └── telegram.ts            # Deep linking al bot Telegram
 │   └── data/
-│       └── catalog.json           # Catálogo completo (~1.1 MB, synced desde Zecat)
+│       ├── catalog.json           # Catálogo completo consolidado
+│       ├── atlantictrade-catalog.json # Snapshot manual de Atlantic Trade
+│       └── maya-catalog.json      # Snapshot autenticado de Maya Publicidad
 ├── scripts/
 │   ├── generate-llms-full.ts      # Prebuild: catalog.json → public/llms-full.txt
-│   └── sync-catalog.ts            # Sync desde Zecat API
-├── .env.example                   # Template de env vars
+│   ├── sync-catalog.ts            # Sync desde Zecat API
+│   ├── sync-atlantictrade.ts      # Sync manual desde Atlantic Trade
+│   └── sync-maya.ts               # Sync autenticado desde Maya Publicidad
 └── package.json
 ```
 
@@ -58,8 +61,7 @@ diezypunto-web/
 
 ```bash
 npm install
-cp .env.example .env.local
-# Completar las API keys en .env.local
+# Crear .env.local y completar las API keys
 npm run dev
 # → http://localhost:3000
 ```
@@ -70,6 +72,9 @@ npm run dev
 npm run dev            # Dev server
 npm run build          # Build (genera llms-full.txt + next build)
 npm run sync-catalog   # Sync catálogo desde Zecat API
+npm run sync-atlantictrade # Sync manual Atlantic Trade (después de las 20hs)
+npm run sync-maya      # Sync catálogo desde Maya Publicidad
+npm run sync-all       # Merge de snapshots locales en catalog.json
 npm run lint           # ESLint
 ```
 
@@ -79,6 +84,13 @@ npm run lint           # ESLint
 |---|---|---|
 | `ANTHROPIC_API_KEY` | API key de Claude (Haiku para search/picks/review) | Sí |
 | `ZECAT_API_TOKEN` | Token de Zecat (base64 email:token) | Sí |
+| `ATLANTICTRADE_API_URL` | Base URL WooCommerce Atlantic Trade | No |
+| `ATLANTICTRADE_CONSUMER_KEY` | Consumer key de Atlantic Trade | No |
+| `ATLANTICTRADE_CONSUMER_SECRET` | Consumer secret de Atlantic Trade | No |
+| `MAYA_API_URL` | Base URL API Maya Publicidad | No |
+| `MAYA_API_EMAIL` | Usuario/email para login Maya | No |
+| `MAYA_API_PASSWORD` | Password para login Maya | No |
+| `USD_RATE` | Override manual del dólar oficial para syncs WooCommerce | No |
 | `MERCADOPAGO_ACCESS_TOKEN` | MercadoPago checkout (sin esto, checkout devuelve 503) | No |
 
 ## Cómo funciona la búsqueda AI
@@ -90,10 +102,14 @@ npm run lint           # ESLint
 
 ## Catálogo
 
-- **Fuente principal:** `src/data/catalog.json` (~1.1 MB, estático)
-- **Sync:** `npm run sync-catalog` baja de Zecat API y actualiza el JSON
+- **Fuente principal:** `src/data/catalog.json` (merge estático de proveedores)
+- **Sync base:** `npm run sync-catalog` baja de Zecat API y actualiza el JSON
+- **Atlantic Trade:** `npm run sync-atlantictrade` genera `src/data/atlantictrade-catalog.json`
+- **Maya Publicidad:** `npm run sync-maya` genera `src/data/maya-catalog.json`
+- **Merge:** `npm run sync-all` consolida snapshots locales; `sync-all --sync` llama Maya pero no Atlantic Trade
 - **Fallback:** `zecat.ts` hace lookups individuales si un producto no está en el JSON
 - **528+ productos** en 8 categorías: drinkware, bags, apparel, kits, tech, premium, eco, office
+- **Restricción Atlantic Trade:** correr manualmente una vez por día después de las 20:00 (Buenos Aires)
 
 ## Estado (Zustand)
 

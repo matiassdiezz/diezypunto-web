@@ -12,30 +12,39 @@ function CartLoader() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const addItem = useQuoteStore((s) => s.addItem);
-  const [loading, setLoading] = useState(false);
+  const code = searchParams.get("code");
+  const [loading, setLoading] = useState(() => !!code);
   const loaded = useRef(false);
 
   useEffect(() => {
-    const code = searchParams.get("code");
     if (!code || loaded.current) return;
     loaded.current = true;
 
-    setLoading(true);
     fetch(`/api/share-code/${code}`)
       .then((res) => (res.ok ? res.json() : null))
       .then(async (payload) => {
         if (!payload?.items) return;
         const settled = await Promise.allSettled(
-          payload.items.map((item: { product_id: string; qty: number }) =>
+          payload.items.map((item: {
+            product_id: string;
+            qty: number;
+            color?: string;
+            personalization_method?: string;
+          }) =>
             getProduct(item.product_id).then((product) => ({
               product,
               qty: item.qty,
+              color: item.color,
+              personalization_method: item.personalization_method,
             })),
           ),
         );
         for (const result of settled) {
           if (result.status === "fulfilled") {
-            addItem(result.value.product, result.value.qty);
+            addItem(result.value.product, result.value.qty, {
+              color: result.value.color,
+              personalizationMethod: result.value.personalization_method,
+            });
           }
         }
       })
@@ -44,7 +53,7 @@ function CartLoader() {
         router.replace("/carrito");
         setLoading(false);
       });
-  }, [searchParams, router, addItem]);
+  }, [code, router, addItem]);
 
   if (loading) {
     return (

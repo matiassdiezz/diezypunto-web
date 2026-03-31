@@ -1,0 +1,48 @@
+name: Sync Atlantic Trade
+
+on:
+  schedule:
+    - cron: "15 23 * * *" # Daily 23:15 UTC = 20:15 Buenos Aires
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-atlantictrade
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync Atlantic Trade
+        run: npx tsx scripts/sync-atlantictrade.ts
+        env:
+          ATLANTICTRADE_API_URL: ${{ secrets.ATLANTICTRADE_API_URL }}
+          ATLANTICTRADE_CONSUMER_KEY: ${{ secrets.ATLANTICTRADE_CONSUMER_KEY }}
+          ATLANTICTRADE_CONSUMER_SECRET: ${{ secrets.ATLANTICTRADE_CONSUMER_SECRET }}
+
+      - name: Merge local snapshots
+        run: npx tsx scripts/sync-all.ts
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/atlantictrade-catalog.json src/data/catalog.json
+          if git diff --cached --quiet; then
+            echo "No Atlantic Trade catalog changes"
+          else
+            git commit -m "chore: sync Atlantic Trade catalog"
+            git push
+          fi

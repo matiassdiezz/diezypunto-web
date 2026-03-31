@@ -19,8 +19,12 @@ export type EventType =
   | "cart_remove"
   | "cart_clear"
   | "cart_review"
+  | "begin_checkout"
   | "checkout_start"
   | "checkout_transfer"
+  | "share_copy_link"
+  | "share_whatsapp"
+  | "quote_request_whatsapp"
   | "ai_cost";
 
 export interface AnalyticsEvent {
@@ -53,7 +57,7 @@ export function getIP(req: Request): string {
 // ---------- Server-side tracking ----------
 
 /** Buffer for batching — flush every 5s or 20 events */
-let buffer: AnalyticsEvent[] = [];
+const buffer: AnalyticsEvent[] = [];
 let flushTimer: ReturnType<typeof setTimeout> | null = null;
 const FLUSH_INTERVAL = 5000;
 const FLUSH_SIZE = 20;

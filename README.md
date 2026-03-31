@@ -1,4 +1,12 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Analytics
+
+GA4 quedó preparado para activarse con:
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+```
+
+La guía de setup y funnel está en [docs/ga4-funnel.md](./docs/ga4-funnel.md).
 
 ## Getting Started
 
