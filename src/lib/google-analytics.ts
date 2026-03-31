@@ -37,7 +37,7 @@ function getItems(value: unknown): GAItem[] | undefined {
   if (!Array.isArray(value)) return undefined;
 
   const items = value
-    .map((item) => {
+    .map<GAItem | null>((item) => {
       if (!item || typeof item !== "object") return null;
       const candidate = item as Record<string, unknown>;
 
@@ -168,4 +168,3 @@ export function trackGoogleAnalyticsEvent(
       gtag("event", type, data);
   }
 }
-
