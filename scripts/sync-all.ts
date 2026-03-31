@@ -1,11 +1,11 @@
 #!/usr/bin/env npx tsx
 /**
- * Merge Zecat + Promoproductos + X-Trade + Atlantic Trade + CDO catalogs into
- * a single catalog.json
+ * Merge Zecat + Promoproductos + X-Trade + Atlantic Trade + CDO + Maya
+ * catalogs into a single catalog.json
  *
  * Usage:
  *   1. Run sync-catalog.ts (Zecat), sync-promoproductos.ts, sync-xtrade.ts,
- *      sync-atlantictrade.ts, and sync-cdo.ts first
+ *      sync-atlantictrade.ts, sync-cdo.ts, and sync-maya.ts first
  *   2. Then run this script to merge all into catalog.json
  *
  * Or run all at once:
@@ -22,6 +22,7 @@ const PROMO_PATH = `${DATA_DIR}/promoproductos-catalog.json`;
 const XTRADE_PATH = `${DATA_DIR}/xtrade-catalog.json`;
 const ATLANTICTRADE_PATH = `${DATA_DIR}/atlantictrade-catalog.json`;
 const CDO_PATH = `${DATA_DIR}/cdo-catalog.json`;
+const MAYA_PATH = `${DATA_DIR}/maya-catalog.json`;
 const OUTPUT_PATH = `${DATA_DIR}/catalog.json`;
 
 interface CatalogProduct {
@@ -30,6 +31,7 @@ interface CatalogProduct {
   title: string;
   description: string;
   category: string;
+  subcategory?: string;
   materials: string[];
   colors: string[];
   personalization_methods: string[];
@@ -100,6 +102,16 @@ async function main() {
     } catch {
       console.error("CDO sync failed, using existing file if available");
     }
+
+    console.log("\n=== Syncing Maya ===\n");
+    try {
+      execSync(`npx tsx ${scriptDir}/sync-maya.ts`, {
+        stdio: "inherit",
+        env: process.env,
+      });
+    } catch {
+      console.error("Maya sync failed, using existing file if available");
+    }
     console.log("\n=== Merging catalogs ===\n");
   }
 
@@ -109,8 +121,9 @@ async function main() {
   const xtrade = loadCatalog(XTRADE_PATH);
   const atlantictrade = loadCatalog(ATLANTICTRADE_PATH);
   const cdo = loadCatalog(CDO_PATH);
+  const maya = loadCatalog(MAYA_PATH);
 
-  if (!zecat && !promo && !xtrade && !atlantictrade && !cdo) {
+  if (!zecat && !promo && !xtrade && !atlantictrade && !cdo && !maya) {
     console.error("No catalog files found. Run with --sync to fetch first.");
     process.exit(1);
   }
@@ -118,8 +131,23 @@ async function main() {
   // Tag products with source
   // Note: zecat catalog.json may contain products from a previous merge.
   // Only take products that are actually from Zecat (no promo_/cdo_/xtrade_ prefix).
+  const nonZecatSources = new Set([
+    "promoproductos",
+    "xtrade",
+    "atlantictrade",
+    "cdo",
+    "maya",
+  ]);
   const zecatProducts: CatalogProduct[] = (zecat?.products || [])
-    .filter((p) => !p.product_id.startsWith("promo_") && !p.product_id.startsWith("cdo_") && p.source !== "xtrade")
+    .filter(
+      (p) =>
+        !p.product_id.startsWith("promo_") &&
+        !p.product_id.startsWith("cdo_") &&
+        !p.product_id.startsWith("xt_") &&
+        !p.product_id.startsWith("atl_") &&
+        !p.product_id.startsWith("maya_") &&
+        !nonZecatSources.has(p.source || "")
+    )
     .map((p) => ({
       ...p,
       source: p.source || "zecat",
@@ -147,20 +175,26 @@ async function main() {
     source: p.source || "cdo",
   }));
 
+  const mayaProducts: CatalogProduct[] = (maya?.products || []).map((p) => ({
+    ...p,
+    source: p.source || "maya",
+  }));
+
   console.log(`Zecat: ${zecatProducts.length} products`);
   console.log(`Promoproductos: ${promoProducts.length} products`);
   console.log(`X-Trade: ${xtradeProducts.length} products`);
   console.log(`Atlantic Trade: ${atlantictradeProducts.length} products`);
   console.log(`CDO: ${cdoProducts.length} products`);
+  console.log(`Maya: ${mayaProducts.length} products`);
 
-  // Merge — Zecat first (primary), then Promoproductos, X-Trade,
-  // Atlantic Trade, and CDO
+  // Merge — Zecat first (primary), then the external provider snapshots
   const all = [
     ...zecatProducts,
     ...promoProducts,
     ...xtradeProducts,
     ...atlantictradeProducts,
     ...cdoProducts,
+    ...mayaProducts,
   ];
 
   // Normalize category names across providers (different providers use different names)
@@ -230,6 +264,10 @@ async function main() {
         count: bySource["cdo"] || 0,
         synced_at: cdo?.synced_at,
         usd_rate: cdo?.usd_rate,
+      },
+      maya: {
+        count: bySource["maya"] || 0,
+        synced_at: maya?.synced_at,
       },
     },
     products: unique,
