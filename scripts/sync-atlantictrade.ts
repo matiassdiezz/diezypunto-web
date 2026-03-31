@@ -23,6 +23,9 @@ const ATLANTICTRADE_API_URL =
 const ATLANTICTRADE_CONSUMER_KEY = process.env.ATLANTICTRADE_CONSUMER_KEY;
 const ATLANTICTRADE_CONSUMER_SECRET =
   process.env.ATLANTICTRADE_CONSUMER_SECRET;
+const ATLANTICTRADE_STORE_API_URL =
+  process.env.ATLANTICTRADE_STORE_API_URL ||
+  "https://atlantictrade.com.ar/wp-json/wc/store/v1";
 const PAGE_SIZE = 50;
 const FETCH_TIMEOUT = 45_000;
 
@@ -43,6 +46,37 @@ interface WooProduct {
   categories: { id: number; name: string; slug: string }[];
   images: { id: number; src: string; alt: string }[];
   attributes: { id: number; name: string; options: string[] }[];
+}
+
+interface StoreProduct {
+  id: number;
+  name: string;
+  slug: string;
+  permalink: string;
+  sku: string;
+  short_description: string;
+  description: string;
+  prices: {
+    price: string;
+    regular_price: string;
+    sale_price: string;
+    currency_code: string;
+    currency_minor_unit: number;
+  };
+  images: { id: number; src: string; alt: string }[];
+  categories: { id: number; name: string; slug: string }[];
+  attributes: {
+    id: number;
+    name: string;
+    terms: { id: number; name: string; slug: string }[];
+  }[];
+  is_purchasable: boolean;
+  is_in_stock: boolean;
+  add_to_cart?: {
+    minimum?: number;
+    maximum?: number;
+    multiple_of?: number;
+  };
 }
 
 interface CatalogProduct {
@@ -99,9 +133,31 @@ async function getUsdRate(): Promise<number> {
 }
 
 function stripHtml(html: string): string {
+  const namedEntities: Record<string, string> = {
+    nbsp: " ",
+    amp: "&",
+    quot: '"',
+    apos: "'",
+    lt: "<",
+    gt: ">",
+    ldquo: '"',
+    rdquo: '"',
+    lsquo: "'",
+    rsquo: "'",
+    ndash: "-",
+    mdash: "-",
+  };
+
   return html
     .replace(/<[^>]*>/g, "")
-    .replace(/&[a-z]+;/g, " ")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCodePoint(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) =>
+      String.fromCodePoint(parseInt(code, 16))
+    )
+    .replace(
+      /&(nbsp|amp|quot|apos|lt|gt|ldquo|rdquo|lsquo|rsquo|ndash|mdash);/gi,
+      (entity) => namedEntities[entity.slice(1, -1).toLowerCase()] || " "
+    )
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -115,6 +171,20 @@ function extractAttributeOptions(
     .filter((attr) => normalizedNames.includes(attr.name.toLowerCase()))
     .flatMap((attr) => attr.options || [])
     .map((option) => option.trim())
+    .filter(Boolean);
+
+  return [...new Set(values)];
+}
+
+function extractStoreAttributeOptions(
+  attributes: StoreProduct["attributes"],
+  names: string[]
+): string[] {
+  const normalizedNames = names.map((name) => name.toLowerCase());
+  const values = attributes
+    .filter((attr) => normalizedNames.includes(attr.name.toLowerCase()))
+    .flatMap((attr) => attr.terms || [])
+    .map((term) => term.name.trim())
     .filter(Boolean);
 
   return [...new Set(values)];
@@ -155,7 +225,23 @@ async function fetchPage(
   return { products, totalPages };
 }
 
-async function fetchAllProducts(): Promise<WooProduct[]> {
+async function fetchStorePage(page: number): Promise<StoreProduct[]> {
+  const url = new URL(`${ATLANTICTRADE_STORE_API_URL}/products`);
+  url.searchParams.set("per_page", String(PAGE_SIZE));
+  url.searchParams.set("page", String(page));
+
+  const res = await fetch(url.toString(), {
+    signal: AbortSignal.timeout(FETCH_TIMEOUT),
+  });
+
+  if (!res.ok) {
+    throw new Error(`Store API ${res.status}: ${await res.text()}`);
+  }
+
+  return (await res.json()) as StoreProduct[];
+}
+
+async function fetchAllWooProducts(): Promise<WooProduct[]> {
   const allProducts: WooProduct[] = [];
   let page = 1;
   let totalPages = 1;
@@ -176,12 +262,30 @@ async function fetchAllProducts(): Promise<WooProduct[]> {
   return allProducts;
 }
 
+async function fetchAllStoreProducts(): Promise<StoreProduct[]> {
+  const allProducts: StoreProduct[] = [];
+  let page = 1;
+
+  while (true) {
+    process.stdout.write(`  Page ${page}...`);
+    const products = await fetchStorePage(page);
+    console.log(` ${products.length} products`);
+
+    if (products.length === 0) break;
+    allProducts.push(...products);
+
+    if (products.length < PAGE_SIZE) break;
+    page++;
+  }
+
+  return allProducts;
+}
+
 function transformProduct(
   product: WooProduct,
   usdRate: number
 ): CatalogProduct | null {
   if (product.status !== "publish") return null;
-  if (!product.purchasable) return null;
   if (product.stock_status === "outofstock") return null;
 
   const colors = extractAttributeOptions(product.attributes, [
@@ -241,30 +345,107 @@ function transformProduct(
   };
 }
 
-async function main() {
-  if (!ATLANTICTRADE_CONSUMER_KEY || !ATLANTICTRADE_CONSUMER_SECRET) {
-    console.error(
-      "Missing ATLANTICTRADE_CONSUMER_KEY or ATLANTICTRADE_CONSUMER_SECRET env vars"
-    );
-    process.exit(1);
-  }
+function parseStorePrice(
+  value: string,
+  minorUnit: number,
+  usdRate: number
+): number | null {
+  if (!value) return null;
 
+  const numeric = parseFloat(value);
+  if (Number.isNaN(numeric) || numeric <= 0) return null;
+
+  const divisor = 10 ** minorUnit;
+  const priceUsd = numeric / divisor;
+  return Math.round(priceUsd * usdRate * 100) / 100;
+}
+
+function transformStoreProduct(
+  product: StoreProduct,
+  usdRate: number
+): CatalogProduct | null {
+  if (!product.is_in_stock) return null;
+
+  const colors = extractStoreAttributeOptions(product.attributes, [
+    "color",
+    "colores",
+  ]);
+  const materials = extractStoreAttributeOptions(product.attributes, [
+    "material",
+    "materiales",
+  ]);
+
+  const minorUnit = product.prices.currency_minor_unit ?? 2;
+  const priceArs =
+    parseStorePrice(
+      product.prices.sale_price || product.prices.price,
+      minorUnit,
+      usdRate
+    ) ?? parseStorePrice(product.prices.regular_price, minorUnit, usdRate);
+  const priceMaxArs =
+    parseStorePrice(product.prices.regular_price, minorUnit, usdRate) ?? priceArs;
+
+  const imageUrls = product.images.map((img) => img.src).filter(Boolean);
+  const description = stripHtml(
+    product.short_description || product.description || ""
+  );
+
+  const searchText =
+    `${product.name} ${description} ${product.categories.map((c) => c.name).join(" ")}`.toLowerCase();
+  const ecoFriendly =
+    searchText.includes("sustentable") ||
+    searchText.includes("eco") ||
+    searchText.includes("bambú") ||
+    searchText.includes("bamboo") ||
+    searchText.includes("reciclad");
+
+  return {
+    product_id: `atl_${product.id}`,
+    external_id: product.sku || String(product.id),
+    title: stripHtml(product.name),
+    description,
+    category: normalizeCategory(product.categories),
+    materials,
+    colors,
+    personalization_methods: [],
+    eco_friendly: ecoFriendly,
+    price: priceArs,
+    price_max: priceMaxArs,
+    currency: "ARS",
+    min_qty: Math.max(1, product.add_to_cart?.minimum || 1),
+    image_urls: imageUrls,
+    source: "atlantictrade",
+  };
+}
+
+async function main() {
   console.log(
     "Atlantic Trade should be synced manually after 20:00 Buenos Aires time and at most once per day."
   );
 
   const usdRate = await getUsdRate();
-  console.log("Fetching catalog from Atlantic Trade (WooCommerce)...");
+  const hasWooCredentials = Boolean(
+    ATLANTICTRADE_CONSUMER_KEY && ATLANTICTRADE_CONSUMER_SECRET
+  );
+  const sourceLabel = hasWooCredentials
+    ? "WooCommerce REST API"
+    : "WooCommerce Store API (public fallback)";
+
+  console.log(`Fetching catalog from Atlantic Trade (${sourceLabel})...`);
   console.log(`USD/ARS rate: ${usdRate}\n`);
 
-  const allProducts = await fetchAllProducts();
+  const allProducts = hasWooCredentials
+    ? await fetchAllWooProducts()
+    : await fetchAllStoreProducts();
   console.log(`\nFetched ${allProducts.length} raw products`);
 
   const catalog: CatalogProduct[] = [];
   let skipped = 0;
 
   for (const product of allProducts) {
-    const transformed = transformProduct(product, usdRate);
+    const transformed = hasWooCredentials
+      ? transformProduct(product as WooProduct, usdRate)
+      : transformStoreProduct(product as StoreProduct, usdRate);
     if (transformed) {
       catalog.push(transformed);
     } else {
