@@ -1,10 +1,10 @@
 {
-  "synced_at": "2026-03-31T23:25:37.906Z",
+  "synced_at": "2026-04-01T23:26:00.463Z",
   "total": 1755,
   "sources": {
     "zecat": {
       "count": 526,
-      "synced_at": "2026-03-31T23:18:13.307Z"
+      "synced_at": "2026-03-31T23:25:37.906Z"
     },
     "promoproductos": {
       "count": 347,
@@ -18,8 +18,8 @@
     },
     "atlantictrade": {
       "count": 95,
-      "synced_at": "2026-03-31T23:25:37.193Z",
-      "usd_rate": 1405
+      "synced_at": "2026-04-01T23:25:59.722Z",
+      "usd_rate": 1415
     },
     "cdo": {
       "count": 294,
