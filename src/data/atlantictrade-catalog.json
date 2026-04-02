@@ -1,8 +1,8 @@
 {
-  "synced_at": "2026-04-01T23:25:59.722Z",
+  "synced_at": "2026-04-02T23:25:50.907Z",
   "source": "atlantictrade",
   "usd_rate": 1415,
-  "total": 95,
+  "total": 93,
   "products": [
     {
       "product_id": "atl_2212",
@@ -851,54 +851,6 @@
         "https://atlantictrade.com.ar/wp-content/uploads/2025/05/A82-NEGRO-LUZ.webp",
         "https://atlantictrade.com.ar/wp-content/uploads/2025/05/CAJA-DORSO-SIN-FONDO.webp",
         "https://atlantictrade.com.ar/wp-content/uploads/2025/05/caja-frente.webp"
-      ],
-      "source": "atlantictrade"
-    },
-    {
-      "product_id": "atl_1211",
-      "external_id": "C1050B",
-      "title": "Power Bank 10.000 mAh",
-      "description": "Este power bank de 10.000 mAh combina simplicidad y rendimiento en un dispositivo elegante y moderno. Su construcción compacta y ligera lo hace ideal para llevarlo contigo a cualquier parte, mientras que su batería de alta calidad garantiza un rendimiento prolongado y seguro. Si buscas un accesorio confiable, eficiente y con carga rápida, el Power Bank 10.000 mAh 35W es la opción ideal para estar siempre conectado.",
-      "category": "Tecnología",
-      "materials": [],
-      "colors": [],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": null,
-      "price_max": null,
-      "currency": "ARS",
-      "min_qty": 30,
-      "image_urls": [
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050-BLANCO-1.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050-BLANCO-2.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050B1.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050B3.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050B2.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050-BLANCO.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/CAJA-POWER-BANK.webp"
-      ],
-      "source": "atlantictrade"
-    },
-    {
-      "product_id": "atl_1199",
-      "external_id": "C1050N",
-      "title": "Power Bank 10.000 mAh",
-      "description": "Este power bank de 10.000 mAh combina simplicidad y rendimiento en un dispositivo elegante y moderno. Su construcción compacta y ligera lo hace ideal para llevarlo contigo a cualquier parte, mientras que su batería de alta calidad garantiza un rendimiento prolongado y seguro. Si buscas un accesorio confiable, eficiente y con carga rápida, el Power Bank 10.000 mAh 35W es la opción ideal para estar siempre conectado.",
-      "category": "Tecnología",
-      "materials": [],
-      "colors": [],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": null,
-      "price_max": null,
-      "currency": "ARS",
-      "min_qty": 30,
-      "image_urls": [
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050-NEGRO-1.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050N1.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050N2.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/C1050-NEGRO.webp",
-        "https://atlantictrade.com.ar/wp-content/uploads/2025/05/CAJA-POWER-BANK.webp"
       ],
       "source": "atlantictrade"
     },
