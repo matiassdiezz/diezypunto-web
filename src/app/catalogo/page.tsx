@@ -1,25 +1,26 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { SITE_NAME } from "@/lib/seo";
+import { CATALOG_COUNT_LABEL } from "@/lib/catalog-count";
 import CatalogContent from "./CatalogContent";
 
 export const metadata: Metadata = {
   title: `Catálogo Completo | Merchandising Corporativo | ${SITE_NAME}`,
   description:
-    "Explorá +1,400 productos de merchandising corporativo personalizables. Remeras, bolsos, tecnología, drinkware y más. Pedí online en diezypunto.",
+    `Explorá ${CATALOG_COUNT_LABEL} productos de merchandising corporativo personalizables. Remeras, bolsos, tecnología, drinkware y más. Pedí online en diezypunto.`,
   alternates: {
     canonical: "/catalogo",
   },
   openGraph: {
     title: `Catálogo Completo | Merchandising Corporativo | ${SITE_NAME}`,
     description:
-      "Explorá +1,400 productos de merchandising corporativo personalizables. Remeras, bolsos, tecnología, drinkware y más.",
+      `Explorá ${CATALOG_COUNT_LABEL} productos de merchandising corporativo personalizables. Remeras, bolsos, tecnología, drinkware y más.`,
   },
   twitter: {
     card: "summary",
     title: `Catálogo Completo | Merchandising Corporativo | ${SITE_NAME}`,
     description:
-      "Explorá +1,400 productos de merchandising corporativo personalizables.",
+      `Explorá ${CATALOG_COUNT_LABEL} productos de merchandising corporativo personalizables.`,
   },
 };
 

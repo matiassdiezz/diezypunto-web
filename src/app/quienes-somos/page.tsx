@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { CATALOG_COUNT_LABEL } from "@/lib/catalog-count";
 
 export const metadata: Metadata = {
   title: "Quiénes Somos | Diezypunto - 20+ Años en Merchandising Corporativo",
@@ -47,7 +48,7 @@ export default function QuienesSomosPage() {
             desc: "De experiencia en merchandising corporativo",
           },
           {
-            title: "1.400+",
+            title: `${CATALOG_COUNT_LABEL.replace("+", "")}+`,
             desc: "Productos disponibles para personalizar",
           },
           {

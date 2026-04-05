@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ClientLayout from "./client-layout";
 import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import { CATALOG_COUNT_LABEL } from "@/lib/catalog-count";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "diezypunto | Merchandising Corporativo",
   description:
-    "Merchandising corporativo con +1,400 productos. Busca con tus palabras y encontra lo que necesitas en segundos.",
+    `Merchandising corporativo con ${CATALOG_COUNT_LABEL} productos. Busca con tus palabras y encontra lo que necesitas en segundos.`,
   icons: {
     icon: "/logo-icon.png",
     apple: "/logo-icon.png",
@@ -32,14 +33,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: "diezypunto | Merchandising Corporativo",
     description:
-      "Merchandising corporativo con +1,400 productos. Busca con tus palabras y encontra lo que necesitas en segundos.",
+      `Merchandising corporativo con ${CATALOG_COUNT_LABEL} productos. Busca con tus palabras y encontra lo que necesitas en segundos.`,
     images: ["/logo-diezypunto.webp"],
   },
   twitter: {
     card: "summary_large_image",
     title: "diezypunto | Merchandising Corporativo",
     description:
-      "Merchandising corporativo con +1,400 productos. Busca con tus palabras y encontra lo que necesitas en segundos.",
+      `Merchandising corporativo con ${CATALOG_COUNT_LABEL} productos. Busca con tus palabras y encontra lo que necesitas en segundos.`,
     images: ["/logo-diezypunto.webp"],
   },
 };
@@ -53,7 +54,7 @@ const jsonLd = {
       url: siteUrl,
       logo: `${siteUrl}/logo-diezypunto.webp`,
       description:
-        "Proveedor B2B de merchandising y regalos corporativos en Argentina. +528 productos personalizables.",
+        `Proveedor B2B de merchandising y regalos corporativos en Argentina. ${CATALOG_COUNT_LABEL} productos personalizables.`,
       contactPoint: {
         "@type": "ContactPoint",
         contactType: "sales",

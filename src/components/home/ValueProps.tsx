@@ -2,11 +2,12 @@
 
 import { Package, PaintBrush, Truck, Trophy } from "@phosphor-icons/react";
 import ScrollReveal from "../shared/ScrollReveal";
+import { CATALOG_COUNT_LABEL } from "@/lib/catalog-count";
 
 const PROPS = [
   {
     icon: Package,
-    title: "+1,400 productos",
+    title: `${CATALOG_COUNT_LABEL} productos`,
     description: "El catalogo mas completo de Argentina",
   },
   {

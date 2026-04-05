@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { telegramUrl } from "@/lib/telegram";
+import { CATALOG_COUNT_LABEL } from "@/lib/catalog-count";
 
 const BRANDS = [
   { src: "/brands/stanley.webp", alt: "Stanley" },
@@ -49,7 +50,7 @@ export default function Footer() {
               className="h-9 w-auto"
             />
             <p className="mt-2 text-sm text-muted">
-              Merchandising corporativo con +1,400 productos. Calidad y
+              Merchandising corporativo con {CATALOG_COUNT_LABEL} productos. Calidad y
               personalización para tu marca.
             </p>
             <div className="mt-4 flex gap-3">

@@ -8,9 +8,10 @@ import { Package, PaintBrush, Truck, Trophy } from "@phosphor-icons/react";
 import { OpenChatButton } from "@/components/chat/OpenChatButton";
 import { PEDIDO_EVENTO_PRESET_MESSAGE } from "@/lib/chat/chat-preset-messages";
 import { useChatStore } from "@/lib/stores/chat-store";
+import { CATALOG_COUNT_LABEL } from "@/lib/catalog-count";
 
 const VALUE_POINTS = [
-  { icon: Package, text: "+1,400 productos" },
+  { icon: Package, text: `${CATALOG_COUNT_LABEL} productos` },
   { icon: PaintBrush, text: "Serigrafía, bordado, láser y más" },
   { icon: Truck, text: "Envío a todo el país" },
   { icon: Trophy, text: "+20 años de experiencia" },

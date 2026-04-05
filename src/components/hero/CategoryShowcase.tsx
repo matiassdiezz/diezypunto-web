@@ -16,6 +16,7 @@ import {
   type Icon as PhosphorIcon,
 } from "@phosphor-icons/react";
 import ScrollReveal from "../shared/ScrollReveal";
+import { CATALOG_COUNT_LABEL } from "@/lib/catalog-count";
 
 // Names must match catalog.json categories exactly.
 const CATEGORIES: { name: string; icon: PhosphorIcon }[] = [
@@ -40,7 +41,7 @@ export default function CategoryShowcase() {
           Explora por categoria
         </h2>
         <p className="mt-2 text-center text-muted">
-          Mas de 1,400 productos organizados para que encuentres lo que buscas
+          Mas de {CATALOG_COUNT_LABEL.replace("+", "")} productos organizados para que encuentres lo que buscas
         </p>
       </ScrollReveal>
 

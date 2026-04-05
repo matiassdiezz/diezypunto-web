@@ -1,9 +1,10 @@
 "use client";
 
 import { Package, Clock, Trophy } from "@phosphor-icons/react";
+import { CATALOG_COUNT_LABEL } from "@/lib/catalog-count";
 
 const stats = [
-  { icon: Package, label: "+1,400 productos", sub: "en catalogo" },
+  { icon: Package, label: `${CATALOG_COUNT_LABEL} productos`, sub: "en catalogo" },
   { icon: Clock, label: "+10 anios", sub: "de experiencia" },
   { icon: Trophy, label: "Personalizacion", sub: "a medida" },
 ];
