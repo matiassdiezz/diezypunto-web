@@ -1,10 +1,10 @@
 {
-  "synced_at": "2026-04-05T23:25:24.991Z",
-  "total": 1753,
+  "synced_at": "2026-04-06T23:25:38.999Z",
+  "total": 1751,
   "sources": {
     "zecat": {
       "count": 526,
-      "synced_at": "2026-04-04T23:25:16.210Z"
+      "synced_at": "2026-04-05T23:25:24.991Z"
     },
     "promoproductos": {
       "count": 347,
@@ -18,7 +18,7 @@
     },
     "atlantictrade": {
       "count": 93,
-      "synced_at": "2026-04-05T23:25:24.282Z",
+      "synced_at": "2026-04-06T23:25:38.299Z",
       "usd_rate": 1415
     },
     "cdo": {
@@ -27,8 +27,8 @@
       "usd_rate": 1400
     },
     "maya": {
-      "count": 257,
-      "synced_at": "2026-03-31T17:30:13.782Z"
+      "count": 255,
+      "synced_at": "2026-04-05T16:01:17.134Z"
     }
   },
   "products": [
@@ -54475,8 +54475,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 595,
-      "price_max": 595,
+      "price": 641,
+      "price_max": 641,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -54508,8 +54508,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 962,
-      "price_max": 962,
+      "price": 1043,
+      "price_max": 1043,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -54547,8 +54547,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1266,
-      "price_max": 1266,
+      "price": 1369,
+      "price_max": 1369,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -54584,8 +54584,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1405,
-      "price_max": 1405,
+      "price": 1517,
+      "price_max": 1517,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -54625,8 +54625,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1147,
-      "price_max": 1147,
+      "price": 1251,
+      "price_max": 1251,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -54642,10 +54642,10 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 9071,
+        "BLANCO PLENO": 8969,
         "NEGRO PLENO": 926,
-        "AZUL TRANSLUCIDO": 6494,
-        "CRISTAL / TRANSPARENTE": 699,
+        "AZUL TRANSLUCIDO": 6394,
+        "CRISTAL / TRANSPARENTE": 599,
         "NARANJA TRANSLUCIDO": 0,
         "ROJO TRANSLUCIDO": 4116,
         "VERDE TRANSLUCIDO": 0,
@@ -54669,8 +54669,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1628,
-      "price_max": 1628,
+      "price": 1792,
+      "price_max": 1792,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -54683,7 +54683,7 @@
       "stock_by_color": {
         "BLANCO PLENO": 1239,
         "COLOR ESPECIAL": 0,
-        "NEGRO PLENO": 1053
+        "NEGRO PLENO": 1051
       }
     },
     {
@@ -54707,8 +54707,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1184,
-      "price_max": 1184,
+      "price": 1300,
+      "price_max": 1300,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -54724,7 +54724,7 @@
       "source": "maya",
       "stock_by_color": {
         "BLANCO PLENO": 2387,
-        "NEGRO PLENO": 52,
+        "NEGRO PLENO": 794,
         "AZUL TRANSLUCIDO": 76,
         "NARANJA TRANSLUCIDO": 199,
         "ROJO TRANSLUCIDO": 533,
@@ -54749,8 +54749,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2087,
-      "price_max": 2087,
+      "price": 2313,
+      "price_max": 2313,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -54782,8 +54782,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2948,
-      "price_max": 2948,
+      "price": 3240,
+      "price_max": 3240,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -54818,8 +54818,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 287,
-      "price_max": 287,
+      "price": 297,
+      "price_max": 297,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -54866,8 +54866,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 24,
-      "price_max": 24,
+      "price": 28,
+      "price_max": 28,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -54886,13 +54886,13 @@
       "stock_by_color": {
         "AMARILLO PLENO": 440,
         "AZUL CLARO PLENO": 90,
-        "BLANCO PLENO": 59490,
-        "NARANJA PLENO": 10490,
-        "NEGRO PLENO": 17800,
+        "BLANCO PLENO": 54490,
+        "NARANJA PLENO": 9490,
+        "NEGRO PLENO": 12800,
         "ROJO PLENO": 214,
-        "VERDE CLARO PLENO": 17314,
-        "CRISTAL / TRANSPARENTE": 49775,
-        "VIOLETA PLENO": 15693
+        "VERDE CLARO PLENO": 15314,
+        "CRISTAL / TRANSPARENTE": 39775,
+        "VIOLETA PLENO": 14693
       }
     },
     {
@@ -54910,8 +54910,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 17.32,
-      "price_max": 17.32,
+      "price": 10.4,
+      "price_max": 10.4,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -54938,8 +54938,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1901,
-      "price_max": 1901,
+      "price": 2058,
+      "price_max": 2058,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -54973,8 +54973,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 118,
-      "price_max": 118,
+      "price": 130,
+      "price_max": 130,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -55019,8 +55019,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 205,
-      "price_max": 205,
+      "price": 224,
+      "price_max": 224,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -55060,8 +55060,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 253,
-      "price_max": 253,
+      "price": 282,
+      "price_max": 282,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -55092,8 +55092,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 199,
-      "price_max": 199,
+      "price": 223,
+      "price_max": 223,
       "currency": "ARS",
       "min_qty": 1000,
       "image_urls": [
@@ -55129,8 +55129,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 263,
-      "price_max": 263,
+      "price": 291,
+      "price_max": 291,
       "currency": "ARS",
       "min_qty": 73,
       "image_urls": [
@@ -55178,8 +55178,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 370,
-      "price_max": 370,
+      "price": 410,
+      "price_max": 410,
       "currency": "ARS",
       "min_qty": 14,
       "image_urls": [
@@ -55195,7 +55195,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 17454,
+        "BLANCO PLENO": 20414,
         "NEGRO PLENO": 0,
         "AMARILLO TRANSLUCIDO": 282,
         "AZUL TRANSLUCIDO": 0,
@@ -55225,8 +55225,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 570,
-      "price_max": 570,
+      "price": 631,
+      "price_max": 631,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -55264,8 +55264,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 989,
-      "price_max": 989,
+      "price": 1098,
+      "price_max": 1098,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -55301,8 +55301,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1202,
-      "price_max": 1202,
+      "price": 1428,
+      "price_max": 1428,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -55345,8 +55345,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 253,
-      "price_max": 253,
+      "price": 278,
+      "price_max": 278,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -55378,8 +55378,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 224,
-      "price_max": 224,
+      "price": 254,
+      "price_max": 254,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -55427,7 +55427,7 @@
       "stock_by_color": {
         "AZUL CLARO PLENO": 21695,
         "NARANJA PLENO": 4700,
-        "NEGRO PLENO": 16023,
+        "NEGRO PLENO": 15573,
         "ROJO PLENO": 6790,
         "VERDE CLARO PLENO": 495
       }
@@ -55477,8 +55477,8 @@
         "GRIS CLARO PLENO": 11083,
         "NARANJA PLENO": 16116,
         "NEGRO PLENO": 0,
-        "ROJO PLENO": 8854,
-        "VERDE OSCURO PLENO": 8106
+        "ROJO PLENO": 10854,
+        "VERDE OSCURO PLENO": 8606
       }
     },
     {
@@ -55497,8 +55497,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 897,
-      "price_max": 897,
+      "price": 977,
+      "price_max": 977,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -55529,8 +55529,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 72,
-      "price_max": 72,
+      "price": 79,
+      "price_max": 79,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -55565,8 +55565,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 550,
-      "price_max": 550,
+      "price": 649,
+      "price_max": 649,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -55601,8 +55601,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1161,
-      "price_max": 1161,
+      "price": 1295,
+      "price_max": 1295,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -55640,8 +55640,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2739,
-      "price_max": 2739,
+      "price": 3131,
+      "price_max": 3131,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -55657,8 +55657,8 @@
       "source": "maya",
       "stock_by_color": {
         "BLANCO PLENO": 1990,
-        "AZUL TRANSLUCIDO": 2213,
-        "CRISTAL / TRANSPARENTE": 2396,
+        "AZUL TRANSLUCIDO": 1513,
+        "CRISTAL / TRANSPARENTE": 2345,
         "NARANJA TRANSLUCIDO": 783,
         "ROJO TRANSLUCIDO": 2123,
         "VERDE TRANSLUCIDO": 981,
@@ -55686,8 +55686,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2739,
-      "price_max": 2739,
+      "price": 3131,
+      "price_max": 3131,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -55708,7 +55708,7 @@
         "VERDE CLARO PLENO": 636,
         "COLORES SURTIDOS": 862,
         "CHICLE": 360,
-        "AZUL CLARO PLENO": 1212
+        "AZUL CLARO PLENO": 1161
       }
     },
     {
@@ -55732,8 +55732,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4315,
-      "price_max": 4315,
+      "price": 4879,
+      "price_max": 4879,
       "currency": "ARS",
       "min_qty": 36,
       "image_urls": [
@@ -55778,8 +55778,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1205,
-      "price_max": 1205,
+      "price": 1368,
+      "price_max": 1368,
       "currency": "ARS",
       "min_qty": 60,
       "image_urls": [
@@ -55897,8 +55897,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 152,
-      "price_max": 152,
+      "price": 167,
+      "price_max": 167,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -55932,8 +55932,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 278,
-      "price_max": 278,
+      "price": 332,
+      "price_max": 332,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -55966,8 +55966,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1961,
-      "price_max": 2549,
+      "price": 2006,
+      "price_max": 2608,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -55999,8 +55999,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1968,
-      "price_max": 1968,
+      "price": 2018,
+      "price_max": 2018,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -56036,8 +56036,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 795,
-      "price_max": 795,
+      "price": 928,
+      "price_max": 928,
       "currency": "ARS",
       "min_qty": 36,
       "image_urls": [
@@ -56076,8 +56076,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 101,
-      "price_max": 101,
+      "price": 107,
+      "price_max": 107,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -56121,8 +56121,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 23.9,
-      "price_max": 74.3,
+      "price": 14.6,
+      "price_max": 44.2,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56155,8 +56155,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 130.4,
-      "price_max": 209.1,
+      "price": 84.5,
+      "price_max": 130.9,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56169,7 +56169,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "NIQUELADO": 41344
+        "NIQUELADO": 40844
       }
     },
     {
@@ -56288,8 +56288,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3553,
-      "price_max": 3553,
+      "price": 3890,
+      "price_max": 3890,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -56329,8 +56329,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1862,
-      "price_max": 1862,
+      "price": 2030,
+      "price_max": 2030,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -56341,8 +56341,8 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 112,
-        "NEGRO PLENO": 700,
+        "BLANCO PLENO": 12,
+        "NEGRO PLENO": 500,
         "COLOR ESPECIAL": 0
       }
     },
@@ -56359,8 +56359,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 382,
-      "price_max": 382,
+      "price": 418,
+      "price_max": 418,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -56370,7 +56370,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 12326
+        "CRISTAL / TRANSPARENTE": 13376
       }
     },
     {
@@ -56386,8 +56386,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 454,
-      "price_max": 454,
+      "price": 500,
+      "price_max": 500,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -56396,7 +56396,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 3080
+        "CRISTAL / TRANSPARENTE": 2480
       }
     },
     {
@@ -56412,8 +56412,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 498,
-      "price_max": 498,
+      "price": 543,
+      "price_max": 543,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -56423,7 +56423,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 6725
+        "CRISTAL / TRANSPARENTE": 6125
       }
     },
     {
@@ -56439,8 +56439,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 230,
-      "price_max": 230,
+      "price": 250,
+      "price_max": 250,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56465,8 +56465,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 315,
-      "price_max": 315,
+      "price": 346,
+      "price_max": 346,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56476,34 +56476,6 @@
       "source": "maya",
       "stock_by_color": {
         "CRISTAL / TRANSPARENTE": 200
-      }
-    },
-    {
-      "product_id": "maya_312",
-      "external_id": "LLV35001",
-      "title": "LLAVERO CAPILLA ECONOMICO, ARO Y TRIANGULO S/Imp.",
-      "description": "Medida: 2,5 x 6 cm | Area de impresion: 2,5 x 3,5 cm",
-      "category": "Llaveros",
-      "subcategory": "",
-      "materials": [
-        "Poliestireno"
-      ],
-      "colors": [
-        "CRISTAL / TRANSPARENTE"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": true,
-      "price": 248,
-      "price_max": 248,
-      "currency": "ARS",
-      "min_qty": 500,
-      "image_urls": [
-        "https://mayapublicidad.com/uploads/pictures/large/20151110-162717-312_LLV350014252_200.jpg",
-        "https://mayapublicidad.com/uploads/pictures/large/20151110-161810-LLV350014252.jpg"
-      ],
-      "source": "maya",
-      "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 54
       }
     },
     {
@@ -56521,8 +56493,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 334,
-      "price_max": 334,
+      "price": 367,
+      "price_max": 367,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56549,8 +56521,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 382,
-      "price_max": 382,
+      "price": 413,
+      "price_max": 413,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56577,8 +56549,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 319,
-      "price_max": 319,
+      "price": 348,
+      "price_max": 348,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56605,8 +56577,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 367,
-      "price_max": 367,
+      "price": 394,
+      "price_max": 394,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56631,8 +56603,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 164,
-      "price_max": 164,
+      "price": 178,
+      "price_max": 178,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56658,8 +56630,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 189,
-      "price_max": 189,
+      "price": 209,
+      "price_max": 209,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56686,8 +56658,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 235,
-      "price_max": 235,
+      "price": 257,
+      "price_max": 257,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56712,8 +56684,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 321,
-      "price_max": 321,
+      "price": 354,
+      "price_max": 354,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56742,8 +56714,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 319,
-      "price_max": 319,
+      "price": 374,
+      "price_max": 374,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -56772,13 +56744,13 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 773,
-      "price_max": 773,
+      "price": 864,
+      "price_max": 864,
       "currency": "ARS",
-      "min_qty": 20,
+      "min_qty": 200,
       "image_urls": [
         "https://mayapublicidad.com/uploads/pictures/large/20250512-144047-359_PRL03230-portarretrato-6x9.jpg",
-        "https://mayapublicidad.com/uploads/pictures/large/20250512-144149-PRL032304253.jpg"
+        "https://mayapublicidad.com/images/ui/image/mp-large.jpg"
       ],
       "source": "maya",
       "stock_by_color": {
@@ -56798,8 +56770,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 221,
-      "price_max": 221,
+      "price": 242,
+      "price_max": 242,
       "currency": "ARS",
       "min_qty": 800,
       "image_urls": [
@@ -56856,8 +56828,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 363,
-      "price_max": 363,
+      "price": 393,
+      "price_max": 393,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56882,8 +56854,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 369,
-      "price_max": 369,
+      "price": 400,
+      "price_max": 400,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -56914,8 +56886,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 577,
-      "price_max": 577,
+      "price": 700,
+      "price_max": 700,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -56928,10 +56900,10 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "ROJO PLENO": 359,
+        "ROJO PLENO": 3559,
         "VERDE CLARO PLENO": 5847,
         "AZUL CLARO PLENO": 3060,
-        "AMARILLO PLENO": 3685,
+        "AMARILLO PLENO": 3485,
         "ROSA PASTEL": 2079
       }
     },
@@ -56956,8 +56928,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 980,
-      "price_max": 980,
+      "price": 1067,
+      "price_max": 1067,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -57006,8 +56978,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1210,
-      "price_max": 1210,
+      "price": 1330,
+      "price_max": 1330,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -57027,11 +56999,11 @@
       "source": "maya",
       "stock_by_color": {
         "AMARILLO TRANSLUCIDO": 0,
-        "AZUL TRANSLUCIDO": 1108,
-        "CRISTAL / TRANSPARENTE": 0,
+        "AZUL TRANSLUCIDO": 958,
+        "CRISTAL / TRANSPARENTE": 5373,
         "NARANJA TRANSLUCIDO": 0,
         "NEGRO TRANSLUCIDO": 0,
-        "ROJO TRANSLUCIDO": 1112,
+        "ROJO TRANSLUCIDO": 1062,
         "VERDE TRANSLUCIDO": 0,
         "VIOLETA TRANSLUCIDO": 0,
         "ROSA PASTEL": 0,
@@ -57060,8 +57032,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 233,
-      "price_max": 233,
+      "price": 275,
+      "price_max": 275,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -57076,12 +57048,12 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "AMARILLO PLENO": 2704,
-        "AZUL CLARO PLENO": 7311,
-        "BLANCO PLENO": 15125,
-        "NARANJA PLENO": 3747,
-        "ROJO PLENO": 5310,
-        "VERDE CLARO PLENO": 3558,
+        "AMARILLO PLENO": 2504,
+        "AZUL CLARO PLENO": 7111,
+        "BLANCO PLENO": 14925,
+        "NARANJA PLENO": 3547,
+        "ROJO PLENO": 5110,
+        "VERDE CLARO PLENO": 3358,
         "CHICLE": 4435
       }
     },
@@ -57100,8 +57072,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2385,
-      "price_max": 2385,
+      "price": 2634,
+      "price_max": 2634,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -57157,14 +57129,14 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "NEGRO PLENO": 3901,
+        "NEGRO PLENO": 4151,
         "AZUL CLARO PLENO": 28291,
-        "ROJO PLENO": 19294,
-        "VERDE CLARO PLENO": 24005,
+        "ROJO PLENO": 18094,
+        "VERDE CLARO PLENO": 23805,
         "ROSA PLENO": 9601,
         "BLANCO PLENO": 126723,
         "NARANJA PLENO": 36998,
-        "AMARILLO PLENO": 24245,
+        "AMARILLO PLENO": 23245,
         "VIOLETA PLENO": 17700,
         "CELESTE PLENO": 36883
       }
@@ -57216,8 +57188,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2722,
-      "price_max": 5035,
+      "price": 2984,
+      "price_max": 5517,
       "currency": "ARS",
       "min_qty": 12,
       "image_urls": [
@@ -57246,9 +57218,9 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 4959,
+        "BLANCO PLENO": 4163,
         "COLORES PASTEL SURTIDOS": 178,
-        "NEGRO PLENO": 8801
+        "NEGRO PLENO": 8223
       }
     },
     {
@@ -57292,8 +57264,8 @@
       "source": "maya",
       "stock_by_color": {
         "ROJO PLENO": 25444,
-        "AZUL OSCURO PLENO": 21914,
-        "NEGRO PLENO": 3098,
+        "AZUL OSCURO PLENO": 20914,
+        "NEGRO PLENO": 4798,
         "VERDE OSCURO PLENO": 17400,
         "NARANJA PLENO": 22375,
         "PLATA / PLATEADO": 0,
@@ -57314,8 +57286,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 269,
-      "price_max": 269,
+      "price": 297,
+      "price_max": 297,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -57403,8 +57375,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 683.13,
-      "price_max": 683.13,
+      "price": 896,
+      "price_max": 896,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -57415,7 +57387,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 4761,
+        "BLANCO PLENO": 4161,
         "NEGRO PLENO": 2548,
         "CRUDO": 940
       }
@@ -57437,8 +57409,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2894,
-      "price_max": 2894,
+      "price": 3211,
+      "price_max": 3211,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -57449,9 +57421,9 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 2877,
+        "BLANCO PLENO": 2802,
         "COLORES PASTEL SURTIDOS": 100,
-        "NEGRO PLENO": 2636
+        "NEGRO PLENO": 2511
       }
     },
     {
@@ -57487,10 +57459,10 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "NEGRO PLENO": 12450,
-        "PLATA / PLATEADO": 12871,
-        "AZUL CLARO PLENO": 9460,
-        "ROJO PLENO": 11164,
+        "NEGRO PLENO": 12120,
+        "PLATA / PLATEADO": 12721,
+        "AZUL CLARO PLENO": 9160,
+        "ROJO PLENO": 10064,
         "VERDE OSCURO PLENO": 3754
       }
     },
@@ -57538,12 +57510,12 @@
       "source": "maya",
       "stock_by_color": {
         "ROJO PLENO": 12850,
-        "VERDE CLARO PLENO": 5753,
+        "VERDE CLARO PLENO": 6753,
         "ROSA PASTEL": 13491,
         "AMARILLO PLENO": 8328,
-        "AZUL CLARO PLENO": 12780,
-        "BLANCO PLENO": 29528,
-        "NEGRO PLENO": 19361,
+        "AZUL CLARO PLENO": 19780,
+        "BLANCO PLENO": 34688,
+        "NEGRO PLENO": 18761,
         "COLOR ESPECIAL": 0,
         "VIOLETA PLENO": 0
       }
@@ -57579,10 +57551,10 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "VERDE OSCURO PLENO": 16649,
+        "VERDE OSCURO PLENO": 17149,
         "NEGRO PLENO": 23901,
         "AZUL CLARO PLENO": 13541,
-        "ROJO PLENO": 13878
+        "ROJO PLENO": 14378
       }
     },
     {
@@ -57618,9 +57590,9 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "PLATA / PLATEADO": 2949,
-        "ROJO PLENO": 11598,
-        "AZUL CLARO PLENO": 6750,
+        "PLATA / PLATEADO": 4949,
+        "ROJO PLENO": 11698,
+        "AZUL CLARO PLENO": 6900,
         "VERDE CLARO PLENO": 33,
         "NEGRO PLENO": 8486
       }
@@ -57643,8 +57615,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1385,
-      "price_max": 1385,
+      "price": 1470,
+      "price_max": 1470,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -57657,9 +57629,9 @@
       "source": "maya",
       "stock_by_color": {
         "BLANCO PLENO": 0,
-        "CRUDO": 44,
+        "CRUDO": 4,
         "AZUL CLARO PLENO": 359,
-        "NEGRO PLENO": 635
+        "NEGRO PLENO": 680
       }
     },
     {
@@ -57688,7 +57660,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "NEGRO PLENO": 23028
+        "NEGRO PLENO": 21528
       }
     },
     {
@@ -57708,8 +57680,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 385,
-      "price_max": 385,
+      "price": 444,
+      "price_max": 444,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -57720,9 +57692,9 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 11271,
-        "CRUDO": 6329,
-        "NEGRO PLENO": 1157
+        "BLANCO PLENO": 11171,
+        "CRUDO": 6334,
+        "NEGRO PLENO": 2157
       }
     },
     {
@@ -57742,8 +57714,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 333,
-      "price_max": 333,
+      "price": 408,
+      "price_max": 408,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -57754,7 +57726,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 3793,
+        "BLANCO PLENO": 2293,
         "CRUDO": 5029,
         "NEGRO PLENO": 0
       }
@@ -57775,8 +57747,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 174,
-      "price_max": 174,
+      "price": 249,
+      "price_max": 249,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -57788,7 +57760,7 @@
       "source": "maya",
       "stock_by_color": {
         "BLANCO PLENO": 6039,
-        "NEGRO PLENO": 10447
+        "NEGRO PLENO": 10947
       }
     },
     {
@@ -57810,8 +57782,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1967.5,
-      "price_max": 1967.5,
+      "price": 2105,
+      "price_max": 2105,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -57825,8 +57797,8 @@
       "source": "maya",
       "stock_by_color": {
         "BLANCO PLENO": 1322,
-        "NEGRO PLENO": 1821,
-        "CRISTAL / TRANSPARENTE": 0,
+        "NEGRO PLENO": 3021,
+        "CRISTAL / TRANSPARENTE": 475,
         "ROJO PLENO": 1229,
         "ROSA PASTEL": 0
       }
@@ -57848,8 +57820,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 282,
-      "price_max": 282,
+      "price": 336,
+      "price_max": 336,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -57860,8 +57832,8 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 1147,
-        "NEGRO PLENO": 221,
+        "BLANCO PLENO": 0,
+        "NEGRO PLENO": 121,
         "CRUDO": 4744
       }
     },
@@ -57884,8 +57856,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1710.5,
-      "price_max": 1710.5,
+      "price": 1853,
+      "price_max": 1853,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -57920,8 +57892,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1311,
-      "price_max": 1311,
+      "price": 1437,
+      "price_max": 1437,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -57950,8 +57922,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 222,
-      "price_max": 222,
+      "price": 241,
+      "price_max": 241,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -57961,7 +57933,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 1123
+        "CRISTAL / TRANSPARENTE": 2123
       }
     },
     {
@@ -57979,8 +57951,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 356,
-      "price_max": 356,
+      "price": 384,
+      "price_max": 384,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -57989,7 +57961,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 2123
+        "CRISTAL / TRANSPARENTE": 1822
       }
     },
     {
@@ -58030,12 +58002,12 @@
       "source": "maya",
       "stock_by_color": {
         "AMARILLO PLENO": 0,
-        "AZUL CLARO PLENO": 10141,
-        "BLANCO PLENO": 19691,
-        "NEGRO PLENO": 1300,
+        "AZUL CLARO PLENO": 10041,
+        "BLANCO PLENO": 19591,
+        "NEGRO PLENO": 2000,
         "ROJO PLENO": 92,
-        "NARANJA PLENO": 7147,
-        "ROSA PLENO": 11654
+        "NARANJA PLENO": 7047,
+        "ROSA PLENO": 11454
       }
     },
     {
@@ -58054,8 +58026,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 184,
-      "price_max": 184,
+      "price": 265,
+      "price_max": 265,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -58065,7 +58037,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 7717,
+        "BLANCO PLENO": 7217,
         "CRUDO": 4280
       }
     },
@@ -58084,8 +58056,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1443,
-      "price_max": 1443,
+      "price": 1572,
+      "price_max": 1572,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -58145,8 +58117,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1043,
-      "price_max": 1043,
+      "price": 1151,
+      "price_max": 1151,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -58187,8 +58159,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4868,
-      "price_max": 4868,
+      "price": 5434,
+      "price_max": 5434,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -58215,7 +58187,7 @@
         "AZUL TRANSLUCIDO": 0,
         "NARANJA TRANSLUCIDO": 1,
         "ROJO TRANSLUCIDO": 0,
-        "VERDE TRANSLUCIDO": 3,
+        "VERDE TRANSLUCIDO": 0,
         "VIOLETA TRANSLUCIDO": 0,
         "BLANCO PLENO": 0,
         "ROSA PASTEL": 0,
@@ -58240,8 +58212,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1519,
-      "price_max": 1519,
+      "price": 1656,
+      "price_max": 1656,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -58270,8 +58242,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 495,
-      "price_max": 495,
+      "price": 607,
+      "price_max": 607,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -58282,9 +58254,9 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 8990,
-        "CRUDO": 8132,
-        "NEGRO PLENO": 10549
+        "BLANCO PLENO": 8240,
+        "CRUDO": 7332,
+        "NEGRO PLENO": 10349
       }
     },
     {
@@ -58304,8 +58276,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2150,
-      "price_max": 2150,
+      "price": 2571,
+      "price_max": 2571,
       "currency": "ARS",
       "min_qty": 30,
       "image_urls": [
@@ -58317,8 +58289,8 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 341,
-        "NEGRO PLENO": 505,
+        "BLANCO PLENO": 336,
+        "NEGRO PLENO": 500,
         "ROSA PASTEL": 0
       }
     },
@@ -58337,8 +58309,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 626.67,
-      "price_max": 626.67,
+      "price": 692,
+      "price_max": 692,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -58397,8 +58369,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 689,
-      "price_max": 689,
+      "price": 918,
+      "price_max": 918,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -58409,7 +58381,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 450,
+        "BLANCO PLENO": 100,
         "CRUDO": 1251,
         "NEGRO PLENO": 2281
       }
@@ -58431,8 +58403,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 793,
-      "price_max": 793,
+      "price": 1101,
+      "price_max": 1101,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -58444,7 +58416,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 1838,
+        "BLANCO PLENO": 1638,
         "CRUDO": 2349,
         "NEGRO PLENO": 690
       }
@@ -58465,8 +58437,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4129,
-      "price_max": 4129,
+      "price": 10379,
+      "price_max": 10379,
       "currency": "ARS",
       "min_qty": 16,
       "image_urls": [
@@ -58494,13 +58466,13 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1083,
-      "price_max": 1083,
+      "price": 1195,
+      "price_max": 1195,
       "currency": "ARS",
-      "min_qty": 20,
+      "min_qty": 480,
       "image_urls": [
         "https://mayapublicidad.com/uploads/pictures/large/20250512-144106-863_PRL03250-portarretrato-9x13.jpg",
-        "https://mayapublicidad.com/uploads/pictures/large/20250512-144221-PRL032504253.jpg"
+        "https://mayapublicidad.com/images/ui/image/mp-large.jpg"
       ],
       "source": "maya",
       "stock_by_color": {
@@ -58520,13 +58492,13 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 995,
-      "price_max": 995,
+      "price": 1099,
+      "price_max": 1099,
       "currency": "ARS",
-      "min_qty": 20,
+      "min_qty": 500,
       "image_urls": [
         "https://mayapublicidad.com/uploads/pictures/large/20221201-114531-864_PRL03260-portarretrato-10x15.jpg",
-        "https://mayapublicidad.com/uploads/pictures/large/20160427-200301-PRL032604253.jpg"
+        "https://mayapublicidad.com/images/ui/image/mp-large.jpg"
       ],
       "source": "maya",
       "stock_by_color": {
@@ -58546,13 +58518,13 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1536,
-      "price_max": 1536,
+      "price": 1680,
+      "price_max": 1680,
       "currency": "ARS",
-      "min_qty": 20,
+      "min_qty": 220,
       "image_urls": [
         "https://mayapublicidad.com/uploads/pictures/large/20221201-114531-866_PRL03270-portarretrato-13x18.jpg",
-        "https://mayapublicidad.com/uploads/pictures/large/20160427-200307-PRL032704253.jpg"
+        "https://mayapublicidad.com/images/ui/image/mp-large.jpg"
       ],
       "source": "maya",
       "stock_by_color": {
@@ -58572,13 +58544,13 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2175,
-      "price_max": 2175,
+      "price": 2384,
+      "price_max": 2384,
       "currency": "ARS",
-      "min_qty": 20,
+      "min_qty": 200,
       "image_urls": [
         "https://mayapublicidad.com/uploads/pictures/large/20221201-114531-867_PRL03280-portarretrato-15x21.jpg",
-        "https://mayapublicidad.com/uploads/pictures/large/20160427-200257-PRL032804253.jpg"
+        "https://mayapublicidad.com/images/ui/image/mp-large.jpg"
       ],
       "source": "maya",
       "stock_by_color": {
@@ -58598,13 +58570,13 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3550,
-      "price_max": 3550,
+      "price": 3904,
+      "price_max": 3904,
       "currency": "ARS",
-      "min_qty": 20,
+      "min_qty": 100,
       "image_urls": [
         "https://mayapublicidad.com/uploads/pictures/large/20221201-114532-868_PRL03290-portarretrato-20x25.jpg",
-        "https://mayapublicidad.com/uploads/pictures/large/20160427-200300-PRL032904253.jpg"
+        "https://mayapublicidad.com/images/ui/image/mp-large.jpg"
       ],
       "source": "maya",
       "stock_by_color": {
@@ -58624,17 +58596,17 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4130,
-      "price_max": 4130,
+      "price": 4532,
+      "price_max": 4532,
       "currency": "ARS",
-      "min_qty": 20,
+      "min_qty": 100,
       "image_urls": [
         "https://mayapublicidad.com/uploads/pictures/large/20221201-114857-869_PRL03310-portarretrato-20x30.jpg",
-        "https://mayapublicidad.com/uploads/pictures/large/20160427-200256-PRL033104253.jpg"
+        "https://mayapublicidad.com/images/ui/image/mp-large.jpg"
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 3440
+        "CRISTAL / TRANSPARENTE": 3858
       }
     },
     {
@@ -58654,8 +58626,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 346,
-      "price_max": 346,
+      "price": 397,
+      "price_max": 397,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -58666,9 +58638,9 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 6072,
-        "CRUDO": 5826,
-        "NEGRO PLENO": 2579
+        "BLANCO PLENO": 5972,
+        "CRUDO": 5426,
+        "NEGRO PLENO": 1279
       }
     },
     {
@@ -58691,8 +58663,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 780,
-      "price_max": 965,
+      "price": 958,
+      "price_max": 1150,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -58706,7 +58678,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "PLATA / PLATEADO": 6486,
+        "PLATA / PLATEADO": 6386,
         "ORO / DORADO": 1800,
         "COBRE": 1722,
         "FUCSIA PLENO": 1142,
@@ -58734,8 +58706,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 534,
-      "price_max": 653,
+      "price": 620,
+      "price_max": 739,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -58749,7 +58721,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "PLATA / PLATEADO": 6500,
+        "PLATA / PLATEADO": 6400,
         "ORO / DORADO": 1099,
         "COBRE": 0,
         "FUCSIA PLENO": 491,
@@ -58781,8 +58753,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2527,
-      "price_max": 2527,
+      "price": 2761,
+      "price_max": 2761,
       "currency": "ARS",
       "min_qty": 30,
       "image_urls": [
@@ -58837,8 +58809,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2382,
-      "price_max": 2382,
+      "price": 2627,
+      "price_max": 2627,
       "currency": "ARS",
       "min_qty": 40,
       "image_urls": [
@@ -58884,8 +58856,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 4868,
-      "price_max": 4868,
+      "price": 5434,
+      "price_max": 5434,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -58918,8 +58890,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2739,
-      "price_max": 2739,
+      "price": 3131,
+      "price_max": 3131,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -58937,7 +58909,7 @@
         "VERDE PASTEL": 233,
         "VIOLETA PASTEL": 840,
         "GRIS CLARO PLENO": 0,
-        "COLORES PASTEL SURTIDOS": 321
+        "COLORES PASTEL SURTIDOS": 296
       }
     },
     {
@@ -58986,8 +58958,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 915,
-      "price_max": 915,
+      "price": 1010,
+      "price_max": 1010,
       "currency": "ARS",
       "min_qty": 36,
       "image_urls": [
@@ -59018,8 +58990,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2494,
-      "price_max": 2494,
+      "price": 2764,
+      "price_max": 2764,
       "currency": "ARS",
       "min_qty": 20,
       "image_urls": [
@@ -59032,8 +59004,8 @@
       "source": "maya",
       "stock_by_color": {
         "COLORES PASTEL SURTIDOS": 20,
-        "BLANCO PLENO": 127,
-        "NEGRO PLENO": 546
+        "BLANCO PLENO": 122,
+        "NEGRO PLENO": 541
       }
     },
     {
@@ -59061,8 +59033,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3395,
-      "price_max": 3395,
+      "price": 3751,
+      "price_max": 3751,
       "currency": "ARS",
       "min_qty": 30,
       "image_urls": [
@@ -59119,8 +59091,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2469,
-      "price_max": 2469,
+      "price": 2724,
+      "price_max": 2724,
       "currency": "ARS",
       "min_qty": 40,
       "image_urls": [
@@ -59171,8 +59143,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 451,
-      "price_max": 451,
+      "price": 543,
+      "price_max": 543,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -59184,7 +59156,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "AZUL CLARO PLENO": 4885,
+        "AZUL CLARO PLENO": 5385,
         "NEGRO PLENO": 6338,
         "ROJO PLENO": 2471
       }
@@ -59204,8 +59176,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 359,
-      "price_max": 359,
+      "price": 408,
+      "price_max": 408,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -59269,8 +59241,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5574,
-      "price_max": 5574,
+      "price": 6041,
+      "price_max": 6041,
       "currency": "ARS",
       "min_qty": 24,
       "image_urls": [
@@ -59287,7 +59259,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 598,
+        "CRISTAL / TRANSPARENTE": 592,
         "COLORES SURTIDOS": 679,
         "GRIS CLARO PLENO": 0,
         "ROSA PASTEL": 0,
@@ -59314,8 +59286,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5886,
-      "price_max": 5886,
+      "price": 6381,
+      "price_max": 6381,
       "currency": "ARS",
       "min_qty": 24,
       "image_urls": [
@@ -59325,7 +59297,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 174,
+        "CRISTAL / TRANSPARENTE": 168,
         "COLORES SURTIDOS": 26
       }
     },
@@ -59350,8 +59322,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1139,
-      "price_max": 1139,
+      "price": 1248,
+      "price_max": 1248,
       "currency": "ARS",
       "min_qty": 36,
       "image_urls": [
@@ -59366,41 +59338,13 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 406,
+        "CRISTAL / TRANSPARENTE": 391,
         "VERDE PASTEL": 22,
         "VIOLETA PASTEL": 31,
         "GRIS CLARO PLENO": 0,
         "COLORES PASTEL SURTIDOS": 14,
         "BLANCO PLENO": 1,
         "NEGRO PLENO": 1
-      }
-    },
-    {
-      "product_id": "maya_757",
-      "external_id": "GST28020",
-      "title": "ENSALADERA S/Imp.",
-      "description": "Medida: Ø 21 cm",
-      "category": "Cocina",
-      "subcategory": "",
-      "materials": [
-        "Plástico"
-      ],
-      "colors": [
-        "CRISTAL / TRANSPARENTE"
-      ],
-      "personalization_methods": [],
-      "eco_friendly": false,
-      "price": 3484,
-      "price_max": 3484,
-      "currency": "ARS",
-      "min_qty": 24,
-      "image_urls": [
-        "https://mayapublicidad.com/uploads/pictures/large/20250401-110740-757_GST28020-bowl.jpg",
-        "https://mayapublicidad.com/uploads/pictures/large/20211013-001738-GST280204252.jpg"
-      ],
-      "source": "maya",
-      "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 1
       }
     },
     {
@@ -59419,8 +59363,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 962,
-      "price_max": 962,
+      "price": 1063,
+      "price_max": 1063,
       "currency": "ARS",
       "min_qty": 36,
       "image_urls": [
@@ -59449,8 +59393,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1097,
-      "price_max": 1097,
+      "price": 1222,
+      "price_max": 1222,
       "currency": "ARS",
       "min_qty": 36,
       "image_urls": [
@@ -59478,8 +59422,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1880,
-      "price_max": 3522,
+      "price": 2076,
+      "price_max": 3826,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -59535,7 +59479,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "AMARILLO PLENO": 7687,
+        "AMARILLO PLENO": 7287,
         "AZUL CLARO PLENO": 1537,
         "NEGRO PLENO": 18961,
         "ROJO PLENO": 14370,
@@ -59623,8 +59567,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 1139,
-      "price_max": 1139,
+      "price": 1356,
+      "price_max": 1356,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -59640,10 +59584,10 @@
       "stock_by_color": {
         "BLANCO PLENO": 525,
         "ROSA PASTEL": 463,
-        "VERDE PASTEL": 429,
+        "VERDE PASTEL": 379,
         "VIOLETA PASTEL": 658,
-        "GRIS CLARO PLENO": 614,
-        "NEGRO PLENO": 318
+        "GRIS CLARO PLENO": 564,
+        "NEGRO PLENO": 268
       }
     },
     {
@@ -59663,8 +59607,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 6981,
-      "price_max": 6981,
+      "price": 7241,
+      "price_max": 7241,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -59697,8 +59641,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 537,
-      "price_max": 537,
+      "price": 664,
+      "price_max": 664,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -59709,9 +59653,9 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 1288,
-        "CRUDO": 434,
-        "NEGRO PLENO": 1333
+        "BLANCO PLENO": 1338,
+        "CRUDO": 234,
+        "NEGRO PLENO": 1433
       }
     },
     {
@@ -59731,8 +59675,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 405,
-      "price_max": 405,
+      "price": 463,
+      "price_max": 463,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -59743,9 +59687,9 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "BLANCO PLENO": 1995,
-        "CRUDO": 107,
-        "NEGRO PLENO": 3750
+        "BLANCO PLENO": 1095,
+        "CRUDO": 7,
+        "NEGRO PLENO": 3550
       }
     },
     {
@@ -59780,7 +59724,7 @@
       "stock_by_color": {
         "BLANCO PLENO": 3741,
         "NEGRO PLENO": 6474,
-        "AZUL OSCURO PLENO": 417
+        "AZUL OSCURO PLENO": 1117
       }
     },
     {
@@ -59808,7 +59752,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "NEGRO PLENO": 2968
+        "NEGRO PLENO": 2923
       }
     },
     {
@@ -59883,9 +59827,9 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "ROSA PLENO": 2073,
-        "AZUL CLARO PLENO": 8946,
-        "VERDE CLARO PLENO": 8446,
+        "ROSA PLENO": 1773,
+        "AZUL CLARO PLENO": 8746,
+        "VERDE CLARO PLENO": 8146,
         "NARANJA PLENO": 5030
       }
     },
@@ -59921,7 +59865,7 @@
       "stock_by_color": {
         "VERDE CLARO PLENO": 12935,
         "GRIS CLARO PLENO": 9733,
-        "CREMA": 7537
+        "CREMA": 7637
       }
     },
     {
@@ -59949,8 +59893,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 5294,
-      "price_max": 5294,
+      "price": 6070,
+      "price_max": 6070,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -59977,7 +59921,7 @@
         "NEGRO PLENO": 0,
         "TURQUESA PLENO": 0,
         "CELESTE PLENO": 0,
-        "ORO / DORADO": 272,
+        "ORO / DORADO": 72,
         "ROJO PLENO": 0,
         "VERDE OSCURO PLENO": 0
       }
@@ -60005,8 +59949,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2469,
-      "price_max": 2469,
+      "price": 2724,
+      "price_max": 2724,
       "currency": "ARS",
       "min_qty": 40,
       "image_urls": [
@@ -60057,8 +60001,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3395,
-      "price_max": 3395,
+      "price": 3751,
+      "price_max": 3751,
       "currency": "ARS",
       "min_qty": 30,
       "image_urls": [
@@ -60133,8 +60077,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 25254,
-      "price_max": 25254,
+      "price": 27324,
+      "price_max": 27324,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -60194,8 +60138,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 653,
-      "price_max": 653,
+      "price": 739,
+      "price_max": 739,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -60278,8 +60222,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 699,
-      "price_max": 699,
+      "price": 824,
+      "price_max": 824,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -60384,7 +60328,7 @@
         "VERDE CLARO PLENO": 2716,
         "NARANJA PLENO": 2701,
         "ROSA PLENO": 3676,
-        "VIOLETA PLENO": 2819
+        "VIOLETA PLENO": 2818
       }
     },
     {
@@ -60469,8 +60413,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 10888,
-      "price_max": 10888,
+      "price": 11148,
+      "price_max": 11148,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -60497,8 +60441,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 11800,
-      "price_max": 11800,
+      "price": 12972,
+      "price_max": 12972,
       "currency": "ARS",
       "min_qty": 30,
       "image_urls": [
@@ -60525,8 +60469,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1383,
-      "price_max": 1383,
+      "price": 1461,
+      "price_max": 1461,
       "currency": "ARS",
       "min_qty": 50,
       "image_urls": [
@@ -60553,8 +60497,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1579,
-      "price_max": 1579,
+      "price": 1658,
+      "price_max": 1658,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -60606,13 +60550,13 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "AZUL CLARO PLENO": 2481,
-        "BLANCO PLENO": 21543,
-        "CELESTE PLENO": 13075,
-        "ROJO PLENO": 5048,
-        "ROSA PLENO": 9823,
-        "VERDE CLARO PLENO": 9227,
-        "VIOLETA PLENO": 9440,
+        "AZUL CLARO PLENO": 1566,
+        "BLANCO PLENO": 22043,
+        "CELESTE PLENO": 13125,
+        "ROJO PLENO": 4548,
+        "ROSA PLENO": 9673,
+        "VERDE CLARO PLENO": 9527,
+        "VIOLETA PLENO": 9490,
         "NARANJA PLENO": 4436
       }
     },
@@ -60629,8 +60573,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 326,
-      "price_max": 326,
+      "price": 361,
+      "price_max": 361,
       "currency": "ARS",
       "min_qty": 500,
       "image_urls": [
@@ -60639,7 +60583,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "CRISTAL / TRANSPARENTE": 54
+        "CRISTAL / TRANSPARENTE": 1035
       }
     },
     {
@@ -60657,8 +60601,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 116031,
-      "price_max": 116031,
+      "price": 119526,
+      "price_max": 119526,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -60686,8 +60630,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 38487,
-      "price_max": 38487,
+      "price": 41936,
+      "price_max": 41936,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -60714,8 +60658,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 13377,
-      "price_max": 13377,
+      "price": 13308,
+      "price_max": 13308,
       "currency": "ARS",
       "min_qty": 12,
       "image_urls": [
@@ -60726,7 +60670,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "NEGRO PLENO": 169
+        "NEGRO PLENO": 133
       }
     },
     {
@@ -60766,7 +60710,7 @@
         "NARANJA PLENO": 19387,
         "NEGRO PLENO": 24091,
         "ROJO PLENO": 25243,
-        "VERDE CLARO PLENO": 31143
+        "VERDE CLARO PLENO": 30643
       }
     },
     {
@@ -60787,8 +60731,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 699,
-      "price_max": 699,
+      "price": 824,
+      "price_max": 824,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -60825,8 +60769,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1521,
-      "price_max": 1521,
+      "price": 1668,
+      "price_max": 1668,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -60841,9 +60785,9 @@
       "source": "maya",
       "stock_by_color": {
         "AZUL CLARO PLENO": 554,
-        "CRUDO": 2129,
+        "CRUDO": 2379,
         "ROSA PLENO": 633,
-        "VERDE CLARO PLENO": 3397
+        "VERDE CLARO PLENO": 3372
       }
     },
     {
@@ -60864,8 +60808,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1139,
-      "price_max": 1139,
+      "price": 1356,
+      "price_max": 1356,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -60878,10 +60822,10 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "AZUL CLARO PLENO": 1638,
-        "CRUDO": 1449,
-        "ROSA PLENO": 1836,
-        "VERDE CLARO PLENO": 1841
+        "AZUL CLARO PLENO": 1613,
+        "CRUDO": 1424,
+        "ROSA PLENO": 1811,
+        "VERDE CLARO PLENO": 1816
       }
     },
     {
@@ -60915,10 +60859,10 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "AZUL CLARO PLENO": 4906,
+        "AZUL CLARO PLENO": 3806,
         "CRUDO": 11672,
         "ROSA PLENO": 6941,
-        "VERDE CLARO PLENO": 4675
+        "VERDE CLARO PLENO": 1673
       }
     },
     {
@@ -60940,8 +60884,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 8258,
-      "price_max": 8258,
+      "price": 8671,
+      "price_max": 8671,
       "currency": "ARS",
       "min_qty": 15,
       "image_urls": [
@@ -60981,8 +60925,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 4315,
-      "price_max": 4315,
+      "price": 4879,
+      "price_max": 4879,
       "currency": "ARS",
       "min_qty": 36,
       "image_urls": [
@@ -61017,8 +60961,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 395303,
-      "price_max": 395303,
+      "price": 412755,
+      "price_max": 412755,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -61046,8 +60990,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 25365,
-      "price_max": 25365,
+      "price": 32236,
+      "price_max": 32236,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -61074,8 +61018,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 92722,
-      "price_max": 92722,
+      "price": 96048,
+      "price_max": 96048,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -61107,8 +61051,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3935,
-      "price_max": 3935,
+      "price": 4210,
+      "price_max": 4210,
       "currency": "ARS",
       "min_qty": 12,
       "image_urls": [
@@ -61147,8 +61091,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3421,
-      "price_max": 3421,
+      "price": 3706,
+      "price_max": 3706,
       "currency": "ARS",
       "min_qty": 18,
       "image_urls": [
@@ -61530,7 +61474,7 @@
         "AZUL OSCURO PLENO": 11961,
         "BLANCO PLENO": 56,
         "NARANJA PLENO": 3863,
-        "NEGRO PLENO": 23519,
+        "NEGRO PLENO": 23521,
         "ROJO PLENO": 10998,
         "VERDE CLARO PLENO": 6970
       }
@@ -61663,10 +61607,10 @@
       "stock_by_color": {
         "AMARILLO PLENO": 806,
         "AZUL OSCURO PLENO": 10,
-        "BLANCO PLENO": 0,
+        "BLANCO PLENO": 1500,
         "CELESTE PLENO": 690,
         "NARANJA PLENO": 1819,
-        "NEGRO PLENO": 0,
+        "NEGRO PLENO": 1503,
         "ROJO PLENO": 3061,
         "VERDE OSCURO PLENO": 4719,
         "VIOLETA PLENO": 592,
@@ -61724,8 +61668,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 965,
-      "price_max": 965,
+      "price": 1150,
+      "price_max": 1150,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -61750,8 +61694,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 534,
-      "price_max": 534,
+      "price": 620,
+      "price_max": 620,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -61777,8 +61721,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 780,
-      "price_max": 780,
+      "price": 958,
+      "price_max": 958,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -61809,8 +61753,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 2894,
-      "price_max": 2894,
+      "price": 3211,
+      "price_max": 3211,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -62155,7 +62099,7 @@
         "AZUL CLARO PLENO": 325,
         "CELESTE PLENO": 237,
         "ROJO PLENO": 587,
-        "GRIS CLARO PLENO": 676,
+        "GRIS CLARO PLENO": 651,
         "AMARILLO PLENO": 236,
         "VERDE CLARO PLENO": 224
       }
@@ -62326,7 +62270,7 @@
       ],
       "source": "maya",
       "stock_by_color": {
-        "MADERA": 1678
+        "MADERA": 1373
       }
     },
     {
@@ -62412,8 +62356,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 2739,
-      "price_max": 2739,
+      "price": 3131,
+      "price_max": 3131,
       "currency": "ARS",
       "min_qty": 25,
       "image_urls": [
@@ -62650,8 +62594,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 2722,
-      "price_max": 5035,
+      "price": 2984,
+      "price_max": 5517,
       "currency": "ARS",
       "min_qty": 12,
       "image_urls": [
@@ -62688,7 +62632,7 @@
         "CRUDO": 959,
         "ROSA PLENO": 89,
         "VERDE CLARO PLENO": 165,
-        "COLORES SURTIDOS": 2776
+        "COLORES SURTIDOS": 3973
       }
     },
     {
@@ -62705,8 +62649,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 505,
-      "price_max": 750,
+      "price": 550,
+      "price_max": 827,
       "currency": "ARS",
       "min_qty": 200,
       "image_urls": [
@@ -63201,8 +63145,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 1161,
-      "price_max": 1161,
+      "price": 1295,
+      "price_max": 1295,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -63229,8 +63173,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 897,
-      "price_max": 897,
+      "price": 977,
+      "price_max": 977,
       "currency": "ARS",
       "min_qty": 100,
       "image_urls": [
@@ -63259,8 +63203,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 3522,
-      "price_max": 3522,
+      "price": 3826,
+      "price_max": 3826,
       "currency": "ARS",
       "min_qty": 10,
       "image_urls": [
@@ -63298,8 +63242,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2680,
-      "price_max": 2680,
+      "price": 3085,
+      "price_max": 3085,
       "currency": "ARS",
       "min_qty": 24,
       "image_urls": [
@@ -63318,7 +63262,7 @@
       "stock_by_color": {
         "NEGRO PLENO": 0,
         "ROJO PLENO": 36,
-        "AZUL CLARO PLENO": 94,
+        "AZUL CLARO PLENO": 64,
         "VERDE CLARO PLENO": 130,
         "VERDE OLIVA": 99,
         "AMARILLO PLENO": 134,
@@ -63348,8 +63292,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2680,
-      "price_max": 2680,
+      "price": 3085,
+      "price_max": 3085,
       "currency": "ARS",
       "min_qty": 24,
       "image_urls": [
@@ -63398,8 +63342,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3095,
-      "price_max": 3095,
+      "price": 3555,
+      "price_max": 3555,
       "currency": "ARS",
       "min_qty": 20,
       "image_urls": [
@@ -63447,8 +63391,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3095,
-      "price_max": 3095,
+      "price": 3555,
+      "price_max": 3555,
       "currency": "ARS",
       "min_qty": 20,
       "image_urls": [
@@ -63490,8 +63434,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2680,
-      "price_max": 2680,
+      "price": 3085,
+      "price_max": 3085,
       "currency": "ARS",
       "min_qty": 24,
       "image_urls": [
@@ -63519,8 +63463,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2680,
-      "price_max": 2680,
+      "price": 3085,
+      "price_max": 3085,
       "currency": "ARS",
       "min_qty": 24,
       "image_urls": [
@@ -63548,8 +63492,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3095,
-      "price_max": 3095,
+      "price": 3555,
+      "price_max": 3555,
       "currency": "ARS",
       "min_qty": 20,
       "image_urls": [
@@ -63576,8 +63520,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 3095,
-      "price_max": 3095,
+      "price": 3555,
+      "price_max": 3555,
       "currency": "ARS",
       "min_qty": 20,
       "image_urls": [
@@ -63607,8 +63551,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": false,
-      "price": 2757,
-      "price_max": 2757,
+      "price": 3216,
+      "price_max": 3216,
       "currency": "ARS",
       "min_qty": 20,
       "image_urls": [
@@ -63644,8 +63588,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 2150,
-      "price_max": 2150,
+      "price": 2571,
+      "price_max": 2571,
       "currency": "ARS",
       "min_qty": 30,
       "image_urls": [
@@ -63682,8 +63626,8 @@
       ],
       "personalization_methods": [],
       "eco_friendly": true,
-      "price": 2494,
-      "price_max": 2494,
+      "price": 2764,
+      "price_max": 2764,
       "currency": "ARS",
       "min_qty": 20,
       "image_urls": [
