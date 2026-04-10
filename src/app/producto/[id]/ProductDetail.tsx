@@ -344,9 +344,25 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                 </p>
               )}
 
-              {/* Color selector — before add to cart */}
-              {product.colors.length > 0 && (
+              {/* Personalization method — before color */}
+              {product.personalization_methods.length > 0 && (
                 <div className="mt-4 border-t border-border/50 pt-4">
+                  <PersonalizationCard
+                    methods={product.personalization_methods}
+                    selected={selectedMethod}
+                    onSelect={setSelectedMethod}
+                  />
+                </div>
+              )}
+              {requiresPersonalizationMethod && !selectedMethod && (
+                <p className="mt-2 text-xs text-muted">
+                  Elegí un método para agregar este producto al carrito.
+                </p>
+              )}
+
+              {/* Color selector — right above quantity */}
+              {product.colors.length > 0 && (
+                <div className={product.personalization_methods.length > 0 ? "mt-3" : "mt-4 border-t border-border/50 pt-4"}>
                   <p className={`text-xs font-semibold uppercase tracking-wider transition-colors ${colorWarn ? "text-red-500" : "text-muted"}`}>
                     Color{colorWarn ? " — Elegí un color" : ""}
                   </p>
@@ -391,22 +407,6 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                     })}
                   </div>
                 </div>
-              )}
-
-              {/* Personalization method — before add to cart */}
-              {product.personalization_methods.length > 0 && (
-                <div className={product.colors.length > 0 ? "mt-3" : "mt-4 border-t border-border/50 pt-4"}>
-                  <PersonalizationCard
-                    methods={product.personalization_methods}
-                    selected={selectedMethod}
-                    onSelect={setSelectedMethod}
-                  />
-                </div>
-              )}
-              {requiresPersonalizationMethod && !selectedMethod && (
-                <p className="mt-2 text-xs text-muted">
-                  Elegí un método para agregar este producto al carrito.
-                </p>
               )}
 
               {/* Quantity stepper + Add */}
@@ -509,31 +509,6 @@ export default function ProductDetail({ product }: { product: ProductResult }) {
                     Materiales
                   </p>
                   <p className="mt-1 text-sm">{product.materials.join(", ")}</p>
-                </div>
-              )}
-              {product.colors.length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wider text-muted">
-                    Colores disponibles
-                  </p>
-                  <div className="mt-1.5 flex flex-wrap gap-2">
-                    {product.colors.map((color) => (
-                      <button
-                        key={color}
-                        onClick={() => setSelectedColor(selectedColor === color ? null : color)}
-                        className={`flex items-center gap-2 rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${
-                          selectedColor === color
-                            ? "border-accent bg-accent/10 text-accent"
-                            : "border-border text-foreground hover:border-accent/30"
-                        }`}
-                      >
-                        <span className={`h-2.5 w-2.5 shrink-0 rounded-full ${
-                          selectedColor === color ? "bg-accent" : "bg-muted/40"
-                        }`} />
-                        {color}
-                      </button>
-                    ))}
-                  </div>
                 </div>
               )}
             </div>
