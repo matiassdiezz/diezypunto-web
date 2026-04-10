@@ -1,14 +1,81 @@
 #!/usr/bin/env npx tsx
 /**
- * Sync script — fetches all products from Zecat API and saves to src/data/catalog.json
+ * Sync script — fetches all products from Zecat API 2.0 and saves to src/data/catalog.json
  *
- * Usage: ZECAT_API_TOKEN=xxx npx tsx scripts/sync-catalog.ts
- * Or:    source .env.local && npx tsx scripts/sync-catalog.ts
+ * Uses two endpoints:
+ *   1. GET /generic_product?page=X&limit=50  → listing (basics + images + variant stock + dimensions)
+ *   2. GET /generic_product/{id}             → detail   (printing_types, discountRanges tiers)
+ *
+ * The detail endpoint is called once per product with concurrency = 20.
+ * Zecat docs recommend running the detail endpoint between 11PM-6AM — for manual
+ * ad-hoc syncs this is fine.
+ *
+ * Usage: source .env.local && npx tsx scripts/sync-catalog.ts
+ * Or:    ZECAT_API_TOKEN=xxx npx tsx scripts/sync-catalog.ts
  */
 
 const ZECAT_BASE = "https://api.zecat.com/v1";
 const OUTPUT_PATH = new URL("../src/data/catalog.json", import.meta.url);
 const PAGE_SIZE = 50;
+const DETAIL_CONCURRENCY = 20;
+
+// --- Zecat API shapes (loose — API returns extra fields we don't care about) ---
+
+interface ZecatVariant {
+  id?: number;
+  sku?: string;
+  stock?: number | string;
+  size?: string;
+  color?: string;
+  element_description_1?: string;
+  elementDescription1?: string;
+  element_description_2?: string;
+  element_description_3?: string;
+}
+
+interface ZecatImage {
+  image_url?: string;
+  imageUrl?: string;
+  main?: boolean;
+  order?: number;
+}
+
+interface ZecatFamily {
+  id: string;
+  description: string;
+  show: boolean;
+}
+
+interface ZecatSubattribute {
+  id?: number;
+  name: string;
+  attribute_name?: string;
+  attribute_id?: number;
+}
+
+interface ZecatPrintingType {
+  id?: string | number;
+  name?: string;
+  description?: string;
+  setup_price?: number;
+  unit_price?: number;
+  base_time?: number;
+  ocupation?: number;
+  day_factor?: number;
+  min_units_for_printing?: number | string;
+  active?: boolean;
+}
+
+interface ZecatDiscountRangeTier {
+  minQuantity: string;
+  discountPercentage: string;
+  price: string;
+}
+
+interface ZecatDiscountRange {
+  discountId?: string;
+  ranges?: ZecatDiscountRangeTier[];
+}
 
 interface ZecatProduct {
   id: string;
@@ -16,22 +83,48 @@ interface ZecatProduct {
   name: string;
   description: string;
   price: number | null;
-  discountPrice: number | null;
-  discountRanges: unknown;
+  discountPrice?: number | null;
+  discountRanges?: ZecatDiscountRange[] | { minPrice?: string; maxPrice?: string } | null;
   currency: string;
-  minimum_order_quantity: number;
-  families: Array<{ id: string; description: string; show: boolean }>;
-  images: Array<{ image_url: string; main: boolean; order: number }>;
-  products: Array<{
-    element_description_1?: string;
-    elementDescription1?: string;
-  }>;
-  subattributes: Array<{
-    name: string;
-    attribute_name?: string;
-    attribute_id?: number;
-  }>;
+  minimum_order_quantity?: number;
+  families?: ZecatFamily[];
+  images?: ZecatImage[];
+  products?: ZecatVariant[];
+  subattributes?: ZecatSubattribute[];
   tag?: string;
+  // Dimensions live at top level in the listing response
+  height?: number;
+  width?: number;
+  length?: number;
+  unit_weight?: number;
+  // Detail-only
+  printing_types?: ZecatPrintingType[];
+}
+
+// --- Output shape — backwards compatible, new fields are optional ---
+
+interface PrintingTechnique {
+  id: string | number;
+  name: string;
+  setup_price: number;
+  unit_price: number;
+  min_units: number;
+  base_time: number;
+  ocupation: number;
+  day_factor: number;
+}
+
+interface PriceTierRaw {
+  min_qty: number;
+  discount_pct: number;
+  unit_price: number;
+}
+
+interface Dimensions {
+  height: number;
+  width: number;
+  length: number;
+  weight: number;
 }
 
 interface CatalogProduct {
@@ -50,6 +143,11 @@ interface CatalogProduct {
   currency: string;
   min_qty: number;
   image_urls: string[];
+  // New enriched fields (optional — consumers can ignore)
+  stock_by_color?: Record<string, number>;
+  printing_techniques?: PrintingTechnique[];
+  price_tiers_raw?: PriceTierRaw[];
+  dimensions?: Dimensions;
 }
 
 const ATTRIBUTE_MAP: Record<number, string> = {
@@ -70,10 +168,7 @@ function getToken(): string {
   return token;
 }
 
-function resolveAttributeName(sa: {
-  attribute_name?: string;
-  attribute_id?: number;
-}): string {
+function resolveAttributeName(sa: ZecatSubattribute): string {
   if (sa.attribute_name) return sa.attribute_name;
   if (sa.attribute_id) return ATTRIBUTE_MAP[sa.attribute_id] || "";
   return "";
@@ -81,14 +176,9 @@ function resolveAttributeName(sa: {
 
 function resolvePrice(z: ZecatProduct): number | null {
   if (z.discountPrice) return z.discountPrice;
-  if (
-    Array.isArray(z.discountRanges) &&
-    (z.discountRanges as Array<{ ranges: Array<{ price: string }> }>).length > 0
-  ) {
-    const first = (
-      z.discountRanges as Array<{ ranges: Array<{ price: string }> }>
-    )[0];
-    if (first.ranges?.length > 0) return parseFloat(first.ranges[0].price);
+  if (Array.isArray(z.discountRanges) && z.discountRanges.length > 0) {
+    const first = z.discountRanges[0];
+    if (first.ranges?.length) return parseFloat(first.ranges[0].price);
   }
   if (
     z.discountRanges &&
@@ -98,7 +188,37 @@ function resolvePrice(z: ZecatProduct): number | null {
     const dr = z.discountRanges as { minPrice?: string };
     if (dr.minPrice) return parseFloat(dr.minPrice);
   }
-  return z.price || null;
+  return z.price ?? null;
+}
+
+function extractStockByColor(variants: ZecatVariant[]): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const v of variants) {
+    const color = (v.element_description_1 || v.elementDescription1 || v.color || "").trim();
+    if (!color || color === "." || color === "...") continue;
+    const stock =
+      typeof v.stock === "number"
+        ? v.stock
+        : typeof v.stock === "string"
+        ? parseInt(v.stock, 10) || 0
+        : 0;
+    out[color] = (out[color] ?? 0) + stock;
+  }
+  return out;
+}
+
+function extractDimensions(z: ZecatProduct): Dimensions | undefined {
+  const h = z.height;
+  const w = z.width;
+  const l = z.length;
+  const wt = z.unit_weight;
+  if (h == null && w == null && l == null && wt == null) return undefined;
+  return {
+    height: h ?? 0,
+    width: w ?? 0,
+    length: l ?? 0,
+    weight: wt ?? 0,
+  };
 }
 
 function transformProduct(z: ZecatProduct): CatalogProduct {
@@ -134,6 +254,9 @@ function transformProduct(z: ZecatProduct): CatalogProduct {
       f.description?.toLowerCase().includes("sustentable")
     ) || !!z.tag?.toLowerCase().includes("sustentable");
 
+  const stockByColor = extractStockByColor(variants);
+  const dimensions = extractDimensions(z);
+
   return {
     product_id: z.id,
     external_id: z.external_id,
@@ -148,8 +271,51 @@ function transformProduct(z: ZecatProduct): CatalogProduct {
     price: resolvePrice(z),
     price_max: z.price || null,
     currency: z.currency || "ARS",
-    min_qty: 1,
-    image_urls: images.map((img) => img.image_url).filter(Boolean),
+    min_qty: z.minimum_order_quantity || 1,
+    image_urls: images.map((img) => img.image_url || img.imageUrl || "").filter(Boolean),
+    stock_by_color: Object.keys(stockByColor).length > 0 ? stockByColor : undefined,
+    dimensions,
+  };
+}
+
+/** Merge detail endpoint data into an already-transformed product */
+function enrichWithDetail(product: CatalogProduct, detail: ZecatProduct): CatalogProduct {
+  const printingTechniques: PrintingTechnique[] = (detail.printing_types || [])
+    .filter((pt) => pt.active !== false && pt.name)
+    .map((pt) => ({
+      id: pt.id ?? "",
+      name: (pt.name || "").trim(),
+      setup_price: Number(pt.setup_price) || 0,
+      unit_price: Number(pt.unit_price) || 0,
+      min_units:
+        typeof pt.min_units_for_printing === "string"
+          ? parseInt(pt.min_units_for_printing, 10) || 0
+          : Number(pt.min_units_for_printing) || 0,
+      base_time: Number(pt.base_time) || 0,
+      ocupation: Number(pt.ocupation) || 0,
+      day_factor: Number(pt.day_factor) || 0,
+    }));
+
+  let priceTiersRaw: PriceTierRaw[] | undefined;
+  if (Array.isArray(detail.discountRanges) && detail.discountRanges.length > 0) {
+    const first = detail.discountRanges[0];
+    if (first.ranges && first.ranges.length > 0) {
+      priceTiersRaw = first.ranges.map((r) => ({
+        min_qty: parseInt(r.minQuantity, 10) || 0,
+        discount_pct: parseFloat(r.discountPercentage) || 0,
+        unit_price: parseFloat(r.price) || 0,
+      }));
+    }
+  }
+
+  // Detail endpoint also has dimensions — prefer those if listing was missing them
+  const dimensions = product.dimensions ?? extractDimensions(detail);
+
+  return {
+    ...product,
+    printing_techniques: printingTechniques.length > 0 ? printingTechniques : undefined,
+    price_tiers_raw: priceTiersRaw,
+    dimensions,
   };
 }
 
@@ -180,6 +346,7 @@ const FAMILY_TO_DP: Record<string, CategoryResult> = {
   "Gorros": { category: "Gorros", subcategory: "" },
   "Apparel": { category: "Indumentaria", subcategory: "" },
   "Uniformes": { category: "Indumentaria", subcategory: "" },
+  "Workwear": { category: "Indumentaria", subcategory: "" },
   "Mates, termos y materas": { category: "Drinkware", subcategory: "Drinkware: Botellas, Jarros y Otros" },
   "Viajes": { category: "Bolsos y Mochilas", subcategory: "Bolsos y Mochilas: Bolsos, Maletines y Mochilas" },
   "Verano": { category: "Hogar & Tiempo Libre", subcategory: "" },
@@ -204,26 +371,11 @@ const TEMPORAL_CATEGORIES = new Set([
   "2026 Novedades",
   "2026 Agro",
   "2026 Día del trabajador",
+  "2026 Minería",
   "Mundial 2026",
   "Logo 24hs",
   "Próximos Arribos",
 ]);
-
-/** Title-based hints for subcategory resolution */
-const SUBCATEGORY_HINTS: Array<[RegExp, CategoryResult]> = [
-  // Escritura subcategories
-  [/\b(roller|ejecutiv|fino|premium|mont|cross|parker|waterman)\b/i, { category: "Escritura", subcategory: "Escritura: Fina" }],
-  [/\b(metal|metálic|acero|aluminio|inox)\b/i, { category: "Escritura", subcategory: "Escritura: Metálica" }],
-  // Drinkware subcategories
-  [/\b(termo|termica|térmic)\b/i, { category: "Drinkware", subcategory: "Drinkware: Termos" }],
-  // Bolsos subcategories — accesorios
-  [/\b(cartuchera|riñonera|neceser|necessaire|billetera|passport|organizer|tablet holder|set.?de.?baño)\b/i, { category: "Bolsos y Mochilas", subcategory: "Bolsos y Mochilas: Accesorios" }],
-  // Tecnología Pro
-  [/\b(parlante|auricular|headphone|earbud|speaker|smartwatch|tablet|notebook)\b/i, { category: "Tecnología", subcategory: "Tecnología: Pro" }],
-  // Indumentaria subcategories
-  [/\b(remera|camiseta|t-shirt)\b/i, { category: "Indumentaria", subcategory: "Indumentaria: Remeras" }],
-  [/\b(chomba|campera|buzo|polar|abrigo|chaleco|jacket)\b/i, { category: "Indumentaria", subcategory: "Indumentaria: Chombas y Abrigo" }],
-];
 
 /** Fallback: infer D&P category from product title */
 const TITLE_CATEGORY_HINTS: Array<[RegExp, CategoryResult]> = [
@@ -360,6 +512,8 @@ function normalizeCategory(product: CatalogProduct): CatalogProduct {
   return { ...product, subcategory: "" };
 }
 
+// --- HTTP ---
+
 async function fetchPage(
   page: number,
   token: string
@@ -386,17 +540,58 @@ async function fetchPage(
   };
 }
 
+async function fetchDetail(id: string, token: string): Promise<ZecatProduct | null> {
+  try {
+    const res = await fetch(`${ZECAT_BASE}/generic_product/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    if (!res.ok) return null;
+    const data = await res.json();
+    return data.generic_product || null;
+  } catch {
+    return null;
+  }
+}
+
+/** Run an async mapper over items with concurrency limit and progress callback */
+async function mapWithConcurrency<T, R>(
+  items: T[],
+  concurrency: number,
+  mapper: (item: T, index: number) => Promise<R>,
+  onProgress?: (done: number, total: number) => void
+): Promise<R[]> {
+  const results: R[] = new Array(items.length);
+  let nextIndex = 0;
+  let done = 0;
+
+  async function worker() {
+    while (true) {
+      const i = nextIndex++;
+      if (i >= items.length) return;
+      results[i] = await mapper(items[i], i);
+      done++;
+      if (onProgress && (done % 25 === 0 || done === items.length)) {
+        onProgress(done, items.length);
+      }
+    }
+  }
+
+  const workers = Array.from({ length: Math.min(concurrency, items.length) }, worker);
+  await Promise.all(workers);
+  return results;
+}
+
 async function main() {
   const token = getToken();
-  console.log("Fetching catalog from Zecat API...\n");
+  const startedAt = Date.now();
+  console.log("Fetching catalog from Zecat API 2.0...\n");
 
-  // First page to get total
+  // === Phase 1: listing ===
   const first = await fetchPage(1, token);
   console.log(`Total products: ${first.count} (${first.totalPages} pages)`);
 
   const allRaw: ZecatProduct[] = [...first.products];
 
-  // Fetch remaining pages
   for (let page = 2; page <= first.totalPages; page++) {
     process.stdout.write(`  Page ${page}/${first.totalPages}...`);
     const { products } = await fetchPage(page, token);
@@ -404,10 +599,10 @@ async function main() {
     console.log(` ${products.length} products`);
   }
 
-  console.log(`\nFetched ${allRaw.length} raw products`);
+  console.log(`\nFetched ${allRaw.length} raw products from listing`);
 
-  // Transform + normalize categories + resolve remaining subcategories
-  const catalog = allRaw.map(transformProduct).map(normalizeCategory).map((p) => {
+  // Transform + normalize categories
+  let catalog = allRaw.map(transformProduct).map(normalizeCategory).map((p) => {
     if (!p.subcategory) {
       p = { ...p, subcategory: resolveSubcategory(p) };
     }
@@ -416,31 +611,76 @@ async function main() {
 
   // Deduplicate by product_id
   const seen = new Set<string>();
-  const unique = catalog.filter((p) => {
+  catalog = catalog.filter((p) => {
     if (seen.has(p.product_id)) return false;
     seen.add(p.product_id);
     return true;
   });
 
-  console.log(`Unique products: ${unique.length}`);
+  console.log(`Unique products: ${catalog.length}`);
+
+  // === Phase 2: per-product detail enrichment ===
+  console.log(
+    `\nFetching detail for ${catalog.length} products (concurrency=${DETAIL_CONCURRENCY})...`
+  );
+
+  const detailStart = Date.now();
+  const details = await mapWithConcurrency(
+    catalog,
+    DETAIL_CONCURRENCY,
+    (p) => fetchDetail(p.product_id, token),
+    (done, total) => {
+      const pct = Math.round((done / total) * 100);
+      const elapsed = Math.round((Date.now() - detailStart) / 1000);
+      process.stdout.write(`\r  Progress: ${done}/${total} (${pct}%) — ${elapsed}s elapsed`);
+    }
+  );
+  process.stdout.write("\n");
+
+  // Merge detail data
+  let enrichedCount = 0;
+  const enriched = catalog.map((product, i) => {
+    const detail = details[i];
+    if (!detail) return product;
+    enrichedCount++;
+    return enrichWithDetail(product, detail);
+  });
+
+  const withPrintingTechniques = enriched.filter(
+    (p) => p.printing_techniques && p.printing_techniques.length > 0
+  ).length;
+  const withTiers = enriched.filter(
+    (p) => p.price_tiers_raw && p.price_tiers_raw.length > 0
+  ).length;
+  const withStock = enriched.filter(
+    (p) => p.stock_by_color && Object.keys(p.stock_by_color).length > 0
+  ).length;
+  const withDimensions = enriched.filter((p) => p.dimensions).length;
+
+  console.log(`\nEnrichment:`);
+  console.log(`  Detail fetched:       ${enrichedCount}/${enriched.length}`);
+  console.log(`  With printing types:  ${withPrintingTechniques}`);
+  console.log(`  With price tiers:     ${withTiers}`);
+  console.log(`  With stock by color:  ${withStock}`);
+  console.log(`  With dimensions:      ${withDimensions}`);
 
   // Stats
-  const withImages = unique.filter((p) => p.image_urls.length > 0).length;
-  const withPrice = unique.filter((p) => p.price != null).length;
-  const categories = [...new Set(unique.map((p) => p.category))];
-  console.log(`  With images: ${withImages}`);
-  console.log(`  With price: ${withPrice}`);
-  console.log(`  Categories: ${categories.length}`);
+  const withImages = enriched.filter((p) => p.image_urls.length > 0).length;
+  const withPrice = enriched.filter((p) => p.price != null).length;
+  const categories = [...new Set(enriched.map((p) => p.category))];
+  console.log(`\n  With images: ${withImages}`);
+  console.log(`  With price:  ${withPrice}`);
+  console.log(`  Categories:  ${categories.length}`);
   categories.forEach((c) => {
-    const count = unique.filter((p) => p.category === c).length;
+    const count = enriched.filter((p) => p.category === c).length;
     console.log(`    - ${c}: ${count}`);
   });
 
   // Write
   const output = {
     synced_at: new Date().toISOString(),
-    total: unique.length,
-    products: unique,
+    total: enriched.length,
+    products: enriched,
   };
 
   const { writeFileSync } = await import("fs");
@@ -451,7 +691,8 @@ async function main() {
   const sizeKB = Math.round(
     (Buffer.byteLength(JSON.stringify(output)) / 1024) * 10
   ) / 10;
-  console.log(`\nWritten to ${outPath} (${sizeKB} KB)`);
+  const totalSec = Math.round((Date.now() - startedAt) / 1000);
+  console.log(`\nWritten to ${outPath} (${sizeKB} KB) in ${totalSec}s`);
 }
 
 main().catch((err) => {
